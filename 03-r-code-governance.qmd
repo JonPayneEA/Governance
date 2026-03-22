@@ -5,7 +5,7 @@
 | Field | Detail |
 |---|---|
 | **Version** | 1.3 |
-| **Status** | Draft — For Team Review |
+| **Status** | Draft: For Team Review |
 | **Review Date** | 2026-02-23 |
 | **Parent Document** | Data & Digital Asset Governance Framework v1.4 │ Data Ownership Model (CDDO, 2024) |
 :::
@@ -46,7 +46,7 @@ This document applies to all R code produced by members of the team, including:
 
 ## 1.3 What Is Covered Here and What Is in the Parent Document
 
-The following governance elements are defined in the Data & Digital Asset Governance Framework and apply to all R tools. They are not repeated here — refer to that document for the authoritative version:
+The following governance elements are defined in the Data & Digital Asset Governance Framework and apply to all R tools. They are not repeated here; refer to that document for the authoritative version:
 
 - Owner → Steward → Custodian roles and grade requirements (Section 3)
 
@@ -214,7 +214,7 @@ The tidyverse must not be used in Tier 1 operational tools or in Flode package f
 | Feather (.feather) | Acceptable alternative to Parquet for high-speed intermediate files within a single pipeline. |
 | Excel (.xlsx) | Restricted to final-output reports and stakeholder deliverables only. Use openxlsx2 if required. |
 
-For full technical detail on each format — including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions — see @sec-file-format-reference. Format compliance for Tier 1 and Tier 2 tools is checked automatically by the `fw-governance` MCP server `check_file_formats` tool.
+For full technical detail on each format, including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions, see @sec-file-format-reference. Format compliance for Tier 1 and Tier 2 tools is checked automatically by the `fw-governance` MCP server `check_file_formats` tool.
 
 ## 2.3 Object-Oriented Programming in Flode
 
@@ -318,9 +318,9 @@ All reviewers must work through this checklist. The completed checklist must be 
 
 - Minimum 70% line coverage required for Tier 1 tools (measured via covr)
 
-**4. Version Control — R-Specific Implementation**
+**4. Version Control: R-Specific Implementation**
 
-Version control principles — branching strategy, commit standards, semantic versioning, and reproducibility requirements — are defined in the parent framework, Section 8.5. This section covers the R-specific implementation.
+Version control principles (branching strategy, commit standards, semantic versioning, and reproducibility requirements) are defined in the parent framework, Section 8.5. This section covers the R-specific implementation.
 
 | Branching strategy, commit standards, semantic versioning: see Data & Digital Asset Governance Framework, Section 8.5. |
 | --- |

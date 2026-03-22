@@ -40,14 +40,14 @@ This appendix tracks alignment between the F&W governance document suite and the
 | Field | Detail |
 |---|---|
 | **Identified** | v1.3 review (March 2026) |
-| **Resolution type** | Intentional deviation — documented and justified |
+| **Resolution type** | Intentional deviation: documented and justified |
 | **Guidance** | CDDO Data Ownership Model §6.1; Defra Data Ownership Policy |
 
 **Divergence:** The framework mandates Deputy Director grade for all Owners. The CDDO model says Owners should be "senior individuals" without specifying a grade. The Defra policy recommends SCS level but frames it as a recommendation.
 
 **Resolution:** Retained as-is. The DD requirement is mandated by internal Defra group guidance that requires DD-level accountability for data assets supporting operational flood incident management. An explanatory note has been added to the Owner section acknowledging that this exceeds the CDDO minimum and stating the reason. No substantive change to the requirement.
 
-**Documents changed:** Governance Framework (§3.1 — explanatory callout added).
+**Documents changed:** Governance Framework (§3.1: explanatory callout added).
 
 ---
 
@@ -172,7 +172,7 @@ This appendix tracks alignment between the F&W governance document suite and the
 | Python Tool Governance: Review Date is "[Insert Date]" | As above |
 | Hydrometric Data Framework: Review Date is "[Insert Date]" | As above |
 | Training Framework: Review Date is "[Insert Date]" | As above |
-| R Tool Governance: Flode module table flagged "NEEDS MODIFICATION" | Flag retained — module naming requires team decision before this can be resolved |
+| R Tool Governance: Flode module table flagged "NEEDS MODIFICATION" | Flag retained; module naming requires team decision before this can be resolved |
 | Python Tool Governance: Section cross-reference "Section87.3" | Corrected to "Section 8.3" |
 | Governance Framework: Glossary defines Custodian with "disposing of" but body text did not | Body text now aligned with glossary |
 | Accepted File Types: references parent framework as v1.2 | Updated to v1.4 at v1.0; document promoted to Appendix E and renamed File Format Reference at v1.1 |

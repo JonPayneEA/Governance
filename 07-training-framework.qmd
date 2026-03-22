@@ -5,7 +5,7 @@
 | Field | Detail |
 |---|---|
 | **Version** | 1.1 |
-| **Status** | Draft — For Team Review |
+| **Status** | Draft: For Team Review |
 | **Review Date** | Pending first review |
 | **Parent Document** | Data & Digital Asset Governance Framework v1.4 |
 :::
@@ -23,13 +23,13 @@ Training is organised into four layers: a core that all staff complete; a fundam
 | **Core (all staff)** Governance framework  ·  Owner / Steward /Custodian roles  ·  tier system  ·  version control  ·  Bronze / Silver / Gold architecture |
 | --- |
 | ▼ |
-| *Fundamentals — complete the track(s) relevant to your role* |
+| *Fundamentals: complete the track(s) relevant to your role* |
 | **Hydrology fundamentals** Catchments · runoff · hydrographs · flow routing · performance metrics · catchment descriptors  ·  Rating Curves | **Hydraulics fundamentals** Open-channel flow · floodplain dynamics · boundary conditions · model uncertainty · 1D/2D schemes | **Data and coding fundamentals** Git · file formats · tabular data · scripting concepts · environments and reproducibility |
 | ▼ |
-| *Cross-cutting — all staff who work with flood models* |
+| *Cross-cutting: all staff who work with flood models* |
 | **Cross-cutting: ****M****odel**** calibration ****and configuration**** ** Model register  ·  run records  ·  calibration and validation  ·  boundary conditions  ·  connection register Black box governance  ·  condition assessments  ·  cascading systems  ·  impact assessments  ·  system diagrams  ·  black box |
 | ▼ |
-| *Specialist tracks — complete the track(s) that match your role* |
+| *Specialist tracks: complete the track(s) that match your role* |
 | **Hydrological modelling** | **Hydraulic modelling** | **R development** | **Python and ML** |
 | **Hydrometric data** HDE · WISKI · Bronze ingestion · Silver QC · Gold approval | **FMP governance** File structure · naming conventions · version control for binary files | **R governance** renv · branching · code review · tool tiers · data.table requirement | **Python governance** poetry · Git · code review · tool tiers · training / inference separation |
 | **PDM models** Parameter sets · calibration records · data inputs · relationship to FMP boundaries | **1D, 2D, and linked models** Scheme types · solver options · output interpretation | **reach.***** packages** data.table · Parquet · Arrow · Bronze store structure · fastverse | **AI/ML environment** Databricks · MLflow · Unity Catalog · data tier requirements by stage |

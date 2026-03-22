@@ -76,11 +76,11 @@ Stewards are responsible for:
 
 ### Custodian (Any Grade)
 
-The Custodian is responsible for capturing, storing, maintaining, and — where applicable — disposing of data and digital assets in line with the Owner's requirements. Custodians do the hands-on work: creating, running, storing, and maintaining assets correctly. They work closely with Stewards to ensure quality by executing within agreed systems according to rules and standards. Any team member can be a Custodian.
+The Custodian is responsible for capturing, storing, maintaining, and (where applicable) disposing of data and digital assets in line with the Owner's requirements. Custodians do the hands-on work: creating, running, storing, and maintaining assets correctly. They work closely with Stewards to ensure quality by executing within agreed systems according to rules and standards. Any team member can be a Custodian.
 
 ::: {.callout-note}
 ## Custodian Disposal Responsibility
-The CDDO Data Ownership Model and Defra Data Ownership Policy both define the Custodian as responsible for "capturing, storing and disposing of data." The majority of data held by the F&W team is observed environmental data (river flows, rainfall, water levels) which is generally retained indefinitely as it cannot be recreated and has enduring scientific and audit value. However, the disposal responsibility is included here to cover assets where retention limits do apply — for example, superseded configuration files, deprecated tool artefacts, or data received under licence terms that include a disposal obligation. Disposal of any data requires Owner approval and must be documented.
+The CDDO Data Ownership Model and Defra Data Ownership Policy both define the Custodian as responsible for "capturing, storing and disposing of data." The majority of data held by the F&W team is observed environmental data (river flows, rainfall, water levels) which is generally retained indefinitely as it cannot be recreated and has enduring scientific and audit value. However, the disposal responsibility is included here to cover assets where retention limits do apply: superseded configuration files, deprecated tool artefacts, or data received under licence terms that include a disposal obligation. Disposal of any data requires Owner approval and must be documented.
 :::
 
 Custodians are responsible for:
@@ -161,9 +161,9 @@ The same three tiers apply across all asset types. This gives everyone a shared 
 
 | Tier | Description | Data | Models | Tools |
 |---|---|---|---|---|
-| **Tier 1** — Operational | Used in live forecasting. Failure has direct operational consequences. | Formally approved datasets feeding live model runs or supporting the service | FMP, PDM, Black Box and Boundary Conditions used in the operational forecast chain | Scripts and pipelines running in live forecasting or critical to supporting the service |
-| **Tier 2** — Analytical | Regularly used but not in the critical forecasting path. | Calibration inputs, validated datasets used for post-event analysis | Models under active development or used for post-event analysis | Visualisation tools, performance dashboards, model comparison tools |
-| **Tier 3** — Experimental | Research or prototype stage. Not in production. | Exploratory datasets, preliminary ingestion, unvalidated inputs | New model configurations being calibrated or tested | Research notebooks, proof-of-concept tools, ML experiments |
+| **Tier 1:** Operational | Used in live forecasting. Failure has direct operational consequences. | Formally approved datasets feeding live model runs or supporting the service | FMP, PDM, Black Box and Boundary Conditions used in the operational forecast chain | Scripts and pipelines running in live forecasting or critical to supporting the service |
+| **Tier 2:** Analytical | Regularly used but not in the critical forecasting path. | Calibration inputs, validated datasets used for post-event analysis | Models under active development or used for post-event analysis | Visualisation tools, performance dashboards, model comparison tools |
+| **Tier 3:** Experimental | Research or prototype stage. Not in production. | Exploratory datasets, preliminary ingestion, unvalidated inputs | New model configurations being calibrated or tested | Research notebooks, proof-of-concept tools, ML experiments |
 
 Promotion to Tier 1 requires Owner sign-off for all asset types. Demotion or deprecation requires Owner approval. Assets begin at Tier 3 and are promoted as their maturity and governance are confirmed. An asset must not be used in live forecasting until it has been formally promoted to Tier 1.
 
@@ -181,18 +181,18 @@ Flood models, including FMP hydraulic models, PDM rainfall-runoff configurations
 
 Code tools written in R or Python follow the same tier system. A tool's tier reflects the operational consequences of failure. Tier 1 tools require the most rigorous development, testing, and custodianship standards. See @sec-r-governance and @sec-python-governance for language-specific requirements.
 
-## Flood Modeller Pro — Governance Requirements
+## Flood Modeller Pro: Governance Requirements
 
 ### File and Folder Structure
 
 Every project must use the agreed folder structure. Stewards define and publish this. Custodians must not create ad-hoc structures. The agreed top-level layout is:
 
 - `[CatchmentID]_[Position]_[ProjectName]/`
-  - `/inputs` — all raw and processed input data (or links to position in medallion data scheme)
-  - `/model` — Flood Modeller Pro project files (`/ief`, `/dat`, `/ied`, `/inp`, `/zzs`)
-  - `/outputs` — model results and exported data (`/zzn`, `/zzs`)
-  - `/docs` — notes, logs, reports
-  - `/archive` — superseded versions (do not delete, archive instead)
+  - `/inputs`: all raw and processed input data (or links to position in medallion data scheme)
+  - `/model`: Flood Modeller Pro project files (`/ief`, `/dat`, `/ied`, `/inp`, `/zzs`)
+  - `/outputs`: model results and exported data (`/zzn`, `/zzs`)
+  - `/docs`: notes, logs, reports
+  - `/archive`: superseded versions (do not delete, archive instead)
 
 ### Naming Conventions
 
@@ -217,7 +217,7 @@ All Flood Modeller Pro project files must be managed in the team's agreed file s
 
 For every model run that produces a formal output, the Custodian must record: model version used, input datasets used (name, version, source, date accessed), scenario description, software version (Flood Modeller Pro build number), date and person who ran the model, and any warnings, errors, or manual interventions. Run records are stored in `/docs` alongside the model project.
 
-## PDM — Governance Requirements
+## PDM: Governance Requirements
 
 ### Parameter Sets
 
@@ -243,13 +243,13 @@ All code tools are classified into one of three tiers based on their operational
 
 | Tier | Description | Examples |
 |---|---|---|
-| Tier 1 — Operational | Used in live forecasting; failure has direct operational consequences | Ensemble processing scripts, alert threshold tools, Flood Modeller API orchestration, operational ML inference pipelines |
-| Tier 2 — Analytical | Regularly used but not in the critical forecasting path | Visualisation tools, performance metrics dashboards, model comparison tools |
-| Tier 3 — Experimental | Research or prototype stage; not in production | New model evaluation scripts, proof-of-concept tools, ML experiments, research notebooks |
+| Tier 1: Operational | Used in live forecasting; failure has direct operational consequences | Ensemble processing scripts, alert threshold tools, Flood Modeller API orchestration, operational ML inference pipelines |
+| Tier 2: Analytical | Regularly used but not in the critical forecasting path | Visualisation tools, performance metrics dashboards, model comparison tools |
+| Tier 3: Experimental | Research or prototype stage; not in production | New model evaluation scripts, proof-of-concept tools, ML experiments, research notebooks |
 
 ### Custodianship Requirements by Tier
 
-| Role | Tier 1 — Operational | Tier 2 and 3 — Analytical / Experimental |
+| Role | Tier 1: Operational | Tier 2 and 3: Analytical / Experimental |
 |---|---|---|
 | Owner | Deputy Director required. Must be a different individual from the Steward. | Deputy Director strongly recommended. A senior manager with equivalent accountability may be assigned where agreed with the Technical Lead. |
 | Steward | Grade 7 required. Delegated Steward recommended. | Grade 7 recommended. A capable team member at a lower grade may act as Steward for Tier 3 tools where the role is combined with Custodian. |
@@ -263,10 +263,10 @@ There are four routes by which a new tool enters the team's codebase. The route 
 
 | Route | Description | Typical Origin |
 |---|---|---|
-| A — New Standalone Tool | A new script or module developed from scratch. Begins at Tier 3 and may be promoted. Proposed via a Git issue; Steward confirms route and tier within five working days. | Identified gap in team capability; new forecasting requirement |
-| B — Shared Module / Package Contribution | A function or class developed for inclusion in a shared package (Flode for R, shared module for Python). Follows a promotion pathway with API review by the Steward Lead. | Recurring code pattern across tools; refactoring of existing standalone tool |
-| C — Adoption of External Package | An externally developed package being formally adopted for team use. Personal Tier 3 use is acceptable; shared or production use requires evaluation and sign-off. | Discovered package that meets a team need; tool shared by a partner organisation |
-| D — Emergency / Hotfix | A tool or fix developed under time pressure. Verbal authorisation from the Steward required before work begins. | Forecasting failure; urgent fix required |
+| A: New Standalone Tool | A new script or module developed from scratch. Begins at Tier 3 and may be promoted. Proposed via a Git issue; Steward confirms route and tier within five working days. | Identified gap in team capability; new forecasting requirement |
+| B: Shared Module / Package Contribution | A function or class developed for inclusion in a shared package (Flode for R, shared module for Python). Follows a promotion pathway with API review by the Steward Lead. | Recurring code pattern across tools; refactoring of existing standalone tool |
+| C: Adoption of External Package | An externally developed package being formally adopted for team use. Personal Tier 3 use is acceptable; shared or production use requires evaluation and sign-off. | Discovered package that meets a team need; tool shared by a partner organisation |
+| D: Emergency / Hotfix | A tool or fix developed under time pressure. Verbal authorisation from the Steward required before work begins. | Forecasting failure; urgent fix required |
 
 For Route C, all external packages must be evaluated against six criteria before adoption in shared or production code: active maintenance, compatible licence, acceptable performance impact, manageable dependency footprint, genuine necessity, and sufficient community adoption.
 
@@ -276,21 +276,21 @@ For Route D, no more than two emergency route deployments per twelve-month perio
 
 | Tier | Review Requirement |
 |---|---|
-| Tier 1 — Operational | Mandatory peer review by a second team member before merging to main. Senior reviewer sign-off before first production deployment. Annual audit of all Tier 1 tools. |
-| Tier 2 — Analytical | Peer review required before merging to main. Reviewer must have at least intermediate proficiency in the relevant language. |
-| Tier 3 — Experimental | Self-review checklist minimum. Peer review strongly encouraged before sharing with others. |
+| Tier 1: Operational | Mandatory peer review by a second team member before merging to main. Senior reviewer sign-off before first production deployment. Annual audit of all Tier 1 tools. |
+| Tier 2: Analytical | Peer review required before merging to main. Reviewer must have at least intermediate proficiency in the relevant language. |
+| Tier 3: Experimental | Self-review checklist minimum. Peer review strongly encouraged before sharing with others. |
 
 ### Version Control Principles
 
 All code tools used by more than one person must be managed in Git. No shared tool may exist solely on a local machine or shared drive.
 
-**Branching:** the team follows a simplified Git Flow model — `main` (production-ready only, no direct commits), `develop` (integration branch), `feature/<n>` (individual work), `hotfix/<n>` (urgent fixes to Tier 1), `release/<version>` (versioned releases).
+**Branching:** the team follows a simplified Git Flow model: `main` (production-ready only, no direct commits), `develop` (integration branch), `feature/<n>` (individual work), `hotfix/<n>` (urgent fixes to Tier 1), `release/<version>` (versioned releases).
 
 **Commits:** all commits must follow the Conventional Commits convention `<type>(<scope>): <short description>` with a body explaining why, not just what. Permitted types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`.
 
 **Versioning:** all tools and packages follow Semantic Versioning (MAJOR.MINOR.PATCH). Releases are tagged in Git and accompanied by a `CHANGELOG.md` entry.
 
-**Reproducibility:** all dependencies must be pinned and committed alongside the code — `renv.lock` for R tools, `poetry.lock` for Python tools. Code must be runnable from a clean environment without undeclared dependencies.
+**Reproducibility:** all dependencies must be pinned and committed alongside the code: `renv.lock` for R tools, `poetry.lock` for Python tools. Code must be runnable from a clean environment without undeclared dependencies.
 
 ### Tool Register
 
@@ -337,7 +337,7 @@ Data quality is everyone's responsibility. The following minimum standards apply
 
 | Standard | What it means | Who checks it |
 |---|---|---|
-| Accuracy | Data reflects reality — values are plausible and within expected ranges | Custodian (initial), Steward (sign-off) |
+| Accuracy | Data reflects reality; values are plausible and within expected ranges | Custodian (initial), Steward (sign-off) |
 | Completeness | No unexplained gaps; missing data is flagged and documented | Custodian |
 | Consistency | Same datasets used consistently across models in the same study | Steward |
 | Timeliness | Input data is current enough for the model's intended purpose | Steward |
@@ -379,7 +379,7 @@ The Owner is responsible for ensuring that governance findings are communicated 
 
 ## Wider Data Value {#sec-wider-value}
 
-The CDDO Data Ownership Model requires organisations to consider where data assets may have value to wider government, society, and the economy. The Steward should periodically (at least annually, as part of the governance review) consider whether any of the team's data assets — particularly Gold-tier hydrometric data, model validation datasets, or calibration benchmarks — could have value to other Defra teams, other government departments, academic researchers, or the public.
+The CDDO Data Ownership Model requires organisations to consider where data assets may have value to wider government, society, and the economy. The Steward should periodically (at least annually, as part of the governance review) consider whether any of the team's data assets, particularly Gold-tier hydrometric data, model validation datasets, or calibration benchmarks, could have value to other Defra teams, other government departments, academic researchers, or the public.
 
 Where an opportunity is identified, the Steward flags it to the Owner with a brief assessment of the data's potential value, any licensing or access constraints, and any preparation work that would be needed. The Owner decides whether to pursue sharing, taking account of supplier licence terms, data sensitivity, and resource implications.
 
@@ -393,7 +393,7 @@ Within the F&W team, the following AI governance requirements apply:
 
 **Assessment before access:** Before any AI or ML service (including commercial AI tools, internally developed models, and cloud-hosted inference services) is given access to team data assets, the Steward must carry out a brief assessment covering: what data the service will access, whether the data contains personal or sensitive information, whether the service complies with the Government's Secure by Design principles, and whether a DPIA is required. The assessment is recorded and approved by the Owner.
 
-**ML model governance:** All operational ML models (including black-box models, LSTM pipelines, and any model where outputs feed Tier 1 forecasts) are Tier 1 assets. They must have a named Custodian, a documented training dataset (as a Gold product — see @sec-hydrometric-data), a formal condition assessment, and version-controlled model artefacts with metadata. The Python Tool Governance document (@sec-python-governance) sets out the detailed requirements for ML model development, including training/inference separation, metadata files, and ONNX archiving.
+**ML model governance:** All operational ML models (including black-box models, LSTM pipelines, and any model where outputs feed Tier 1 forecasts) are Tier 1 assets. They must have a named Custodian, a documented training dataset (as a Gold product; see @sec-hydrometric-data), a formal condition assessment, and version-controlled model artefacts with metadata. The Python Tool Governance document (@sec-python-governance) sets out the detailed requirements for ML model development, including training/inference separation, metadata files, and ONNX archiving.
 
 **Transparency and auditability:** For any ML model used in an operational forecast, the run record must identify the model version, training dataset version, and any known limitations. Where an ML model replaces a physically-based model (e.g., a black-box model replacing a PDM configuration), the replacement decision, rationale, and comparative performance evidence must be documented and approved by the Owner.
 
@@ -413,15 +413,15 @@ The Technical Lead conducts an annual audit of all Tier 1 code tools, covering h
 
 Spot-check audits of model files and metadata records may be carried out at any time by Stewards.
 
-## Quick Reference — Who to Go To
+## Quick Reference: Who to Go To
 
 | Question or task | Go to |
 |---|---|
 | I need access to a dataset, model file, or code tool | Steward |
 | I want to share data, a model, or a tool externally | Steward (assessment), Owner (approval) |
 | I've found a data quality problem | Steward |
-| I want to propose a new code tool | Custodian to Technical Lead / Steward — raise a Git issue |
-| I want to adopt an external package for production use | Custodian to Technical Lead / Steward — see R or Python companion doc |
+| I want to propose a new code tool | Custodian to Technical Lead / Steward; raise a Git issue |
+| I want to adopt an external package for production use | Custodian to Technical Lead / Steward; see R or Python companion doc |
 | I need to know if a tool version is approved for Tier 1 use | Steward |
 | A Tier 1 tool has failed during a live forecast | Steward immediately, then Owner; follow Route D |
 | I've made a mistake that affected a published output | Steward immediately, then Owner depending on scale of issue |
