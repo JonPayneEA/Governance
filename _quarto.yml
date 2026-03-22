@@ -22,6 +22,7 @@ book:
     - a-glossary.qmd
     - b-document-hierarchy.qmd
     - c-alignment-register.qmd
+    - d-upcoming-changes.qmd
 
 format:
   html:
