@@ -1,0 +1,13 @@
+/* F&W Governance Book Styles */
+.callout-note { border-left-color: #2E75B6; }
+.callout-warning { border-left-color: #ED7D31; }
+.callout-important { border-left-color: #C00000; }
+table { font-size: 0.9em; }
+.version-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #2E75B6;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.85em;
+}

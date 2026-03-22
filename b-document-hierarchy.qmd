@@ -1,0 +1,72 @@
+---
+title: "Document Hierarchy"
+---
+
+This framework and its companion documents sit within the organisation's wider governance structure. The table below sets out each layer and its relationship to this framework.
+
+## External Governance
+
+| Governance Layer | Relationship to This Framework |
+|---|---|
+| Data Ownership Model (CDDO, 2023) | Top-level authority. Defines the Data Owner, Data Steward, and Data Custodian roles and their responsibilities across government. This framework applies those roles to the F&W team's assets and working practices. Where role definitions conflict, the Data Ownership Model takes precedence. |
+| Defra Data Ownership Policy (LIT 59312, 2025) | Parent departmental policy. Applies the CDDO model to the Defra group context. Adds the Enterprise Data Owner role and clarifies the relationship between Data Owners and Information Asset Owners. This framework must remain aligned with the Defra policy; divergences are tracked in @sec-alignment-register. |
+| Cabinet Office IAO Guidance (October 2025) | Defines the Information Asset Owner role, accountabilities, and relationship to data ownership roles. This framework maps the IAO relationship in the Governance Framework §3.6. |
+| National Data Strategy (HM Government, 2020) | Sets the government's overarching objectives for data, including the FAIR principles. The Q-FAIR standards this framework implements are derived from the National Data Strategy. |
+| Data (Use and Access) Act 2025 | UK legislation governing data use, access, and sharing. The AI governance section of this framework (§13) addresses requirements arising from this Act. |
+
+: External governance {.striped}
+
+## Organisational Policies
+
+| Governance Layer | Relationship to This Framework |
+|---|---|
+| Organisational Data Governance Policy | Parent policy. Governs data ownership, classification, retention, and access control across all data assets. This framework defers to it on data handling questions. |
+| Information and Records Management Policy | Forecast outputs used for post-event analysis may constitute organisational records. Retention and disposal rules are governed here. |
+| Digital Asset Management Policy | Internally developed tools (Flode, Python modules) are digital assets. IP, licensing, and long-term version archiving questions are governed at this level. |
+| IT Infrastructure and Security Policy | Access control, server backup, Git platform, and CI infrastructure are governed by IT policy. |
+
+: Organisational policies {.striped}
+
+## F&W Governance Suite
+
+| Document | Governs | Current Version |
+|---|---|---|
+| **Data and Digital Asset Governance Framework** | Roles and accountability, asset categories, tier system, model file standards, code tool governance principles, data quality, data catalogue, access and sharing, incidents, monitoring and reporting, AI governance, wider data value. This is the parent document for the suite. | 1.4 |
+| **Accepted File Types and Data Formats** | Which file formats are accepted across team tools and workflows: Parquet, Delta tables, FMP files, PDM files, NetCDF, spatial formats, CSV restrictions, Excel restrictions. | 1.0 |
+| **R Tool Governance** | R-specific code standards, Flode package architecture, fastverse dependency conventions, renv reproducibility, R-specific testing and CI tooling, R repository structure, R onboarding. | 1.3 |
+| **Python Tool Governance** | Python-specific code standards, Flood Modeller API integration, ML tool standards, polars conventions, poetry dependency management, Python testing and CI tooling, Python repository structure. | 1.3 |
+| **Imported Hydrometric Data Framework** | Bronze, Silver, and Gold data tiers for imported hydrometric data, provenance tracking, quality control process, quality flags, Parquet schemas, data quality improvement, rating curves, retention and access, the Hydrometric Data Register. | 1.3 |
+| **Flood Model Governance** | Model types and responsibilities, Model Register, condition assessment framework, model connections and the Connection Register, system diagrams, impact assessment, run records, calibration and validation, tier promotion and deprecation. | 1.2 |
+| **Staff Training Framework** | Training structure (core, fundamentals, cross-cutting, specialist tracks), recommended resources, role-based sign-off, training completion records. | 1.1 |
+| **AI and ML Test Environment Governance** | Databricks DASH environment, Unity Catalog, MLflow usage, ML model lifecycle within DASH. *(To be developed)* | — |
+| **SQL and Scala Documentation** | SQL and Scala standards for Databricks. *(To be developed)* | — |
+
+: F&W governance suite {.striped}
+
+## Hierarchy Diagram
+
+```
+                    Data Ownership Model (CDDO)
+                    Defra Data Ownership Policy
+                    Cabinet Office IAO Guidance
+                    National Data Strategy
+                              │
+                ┌─────────────┴──────────────┐
+                │   Organisational Policies   │
+                │  (Data, Records, Digital,   │
+                │   IT Infrastructure)        │
+                └─────────────┬──────────────┘
+                              │
+          ┌───────────────────┴───────────────────┐
+          │  Data and Digital Asset Governance     │
+          │  Framework v1.4 (this document)        │
+          └───┬────┬────┬────┬────┬────┬──────────┘
+              │    │    │    │    │    │
+           ┌──┘  ┌─┘  ┌┘   ┌┘   │   ┌┘
+           ▼     ▼    ▼    ▼    ▼    ▼
+         File   R   Python Hydro Flood Training
+         Types  Gov  Gov   Data  Model  Framework
+                                Gov
+```
+
+Where companion documents are silent on a governance matter, the parent framework takes precedence. Where the parent framework conflicts with an external governance layer, the external layer takes precedence on matters within its scope (e.g., the CDDO model on role definitions, the IAO guidance on security classification).

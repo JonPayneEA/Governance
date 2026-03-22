@@ -1,0 +1,32 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Data and Digital Asset Governance"
+  subtitle: "Forecasting and Warning"
+  author: "Jonathan Payne"
+  date: "March 2026"
+  version: "1.4"
+  search: true
+  chapters:
+    - index.qmd
+    - 01-governance-framework.qmd
+    - 02-accepted-file-types.qmd
+    - 03-r-code-governance.qmd
+    - 04-python-code-governance.qmd
+    - 05-hydrometric-data.qmd
+    - 06-flood-model-governance.qmd
+    - 07-training-framework.qmd
+  appendices:
+    - a-glossary.qmd
+    - b-document-hierarchy.qmd
+    - c-alignment-register.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    css: styles.css

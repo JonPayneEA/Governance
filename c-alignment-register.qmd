@@ -1,0 +1,193 @@
+---
+title: "Alignment Register"
+---
+
+{#sec-alignment-register}
+
+This appendix tracks alignment between the F&W governance document suite and the overarching government and departmental guidance. It records divergences identified, resolutions applied, and any intentional deviations with their justification. It is reviewed as part of the annual governance review.
+
+## Guidance Documents Under Review
+
+| Document | Source | Date | Status |
+|---|---|---|---|
+| Data Ownership in Government | CDDO (GDS) | April 2024 | Reviewed; aligned at v1.4 |
+| Defra Data Ownership Policy (LIT 59312 v3) | Defra group | February 2025 | Reviewed; aligned at v1.4 |
+| Guidance on the Information Asset Owner Role | Cabinet Office / Government Security Profession | October 2025 | Reviewed; aligned at v1.4 |
+| UK National Data Strategy | HM Government | September 2020 | Reviewed; aligned at v1.4 |
+
+: Guidance documents reviewed {.striped}
+
+## Resolved Divergences
+
+### 1. Missing Information Asset Owner (IAO) Role {#sec-div-1}
+
+| Field | Detail |
+|---|---|
+| **Identified** | v1.3 review (March 2026) |
+| **Resolved** | v1.4 |
+| **Guidance** | CDDO Data Ownership Model §6; Defra Data Ownership Policy; Cabinet Office IAO Guidance |
+
+**Divergence:** The CDDO model, Defra policy, and Cabinet Office IAO guidance all require a defined relationship between the Data Owner and IAO roles. The v1.3 framework mentioned the IAO only in passing in Appendix B and did not map how the role relates to the Owner/Steward/Custodian structure.
+
+**Resolution:** A new section has been added to the Governance Framework defining the IAO relationship, clarifying which role holds IAO responsibilities for team data assets, and setting out how conflicts between framework requirements and IAO security requirements are resolved. A role mapping table cross-references all four guidance documents. The Training Framework core module now includes IAO awareness.
+
+**Documents changed:** Governance Framework (§3.6), Training Framework (§2.1).
+
+---
+
+### 2. Data Owner Grade Requirement {#sec-div-2}
+
+| Field | Detail |
+|---|---|
+| **Identified** | v1.3 review (March 2026) |
+| **Resolution type** | Intentional deviation — documented and justified |
+| **Guidance** | CDDO Data Ownership Model §6.1; Defra Data Ownership Policy |
+
+**Divergence:** The framework mandates Deputy Director grade for all Owners. The CDDO model says Owners should be "senior individuals" without specifying a grade. The Defra policy recommends SCS level but frames it as a recommendation.
+
+**Resolution:** Retained as-is. The DD requirement is mandated by internal Defra group guidance that requires DD-level accountability for data assets supporting operational flood incident management. An explanatory note has been added to the Owner section acknowledging that this exceeds the CDDO minimum and stating the reason. No substantive change to the requirement.
+
+**Documents changed:** Governance Framework (§3.1 — explanatory callout added).
+
+---
+
+### 3. Custodian Disposal Responsibility {#sec-div-3}
+
+| Field | Detail |
+|---|---|
+| **Identified** | v1.3 review (March 2026) |
+| **Resolved** | v1.4 |
+| **Guidance** | CDDO Data Ownership Model §6.3; Defra Data Ownership Policy |
+
+**Divergence:** The CDDO model and Defra policy both define Custodians as responsible for "capturing, storing and disposing of data." The v1.3 framework used "capturing, storing, and maintaining" with no disposal responsibility.
+
+**Resolution:** The Custodian definition now reads "capturing, storing, maintaining, and disposing of assets." A disposal responsibility has been added to the Custodian's listed duties. A contextual note acknowledges that the majority of the team's data is observed environmental data retained indefinitely for audit purposes, so disposal actions will be infrequent, but the responsibility must be assigned for compliance. The Hydrometric Data Framework roles table has been updated accordingly.
+
+**Documents changed:** Governance Framework (§3.3, §3.4), Hydrometric Data Framework (§12).
+
+---
+
+### 4. No Data Catalogue or Centralised Definitions {#sec-div-4}
+
+| Field | Detail |
+|---|---|
+| **Identified** | v1.3 review (March 2026) |
+| **Resolved** | v1.4 |
+| **Guidance** | CDDO Data Ownership Model §6.2 (Steward accountabilities); Defra Data Ownership Policy |
+
+**Divergence:** The CDDO model requires agreed data definitions to be maintained in a data catalogue through Stewards. The Defra policy makes this a core Steward accountability. The v1.3 framework had asset registers but no definitional catalogue.
+
+**Resolution:** A new section establishes the requirement for a data catalogue or business glossary maintained by the Steward. Minimum content is specified. The Steward responsibilities list now includes maintaining data definitions.
+
+**Documents changed:** Governance Framework (new §9.5, updated §3.2).
+
+---
+
+### 5. Steward Responsibilities Narrower Than Guidance {#sec-div-5}
+
+| Field | Detail |
+|---|---|
+| **Identified** | v1.3 review (March 2026) |
+| **Resolved** | v1.4 |
+| **Guidance** | CDDO Data Ownership Model §6.2; Defra Data Ownership Policy |
+
+**Divergence:** The CDDO model gives Stewards explicit accountability for data lineage, data archival and deletion processes, data maturity assessments, and cross-functional steward coordination. These were absent from the v1.3 Steward responsibilities.
+
+**Resolution:** The Steward responsibilities list has been expanded to include: maintaining data lineage understanding, managing lifecycle processes (archival, retention, disposal), producing monitoring reports, and working cross-functionally with stewards in adjacent domains.
+
+**Documents changed:** Governance Framework (§3.2).
+
+---
+
+### 6. No Formal Monitoring and Reporting {#sec-div-6}
+
+| Field | Detail |
+|---|---|
+| **Identified** | v1.3 review (March 2026) |
+| **Resolved** | v1.4 |
+| **Guidance** | CDDO Data Ownership Model §4 (overarching objectives) |
+
+**Divergence:** The CDDO model requires that ownership policies include monitoring and reporting arrangements as part of broader risk management. The v1.3 framework had an annual audit but no formal reporting cadence or connection to organisational risk management.
+
+**Resolution:** A new section establishes a quarterly/annual/on-occurrence monitoring cadence, specifies what each report covers, and connects governance findings to the organisation's standard risk reporting channel.
+
+**Documents changed:** Governance Framework (new §12.5).
+
+---
+
+### 7. No Reference to Data (Use and Access) Act 2025 or AI Governance {#sec-div-7}
+
+| Field | Detail |
+|---|---|
+| **Identified** | v1.3 review (March 2026) |
+| **Resolved** | v1.4 |
+| **Guidance** | Cabinet Office IAO Guidance (October 2025); Data (Use and Access) Act 2025 |
+
+**Divergence:** The updated IAO guidance references the Data (Use and Access) Act 2025 and sets expectations around AI governance. The v1.3 framework covered ML from a code-quality perspective but had no governance overlay for AI-specific risks.
+
+**Resolution:** A new section addresses AI and data-driven model governance, including data access assessment, training data requirements, model transparency, replacement governance, and ongoing monitoring. The Training Framework now includes AI governance awareness in the relevant tracks.
+
+**Documents changed:** Governance Framework (new §13), Training Framework (Python/ML track).
+
+---
+
+### 8. Metadata Requirements Below CDDO Minimum {#sec-div-8}
+
+| Field | Detail |
+|---|---|
+| **Identified** | v1.3 review (March 2026) |
+| **Resolved** | v1.4 |
+| **Guidance** | CDDO Data Ownership Model §4 (requirements for departments); Defra Data Ownership Policy |
+
+**Divergence:** The CDDO model requires that every critical data asset has metadata including the names and roles of responsible Data Owners and Stewards. The Defra policy extends this to Custodians and IAOs. The v1.3 registers captured role titles but did not consistently require named individuals.
+
+**Resolution:** A callout has been added to the Tool Register section making explicit that all registers must record named individuals, not just role titles. This applies to the Tool Register, Model Register, and Hydrometric Data Register.
+
+**Documents changed:** Governance Framework (§8.6).
+
+---
+
+### 9. No Consideration of Wider Data Value {#sec-div-9}
+
+| Field | Detail |
+|---|---|
+| **Identified** | v1.3 review (March 2026) |
+| **Resolved** | v1.4 |
+| **Guidance** | CDDO Data Ownership Model §4 |
+
+**Divergence:** The CDDO model requires organisations to consider where data assets may have value to wider government, society, and the economy.
+
+**Resolution:** A new section establishes this consideration, scoped proportionately to the team's capacity and licensing constraints. It is incorporated into the annual governance review.
+
+**Documents changed:** Governance Framework (new §14, updated §15 annual review).
+
+---
+
+## Other Corrections Applied at v1.4
+
+| Issue | Resolution |
+|---|---|
+| R Tool Governance: filename says v1.3 but internal metadata says v1.2 | Internal version updated to 1.3 |
+| Accepted File Types: Review Date is "[Insert Date]" | Remains as placeholder pending formal review; flagged for completion at approval |
+| Python Tool Governance: Review Date is "[Insert Date]" | As above |
+| Hydrometric Data Framework: Review Date is "[Insert Date]" | As above |
+| Training Framework: Review Date is "[Insert Date]" | As above |
+| R Tool Governance: Flode module table flagged "NEEDS MODIFICATION" | Flag retained — module naming requires team decision before this can be resolved |
+| Python Tool Governance: Section cross-reference "Section87.3" | Corrected to "Section 8.3" |
+| Governance Framework: Glossary defines Custodian with "disposing of" but body text did not | Body text now aligned with glossary |
+| Accepted File Types: references parent framework as v1.2 | Updated to v1.4 |
+| All companion documents: parent framework version references | Updated from v1.3 to v1.4 where applicable |
+
+: Other corrections {.striped}
+
+## Review Log
+
+| Date | Reviewer | Guidance reviewed | Outcome |
+|---|---|---|---|
+| 2026-03-22 | Jonathan Payne | CDDO Data Ownership Model, Defra Data Ownership Policy, Cabinet Office IAO Guidance, National Data Strategy | 9 divergences identified; 8 resolved, 1 retained as intentional deviation (§2). All changes incorporated at v1.4 |
+
+: Review log {.striped}
+
+::: {.callout-note}
+This register is reviewed annually alongside the governance framework. When overarching guidance is updated, a new review row is added and any new divergences are tracked here before being resolved in the next framework version.
+:::

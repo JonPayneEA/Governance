@@ -1,0 +1,310 @@
+# Accepted File Types and Data Formats {#sec-accepted-file-types}
+
+::: {.callout-note}
+## Document Metadata
+| Field | Detail |
+|---|---|
+| **Version** | 1.0 |
+| **Status** | Draft — For Team Review |
+| **Review Date** | Pending first review |
+| **Parent Document** | Data & Digital Asset Governance Framework v1.4 │ Data Ownership Model |
+:::
+
+# Purpose
+
+This document sets out which file formats are accepted across F&W department tools and workflows. It covers when each format should be used, how it works, and any important limitations. Where there is a choice between formats, this document states the preferred option and the reason for it.
+
+The document covers tabular data, time series, gridded weather data, spatial data, and the proprietary file types used by Flood Modeller Pro and PDM. It also sets out where commonly misused formats such as CSV and Excel are and are not appropriate.
+
+| *This document is a companion to the Data **&** Digital Asset Governance Framework v1.2, which sets out the Owner, Steward, and Custodian roles and governance principles that apply to all team assets. File format choices must be consistent with the data tier standards in the Hydrometric Data Framework.* |
+| --- |
+
+# 1. Scope
+
+This document applies to all data files created, stored, or exchanged by F&W Team members, including:
+
+- Tabular data and time series from hydrometric and model pipelines
+
+- Gridded weather and spatial data used in modelling and analysis
+
+- Flood Modeller Pro and PDM model files
+
+- Data files shared with or received from external suppliers and partners
+
+| **Out of Scope** *Code files, configuration files (**XML, **JSON, YAML, TOML), and trained ML model artefacts (ONNX, joblib) are governed by the R and Python Tool Governance documents. Database connections and streaming data are out of scope.* |
+| --- |
+
+# 2. Parquet (.parquet)
+
+Parquet is the standard format for all tabular data in team tools and pipelines. It is a columnar, compressed, strongly typed binary format. Unlike CSV, it preserves data types exactly and is substantially smaller on disk. It is the native format for the Databricks DASH environment and is readable by R, Python, and Databricks without conversion.
+
+| *Parquet is the required format for all Bronze, Silver, and Gold tier datasets in the Hydrometric Data Framework. CSV is not an acceptable substitute at any tier.* |
+| --- |
+
+## 2.1 Why Parquet for time series
+
+Parquet stores data by column rather than by row. A tool that only needs timestamps and flow values from a file with twenty columns loads only those two columns from disk. For long records across hundreds of gauges this makes a material difference to both speed and memory use.
+
+Timestamps are stored as datetime64[ns, UTC], not as strings. Floats are float64 throughout. This prevents silent type errors when the same file is read by different tools or colleagues.
+
+Parquet uses Snappy compression by default, reducing file size by 60-80% compared to equivalent CSV with no data loss.
+
+| **Property** | **Detail** |
+| --- | --- |
+| Timestamp type | datetime64[ns, UTC] always. Never store timestamps as strings. |
+| Float type | float64 throughout. Do not downcast to float32. |
+| Integer type | int32 for flags and counts. |
+| Compression | Snappy by default. zstd is acceptable for archival. |
+| Read in R | arrow::read_parquet() |
+| Read in Python | polars.read_parquet() or pyarrow.parquet.read_table() |
+| Read in Databricks | spark.read.parquet() or delta table read |
+
+## 2.2 Partitioning
+
+Partitioning splits a large dataset into a folder tree so queries only read the relevant subset of files. A partitioned Parquet dataset is a directory, not a single file. Each level of the tree is a partition key.
+
+The standard partition scheme for hydrometric time series is:
+
+| **supplier / data_type / gaugeID / year / ****<****files****>****.parquet** |
+| --- |
+
+For example, all Environment Agency flow records from 2024 sit in ea/Q/2001/2024/. A query asking for 2024 data never opens any other year folder. Without partitioning, the same query scans the entire dataset.
+
+Partition keys should reflect the most common query patterns. Do not over-partition: very small files (under around 50 MB uncompressed) indicate too many partition levels.
+
+| **Partition level** | **Example values** | **Purpose** |
+| --- | --- | --- |
+| supplier | ea, nrfa, mo | Isolates data by source organisation |
+| data_type | Q (flow), H (stage), P (rainfall) | Allows reading only the variable needed |
+| gaugeID | WISKI IDs: 2001, 2002, 1910TH | Allows reading only the variable needed |
+| year | 2023, 2024, 2025 | Limits time range scanned for historical queries |
+
+| **NOTE: Optimal format is up for review** Likely to change to: supplier / data_type / year / <files>.parquet |
+| --- |
+
+# 3. Delta Tables
+
+A Delta table is a storage layer built on top of Parquet files, available in the Databricks DASH environment. It adds transactional behaviour to a Parquet-backed table. Delta tables are used for bronze and silver stores in DASH.
+
+## 3.1 What Delta adds over plain Parquet
+
+Plain Parquet files are immutable: once written they cannot be updated in place. Delta solves this by maintaining a transaction log alongside the Parquet data files. Every write, update, or delete is recorded in the log.
+
+- Rows can be updated or deleted without rewriting the entire dataset.
+
+- Concurrent reads and writes are handled safely (ACID transactions).
+
+- Schema changes are enforced and logged. A tool cannot accidentally write a column with the wrong type.
+
+- Time travel: you can query the table as it was at any earlier point, supporting auditability and debugging.
+
+| **Feature** | **Plain Parquet** | **Delta Table** |
+| --- | --- | --- |
+| Row-level updates | Not supported | Supported |
+| Schema enforcement | Manual | Enforced and logged automatically |
+| Time travel | Not supported | Supported |
+| ACID transactions | No | Yes |
+| Usable outside Databricks | Yes | Not recommended |
+| File format on disk | Parquet files | Parquet files plus transaction log |
+
+| *Delta tables must not be used outside DASH. They require the Databricks runtime to manage the transaction log correctly. When sharing data extracted from DASH, export as plain Parquet. The receiving tool does not need to know it came from a Delta table.* |
+| --- |
+
+# 4. Flood Modeller Pro Files
+
+Flood Modeller Pro (FMP) uses a set of proprietary binary and text-based files. All must be version-controlled and stored in the agreed folder structure set out in the Flood Model Governance document. Model files must not be held on local machines.
+
+## 4.1 File types
+
+| **Extension** | **Contents** | **Notes** |
+| --- | --- | --- |
+| .ief | Run control file. Specifies which .dat and .ied files to use, time-step settings, and output options. | Top-level file used to launch a run. Version-control alongside .dat. |
+| .dat | Network geometry. Cross-sections, structures, and connectivity for the 1D scheme. | Binary. Changes with every calibration update or geometry edit. |
+| .ied | Event data. Boundary condition time series (inflows, tidal levels, etc.) for a specific run. | Referenced by the.ief. |
+| .inp | Associated with 1D Urban models. The class is initiated with the full filepath of an INP file to load an existing drainage network. | Not currently applied in flood forecast modelling |
+| .ini | Default values for FM models | Default values such as run-time parameters and linkages to other networks are stored here. |
+| .gxy | Georeferencing for 1D networks | Though .dat files can contain easting and northing data, these will not impact the positional displays unless a .gxy file is generated |
+| .zzn | Binary results. Water levels and flows at every node for every time step. | Outputs. Store in /outputs. Retain alongside the .ief that produced them. |
+| .zzs | Summary results. Peak levels and flows extracted from the .zzn. | Smaller than .zzn. Used for quick review. Also stored in /outputs. |
+
+| *Every formal run record must state the FMP build number alongside the .ief version. Results from different software builds are not guaranteed to be identical even with the same input files.* |
+| --- |
+
+# 5. PDM Files
+
+PDM (Probability Distributed Model) converts rainfall and potential evapotranspiration into catchment runoff. PDM assets comprise three file types: parameter sets, configuration files, and calibration records.
+
+| **File type** | **Contents** | **Governance requirement** |
+| --- | --- | --- |
+| Parameter set | Calibrated PDM parameters for a catchment. Defines soil moisture and routing behaviour. | Store in the agreed repository. Name as [CatchmentID]_PDM_[Calibration]_[Version]. Must have a calibration record attached. |
+| Configuration file | Specifies which parameter set to use, input data paths, time-step settings, and output options. | Version-controlled alongside the parameter set. Reference in the run record. |
+| Calibration record | Documents calibration period, observed data used, performance metrics (NSE, KGE, FAR), and known limitations. | Mandatory for every parameter set. Must be approved by the Steward before use in a formal output. |
+
+Parameter sets are sensitive assets. A set calibrated on one data period can produce materially different outputs from a set calibrated on a different period, even for the same catchment. Version control and calibration documentation are not optional.
+
+| *Where PDM is coupled with FMP, the coupling configuration (boundary locations, time-step settings, and exchange variables) must be documented and version-controlled alongside both sets of model files.* |
+| --- |
+
+# 6. NetCDF (.nc)
+
+NetCDF is the required format for gridded spatial outputs, including gridded weather data, rainfall fields, and any raster data that varies over time.
+
+## 6.1 What it is
+
+A NetCDF file stores arrays with named dimensions, typically latitude, longitude, and time. Each variable (for example, precipitation or temperature) is stored as an array indexed by those dimensions. The file is self-describing: dimensions, coordinate values, and units are embedded inside the file rather than in a separate metadata document.
+
+| **Language** | **Package** | **Notes** |
+| --- | --- | --- |
+| R | ncdf4 or terra | terra is preferred for raster workflows. ncdf4 gives lower-level array access. |
+| Python | xarray with netCDF4 or h5netcdf backend | xarray is the standard. Use xr.open_dataset() for lazy loading. |
+
+## 6.2 Alternatives for gridded weather data
+
+NetCDF is well-established and remains the required format for gridded outputs. For new workflows, two alternatives are worth knowing about.
+
+### Zarr
+
+Zarr stores arrays in chunks as individual files or objects in cloud storage. Unlike NetCDF, which is a single file, Zarr is designed for parallel read and write in cloud environments. If the team moves gridded data to cloud object storage, Zarr is more efficient than NetCDF for large datasets accessed by many concurrent jobs. It is readable by xarray with a simple backend swap (xr.open_zarr()). Zarr is not yet the team standard: discuss with the Tech Lead before adopting it in any Tier 1 workflow.
+
+### Cloud-Optimised GeoTIFF (COG)
+
+For single time-step rasters, for example a rainfall accumulation map for one event, a Cloud-Optimised GeoTIFF may be more convenient than NetCDF. COGs are standard GeoTIFFs with internal tiling and overviews, allowing partial reads by any GIS tool without downloading the whole file. Use COG for raster deliverables to stakeholders or for display in GIS. Use NetCDF or Zarr for time-series raster data processed in code.
+
+| **Format** | **Best for** | **Not suited to** |
+| --- | --- | --- |
+| NetCDF (.nc) | Gridded time series. Standard met data. R and Python workflows. | Very large cloud datasets with many concurrent readers. |
+| Zarr | Cloud-native gridded data. Parallel processing in DASH. | Sharing with stakeholders or GIS users expecting standard formats. |
+| Cloud-Optimised GeoTIFF | Single time-step rasters. Stakeholder map deliverables. GIS display. | Multi-timestep data or data processed as arrays in code. |
+
+# 7. Spatial Data: GeoParquet and Shapefiles
+
+## 7.1 Shapefiles
+
+A shapefile is not a single file. It is at minimum three files sharing the same base name: .shp (geometry), .dbf (attributes), and .shx (spatial index). In practice there are usually more, including a .prj for the coordinate reference system and a .cpg for character encoding.
+
+Shapefiles are the legacy standard for vector spatial data and are readable by nearly every GIS tool. However, they have well-known limitations that make them a poor choice for internal workflows.
+
+- Attribute column names are capped at ten characters.
+
+- File size is limited to 2 GB per component file.
+
+- No native support for timezone-aware timestamps or complex data types.
+
+- The format requires multiple files to be kept together, which creates risk in file transfers and version control.
+
+## 7.2 GeoParquet
+
+GeoParquet is Parquet with a geometry column added according to a defined encoding standard. Geometry is stored as Well-Known Binary (WKB) within a standard Parquet column. The coordinate reference system and geometry type are recorded in the Parquet file metadata.
+
+Because GeoParquet is Parquet, it inherits all the same advantages: columnar reads, strong typing, Snappy compression, and cross-tool compatibility. A spatial query that only needs geometry and one attribute column does not load the rest of the file from disk.
+
+| **Feature** | **Shapefile** | **GeoParquet** |
+| --- | --- | --- |
+| File structure | Multiple files (.shp, .dbf, .shx, .prj, ...) | Single .parquet file |
+| Column name length | 10 characters maximum | No limit |
+| File size limit | 2 GB per component | No practical limit |
+| Timestamp support | Limited | Full datetime64[ns, UTC] |
+| Columnar reads | No | Yes |
+| Compression | None by default | Snappy by default |
+| GIS tool support | Universal | QGIS 3.28+, GDAL 3.5+, GeoPandas, R sf |
+| Python | geopandas.read_file() | geopandas.read_parquet() or duckdb |
+| R | sf::st_read() | sfarrow::st_read_parquet() |
+
+## 7.3 Which to use
+
+GeoParquet is the preferred format for vector spatial data stored and processed within team workflows. It is smaller, faster to query, and avoids the multi-file management problem of shapefiles.
+
+Shapefiles remain acceptable in two situations: sharing data with an external party who requires shapefile format and receiving data from a supplier in shapefile format (retain as Bronze; convert to GeoParquet at Silver). Do not use shapefiles as the working format in any new pipeline.
+
+| *GDAL 3.5 and above reads and writes GeoParquet natively. QGIS 3.28 and above supports GeoParquet. If a tool cannot open a .parquet file with geometry, check the GDAL version before considering a format change.* |
+| --- |
+
+# 8. CSV (.csv)
+
+CSV is acceptable only for small exchange files. It is not an acceptable storage or pipeline format for any dataset the team owns or maintains.
+
+## 8.1 Permitted uses
+
+- Sharing small datasets (under approximately 10,000 rows) with external parties who cannot read Parquet.
+
+- One-off data requests from stakeholders where Parquet is not practical.
+
+- Ingest of supplier-provided Bronze data where the supplier delivers CSV (retain as-is alongside converted Bronze Parquet).
+
+## 8.2 Limitations and common misuse
+
+| **CSV must not be used as a substitute for Parquet at any pipeline stage. It must not be used as the format for Bronze, Silver, or Gold tier datasets.** |
+| --- |
+
+CSV has no type information. Every value is a string until something interprets it. This means:
+
+- Timestamps are stored as strings and may be read back in a different format by a different tool or locale.
+
+- Float precision is limited by the number of decimal places written. Silent rounding errors are possible.
+
+- There is no standard for representing null or missing values. Different tools use empty string, NA, NaN, NULL, or -9999 interchangeably, and none of these are enforced.
+
+- There is no schema. A column added or removed silently breaks downstream code with no error until the data is actually used.
+
+- Large CSV files are slow to read because every value must be parsed from text. Parquet columnar reads are typically 10-100x faster for the same data.
+
+When writing CSV is necessary, use data.table::fwrite() in R or polars df.write_csv() in Python. Avoid using base R write.csv() or pandas df.to_csv() without specifying encoding explicitly.
+
+# 9. Excel (.xlsx)
+
+Excel is restricted to final stakeholder deliverables and formal reports. It is not an acceptable format for storing, processing, or sharing data within the team's own pipelines.
+
+## 9.1 Permitted uses
+
+- Formal outputs and reports delivered to stakeholders who require Excel.
+
+- The Hydrometric Data Register (maintained as an Excel workbook on the file store, or as a Delta table in DASH).
+
+- Configuration tables or lookup tables that non-technical stakeholders need to edit.
+
+## 9.2 Limitations and common misuse
+
+| **Excel must not be used at any stage of a data or model pipeline. It must not be used to transfer data between tools, store intermediate results, or share datasets between team members.** |
+| --- |
+
+Excel is a presentation and calculation tool, not a data storage format. Its use in analytical pipelines creates the following risks.
+
+- Dates are stored as numeric serial values interpreted differently across platforms and regions. Silent date conversion errors are common.
+
+- Numbers displayed with two decimal places may have their precision silently rounded if the cell format is changed.
+
+- There is no schema enforcement. A column can change type, be renamed, or be deleted and downstream code will fail silently or produce wrong results.
+
+- Excel will silently autocorrect values it recognises such as names, dates, long numeric strings (such as gauge IDs), and fractions are all known to be altered on open. This is not recoverable once saved.
+
+- Files over around 100,000 rows become slow and unstable. Excel has a hard row limit of 1,048,576 rows, which will silently truncate larger datasets.
+
+- Excel files are not suited to version control. Diff tools cannot show what changed between two versions of a .xlsx file.
+
+When producing an Excel deliverable from pipeline data, generate it programmatically from a Parquet source using openxlsx2 in R or openpyxl in Python. Do not manually copy data into Excel from another tool.
+
+| *If you receive data from an external party as an Excel file, convert it to Parquet as the first step and store the original .xlsx in Bronze unchanged. Never use the .xlsx directly as input to a model or analysis tool.* |
+| --- |
+
+# 10. Quick Reference
+
+| **Format** | **Use for** | **Status** | **Do not use for** |
+| --- | --- | --- | --- |
+| Parquet (.parquet) | All tabular data and time series | Preferred | Nothing - this is the default choice |
+| Delta table | Tabular data in Databricks DASH | Preferred (DASH only) | Anything outside Databricks |
+| NetCDF (.nc) | Gridded time series, weather data | Required (gridded data) | Tabular or non-spatial data |
+| Zarr | Cloud-native gridded data | Discuss with Tech Lead | Sharing outside DASH without agreement |
+| GeoParquet (.parquet) | Vector spatial data in team workflows | Preferred | External delivery where shapefile is required |
+| Shapefile (.shp etc.) | External exchange only, or Bronze ingest | Restricted (legacy) | Internal workflows or new pipelines |
+| FMP files (.ief .dat etc.) | Flood Modeller Pro model assets | Required for FMP | Storing tabular data |
+| PDM parameter set | PDM rainfall-runoff model configuration | Required for PDM | Storing tabular data |
+| CSV (.csv) | Small external exchange, supplier Bronze ingest | Restricted | Internal storage, pipelines, or analysis |
+| Excel (.xlsx) | Stakeholder deliverables and formal reports only | Restricted | Data storage, transfer, or analysis pipelines |
+
+# Approved by
+
+| **Role** | **Name / Signature** | **Date** |
+| --- | --- | --- |
+| Head of Flood Forecasting |  |  |
+| Technical Lead |  |  |
+| Team Representative |  |  |

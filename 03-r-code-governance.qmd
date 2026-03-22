@@ -1,0 +1,403 @@
+# R Tool Governance {#sec-r-governance}
+
+::: {.callout-note}
+## Document Metadata
+| Field | Detail |
+|---|---|
+| **Version** | 1.3 |
+| **Status** | Draft — For Team Review |
+| **Review Date** | 2026-02-23 |
+| **Parent Document** | Data & Digital Asset Governance Framework v1.4 │ Data Ownership Model (CDDO, 2024) |
+:::
+
+
+# Purpose
+
+This document provides the detailed, R-specific governance standards for tools developed by the Forecasting and Warning Teams. It is a companion to the Data & Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, digital and data assets registers, and version control standards that apply to all team code regardless of language.
+
+This document covers what is specific to R: the in-house *Flode* package architecture, fastverse coding conventions, renv dependency management, R testing and CI tooling, and R repository structure. Please read this alongside the parent framework, not instead of it.
+
+| Parent document: Data & Digital Asset Governance Framework v1.4. Companion document: Python Tool Governance v1.3. |
+| --- |
+
+# 1. Introduction and Scope
+
+## 1.1 Background
+
+The Forecasting and Warning (F&W) Teams rely on a growing suite of R scripts, packages, and analytical tools to support both operational forecasting and associated research activities. As the team grows and the codebase matures, inconsistent development practices create risks including unreproducible results, undocumented tools, difficult onboarding, and vulnerabilities to key-person dependency.
+
+This governance proposal establishes a structured, practical framework to address these risks while remaining accessible to team members at all levels of R proficiency. This ranges from early-career modellers and analysts writing their first functions to senior technical advisors developing complex modelling packages.
+
+## 1.2 Scope
+
+This document applies to all R code produced by members of the team, including:
+
+- R scripts used in support of operational F&W workflows
+
+- Internal R packages and reusable function libraries
+
+- Pre-processing and post-processing tools
+
+- Visualisation and reporting utilities
+
+- Experimental or research-stage tools intended for future operational use
+
+| **Out of Scope** Personal exploratory analyses that are not shared with other team members, one-off data checks, and code produced solely for external publication (unless also used operationally) are out of scope, though best practices are still encouraged. |
+| --- |
+
+## 1.3 What Is Covered Here and What Is in the Parent Document
+
+The following governance elements are defined in the Data & Digital Asset Governance Framework and apply to all R tools. They are not repeated here — refer to that document for the authoritative version:
+
+- Owner → Steward → Custodian roles and grade requirements (Section 3)
+
+- Tool tier classification: Tier 1 / 2 / 3 (Section 5)
+
+- Custodianship requirements by tier (Section 8.2)
+
+- Routes to tool development: A, B, C, D (Section 8.3)
+
+- Code review requirements by tier (Section 8.4)
+
+- Version control principles: branching, commits, semantic versioning, reproducibility (Section 8.5)
+
+- Tool Register fields and maintenance (Section 8.6)
+
+- Handover and succession (Section 8.7)
+
+- Governance, exceptions, and annual audit (Section 12)
+
+This document covers everything that is specific to R.
+
+## 1.4 Governance Principles
+
+- Reproducibility: All tools must produce consistent, auditable outputs.
+
+- Accessibility: Standards must be achievable by all team members, with clear guidance for those newer to R.
+
+- Proportionality: Governance requirements scale with a tool's criticality and operational exposure.
+
+- Continuous Improvement: The framework is a living document, reviewed annually.
+
+## 1.5 Position Within the Wider Governance Landscape
+
+Data Ownership Model Top-level authority. Defines the Data Owner, Data Steward, and Data (CDDO, 2023) Custodian roles and responsibilities across government. All role definitions in this framework follow the Data Ownership Model. Where role definitions conflict, the Data Ownership Model takes precedence. Organisational Data Parent policy. Governs data ownership, quality, Governance Policy classification, lineage, retention, and access control.
+
+Information and Records Archival forecast files may constitute Management Policy organisational records. Retention and disposal rules are governed here.
+
+Digital Asset Flode, as an internally developed R package, is Management Policy a digital asset. IP, licensing, and version archiving questions are governed at this level.
+
+IT Infrastructure and RStudio Server, Git platform, CI Security Policy infrastructure, and access control are governed by IT policy.
+
+Data & Digital Asset Governs: roles, tiers, routes to development, Governance Framework review standards, version control principles, Tool Register, and incidents. This document defers to it on all shared governance matters.
+
+This Document (R Tool Governs: Flode architecture, R coding Governance) standards, fastverse dependency usage, renv, R-specific testing and CI, R repository structure, and R onboarding.
+
+# 2. R Tool Development Standards
+
+The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 7.1–7.4). This section covers the R-specific standards that apply within that governance structure.
+
+| Tool tiers, development routes, review requirements by tier, and version control principles: see Data & Digital Asset Governance Framework, Section 7. |
+| --- |
+
+## 2.1 The Flode Package Ecosystem
+
+All team R tools intended for reuse or sharing must be developed as components of or be compatible with Flode, the team's overarching R package.
+
+| **What is Flode?** Flode is the team's primary internal R package. Installing Flode gives users access to the full set of shared team functions. Individual sub-packages or modules can also be developed as standalone packages that Flode re-exports. All new reusable tools should be built with eventual inclusion in Flode in mind. |
+| --- |
+
+### 2.1.1 Flode Architecture
+
+Flode is structured as a meta-package with functional sub-modules. New tools should be developed in the most appropriate module:
+
+::: {.callout-warning}
+## Module Names Under Review
+The Flode module names listed below are provisional and subject to change. The team will confirm the final naming convention before the next version of this document. The module scopes are agreed; only the names may change.
+:::
+
+
+
+| **Flode Module** | **Scope** |
+| --- | --- |
+| reach.io | Data ingestion and export: reading gauge records, gridded rainfall, NWP outputs, and writing standardised forecast files |
+| reach.hydro | Core hydrological calculations: flow statistics, unit conversions, catchment aggregation, flood frequency |
+| reach.ensemble | Ensemble processing: member weighting, quantile extraction, probabilistic thresholding |
+| reach.viz | Visualisation: standardised ggplot2-compatible chart themes and flood-specific plot functions |
+| reach.validate | Model validation and skill scoring: bias metrics, skill scores, verification against observed records |
+| reach.utils | General utilities: date/time helpers, path management, logging, configuration loading |
+
+### 2.1.2 Promoting Code into Flode
+
+A function progresses from a standalone script into Flode through a defined pathway:
+
+- Developed as a Tier 3 tool with full header block and inline comments
+
+- Peer reviewed and tested to Tier 2 standard
+
+- Proposed to the Flode Steward via a GitHub issue with a brief rationale for inclusion
+
+- Reviewed against Flode's API design consistency; refactored if needed
+
+- Full roxygen2 documentation written; tests achieving 70% coverage
+
+- Merged into the relevant Flode module by the Steward; exported in NAMESPACE
+
+- Version increment to Flode following Semantic Versioning
+
+## 2.2 Coding Style and Conventions
+
+All team R code follows a style guide tailored to the fastverse ecosystem. Where guidance is not provided below, defer to the data.table style conventions rather than tidyverse conventions.
+
+### 2.2.1 Naming Conventions
+
+- Functions: snake_case verbs (e.g., calc_flood_peak(), load_gauge_dt())
+
+- data.table objects: suffix _dt to make the type explicit (e.g., flow_dt, ensemble_dt)
+
+- OOP classes: UpperCamelCase with Flode prefix (e.g., FlodeCatchment, FlodeForecast)
+
+- Variables: descriptive snake_case nouns (e.g., catchment_area_km2, peak_flow_cms)
+
+- Constants: UPPER_SNAKE_CASE (e.g., DEFAULT_THRESHOLD_M3S)
+
+- File names: descriptive, date-prefixed for scripts (e.g., 2026-02_flow_ensemble_aggregation.R)
+
+### 2.2.2 Code Structure
+
+- Scripts must begin with a standardised header block (see Section 2.4)
+
+- Functions should follow the single-responsibility principle: one function, one task
+
+- Scripts should not exceed 300 lines; longer scripts should be refactored into functions or sub-scripts
+
+- Avoid hard-coded file paths; use relative paths or a centralised configuration file
+
+- Use the here package for portable path management
+
+### 2.2.3 Package Dependencies and the fastverse
+
+The team's default package ecosystem is the fastverse – a suite of high-performance R packages optimised for speed and memory efficiency. The fastverse is preferred over the tidyverse for all data manipulation and numerical tasks in production tools.
+
+| **Reason** | **Detail** |
+| --- | --- |
+| Speed | data.table grouped operations and joins are typically an order of magnitude faster than dplyr equivalents on large datasets. |
+| Memory efficiency | data.table modifies objects in place by reference, avoiding copy-on-modify behaviour and reducing peak memory usage. |
+| File I/O performance | data.table::fread() is the fastest general-purpose text file reader available in R. |
+| Production stability | data.table has an exceptionally strong backwards-compatibility record. The tidyverse has introduced breaking changes across major versions. |
+| Lean dependency footprint | The fastverse is leaner in terms of package dependencies than the tidyverse, simplifying renv lockfile management *etc.*. |
+
+The tidyverse must not be used in Tier 1 operational tools or in Flode package functions. It may be used freely in Tier 3 exploratory work.
+
+| **Task** | **Preferred Package(s)** |
+| --- | --- |
+| Tabular data manipulation | data.table (primary); collapse as supplementary high-performance toolkit |
+| Time series operations | kit, roll (from fastverse); avoid zoo/xts unless interfacing with external systems |
+| Numerical / statistical computation | collapse::fnth(), collapse::fmean() etc.; avoid apply-family loops over large data |
+| File I/O (tabular text) | data.table::fread() / fwrite() – never read.csv() or readr in production |
+| File I/O (Parquet) | arrow::read_parquet() / write_parquet() |
+| File I/O (spatial / netCDF) | terra, ncdf4 – approved for spatial and gridded data |
+| Visualisation | ggplot2 acceptable for Tier 2–3; flode.viz functions preferred for standardised outputs (longer term) |
+| Configuration / paths | here, config |
+| Package development | devtools, roxygen2, usethis, testthat |
+
+| **Guidance for Newer R Users – ****data.table** data.table syntax can look unfamiliar at first. The key concept is DT[i, j, by]: filter rows with i, select or compute columns with j, and group with by. The data.table wiki (rdatatable.gitlab.io/data.table/) has excellent worked examples. Ask the R Lead for a walkthrough session if you are new to it. |
+| --- |
+
+### 2.2.4 File Formats and Export Standards
+
+| **Format** | **Recommended Use** |
+| --- | --- |
+| Parquet (.parquet) | Preferred format for all large tabular outputs in production tools. Use arrow::write_parquet() and arrow::read_parquet(). |
+| CSV (.csv) | Acceptable for small exchange files (under ~10,000 rows). Use data.table::fwrite() exclusively. |
+| netCDF (.nc) | Required for gridded spatial outputs. Use ncdf4 or terra. |
+| RDS (.rds) | Acceptable for R-specific intermediate objects. Use saveRDS() / readRDS(). Do not use .RData files. |
+| Feather (.feather) | Acceptable alternative to Parquet for high-speed intermediate files within a single pipeline. |
+| Excel (.xlsx) | Restricted to final-output reports and stakeholder deliverables only. Use openxlsx2 if required. |
+
+## 2.3 Object-Oriented Programming in Flode
+
+Where tools require stateful objects or extensible APIs, OOP is preferred. Flode adopts a clear hierarchy for which system to use.
+
+| **System** | **When to Use** | **Avoid When** |
+| --- | --- | --- |
+| S7 (preferred for Flode) | Defining new classes in Flode modules; formal, validated class contracts; any new class exported from a Flode package | Rapid prototyping in Tier 3 scripts; simple one-off data containers |
+| R6 | Stateful objects that must mutate in place; objects with a lifecycle (initialize / finalize); reference semantics explicitly needed | General data representation – prefer S7 for pure data classes |
+| S3 | Lightweight method dispatch on existing data structures (e.g., print, summary methods for Flode classes) | Any new exported Flode class – use S7 instead |
+| S4 | Interoperability with existing S4 packages (e.g., terra, sp) only | All new development – S7 supersedes S4 |
+
+## 2.4 Mandatory Header Block
+
+Every script and function file must include the following header, completed in full:
+
+```
+# ============================================================ # 
+# Tool: [Tool name] 
+# Description: [One-sentence description of what this does] 
+# Flode Module: [Target module, e.g. flode.hydro - or 'standalone'] 
+# Author: [Name, email] 
+# Created: [YYYY-MM-DD]  
+# Modified: [YYYY-MM-DD] - [initials]: [change summary] 
+# Tier: [1 / 2 / 3] 
+# Inputs: [Describe inputs and expected formats] 
+# Outputs: [Describe outputs and formats] 
+# Dependencies: [List non-base packages; flag any non-fastverse choices]
+# =========================================================== #
+```
+
+## 2.5 Documentation Requirements
+
+| **Tier** | **Required Documentation** |
+| --- | --- |
+| Tier 1 – Operational | Mandatory header block; roxygen2 documentation for all exported functions; a README.md in the tool directory; a user guide or runbook; change log maintained in Git |
+| Tier 2 – Analytical | Mandatory header block; roxygen2 for key functions; a README.md |
+| Tier 3 – Experimental | Mandatory header block; inline comments sufficient at this stage |
+
+# 3. Code Review - R-Specific Requirements
+
+Review requirements by tier (mandatory peer review, senior sign-off for Tier 1, annual audit) are set in the parent framework, Section 8.4. This section covers the R-specific review checklist and automated tooling.
+
+## 3.1 R Review Checklist
+
+All reviewers must work through this checklist. The completed checklist must be attached to the pull request before merging.
+
+### A. Correctness
+
+- Does the code do what it claims to do in its documentation?
+
+- Have edge cases (empty inputs, NA values, out-of-range data) been handled?
+
+- Are any assumptions about input data explicitly stated?
+
+### B. Code Quality
+
+- Does the code follow team naming conventions and internal style standards?
+
+- Is the header block complete and accurate?
+
+- Are functions appropriately scoped and documented with roxygen2?
+
+- Is the code free of hard-coded file paths (use here)?
+
+- Is the correct OOP system used? Are S7 properties typed and validators present for Tier 1/2 classes? Do R6 classes have a print method?
+
+### C. Testing
+
+- Have testthat tests been written or updated (Tier 1 mandatory, Tier 2 recommended)?
+
+- Do existing tests pass?
+
+- Has the code been run against a representative input dataset?
+
+### D. Dependencies and Reproducibility
+
+- Are all packages declared and version-noted where necessary?
+
+- Is the renv.lock file updated and committed?
+
+- Can the tool be run from a fresh R session without undeclared dependencies?
+
+## 3.2 Automated Quality Checks
+
+| **Tool** | **Purpose** |
+| --- | --- |
+| lintr | Static code analysis: flags style violations, common errors, and deprecated patterns. Failures block merge. |
+| styler | Automatic code reformatting (advisory only in CI – does not block merge) |
+| testthat | Runs the test suite. Failures block merge. |
+| renv::status() | Checks that the renv lockfile matches installed packages. Failures block merge for Tier 1–2. |
+| covr | Measures test coverage. Tier 1 tools must meet 70% line coverage. |
+
+## 3.3 Testing Standards
+
+- All Tier 1 functions must have unit tests covering expected outputs, edge cases, and known failure modes
+
+- Test files must be co-located in a /tests/testthat/ directory following R package conventions
+
+- Tests should use small, embedded data fixtures rather than external file dependencies
+
+- Minimum 70% line coverage required for Tier 1 tools (measured via covr)
+
+**4. Version Control — R-Specific Implementation**
+
+Version control principles — branching strategy, commit standards, semantic versioning, and reproducibility requirements — are defined in the parent framework, Section 8.5. This section covers the R-specific implementation.
+
+| Branching strategy, commit standards, semantic versioning: see Data & Digital Asset Governance Framework, Section 8.5. |
+| --- |
+
+## 4.1 Repository Structure
+
+| **flood-forecast-tools/** ├── operational/ # Tier 1 R tools ├── analytical/ # Tier 2 R tools ├── experimental/ # Tier 3 R tools ├── shared-functions/ # Shared R function library ├── tests/ # testthat test suites ├── docs/ # Documentation and runbooks ├── renv/ # renv reproducibility lockfile └── README.md # Repository overview and onboarding guide |
+| --- |
+
+## 4.2 Reproducibility with renv
+
+All team R repositories must use renv to manage package dependencies. This ensures that code run today produces the same results when run by a colleague in the future.
+
+- renv::init() must be run when a new repository is created
+
+- renv::snapshot() must be run before any commit that adds or updates a package
+
+- The renv.lock file must be committed to Git with every dependency change
+
+- New team members must run renv::restore() as the first step when setting up a project
+
+| **Guidance for Newer R Users** If you get an error about missing packages when running a script, try running renv::restore() in the R console. This installs the exact versions the original author used. If you need to add a new package, run install.packages() normally, then renv::snapshot() to record it, and include the updated lockfile in your commit. |
+| --- |
+
+# 5. Custodianship
+
+Custodianship roles, grade requirements, the Tool Register, and handover and succession requirements for R tools are defined in the parent framework. All requirements set out there apply in full.
+
+| Owner/Steward/Custodian roles and grades: Section 3. Tier-specific custodianship requirements: Section 7.2. Tool Register: Section 7.6. Handover and succession: Section 7.7. All references are to the Data & Digital Asset Governance Framework v1.4. |
+| --- |
+
+For cross-language pipelines where an R tool feeds a Python component, custodianship must be assigned separately for each language component. The Owner may be the same person, but the Steward and Custodian assignments should reflect who is best placed to maintain each part.
+
+# 6. Onboarding and Training
+
+## 6.1 Onboarding for New Team Members
+
+All new team members must complete the following within their first four weeks:
+
+- Read this governance document, the parent framework, and sign the acknowledgement form
+
+- Set up the team's RStudio Server environment and authenticate with the Git platform
+
+- Complete the team R onboarding guide (available in docs/onboarding/)
+
+- Run renv::restore() on the main team repository and confirm the environment is working
+
+- Review at least two merged pull requests to understand the review process
+
+- Attend an introductory session with the R Lead
+
+## 6.2 Ongoing Learning
+
+| **Resource** | **Relevant For** |
+| --- | --- |
+| data.table wiki (rdatatable.gitlab.io/data.table/) | All team members; primary data manipulation reference |
+| fastverse documentation (fastverse.github.io/fastverse/) | All team members; overview of the fastverse ecosystem |
+| S7 documentation (rconsortium.github.io/S7/) | Intermediate to advanced; OOP in Flode package development |
+| R6 documentation (r6.r-lib.org) | Intermediate to advanced; stateful OOP for lifecycle objects. Used in Flode package development. |
+| R Packages book (r-pkgs.org) | Intermediate to advanced; building internal packages including Flode modules |
+| Happy Git with R (happygitwithr.com) | Beginners; Git and RStudio workflow |
+| testthat documentation | All; understanding the testing framework |
+
+The team holds a monthly R drop-in session for questions, code walkthroughs, and knowledge sharing.
+
+# 7. Governance, Exceptions, and Review
+
+The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, Section 12. The following applies specifically to R tools:
+
+| Exceptions process, compliance and audit, document review schedule: see Data & Digital Asset Governance Framework, Section 12. |
+| --- |
+
+Overall responsibility for this document sits with the R Lead. The R Lead conducts an annual audit of all Tier 1 R tools covering: header block completeness, test coverage, documentation currency, renv lockfile consistency, and compliance with the branching strategy. Findings are reported alongside the wider governance audit.
+
+# Approved by
+
+| **Role** | **Name / Signature / Date** |
+| --- | --- |
+| Head of Flood Forecasting |  |
+| R Lead / Technical Lead |  |
+| Team Representative |  |

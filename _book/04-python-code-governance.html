@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.526">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data and Digital Asset Governance - 5&nbsp; Python Tool Governance</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05-hydrometric-data.html" rel="next">
+<link href="./03-r-code-governance.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-python-code-governance.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data and Digital Asset Governance</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Problem Statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-governance-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data and Digital Asset Governance Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-accepted-file-types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Accepted File Types and Data Formats</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-r-code-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-python-code-governance.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-hydrometric-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-flood-model-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-training-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./b-document-hierarchy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Document Hierarchy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./c-alignment-register.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Alignment Register</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">6</span> Purpose</a></li>
+  <li><a href="#introduction-and-scope" id="toc-introduction-and-scope" class="nav-link" data-scroll-target="#introduction-and-scope"><span class="header-section-number">7</span> 1. Introduction and Scope</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">7.1</span> 1.1 Background</a></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">7.2</span> 1.2 Scope</a></li>
+  <li><a href="#what-is-covered-here-and-what-is-in-the-parent-document" id="toc-what-is-covered-here-and-what-is-in-the-parent-document" class="nav-link" data-scroll-target="#what-is-covered-here-and-what-is-in-the-parent-document"><span class="header-section-number">7.3</span> 1.3 What Is Covered Here and What Is in the Parent Document</a></li>
+  <li><a href="#governance-principles" id="toc-governance-principles" class="nav-link" data-scroll-target="#governance-principles"><span class="header-section-number">7.4</span> 1.4 Governance Principles</a></li>
+  </ul></li>
+  <li><a href="#python-tool-development-standards" id="toc-python-tool-development-standards" class="nav-link" data-scroll-target="#python-tool-development-standards"><span class="header-section-number">8</span> 2. Python Tool Development Standards</a>
+  <ul class="collapse">
+  <li><a href="#python-use-cases" id="toc-python-use-cases" class="nav-link" data-scroll-target="#python-use-cases"><span class="header-section-number">8.1</span> 2.1 Python Use Cases</a>
+  <ul class="collapse">
+  <li><a href="#flood-modeller-api-integration" id="toc-flood-modeller-api-integration" class="nav-link" data-scroll-target="#flood-modeller-api-integration"><span class="header-section-number">8.1.1</span> 2.1.1 Flood Modeller API Integration</a></li>
+  <li><a href="#machine-learning-tools" id="toc-machine-learning-tools" class="nav-link" data-scroll-target="#machine-learning-tools"><span class="header-section-number">8.1.2</span> 2.1.2 Machine Learning Tools</a></li>
+  </ul></li>
+  <li><a href="#coding-style-and-conventions" id="toc-coding-style-and-conventions" class="nav-link" data-scroll-target="#coding-style-and-conventions"><span class="header-section-number">8.2</span> 2.2 Coding Style and Conventions</a>
+  <ul class="collapse">
+  <li><a href="#naming-conventions" id="toc-naming-conventions" class="nav-link" data-scroll-target="#naming-conventions"><span class="header-section-number">8.2.1</span> 2.2.1 Naming Conventions</a></li>
+  <li><a href="#type-hints" id="toc-type-hints" class="nav-link" data-scroll-target="#type-hints"><span class="header-section-number">8.2.2</span> 2.2.2 Type Hints</a></li>
+  <li><a href="#package-dependencies-and-the-polars-ecosystem" id="toc-package-dependencies-and-the-polars-ecosystem" class="nav-link" data-scroll-target="#package-dependencies-and-the-polars-ecosystem"><span class="header-section-number">8.2.3</span> 2.2.3 Package Dependencies and the polars Ecosystem</a></li>
+  <li><a href="#file-formats-and-model-artefacts" id="toc-file-formats-and-model-artefacts" class="nav-link" data-scroll-target="#file-formats-and-model-artefacts"><span class="header-section-number">8.2.4</span> 2.2.4 File Formats and Model Artefacts</a></li>
+  </ul></li>
+  <li><a href="#mandatory-header-block" id="toc-mandatory-header-block" class="nav-link" data-scroll-target="#mandatory-header-block"><span class="header-section-number">8.3</span> 2.3 Mandatory Header Block</a></li>
+  <li><a href="#documentation-requirements" id="toc-documentation-requirements" class="nav-link" data-scroll-target="#documentation-requirements"><span class="header-section-number">8.4</span> 2.4 Documentation Requirements</a></li>
+  </ul></li>
+  <li><a href="#code-review---python-specific-requirements" id="toc-code-review---python-specific-requirements" class="nav-link" data-scroll-target="#code-review---python-specific-requirements"><span class="header-section-number">9</span> 3. Code Review - Python-Specific Requirements</a>
+  <ul class="collapse">
+  <li><a href="#python-review-checklist" id="toc-python-review-checklist" class="nav-link" data-scroll-target="#python-review-checklist"><span class="header-section-number">9.1</span> 3.1 Python Review Checklist</a>
+  <ul class="collapse">
+  <li><a href="#a.-correctness" id="toc-a.-correctness" class="nav-link" data-scroll-target="#a.-correctness"><span class="header-section-number">9.1.1</span> A. Correctness</a></li>
+  <li><a href="#b.-code-quality" id="toc-b.-code-quality" class="nav-link" data-scroll-target="#b.-code-quality"><span class="header-section-number">9.1.2</span> B. Code Quality</a></li>
+  <li><a href="#c.-testing" id="toc-c.-testing" class="nav-link" data-scroll-target="#c.-testing"><span class="header-section-number">9.1.3</span> C. Testing</a></li>
+  <li><a href="#d.-dependencies-and-reproducibility" id="toc-d.-dependencies-and-reproducibility" class="nav-link" data-scroll-target="#d.-dependencies-and-reproducibility"><span class="header-section-number">9.1.4</span> D. Dependencies and Reproducibility</a></li>
+  </ul></li>
+  <li><a href="#automated-quality-checks" id="toc-automated-quality-checks" class="nav-link" data-scroll-target="#automated-quality-checks"><span class="header-section-number">9.2</span> 3.2 Automated Quality Checks</a></li>
+  <li><a href="#testing-standards" id="toc-testing-standards" class="nav-link" data-scroll-target="#testing-standards"><span class="header-section-number">9.3</span> 3.3 Testing Standards</a></li>
+  </ul></li>
+  <li><a href="#version-control-python-specific-implementation" id="toc-version-control-python-specific-implementation" class="nav-link" data-scroll-target="#version-control-python-specific-implementation"><span class="header-section-number">10</span> 4. Version Control — Python-Specific Implementation</a>
+  <ul class="collapse">
+  <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure"><span class="header-section-number">10.1</span> 4.1 Repository Structure</a></li>
+  <li><a href="#reproducibility-with-poetry" id="toc-reproducibility-with-poetry" class="nav-link" data-scroll-target="#reproducibility-with-poetry"><span class="header-section-number">10.2</span> 4.2 Reproducibility with poetry</a></li>
+  </ul></li>
+  <li><a href="#custodianship" id="toc-custodianship" class="nav-link" data-scroll-target="#custodianship"><span class="header-section-number">11</span> 5. Custodianship</a></li>
+  <li><a href="#onboarding-and-training" id="toc-onboarding-and-training" class="nav-link" data-scroll-target="#onboarding-and-training"><span class="header-section-number">12</span> 6. Onboarding and Training</a>
+  <ul class="collapse">
+  <li><a href="#onboarding-for-new-team-members" id="toc-onboarding-for-new-team-members" class="nav-link" data-scroll-target="#onboarding-for-new-team-members"><span class="header-section-number">12.1</span> 6.1 Onboarding for New Team Members</a></li>
+  <li><a href="#ongoing-learning" id="toc-ongoing-learning" class="nav-link" data-scroll-target="#ongoing-learning"><span class="header-section-number">12.2</span> 6.2 Ongoing Learning</a></li>
+  </ul></li>
+  <li><a href="#governance-exceptions-and-review" id="toc-governance-exceptions-and-review" class="nav-link" data-scroll-target="#governance-exceptions-and-review"><span class="header-section-number">13</span> 7. Governance, Exceptions, and Review</a></li>
+  <li><a href="#approved-by" id="toc-approved-by" class="nav-link" data-scroll-target="#approved-by"><span class="header-section-number">14</span> Approved by</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-python-governance" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Document Metadata
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td>1.3</td>
+</tr>
+<tr class="even">
+<td><strong>Status</strong></td>
+<td>Draft — For Team Review</td>
+</tr>
+<tr class="odd">
+<td><strong>Review Date</strong></td>
+<td>Pending first review</td>
+</tr>
+<tr class="even">
+<td><strong>Parent Document</strong></td>
+<td>Data &amp; Digital Asset Governance Framework v1.4 │ Data Ownership Model (CDDO, 2024)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="purpose" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Purpose</h1>
+<p>This document provides the detailed, Python-specific governance standards for tools developed by the Forecasting and Warning (F&amp;W) Team. It is a companion to the Data &amp; Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, tool register, and version control standards that apply to all team code regardless of language.</p>
+<p>This document covers what is specific to Python: the Flood Modeller API integration approach, ML tool standards, polars coding conventions, poetry dependency management, Python testing and CI tooling, and Python repository structure. Read this alongside the parent framework, not instead of it.</p>
+</section>
+<section id="introduction-and-scope" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 1. Introduction and Scope</h1>
+<section id="background" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="background"><span class="header-section-number">7.1</span> 1.1 Background</h2>
+<p>The F&amp;W team’s analytical work primarily spans two languages. R, governed by the companion R Tool Governance document, handles the core hydrological data pipeline through the Flode package. Python sits alongside it for two specific and growing use cases: calling the Flood Modeller API to drive model runs using data that Flode has prepared and building and evaluating machine learning models for flood forecasting applications.</p>
+<p>Without consistent development standards, Python tools risk the same problems that motivated the R governance framework: unreproducible results, undocumented code, difficult onboarding, and key-person dependency. This document establishes proportionate, practical standards for Python development.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Python is primarily used in DEFRAs DASH, a Databricks Lakehouse. Due to this environment, it may necessitate further development of SQL and Scala documentation.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="scope" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="scope"><span class="header-section-number">7.2</span> 1.2 Scope</h2>
+<p>This document applies to all Python code produced by members of the team, including:</p>
+<ul>
+<li><p>Scripts and modules used to call the Flood Modeller API</p></li>
+<li><p>ML model development, training, and evaluation pipelines</p></li>
+<li><p>Data processing scripts that consume outputs from Flode (R) pipelines</p></li>
+<li><p>Pre-processing and post-processing tools written in Python</p></li>
+<li><p>Visualisation and reporting utilities</p></li>
+<li><p>Experimental or research-stage tools intended for future operational use</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Out of Scope</strong> Personal exploratory analyses not shared with other team members, one-off notebook experiments, and code produced solely for external publication (unless also used operationally) are out of scope. Governance of the Flode R package is in the R Tool Governance Proposal.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="what-is-covered-here-and-what-is-in-the-parent-document" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="what-is-covered-here-and-what-is-in-the-parent-document"><span class="header-section-number">7.3</span> 1.3 What Is Covered Here and What Is in the Parent Document</h2>
+<p>The following governance elements are defined in the Data &amp; Digital Asset Governance Framework and apply to all Python tools. They are not repeated here, refer to that document for the authoritative version:</p>
+<ul>
+<li><p>Owner → Steward → Custodian roles and grade requirements (Section 3)</p></li>
+<li><p>Tool tier classification: Tier 1 / 2 / 3 (Section 8.1)</p></li>
+<li><p>Custodianship requirements by tier (Section 8.2)</p></li>
+<li><p>Routes to tool development: A, B, C, D (Section 8.3)</p></li>
+<li><p>Code review requirements by tier (Section 8.4)</p></li>
+<li><p>Version control principles: branching, commits, semantic versioning, reproducibility (Section 8.5)</p></li>
+<li><p>Tool Register fields and maintenance (Section 8.6)</p></li>
+<li><p>Handover and succession (Section 8.7)</p></li>
+<li><p>Governance, exceptions, and annual audit (Section 12)</p></li>
+</ul>
+<p>This document covers everything that is specific to Python.</p>
+</section>
+<section id="governance-principles" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="governance-principles"><span class="header-section-number">7.4</span> 1.4 Governance Principles</h2>
+<ul>
+<li><p>Reproducibility: All tools must produce consistent, auditable outputs.</p></li>
+<li><p>Accessibility: Standards must be achievable by all team members, with clear guidance for those newer to Python.</p></li>
+<li><p>Proportionality: Governance requirements scale with a tool’s criticality and operational exposure.</p></li>
+<li><p>Continuous Improvement: The framework is a living document, reviewed annually.</p></li>
+</ul>
+</section>
+</section>
+<section id="python-tool-development-standards" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 2. Python Tool Development Standards</h1>
+<p>The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 8.1–8.4). This section covers the Python-specific standards that apply within that governance structure.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool tiers, development routes, review requirements by tier, and version control principles: see Data &amp; Digital Asset Governance Framework, Section 8.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="python-use-cases" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="python-use-cases"><span class="header-section-number">8.1</span> 2.1 Python Use Cases</h2>
+<p>Python tools in the team fall into two primary categories. Understanding which category a tool belongs to helps determine its appropriate dependencies, structure, and tier.</p>
+<section id="flood-modeller-api-integration" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="flood-modeller-api-integration"><span class="header-section-number">8.1.1</span> 2.1.1 Flood Modeller API Integration</h3>
+<p>The Flood Modeller API is a Python interface for driving Flood Modeller Pro model runs programmatically. Tools in this category typically: read data prepared by Flode (from Parquet or other outputs), construct and submit model runs via the API, retrieve and post-process results, and pass outputs back to Flode-compatible formats for further analysis.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Flode and Python</strong> Flode (the team’s R package) does not have a Python equivalent. Python tools consume Flode outputs rather than replicating its functions. The standard interface is Parquet files written by Flode and read in Python using pyarrow or polars. Do not replicate Flode data processing in Python – if data preparation logic needs to change, change it in Flode.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="machine-learning-tools" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="machine-learning-tools"><span class="header-section-number">8.1.2</span> 2.1.2 Machine Learning Tools</h3>
+<p>ML tools cover the full model development lifecycle: data preparation, feature engineering, model training, validation, and inference. Key standards for ML tools are:</p>
+<ul>
+<li><p>Training and inference must be separated into distinct scripts or modules</p></li>
+<li><p>All trained model artefacts must be versioned and stored with a JSON metadata file describing training data, hyperparameters, and evaluation scores unless captured in MLFlow processes.</p></li>
+<li><p>Evaluation scripts must be reproducible: fixed random seeds (if required), documented train/test splits, and version-pinned dependencies</p></li>
+<li><p>Inference pipelines used operationally are Tier 1 regardless of how the model was trained</p></li>
+</ul>
+</section>
+</section>
+<section id="coding-style-and-conventions" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="coding-style-and-conventions"><span class="header-section-number">8.2</span> 2.2 Coding Style and Conventions</h2>
+<p>All team Python code follows PEP 8, with the additions below.</p>
+<section id="naming-conventions" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="naming-conventions"><span class="header-section-number">8.2.1</span> 2.2.1 Naming Conventions</h3>
+<ul>
+<li><p>Functions and methods: snake_case verbs (e.g., run_model_scenario(), load_parquet_data())</p></li>
+<li><p>Variables: descriptive snake_case nouns (e.g., catchment_area_km2, peak_flow_cms)</p></li>
+<li><p>Classes: PascalCase (e.g., FloodModelRunner, EnsembleForecast)</p></li>
+<li><p>Constants: UPPER_SNAKE_CASE (e.g., DEFAULT_THRESHOLD_M3S, API_TIMEOUT_S)</p></li>
+<li><p>Modules and packages: lowercase, short, no hyphens (e.g., flood_api, ml_pipeline)</p></li>
+<li><p>File names: descriptive, date-prefixed for scripts (e.g., 2026-02_scenario_batch_run.py)</p></li>
+</ul>
+</section>
+<section id="type-hints" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="type-hints"><span class="header-section-number">8.2.2</span> 2.2.2 Type Hints</h3>
+<p>All function signatures in shared modules and Tier 1–2 scripts must include type hints. Type correctness is checked with mypy as part of CI (see Section 3.2).</p>
+</section>
+<section id="package-dependencies-and-the-polars-ecosystem" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="package-dependencies-and-the-polars-ecosystem"><span class="header-section-number">8.2.3</span> 2.2.3 Package Dependencies and the polars Ecosystem</h3>
+<p>The team’s default data manipulation library is polars, not pandas. This mirrors the R framework’s preference for the fastverse: the team processes large volumes of tabular data, and performance and memory efficiency matter.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Reason</strong></th>
+<th><strong>Detail</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Speed</td>
+<td>polars uses a lazy evaluation engine built on Apache Arrow and Rust. For large DataFrames, polars is consistently faster than pandas, often by an order of magnitude for grouped and aggregated operations.</td>
+</tr>
+<tr class="even">
+<td>Memory efficiency</td>
+<td>polars does not copy data unnecessarily. pandas’ copy-on-modify behaviour leads to high peak memory usage. polars stores all data as typed Arrow arrays.</td>
+</tr>
+<tr class="odd">
+<td>Consistency with Flode I/O</td>
+<td>Flode writes Parquet via the arrow package. polars reads Parquet natively via its own Arrow integration. Data types and column schemas are preserved exactly.</td>
+</tr>
+<tr class="even">
+<td>Explicit lazy evaluation</td>
+<td>polars’ lazy API allows downstream tools to read only the columns and rows they need from large Flode outputs, without loading the full dataset into memory.</td>
+</tr>
+<tr class="odd">
+<td>Type safety</td>
+<td>polars enforces strict typing across columns. pandas allows mixed-type columns and silent type coercions that can cause hard-to-debug errors in operational pipelines.</td>
+</tr>
+</tbody>
+</table>
+<p>pandas must not be used in Tier 1 operational tools or in shared modules. It may be used freely in Tier 3 exploratory work and Jupyter notebooks.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Guidance for Newer Python Users – polars</strong> If you are used to pandas, polars syntax will feel slightly different. The key shift is that polars expressions are evaluated lazily and column operations are written as expressions: df.select(pl.col(‘flow_cms’).mean().alias(‘mean_flow’)). The polars user guide at docs.pola.rs is the recommended starting point. Ask the Python Lead for a walkthrough if you are new to it.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Task</strong></th>
+<th><strong>Preferred Package(s)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tabular data manipulation</td>
+<td>polars (primary); avoid pandas in Tier 1–2</td>
+</tr>
+<tr class="even">
+<td>Reading/writing Parquet (Flode outputs)</td>
+<td>polars (pl.read_parquet / pl.scan_parquet) or pyarrow directly</td>
+</tr>
+<tr class="odd">
+<td>Numerical computation</td>
+<td>numpy; scipy for statistical functions</td>
+</tr>
+<tr class="even">
+<td>ML model development</td>
+<td>scikit-learn for traditional ML; pytorch or tensorflow for deep learning (document choice in header block)</td>
+</tr>
+<tr class="odd">
+<td>Flood Modeller API</td>
+<td>floodmodeller_api (the official package)</td>
+</tr>
+<tr class="even">
+<td>Spatial / gridded data</td>
+<td>xarray, rioxarray, rasterio – consistent with the R framework’s use of terra/ncdf4</td>
+</tr>
+<tr class="odd">
+<td>Visualisation</td>
+<td>matplotlib (base); seaborn acceptable for Tier 2–3 analytical work</td>
+</tr>
+<tr class="even">
+<td>Configuration / paths</td>
+<td>pathlib (built-in); pydantic for validated configuration objects</td>
+</tr>
+<tr class="odd">
+<td>Testing</td>
+<td>pytest</td>
+</tr>
+<tr class="even">
+<td>Type checking</td>
+<td>mypy</td>
+</tr>
+<tr class="odd">
+<td>Linting / formatting</td>
+<td>ruff (handles both linting and formatting in one tool)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="file-formats-and-model-artefacts" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="file-formats-and-model-artefacts"><span class="header-section-number">8.2.4</span> 2.2.4 File Formats and Model Artefacts</h3>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Format</strong></th>
+<th><strong>Use in Python Tools</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Parquet (.parquet)</td>
+<td>Primary format for reading Flode outputs and writing large tabular results. Use polars or pyarrow.</td>
+</tr>
+<tr class="even">
+<td>CSV (.csv)</td>
+<td>Small exchange files only. Use polars: df.write_csv(). Never use pandas read_csv / to_csv in production tools.</td>
+</tr>
+<tr class="odd">
+<td>netCDF (.nc)</td>
+<td>Gridded spatial data. Use xarray / rioxarray, consistent with R’s use of terra/ncdf4.</td>
+</tr>
+<tr class="even">
+<td>Pickle (.pkl)</td>
+<td>Not recommended for shared or archived model artefacts. Use joblib for scikit-learn models or the framework’s native format for deep learning.</td>
+</tr>
+<tr class="odd">
+<td>ONNX (.onnx)</td>
+<td>Preferred format for archiving trained ML models intended for long-term operational use.</td>
+</tr>
+<tr class="even">
+<td>JSON (.json)</td>
+<td>Acceptable for model metadata, hyperparameters, and configuration.</td>
+</tr>
+<tr class="odd">
+<td>Excel (.xlsx)</td>
+<td>Restricted to stakeholder deliverables only. Use openpyxl if required.</td>
+</tr>
+</tbody>
+</table>
+<p>All trained ML model artefacts saved to disk must be accompanied by a JSON metadata file containing: training date, Python and package versions, training dataset identifier, hyperparameters, and key evaluation metrics.</p>
+</section>
+</section>
+<section id="mandatory-header-block" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="mandatory-header-block"><span class="header-section-number">8.3</span> 2.3 Mandatory Header Block</h2>
+<p>Every script and module file must begin with the following header, completed in full:</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong># ============================================================</strong> # <strong>Tool:</strong> [Tool name] # <strong>Description:</strong> [One-sentence description of what this does] # <strong>Use Case:</strong> [Flood Modeller API / ML / Data Processing / Other] # <strong>Author: </strong>[Name, email] # <strong>Created:</strong> [YYYY-MM-DD] # <strong>Modified:</strong> [YYYY-MM-DD] - [initials]: [change summary] # <strong>Tier:</strong> [1 / 2 / 3] # <strong>Inputs: </strong>[Describe inputs and expected formats] # <strong>Outputs:</strong> [Describe outputs and formats] # <strong>Dependencies:</strong> [List non-standard packages; flag any non-polars choices] <strong># ============================================================</strong></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="documentation-requirements" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="documentation-requirements"><span class="header-section-number">8.4</span> 2.4 Documentation Requirements</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tier</strong></th>
+<th><strong>Required Documentation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tier 1 – Operational</td>
+<td>Mandatory header block; Google-style or NumPy-style docstrings for all public functions and classes; a README.md; a user guide or runbook; change log maintained in Git</td>
+</tr>
+<tr class="even">
+<td>Tier 2 – Analytical</td>
+<td>Mandatory header block; docstrings for key functions; a README.md</td>
+</tr>
+<tr class="odd">
+<td>Tier 3 – Experimental</td>
+<td>Mandatory header block; inline comments sufficient; Jupyter notebooks must have a markdown cell at the top describing purpose and known limitations</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="code-review---python-specific-requirements" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 3. Code Review - Python-Specific Requirements</h1>
+<p>Review requirements by tier are set in the parent framework, Section 8.4. This section covers the Python-specific review checklist and automated tooling.</p>
+<section id="python-review-checklist" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="python-review-checklist"><span class="header-section-number">9.1</span> 3.1 Python Review Checklist</h2>
+<p>All reviewers must work through this checklist. The completed checklist must be attached to the pull request before merging.</p>
+<section id="a.-correctness" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="a.-correctness"><span class="header-section-number">9.1.1</span> A. Correctness</h3>
+<ul>
+<li><p>Does the code do what it claims to do in its documentation?</p></li>
+<li><p>Have edge cases (empty DataFrames, NaN values, out-of-range data, API failures) been handled?</p></li>
+<li><p>Are any assumptions about input data explicitly stated?</p></li>
+</ul>
+</section>
+<section id="b.-code-quality" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="b.-code-quality"><span class="header-section-number">9.1.2</span> B. Code Quality</h3>
+<ul>
+<li><p>Does the code follow team naming conventions, PEP 8, and type hint requirements?</p></li>
+<li><p>Is the header block complete and accurate?</p></li>
+<li><p>Are functions appropriately scoped and documented with docstrings?</p></li>
+<li><p>Is the code free of hard-coded file paths (use pathlib)?</p></li>
+<li><p>Is polars used for data manipulation in Tier 1–2 tools (not pandas)?</p></li>
+<li><p>For ML tools: are training and inference clearly separated? Is a metadata JSON saved with every model artefact?</p></li>
+</ul>
+</section>
+<section id="c.-testing" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="c.-testing"><span class="header-section-number">9.1.3</span> C. Testing</h3>
+<ul>
+<li><p>Have pytest tests been written or updated (Tier 1 mandatory, Tier 2 recommended)?</p></li>
+<li><p>Do existing tests pass?</p></li>
+<li><p>Has the code been run against a representative input dataset?</p></li>
+<li><p>For ML tools: is the evaluation reproducible (fixed random seed, documented split)?</p></li>
+</ul>
+</section>
+<section id="d.-dependencies-and-reproducibility" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="d.-dependencies-and-reproducibility"><span class="header-section-number">9.1.4</span> D. Dependencies and Reproducibility</h3>
+<ul>
+<li><p>Are all dependencies declared in pyproject.toml and the poetry.lock file committed?</p></li>
+<li><p>Can the tool be run from a fresh virtual environment without undeclared dependencies?</p></li>
+<li><p>For Flood Modeller API tools: has the correct API version been tested and noted?</p></li>
+</ul>
+</section>
+</section>
+<section id="automated-quality-checks" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="automated-quality-checks"><span class="header-section-number">9.2</span> 3.2 Automated Quality Checks</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tool</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ruff</td>
+<td>Linting and formatting: replaces flake8, black, and isort in a single fast tool. Formatting is enforced (blocks merge if failing).</td>
+</tr>
+<tr class="even">
+<td>mypy</td>
+<td>Static type checking: validates type hints against function signatures and usage. Failures block merge for Tier 1–2 tools.</td>
+</tr>
+<tr class="odd">
+<td>pytest</td>
+<td>Runs the test suite. Failures always block merge.</td>
+</tr>
+<tr class="even">
+<td>pytest-cov</td>
+<td>Measures test coverage. Tier 1 tools must meet 70% line coverage.</td>
+</tr>
+<tr class="odd">
+<td>pip-audit / safety</td>
+<td>Checks declared dependencies for known security vulnerabilities. Findings flagged to Python Lead.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="testing-standards" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="testing-standards"><span class="header-section-number">9.3</span> 3.3 Testing Standards</h2>
+<ul>
+<li><p>All Tier 1 functions must have unit tests covering expected outputs, edge cases, and known failure modes</p></li>
+<li><p>Test files must follow pytest conventions: tests/ directory at the project root, files named test_<module>.py</module></p></li>
+<li><p>Tests should use small, embedded data fixtures (via pytest fixtures) rather than reading external files</p></li>
+<li><p>Minimum 70% line coverage required for Tier 1 tools (measured via pytest-cov)</p></li>
+<li><p>For ML tools: include a smoke test that loads a saved model artefact and runs inference on a minimal fixture dataset</p></li>
+</ul>
+</section>
+</section>
+<section id="version-control-python-specific-implementation" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 4. Version Control — Python-Specific Implementation</h1>
+<p>Version control principles are defined in the parent framework, Section 8.5. This section covers the Python-specific implementation.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Branching strategy, commit standards, semantic versioning: see Data &amp;</strong>** Digital Asset Governance Framework, Section ****8****.5.**</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="repository-structure" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="repository-structure"><span class="header-section-number">10.1</span> 4.1 Repository Structure</h2>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>python/</strong> <strong>flood-modeller-api/ #</strong>** Flood Modeller API integration tools** <strong>operational/ #</strong>** Tier 1 tools** <strong>analytical/ #</strong>** Tier 2 tools** <strong>experimental/ #</strong>** Tier 3 tools** <strong>shared/ #</strong>** Shared modules used across tools** <strong>tests/ #</strong>** pytest test suite** <strong>docs/ #</strong>** Documentation and runbooks** <strong>pyproject.toml</strong> <strong>README.md</strong> <strong>ml/ #</strong>** Machine learning tools** <strong>pipelines/ #</strong>** Training and inference scripts** <strong>models/ #</strong>** Saved model artefacts and metadata** <strong>shared/ #</strong>** Shared feature engineering and evaluation modules** <strong>tests/</strong> <strong>pyproject.toml</strong> <strong>README.md</strong></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="reproducibility-with-poetry" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="reproducibility-with-poetry"><span class="header-section-number">10.2</span> 4.2 Reproducibility with poetry</h2>
+<p>All Python projects must use poetry for dependency management. This is the Python equivalent of renv: it pins exact package versions in a poetry.lock file.</p>
+<ul>
+<li><p>poetry new or poetry init must be run when a new project is created</p></li>
+<li><p>poetry add <package> must be used to add dependencies – never pip install directly in a managed project</package></p></li>
+<li><p>The poetry.lock file must be committed to Git with every dependency change</p></li>
+<li><p>New team members must run poetry install as the first step when setting up a project</p></li>
+<li><p>Where poetry is not suitable (e.g., for simple scripts), use a requirements.txt pinned with pip freeze and committed to Git</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Guidance for Newer Python Users – poetry</strong> If you get import errors when running a script, make sure you are inside the project’s virtual environment. Run poetry shell to activate it, or prefix commands with poetry run. If you need to add a new package, use poetry add <package-name> rather than pip install – this keeps the lockfile up to date. Commit the updated poetry.lock file alongside your code changes.</package-name></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="custodianship" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 5. Custodianship</h1>
+<p>Custodianship roles, grade requirements, the Tool Register, and handover and succession requirements for Python tools are defined in the parent framework. All requirements set out there apply in full.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Owner/Steward/Custodian roles and grades: Section 3. Tier-specific custodianship requirements: Section 7.2. Tool Register: Section 7.6. Handover and succession: Section 7.7. All references are to the Data &amp;</strong>** Digital Asset Governance Framework v1.4.**</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>For cross-language pipelines where an R tool feeds a Python component, custodianship must be assigned separately for each language component. The Owner may be the same person, but the Steward and Custodian assignments should reflect who is best placed to maintain each part. See also R Tool Governance Proposal, Section 5.</p>
+</section>
+<section id="onboarding-and-training" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> 6. Onboarding and Training</h1>
+<section id="onboarding-for-new-team-members" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="onboarding-for-new-team-members"><span class="header-section-number">12.1</span> 6.1 Onboarding for New Team Members</h2>
+<p>All new team members must complete the following within their first four weeks:</p>
+<ul>
+<li><p>Read this governance document, the parent framework, and sign the acknowledgement form</p></li>
+<li><p>Set up the team’s Python environment: install Python (via pyenv or the team-specified version), install poetry, and clone the team repository</p></li>
+<li><p>Complete the team Python onboarding guide (available in docs/onboarding/) To be written</p></li>
+<li><p>Run poetry install on the main Python project and confirm the environment is working</p></li>
+<li><p>Review at least two merged pull requests to understand the review process</p></li>
+<li><p>Attend an introductory session with the Python Lead</p></li>
+</ul>
+</section>
+<section id="ongoing-learning" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="ongoing-learning"><span class="header-section-number">12.2</span> 6.2 Ongoing Learning</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Resource</strong></th>
+<th><strong>Relevant For</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>polars user guide (docs.pola.rs)</td>
+<td>All team members; primary data manipulation reference</td>
+</tr>
+<tr class="even">
+<td>Flood Modeller API documentation (Jacobs)</td>
+<td>All team members working on API integration</td>
+</tr>
+<tr class="odd">
+<td>pytest documentation (docs.pytest.org)</td>
+<td>All; understanding the testing framework</td>
+</tr>
+<tr class="even">
+<td>mypy documentation (mypy.readthedocs.io)</td>
+<td>Intermediate; type checking in Python</td>
+</tr>
+<tr class="odd">
+<td>ruff documentation (docs.astral.sh/ruff)</td>
+<td>All; linting and formatting</td>
+</tr>
+<tr class="even">
+<td>scikit-learn user guide (scikit-learn.org)</td>
+<td>Those working on ML tools; model development and evaluation</td>
+</tr>
+<tr class="odd">
+<td>ONNX documentation (onnx.ai)</td>
+<td>Intermediate to advanced; ML model archiving and portability</td>
+</tr>
+<tr class="even">
+<td>poetry documentation (python-poetry.org)</td>
+<td>All; dependency management</td>
+</tr>
+<tr class="odd">
+<td>Neural Hydrology</td>
+<td>All; RNN, LSTM, and Transformer models for hydrological forecasting</td>
+</tr>
+</tbody>
+</table>
+<p>The team’s monthly R drop-in session includes Python topics. A separate Python knowledge-sharing session can be arranged on request with the Python Lead.</p>
+</section>
+</section>
+<section id="governance-exceptions-and-review" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> 7. Governance, Exceptions, and Review</h1>
+<p>The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, Section 12. The following applies specifically to Python tools:</p>
+<p>Overall responsibility for this document sits with the Python Lead (or R Lead where no dedicated Python Lead exists). The same Governance Working Group that oversees the R framework oversees this document. The Python Lead conducts an annual audit of all Tier 1 Python tools covering: header block completeness, type hint coverage, test coverage, documentation currency, poetry.lock consistency, and compliance with the branching strategy. Findings are reported to the team alongside the R framework audit.</p>
+</section>
+<section id="approved-by" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Approved by</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th><strong>Role</strong></th>
+<th><strong>Name / Signature / Date</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Head of Flood Forecasting</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Python Lead / Technical Lead</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Team Representative</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./03-r-code-governance.html" class="pagination-link  aria-label=" &lt;span="" tool="" governance&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05-hydrometric-data.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Imported Hydrometric Data Framework</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
