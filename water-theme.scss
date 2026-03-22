@@ -1,0 +1,176 @@
+/*-- scss:defaults --*/
+
+// ── Water / Flood palette ──────────────────────────────────────────────────
+// Deep navigational navy: navbar, sidebar, headings
+$deep-channel:     #0D2E4A;
+// Mid-channel blue: primary interactive elements and links
+$mid-channel:      #1A6B9A;
+// Floodplain blue: hover/active states, secondary accent
+$floodplain:       #2E96C7;
+// Chalk-stream tint: page body background
+$chalk-stream:     #EBF5FB;
+// River-silt white: sidebar panel background
+$river-silt:       #F7FAFD;
+
+// ── Bootstrap variable overrides ──────────────────────────────────────────
+$primary:          $mid-channel;       // buttons, active nav items, badges
+$link-color:       $mid-channel;       // body link colour
+
+$body-bg:          $chalk-stream;      // very light blue page wash
+$body-color:       #1A1F2E;           // near-black for readability on pale bg
+
+$headings-color:   $deep-channel;      // dark navy headings throughout
+
+$code-bg:          #DFF0F9;           // slightly deeper blue tint for code blocks
+
+// ── Quarto-specific layout variables ──────────────────────────────────────
+$navbar-bg:        $deep-channel;      // top navbar: deep navy
+$navbar-fg:        #E8F4FD;           // navbar text/icons: pale blue-white
+$sidebar-bg:       $river-silt;        // sidebar: near-white with blue cast
+
+// ── Typography ────────────────────────────────────────────────────────────
+$font-size-root:   16px;
+$headings-font-weight: 600;
+
+/*-- scss:rules --*/
+
+// ── Sidebar refinements ───────────────────────────────────────────────────
+// Active chapter link in sidebar gets a left-border water stripe
+.sidebar-navigation .active > a,
+.sidebar-item-container .sidebar-item-section .active {
+  color: $mid-channel;
+  border-left: 3px solid $floodplain;
+  padding-left: 0.4em;
+  font-weight: 600;
+}
+
+// Sidebar section headers (chapter group labels)
+.sidebar-section-header {
+  color: $deep-channel;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+}
+
+// ── Navbar ────────────────────────────────────────────────────────────────
+.navbar-brand {
+  color: #E8F4FD !important;
+  font-weight: 700;
+}
+
+.navbar-nav .nav-link {
+  color: #B8D8EE !important;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #FFFFFF !important;
+}
+
+// ── TOC (right-hand table of contents) ────────────────────────────────────
+#TOC a {
+  color: #2C5F7A;
+}
+#TOC a:hover {
+  color: $floodplain;
+  text-decoration: none;
+}
+#TOC .active {
+  color: $mid-channel;
+  font-weight: 600;
+  border-left: 2px solid $floodplain;
+  padding-left: 0.3em;
+}
+
+// ── Headings hierarchy ────────────────────────────────────────────────────
+h1.title,
+.chapter h1,
+h1 {
+  color: $deep-channel;
+  border-bottom: 2px solid $floodplain;
+  padding-bottom: 0.25em;
+}
+
+h2 {
+  color: $deep-channel;
+  border-bottom: 1px solid #C5DEF0;
+  padding-bottom: 0.15em;
+}
+
+h3, h4, h5 {
+  color: #1A4A6B;
+}
+
+// ── Links ─────────────────────────────────────────────────────────────────
+a {
+  color: $mid-channel;
+  text-decoration-color: #99CCE8;
+}
+a:hover {
+  color: $deep-channel;
+  text-decoration-color: $floodplain;
+}
+
+// ── Tables ────────────────────────────────────────────────────────────────
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: #DFF0F9;
+}
+
+thead {
+  background-color: $deep-channel;
+  color: #E8F4FD;
+}
+
+// ── Code blocks ───────────────────────────────────────────────────────────
+pre.sourceCode,
+div.sourceCode {
+  border-left: 3px solid $floodplain;
+  border-radius: 4px;
+}
+
+// ── Callout overrides ─────────────────────────────────────────────────────
+// Note: teal gauge (matches EA flood information palette)
+.callout-note {
+  border-left-color: #0E8A8A !important;
+  background-color: #E6F7F7;
+}
+.callout-note .callout-title {
+  background-color: #CCF0F0;
+  color: #0A5C5C;
+}
+
+// Warning: amber-orange kept muted for professionalism
+.callout-warning {
+  border-left-color: #D4680A !important;
+  background-color: #FDF3E7;
+}
+.callout-warning .callout-title {
+  background-color: #FAE5CC;
+  color: #7A3A05;
+}
+
+// Important: flood-alert red
+.callout-important {
+  border-left-color: #A8202A !important;
+  background-color: #FAEBEC;
+}
+.callout-important .callout-title {
+  background-color: #F5D5D7;
+  color: #6B1217;
+}
+
+// ── Section number colour ─────────────────────────────────────────────────
+.header-section-number {
+  color: $floodplain;
+}
+
+// ── Page footer ───────────────────────────────────────────────────────────
+.nav-footer {
+  background-color: $deep-channel;
+  color: #B8D8EE;
+  border-top: 2px solid $floodplain;
+}
+
+.nav-footer a {
+  color: #7FC4E8;
+}

@@ -25,7 +25,7 @@ book:
 
 format:
   html:
-    theme: cosmo
+    theme: [cosmo, water-theme.scss]
     toc: true
     toc-depth: 3
     number-sections: true
