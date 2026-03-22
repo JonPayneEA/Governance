@@ -5,7 +5,7 @@
 | Field | Detail |
 |---|---|
 | **Version** | 1.1 |
-| **Status** | Draft — For Team Review |
+| **Status** | Draft: For Team Review |
 | **Review Date** | Pending first review |
 | **Parent Document** | Data & Digital Asset Governance Framework v1.4 │ Data Ownership Model |
 | **Note** | Moved from Chapter 2 to Appendix E at v1.1. This is a reference document. The normative file format requirements are enforced through the Hydrometric Data Framework (@sec-hydrometric-data), R Tool Governance (@sec-r-governance), and Python Tool Governance (@sec-python-governance). Format compliance is checked automatically by the `fw-governance` MCP server `check_file_formats` tool. |
@@ -15,7 +15,7 @@
 
 This appendix is the authoritative reference for which file formats are accepted across F&W team tools and workflows. It covers when each format should be used, how it works, and any important limitations. Where there is a choice between formats, this appendix states the preferred option and the reason for it.
 
-The normative requirements — that Parquet is mandatory at all hydrometric data tiers, that CSV is prohibited in pipelines, that Delta tables are restricted to DASH — are stated and enforced in the domain governance documents that own them. This appendix provides the technical rationale and comparison material to support those requirements.
+The normative requirements (that Parquet is mandatory at all hydrometric data tiers, that CSV is prohibited in pipelines, that Delta tables are restricted to DASH) are stated and enforced in the domain governance documents that own them. This appendix provides the technical rationale and comparison material to support those requirements.
 
 | *This appendix is a companion to the Data **&** Digital Asset Governance Framework v1.4, which sets out the Owner, Steward, and Custodian roles and governance principles that apply to all team assets. File format choices must be consistent with the data tier standards in the Hydrometric Data Framework (@sec-hydrometric-data).* |
 | --- |

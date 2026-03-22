@@ -5,7 +5,7 @@
 | Field | Detail |
 |---|---|
 | **Version** | 1.3 |
-| **Status** | Draft — For Team Review |
+| **Status** | Draft: For Team Review |
 | **Review Date** | Pending first review |
 | **Parent Document** | Data & Digital Asset Governance Framework v1.4 │ Data Ownership Model (CDDO, 2024) |
 :::
@@ -176,7 +176,7 @@ pandas must not be used in Tier 1 operational tools or in shared modules. It may
 | JSON (.json) | Acceptable for model metadata, hyperparameters, and configuration. |
 | Excel (.xlsx) | Restricted to stakeholder deliverables only. Use openpyxl if required. |
 
-For full technical detail on each format — including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions — see @sec-file-format-reference. Format compliance for Tier 1 and Tier 2 tools is checked automatically by the `fw-governance` MCP server `check_file_formats` tool.
+For full technical detail on each format, including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions, see @sec-file-format-reference. Format compliance for Tier 1 and Tier 2 tools is checked automatically by the `fw-governance` MCP server `check_file_formats` tool.
 
 All trained ML model artefacts saved to disk must be accompanied by a JSON metadata file containing: training date, Python and package versions, training dataset identifier, hyperparameters, and key evaluation metrics.
 
@@ -265,7 +265,7 @@ All reviewers must work through this checklist. The completed checklist must be 
 
 - For ML tools: include a smoke test that loads a saved model artefact and runs inference on a minimal fixture dataset
 
-# 4. Version Control — Python-Specific Implementation
+# 4. Version Control: Python-Specific Implementation
 
 Version control principles are defined in the parent framework, Section 8.5. This section covers the Python-specific implementation.
 
