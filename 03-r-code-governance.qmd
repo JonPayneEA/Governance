@@ -10,7 +10,6 @@
 | **Parent Document** | Data & Digital Asset Governance Framework v1.4 │ Data Ownership Model (CDDO, 2024) |
 :::
 
-
 # Purpose
 
 This document provides the detailed, R-specific governance standards for tools developed by the Forecasting and Warning Teams. It is a companion to the Data & Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, digital and data assets registers, and version control standards that apply to all team code regardless of language.
