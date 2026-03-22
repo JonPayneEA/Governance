@@ -214,6 +214,8 @@ The tidyverse must not be used in Tier 1 operational tools or in Flode package f
 | Feather (.feather) | Acceptable alternative to Parquet for high-speed intermediate files within a single pipeline. |
 | Excel (.xlsx) | Restricted to final-output reports and stakeholder deliverables only. Use openxlsx2 if required. |
 
+For full technical detail on each format — including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions — see @sec-file-format-reference. Format compliance for Tier 1 and Tier 2 tools is checked automatically by the `fw-governance` MCP server `check_file_formats` tool.
+
 ## 2.3 Object-Oriented Programming in Flode
 
 Where tools require stateful objects or extensible APIs, OOP is preferred. Flode adopts a clear hierarchy for which system to use.

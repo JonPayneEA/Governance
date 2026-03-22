@@ -32,7 +32,7 @@ This framework and its companion documents sit within the organisation's wider g
 | Document | Governs | Current Version |
 |---|---|---|
 | **Data and Digital Asset Governance Framework** | Roles and accountability, asset categories, tier system, model file standards, code tool governance principles, data quality, data catalogue, access and sharing, incidents, monitoring and reporting, AI governance, wider data value. This is the parent document for the suite. | 1.4 |
-| **Accepted File Types and Data Formats** | Which file formats are accepted across team tools and workflows: Parquet, Delta tables, FMP files, PDM files, NetCDF, spatial formats, CSV restrictions, Excel restrictions. | 1.0 |
+| **File Format Reference** *(Appendix E)* | Reference appendix for accepted file formats: Parquet, Delta tables, FMP files, PDM files, NetCDF, spatial formats, CSV restrictions, Excel restrictions. Normative requirements enforced through the domain governance documents. | 1.1 |
 | **R Tool Governance** | R-specific code standards, Flode package architecture, fastverse dependency conventions, renv reproducibility, R-specific testing and CI tooling, R repository structure, R onboarding. | 1.3 |
 | **Python Tool Governance** | Python-specific code standards, Flood Modeller API integration, ML tool standards, polars conventions, poetry dependency management, Python testing and CI tooling, Python repository structure. | 1.3 |
 | **Imported Hydrometric Data Framework** | Bronze, Silver, and Gold data tiers for imported hydrometric data, provenance tracking, quality control process, quality flags, Parquet schemas, data quality improvement, rating curves, retention and access, the Hydrometric Data Register. | 1.3 |

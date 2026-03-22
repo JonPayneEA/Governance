@@ -302,6 +302,8 @@ Parquet stores data in a typed, columnar format that is efficient to read, write
 | *All three tiers use Parquet. Bronze Parquet is the standardised ingest format derived from whatever the supplier sent. Silver and Gold Parquet add columns; they never remove or overwrite columns from the tier below.* |
 | --- |
 
+For the rationale behind the Parquet requirement, partitioning guidance, format comparisons (including Delta tables, NetCDF, GeoParquet, and the CSV and Excel restrictions), see @sec-file-format-reference. Parquet schema compliance for Bronze, Silver, and Gold datasets is checked automatically by the `fw-governance` MCP server `validate_parquet_schema` and `validate_bronze_ingestion` tools.
+
 ## 7.1 Why Parquet for Hydrometric Time Series
 
 | **Reason** | **Detail** |

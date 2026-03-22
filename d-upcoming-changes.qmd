@@ -95,13 +95,16 @@ The framework is strong within individual asset types but weak at the interfaces
 
 ---
 
-#### 5. The Accepted File Types Chapter Functions as a Technical Specification, Not a Governance Document
+#### 5. The Accepted File Types Chapter Functioned as a Technical Specification, Not a Governance Document
 
-Chapter 2 defines formats but assigns no roles, no enforcement mechanism, no approval gate, and no escalation path. If someone stores data as CSV instead of the required Parquet format, there is no mechanism in the framework for anyone to detect, report, or resolve it. Every other chapter has clear accountability; this one has none.
+::: {.callout-note}
+## Resolved at v1.1
+The Accepted File Types document has been moved to Appendix E and renamed *File Format Reference*. Normative requirements are now enforced through the domain governance documents (Hydrometric Data Framework, R Tool Governance, Python Tool Governance) where roles and escalation paths already exist. Format compliance is checked automatically by the `fw-governance` MCP server `check_file_formats` tool.
+:::
 
-**What is needed:** Either integrate file type requirements into the relevant domain governance (hydrometric data, model files, code tools) where enforcement mechanisms already exist, or add a compliance owner, a check mechanism, and an exception process to the chapter.
+~~Chapter 2 defined formats but assigned no roles, no enforcement mechanism, no approval gate, and no escalation path. If someone stored data as CSV instead of the required Parquet format, there was no mechanism in the framework for anyone to detect, report, or resolve it. Every other chapter had clear accountability; this one had none.~~
 
-**Priority:** Low — functional, but inconsistent with the governance model applied elsewhere.
+**Resolution:** Moved to Appendix E. Normative rules retained in domain chapters. MCP tooling provides automated enforcement.
 
 ---
 
@@ -177,3 +180,4 @@ An implementation chapter should make explicit which governance obligations the 
 |---|---|---|
 | 2026-03-22 | Framework effectiveness assessment (above) | Recorded |
 | 2026-03-22 | Proposed implementation chapter | Under consideration |
+| 2026-03-22 | Accepted File Types moved to Appendix E; renamed File Format Reference; MCP `check_file_formats` tool added | Resolved |

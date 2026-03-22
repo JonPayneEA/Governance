@@ -17,7 +17,7 @@ This work establishes a governance framework to address these gaps. It sets out 
 | Document | Version | Status |
 |---|---|---|
 | Data and Digital Asset Governance Framework | 1.4 | Draft -- For Review |
-| Accepted File Types and Data Formats | 1.0 | Draft -- For Team Review |
+| File Format Reference *(Appendix E)* | 1.1 | Draft -- For Team Review |
 | R Tool Governance | 1.3 | Draft -- For Team Review |
 | Python Tool Governance | 1.3 | Draft -- For Team Review |
 | Imported Hydrometric Data Framework | 1.3 | Draft -- For Team Review |
