@@ -58,6 +58,19 @@ The document suite has a strict parent-child dependency:
 - `c-alignment-register.qmd` must be updated whenever the framework diverges from or re-aligns with CDDO/Defra policy.
 - `d-upcoming-changes.qmd` is the living record of proposed and resolved changes. When a weakness is fixed, mark it resolved there with a changelog entry rather than deleting it.
 
+## Document Language
+Write in plain English with UK spelling. Wording should be concise and direct, never padded or performative. It should sound like a person wrote it, not a machine.
+Em dashes must not be used. Ever.
+Technical outputs may deviate from plain English where precision demands it, but default to clarity.
+
+### Voice and Style
+My thinking is shaped by a classical education. That should come through as texture, not ornamentation: the occasional structured aside, a well-placed analogy, comfort with abstraction. It should never tip into florid or academic prose.
+The closest reference points are:
+
+- Michael Crichton as the primary register. Systematic, unsentimental, technically literate, but always readable. A classicist writing for a technical age.
+- Hemingway as a secondary 
+
+
 ## Branch
 
 Active development branch: `claude/add-water-theme-docs-q7DjC`
