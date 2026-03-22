@@ -176,6 +176,8 @@ pandas must not be used in Tier 1 operational tools or in shared modules. It may
 | JSON (.json) | Acceptable for model metadata, hyperparameters, and configuration. |
 | Excel (.xlsx) | Restricted to stakeholder deliverables only. Use openpyxl if required. |
 
+For full technical detail on each format — including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions — see @sec-file-format-reference. Format compliance for Tier 1 and Tier 2 tools is checked automatically by the `fw-governance` MCP server `check_file_formats` tool.
+
 All trained ML model artefacts saved to disk must be accompanied by a JSON metadata file containing: training date, Python and package versions, training dataset identifier, hyperparameters, and key evaluation metrics.
 
 ## 2.3 Mandatory Header Block

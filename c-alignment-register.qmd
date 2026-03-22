@@ -168,14 +168,14 @@ This appendix tracks alignment between the F&W governance document suite and the
 | Issue | Resolution |
 |---|---|
 | R Tool Governance: filename says v1.3 but internal metadata says v1.2 | Internal version updated to 1.3 |
-| Accepted File Types: Review Date is "[Insert Date]" | Remains as placeholder pending formal review; flagged for completion at approval |
+| File Format Reference (formerly Accepted File Types): Review Date is "[Insert Date]" | Remains as placeholder pending formal review; flagged for completion at approval |
 | Python Tool Governance: Review Date is "[Insert Date]" | As above |
 | Hydrometric Data Framework: Review Date is "[Insert Date]" | As above |
 | Training Framework: Review Date is "[Insert Date]" | As above |
 | R Tool Governance: Flode module table flagged "NEEDS MODIFICATION" | Flag retained — module naming requires team decision before this can be resolved |
 | Python Tool Governance: Section cross-reference "Section87.3" | Corrected to "Section 8.3" |
 | Governance Framework: Glossary defines Custodian with "disposing of" but body text did not | Body text now aligned with glossary |
-| Accepted File Types: references parent framework as v1.2 | Updated to v1.4 |
+| Accepted File Types: references parent framework as v1.2 | Updated to v1.4 at v1.0; document promoted to Appendix E and renamed File Format Reference at v1.1 |
 | All companion documents: parent framework version references | Updated from v1.3 to v1.4 where applicable |
 
 : Other corrections {.striped}

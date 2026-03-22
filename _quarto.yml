@@ -12,7 +12,6 @@ book:
   chapters:
     - index.qmd
     - 01-governance-framework.qmd
-    - 02-accepted-file-types.qmd
     - 03-r-code-governance.qmd
     - 04-python-code-governance.qmd
     - 05-hydrometric-data.qmd
@@ -23,6 +22,7 @@ book:
     - b-document-hierarchy.qmd
     - c-alignment-register.qmd
     - d-upcoming-changes.qmd
+    - e-file-format-reference.qmd
 
 format:
   html:

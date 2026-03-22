@@ -467,6 +467,64 @@ Run the full code review checklist automatically, flagging items that need human
 
 ---
 
+#### `check_file_formats`
+
+Scan a directory for file format violations against the team's accepted format rules.
+
+| Field | Detail |
+|---|---|
+| **Description** | Walks a project or data directory and checks every data file against the format rules in `governance-rules.toml`. Flags files that use prohibited formats (e.g. CSV in a pipeline directory, Excel outside a deliverables folder), files that use a discouraged format where a preferred one exists, and any format that is unexpected for the directory context. Returns pass/fail per file with the governance reference and a plain-language fix. Does not open file contents — checks extension and location only. For schema-level validation of Parquet files, use `validate_parquet_schema`. |
+| **Governance ref** | File Format Reference (Appendix E); Hydrometric Data §7; R Governance §2.2.4; Python Governance §2.2.4 |
+
+**Parameters:**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| `path` | string | yes | Directory to scan (recursively) |
+| `context` | string | no | One of: `pipeline`, `bronze`, `silver`, `gold`, `model`, `deliverables`, `any` (default: `any`). Determines which rules apply. |
+| `tier` | integer | no | 1, 2, or 3. Stricter rules apply at Tier 1 (prohibited formats are hard failures; at Tier 3 they are warnings). |
+
+**Returns:**
+
+```json
+{
+  "path": "data/catchment_flows/",
+  "context": "pipeline",
+  "tier": 1,
+  "files_scanned": 47,
+  "violations": [
+    {
+      "file": "data/catchment_flows/processed/severn_q_2024.csv",
+      "issue": "FAIL",
+      "rule": "CSV is prohibited in pipeline directories at all tiers",
+      "governance_ref": "File Format Reference §8.1; Hydrometric Data §7",
+      "fix": "Convert to Parquet using polars.DataFrame.write_parquet() or arrow::write_parquet(). Retain the CSV only if it is a Bronze ingest of a supplier-delivered file."
+    },
+    {
+      "file": "data/catchment_flows/interim/temp_output.xlsx",
+      "issue": "FAIL",
+      "rule": "Excel is prohibited in pipeline directories. Permitted only in deliverables/ for stakeholder outputs.",
+      "governance_ref": "File Format Reference §9.2",
+      "fix": "Write intermediate results as Parquet. If this is a stakeholder deliverable, move to deliverables/ and generate programmatically from a Parquet source."
+    }
+  ],
+  "warnings": [
+    {
+      "file": "data/catchment_flows/archive/old_run_2022.feather",
+      "issue": "WARN",
+      "rule": "Feather is acceptable for high-speed intermediate files within a single pipeline but Parquet is preferred for archived outputs.",
+      "governance_ref": "R Governance §2.2.4",
+      "fix": "Consider converting to Parquet if this file is retained long-term or shared with Python tools."
+    }
+  ],
+  "overall": "FAIL",
+  "fail_count": 2,
+  "warn_count": 1
+}
+```
+
+---
+
 ### Domain C — Data Pipeline Validation
 
 These tools check data assets against the medallion architecture rules.
@@ -718,6 +776,36 @@ fields = [
 ]
 date_format = "YYYY-MM-DD"
 
+[file_type_rules]
+# Governance ref: File Format Reference (Appendix E)
+
+# Formats required in each storage context
+pipeline_data       = ["parquet"]       # Bronze, Silver, Gold, and all intermediate pipeline data
+gridded_data        = ["nc", "zarr"]    # NetCDF required; Zarr requires Tech Lead agreement
+spatial_internal    = ["parquet"]       # GeoParquet for all spatial data in internal workflows
+model_fmp           = ["ief", "dat", "ied", "inp", "ini", "gxy", "zzn", "zzs"]
+model_pdm           = []                # PDM files are vendor-defined; no extension restriction
+ml_artefacts        = ["onnx", "json"]  # ONNX for archived models; JSON for metadata
+
+# Formats restricted to specific contexts
+[file_type_rules.restricted]
+csv  = "deliverables, bronze_raw_ingest"   # Permitted only for small external exchange or supplier Bronze ingest
+xlsx = "deliverables"                      # Permitted only for stakeholder deliverables
+feather = "pipeline_intermediate"          # High-speed intermediate within a single R pipeline only
+rds  = "pipeline_intermediate"             # R-specific intermediate objects only; not for shared outputs
+pkl  = "never"                             # Never use pickle for shared or archived artefacts
+
+# Formats prohibited everywhere
+[file_type_rules.prohibited]
+formats  = ["xls", "rdata", "RData"]
+reason   = "Legacy formats with no permitted use case in team workflows"
+
+# Severity by tier: violations are FAIL at Tier 1/2, WARN at Tier 3
+[file_type_rules.severity]
+tier1 = "FAIL"
+tier2 = "FAIL"
+tier3 = "WARN"
+
 [naming_patterns]
 bronze_dataset = '^\w+_\w+_[QHPSM]\w*_\d{8}$'
 silver_dataset = '^\w+_\w+_[QHPSM]\w*_\d{8}_SILVER_v\d+$'
@@ -813,10 +901,12 @@ For `stdio` transport (local use), no authentication is needed — the user's fi
 
 | Phase | Tools | Value |
 |---|---|---|
-| 1 | `get_governance_rule`, `validate_header`, `generate_header`, `scaffold_tool`, `validate_naming`, `validate_commit_message` | Immediate developer friction reduction; governance rules available at point of coding |
+| 1 | `get_governance_rule`, `validate_header`, `generate_header`, `scaffold_tool`, `validate_naming`, `validate_commit_message`, `check_file_formats` | Immediate developer friction reduction; governance rules and format checks available at point of coding |
 | 2 | `get_tool_info`, `get_model_info`, `get_dataset_info`, `check_tier_compliance`, `generate_review_checklist`, `generate_run_record` | Register integration; code review automation |
 | 3 | `validate_parquet_schema`, `validate_bronze_ingestion`, `check_silver_readiness`, `check_gold_readiness`, `get_connections`, `pre_review` | Full data pipeline validation |
 | 4 | `governance_summary`, `audit_tier1`, `lookup_definition` | Steward reporting and data catalogue integration |
+
+`check_file_formats` is included in Phase 1 because it requires only `governance-rules.toml` (no register access) and provides immediate enforcement of the file format rules that were previously ungoverned. It is also the natural candidate for a pre-commit git hook, which can be wired up from day one independently of the full MCP server.
 
 ---
 
