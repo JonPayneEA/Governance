@@ -167,9 +167,11 @@ This aligns with the CDDO requirement that every essential shared data asset has
 
 ## The Tier System
 
-All team assets, whether data, models, or code tools, are classified into one of three tiers based on how critical they are to live operational forecasting. The tier determines the level of governance applied. Higher tier means more rigorous oversight, not more administration for its own sake.
+Not all assets carry the same risk. A script that broke at 2am during a live flood event is a different problem to one that broke during a research exercise the following week. The tier system exists to make that difference explicit, and to calibrate the governance overhead accordingly.
 
-The same three tiers apply across all asset types. This gives everyone a shared language for talking about risk and maturity, regardless of whether the asset in question is a dataset, a flood model, or a script.
+All team assets, whether data, models, or code tools, are classified into one of three tiers based on their role in live operational forecasting. Tier 1 is operational: failure has direct consequences for the service. Tier 2 is analytical: regularly used, but not in the critical path. Tier 3 is experimental: research or prototype work, not in production. The tier determines the level of oversight required. It does not describe quality or maturity in isolation; a technically excellent piece of work begins at Tier 3 until its governance is confirmed.
+
+The same three tiers apply to every asset type. That uniformity is deliberate. It gives the team a shared language for risk, regardless of whether the asset in question is a hydrometric dataset, a hydraulic model, or a Python script.
 
 | Tier | Description | Data | Models | Tools |
 |---|---|---|---|---|
@@ -181,9 +183,13 @@ Promotion to Tier 1 requires Owner sign-off for all asset types. Demotion or dep
 
 ### Data Tiers and the Medallion Architecture
 
-Hydrometric data and model calibration data must follow the Bronze, Silver, and Gold medallion architecture set out in @sec-hydrometric-data. The medallion labels are specific to data and describe quality stages: Bronze is raw ingested data, Silver is quality-controlled, and Gold is formally approved and analysis-ready.
+Hydrometric data arrives from many sources and rarely arrives clean. A gauge record from the Environment Agency's API and a manually submitted spreadsheet from a partner organisation are both raw data, but they carry different levels of trust, different provenance trails, and different likelihoods of containing errors. Treating them identically at ingestion, or leaving quality decisions implicit, creates problems that compound downstream.
 
-The medallion architecture is not optional. It exists to drive continuous improvement and force active management of data assets. Data that sits at Bronze indefinitely is uncontrolled. Data that progresses to Silver and Gold has been reviewed, quality-assessed, and formally approved for its intended use. Only Gold-tier data may be used as input to Tier 1 model runs or ML model training that may one day be promoted to operational use.
+The medallion architecture addresses this by making quality stages explicit. Bronze is the unmodified record of what was received. Silver is the result of documented quality control. Gold is a formally approved product derived from Silver and cleared for a specific operational use. Each stage represents a distinct level of accountability. Moving data from one stage to the next requires deliberate action and a recorded decision. That is not bureaucracy; it is how the team knows what it is working with.
+
+The medallion and the operational tier system answer different questions. The tier system asks: how critical is this asset to the live service? The medallion asks: how far has this data been through quality assurance? For code tools and models these two dimensions tend to move together. For hydrometric data they are genuinely independent, and that independence matters. The same Silver dataset might supply a Tier 2 post-event analysis today and a Tier 1 operational model run next month. The data's quality state has not changed; only its use has. Conflating the two frameworks would mean re-approving data every time its purpose changed.
+
+The medallion architecture is not optional. Only Gold-tier data may be used as input to Tier 1 model runs or ML model training that may one day be promoted to operational use. See @sec-hydrometric-data for the full schema requirements and QC process.
 
 ### Model Tiers
 
