@@ -103,7 +103,8 @@ repo_row <- function(r) {
 # ---------------------------------------------------------------------------
 
 message("Fetching repository list for ", ORG, " ...")
-repos <- gh("/orgs/{org}/repos", org = ORG, .limit = Inf)
+# JonPayneEA is a user account, not an organisation; use the user endpoint.
+repos <- gh("/users/{username}/repos", username = ORG, .limit = Inf)
 message(length(repos), " repositories found.")
 
 message("Reading governance.yml from each repository ...")
