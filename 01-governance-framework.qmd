@@ -391,6 +391,26 @@ The Delegated Steward conducts an annual audit of all Tier 1 code tools, coverin
 
 Stewards must carry out spot-check audits of Tier 2 model files and metadata records at least once per year, and of Tier 3 assets at least once every two years. Spot checks may be carried out at any time.
 
+### Framework Version Control
+
+Changes to this document and the companion documents fall into three categories.
+
+**Editorial corrections** are typos, broken links, or formatting fixes that do not change meaning. The Delegated Steward may make and merge editorial corrections at any time without Owner sign-off. No version increment. No team notification required, though the change is visible in the git history.
+
+**Substantive changes** are anything that changes a requirement, adds or removes a role, adds or removes a process step, or modifies a companion document in a way that affects practice. Substantive changes require Owner sign-off before they are merged. The minor version number increments (1.4 becomes 1.5). The Steward notifies the team by written summary within five working days of the merge, identifying which sections changed and why.
+
+**Major changes** are restructures of the tier system, redefinition of core roles, or changes that require existing registers to be migrated or existing assets to be re-assessed. Major changes trigger a full review cycle and increment the major version number (1.4 becomes 2.0). They are treated the same as a new framework adoption.
+
+For all substantive and major changes, the procedure is:
+
+1. Draft the change on a branch
+2. Record the rationale in the Change Log in Appendix D before requesting sign-off
+3. Obtain Owner sign-off
+4. Merge and increment the version number in `_quarto.yml` (master) and in the metadata block of the changed document
+5. Update the review dates in any companion documents that reference the changed section
+
+The version field in `_quarto.yml` is the master. All companion document metadata blocks reference it and must be kept in step.
+
 ## Quick Reference: Who to Go To
 
 | Question or task | Go to |
