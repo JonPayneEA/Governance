@@ -99,7 +99,7 @@ Custodians are responsible for:
 | Role | Definition and Responsibilities |
 |---|---|
 | Owner | Senior individual with ultimate accountability for a data or asset domain. Sets strategic direction, approves major decisions, ensures compliance. Deputy Director grade required (see note above). May be delegated to another Deputy Director or equivalent. |
-| Steward | Operational expert responsible for day-to-day governance. Maintains standards, reviews quality, manages access, oversees the Tool Register and data catalogue, handles governance queries, tracks data lineage, manages lifecycle. Grade 7 required for Tier 1 tools; Grade 7 recommended for all other assets. For operational day-to-day management, a Technical Lead or Delegated Steward should be specified, generally filled by a G6. |
+| Steward | Operational expert responsible for day-to-day governance. Maintains standards, reviews quality, manages access, oversees the Tool Register and data catalogue, handles governance queries, tracks data lineage, manages lifecycle. Grade 7 required for Tier 1 tools; Grade 7 recommended for all other assets. For operational day-to-day management, a Delegated Steward should be specified, generally at G6 grade. |
 | Custodian | Technical expert responsible for capturing, storing, maintaining, and disposing of assets correctly. Creates, stores, and maintains assets and tools to agreed standards. Carries out disposal when authorised. Any grade. May be delegated to any team member. |
 
 ### Delegation
@@ -181,55 +181,13 @@ Flood models, including FMP hydraulic models, PDM rainfall-runoff configurations
 
 Code tools written in R or Python follow the same tier system. A tool's tier reflects the operational consequences of failure. Tier 1 tools require the most rigorous development, testing, and custodianship standards. See @sec-r-governance and @sec-python-governance for language-specific requirements.
 
-## Flood Modeller Pro: Governance Requirements
+## Flood Model Governance
 
-### File and Folder Structure
+FMP model files require formal version control because they contain binary and configuration files that change with every calibration update, boundary condition revision, or software upgrade. Both the current model and all superseded versions must be retained. A model that produced a formal output must remain recoverable in the exact state it was in when that output was produced. No FMP files may be held on local machines or unmanaged drives.
 
-Every project must use the agreed folder structure. Stewards define and publish this. Custodians must not create ad-hoc structures. The agreed top-level layout is:
+PDM parameter sets, calibration records, and coupled model configurations follow the same governance principles. Parameter sets are particularly sensitive: a set calibrated on one period of data can produce materially different outputs from a set calibrated on a different period, even for the same catchment. Version control and calibration documentation are not optional.
 
-- `[CatchmentID]_[Position]_[ProjectName]/`
-  - `/inputs`: all raw and processed input data (or links to position in medallion data scheme)
-  - `/model`: Flood Modeller Pro project files (`/ief`, `/dat`, `/ied`, `/inp`, `/zzs`)
-  - `/outputs`: model results and exported data (`/zzn`, `/zzs`)
-  - `/docs`: notes, logs, reports
-  - `/archive`: superseded versions (do not delete, archive instead)
-
-### Naming Conventions
-
-Files must be named so they can be found and understood without opening them. The standard format is:
-
-**`[CatchmentID]_[Position]_[ModelType]_[Version]_[Date]`**
-
-Example: `SEVERN_UPPER_FMP_v2.3.1_20260115`
-
-No spaces in file names. Use underscores. Dates use YYYYMMDD format.
-
-### Version Control
-
-All Flood Modeller Pro project files must be managed in the team's agreed file store or version control system:
-
-- Every significant change gets a new version number (Major.Minor.Patch)
-- Change notes must describe what changed and why
-- Tagged releases for any version used in a formal output or submitted externally
-- The live model and all superseded versions must both be retained
-
-### Metadata and Run Records
-
-For every model run that produces a formal output, the Custodian must record: model version used, input datasets used (name, version, source, date accessed), scenario description, software version (Flood Modeller Pro build number), date and person who ran the model, and any warnings, errors, or manual interventions. Run records are stored in `/docs` alongside the model project.
-
-## PDM: Governance Requirements
-
-### Parameter Sets
-
-PDM parameter sets are critical assets. They must be stored in the agreed repository (not on individual machines), named using the standard convention (`[CatchmentID]_[Gauged/UnGauged]_[ModelType]_[Version]_[Date]`), accompanied by a calibration record (period, data used, performance metrics), and reviewed and approved by the Steward before use in a formal output.
-
-### Calibration Records
-
-Every calibrated parameter set must have a record covering: calibration period and events used, observed data sources (gauge IDs, data provider, quality flags), performance metrics (NSE, FAR, KGE), who carried out the calibration and when, and any known limitations or conditions where the parameters may not apply.
-
-### Coupled Model Configurations
-
-Where PDM is coupled with Flood Modeller Pro, the coupling configuration (boundary locations, time-step settings, etc.) must be documented and version-controlled alongside both model files.
+The detailed requirements for folder structure, naming conventions, version control, run records, condition assessment, and model connections are set out in the Flood Model Governance document (@sec-flood-model-governance). The requirements there are normative and must be followed by all Custodians working with operational models.
 
 ## Code and Tool Governance
 
@@ -251,7 +209,7 @@ All code tools are classified into one of three tiers based on their operational
 
 | Role | Tier 1: Operational | Tier 2 and 3: Analytical / Experimental |
 |---|---|---|
-| Owner | Deputy Director required. Must be a different individual from the Steward. | Deputy Director strongly recommended. A senior manager with equivalent accountability may be assigned where agreed with the Technical Lead. |
+| Owner | Deputy Director required. Must be a different individual from the Steward. | Deputy Director strongly recommended. A senior manager with equivalent accountability may be assigned where agreed with the Delegated Steward. |
 | Steward | Grade 7 required. Delegated Steward recommended. | Grade 7 recommended. A capable team member at a lower grade may act as Steward for Tier 3 tools where the role is combined with Custodian. |
 | Custodian | Runs scheduled CI checks, monitors for issues, escalates to Steward promptly, maintains disaster recovery runbook. | Runs tests before major language version upgrades, flags broken dependencies to Steward. |
 
@@ -316,7 +274,7 @@ The Tool Register must be updated whenever a custodianship role changes, a tool 
 
 When a Steward or Custodian changes, the outgoing person must produce a handover note before they leave. The note covers: the tool's purpose and known quirks, current technical debt or open issues, the status of any open pull requests, and scheduled maintenance tasks. It is stored in the tool's `docs/` directory.
 
-For Tier 1 tools, the incoming Steward must run the full test suite and confirm it passes before formally accepting the handover. The Technical Lead must be notified of all Tier 1 custodianship changes.
+For Tier 1 tools, the incoming Steward must run the full test suite and confirm it passes before formally accepting the handover. The Delegated Steward must be notified of all Tier 1 custodianship changes.
 
 ## Data Catalogue and Centralised Definitions {#sec-data-catalogue}
 
@@ -371,9 +329,11 @@ The CDDO Data Ownership Model requires that ownership policies include monitorin
 
 **Quarterly:** The Steward produces a governance summary covering: data quality trends from the Hydrometric Data Framework quarterly summaries, open Data Quality Issue Log entries and their age, Tool Register and Model Register currency, any incidents or near-misses in the quarter, and supplier engagement outcomes. This summary is shared with the Owner and feeds into the team's quarterly governance review.
 
-**Annually:** The Technical Lead conducts a full governance audit of all Tier 1 assets (code tools, models, and data). Findings are compiled into an annual governance report, which is presented to the Owner and submitted to the organisational risk management process. The report covers: compliance rates across all Tier 1 assets, condition rating trends for models, test coverage and documentation currency for tools, data quality trends, and any governance exceptions granted during the year.
+**Annually:** The Delegated Steward conducts a full governance audit of all Tier 1 assets (code tools, models, and data). Findings are compiled into an annual governance report, which is presented to the Owner and submitted to the organisational risk management process. The report covers: compliance rates across all Tier 1 assets, condition rating trends for models, test coverage and documentation currency for tools, data quality trends, and any governance exceptions granted during the year.
 
 **On occurrence:** Data incidents, governance exceptions, and emergency deployments (Route D) are reported to the Steward immediately and to the Owner where they affect formal outputs. Patterns of recurring incidents or exceptions are flagged in the quarterly summary and, if persistent, escalated to the organisation's risk register.
+
+**Non-compliance.** Where the annual audit identifies assets that do not meet the requirements of this framework, the Delegated Steward produces a corrective action plan within one month of the audit report. The plan specifies the gap, the required action, the responsible Custodian or Steward, and a target date. Assets with outstanding corrective actions are flagged in the quarterly summary until resolved. Persistent or repeated non-compliance with Tier 1 requirements is escalated to the Owner and documented in the governance log. An asset that has failed to meet a corrective action target without documented justification must not be used in a new formal output until the gap is resolved.
 
 The Owner is responsible for ensuring that governance findings are communicated to the broader organisational governance and risk management structures as appropriate.
 
@@ -387,17 +347,15 @@ This does not create an obligation to share all data. It creates an obligation t
 
 ## AI and Machine Learning Governance {#sec-ai-governance}
 
-The Cabinet Office IAO guidance (updated October 2025) sets out expectations around AI governance, including that IAOs should ensure AI services are assessed before being allowed access to information assets, and that Data Protection Impact Assessments are carried out where AI processes personal data. The Data (Use and Access) Act 2025 introduces additional requirements relevant to automated decision-making.
+The team uses AI and ML tools in two ways: commercial or external services that may access team data, and internally developed ML models that feed operational forecasts. Both require governance. Neither is well-served by ad-hoc decisions.
 
-Within the F&W team, the following AI governance requirements apply:
+**Assessment before access.** Before any AI or ML service is given access to team data, the Steward must assess three things: what data the service will access and at what tier, whether that data contains personal or sensitive information requiring a DPIA, and whether the service complies with government Secure by Design principles. The assessment is a short written record, approved by the Owner and stored alongside the relevant Tool Register entry or dataset provenance record. This applies equally to commercial tools (such as Microsoft Copilot or cloud inference APIs) and to internally developed inference pipelines.
 
-**Assessment before access:** Before any AI or ML service (including commercial AI tools, internally developed models, and cloud-hosted inference services) is given access to team data assets, the Steward must carry out a brief assessment covering: what data the service will access, whether the data contains personal or sensitive information, whether the service complies with the Government's Secure by Design principles, and whether a DPIA is required. The assessment is recorded and approved by the Owner.
+**ML models in operational use.** Any ML model whose outputs feed Tier 1 forecasts is itself a Tier 1 asset. It must have a named Custodian, a training dataset recorded as a Gold product (see @sec-hydrometric-data), version-controlled model artefacts with a JSON metadata file, and a formal condition assessment on the Tier 1 review schedule. The Python governance document (@sec-python-governance) sets out the technical requirements for training and inference separation, metadata files, and ONNX archiving.
 
-**ML model governance:** All operational ML models (including black-box models, LSTM pipelines, and any model where outputs feed Tier 1 forecasts) are Tier 1 assets. They must have a named Custodian, a documented training dataset (as a Gold product; see @sec-hydrometric-data), a formal condition assessment, and version-controlled model artefacts with metadata. The Python Tool Governance document (@sec-python-governance) sets out the detailed requirements for ML model development, including training/inference separation, metadata files, and ONNX archiving.
+**Run record requirements.** For any ML model used in an operational forecast, the run record must identify the model version, the training dataset version, and any known limitations. Where an ML model replaces a physically-based model, the replacement decision must be documented, comparative performance evidence provided, and the change approved by the Owner before deployment.
 
-**Transparency and auditability:** For any ML model used in an operational forecast, the run record must identify the model version, training dataset version, and any known limitations. Where an ML model replaces a physically-based model (e.g., a black-box model replacing a PDM configuration), the replacement decision, rationale, and comparative performance evidence must be documented and approved by the Owner.
-
-**Ongoing compliance:** The Steward monitors developments in AI legislation and government guidance that may affect the team's use of ML tools, and raises any compliance concerns with the Owner. This is reviewed as part of the annual governance audit.
+The Steward monitors developments in AI legislation and government guidance that affect the team's use of ML tools. This is reviewed as part of the annual governance audit.
 
 ## Review and Compliance
 
@@ -409,7 +367,7 @@ This framework and the companion documents are reviewed annually by the Stewards
 - Feedback from Custodians on what is working and what is not
 - Alignment with any updates to the CDDO Data Ownership Model, Defra Data Ownership Policy, IAO guidance, or relevant legislation
 
-The Technical Lead conducts an annual audit of all Tier 1 code tools, covering header block completeness, test coverage, documentation currency, dependency lockfile consistency, and branching strategy compliance.
+The Delegated Steward conducts an annual audit of all Tier 1 code tools, covering header block completeness, test coverage, documentation currency, dependency lockfile consistency, and branching strategy compliance.
 
 Spot-check audits of model files and metadata records may be carried out at any time by Stewards.
 
@@ -420,8 +378,8 @@ Spot-check audits of model files and metadata records may be carried out at any 
 | I need access to a dataset, model file, or code tool | Steward |
 | I want to share data, a model, or a tool externally | Steward (assessment), Owner (approval) |
 | I've found a data quality problem | Steward |
-| I want to propose a new code tool | Custodian to Technical Lead / Steward; raise a Git issue |
-| I want to adopt an external package for production use | Custodian to Technical Lead / Steward; see R or Python companion doc |
+| I want to propose a new code tool | Custodian to Steward or Delegated Steward; raise a Git issue |
+| I want to adopt an external package for production use | Custodian to Steward or Delegated Steward; see R or Python companion doc |
 | I need to know if a tool version is approved for Tier 1 use | Steward |
 | A Tier 1 tool has failed during a live forecast | Steward immediately, then Owner; follow Route D |
 | I've made a mistake that affected a published output | Steward immediately, then Owner depending on scale of issue |
