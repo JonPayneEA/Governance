@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.526">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data and Digital Asset Governance - 3&nbsp; R Tool Governance</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-python-code-governance.html" rel="next">
+<link href="./01-governance-framework.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-r-code-governance.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Tool Governance</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data and Digital Asset Governance</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Problem Statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-governance-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data and Digital Asset Governance Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-r-code-governance.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-python-code-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-hydrometric-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-flood-model-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-training-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./b-document-hierarchy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Document Hierarchy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./c-alignment-register.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Alignment Register</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./d-upcoming-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Upcoming Changes and Improvements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./e-file-format-reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">File Format Reference</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">4</span> Purpose</a></li>
+  <li><a href="#introduction-and-scope" id="toc-introduction-and-scope" class="nav-link" data-scroll-target="#introduction-and-scope"><span class="header-section-number">5</span> 1. Introduction and Scope</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">5.1</span> 1.1 Background</a></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">5.2</span> 1.2 Scope</a></li>
+  <li><a href="#what-is-covered-here-and-what-is-in-the-parent-document" id="toc-what-is-covered-here-and-what-is-in-the-parent-document" class="nav-link" data-scroll-target="#what-is-covered-here-and-what-is-in-the-parent-document"><span class="header-section-number">5.3</span> 1.3 What Is Covered Here and What Is in the Parent Document</a></li>
+  <li><a href="#governance-principles" id="toc-governance-principles" class="nav-link" data-scroll-target="#governance-principles"><span class="header-section-number">5.4</span> 1.4 Governance Principles</a></li>
+  <li><a href="#position-within-the-wider-governance-landscape" id="toc-position-within-the-wider-governance-landscape" class="nav-link" data-scroll-target="#position-within-the-wider-governance-landscape"><span class="header-section-number">5.5</span> 1.5 Position Within the Wider Governance Landscape</a></li>
+  </ul></li>
+  <li><a href="#r-tool-development-standards" id="toc-r-tool-development-standards" class="nav-link" data-scroll-target="#r-tool-development-standards"><span class="header-section-number">6</span> 2. R Tool Development Standards</a>
+  <ul class="collapse">
+  <li><a href="#the-flode-package-ecosystem" id="toc-the-flode-package-ecosystem" class="nav-link" data-scroll-target="#the-flode-package-ecosystem"><span class="header-section-number">6.1</span> 2.1 The Flode Package Ecosystem</a>
+  <ul class="collapse">
+  <li><a href="#flode-architecture" id="toc-flode-architecture" class="nav-link" data-scroll-target="#flode-architecture"><span class="header-section-number">6.1.1</span> 2.1.1 Flode Architecture</a></li>
+  <li><a href="#promoting-code-into-flode" id="toc-promoting-code-into-flode" class="nav-link" data-scroll-target="#promoting-code-into-flode"><span class="header-section-number">6.1.2</span> 2.1.2 Promoting Code into Flode</a></li>
+  </ul></li>
+  <li><a href="#coding-style-and-conventions" id="toc-coding-style-and-conventions" class="nav-link" data-scroll-target="#coding-style-and-conventions"><span class="header-section-number">6.2</span> 2.2 Coding Style and Conventions</a>
+  <ul class="collapse">
+  <li><a href="#naming-conventions" id="toc-naming-conventions" class="nav-link" data-scroll-target="#naming-conventions"><span class="header-section-number">6.2.1</span> 2.2.1 Naming Conventions</a></li>
+  <li><a href="#code-structure" id="toc-code-structure" class="nav-link" data-scroll-target="#code-structure"><span class="header-section-number">6.2.2</span> 2.2.2 Code Structure</a></li>
+  <li><a href="#package-dependencies-and-the-fastverse" id="toc-package-dependencies-and-the-fastverse" class="nav-link" data-scroll-target="#package-dependencies-and-the-fastverse"><span class="header-section-number">6.2.3</span> 2.2.3 Package Dependencies and the fastverse</a></li>
+  <li><a href="#file-formats-and-export-standards" id="toc-file-formats-and-export-standards" class="nav-link" data-scroll-target="#file-formats-and-export-standards"><span class="header-section-number">6.2.4</span> 2.2.4 File Formats and Export Standards</a></li>
+  </ul></li>
+  <li><a href="#object-oriented-programming-in-flode" id="toc-object-oriented-programming-in-flode" class="nav-link" data-scroll-target="#object-oriented-programming-in-flode"><span class="header-section-number">6.3</span> 2.3 Object-Oriented Programming in Flode</a></li>
+  <li><a href="#mandatory-header-block" id="toc-mandatory-header-block" class="nav-link" data-scroll-target="#mandatory-header-block"><span class="header-section-number">6.4</span> 2.4 Mandatory Header Block</a></li>
+  <li><a href="#documentation-requirements" id="toc-documentation-requirements" class="nav-link" data-scroll-target="#documentation-requirements"><span class="header-section-number">6.5</span> 2.5 Documentation Requirements</a></li>
+  </ul></li>
+  <li><a href="#code-review---r-specific-requirements" id="toc-code-review---r-specific-requirements" class="nav-link" data-scroll-target="#code-review---r-specific-requirements"><span class="header-section-number">7</span> 3. Code Review - R-Specific Requirements</a>
+  <ul class="collapse">
+  <li><a href="#r-review-checklist" id="toc-r-review-checklist" class="nav-link" data-scroll-target="#r-review-checklist"><span class="header-section-number">7.1</span> 3.1 R Review Checklist</a>
+  <ul class="collapse">
+  <li><a href="#a.-correctness" id="toc-a.-correctness" class="nav-link" data-scroll-target="#a.-correctness"><span class="header-section-number">7.1.1</span> A. Correctness</a></li>
+  <li><a href="#b.-code-quality" id="toc-b.-code-quality" class="nav-link" data-scroll-target="#b.-code-quality"><span class="header-section-number">7.1.2</span> B. Code Quality</a></li>
+  <li><a href="#c.-testing" id="toc-c.-testing" class="nav-link" data-scroll-target="#c.-testing"><span class="header-section-number">7.1.3</span> C. Testing</a></li>
+  <li><a href="#d.-dependencies-and-reproducibility" id="toc-d.-dependencies-and-reproducibility" class="nav-link" data-scroll-target="#d.-dependencies-and-reproducibility"><span class="header-section-number">7.1.4</span> D. Dependencies and Reproducibility</a></li>
+  </ul></li>
+  <li><a href="#automated-quality-checks" id="toc-automated-quality-checks" class="nav-link" data-scroll-target="#automated-quality-checks"><span class="header-section-number">7.2</span> 3.2 Automated Quality Checks</a></li>
+  <li><a href="#testing-standards" id="toc-testing-standards" class="nav-link" data-scroll-target="#testing-standards"><span class="header-section-number">7.3</span> 3.3 Testing Standards</a></li>
+  <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure"><span class="header-section-number">7.4</span> 4.1 Repository Structure</a></li>
+  <li><a href="#reproducibility-with-renv" id="toc-reproducibility-with-renv" class="nav-link" data-scroll-target="#reproducibility-with-renv"><span class="header-section-number">7.5</span> 4.2 Reproducibility with renv</a></li>
+  </ul></li>
+  <li><a href="#custodianship" id="toc-custodianship" class="nav-link" data-scroll-target="#custodianship"><span class="header-section-number">8</span> 5. Custodianship</a></li>
+  <li><a href="#onboarding-and-training" id="toc-onboarding-and-training" class="nav-link" data-scroll-target="#onboarding-and-training"><span class="header-section-number">9</span> 6. Onboarding and Training</a>
+  <ul class="collapse">
+  <li><a href="#onboarding-for-new-team-members" id="toc-onboarding-for-new-team-members" class="nav-link" data-scroll-target="#onboarding-for-new-team-members"><span class="header-section-number">9.1</span> 6.1 Onboarding for New Team Members</a></li>
+  <li><a href="#ongoing-learning" id="toc-ongoing-learning" class="nav-link" data-scroll-target="#ongoing-learning"><span class="header-section-number">9.2</span> 6.2 Ongoing Learning</a></li>
+  </ul></li>
+  <li><a href="#governance-exceptions-and-review" id="toc-governance-exceptions-and-review" class="nav-link" data-scroll-target="#governance-exceptions-and-review"><span class="header-section-number">10</span> 7. Governance, Exceptions, and Review</a></li>
+  <li><a href="#approved-by" id="toc-approved-by" class="nav-link" data-scroll-target="#approved-by"><span class="header-section-number">11</span> Approved by</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-r-governance" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Document Metadata
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td>1.3</td>
+</tr>
+<tr class="even">
+<td><strong>Status</strong></td>
+<td>Draft: For Team Review</td>
+</tr>
+<tr class="odd">
+<td><strong>Review Date</strong></td>
+<td>2027-03-31</td>
+</tr>
+<tr class="even">
+<td><strong>Parent Document</strong></td>
+<td>Data &amp; Digital Asset Governance Framework v1.4 │ Data Ownership Model (CDDO, 2024)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="purpose" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Purpose</h1>
+<p>This document provides the detailed, R-specific governance standards for tools developed by the Forecasting and Warning Teams. It is a companion to the Data &amp; Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, digital and data assets registers, and version control standards that apply to all team code regardless of language.</p>
+<p>This document covers what is specific to R: the in-house <em>Flode</em> package architecture, fastverse coding conventions, renv dependency management, R testing and CI tooling, and R repository structure. Please read this alongside the parent framework, not instead of it.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parent document: Data &amp; Digital Asset Governance Framework v1.4. Companion document: Python Tool Governance v1.3.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="introduction-and-scope" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 1. Introduction and Scope</h1>
+<section id="background" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="background"><span class="header-section-number">5.1</span> 1.1 Background</h2>
+<p>The Forecasting and Warning (F&amp;W) Teams rely on a growing suite of R scripts, packages, and analytical tools to support both operational forecasting and associated research activities. As the team grows and the codebase matures, inconsistent development practices create risks including unreproducible results, undocumented tools, difficult onboarding, and vulnerabilities to key-person dependency.</p>
+<p>This governance proposal establishes a structured, practical framework to address these risks while remaining accessible to team members at all levels of R proficiency. This ranges from early-career modellers and analysts writing their first functions to senior technical advisors developing complex modelling packages.</p>
+</section>
+<section id="scope" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="scope"><span class="header-section-number">5.2</span> 1.2 Scope</h2>
+<p>This document applies to all R code produced by members of the team, including:</p>
+<ul>
+<li><p>R scripts used in support of operational F&amp;W workflows</p></li>
+<li><p>Internal R packages and reusable function libraries</p></li>
+<li><p>Pre-processing and post-processing tools</p></li>
+<li><p>Visualisation and reporting utilities</p></li>
+<li><p>Experimental or research-stage tools intended for future operational use</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Out of Scope</strong> Personal exploratory analyses that are not shared with other team members, one-off data checks, and code produced solely for external publication (unless also used operationally) are out of scope, though best practices are still encouraged.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="what-is-covered-here-and-what-is-in-the-parent-document" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="what-is-covered-here-and-what-is-in-the-parent-document"><span class="header-section-number">5.3</span> 1.3 What Is Covered Here and What Is in the Parent Document</h2>
+<p>The following governance elements are defined in the Data &amp; Digital Asset Governance Framework and apply to all R tools. They are not repeated here; refer to that document for the authoritative version:</p>
+<ul>
+<li><p>Owner → Steward → Custodian roles and grade requirements (Section 3)</p></li>
+<li><p>Tool tier classification: Tier 1 / 2 / 3 (Section 5)</p></li>
+<li><p>Custodianship requirements by tier (Section 7.2)</p></li>
+<li><p>Routes to tool development: A, B, C, D (Section 7.3)</p></li>
+<li><p>Code review requirements by tier (Section 7.4)</p></li>
+<li><p>Version control principles: branching, commits, semantic versioning, reproducibility (Section 7.5)</p></li>
+<li><p>Tool Register fields and maintenance (Section 7.6)</p></li>
+<li><p>Handover and succession (Section 7.7)</p></li>
+<li><p>Governance, exceptions, and annual audit (Section 12)</p></li>
+</ul>
+<p>This document covers everything that is specific to R.</p>
+</section>
+<section id="governance-principles" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="governance-principles"><span class="header-section-number">5.4</span> 1.4 Governance Principles</h2>
+<ul>
+<li><p>Reproducibility: All tools must produce consistent, auditable outputs.</p></li>
+<li><p>Accessibility: Standards must be achievable by all team members, with clear guidance for those newer to R.</p></li>
+<li><p>Proportionality: Governance requirements scale with a tool’s criticality and operational exposure.</p></li>
+<li><p>Continuous Improvement: The framework is a living document, reviewed annually.</p></li>
+</ul>
+</section>
+<section id="position-within-the-wider-governance-landscape" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="position-within-the-wider-governance-landscape"><span class="header-section-number">5.5</span> 1.5 Position Within the Wider Governance Landscape</h2>
+<p>Data Ownership Model Top-level authority. Defines the Data Owner, Data Steward, and Data (CDDO, 2023) Custodian roles and responsibilities across government. All role definitions in this framework follow the Data Ownership Model. Where role definitions conflict, the Data Ownership Model takes precedence. Organisational Data Parent policy. Governs data ownership, quality, Governance Policy classification, lineage, retention, and access control.</p>
+<p>Information and Records Archival forecast files may constitute Management Policy organisational records. Retention and disposal rules are governed here.</p>
+<p>Digital Asset Flode, as an internally developed R package, is Management Policy a digital asset. IP, licensing, and version archiving questions are governed at this level.</p>
+<p>IT Infrastructure and RStudio Server, Git platform, CI Security Policy infrastructure, and access control are governed by IT policy.</p>
+<p>Data &amp; Digital Asset Governs: roles, tiers, routes to development, Governance Framework review standards, version control principles, Tool Register, and incidents. This document defers to it on all shared governance matters.</p>
+<p>This Document (R Tool Governs: Flode architecture, R coding Governance) standards, fastverse dependency usage, renv, R-specific testing and CI, R repository structure, and R onboarding.</p>
+</section>
+</section>
+<section id="r-tool-development-standards" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 2. R Tool Development Standards</h1>
+<p>The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 7.1–7.4). This section covers the R-specific standards that apply within that governance structure.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool tiers, development routes, review requirements by tier, and version control principles: see Data &amp; Digital Asset Governance Framework, Section 7.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="the-flode-package-ecosystem" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="the-flode-package-ecosystem"><span class="header-section-number">6.1</span> 2.1 The Flode Package Ecosystem</h2>
+<p>All team R tools intended for reuse or sharing must be developed as components of or be compatible with Flode, the team’s overarching R package.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>What is Flode?</strong> Flode is the team’s primary internal R package. Installing Flode gives users access to the full set of shared team functions. Individual sub-packages or modules can also be developed as standalone packages that Flode re-exports. All new reusable tools should be built with eventual inclusion in Flode in mind.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="flode-architecture" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="flode-architecture"><span class="header-section-number">6.1.1</span> 2.1.1 Flode Architecture</h3>
+<p>Flode is structured as a meta-package with functional sub-modules. New tools should be developed in the most appropriate module:</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Module Names Under Review
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Flode module names listed below are provisional and subject to change. The team will confirm the final naming convention before the next version of this document. The module scopes are agreed; only the names may change.</p>
+</div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Flode Module</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reach.io</td>
+<td>Data ingestion and export: reading gauge records, gridded rainfall, NWP outputs, and writing standardised forecast files</td>
+</tr>
+<tr class="even">
+<td>reach.hydro</td>
+<td>Core hydrological calculations: flow statistics, unit conversions, catchment aggregation, flood frequency</td>
+</tr>
+<tr class="odd">
+<td>reach.ensemble</td>
+<td>Ensemble processing: member weighting, quantile extraction, probabilistic thresholding</td>
+</tr>
+<tr class="even">
+<td>reach.viz</td>
+<td>Visualisation: standardised ggplot2-compatible chart themes and flood-specific plot functions</td>
+</tr>
+<tr class="odd">
+<td>reach.validate</td>
+<td>Model validation and skill scoring: bias metrics, skill scores, verification against observed records</td>
+</tr>
+<tr class="even">
+<td>reach.utils</td>
+<td>General utilities: date/time helpers, path management, logging, configuration loading</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="promoting-code-into-flode" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="promoting-code-into-flode"><span class="header-section-number">6.1.2</span> 2.1.2 Promoting Code into Flode</h3>
+<p>A function progresses from a standalone script into Flode through a defined pathway:</p>
+<ul>
+<li><p>Developed as a Tier 3 tool with full header block and inline comments</p></li>
+<li><p>Peer reviewed and tested to Tier 2 standard</p></li>
+<li><p>Proposed to the Flode Steward via a GitHub issue with a brief rationale for inclusion</p></li>
+<li><p>Reviewed against Flode’s API design consistency; refactored if needed</p></li>
+<li><p>Full roxygen2 documentation written; tests achieving 70% coverage</p></li>
+<li><p>Merged into the relevant Flode module by the Steward; exported in NAMESPACE</p></li>
+<li><p>Version increment to Flode following Semantic Versioning</p></li>
+</ul>
+</section>
+</section>
+<section id="coding-style-and-conventions" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="coding-style-and-conventions"><span class="header-section-number">6.2</span> 2.2 Coding Style and Conventions</h2>
+<p>All team R code follows a style guide tailored to the fastverse ecosystem. Where guidance is not provided below, defer to the data.table style conventions rather than tidyverse conventions.</p>
+<section id="naming-conventions" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="naming-conventions"><span class="header-section-number">6.2.1</span> 2.2.1 Naming Conventions</h3>
+<ul>
+<li><p>Functions: snake_case verbs (e.g., calc_flood_peak(), load_gauge_dt())</p></li>
+<li><p>data.table objects: suffix _dt to make the type explicit (e.g., flow_dt, ensemble_dt)</p></li>
+<li><p>OOP classes: UpperCamelCase with Flode prefix (e.g., FlodeCatchment, FlodeForecast)</p></li>
+<li><p>Variables: descriptive snake_case nouns (e.g., catchment_area_km2, peak_flow_cms)</p></li>
+<li><p>Constants: UPPER_SNAKE_CASE (e.g., DEFAULT_THRESHOLD_M3S)</p></li>
+<li><p>File names: descriptive, date-prefixed for scripts (e.g., 2026-02_flow_ensemble_aggregation.R)</p></li>
+</ul>
+</section>
+<section id="code-structure" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="code-structure"><span class="header-section-number">6.2.2</span> 2.2.2 Code Structure</h3>
+<ul>
+<li><p>Scripts must begin with a standardised header block (see Section 2.4)</p></li>
+<li><p>Functions should follow the single-responsibility principle: one function, one task</p></li>
+<li><p>Scripts should not exceed 300 lines; longer scripts should be refactored into functions or sub-scripts</p></li>
+<li><p>Avoid hard-coded file paths; use relative paths or a centralised configuration file</p></li>
+<li><p>Use the here package for portable path management</p></li>
+</ul>
+</section>
+<section id="package-dependencies-and-the-fastverse" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="package-dependencies-and-the-fastverse"><span class="header-section-number">6.2.3</span> 2.2.3 Package Dependencies and the fastverse</h3>
+<p>The team’s default package ecosystem is the fastverse – a suite of high-performance R packages optimised for speed and memory efficiency. The fastverse is preferred over the tidyverse for all data manipulation and numerical tasks in production tools.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Reason</strong></th>
+<th><strong>Detail</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Speed</td>
+<td>data.table grouped operations and joins are typically an order of magnitude faster than dplyr equivalents on large datasets.</td>
+</tr>
+<tr class="even">
+<td>Memory efficiency</td>
+<td>data.table modifies objects in place by reference, avoiding copy-on-modify behaviour and reducing peak memory usage.</td>
+</tr>
+<tr class="odd">
+<td>File I/O performance</td>
+<td>data.table::fread() is the fastest general-purpose text file reader available in R.</td>
+</tr>
+<tr class="even">
+<td>Production stability</td>
+<td>data.table has an exceptionally strong backwards-compatibility record. The tidyverse has introduced breaking changes across major versions.</td>
+</tr>
+<tr class="odd">
+<td>Lean dependency footprint</td>
+<td>The fastverse is leaner in terms of package dependencies than the tidyverse, simplifying renv lockfile management <em>etc.</em>.</td>
+</tr>
+</tbody>
+</table>
+<p>The tidyverse must not be used in Tier 1 operational tools or in Flode package functions. It may be used freely in Tier 3 exploratory work.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Task</strong></th>
+<th><strong>Preferred Package(s)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tabular data manipulation</td>
+<td>data.table (primary); collapse as supplementary high-performance toolkit</td>
+</tr>
+<tr class="even">
+<td>Time series operations</td>
+<td>kit, roll (from fastverse); avoid zoo/xts unless interfacing with external systems</td>
+</tr>
+<tr class="odd">
+<td>Numerical / statistical computation</td>
+<td>collapse::fnth(), collapse::fmean() etc.; avoid apply-family loops over large data</td>
+</tr>
+<tr class="even">
+<td>File I/O (tabular text)</td>
+<td>data.table::fread() / fwrite() – never read.csv() or readr in production</td>
+</tr>
+<tr class="odd">
+<td>File I/O (Parquet)</td>
+<td>arrow::read_parquet() / write_parquet()</td>
+</tr>
+<tr class="even">
+<td>File I/O (spatial / netCDF)</td>
+<td>terra, ncdf4 – approved for spatial and gridded data</td>
+</tr>
+<tr class="odd">
+<td>Visualisation</td>
+<td>ggplot2 acceptable for Tier 2–3; flode.viz functions preferred for standardised outputs (longer term)</td>
+</tr>
+<tr class="even">
+<td>Configuration / paths</td>
+<td>here, config</td>
+</tr>
+<tr class="odd">
+<td>Package development</td>
+<td>devtools, roxygen2, usethis, testthat</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Guidance for Newer R Users – data.table</strong> data.table syntax can look unfamiliar at first. The key concept is DT[i, j, by]: filter rows with i, select or compute columns with j, and group with by. The data.table wiki (rdatatable.gitlab.io/data.table/) has excellent worked examples. Ask the R Lead for a walkthrough session if you are new to it.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="file-formats-and-export-standards" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="file-formats-and-export-standards"><span class="header-section-number">6.2.4</span> 2.2.4 File Formats and Export Standards</h3>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Format</strong></th>
+<th><strong>Recommended Use</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Parquet (.parquet)</td>
+<td>Preferred format for all large tabular outputs in production tools. Use arrow::write_parquet() and arrow::read_parquet().</td>
+</tr>
+<tr class="even">
+<td>CSV (.csv)</td>
+<td>Acceptable for small exchange files (under ~10,000 rows). Use data.table::fwrite() exclusively.</td>
+</tr>
+<tr class="odd">
+<td>netCDF (.nc)</td>
+<td>Required for gridded spatial outputs. Use ncdf4 or terra.</td>
+</tr>
+<tr class="even">
+<td>RDS (.rds)</td>
+<td>Acceptable for R-specific intermediate objects. Use saveRDS() / readRDS(). Do not use .RData files.</td>
+</tr>
+<tr class="odd">
+<td>Feather (.feather)</td>
+<td>Acceptable alternative to Parquet for high-speed intermediate files within a single pipeline.</td>
+</tr>
+<tr class="even">
+<td>Excel (.xlsx)</td>
+<td>Restricted to final-output reports and stakeholder deliverables only. Use openxlsx2 if required.</td>
+</tr>
+</tbody>
+</table>
+<p>For full technical detail on each format, including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions, see <a href="e-file-format-reference.html" class="quarto-xref"><span>Appendix&nbsp;E</span></a>. Format compliance for Tier 1 and Tier 2 tools is checked automatically by the <code>fw-governance</code> MCP server <code>check_file_formats</code> tool.</p>
+</section>
+</section>
+<section id="object-oriented-programming-in-flode" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="object-oriented-programming-in-flode"><span class="header-section-number">6.3</span> 2.3 Object-Oriented Programming in Flode</h2>
+<p>Where tools require stateful objects or extensible APIs, OOP is preferred. Flode adopts a clear hierarchy for which system to use.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>System</strong></th>
+<th><strong>When to Use</strong></th>
+<th><strong>Avoid When</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S7 (preferred for Flode)</td>
+<td>Defining new classes in Flode modules; formal, validated class contracts; any new class exported from a Flode package</td>
+<td>Rapid prototyping in Tier 3 scripts; simple one-off data containers</td>
+</tr>
+<tr class="even">
+<td>R6</td>
+<td>Stateful objects that must mutate in place; objects with a lifecycle (initialize / finalize); reference semantics explicitly needed</td>
+<td>General data representation – prefer S7 for pure data classes</td>
+</tr>
+<tr class="odd">
+<td>S3</td>
+<td>Lightweight method dispatch on existing data structures (e.g., print, summary methods for Flode classes)</td>
+<td>Any new exported Flode class – use S7 instead</td>
+</tr>
+<tr class="even">
+<td>S4</td>
+<td>Interoperability with existing S4 packages (e.g., terra, sp) only</td>
+<td>All new development – S7 supersedes S4</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mandatory-header-block" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="mandatory-header-block"><span class="header-section-number">6.4</span> 2.4 Mandatory Header Block</h2>
+<p>Every script and function file must include the following header, completed in full:</p>
+<pre><code># ============================================================ # 
+# Tool: [Tool name] 
+# Description: [One-sentence description of what this does] 
+# Flode Module: [Target module, e.g. flode.hydro - or 'standalone'] 
+# Author: [Name, email] 
+# Created: [YYYY-MM-DD]  
+# Modified: [YYYY-MM-DD] - [initials]: [change summary] 
+# Tier: [1 / 2 / 3] 
+# Inputs: [Describe inputs and expected formats] 
+# Outputs: [Describe outputs and formats] 
+# Dependencies: [List non-base packages; flag any non-fastverse choices]
+# =========================================================== #</code></pre>
+</section>
+<section id="documentation-requirements" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="documentation-requirements"><span class="header-section-number">6.5</span> 2.5 Documentation Requirements</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tier</strong></th>
+<th><strong>Required Documentation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tier 1 – Operational</td>
+<td>Mandatory header block; roxygen2 documentation for all exported functions; a README.md in the tool directory; a user guide or runbook; change log maintained in Git</td>
+</tr>
+<tr class="even">
+<td>Tier 2 – Analytical</td>
+<td>Mandatory header block; roxygen2 for key functions; a README.md</td>
+</tr>
+<tr class="odd">
+<td>Tier 3 – Experimental</td>
+<td>Mandatory header block; inline comments sufficient at this stage</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="code-review---r-specific-requirements" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 3. Code Review - R-Specific Requirements</h1>
+<p>Review requirements by tier (mandatory peer review, senior sign-off for Tier 1, annual audit) are set in the parent framework, Section 8.4. This section covers the R-specific review checklist and automated tooling.</p>
+<section id="r-review-checklist" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="r-review-checklist"><span class="header-section-number">7.1</span> 3.1 R Review Checklist</h2>
+<p>All reviewers must work through this checklist. The completed checklist must be attached to the pull request before merging.</p>
+<section id="a.-correctness" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="a.-correctness"><span class="header-section-number">7.1.1</span> A. Correctness</h3>
+<ul>
+<li><p>Does the code do what it claims to do in its documentation?</p></li>
+<li><p>Have edge cases (empty inputs, NA values, out-of-range data) been handled?</p></li>
+<li><p>Are any assumptions about input data explicitly stated?</p></li>
+</ul>
+</section>
+<section id="b.-code-quality" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="b.-code-quality"><span class="header-section-number">7.1.2</span> B. Code Quality</h3>
+<ul>
+<li><p>Does the code follow team naming conventions and internal style standards?</p></li>
+<li><p>Is the header block complete and accurate?</p></li>
+<li><p>Are functions appropriately scoped and documented with roxygen2?</p></li>
+<li><p>Is the code free of hard-coded file paths (use here)?</p></li>
+<li><p>Is the correct OOP system used? Are S7 properties typed and validators present for Tier 1/2 classes? Do R6 classes have a print method?</p></li>
+</ul>
+</section>
+<section id="c.-testing" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="c.-testing"><span class="header-section-number">7.1.3</span> C. Testing</h3>
+<ul>
+<li><p>Have testthat tests been written or updated (Tier 1 mandatory, Tier 2 recommended)?</p></li>
+<li><p>Do existing tests pass?</p></li>
+<li><p>Has the code been run against a representative input dataset?</p></li>
+</ul>
+</section>
+<section id="d.-dependencies-and-reproducibility" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="d.-dependencies-and-reproducibility"><span class="header-section-number">7.1.4</span> D. Dependencies and Reproducibility</h3>
+<ul>
+<li><p>Are all packages declared and version-noted where necessary?</p></li>
+<li><p>Is the renv.lock file updated and committed?</p></li>
+<li><p>Can the tool be run from a fresh R session without undeclared dependencies?</p></li>
+</ul>
+</section>
+</section>
+<section id="automated-quality-checks" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="automated-quality-checks"><span class="header-section-number">7.2</span> 3.2 Automated Quality Checks</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tool</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>lintr</td>
+<td>Static code analysis: flags style violations, common errors, and deprecated patterns. Failures block merge.</td>
+</tr>
+<tr class="even">
+<td>styler</td>
+<td>Automatic code reformatting (advisory only in CI – does not block merge)</td>
+</tr>
+<tr class="odd">
+<td>testthat</td>
+<td>Runs the test suite. Failures block merge.</td>
+</tr>
+<tr class="even">
+<td>renv::status()</td>
+<td>Checks that the renv lockfile matches installed packages. Failures block merge for Tier 1–2.</td>
+</tr>
+<tr class="odd">
+<td>covr</td>
+<td>Measures test coverage. Tier 1 tools must meet 70% line coverage.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="testing-standards" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="testing-standards"><span class="header-section-number">7.3</span> 3.3 Testing Standards</h2>
+<ul>
+<li><p>All Tier 1 functions must have unit tests covering expected outputs, edge cases, and known failure modes</p></li>
+<li><p>Test files must be co-located in a /tests/testthat/ directory following R package conventions</p></li>
+<li><p>Tests should use small, embedded data fixtures rather than external file dependencies</p></li>
+<li><p>Minimum 70% line coverage required for Tier 1 tools (measured via covr)</p></li>
+</ul>
+<p><strong>4. Version Control: R-Specific Implementation</strong></p>
+<p>Version control principles (branching strategy, commit standards, semantic versioning, and reproducibility requirements) are defined in the parent framework, Section 8.5. This section covers the R-specific implementation.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Branching strategy, commit standards, semantic versioning: see Data &amp; Digital Asset Governance Framework, Section 8.5.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="repository-structure" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="repository-structure"><span class="header-section-number">7.4</span> 4.1 Repository Structure</h2>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>flood-forecast-tools/</strong> ├── operational/ # Tier 1 R tools ├── analytical/ # Tier 2 R tools ├── experimental/ # Tier 3 R tools ├── shared-functions/ # Shared R function library ├── tests/ # testthat test suites ├── docs/ # Documentation and runbooks ├── renv/ # renv reproducibility lockfile └── README.md # Repository overview and onboarding guide</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="reproducibility-with-renv" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="reproducibility-with-renv"><span class="header-section-number">7.5</span> 4.2 Reproducibility with renv</h2>
+<p>All team R repositories must use renv to manage package dependencies. This ensures that code run today produces the same results when run by a colleague in the future.</p>
+<ul>
+<li><p>renv::init() must be run when a new repository is created</p></li>
+<li><p>renv::snapshot() must be run before any commit that adds or updates a package</p></li>
+<li><p>The renv.lock file must be committed to Git with every dependency change</p></li>
+<li><p>New team members must run renv::restore() as the first step when setting up a project</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Guidance for Newer R Users</strong> If you get an error about missing packages when running a script, try running renv::restore() in the R console. This installs the exact versions the original author used. If you need to add a new package, run install.packages() normally, then renv::snapshot() to record it, and include the updated lockfile in your commit.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="custodianship" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 5. Custodianship</h1>
+<p>Custodianship roles, grade requirements, the Tool Register, and handover and succession requirements for R tools are defined in the parent framework. All requirements set out there apply in full.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Owner/Steward/Custodian roles and grades: Section 3. Tier-specific custodianship requirements: Section 7.2. Tool Register: Section 7.6. Handover and succession: Section 7.7. All references are to the Data &amp; Digital Asset Governance Framework v1.4.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>For cross-language pipelines where an R tool feeds a Python component, custodianship must be assigned separately for each language component. The Owner may be the same person, but the Steward and Custodian assignments should reflect who is best placed to maintain each part.</p>
+</section>
+<section id="onboarding-and-training" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 6. Onboarding and Training</h1>
+<section id="onboarding-for-new-team-members" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="onboarding-for-new-team-members"><span class="header-section-number">9.1</span> 6.1 Onboarding for New Team Members</h2>
+<p>All new team members must complete the following within their first four weeks:</p>
+<ul>
+<li><p>Read this governance document, the parent framework, and sign the acknowledgement form</p></li>
+<li><p>Set up the team’s RStudio Server environment and authenticate with the Git platform</p></li>
+<li><p>Complete the team R onboarding guide (available in docs/onboarding/)</p></li>
+<li><p>Run renv::restore() on the main team repository and confirm the environment is working</p></li>
+<li><p>Review at least two merged pull requests to understand the review process</p></li>
+<li><p>Attend an introductory session with the R Lead</p></li>
+</ul>
+</section>
+<section id="ongoing-learning" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="ongoing-learning"><span class="header-section-number">9.2</span> 6.2 Ongoing Learning</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Resource</strong></th>
+<th><strong>Relevant For</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data.table wiki (rdatatable.gitlab.io/data.table/)</td>
+<td>All team members; primary data manipulation reference</td>
+</tr>
+<tr class="even">
+<td>fastverse documentation (fastverse.github.io/fastverse/)</td>
+<td>All team members; overview of the fastverse ecosystem</td>
+</tr>
+<tr class="odd">
+<td>S7 documentation (rconsortium.github.io/S7/)</td>
+<td>Intermediate to advanced; OOP in Flode package development</td>
+</tr>
+<tr class="even">
+<td>R6 documentation (r6.r-lib.org)</td>
+<td>Intermediate to advanced; stateful OOP for lifecycle objects. Used in Flode package development.</td>
+</tr>
+<tr class="odd">
+<td>R Packages book (r-pkgs.org)</td>
+<td>Intermediate to advanced; building internal packages including Flode modules</td>
+</tr>
+<tr class="even">
+<td>Happy Git with R (happygitwithr.com)</td>
+<td>Beginners; Git and RStudio workflow</td>
+</tr>
+<tr class="odd">
+<td>testthat documentation</td>
+<td>All; understanding the testing framework</td>
+</tr>
+</tbody>
+</table>
+<p>The team holds a monthly R drop-in session for questions, code walkthroughs, and knowledge sharing.</p>
+</section>
+</section>
+<section id="governance-exceptions-and-review" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 7. Governance, Exceptions, and Review</h1>
+<p>The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, Section 12. The following applies specifically to R tools:</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Exceptions process, compliance and audit, document review schedule: see Data &amp; Digital Asset Governance Framework, Section 12.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>Overall responsibility for this document sits with the R Lead. The R Lead conducts an annual audit of all Tier 1 R tools covering: header block completeness, test coverage, documentation currency, renv lockfile consistency, and compliance with the branching strategy. Findings are reported alongside the wider governance audit.</p>
+</section>
+<section id="approved-by" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Approved by</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th><strong>Role</strong></th>
+<th><strong>Name / Signature / Date</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Head of Flood Forecasting</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>R Lead / Technical Lead</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Team Representative</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-governance-framework.html" class="pagination-link  aria-label=" &lt;span="" and="" digital="" asset="" governance="" framework&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data and Digital Asset Governance Framework</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-python-code-governance.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Python Tool Governance</span>">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

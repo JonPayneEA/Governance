@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.526">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data and Digital Asset Governance - Appendix E — File Format Reference</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./d-upcoming-changes.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="./e-file-format-reference.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">File Format Reference</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data and Digital Asset Governance</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Problem Statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-governance-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data and Digital Asset Governance Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-r-code-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-python-code-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-hydrometric-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-flood-model-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-training-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./b-document-hierarchy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Document Hierarchy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./c-alignment-register.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Alignment Register</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./d-upcoming-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Upcoming Changes and Improvements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./e-file-format-reference.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">File Format Reference</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">F</span> Purpose</a></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">G</span> 1. Scope</a></li>
+  <li><a href="#parquet-.parquet" id="toc-parquet-.parquet" class="nav-link" data-scroll-target="#parquet-.parquet"><span class="header-section-number">H</span> 2. Parquet (.parquet)</a>
+  <ul class="collapse">
+  <li><a href="#why-parquet-for-time-series" id="toc-why-parquet-for-time-series" class="nav-link" data-scroll-target="#why-parquet-for-time-series"><span class="header-section-number">H.1</span> 2.1 Why Parquet for time series</a></li>
+  <li><a href="#partitioning" id="toc-partitioning" class="nav-link" data-scroll-target="#partitioning"><span class="header-section-number">H.2</span> 2.2 Partitioning</a></li>
+  </ul></li>
+  <li><a href="#delta-tables" id="toc-delta-tables" class="nav-link" data-scroll-target="#delta-tables"><span class="header-section-number">I</span> 3. Delta Tables</a>
+  <ul class="collapse">
+  <li><a href="#what-delta-adds-over-plain-parquet" id="toc-what-delta-adds-over-plain-parquet" class="nav-link" data-scroll-target="#what-delta-adds-over-plain-parquet"><span class="header-section-number">I.1</span> 3.1 What Delta adds over plain Parquet</a></li>
+  </ul></li>
+  <li><a href="#flood-modeller-pro-files" id="toc-flood-modeller-pro-files" class="nav-link" data-scroll-target="#flood-modeller-pro-files"><span class="header-section-number">J</span> 4. Flood Modeller Pro Files</a>
+  <ul class="collapse">
+  <li><a href="#file-types" id="toc-file-types" class="nav-link" data-scroll-target="#file-types"><span class="header-section-number">J.1</span> 4.1 File types</a></li>
+  </ul></li>
+  <li><a href="#pdm-files" id="toc-pdm-files" class="nav-link" data-scroll-target="#pdm-files"><span class="header-section-number">K</span> 5. PDM Files</a></li>
+  <li><a href="#netcdf-.nc" id="toc-netcdf-.nc" class="nav-link" data-scroll-target="#netcdf-.nc"><span class="header-section-number">L</span> 6. NetCDF (.nc)</a>
+  <ul class="collapse">
+  <li><a href="#what-it-is" id="toc-what-it-is" class="nav-link" data-scroll-target="#what-it-is"><span class="header-section-number">L.1</span> 6.1 What it is</a></li>
+  <li><a href="#alternatives-for-gridded-weather-data" id="toc-alternatives-for-gridded-weather-data" class="nav-link" data-scroll-target="#alternatives-for-gridded-weather-data"><span class="header-section-number">L.2</span> 6.2 Alternatives for gridded weather data</a>
+  <ul class="collapse">
+  <li><a href="#zarr" id="toc-zarr" class="nav-link" data-scroll-target="#zarr"><span class="header-section-number">L.2.1</span> Zarr</a></li>
+  <li><a href="#cloud-optimised-geotiff-cog" id="toc-cloud-optimised-geotiff-cog" class="nav-link" data-scroll-target="#cloud-optimised-geotiff-cog"><span class="header-section-number">L.2.2</span> Cloud-Optimised GeoTIFF (COG)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#spatial-data-geoparquet-and-shapefiles" id="toc-spatial-data-geoparquet-and-shapefiles" class="nav-link" data-scroll-target="#spatial-data-geoparquet-and-shapefiles"><span class="header-section-number">M</span> 7. Spatial Data: GeoParquet and Shapefiles</a>
+  <ul class="collapse">
+  <li><a href="#shapefiles" id="toc-shapefiles" class="nav-link" data-scroll-target="#shapefiles"><span class="header-section-number">M.1</span> 7.1 Shapefiles</a></li>
+  <li><a href="#geoparquet" id="toc-geoparquet" class="nav-link" data-scroll-target="#geoparquet"><span class="header-section-number">M.2</span> 7.2 GeoParquet</a></li>
+  <li><a href="#which-to-use" id="toc-which-to-use" class="nav-link" data-scroll-target="#which-to-use"><span class="header-section-number">M.3</span> 7.3 Which to use</a></li>
+  </ul></li>
+  <li><a href="#csv-.csv" id="toc-csv-.csv" class="nav-link" data-scroll-target="#csv-.csv"><span class="header-section-number">N</span> 8. CSV (.csv)</a>
+  <ul class="collapse">
+  <li><a href="#permitted-uses" id="toc-permitted-uses" class="nav-link" data-scroll-target="#permitted-uses"><span class="header-section-number">N.1</span> 8.1 Permitted uses</a></li>
+  <li><a href="#limitations-and-common-misuse" id="toc-limitations-and-common-misuse" class="nav-link" data-scroll-target="#limitations-and-common-misuse"><span class="header-section-number">N.2</span> 8.2 Limitations and common misuse</a></li>
+  </ul></li>
+  <li><a href="#excel-.xlsx" id="toc-excel-.xlsx" class="nav-link" data-scroll-target="#excel-.xlsx"><span class="header-section-number">O</span> 9. Excel (.xlsx)</a>
+  <ul class="collapse">
+  <li><a href="#permitted-uses-1" id="toc-permitted-uses-1" class="nav-link" data-scroll-target="#permitted-uses-1"><span class="header-section-number">O.1</span> 9.1 Permitted uses</a></li>
+  <li><a href="#limitations-and-common-misuse-1" id="toc-limitations-and-common-misuse-1" class="nav-link" data-scroll-target="#limitations-and-common-misuse-1"><span class="header-section-number">O.2</span> 9.2 Limitations and common misuse</a></li>
+  </ul></li>
+  <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link" data-scroll-target="#quick-reference"><span class="header-section-number">P</span> 10. Quick Reference</a></li>
+  <li><a href="#approved-by" id="toc-approved-by" class="nav-link" data-scroll-target="#approved-by"><span class="header-section-number">Q</span> Approved by</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="./e-file-format-reference.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">File Format Reference</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-file-format-reference" class="quarto-section-identifier">Appendix E — File Format Reference</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Document Metadata
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td>1.1</td>
+</tr>
+<tr class="even">
+<td><strong>Status</strong></td>
+<td>Draft: For Team Review</td>
+</tr>
+<tr class="odd">
+<td><strong>Review Date</strong></td>
+<td>2027-03-31</td>
+</tr>
+<tr class="even">
+<td><strong>Parent Document</strong></td>
+<td>Data &amp; Digital Asset Governance Framework v1.4 │ Data Ownership Model</td>
+</tr>
+<tr class="odd">
+<td><strong>Note</strong></td>
+<td>Moved from Chapter 2 to Appendix E at v1.1. This is a reference document. The normative file format requirements are enforced through the Hydrometric Data Framework (<a href="05-hydrometric-data.html" class="quarto-xref"><span>Chapter&nbsp;5</span></a>), R Tool Governance (<a href="03-r-code-governance.html" class="quarto-xref"><span>Chapter&nbsp;3</span></a>), and Python Tool Governance (<a href="04-python-code-governance.html" class="quarto-xref"><span>Chapter&nbsp;4</span></a>). Format compliance is checked automatically by the <code>fw-governance</code> MCP server <code>check_file_formats</code> tool.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="purpose" class="level1" data-number="F">
+<h1 data-number="F"><span class="header-section-number">F</span> Purpose</h1>
+<p>This appendix is the authoritative reference for which file formats are accepted across F&amp;W team tools and workflows. It covers when each format should be used, how it works, and any important limitations. Where there is a choice between formats, this appendix states the preferred option and the reason for it.</p>
+<p>The normative requirements (that Parquet is mandatory at all hydrometric data tiers, that CSV is prohibited in pipelines, that Delta tables are restricted to DASH) are stated and enforced in the domain governance documents that own them. This appendix provides the technical rationale and comparison material to support those requirements.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>This appendix is a companion to the Data <strong>&amp;</strong> Digital Asset Governance Framework v1.4, which sets out the Owner, Steward, and Custodian roles and governance principles that apply to all team assets. File format choices must be consistent with the data tier standards in the Hydrometric Data Framework (<a href="05-hydrometric-data.html" class="quarto-xref"><span>Chapter&nbsp;5</span></a>).</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="scope" class="level1" data-number="G">
+<h1 data-number="G"><span class="header-section-number">G</span> 1. Scope</h1>
+<p>This document applies to all data files created, stored, or exchanged by F&amp;W Team members, including:</p>
+<ul>
+<li><p>Tabular data and time series from hydrometric and model pipelines</p></li>
+<li><p>Gridded weather and spatial data used in modelling and analysis</p></li>
+<li><p>Flood Modeller Pro and PDM model files</p></li>
+<li><p>Data files shared with or received from external suppliers and partners</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Out of Scope</strong> <em>Code files, configuration files (<strong>XML, </strong>JSON, YAML, TOML), and trained ML model artefacts (ONNX, joblib) are governed by the R and Python Tool Governance documents. Database connections and streaming data are out of scope.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="parquet-.parquet" class="level1" data-number="H">
+<h1 data-number="H"><span class="header-section-number">H</span> 2. Parquet (.parquet)</h1>
+<p>Parquet is the standard format for all tabular data in team tools and pipelines. It is a columnar, compressed, strongly typed binary format. Unlike CSV, it preserves data types exactly and is substantially smaller on disk. It is the native format for the Databricks DASH environment and is readable by R, Python, and Databricks without conversion.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Parquet is the required format for all Bronze, Silver, and Gold tier datasets in the Hydrometric Data Framework. CSV is not an acceptable substitute at any tier.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="why-parquet-for-time-series" class="level2" data-number="H.1">
+<h2 data-number="H.1" class="anchored" data-anchor-id="why-parquet-for-time-series"><span class="header-section-number">H.1</span> 2.1 Why Parquet for time series</h2>
+<p>Parquet stores data by column rather than by row. A tool that only needs timestamps and flow values from a file with twenty columns loads only those two columns from disk. For long records across hundreds of gauges this makes a material difference to both speed and memory use.</p>
+<p>Timestamps are stored as datetime64[ns, UTC], not as strings. Floats are float64 throughout. This prevents silent type errors when the same file is read by different tools or colleagues.</p>
+<p>Parquet uses Snappy compression by default, reducing file size by 60-80% compared to equivalent CSV with no data loss.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Property</strong></th>
+<th><strong>Detail</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Timestamp type</td>
+<td>datetime64[ns, UTC] always. Never store timestamps as strings.</td>
+</tr>
+<tr class="even">
+<td>Float type</td>
+<td>float64 throughout. Do not downcast to float32.</td>
+</tr>
+<tr class="odd">
+<td>Integer type</td>
+<td>int32 for flags and counts.</td>
+</tr>
+<tr class="even">
+<td>Compression</td>
+<td>Snappy by default. zstd is acceptable for archival.</td>
+</tr>
+<tr class="odd">
+<td>Read in R</td>
+<td>arrow::read_parquet()</td>
+</tr>
+<tr class="even">
+<td>Read in Python</td>
+<td>polars.read_parquet() or pyarrow.parquet.read_table()</td>
+</tr>
+<tr class="odd">
+<td>Read in Databricks</td>
+<td>spark.read.parquet() or delta table read</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="partitioning" class="level2" data-number="H.2">
+<h2 data-number="H.2" class="anchored" data-anchor-id="partitioning"><span class="header-section-number">H.2</span> 2.2 Partitioning</h2>
+<p>Partitioning splits a large dataset into a folder tree so queries only read the relevant subset of files. A partitioned Parquet dataset is a directory, not a single file. Each level of the tree is a partition key.</p>
+<p>The standard partition scheme for hydrometric time series is:</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>supplier / data_type / gaugeID / year / &lt;files&gt;.parquet</strong></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>For example, all Environment Agency flow records from 2024 sit in ea/Q/2001/2024/. A query asking for 2024 data never opens any other year folder. Without partitioning, the same query scans the entire dataset.</p>
+<p>Partition keys should reflect the most common query patterns. Do not over-partition: very small files (under around 50 MB uncompressed) indicate too many partition levels.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Partition level</strong></th>
+<th><strong>Example values</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>supplier</td>
+<td>ea, nrfa, mo</td>
+<td>Isolates data by source organisation</td>
+</tr>
+<tr class="even">
+<td>data_type</td>
+<td>Q (flow), H (stage), P (rainfall)</td>
+<td>Allows reading only the variable needed</td>
+</tr>
+<tr class="odd">
+<td>gaugeID</td>
+<td>WISKI IDs: 2001, 2002, 1910TH</td>
+<td>Allows reading only the variable needed</td>
+</tr>
+<tr class="even">
+<td>year</td>
+<td>2023, 2024, 2025</td>
+<td>Limits time range scanned for historical queries</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>NOTE: Optimal format is up for review</strong> Likely to change to: supplier / data_type / year / <files>.parquet</files></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="delta-tables" class="level1" data-number="I">
+<h1 data-number="I"><span class="header-section-number">I</span> 3. Delta Tables</h1>
+<p>A Delta table is a storage layer built on top of Parquet files, available in the Databricks DASH environment. It adds transactional behaviour to a Parquet-backed table. Delta tables are used for bronze and silver stores in DASH.</p>
+<section id="what-delta-adds-over-plain-parquet" class="level2" data-number="I.1">
+<h2 data-number="I.1" class="anchored" data-anchor-id="what-delta-adds-over-plain-parquet"><span class="header-section-number">I.1</span> 3.1 What Delta adds over plain Parquet</h2>
+<p>Plain Parquet files are immutable: once written they cannot be updated in place. Delta solves this by maintaining a transaction log alongside the Parquet data files. Every write, update, or delete is recorded in the log.</p>
+<ul>
+<li><p>Rows can be updated or deleted without rewriting the entire dataset.</p></li>
+<li><p>Concurrent reads and writes are handled safely (ACID transactions).</p></li>
+<li><p>Schema changes are enforced and logged. A tool cannot accidentally write a column with the wrong type.</p></li>
+<li><p>Time travel: you can query the table as it was at any earlier point, supporting auditability and debugging.</p></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Feature</strong></th>
+<th><strong>Plain Parquet</strong></th>
+<th><strong>Delta Table</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row-level updates</td>
+<td>Not supported</td>
+<td>Supported</td>
+</tr>
+<tr class="even">
+<td>Schema enforcement</td>
+<td>Manual</td>
+<td>Enforced and logged automatically</td>
+</tr>
+<tr class="odd">
+<td>Time travel</td>
+<td>Not supported</td>
+<td>Supported</td>
+</tr>
+<tr class="even">
+<td>ACID transactions</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Usable outside Databricks</td>
+<td>Yes</td>
+<td>Not recommended</td>
+</tr>
+<tr class="even">
+<td>File format on disk</td>
+<td>Parquet files</td>
+<td>Parquet files plus transaction log</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Delta tables must not be used outside DASH. They require the Databricks runtime to manage the transaction log correctly. When sharing data extracted from DASH, export as plain Parquet. The receiving tool does not need to know it came from a Delta table.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="flood-modeller-pro-files" class="level1" data-number="J">
+<h1 data-number="J"><span class="header-section-number">J</span> 4. Flood Modeller Pro Files</h1>
+<p>Flood Modeller Pro (FMP) uses a set of proprietary binary and text-based files. All must be version-controlled and stored in the agreed folder structure set out in the Flood Model Governance document. Model files must not be held on local machines.</p>
+<section id="file-types" class="level2" data-number="J.1">
+<h2 data-number="J.1" class="anchored" data-anchor-id="file-types"><span class="header-section-number">J.1</span> 4.1 File types</h2>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Extension</strong></th>
+<th><strong>Contents</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.ief</td>
+<td>Run control file. Specifies which .dat and .ied files to use, time-step settings, and output options.</td>
+<td>Top-level file used to launch a run. Version-control alongside .dat.</td>
+</tr>
+<tr class="even">
+<td>.dat</td>
+<td>Network geometry. Cross-sections, structures, and connectivity for the 1D scheme.</td>
+<td>Binary. Changes with every calibration update or geometry edit.</td>
+</tr>
+<tr class="odd">
+<td>.ied</td>
+<td>Event data. Boundary condition time series (inflows, tidal levels, etc.) for a specific run.</td>
+<td>Referenced by the.ief.</td>
+</tr>
+<tr class="even">
+<td>.inp</td>
+<td>Associated with 1D Urban models. The class is initiated with the full filepath of an INP file to load an existing drainage network.</td>
+<td>Not currently applied in flood forecast modelling</td>
+</tr>
+<tr class="odd">
+<td>.ini</td>
+<td>Default values for FM models</td>
+<td>Default values such as run-time parameters and linkages to other networks are stored here.</td>
+</tr>
+<tr class="even">
+<td>.gxy</td>
+<td>Georeferencing for 1D networks</td>
+<td>Though .dat files can contain easting and northing data, these will not impact the positional displays unless a .gxy file is generated</td>
+</tr>
+<tr class="odd">
+<td>.zzn</td>
+<td>Binary results. Water levels and flows at every node for every time step.</td>
+<td>Outputs. Store in /outputs. Retain alongside the .ief that produced them.</td>
+</tr>
+<tr class="even">
+<td>.zzs</td>
+<td>Summary results. Peak levels and flows extracted from the .zzn.</td>
+<td>Smaller than .zzn. Used for quick review. Also stored in /outputs.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Every formal run record must state the FMP build number alongside the .ief version. Results from different software builds are not guaranteed to be identical even with the same input files.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="pdm-files" class="level1" data-number="K">
+<h1 data-number="K"><span class="header-section-number">K</span> 5. PDM Files</h1>
+<p>PDM (Probability Distributed Model) converts rainfall and potential evapotranspiration into catchment runoff. PDM assets comprise three file types: parameter sets, configuration files, and calibration records.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>File type</strong></th>
+<th><strong>Contents</strong></th>
+<th><strong>Governance requirement</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Parameter set</td>
+<td>Calibrated PDM parameters for a catchment. Defines soil moisture and routing behaviour.</td>
+<td>Store in the agreed repository. Name as [CatchmentID]<em>PDM</em>[Calibration]_[Version]. Must have a calibration record attached.</td>
+</tr>
+<tr class="even">
+<td>Configuration file</td>
+<td>Specifies which parameter set to use, input data paths, time-step settings, and output options.</td>
+<td>Version-controlled alongside the parameter set. Reference in the run record.</td>
+</tr>
+<tr class="odd">
+<td>Calibration record</td>
+<td>Documents calibration period, observed data used, performance metrics (NSE, KGE, FAR), and known limitations.</td>
+<td>Mandatory for every parameter set. Must be approved by the Steward before use in a formal output.</td>
+</tr>
+</tbody>
+</table>
+<p>Parameter sets are sensitive assets. A set calibrated on one data period can produce materially different outputs from a set calibrated on a different period, even for the same catchment. Version control and calibration documentation are not optional.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Where PDM is coupled with FMP, the coupling configuration (boundary locations, time-step settings, and exchange variables) must be documented and version-controlled alongside both sets of model files.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="netcdf-.nc" class="level1" data-number="L">
+<h1 data-number="L"><span class="header-section-number">L</span> 6. NetCDF (.nc)</h1>
+<p>NetCDF is the required format for gridded spatial outputs, including gridded weather data, rainfall fields, and any raster data that varies over time.</p>
+<section id="what-it-is" class="level2" data-number="L.1">
+<h2 data-number="L.1" class="anchored" data-anchor-id="what-it-is"><span class="header-section-number">L.1</span> 6.1 What it is</h2>
+<p>A NetCDF file stores arrays with named dimensions, typically latitude, longitude, and time. Each variable (for example, precipitation or temperature) is stored as an array indexed by those dimensions. The file is self-describing: dimensions, coordinate values, and units are embedded inside the file rather than in a separate metadata document.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Language</strong></th>
+<th><strong>Package</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R</td>
+<td>ncdf4 or terra</td>
+<td>terra is preferred for raster workflows. ncdf4 gives lower-level array access.</td>
+</tr>
+<tr class="even">
+<td>Python</td>
+<td>xarray with netCDF4 or h5netcdf backend</td>
+<td>xarray is the standard. Use xr.open_dataset() for lazy loading.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="alternatives-for-gridded-weather-data" class="level2" data-number="L.2">
+<h2 data-number="L.2" class="anchored" data-anchor-id="alternatives-for-gridded-weather-data"><span class="header-section-number">L.2</span> 6.2 Alternatives for gridded weather data</h2>
+<p>NetCDF is well-established and remains the required format for gridded outputs. For new workflows, two alternatives are worth knowing about.</p>
+<section id="zarr" class="level3" data-number="L.2.1">
+<h3 data-number="L.2.1" class="anchored" data-anchor-id="zarr"><span class="header-section-number">L.2.1</span> Zarr</h3>
+<p>Zarr stores arrays in chunks as individual files or objects in cloud storage. Unlike NetCDF, which is a single file, Zarr is designed for parallel read and write in cloud environments. If the team moves gridded data to cloud object storage, Zarr is more efficient than NetCDF for large datasets accessed by many concurrent jobs. It is readable by xarray with a simple backend swap (xr.open_zarr()). Zarr is not yet the team standard: discuss with the Delegated Steward before adopting it in any Tier 1 workflow.</p>
+</section>
+<section id="cloud-optimised-geotiff-cog" class="level3" data-number="L.2.2">
+<h3 data-number="L.2.2" class="anchored" data-anchor-id="cloud-optimised-geotiff-cog"><span class="header-section-number">L.2.2</span> Cloud-Optimised GeoTIFF (COG)</h3>
+<p>For single time-step rasters, for example a rainfall accumulation map for one event, a Cloud-Optimised GeoTIFF may be more convenient than NetCDF. COGs are standard GeoTIFFs with internal tiling and overviews, allowing partial reads by any GIS tool without downloading the whole file. Use COG for raster deliverables to stakeholders or for display in GIS. Use NetCDF or Zarr for time-series raster data processed in code.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Format</strong></th>
+<th><strong>Best for</strong></th>
+<th><strong>Not suited to</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NetCDF (.nc)</td>
+<td>Gridded time series. Standard met data. R and Python workflows.</td>
+<td>Very large cloud datasets with many concurrent readers.</td>
+</tr>
+<tr class="even">
+<td>Zarr</td>
+<td>Cloud-native gridded data. Parallel processing in DASH.</td>
+<td>Sharing with stakeholders or GIS users expecting standard formats.</td>
+</tr>
+<tr class="odd">
+<td>Cloud-Optimised GeoTIFF</td>
+<td>Single time-step rasters. Stakeholder map deliverables. GIS display.</td>
+<td>Multi-timestep data or data processed as arrays in code.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="spatial-data-geoparquet-and-shapefiles" class="level1" data-number="M">
+<h1 data-number="M"><span class="header-section-number">M</span> 7. Spatial Data: GeoParquet and Shapefiles</h1>
+<section id="shapefiles" class="level2" data-number="M.1">
+<h2 data-number="M.1" class="anchored" data-anchor-id="shapefiles"><span class="header-section-number">M.1</span> 7.1 Shapefiles</h2>
+<p>A shapefile is not a single file. It is at minimum three files sharing the same base name: .shp (geometry), .dbf (attributes), and .shx (spatial index). In practice there are usually more, including a .prj for the coordinate reference system and a .cpg for character encoding.</p>
+<p>Shapefiles are the legacy standard for vector spatial data and are readable by nearly every GIS tool. However, they have well-known limitations that make them a poor choice for internal workflows.</p>
+<ul>
+<li><p>Attribute column names are capped at ten characters.</p></li>
+<li><p>File size is limited to 2 GB per component file.</p></li>
+<li><p>No native support for timezone-aware timestamps or complex data types.</p></li>
+<li><p>The format requires multiple files to be kept together, which creates risk in file transfers and version control.</p></li>
+</ul>
+</section>
+<section id="geoparquet" class="level2" data-number="M.2">
+<h2 data-number="M.2" class="anchored" data-anchor-id="geoparquet"><span class="header-section-number">M.2</span> 7.2 GeoParquet</h2>
+<p>GeoParquet is Parquet with a geometry column added according to a defined encoding standard. Geometry is stored as Well-Known Binary (WKB) within a standard Parquet column. The coordinate reference system and geometry type are recorded in the Parquet file metadata.</p>
+<p>Because GeoParquet is Parquet, it inherits all the same advantages: columnar reads, strong typing, Snappy compression, and cross-tool compatibility. A spatial query that only needs geometry and one attribute column does not load the rest of the file from disk.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Feature</strong></th>
+<th><strong>Shapefile</strong></th>
+<th><strong>GeoParquet</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>File structure</td>
+<td>Multiple files (.shp, .dbf, .shx, .prj, …)</td>
+<td>Single .parquet file</td>
+</tr>
+<tr class="even">
+<td>Column name length</td>
+<td>10 characters maximum</td>
+<td>No limit</td>
+</tr>
+<tr class="odd">
+<td>File size limit</td>
+<td>2 GB per component</td>
+<td>No practical limit</td>
+</tr>
+<tr class="even">
+<td>Timestamp support</td>
+<td>Limited</td>
+<td>Full datetime64[ns, UTC]</td>
+</tr>
+<tr class="odd">
+<td>Columnar reads</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Compression</td>
+<td>None by default</td>
+<td>Snappy by default</td>
+</tr>
+<tr class="odd">
+<td>GIS tool support</td>
+<td>Universal</td>
+<td>QGIS 3.28+, GDAL 3.5+, GeoPandas, R sf</td>
+</tr>
+<tr class="even">
+<td>Python</td>
+<td>geopandas.read_file()</td>
+<td>geopandas.read_parquet() or duckdb</td>
+</tr>
+<tr class="odd">
+<td>R</td>
+<td>sf::st_read()</td>
+<td>sfarrow::st_read_parquet()</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="which-to-use" class="level2" data-number="M.3">
+<h2 data-number="M.3" class="anchored" data-anchor-id="which-to-use"><span class="header-section-number">M.3</span> 7.3 Which to use</h2>
+<p>GeoParquet is the preferred format for vector spatial data stored and processed within team workflows. It is smaller, faster to query, and avoids the multi-file management problem of shapefiles.</p>
+<p>Shapefiles remain acceptable in two situations: sharing data with an external party who requires shapefile format and receiving data from a supplier in shapefile format (retain as Bronze; convert to GeoParquet at Silver). Do not use shapefiles as the working format in any new pipeline.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>GDAL 3.5 and above reads and writes GeoParquet natively. QGIS 3.28 and above supports GeoParquet. If a tool cannot open a .parquet file with geometry, check the GDAL version before considering a format change.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="csv-.csv" class="level1" data-number="N">
+<h1 data-number="N"><span class="header-section-number">N</span> 8. CSV (.csv)</h1>
+<p>CSV is acceptable only for small exchange files. It is not an acceptable storage or pipeline format for any dataset the team owns or maintains.</p>
+<section id="permitted-uses" class="level2" data-number="N.1">
+<h2 data-number="N.1" class="anchored" data-anchor-id="permitted-uses"><span class="header-section-number">N.1</span> 8.1 Permitted uses</h2>
+<ul>
+<li><p>Sharing small datasets (under approximately 10,000 rows) with external parties who cannot read Parquet.</p></li>
+<li><p>One-off data requests from stakeholders where Parquet is not practical.</p></li>
+<li><p>Ingest of supplier-provided Bronze data where the supplier delivers CSV (retain as-is alongside converted Bronze Parquet).</p></li>
+</ul>
+</section>
+<section id="limitations-and-common-misuse" class="level2" data-number="N.2">
+<h2 data-number="N.2" class="anchored" data-anchor-id="limitations-and-common-misuse"><span class="header-section-number">N.2</span> 8.2 Limitations and common misuse</h2>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>CSV must not be used as a substitute for Parquet at any pipeline stage. It must not be used as the format for Bronze, Silver, or Gold tier datasets.</strong></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>CSV has no type information. Every value is a string until something interprets it. This means:</p>
+<ul>
+<li><p>Timestamps are stored as strings and may be read back in a different format by a different tool or locale.</p></li>
+<li><p>Float precision is limited by the number of decimal places written. Silent rounding errors are possible.</p></li>
+<li><p>There is no standard for representing null or missing values. Different tools use empty string, NA, NaN, NULL, or -9999 interchangeably, and none of these are enforced.</p></li>
+<li><p>There is no schema. A column added or removed silently breaks downstream code with no error until the data is actually used.</p></li>
+<li><p>Large CSV files are slow to read because every value must be parsed from text. Parquet columnar reads are typically 10-100x faster for the same data.</p></li>
+</ul>
+<p>When writing CSV is necessary, use data.table::fwrite() in R or polars df.write_csv() in Python. Avoid using base R write.csv() or pandas df.to_csv() without specifying encoding explicitly.</p>
+</section>
+</section>
+<section id="excel-.xlsx" class="level1" data-number="O">
+<h1 data-number="O"><span class="header-section-number">O</span> 9. Excel (.xlsx)</h1>
+<p>Excel is restricted to final stakeholder deliverables and formal reports. It is not an acceptable format for storing, processing, or sharing data within the team’s own pipelines.</p>
+<section id="permitted-uses-1" class="level2" data-number="O.1">
+<h2 data-number="O.1" class="anchored" data-anchor-id="permitted-uses-1"><span class="header-section-number">O.1</span> 9.1 Permitted uses</h2>
+<ul>
+<li><p>Formal outputs and reports delivered to stakeholders who require Excel.</p></li>
+<li><p>The Hydrometric Data Register (maintained as an Excel workbook on the file store, or as a Delta table in DASH).</p></li>
+<li><p>Configuration tables or lookup tables that non-technical stakeholders need to edit.</p></li>
+</ul>
+</section>
+<section id="limitations-and-common-misuse-1" class="level2" data-number="O.2">
+<h2 data-number="O.2" class="anchored" data-anchor-id="limitations-and-common-misuse-1"><span class="header-section-number">O.2</span> 9.2 Limitations and common misuse</h2>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Excel must not be used at any stage of a data or model pipeline. It must not be used to transfer data between tools, store intermediate results, or share datasets between team members.</strong></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>Excel is a presentation and calculation tool, not a data storage format. Its use in analytical pipelines creates the following risks.</p>
+<ul>
+<li><p>Dates are stored as numeric serial values interpreted differently across platforms and regions. Silent date conversion errors are common.</p></li>
+<li><p>Numbers displayed with two decimal places may have their precision silently rounded if the cell format is changed.</p></li>
+<li><p>There is no schema enforcement. A column can change type, be renamed, or be deleted and downstream code will fail silently or produce wrong results.</p></li>
+<li><p>Excel will silently autocorrect values it recognises such as names, dates, long numeric strings (such as gauge IDs), and fractions are all known to be altered on open. This is not recoverable once saved.</p></li>
+<li><p>Files over around 100,000 rows become slow and unstable. Excel has a hard row limit of 1,048,576 rows, which will silently truncate larger datasets.</p></li>
+<li><p>Excel files are not suited to version control. Diff tools cannot show what changed between two versions of a .xlsx file.</p></li>
+</ul>
+<p>When producing an Excel deliverable from pipeline data, generate it programmatically from a Parquet source using openxlsx2 in R or openpyxl in Python. Do not manually copy data into Excel from another tool.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>If you receive data from an external party as an Excel file, convert it to Parquet as the first step and store the original .xlsx in Bronze unchanged. Never use the .xlsx directly as input to a model or analysis tool.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="quick-reference" class="level1" data-number="P">
+<h1 data-number="P"><span class="header-section-number">P</span> 10. Quick Reference</h1>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Format</strong></th>
+<th><strong>Use for</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Do not use for</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Parquet (.parquet)</td>
+<td>All tabular data and time series</td>
+<td>Preferred</td>
+<td>Nothing - this is the default choice</td>
+</tr>
+<tr class="even">
+<td>Delta table</td>
+<td>Tabular data in Databricks DASH</td>
+<td>Preferred (DASH only)</td>
+<td>Anything outside Databricks</td>
+</tr>
+<tr class="odd">
+<td>NetCDF (.nc)</td>
+<td>Gridded time series, weather data</td>
+<td>Required (gridded data)</td>
+<td>Tabular or non-spatial data</td>
+</tr>
+<tr class="even">
+<td>Zarr</td>
+<td>Cloud-native gridded data</td>
+<td>Discuss with Delegated Steward</td>
+<td>Sharing outside DASH without agreement</td>
+</tr>
+<tr class="odd">
+<td>GeoParquet (.parquet)</td>
+<td>Vector spatial data in team workflows</td>
+<td>Preferred</td>
+<td>External delivery where shapefile is required</td>
+</tr>
+<tr class="even">
+<td>Shapefile (.shp etc.)</td>
+<td>External exchange only, or Bronze ingest</td>
+<td>Restricted (legacy)</td>
+<td>Internal workflows or new pipelines</td>
+</tr>
+<tr class="odd">
+<td>FMP files (.ief .dat etc.)</td>
+<td>Flood Modeller Pro model assets</td>
+<td>Required for FMP</td>
+<td>Storing tabular data</td>
+</tr>
+<tr class="even">
+<td>PDM parameter set</td>
+<td>PDM rainfall-runoff model configuration</td>
+<td>Required for PDM</td>
+<td>Storing tabular data</td>
+</tr>
+<tr class="odd">
+<td>CSV (.csv)</td>
+<td>Small external exchange, supplier Bronze ingest</td>
+<td>Restricted</td>
+<td>Internal storage, pipelines, or analysis</td>
+</tr>
+<tr class="even">
+<td>Excel (.xlsx)</td>
+<td>Stakeholder deliverables and formal reports only</td>
+<td>Restricted</td>
+<td>Data storage, transfer, or analysis pipelines</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="approved-by" class="level1" data-number="Q">
+<h1 data-number="Q"><span class="header-section-number">Q</span> Approved by</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th><strong>Role</strong></th>
+<th><strong>Name / Signature</strong></th>
+<th><strong>Date</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Head of Flood Forecasting</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Technical Lead</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Team Representative</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./d-upcoming-changes.html" class="pagination-link  aria-label=" &lt;span="" changes="" and="" improvements&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Upcoming Changes and Improvements</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,20 @@
+/* F&W Governance Book Styles — Water/Flood Theme */
+
+/* Callout accent borders — teal for note, amber for warning, red for important */
+.callout-note      { border-left-color: #0E8A8A; }
+.callout-warning   { border-left-color: #D4680A; }
+.callout-important { border-left-color: #A8202A; }
+
+/* Table typography */
+table { font-size: 0.9em; }
+
+/* Version badge — mid-channel blue */
+.version-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #1A6B9A;
+  color: #FFFFFF;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
