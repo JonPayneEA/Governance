@@ -165,7 +165,7 @@ NetCDF is well-established and remains the required format for gridded outputs. 
 
 ### Zarr
 
-Zarr stores arrays in chunks as individual files or objects in cloud storage. Unlike NetCDF, which is a single file, Zarr is designed for parallel read and write in cloud environments. If the team moves gridded data to cloud object storage, Zarr is more efficient than NetCDF for large datasets accessed by many concurrent jobs. It is readable by xarray with a simple backend swap (xr.open_zarr()). Zarr is not yet the team standard: discuss with the Tech Lead before adopting it in any Tier 1 workflow.
+Zarr stores arrays in chunks as individual files or objects in cloud storage. Unlike NetCDF, which is a single file, Zarr is designed for parallel read and write in cloud environments. If the team moves gridded data to cloud object storage, Zarr is more efficient than NetCDF for large datasets accessed by many concurrent jobs. It is readable by xarray with a simple backend swap (xr.open_zarr()). Zarr is not yet the team standard: discuss with the Delegated Steward before adopting it in any Tier 1 workflow.
 
 ### Cloud-Optimised GeoTIFF (COG)
 
@@ -294,7 +294,7 @@ When producing an Excel deliverable from pipeline data, generate it programmatic
 | Parquet (.parquet) | All tabular data and time series | Preferred | Nothing - this is the default choice |
 | Delta table | Tabular data in Databricks DASH | Preferred (DASH only) | Anything outside Databricks |
 | NetCDF (.nc) | Gridded time series, weather data | Required (gridded data) | Tabular or non-spatial data |
-| Zarr | Cloud-native gridded data | Discuss with Tech Lead | Sharing outside DASH without agreement |
+| Zarr | Cloud-native gridded data | Discuss with Delegated Steward | Sharing outside DASH without agreement |
 | GeoParquet (.parquet) | Vector spatial data in team workflows | Preferred | External delivery where shapefile is required |
 | Shapefile (.shp etc.) | External exchange only, or Bronze ingest | Restricted (legacy) | Internal workflows or new pipelines |
 | FMP files (.ief .dat etc.) | Flood Modeller Pro model assets | Required for FMP | Storing tabular data |

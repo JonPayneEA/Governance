@@ -540,7 +540,7 @@ Training completion is recorded using the sign-off forms in Appendix A. A separa
 
 # Appendix A: Training sign-off forms
 
-Each form below covers one training section. The completing staff member signs (or dates) the 'Completed' column for each item. The verifying colleague (Steward or Technical Lead) signs the 'Verified by' column.
+Each form below covers one training section. The completing staff member signs (or dates) the 'Completed' column for each item. The verifying colleague (Steward or Delegated Steward) signs the 'Verified by' column.
 
 Store completed forms in: docs/training/[StaffName]_[Track]_[Year].docx
 

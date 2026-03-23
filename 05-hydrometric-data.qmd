@@ -428,7 +428,7 @@ Partitioning is mandatory for any dataset covering more than 50 sites or more th
 
 In Databricks, use Delta Lake tables rather than raw Parquet files for Bronze and Silver stores. Delta Lake provides transaction safety, schema enforcement, and time-travel queries on top of the Parquet format. The column schemas above apply to Delta Lake tables identically.
 
-| *The Parquet schemas defined in this section are the interface contract between the Hydrometric Data Framework and the AI/ML Test Environment. The ML training pipeline reads Gold Parquet using the column names and types defined in Sections 7.3 and 7.4. Any schema changes must be agreed between the Hydrometric Data Steward and the Python Lead before implementation.* |
+| *The Parquet schemas defined in this section are the interface contract between the Hydrometric Data Framework and the AI/ML Test Environment. The ML training pipeline reads Gold Parquet using the column names and types defined in Sections 7.3 and 7.4. Any schema changes must be agreed between the Steward and the Delegated Steward before implementation.* |
 | --- |
 
 # 8. Data Quality Improvement
