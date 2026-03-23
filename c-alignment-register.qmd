@@ -1,8 +1,4 @@
----
-title: "Alignment Register"
----
-
-{#sec-alignment-register}
+# Alignment Register {#sec-alignment-register}
 
 This appendix tracks alignment between the F&W governance document suite and the overarching government and departmental guidance. It records divergences identified, resolutions applied, and any intentional deviations with their justification. It is reviewed as part of the annual governance review.
 
@@ -17,7 +13,7 @@ This appendix tracks alignment between the F&W governance document suite and the
 
 : Guidance documents reviewed {.striped}
 
-## Resolved Divergences
+## Resolved Divergences {#sec-divergence-resolution}
 
 ### 1. Missing Information Asset Owner (IAO) Role {#sec-div-1}
 
