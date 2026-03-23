@@ -38,9 +38,23 @@ The following weaknesses were identified. Each is provisionally assigned a prior
 
 #### 1. No Implementation Authority
 
-The entire suite is *Draft: For Review*. Every approval block is blank. There are no target dates for sign-off, no effective date, no implementation plan, and no statement of what happens between now and formal adoption. A governance framework without an approval date is a set of suggestions.
+::: {.callout-note}
+## Partially resolved at v1.4
 
-**What is needed:** A cover section stating the effective date, a transition period for compliance, and target dates for populating each register with real asset entries. Owner signatures on the approval blocks.
+Implementation dates have been set and are now recorded in the parent framework metadata block:
+
+- **Implementation start:** 23 March 2026
+- **Target adoption:** 31 March 2026 (end of financial year 2025-26)
+- **Review date:** 31 March 2027
+
+All companion document review dates have been updated to reflect the same review cycle.
+
+What still remains: Owner signatures on the approval blocks, and the transition period and register population targets described below. These require Owner engagement and cannot be set unilaterally.
+:::
+
+The suite is *Draft: For Review*. Approval blocks are unsigned and there is no statement of what happens between now and formal adoption. A governance framework without an approval date is a set of suggestions.
+
+**What is needed:** Owner signatures on the approval blocks, and a transition period for compliance with target dates for populating each register with real asset entries.
 
 **Priority:** High. Resolves before or at the point of adoption.
 
@@ -181,3 +195,4 @@ An implementation chapter should make explicit which governance obligations the 
 | 2026-03-22 | Framework effectiveness assessment (above) | Recorded |
 | 2026-03-22 | Proposed implementation chapter | Under consideration |
 | 2026-03-22 | Accepted File Types moved to Appendix E; renamed File Format Reference; MCP `check_file_formats` tool added | Resolved |
+| 2026-03-23 | Implementation dates set: start 23 March 2026, target adoption 31 March 2026, review 31 March 2027; all companion document review dates updated | Partially resolved (Owner sign-off outstanding) |

@@ -1,5 +1,15 @@
 # Data and Digital Asset Governance Framework {#sec-governance-framework}
 
+::: {.callout-note}
+| | |
+|---|---|
+| **Version** | 1.4 |
+| **Status** | Draft: For Review |
+| **Implementation Start** | 23 March 2026 |
+| **Target Adoption** | 31 March 2026 |
+| **Review Date** | 31 March 2027 |
+:::
+
 ## Purpose
 
 This framework sets out how the Forecasting and Warning (F&W) department manages its data, code, and digital assets. It defines who is responsible for what, at every level, covering all assets from strategic accountability for major datasets down to day-to-day maintenance of individual code tools.
