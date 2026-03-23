@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.526">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data and Digital Asset Governance - 5&nbsp; Imported Hydrometric Data Framework</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06-flood-model-governance.html" rel="next">
+<link href="./04-python-code-governance.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-hydrometric-data.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data and Digital Asset Governance</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Problem Statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-governance-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data and Digital Asset Governance Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-r-code-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-python-code-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-hydrometric-data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-flood-model-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-training-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./b-document-hierarchy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Document Hierarchy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./c-alignment-register.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Alignment Register</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./d-upcoming-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Upcoming Changes and Improvements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./e-file-format-reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">File Format Reference</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">6</span> 1. Purpose</a>
+  <ul class="collapse">
+  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">6.1</span> 2. Scope</a></li>
+  </ul></li>
+  <li><a href="#the-medallion-data-framework" id="toc-the-medallion-data-framework" class="nav-link" data-scroll-target="#the-medallion-data-framework"><span class="header-section-number">7</span> 3. The Medallion Data Framework</a></li>
+  <li><a href="#bronze-tier---raw-ingested-data" id="toc-bronze-tier---raw-ingested-data" class="nav-link" data-scroll-target="#bronze-tier---raw-ingested-data"><span class="header-section-number">8</span> 4. Bronze Tier - Raw Ingested Data</a>
+  <ul class="collapse">
+  <li><a href="#ingestion-requirements" id="toc-ingestion-requirements" class="nav-link" data-scroll-target="#ingestion-requirements"><span class="header-section-number">8.1</span> 4.1 Ingestion Requirements</a></li>
+  <li><a href="#provenance-record" id="toc-provenance-record" class="nav-link" data-scroll-target="#provenance-record"><span class="header-section-number">8.2</span> 4.2 Provenance Record</a></li>
+  <li><a href="#ownership-at-bronze" id="toc-ownership-at-bronze" class="nav-link" data-scroll-target="#ownership-at-bronze"><span class="header-section-number">8.3</span> 4.3 Ownership at Bronze</a></li>
+  </ul></li>
+  <li><a href="#silver-tier---quality-controlled-data" id="toc-silver-tier---quality-controlled-data" class="nav-link" data-scroll-target="#silver-tier---quality-controlled-data"><span class="header-section-number">9</span> 5. Silver Tier - Quality Controlled Data</a>
+  <ul class="collapse">
+  <li><a href="#the-qc-process" id="toc-the-qc-process" class="nav-link" data-scroll-target="#the-qc-process"><span class="header-section-number">9.1</span> 5.1 The QC Process</a>
+  <ul class="collapse">
+  <li><a href="#stage-1-automated-checks" id="toc-stage-1-automated-checks" class="nav-link" data-scroll-target="#stage-1-automated-checks"><span class="header-section-number">9.1.1</span> Stage 1: Automated Checks</a></li>
+  <li><a href="#stage-2-visual-and-expert-review" id="toc-stage-2-visual-and-expert-review" class="nav-link" data-scroll-target="#stage-2-visual-and-expert-review"><span class="header-section-number">9.1.2</span> Stage 2: Visual and Expert Review</a></li>
+  <li><a href="#stage-3-gap-and-error-handling" id="toc-stage-3-gap-and-error-handling" class="nav-link" data-scroll-target="#stage-3-gap-and-error-handling"><span class="header-section-number">9.1.3</span> Stage 3: Gap and Error Handling</a></li>
+  <li><a href="#stage-4-steward-review-and-promotion" id="toc-stage-4-steward-review-and-promotion" class="nav-link" data-scroll-target="#stage-4-steward-review-and-promotion"><span class="header-section-number">9.1.4</span> Stage 4: Steward Review and Promotion</a></li>
+  </ul></li>
+  <li><a href="#quality-flags" id="toc-quality-flags" class="nav-link" data-scroll-target="#quality-flags"><span class="header-section-number">9.2</span> 5.2 Quality Flags</a></li>
+  <li><a href="#rating-curves-and-flow-derivation" id="toc-rating-curves-and-flow-derivation" class="nav-link" data-scroll-target="#rating-curves-and-flow-derivation"><span class="header-section-number">9.3</span> 5.3 Rating Curves and Flow Derivation</a></li>
+  <li><a href="#silver-dataset-naming-and-storage" id="toc-silver-dataset-naming-and-storage" class="nav-link" data-scroll-target="#silver-dataset-naming-and-storage"><span class="header-section-number">9.4</span> 5.4 Silver Dataset Naming and Storage</a></li>
+  <li><a href="#silver-qc-record" id="toc-silver-qc-record" class="nav-link" data-scroll-target="#silver-qc-record"><span class="header-section-number">9.5</span> 5.5 Silver QC Record</a></li>
+  <li><a href="#ownership-at-silver" id="toc-ownership-at-silver" class="nav-link" data-scroll-target="#ownership-at-silver"><span class="header-section-number">9.6</span> 5.6 Ownership at Silver</a></li>
+  </ul></li>
+  <li><a href="#gold-tier---analysis-ready-products" id="toc-gold-tier---analysis-ready-products" class="nav-link" data-scroll-target="#gold-tier---analysis-ready-products"><span class="header-section-number">10</span> 6. Gold Tier - Analysis-Ready Products</a>
+  <ul class="collapse">
+  <li><a href="#what-qualifies-as-gold" id="toc-what-qualifies-as-gold" class="nav-link" data-scroll-target="#what-qualifies-as-gold"><span class="header-section-number">10.1</span> 6.1 What Qualifies as Gold</a></li>
+  <li><a href="#creating-a-gold-dataset" id="toc-creating-a-gold-dataset" class="nav-link" data-scroll-target="#creating-a-gold-dataset"><span class="header-section-number">10.2</span> 6.2 Creating a Gold Dataset</a></li>
+  <li><a href="#gold-derivation-record" id="toc-gold-derivation-record" class="nav-link" data-scroll-target="#gold-derivation-record"><span class="header-section-number">10.3</span> 6.3 Gold Derivation Record</a></li>
+  <li><a href="#versioning-and-supersession" id="toc-versioning-and-supersession" class="nav-link" data-scroll-target="#versioning-and-supersession"><span class="header-section-number">10.4</span> 6.4 Versioning and Supersession</a></li>
+  <li><a href="#ownership-at-gold" id="toc-ownership-at-gold" class="nav-link" data-scroll-target="#ownership-at-gold"><span class="header-section-number">10.5</span> 6.5 Ownership at Gold</a></li>
+  <li><a href="#ml-training-sets-as-gold-products" id="toc-ml-training-sets-as-gold-products" class="nav-link" data-scroll-target="#ml-training-sets-as-gold-products"><span class="header-section-number">10.6</span> 6.6 ML Training Sets as Gold Products</a></li>
+  </ul></li>
+  <li><a href="#parquet-storage-schema" id="toc-parquet-storage-schema" class="nav-link" data-scroll-target="#parquet-storage-schema"><span class="header-section-number">11</span> 7. Parquet Storage Schema</a>
+  <ul class="collapse">
+  <li><a href="#why-parquet-for-hydrometric-time-series" id="toc-why-parquet-for-hydrometric-time-series" class="nav-link" data-scroll-target="#why-parquet-for-hydrometric-time-series"><span class="header-section-number">11.1</span> 7.1 Why Parquet for Hydrometric Time Series</a></li>
+  <li><a href="#bronze-parquet-schema" id="toc-bronze-parquet-schema" class="nav-link" data-scroll-target="#bronze-parquet-schema"><span class="header-section-number">11.2</span> 7.2 Bronze Parquet Schema</a></li>
+  <li><a href="#silver-parquet-schema" id="toc-silver-parquet-schema" class="nav-link" data-scroll-target="#silver-parquet-schema"><span class="header-section-number">11.3</span> 7.3 Silver Parquet Schema</a></li>
+  <li><a href="#gold-parquet-schema" id="toc-gold-parquet-schema" class="nav-link" data-scroll-target="#gold-parquet-schema"><span class="header-section-number">11.4</span> 7.4 Gold Parquet Schema</a>
+  <ul class="collapse">
+  <li><a href="#ml-training-set-gold" id="toc-ml-training-set-gold" class="nav-link" data-scroll-target="#ml-training-set-gold"><span class="header-section-number">11.4.1</span> ML Training Set Gold</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#data-quality-improvement" id="toc-data-quality-improvement" class="nav-link" data-scroll-target="#data-quality-improvement"><span class="header-section-number">12</span> 8. Data Quality Improvement</a>
+  <ul class="collapse">
+  <li><a href="#flagging-systemic-issues" id="toc-flagging-systemic-issues" class="nav-link" data-scroll-target="#flagging-systemic-issues"><span class="header-section-number">12.1</span> 8.1 Flagging Systemic Issues</a></li>
+  <li><a href="#supplier-engagement" id="toc-supplier-engagement" class="nav-link" data-scroll-target="#supplier-engagement"><span class="header-section-number">12.2</span> 8.2 Supplier Engagement</a></li>
+  <li><a href="#rating-curve-reviews" id="toc-rating-curve-reviews" class="nav-link" data-scroll-target="#rating-curve-reviews"><span class="header-section-number">12.3</span> 8.3 Rating Curve Reviews</a></li>
+  <li><a href="#data-quality-metrics-and-reporting" id="toc-data-quality-metrics-and-reporting" class="nav-link" data-scroll-target="#data-quality-metrics-and-reporting"><span class="header-section-number">12.4</span> 8.4 Data Quality Metrics and Reporting</a></li>
+  </ul></li>
+  <li><a href="#provenance-and-traceability" id="toc-provenance-and-traceability" class="nav-link" data-scroll-target="#provenance-and-traceability"><span class="header-section-number">13</span> 9. Provenance and Traceability</a>
+  <ul class="collapse">
+  <li><a href="#dataset-lineage" id="toc-dataset-lineage" class="nav-link" data-scroll-target="#dataset-lineage"><span class="header-section-number">13.1</span> 9.1 Dataset Lineage</a></li>
+  <li><a href="#recording-data-use-in-model-runs" id="toc-recording-data-use-in-model-runs" class="nav-link" data-scroll-target="#recording-data-use-in-model-runs"><span class="header-section-number">13.2</span> 9.2 Recording Data Use in Model Runs</a></li>
+  <li><a href="#retrospective-traceability" id="toc-retrospective-traceability" class="nav-link" data-scroll-target="#retrospective-traceability"><span class="header-section-number">13.3</span> 9.3 Retrospective Traceability</a></li>
+  </ul></li>
+  <li><a href="#hydrometric-data-register" id="toc-hydrometric-data-register" class="nav-link" data-scroll-target="#hydrometric-data-register"><span class="header-section-number">14</span> 10. Hydrometric Data Register</a>
+  <ul class="collapse">
+  <li><a href="#register-fields" id="toc-register-fields" class="nav-link" data-scroll-target="#register-fields"><span class="header-section-number">14.1</span> 10.1 Register Fields</a></li>
+  <li><a href="#data-quality-issue-log" id="toc-data-quality-issue-log" class="nav-link" data-scroll-target="#data-quality-issue-log"><span class="header-section-number">14.2</span> 10.2 Data Quality Issue Log</a></li>
+  <li><a href="#register-maintenance" id="toc-register-maintenance" class="nav-link" data-scroll-target="#register-maintenance"><span class="header-section-number">14.3</span> 10.3 Register Maintenance</a></li>
+  </ul></li>
+  <li><a href="#access-sharing-and-retention" id="toc-access-sharing-and-retention" class="nav-link" data-scroll-target="#access-sharing-and-retention"><span class="header-section-number">15</span> 11. Access, Sharing, and Retention</a>
+  <ul class="collapse">
+  <li><a href="#retention" id="toc-retention" class="nav-link" data-scroll-target="#retention"><span class="header-section-number">15.1</span> 11.1 Retention</a></li>
+  <li><a href="#access" id="toc-access" class="nav-link" data-scroll-target="#access"><span class="header-section-number">15.2</span> 11.2 Access</a></li>
+  <li><a href="#data-licensing-and-third-party-constraints" id="toc-data-licensing-and-third-party-constraints" class="nav-link" data-scroll-target="#data-licensing-and-third-party-constraints"><span class="header-section-number">15.3</span> 11.3 Data Licensing and Third-Party Constraints</a></li>
+  </ul></li>
+  <li><a href="#roles-and-responsibilities" id="toc-roles-and-responsibilities" class="nav-link" data-scroll-target="#roles-and-responsibilities"><span class="header-section-number">16</span> 12. Roles and Responsibilities</a></li>
+  <li><a href="#governance-and-review" id="toc-governance-and-review" class="nav-link" data-scroll-target="#governance-and-review"><span class="header-section-number">17</span> 13. Governance and Review</a></li>
+  <li><a href="#appendix-a---naming-conventions" id="toc-appendix-a---naming-conventions" class="nav-link" data-scroll-target="#appendix-a---naming-conventions"><span class="header-section-number">18</span> Appendix A - Naming Conventions</a></li>
+  <li><a href="#appendix-b---glossary" id="toc-appendix-b---glossary" class="nav-link" data-scroll-target="#appendix-b---glossary"><span class="header-section-number">19</span> Appendix B - Glossary</a></li>
+  <li><a href="#appendix-c---folder-structure" id="toc-appendix-c---folder-structure" class="nav-link" data-scroll-target="#appendix-c---folder-structure"><span class="header-section-number">20</span> Appendix C - Folder Structure</a>
+  <ul class="collapse">
+  <li><a href="#c.1-file-store" id="toc-c.1-file-store" class="nav-link" data-scroll-target="#c.1-file-store"><span class="header-section-number">20.1</span> C.1 File Store</a></li>
+  <li><a href="#c.2-databricks-dash---unity-catalog" id="toc-c.2-databricks-dash---unity-catalog" class="nav-link" data-scroll-target="#c.2-databricks-dash---unity-catalog"><span class="header-section-number">20.2</span> C.2 Databricks DASH - Unity Catalog</a></li>
+  </ul></li>
+  <li><a href="#approved-by" id="toc-approved-by" class="nav-link" data-scroll-target="#approved-by"><span class="header-section-number">21</span> Approved by</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-hydrometric-data" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Document Metadata
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td>1.3</td>
+</tr>
+<tr class="even">
+<td><strong>Status</strong></td>
+<td>Draft: For Team Review</td>
+</tr>
+<tr class="odd">
+<td><strong>Review Date</strong></td>
+<td>2027-03-31</td>
+</tr>
+<tr class="even">
+<td><strong>Parent Document</strong></td>
+<td>Data &amp; Digital Asset Governance Framework v1.4 │ Data Ownership Model (CDDO, 2024)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="purpose" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 1. Purpose</h1>
+<p>The Flood Forecast Modelling (FFM) and Warning teams import hydrometric data - flow, stage, and rainfall records - from a range of internal systems (Hydrology Data Explorer and WISKI) as well as external suppliers including SEPA, NRW, Met Office, and other partner organisations. These data are the foundation of everything the team does: they drive model calibration, feed operational forecasts, validate modelling outputs, and inform flood risk decisions.</p>
+<p>Without a clear framework, the risks are real: data used at different stages of processing gets confused with raw data, quality problems go unnoticed until they affect a model output, provenance is lost making it impossible to audit where a number came from, and the same cleaning work gets done repeatedly by different people with different results.</p>
+<p>This framework addresses those risks by defining how imported hydrometric data moves through three quality tiers: Bronze, Silver, and Gold - from raw ingestion to analysis-ready products. It sets out who owns and is responsible for data at each tier, how quality is assessed and recorded, how provenance is tracked, how data is stored, and how data quality is improved over time.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>This framework is a companion to the Data <strong>&amp;</strong> Digital Asset Governance Framework v1.4, which sets out the Owner, Steward, and Custodian roles and governance principles that apply here. The roles used in this document follow that framework.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="scope" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="scope"><span class="header-section-number">6.1</span> 2. Scope</h2>
+<p>This framework covers all hydrometric data imported and used by the Flood Forecast Modelling Team, including:</p>
+<ul>
+<li><p>River flow and water level records from gauging stations (telemetry and archived)</p></li>
+<li><p>Rating metadata</p></li>
+<li><p>Rainfall records from rain gauges and gridded weather radar products</p></li>
+<li><p>Catchment-averaged rainfall products</p></li>
+<li><p>Snow measurements</p></li>
+<li><p>MOSES PE and similar products</p></li>
+<li><p>Soil moisture data e.g.&nbsp;Copernicus</p></li>
+<li><p>Historical event datasets used for model calibration and validation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Out of Scope: Model outputs, internally generated datasets (e.g., ensemble forecasts), and data produced by the team’s own tools are governed by the Data <strong>&amp;</strong> Digital Asset Governance Framework and are not covered here. Internally generated data does not pass through the Bronze to Silver to Gold pipelines.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="the-medallion-data-framework" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 3. The Medallion Data Framework</h1>
+<p>The parent framework (<a href="01-governance-framework.html" class="quarto-xref"><span>Chapter&nbsp;2</span></a>) defines two distinct classification systems that apply to all team assets. The operational tier system (Tier 1, 2, 3) answers the question: how critical is this asset to the live forecasting service? The medallion architecture (Bronze, Silver, Gold) answers a different question: how far has this data progressed through the quality assurance process?</p>
+<p>For code tools and models these two dimensions often align closely. For hydrometric data they are genuinely independent, and that independence matters. A Silver dataset for the River Wye may be used in a Tier 2 post-event analysis today and promoted to supply a Tier 1 operational model tomorrow, without changing anything about the data itself. A Gold approved benchmark series for a small catchment may only ever be used in Tier 3 research. The operational tier describes the use; the medallion tier describes the data’s quality state. Conflating them would mean re-approving data every time its purpose changes, which is neither practical nor meaningful.</p>
+<p>The medallion architecture was developed in data engineering for exactly the problem the team faces: data arriving from multiple external sources, at different quality levels, needing to flow through defined processing stages before being fit for production use. It maps directly onto the hydrometric data lifecycle. Supplier data arrives raw and unmodified (Bronze). The team applies quality control, flags anomalies, applies rating curves, and documents decisions (Silver). Derived products, aggregated statistics, calibration benchmarks, and ML training sets are assembled from Silver and formally approved (Gold). Each stage represents a distinct level of trust and a distinct degree of accountability. Bronze data is not worse than Silver data; it is simply at a different stage. Storing them as separate, preserved states makes that explicit.</p>
+<p>Taken together, the two frameworks give the team three things it cannot get from informal arrangements. Reproducibility: any formal output can be traced back through Gold to Silver to Bronze to the exact file received from the supplier, with every quality decision recorded along the way. Efficiency: QC work invested at Silver is done once and available to everyone, rather than each analyst reworking the same dataset for their own purpose and potentially reaching different conclusions. Confidence: a Gold product carries a specific meaning. It has passed through defined stages, had decisions documented, and been formally approved for an identified purpose. When a Gold dataset feeds a Tier 1 model run, the team knows precisely what it is, who reviewed it, and what it has been approved for. That chain of accountability is the point.</p>
+<p>Imported hydrometric data passes through three tiers of increasing quality and fitness for purpose. The tiers are named Bronze, Silver, and Gold - a medallion structure adapted from data engineering practice to suit hydrological data management.</p>
+<p>The key principle is that each tier is a distinct, preserved state. Data is never overwritten in place. Moving data to the next tier creates a new dataset; the previous tier is always retained. This means the team can always trace exactly what was received, what quality decisions were made, and what version of a dataset fed a particular model run.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tier</strong></th>
+<th><strong>What it contains</strong></th>
+<th><strong>Who uses it</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bronze: Raw</td>
+<td>Data exactly as received from API calls, manual imports, or directly from suppliers. No edits, no corrections. Even obvious errors are preserved. Fully provenance-labelled.</td>
+<td>Custodians (ingest), Stewards (audit). Not used directly in modelling.</td>
+</tr>
+<tr class="even">
+<td>Silver: Quality Controlled</td>
+<td>Bronze data that has been checked, flagged, gap-assessed, and where appropriate corrected or gap-filled. All changes are recorded with reasons. Rating curves applied for flow.</td>
+<td>Modelling custodians and data analysts. The primary source for model calibration and validation.</td>
+</tr>
+<tr class="odd">
+<td>Gold: Analysis-Ready</td>
+<td>Derived products from Silver data: aggregated statistics, design event datasets, approved benchmark series, multi-site composite records, and ML training sets at native 15-minute resolution with static attributes attached. Formally approved for operational use.</td>
+<td>Modelling custodians and data analysts. AI/ML training sets (at native resolution with static attributes attached), formal outputs, published datasets, design work.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bronze-tier---raw-ingested-data" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 4. Bronze Tier - Raw Ingested Data</h1>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>BRONZE - Raw, immutable, fully provenance-labelled</strong> Bronze data is the unmodified record of what was received from the supplier. Nothing is corrected, removed, or reformatted beyond what is strictly necessary to store it. Every Bronze dataset must be treated as read-only from the moment of ingestion.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="ingestion-requirements" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="ingestion-requirements"><span class="header-section-number">8.1</span> 4.1 Ingestion Requirements</h2>
+<p>When a new dataset is received, the Custodian must complete all of the following before the data is stored:</p>
+<ul>
+<li><p>Assign a unique dataset ID using the standard format: [SupplierCode]<em>[SiteID]</em>[DataType]_[YYYYMMDD] (e.g., EA_39001_Q_20260115)</p></li>
+<li><p>Record the full provenance record (see Section 4.2) in the Hydrometric Data Register via <code>reach.io</code>’s <code>write_provenance_record()</code> function</p></li>
+<li><p>Store the data in the Bronze layer of the team’s data store using <code>reach.io</code>’s directory structure (created by <code>setup_hydro_store()</code>); do not modify the file</p></li>
+<li><p>Apply the Bronze schema using <code>apply_bronze_schema()</code> to enforce the six mandatory columns (timestamp, value, supplier_flag, dataset_id, site_id, data_type) and correct data types</p></li>
+<li><p>Check the file opens and is readable; record any format issues in the provenance record</p></li>
+<li><p>Notify the Steward that a new Bronze dataset has been ingested</p></li>
+</ul>
+<p>For API-sourced gauges registered in the Gauge Registry, <code>reach.io</code>’s <code>run_backfill()</code> and <code>route_gauge()</code> functions automate the fetch, schema application, and provenance recording steps. The Custodian is still responsible for reviewing the resulting register entry and confirming completeness.</p>
+<p>Bronze data must never be modified after ingestion. If a supplier sends a corrected version of a dataset, the corrected version is ingested as a new Bronze dataset with its own dataset ID and provenance record, referencing the original.</p>
+</section>
+<section id="provenance-record" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="provenance-record"><span class="header-section-number">8.2</span> 4.2 Provenance Record</h2>
+<p>Every Bronze dataset must have a complete provenance record in the Hydrometric Data Register (Section 10). This is the single most important thing recorded at Bronze - without it, no downstream use of the data can be properly audited. See Section 10.1 for the full field list.</p>
+<p>The key fields recorded at ingestion are: dataset ID, supplier, site identifier, data type, time period, temporal resolution, units, datum or rating reference, file format as received, date received, received by, method of receipt, any supplier quality flags and their meaning, known limitations stated by the supplier, file path, and any notes on unusual aspects of the delivery.</p>
+</section>
+<section id="ownership-at-bronze" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="ownership-at-bronze"><span class="header-section-number">8.3</span> 4.3 Ownership at Bronze</h2>
+<p>The Custodian who ingests the data holds Bronze custodianship. They are responsible for completing the provenance record and storing the data correctly. The Steward is responsible for checking that provenance records are complete and that Bronze data is not being modified.</p>
+<p>Bronze data is owned by the team collectively - it represents an external input and no individual team member has the right to modify or delete it. Deletion of Bronze data requires Owner approval and must be documented.</p>
+<p>4.4 What Bronze Data Is Not For</p>
+<p>Bronze data is an archive, not a working dataset. It should not be:</p>
+<ul>
+<li><p>Used directly as input to a model or analysis without Silver processing</p></li>
+<li><p>Shared externally (the supplier’s data licence applies - check before sharing)</p></li>
+<li><p>Modified to fix errors, even obvious ones</p></li>
+<li><p>Used to draw conclusions about data quality without a Silver QC record</p></li>
+</ul>
+</section>
+</section>
+<section id="silver-tier---quality-controlled-data" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 5. Silver Tier - Quality Controlled Data</h1>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>SILVER - Checked, flagged, corrected where appropriate, fully documented</strong> Silver data is the result of applying a documented quality control process to Bronze data. Every change from Bronze to Silver is recorded - what was changed, why, who made the decision, and what evidence supported it. Silver is the primary working dataset for modellers and analysts.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="the-qc-process" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="the-qc-process"><span class="header-section-number">9.1</span> 5.1 The QC Process</h2>
+<p>Quality control must be completed by a Custodian and reviewed by the Steward before data is promoted from Bronze to Silver. The QC process covers four stages:</p>
+<section id="stage-1-automated-checks" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="stage-1-automated-checks"><span class="header-section-number">9.1.1</span> Stage 1: Automated Checks</h3>
+<p>Run automated checks to identify obvious problems. These checks do not change any values - they produce a flag dataset stored alongside the data. Automated checks include:</p>
+<ul>
+<li><p>Range checks: values outside physically plausible bounds for the variable and site (e.g., negative flow, unrealistic stage)</p></li>
+<li><p>Rate-of-change checks: implausible step changes between consecutive time-steps</p></li>
+<li><p>Flatline detection: sequences of identical repeated values (sensor malfunction indicator)</p></li>
+<li><p>Gap detection: missing values, irregular time-steps, or gaps relative to the stated period</p></li>
+<li><p>Duplicate detection: repeated timestamps</p></li>
+<li><p>Consistency with supplier flags: values flagged as poor quality by the supplier</p></li>
+</ul>
+</section>
+<section id="stage-2-visual-and-expert-review" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="stage-2-visual-and-expert-review"><span class="header-section-number">9.1.2</span> Stage 2: Visual and Expert Review</h3>
+<p>A Custodian with appropriate domain knowledge reviews the flagged data. For flow and level data this includes checking against nearby gauges, upstream/downstream consistency, and known events. The review produces:</p>
+<ul>
+<li><p>A revised flag dataset - each value receives a quality flag (see Section 5.2)</p></li>
+<li><p>A review note for any value that is flagged as suspect or rejected</p></li>
+<li><p>A rating curve assessment for flow data (see Section 5.3)</p></li>
+</ul>
+</section>
+<section id="stage-3-gap-and-error-handling" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="stage-3-gap-and-error-handling"><span class="header-section-number">9.1.3</span> Stage 3: Gap and Error Handling</h3>
+<p>For each gap or rejected value, the Custodian must make a documented decision:</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Decision</strong></th>
+<th><strong>When to apply</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Retain as flagged</td>
+<td>The value is suspect but not clearly wrong; retain with a ‘suspect’ flag so downstream users can decide whether to use it</td>
+</tr>
+<tr class="even">
+<td>Reject and leave as gap</td>
+<td>The value is clearly wrong (e.g., sensor malfunction) and no suitable substitute is available; record the gap extent and reason</td>
+</tr>
+<tr class="odd">
+<td>Gap-fill with documented method</td>
+<td>A gap can be filled using a defensible method (e.g., correlation with nearby gauge, simple interpolation for short gaps); the fill method, source data, and uncertainty estimate must all be recorded</td>
+</tr>
+<tr class="even">
+<td>Reject the entire dataset</td>
+<td>If data quality is too poor to be useful even with flagging, the dataset is rejected at Silver; document the reasons and retain Bronze</td>
+</tr>
+</tbody>
+</table>
+<p>Gap-filling is only permitted where the method is documented and the filled values are clearly distinguishable from observed values. Over-enthusiastic gap-filling is a greater risk than gaps. When in doubt, flag and retain rather than fill.</p>
+</section>
+<section id="stage-4-steward-review-and-promotion" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="stage-4-steward-review-and-promotion"><span class="header-section-number">9.1.4</span> Stage 4: Steward Review and Promotion</h3>
+<p>Before data is promoted to Silver, the Steward or Delegated Steward must review:</p>
+<ul>
+<li><p>That the QC process has been followed and documented</p></li>
+<li><p>That flagging decisions are consistent with team standards</p></li>
+<li><p>That any gap-filling is justified and documented</p></li>
+<li><p>That the Silver dataset ID and QC record are complete</p></li>
+</ul>
+<p>The Steward records their approval in the Hydrometric Data Register. Only after Steward approval is the dataset status set to Silver.</p>
+</section>
+</section>
+<section id="quality-flags" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="quality-flags"><span class="header-section-number">9.2</span> 5.2 Quality Flags</h2>
+<p>Every value in a Silver dataset carries a quality flag. The team uses the following flag scheme, which is compatible with the Environment Agency’s national flag convention:</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Flag</strong></th>
+<th><strong>Label</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Use in modelling</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Good</td>
+<td>Passed all automated checks; expert review confirms no concerns</td>
+<td>Use without restriction</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Estimated</td>
+<td>Observed value is missing or rejected; value has been estimated using a documented method</td>
+<td>Use with caution; document in run records</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Suspect</td>
+<td>Value appears anomalous but cannot be confirmed as wrong; retained for user judgement</td>
+<td>Exclude by default; include only if explicitly justified</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Rejected</td>
+<td>Value is confirmed as erroneous; treated as missing</td>
+<td>Do not use</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>No data</td>
+<td>Timestep is genuinely missing with no basis for estimation</td>
+<td>Do not use</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Below detection</td>
+<td>Value is below the instrument’s detection limit; record the limit</td>
+<td>Use as threshold information only</td>
+</tr>
+</tbody>
+</table>
+<p>Flags must be stored as a separate column or parallel file - never overwrite the value itself. A flag of 2 (Estimated) must always be accompanied by an estimation method field.</p>
+</section>
+<section id="rating-curves-and-flow-derivation" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="rating-curves-and-flow-derivation"><span class="header-section-number">9.3</span> 5.3 Rating Curves and Flow Derivation</h2>
+<p>For stage (water level) data where the team derives flow using a rating curve, the Silver record must include:</p>
+<ul>
+<li><p>The rating curve version used (name, version number, valid stage range, source/authority)</p></li>
+<li><p>The date the rating curve was applied</p></li>
+<li><p>Any values where stage falls outside the rated range, flagged separately as ‘extrapolated’</p></li>
+<li><p>A note of any known shift events (e.g., channel changes, weed growth) that may affect the rating</p></li>
+</ul>
+<p>Where the team uses supplier-derived flow directly (e.g., EA gauged flow), the supplier’s rating version must be recorded in the provenance record rather than applied by the team.</p>
+</section>
+<section id="silver-dataset-naming-and-storage" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="silver-dataset-naming-and-storage"><span class="header-section-number">9.4</span> 5.4 Silver Dataset Naming and Storage</h2>
+<p>Each Silver dataset gets its own dataset ID, linking it explicitly to its Bronze source:</p>
+<p>Format: [BronzeDatasetID]_SILVER_v[N] Example: EA_39001_Q_20260115_SILVER_v1</p>
+<p>When a Silver dataset is revised (e.g., following updated rating curve or additional QC), a new version is created. Previous Silver versions are retained. The QC record must note what changed and why.</p>
+</section>
+<section id="silver-qc-record" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="silver-qc-record"><span class="header-section-number">9.5</span> 5.5 Silver QC Record</h2>
+<p>Each Silver dataset must have a complete QC record in the Hydrometric Data Register (Section 10). See Section 10.1 for the full field list.</p>
+<p>The key fields recorded at Silver promotion are: Silver dataset ID, Bronze source ID, Custodian who carried out QC, Steward who reviewed and approved, QC date, automated checks run and tool used, flag count summary by type, gap-filling method and extent if applied, rating curve version and valid range if applied, any remaining known issues, comparison datasets used during expert review, and file path.</p>
+</section>
+<section id="ownership-at-silver" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="ownership-at-silver"><span class="header-section-number">9.6</span> 5.6 Ownership at Silver</h2>
+<p>The Steward or Delegated Steward holds Silver ownership. They are accountable for the quality of Silver datasets and for ensuring QC records are complete and honest - including about limitations. The Custodian who carried out the QC is named in the record and is responsible for the decisions made during QC.</p>
+<p>Silver data is the primary working dataset. Modellers and analysts should use Silver data and record which Silver dataset ID (and version) fed their work. If a modeller identifies a quality issue in Silver data, they must raise it with the Steward rather than correcting it locally.</p>
+</section>
+</section>
+<section id="gold-tier---analysis-ready-products" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 6. Gold Tier - Analysis-Ready Products</h1>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>GOLD - Formally approved, derived products ready for operational use</strong> Gold datasets are derived from Silver data. They are aggregated, summarised, combined, or formally approved at their native resolution to produce a specific analysis-ready product for a named purpose. Gold datasets require Owner approval and are the only tier that should be used in formal outputs, operational forecasting, ML model training intended for promotion, or external publications.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="what-qualifies-as-gold" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="what-qualifies-as-gold"><span class="header-section-number">10.1</span> 6.1 What Qualifies as Gold</h2>
+<p>A Gold dataset is a deliberate, named product created for a specific purpose. Examples include:</p>
+<ul>
+<li><p>Catchment-averaged rainfall series constructed from multiple rain gauge Silver records</p></li>
+<li><p>Multi-site composite records where gaps at one site are filled from a correlated site</p></li>
+<li><p>ML training set: a named, approved collection of 15-minute Silver time series data with static catchment attributes attached, covering a defined period and gauge selection, with flag exclusion rules documented and Steward sign-off that Silver quality is sufficient for model training</p></li>
+<li><p>Event hydrographs used in calibrations and post event analytics.</p></li>
+<li><p>Aggregated data such as annual maximum flow series for a gauge used in flood frequency analysis</p></li>
+<li><p>Daily mean flow record for a catchment, approved as the reference series for model calibration</p></li>
+<li><p>Design event hydrograph derived from observed events in Silver data</p></li>
+<li><p>Benchmark period dataset (agreed period used for inter-annual comparison)</p></li>
+</ul>
+<p>Gold is not simply ‘better Silver’. It is a specific product with a defined purpose, a named user, and formal approval. Creating a Gold dataset is a decision, not an automatic step.</p>
+</section>
+<section id="creating-a-gold-dataset" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="creating-a-gold-dataset"><span class="header-section-number">10.2</span> 6.2 Creating a Gold Dataset</h2>
+<p>A Gold dataset must be proposed, documented, and approved before it is used:</p>
+<ul>
+<li><p>Custodian or modeller proposes the Gold product, specifying: its purpose, which Silver datasets it draws from, the derivation method, and the intended use</p></li>
+<li><p>Steward reviews the proposal and the underlying Silver data quality, particularly flag counts and known issues</p></li>
+<li><p>Derivation is carried out and documented in a Gold derivation record (see Section 6.3)</p></li>
+<li><p>Owner reviews and formally approves the Gold dataset before it enters operational use</p></li>
+<li><p>Gold dataset is registered in the Hydrometric Data Register with status ‘Approved’</p></li>
+</ul>
+</section>
+<section id="gold-derivation-record" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="gold-derivation-record"><span class="header-section-number">10.3</span> 6.3 Gold Derivation Record</h2>
+<p>Each Gold dataset must have a complete derivation record in the Hydrometric Data Register (Section 10). See Section 10.1 for the full field list.</p>
+<p>The key fields recorded when a Gold dataset is created are: Gold dataset ID, purpose and who approved it, Silver source dataset IDs and versions, derivation method (aggregation, merging, event extraction, or native resolution for ML training sets), Silver quality gate summary (flag counts, gap extent, known issues), any exclusions and the reason, Custodian or analyst who produced it, Owner approval name and date, intended use and any restrictions on use, expiry or review date, and file path.</p>
+</section>
+<section id="versioning-and-supersession" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="versioning-and-supersession"><span class="header-section-number">10.4</span> 6.4 Versioning and Supersession</h2>
+<p>When new Silver data becomes available, or when a quality issue is identified, a Gold dataset may need to be updated. A new version is created; the previous version is retained and its status changed to ‘Superseded’. Any model or analysis that used the superseded version must be flagged for review.</p>
+<p>The Steward or Delegated Steward must be notified whenever a Gold dataset is superseded and must confirm whether dependent work needs to be revisited.</p>
+</section>
+<section id="ownership-at-gold" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="ownership-at-gold"><span class="header-section-number">10.5</span> 6.5 Ownership at Gold</h2>
+<p>Gold datasets are owned by the Owner and stewarded by the Steward. No one else can approve a new Gold dataset or change its status. This is the highest accountability level because Gold data directly informs business decisions, model calibration choices, and potentially regulatory outputs or KPIs.</p>
+</section>
+<section id="ml-training-sets-as-gold-products" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="ml-training-sets-as-gold-products"><span class="header-section-number">10.6</span> 6.6 ML Training Sets as Gold Products</h2>
+<p>Unlike most Gold products, an ML training set does not aggregate or reduce the underlying Silver data. It stays at the native 15-minute resolution. What makes it a Gold product is that it represents a set of deliberate, documented decisions about which data to use and how, combined with Steward confirmation that the Silver quality is sufficient for model training.</p>
+<p>A Silver dataset is ready to become a Gold ML training set when all of the following conditions are met:</p>
+<ul>
+<li><p>The time series data has been promoted to Silver and has a complete QC record including flag counts, gap assessment, and rating curve version where applicable</p></li>
+<li><p>Static catchment attributes have been calculated and attached, covering at minimum: catchment area, BFI, mean elevation, dominant soil type, and land cover class</p></li>
+<li><p>The training period has been defined and the flag exclusion rule has been documented (e.g., which flag types cause a timestep to be dropped from training)</p></li>
+<li><p>Gap-filling decisions for the training period have been recorded, including method</p></li>
+<li><p>and extent</p></li>
+<li><p>The Steward has reviewed the Silver quality and confirmed it is sufficient for the intended model type and promotion tier</p></li>
+</ul>
+<p>The Gold derivation record for an ML training set should describe the gauge selection rationale, the training period, and the static attribute sources alongside the standard fields. The derivation method field should state that no temporal aggregation has been applied and that the dataset is at native 15-minute resolution.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>This training set Gold product type is distinct from other Gold types. It should not be used for flood frequency analysis or hydraulic model calibration, and those Gold products should not be used as ML training sets without a new Gold derivation record confirming suitability.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="parquet-storage-schema" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 7. Parquet Storage Schema</h1>
+<p>All Bronze, Silver, and Gold datasets are stored as Parquet files. Parquet is the mandatory storage format for hydrometric time series data within the medallion architecture. It is used across the R tooling (via the arrow package) and the Python tooling (via polars or pyarrow), and it is the native format for the Databricks DASH environment.</p>
+<p>Parquet stores data in a typed, columnar format that is efficient to read, write, and query even for very long time series. Unlike CSV, it preserves data types exactly (timestamps, integers, floats) and is compressed automatically, which matters for long multi-year records at 15-minute resolution.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>All three tiers use Parquet. Bronze Parquet is the standardised ingest format derived from whatever the supplier sent. Silver and Gold Parquet add columns; they never remove or overwrite columns from the tier below.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>For the rationale behind the Parquet requirement, partitioning guidance, format comparisons (including Delta tables, NetCDF, GeoParquet, and the CSV and Excel restrictions), see <a href="e-file-format-reference.html" class="quarto-xref"><span>Appendix&nbsp;E</span></a>. Parquet schema compliance for Bronze, Silver, and Gold datasets is checked automatically by the <code>fw-governance</code> MCP server <code>validate_parquet_schema</code> and <code>validate_bronze_ingestion</code> tools.</p>
+<section id="why-parquet-for-hydrometric-time-series" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="why-parquet-for-hydrometric-time-series"><span class="header-section-number">11.1</span> 7.1 Why Parquet for Hydrometric Time Series</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Reason</strong></th>
+<th><strong>Detail</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Type safety</td>
+<td>Timestamps are stored as datetime64[ns, UTC] rather than strings. Floats are float64 throughout. Integers (flags, counts) are int32. This prevents silent type errors when data is read by different tools.</td>
+</tr>
+<tr class="even">
+<td>Columnar reads</td>
+<td>Downstream tools can read only the columns they need (e.g., just timestamp and value) without loading the full file. This is important for long records across hundreds of gauges.</td>
+</tr>
+<tr class="odd">
+<td>Compression</td>
+<td>Parquet uses Snappy compression by default, reducing storage by 60-80% compared to equivalent CSV files with no loss of data.</td>
+</tr>
+<tr class="even">
+<td>Cross-tool compatibility</td>
+<td>The same Parquet file can be read by R (arrow::read_parquet), Python (polars.read_parquet / pyarrow), and Databricks (spark.read.parquet) without conversion.</td>
+</tr>
+<tr class="odd">
+<td>Partition support</td>
+<td>Large datasets can be partitioned by supplier, site, or year, so queries only scan the relevant subset of files.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bronze-parquet-schema" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="bronze-parquet-schema"><span class="header-section-number">11.2</span> 7.2 Bronze Parquet Schema</h2>
+<p>Bronze Parquet is produced at ingestion. The Custodian converts the supplier’s raw file into the team’s standard Bronze schema. The original raw file is also retained unchanged. All dataset-level metadata (supplier, time period, units, licence, file format, etc.) is recorded in the register, not repeated in the Parquet.</p>
+<p>Mandatory columns:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Column</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>timestamp</td>
+<td>timestamp[ns, UTC]</td>
+<td>Observation datetime in UTC. Convert supplier local times at ingestion and record the offset in the register.</td>
+</tr>
+<tr class="even">
+<td>value</td>
+<td>float64</td>
+<td>Observed value as received from supplier. Do not round or convert units. Preserve the supplier’s precision.</td>
+</tr>
+<tr class="odd">
+<td>supplier_flag</td>
+<td>string</td>
+<td>Quality code or flag exactly as provided by the supplier. Null if the supplier provides no flags.</td>
+</tr>
+<tr class="even">
+<td>dataset_id</td>
+<td>string</td>
+<td>The Bronze dataset ID (e.g., EA_39001_Q_20260115). The join key to the register. Stored in every row so merged files remain traceable.</td>
+</tr>
+<tr class="odd">
+<td>site_id</td>
+<td>string</td>
+<td>Supplier’s site identifier. Preserved exactly as received.</td>
+</tr>
+<tr class="even">
+<td>data_type</td>
+<td>string</td>
+<td>Data type code: Q, H, P, SM, or SWE.</td>
+</tr>
+</tbody>
+</table>
+<p>Optional columns (include if provided by supplier):</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Column</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>raw_value_str</td>
+<td>string</td>
+<td>The value as a raw string before parsing. Retain where the supplier uses special markers (e.g., “&gt;” for above-range values).</td>
+</tr>
+<tr class="even">
+<td>uncertainty</td>
+<td>float64</td>
+<td>Measurement uncertainty if stated by supplier.</td>
+</tr>
+<tr class="odd">
+<td>sensor_id</td>
+<td>string</td>
+<td>Instrument or sensor ID where the supplier provides this.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong><em>Do not add any columns beyond those listed above to Bronze Parquet. Bronze is a faithful representation of what was received. Any derived or computed fields belong in Silver.</em></strong></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="silver-parquet-schema" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="silver-parquet-schema"><span class="header-section-number">11.3</span> 7.3 Silver Parquet Schema</h2>
+<p>Silver Parquet is derived from Bronze. It retains all Bronze columns and adds QC columns. Values and timestamps from Bronze are never altered - corrections and estimates are recorded in new columns, not by overwriting the Bronze value.</p>
+<p>Added columns (in addition to all Bronze columns):</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Column</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>qc_flag</td>
+<td>int32</td>
+<td>Team quality flag (1=Good, 2=Estimated, 3=Suspect, 4=Rejected, 5=No data, 6=Below detection). See Section 5.2. Every row must have a qc_flag at Silver.</td>
+</tr>
+<tr class="even">
+<td>qc_value</td>
+<td>float64</td>
+<td>The value to use for analysis. Equal to value for Good data. For Estimated rows, this is the gap-filled or estimated value. For Rejected or No data rows, this is null. Never overwrite value; always populate qc_value separately.</td>
+</tr>
+<tr class="odd">
+<td>estimation_method</td>
+<td>string</td>
+<td>How qc_value was estimated for flag=2 rows (e.g., “linear_interpolation”, “correlation_gauge_39002”, “mean_seasonal”). Null for all other flags.</td>
+</tr>
+<tr class="even">
+<td>rating_curve_version</td>
+<td>string</td>
+<td>Version of the rating curve applied to derive flow from stage. Null for direct supplier flow or non-flow data types.</td>
+</tr>
+<tr class="odd">
+<td>extrapolated</td>
+<td>bool</td>
+<td>True where stage falls outside the valid range of the rating curve. Null for non-flow data.</td>
+</tr>
+<tr class="even">
+<td>silver_dataset_id</td>
+<td>string</td>
+<td>The Silver dataset ID (e.g., EA_39001_Q_20260115_SILVER_v1). Stored in every row.</td>
+</tr>
+<tr class="odd">
+<td>qc_version</td>
+<td>int32</td>
+<td>Version number of the Silver dataset (1, 2, 3…). Increments when QC is revised.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>The value column is always the Bronze value. The qc_value column is what modellers and analysts should use. Keeping both means the QC decisions are always auditable.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="gold-parquet-schema" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="gold-parquet-schema"><span class="header-section-number">11.4</span> 7.4 Gold Parquet Schema</h2>
+<p>Gold Parquet is derived from Silver. The schema depends on the Gold product type. Two standard structures are defined below.</p>
+<p>Time Series Gold (calibration inputs, benchmark series)</p>
+<p>For Gold products that are still time series (e.g., a daily mean flow series approved for model calibration), use the Silver schema with the following additional columns. Dataset-level approval details are held in the register, not repeated per row.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Column</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gold_dataset_id</td>
+<td>string</td>
+<td>The Gold dataset ID (e.g., 39001_Q_GOLD_FFA_v1). Join key to the register. Stored in every row.</td>
+</tr>
+<tr class="even">
+<td>gold_version</td>
+<td>int32</td>
+<td>Version number of the Gold dataset.</td>
+</tr>
+<tr class="odd">
+<td>flag_exclusion_rule</td>
+<td>string</td>
+<td>The flag exclusion rule applied when deriving Gold from Silver (e.g., “exclude_flags_3_4_5”). Stored in every row so the rule is self-documenting even in extracted subsets.</td>
+</tr>
+</tbody>
+</table>
+<p>The qc_value column from Silver is the source value for Gold time series. Rejected and No data rows (flags 4 and 5) are typically excluded; the flag_exclusion_rule column records exactly which flags were dropped.</p>
+<p>Aggregated Gold (statistics, design events, frequency analysis inputs)</p>
+<p>For Gold products that aggregate Silver time series into statistics or event summaries, use a purpose-specific schema. At minimum include:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Column</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gold_dataset_id</td>
+<td>string</td>
+<td>Gold dataset ID. Join key to the register.</td>
+</tr>
+<tr class="even">
+<td>site_id</td>
+<td>string</td>
+<td>Site or catchment identifier</td>
+</tr>
+<tr class="odd">
+<td>period_start</td>
+<td>date32</td>
+<td>Start of the aggregation period</td>
+</tr>
+<tr class="even">
+<td>period_end</td>
+<td>date32</td>
+<td>End of the aggregation period</td>
+</tr>
+<tr class="odd">
+<td>[statistic columns]</td>
+<td>float64</td>
+<td>e.g., annual_max_flow_m3s, peak_rainfall_mm, mean_daily_flow_m3s. Name columns with units as suffix.</td>
+</tr>
+<tr class="even">
+<td>data_completeness_pct</td>
+<td>float64</td>
+<td>Percentage of the period covered by Good or Estimated Silver data (flags 1 and 2).</td>
+</tr>
+<tr class="odd">
+<td>silver_source_ids</td>
+<td>string</td>
+<td>Pipe-separated list of Silver dataset IDs used (e.g., EA_39001_Q_20230101_SILVER_v1│EA_39001_Q_20240101_SILVER_v1). Keeps lineage readable in any tool.</td>
+</tr>
+</tbody>
+</table>
+<section id="ml-training-set-gold" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="ml-training-set-gold"><span class="header-section-number">11.4.1</span> ML Training Set Gold</h3>
+<p>For Gold ML training sets (Section 6.6), use the time series Gold schema with the following additional columns. Static catchment attributes are repeated on every row so a single Parquet file is self-contained for training without needing a join. Approval details are held in the register.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Column</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>training_set_id</td>
+<td>string</td>
+<td>Gold dataset ID for this ML training set (e.g., 39001_Q_GOLD_LSTM_v1). Join key to the register.</td>
+</tr>
+<tr class="even">
+<td>flag_exclusion_rule</td>
+<td>string</td>
+<td>Flag exclusion rule applied (e.g., exclude_flags_3_4_5). Stored in every row.</td>
+</tr>
+<tr class="odd">
+<td>catchment_area_km2</td>
+<td>float64</td>
+<td>Catchment area in km².</td>
+</tr>
+<tr class="even">
+<td>bfi</td>
+<td>float64</td>
+<td>Base Flow Index (0 to 1). Source and version held in the register derivation record.</td>
+</tr>
+<tr class="odd">
+<td>mean_elevation_m</td>
+<td>float64</td>
+<td>Mean catchment elevation in metres above ordnance datum.</td>
+</tr>
+<tr class="even">
+<td>dominant_soil_type</td>
+<td>string</td>
+<td>Dominant soil class from the HOST classification (e.g., HOST_1, HOST_29).</td>
+</tr>
+<tr class="odd">
+<td>land_cover_class</td>
+<td>string</td>
+<td>Dominant land cover class (e.g., improved_grassland, arable, woodland). Source dataset in register.</td>
+</tr>
+<tr class="even">
+<td>gauge_easting</td>
+<td>float64</td>
+<td>Gauge location easting in OSGB36 (metres).</td>
+</tr>
+<tr class="odd">
+<td>gauge_northing</td>
+<td>float64</td>
+<td>Gauge location northing in OSGB36 (metres).</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Static attributes are repeated on every row so the file is self-contained for training. A pipeline loads one file and gets both the time series and catchment descriptors. The source dataset and version for each attribute must be recorded in the register derivation record, not in the Parquet itself.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>For large datasets covering many sites or long time periods, Parquet files should be partitioned to avoid loading unnecessary data. The recommended partition scheme is:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tier</strong></th>
+<th><strong>Partition by</strong></th>
+<th><strong>Example path</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bronze</td>
+<td>supplier / data_type / year</td>
+<td>bronze/EA/Q/2024/EA_39001_Q_20240101.parquet</td>
+</tr>
+<tr class="even">
+<td>Silver</td>
+<td>data_type / site_id</td>
+<td>silver/Q/39001/EA_39001_Q_20260115_SILVER_v1.parquet</td>
+</tr>
+<tr class="odd">
+<td>Gold</td>
+<td>data_type / purpose</td>
+<td>gold/Q/FFA/39001_Q_GOLD_FFA_v2.parquet</td>
+</tr>
+</tbody>
+</table>
+<p>Partitioning is mandatory for any dataset covering more than 50 sites or more than five years of 15-minute data. For smaller datasets, a single Parquet file per dataset ID is acceptable.</p>
+<p>In Databricks, use Delta Lake tables rather than raw Parquet files for Bronze and Silver stores. Delta Lake provides transaction safety, schema enforcement, and time-travel queries on top of the Parquet format. The column schemas above apply to Delta Lake tables identically.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>The Parquet schemas defined in this section are the interface contract between the Hydrometric Data Framework and the AI/ML Test Environment. The ML training pipeline reads Gold Parquet using the column names and types defined in Sections 7.3 and 7.4. Any schema changes must be agreed between the Steward and the Delegated Steward before implementation.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="data-quality-improvement" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> 8. Data Quality Improvement</h1>
+<p>The medallion structure is not just a filing system; it is a mechanism for identifying and acting on data quality problems over time. Quality issues discovered at Silver or Gold should feed back into improved processes and, where possible, improved data from suppliers.</p>
+<section id="flagging-systemic-issues" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="flagging-systemic-issues"><span class="header-section-number">12.1</span> 8.1 Flagging Systemic Issues</h2>
+<p>When a Custodian or Steward identifies a recurring quality problem - a gauge that consistently produces flatline values during high flows, a supplier format that loses trailing zeros, a rating curve that is clearly outdated - this should be escalated as a systemic issue rather than handled case by case. Systemic issues are recorded in the Data Quality Issue Log and assigned to the Delegated Steward to manage.</p>
+</section>
+<section id="supplier-engagement" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="supplier-engagement"><span class="header-section-number">12.2</span> 8.2 Supplier Engagement</h2>
+<p>Where a Bronze dataset contains quality problems that originate with the supplier (instrument failures, incorrect datum, outdated rating), the Delegated Steward should:</p>
+<ul>
+<li><p>Document the issue precisely in the Silver QC record</p></li>
+<li><p>Raise the issue with the supplier in writing, referencing the specific time periods affected</p></li>
+<li><p>Request a corrected dataset where one is available</p></li>
+<li><p>Record the outcome of the engagement in the Data Quality Issue Log</p></li>
+</ul>
+<p>The team should not routinely correct supplier errors at Silver without engaging the supplier first, unless the operational need is urgent and documented. Correcting supplier errors silently means the supplier never improves.</p>
+</section>
+<section id="rating-curve-reviews" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="rating-curve-reviews"><span class="header-section-number">12.3</span> 8.3 Rating Curve Reviews</h2>
+<p>Rating curves age. Channel geometry changes after flood events, vegetation and weed growth affects stage-discharge relationships seasonally, and structural changes at gauging stations invalidate previous curves. The Delegated Steward is responsible for:</p>
+<ul>
+<li><p>Maintaining a rating curve review schedule for all sites where the team applies its own rating</p></li>
+<li><p>Flagging in the Silver record when a rating review is overdue</p></li>
+<li><p>Requesting updated rating information from the gauge operators where the team relies on a supplier rating</p></li>
+<li><p>Triggering a Silver version update whenever a new rating curve is applied</p></li>
+</ul>
+</section>
+<section id="data-quality-metrics-and-reporting" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="data-quality-metrics-and-reporting"><span class="header-section-number">12.4</span> 8.4 Data Quality Metrics and Reporting</h2>
+<p>The Steward produces a quarterly data quality summary covering:</p>
+<ul>
+<li><p>Number of active Bronze datasets, Silver datasets (by flag profile), and Gold datasets</p></li>
+<li><p>Datasets awaiting Silver promotion (backlog)</p></li>
+<li><p>Open Data Quality Issue Log entries and their age</p></li>
+<li><p>Supplier engagement outcomes in the quarter</p></li>
+<li><p>Rating curves flagged as overdue for review</p></li>
+</ul>
+<p>The summary is shared with the Owner and reported at the team’s quarterly governance review.</p>
+</section>
+</section>
+<section id="provenance-and-traceability" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> 9. Provenance and Traceability</h1>
+<p>Every formal output the team produces must be traceable back to the data that fed it. The Bronze to Silver to Gold chain provides that traceability, but only if it is used consistently.</p>
+<section id="dataset-lineage" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="dataset-lineage"><span class="header-section-number">13.1</span> 9.1 Dataset Lineage</h2>
+<p>For any Gold dataset, it must be possible to answer:</p>
+<ul>
+<li><p>Which Bronze datasets contributed? What were their provenance records?</p></li>
+<li><p>Which Silver processing steps were applied, and by whom?</p></li>
+<li><p>What flags are present in the Silver data feeding this Gold product?</p></li>
+<li><p>Has the supplier’s original data been corrected? If so, how, why, and by whom?</p></li>
+</ul>
+<p>The Hydrometric Data Register (Section 10) maintains this lineage by linking Gold IDs to Silver IDs to Bronze IDs.</p>
+</section>
+<section id="recording-data-use-in-model-runs" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="recording-data-use-in-model-runs"><span class="header-section-number">13.2</span> 9.2 Recording Data Use in Model Runs</h2>
+<p>When a model run uses hydrometric data, the run record must specify:</p>
+<ul>
+<li><p>The Gold or Silver dataset ID(s) used, including version</p></li>
+<li><p>The time period extracted</p></li>
+<li><p>Any flags excluded from the analysis and the exclusion rule applied</p></li>
+</ul>
+</section>
+<section id="retrospective-traceability" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="retrospective-traceability"><span class="header-section-number">13.3</span> 9.3 Retrospective Traceability</h2>
+<ul>
+<li><p>Bronze datasets are never deleted (see Section 11.1)</p></li>
+<li><p>Silver versions are retained even when superseded</p></li>
+<li><p>Gold versions are retained even when superseded, with their status changed to ‘Superseded’</p></li>
+<li><p>The Hydrometric Data Register is backed up as part of the team’s standard data backup process</p></li>
+</ul>
+</section>
+</section>
+<section id="hydrometric-data-register" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> 10. Hydrometric Data Register</h1>
+<p>The Hydrometric Data Register is the single consolidated record for all Bronze, Silver, and Gold datasets. It is maintained by the <code>reach.io</code> R package as a CSV file held in the team’s designated data store, version-controlled alongside the data. Register entries are written and updated programmatically via <code>reach.io</code>’s <code>write_provenance_record()</code> function; direct manual editing of the CSV is not permitted outside of Steward-approved corrections. In Databricks deployments, the same fields are held as a Delta table in the <code>fw_hydrometric</code> catalog. The Steward is responsible for keeping it current.</p>
+<p>A separate <strong>Gauge Registry</strong> (Parquet format) is also maintained by <code>reach.io</code> via <code>build_gauge_registry()</code>. It is the routing configuration for the ingestion pipeline and records, for each gauge: source system assignment, active status, backfill completion flag, and notes. Changes to the Gauge Registry require Steward approval and are committed with a brief note describing the reason.</p>
+<p>Rather than separate provenance, QC, and derivation records for each tier, the register uses a single table where each row is one dataset. The tier column identifies whether a row is Bronze, Silver, or Gold. Fields that only apply to certain tiers are left blank for others. This keeps everything queryable in one place and avoids the proliferation of separate files.</p>
+<section id="register-fields" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="register-fields"><span class="header-section-number">14.1</span> 10.1 Register Fields</h2>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Tier</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dataset ID</td>
+<td>All</td>
+<td>Unique identifier. Format follows Appendix A naming conventions.</td>
+</tr>
+<tr class="even">
+<td>Tier</td>
+<td>All</td>
+<td>Bronze / Silver / Gold</td>
+</tr>
+<tr class="odd">
+<td>Status</td>
+<td>All</td>
+<td>Active / Superseded / Rejected / Archived</td>
+</tr>
+<tr class="even">
+<td>Bronze source ID</td>
+<td>Silver, Gold</td>
+<td>ID of the Bronze dataset this was derived from. For Gold, the Silver ID links back to Bronze.</td>
+</tr>
+<tr class="odd">
+<td>Silver source IDs</td>
+<td>Gold</td>
+<td>IDs and versions of all Silver datasets used as input to this Gold product.</td>
+</tr>
+<tr class="even">
+<td>Supplier</td>
+<td>Bronze</td>
+<td>Name of the organisation that provided the data (e.g., EA, NRFA, Met Office)</td>
+</tr>
+<tr class="odd">
+<td>Supplier reference</td>
+<td>Bronze</td>
+<td>Any reference number, order ID, or data request number from the supplier</td>
+</tr>
+<tr class="even">
+<td>Site identifier</td>
+<td>Bronze</td>
+<td>Gauge ID, station name, or grid reference as provided by the supplier</td>
+</tr>
+<tr class="odd">
+<td>Data type</td>
+<td>All</td>
+<td>Q / H / P / SM / SWE</td>
+</tr>
+<tr class="even">
+<td>Time period</td>
+<td>All</td>
+<td>Start and end date of the dataset</td>
+</tr>
+<tr class="odd">
+<td>Temporal resolution</td>
+<td>Bronze, Silver</td>
+<td>Time-step (e.g., 15 min, hourly, daily)</td>
+</tr>
+<tr class="even">
+<td>Units</td>
+<td>Bronze</td>
+<td>Units as stated by the supplier (e.g., m3/s, mAOD, mm)</td>
+</tr>
+<tr class="odd">
+<td>Datum / reference</td>
+<td>Bronze</td>
+<td>Vertical datum or supplier rating curve version, where applicable</td>
+</tr>
+<tr class="even">
+<td>File format received</td>
+<td>Bronze</td>
+<td>Format as received (e.g., CSV, XML, NRFA API response, JSON)</td>
+</tr>
+<tr class="odd">
+<td>Date received</td>
+<td>Bronze</td>
+<td>Date the data arrived with the team</td>
+</tr>
+<tr class="even">
+<td>Received by</td>
+<td>Bronze</td>
+<td>Name of the Custodian who ingested the data</td>
+</tr>
+<tr class="odd">
+<td>Method of receipt</td>
+<td>Bronze</td>
+<td>How the data was obtained (API pull, email, portal download, FTP)</td>
+</tr>
+<tr class="even">
+<td>Supplier quality flags</td>
+<td>Bronze</td>
+<td>Any quality codes provided by the supplier and what they mean</td>
+</tr>
+<tr class="odd">
+<td>Known limitations</td>
+<td>Bronze</td>
+<td>Limitations stated by the supplier in accompanying documentation</td>
+</tr>
+<tr class="even">
+<td>File path</td>
+<td>All</td>
+<td>Location in the team data store (or Delta table name in Databricks)</td>
+</tr>
+<tr class="odd">
+<td>QC completed by</td>
+<td>Silver</td>
+<td>Custodian who carried out QC stages 1-3</td>
+</tr>
+<tr class="even">
+<td>QC reviewed by</td>
+<td>Silver</td>
+<td>Steward who reviewed and approved promotion to Silver</td>
+</tr>
+<tr class="odd">
+<td>QC date</td>
+<td>Silver</td>
+<td>Date QC was completed</td>
+</tr>
+<tr class="even">
+<td>Automated checks run</td>
+<td>Silver</td>
+<td>Which automated checks were run and what tool was used</td>
+</tr>
+<tr class="odd">
+<td>Flag count summary</td>
+<td>Silver</td>
+<td>Count of values at each flag level (1-6)</td>
+</tr>
+<tr class="even">
+<td>Gap-filling applied</td>
+<td>Silver</td>
+<td>Yes/No; if yes, method, extent, and data source used</td>
+</tr>
+<tr class="odd">
+<td>Rating curve applied</td>
+<td>Silver</td>
+<td>Version, valid range, and whether any extrapolation was needed</td>
+</tr>
+<tr class="even">
+<td>Known issues</td>
+<td>Silver, Gold</td>
+<td>Any remaining quality concerns the data user should be aware of</td>
+</tr>
+<tr class="odd">
+<td>Comparison datasets</td>
+<td>Silver</td>
+<td>Datasets used as reference during expert review</td>
+</tr>
+<tr class="even">
+<td>Purpose</td>
+<td>Gold</td>
+<td>What this Gold product is for and who approved that purpose</td>
+</tr>
+<tr class="odd">
+<td>Derivation method</td>
+<td>Gold</td>
+<td>How the Gold dataset was produced (aggregation, merging, native resolution for ML training sets, etc.)</td>
+</tr>
+<tr class="even">
+<td>Quality gate summary</td>
+<td>Gold</td>
+<td>Silver flag counts and gap extent feeding this Gold product</td>
+</tr>
+<tr class="odd">
+<td>Exclusions</td>
+<td>Gold</td>
+<td>Periods or values excluded from Gold even though present in Silver, and why</td>
+</tr>
+<tr class="even">
+<td>Derived by</td>
+<td>Gold</td>
+<td>Name of the Custodian or analyst who produced the dataset</td>
+</tr>
+<tr class="odd">
+<td>Approved by</td>
+<td>Gold</td>
+<td>Name of the Owner who gave formal approval</td>
+</tr>
+<tr class="even">
+<td>Approval date</td>
+<td>Gold</td>
+<td>Date of Owner approval</td>
+</tr>
+<tr class="odd">
+<td>Intended use</td>
+<td>Gold</td>
+<td>What this dataset should and should not be used for</td>
+</tr>
+<tr class="even">
+<td>Expiry / review date</td>
+<td>Gold</td>
+<td>When this Gold dataset should be reviewed</td>
+</tr>
+<tr class="odd">
+<td>Static attribute sources</td>
+<td>Gold (ML)</td>
+<td>Source dataset and version for each static catchment attribute (BFI, elevation, soil type, land cover)</td>
+</tr>
+<tr class="even">
+<td>Notes</td>
+<td>All</td>
+<td>Anything unusual about the dataset, delivery, or QC decisions</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>The register is the authoritative metadata store. Parquet files hold only the ID columns needed for joins (dataset_id, silver_dataset_id, gold_dataset_id) plus the time series data and QC columns. All other metadata lives in the register. This keeps files lean and metadata queryable without opening individual Parquet files.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="data-quality-issue-log" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="data-quality-issue-log"><span class="header-section-number">14.2</span> 10.2 Data Quality Issue Log</h2>
+<p>The Data Quality Issue Log is a separate CSV file held alongside the Hydrometric Data Register (or a second Delta table in Databricks deployments). It records known quality problems that require action beyond routine QC. Each entry includes:</p>
+<ul>
+<li><p>Issue ID and date raised</p></li>
+<li><p>Dataset(s) affected (Bronze and/or Silver IDs)</p></li>
+<li><p>Description of the issue</p></li>
+<li><p>Whether the issue originates with the supplier or with team processing</p></li>
+<li><p>Action taken or planned, and by whom</p></li>
+<li><p>Date resolved and how</p></li>
+</ul>
+<p>The log is reviewed by the Steward monthly and included in the quarterly data quality summary.</p>
+</section>
+<section id="register-maintenance" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="register-maintenance"><span class="header-section-number">14.3</span> 10.3 Register Maintenance</h2>
+<p>The register must be updated whenever:</p>
+<ul>
+<li><p>A new Bronze dataset is ingested</p></li>
+<li><p>A Silver dataset is promoted, revised, or rejected</p></li>
+<li><p>A Gold dataset is created, superseded, or withdrawn</p></li>
+<li><p>A data quality issue is raised, progressed, or resolved</p></li>
+<li><p>A supplier delivers a corrected or updated dataset</p></li>
+</ul>
+<p>The register is version-controlled. The Delegated Steward commits changes with a note describing what was updated. Previous versions are retained as part of the retrospective traceability requirement.</p>
+</section>
+</section>
+<section id="access-sharing-and-retention" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> 11. Access, Sharing, and Retention</h1>
+<section id="retention" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="retention"><span class="header-section-number">15.1</span> 11.1 Retention</h2>
+<p>Bronze data are retained indefinitely. It is the permanent record of what was received and cannot be recreated. It must never be deleted without Owner approval.</p>
+<p>Silver data is retained for as long as the Bronze data it was derived from is retained. Superseded Silver versions are kept alongside the current version with their status clearly labelled.</p>
+<p>Gold data is retained for as long as any model, output, or decision that used it may need to be audited. In practice this is indefinitely for any Gold dataset that contributed to a formal flood risk output.</p>
+</section>
+<section id="access" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="access"><span class="header-section-number">15.2</span> 11.2 Access</h2>
+<ul>
+<li><p>Bronze: Custodians and Stewards have read access. Write access at Bronze is limited to the ingestion Custodian at the point of ingestion - after that, Bronze is read-only</p></li>
+<li><p>Silver: All team members have read access. Write access (creating or revising a Silver dataset) requires Custodian role and Steward review</p></li>
+<li><p>Gold: All team members have read access. Creating or superseding a Gold dataset requires Owner approval</p></li>
+<li><p>External sharing of any tier requires Owner approval and must respect the supplier’s data licence</p></li>
+</ul>
+</section>
+<section id="data-licensing-and-third-party-constraints" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="data-licensing-and-third-party-constraints"><span class="header-section-number">15.3</span> 11.3 Data Licensing and Third-Party Constraints</h2>
+<p>Most hydrometric data supplied by external organisations carries restrictions on redistribution. The provenance record must note the licence or access terms under which data was received. The Steward is responsible for:</p>
+<ul>
+<li><p>Checking licence terms before any external sharing of Bronze or Silver data</p></li>
+<li><p>Ensuring that Gold datasets derived from restricted data carry the same restrictions</p></li>
+<li><p>Flagging any licence ambiguity to the Owner before sharing</p></li>
+</ul>
+</section>
+</section>
+<section id="roles-and-responsibilities" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> 12. Roles and Responsibilities</h1>
+<p>The roles below follow the Owner, Steward, and Custodian model defined in the Data Ownership Model (CDDO, 2023) and applied in the Data &amp; Digital Asset Governance Framework v1.4. The specific responsibilities at each tier are summarised here. The Data Owner for hydrometric data assets fulfils the Information Asset Owner (IAO) function for those assets; see <a href="01-governance-framework.html#sec-iao-relationship" class="quarto-xref"><span>Section&nbsp;2.3.6</span></a> in the parent framework for the full role mapping.</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Role</strong></th>
+<th><strong>Bronze</strong></th>
+<th><strong>Silver</strong></th>
+<th><strong>Gold</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Owner (Deputy Director)</td>
+<td>Approves deletion of Bronze data</td>
+<td>Sets quality standards and approves escalation of supplier issues</td>
+<td>Approves creation and supersession of Gold datasets; accountable for Gold data quality</td>
+</tr>
+<tr class="even">
+<td>Steward (Grade 7)</td>
+<td>Audits provenance records; monitors Bronze store integrity</td>
+<td>Reviews and approves Silver promotion; manages the Data Quality Issue Log; conducts rating curve reviews; produces quarterly quality summary</td>
+<td>Reviews Silver quality before Gold proposals; signs off derivation records before Owner approval</td>
+</tr>
+<tr class="odd">
+<td>Delegated Steward (G6)</td>
+<td>Coordinates Bronze deletion with Owner; maintains register version control</td>
+<td>May act in place of Steward for Silver promotion review; manages Data Quality Issue Log entries; conducts rating curve reviews; leads supplier engagement</td>
+<td>Notified on Gold dataset supersession; confirms whether dependent work needs to be revisited</td>
+</tr>
+<tr class="even">
+<td>Custodian (any grade)</td>
+<td>Ingests data; completes provenance records; stores Bronze files correctly</td>
+<td>Carries out QC stages 1-3; records all QC decisions; notifies Steward for review</td>
+<td>Produces Gold derivation records under Steward guidance; flags supersession triggers</td>
+</tr>
+<tr class="odd">
+<td>Modeller / Analyst</td>
+<td>Does not interact with Bronze directly</td>
+<td>Uses Silver data; records Silver dataset IDs in run records; raises quality issues to Steward</td>
+<td>Uses Gold data for formal outputs; records Gold dataset IDs; notifies Steward if Gold data appears incorrect</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="governance-and-review" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> 13. Governance and Review</h1>
+<p>This framework is reviewed annually by the Steward and approved by the Owner. The review considers:</p>
+<ul>
+<li><p>Whether the Bronze to Silver to Gold tiers are serving their purpose or need adjustment</p></li>
+<li><p>Data quality issue trends from the quarterly summaries</p></li>
+<li><p>Any changes to supplier data formats or APIs that affect ingestion</p></li>
+<li><p>Feedback from modellers and analysts on the usability of Silver and Gold data</p></li>
+<li><p>Changes to the team’s operational requirements that affect what Gold products are needed</p></li>
+</ul>
+<p>Exceptions to this framework - for example, using Bronze data directly in an urgent operational run - must be documented in the run record and reported to the Delegated Steward. Repeated exceptions in the same area should trigger a review of whether the Silver pipeline needs to be accelerated for that data source.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>This framework operates under the Owner, Steward, and Custodian model in the Data <strong>&amp;</strong> Digital Asset Governance Framework v1.4. The exceptions process, escalation paths, and annual audit requirements in that document apply here.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="appendix-a---naming-conventions" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Appendix A - Naming Conventions</h1>
+<p>All dataset IDs use underscores, no spaces, no dots except as the file extension.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tier</strong></th>
+<th><strong>Format and example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bronze</td>
+<td>[SupplierCode]<em>[SiteID]</em>[DataType]_[YYYYMMDD received] Example: EA_39001_Q_20260115</td>
+</tr>
+<tr class="even">
+<td>Silver</td>
+<td>[BronzeDatasetID]_SILVER_v[N] Example: EA_39001_Q_20260115_SILVER_v1</td>
+</tr>
+<tr class="odd">
+<td>Gold</td>
+<td>[SiteO rCatchment]_[DataType]<em>GOLD</em>[Purpose]_v[N] Example: THAMES_Q_GOLD_FFA_v2</td>
+</tr>
+</tbody>
+</table>
+<p>Supplier codes: EA = Environment Agency, NRFA = National River Flow Archive, MO = Met Office, CEH = Centre for Ecology &amp; Hydrology. [Other] = agree with Steward before first use.</p>
+<p>Data type codes: Q = flow, H = stage/water level, P = rainfall, SM = soil moisture, SWE = snow water equivalent.</p>
+</section>
+<section id="appendix-b---glossary" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> Appendix B - Glossary</h1>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bronze</td>
+<td>The first tier of the medallion framework. Raw, unmodified data exactly as received from the supplier.</td>
+</tr>
+<tr class="even">
+<td>Silver</td>
+<td>The second tier. Quality-controlled data with flags applied and QC decisions documented.</td>
+</tr>
+<tr class="odd">
+<td>Gold</td>
+<td>The third tier. Formally approved analysis-ready products derived from Silver data. Includes aggregated statistics, calibration inputs, and ML training sets.</td>
+</tr>
+<tr class="even">
+<td>Provenance</td>
+<td>The documented origin and history of a dataset - where it came from, when, how it was received, and what has been done to it.</td>
+</tr>
+<tr class="odd">
+<td>Lineage</td>
+<td>The chain of datasets linking a Gold product back through Silver to Bronze and to the supplier.</td>
+</tr>
+<tr class="even">
+<td>Rating curve</td>
+<td>The relationship between water level (stage) and flow (discharge) at a gauging station, used to derive flow from level measurements.</td>
+</tr>
+<tr class="odd">
+<td>Gap-filling</td>
+<td>Estimating values for missing time periods in a dataset using a documented method.</td>
+</tr>
+<tr class="even">
+<td>Quality flag</td>
+<td>A code attached to each data value indicating its quality status (Good, Estimated, Suspect, Rejected, No data, Below detection).</td>
+</tr>
+<tr class="odd">
+<td>Flatline</td>
+<td>A sequence of identical repeated values in a time series, typically indicating a sensor or telemetry malfunction.</td>
+</tr>
+<tr class="even">
+<td>Medallion framework</td>
+<td>A data architecture pattern organising data into tiers of increasing quality and fitness for purpose. Adapted here for hydrological data management.</td>
+</tr>
+<tr class="odd">
+<td>Hydrometric</td>
+<td>Relating to the measurement of water - flows, levels, rainfall, and related variables.</td>
+</tr>
+<tr class="even">
+<td>NRFA</td>
+<td>National River Flow Archive - the UK’s national repository of river flow data.</td>
+</tr>
+<tr class="odd">
+<td>Datum</td>
+<td>The vertical reference level to which water level measurements are made.</td>
+</tr>
+<tr class="even">
+<td>Parquet</td>
+<td>A columnar file format used as the standard storage format for all hydrometric datasets in this framework. Supports typed columns, compression, and efficient partial reads.</td>
+</tr>
+<tr class="odd">
+<td>Delta Lake</td>
+<td>A storage layer built on Parquet that adds transactions, schema enforcement, and time-travel to tables in Databricks. Used for Bronze and Silver stores in DASH.</td>
+</tr>
+<tr class="even">
+<td>Hydrometric Data Register</td>
+<td>A single consolidated CSV file maintained by <code>reach.io</code> (or a Delta table in Databricks) recording all Bronze, Silver, and Gold dataset metadata in one table. Entries are written programmatically via <code>write_provenance_record()</code>. Replaces separate provenance, QC, and derivation record files.</td>
+</tr>
+<tr class="odd">
+<td>Gauge Registry</td>
+<td>A Parquet file maintained by <code>reach.io</code> via <code>build_gauge_registry()</code>. Records source system assignment, active status, backfill completion, and notes for each gauge. Acts as the routing configuration for the ingestion pipeline.</td>
+</tr>
+<tr class="even">
+<td>qc_value</td>
+<td>The analysis-ready value column in Silver and Gold Parquet. Equal to the Bronze value for Good data; populated with the estimated value for gap-filled rows; null for Rejected and No data rows.</td>
+</tr>
+<tr class="odd">
+<td>Static catchment attributes</td>
+<td>Time-invariant descriptors of a catchment attached to an ML training set Gold product: area, BFI, elevation, soil type, and land cover. Repeated on every row in the Parquet file so the dataset is self-contained for model training.</td>
+</tr>
+<tr class="even">
+<td>BFI</td>
+<td>Base Flow Index. A measure of the proportion of river flow derived from groundwater or other slowly varying sources. Used as a static catchment attribute in ML training sets.</td>
+</tr>
+<tr class="odd">
+<td>ML training set Gold</td>
+<td>A Gold product type holding Silver time series data at native 15-minute resolution with static catchment attributes attached. Distinct from aggregated Gold products and requires its own derivation record.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="appendix-c---folder-structure" class="level1" data-number="20">
+<h1 data-number="20"><span class="header-section-number">20</span> Appendix C - Folder Structure</h1>
+<p>The following shows the recommended folder structure for hydrometric data storage, covering both the team file store and the Databricks DASH environment.</p>
+<section id="c.1-file-store" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="c.1-file-store"><span class="header-section-number">20.1</span> C.1 File Store</h2>
+<p>Used outside Databricks for local and shared network storage. The raw supplier file (CSV, XML, JSON, etc.) is kept alongside the Parquet at Bronze as the immutable record of receipt.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>hydrometric/</strong> <strong>├──</strong>** bronze/** │ ├── EA/ │ │ ├── Q/ │ │ │ ├── 2023/ │ │ │ │ ├── EA_39001_Q_20230101.parquet │ │ │ │ ├── EA_39001_Q_20230101_raw.csv ← original supplier file │ │ │ │ └── EA_45001_Q_20230101.parquet │ │ │ └── 2024/ │ │ │ └── EA_39001_Q_20240101.parquet │ │ └── H/ │ │ └── 2024/ │ │ └── EA_39001_H_20240101.parquet │ ├── NRFA/ │ │ └── Q/ │ │ └── 2024/ │ │ └── NRFA_39001_Q_20240301.parquet │ └── MO/ │ └── P/ │ └── 2024/ │ └── MO_235096_P_20240101.parquet │ <strong>├──</strong>** silver/** │ ├── Q/ │ │ └── 39001/ │ │ ├── EA_39001_Q_20230101_SILVER_v1.parquet │ │ └── EA_39001_Q_20230101_SILVER_v2.parquet ← revised; v1 kept │ ├── H/ │ │ └── 39001/ │ │ └── EA_39001_H_20240101_SILVER_v1.parquet │ └── P/ │ └── 235096/ │ └── MO_235096_P_20240101_SILVER_v1.parquet │ <strong>├──</strong>** gold/** │ ├── Q/ │ │ ├── calibration/ │ │ │ └── 39001_Q_GOLD_CAL_v1.parquet │ │ └── FFA/ │ │ ├── 39001_Q_GOLD_FFA_v1.parquet ← superseded; kept │ │ └── 39001_Q_GOLD_FFA_v2.parquet ← current │ └── P/ │ └── catchment_average/ │ └── THAMES_P_GOLD_CAVG_v1.parquet │ └── register/ ├── hydrometric_data_register.xlsx └── data_quality_issue_log.xlsx</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="c.2-databricks-dash---unity-catalog" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="c.2-databricks-dash---unity-catalog"><span class="header-section-number">20.2</span> C.2 Databricks DASH - Unity Catalog</h2>
+<p>In Databricks, data is held as Delta Lake tables rather than flat files. The tier structure maps directly to Unity Catalog schemas, which enforces the access controls defined in Section 11.2.</p>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>unity_catalog/</strong> <strong>└── fw_hydrometric/ ← catalog</strong> <strong>├──</strong>** fw_bronze/ ****←**** schema; read-only except at ingest** │ ├── ea_flow ← Delta table, partitioned by site_id, year │ ├── ea_stage │ ├── mo_rainfall │ └── nrfa_flow <strong>├──</strong>** fw_silver/ ****←**** schema; read by all, write by Custodians** │ ├── flow │ ├── stage │ └── rainfall <strong>└── fw_gold/ ← schema; read by all, write requires Owner approval</strong> ├── flow_calibration ├── flow_ffa └── rainfall_catchment_average</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Superseded Silver and Gold files stay in place with their version number in the filename - nothing is deleted or renamed. All metadata (provenance, QC records, derivation records) is held in the Hydrometric Data Register, not in sidecar files alongside the Parquet. In Databricks, Delta Lake time-travel provides access to previous versions without separate files.</em></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="approved-by" class="level1" data-number="21">
+<h1 data-number="21"><span class="header-section-number">21</span> Approved by</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th><strong>Role</strong></th>
+<th><strong>Name / Signature / Date</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Head of Flood Forecasting / Owner</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Hydrometric Data Steward</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Team Representative</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04-python-code-governance.html" class="pagination-link  aria-label=" &lt;span="" tool="" governance&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06-flood-model-governance.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Flood Model Governance</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
