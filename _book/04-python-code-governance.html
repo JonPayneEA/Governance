@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data and Digital Asset Governance - 5&nbsp; Python Tool Governance</title>
+<title>Data and Digital Asset Governance - 4&nbsp; Python Tool Governance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-python-code-governance.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-python-code-governance.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -121,38 +121,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-accepted-file-types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Accepted File Types and Data Formats</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./03-r-code-governance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-python-code-governance.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-hydrometric-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-flood-model-governance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-training-framework.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -188,6 +182,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Upcoming Changes and Improvements</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./e-file-format-reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">File Format Reference</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -200,56 +200,56 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">6</span> Purpose</a></li>
-  <li><a href="#introduction-and-scope" id="toc-introduction-and-scope" class="nav-link" data-scroll-target="#introduction-and-scope"><span class="header-section-number">7</span> 1. Introduction and Scope</a>
+  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">5</span> Purpose</a></li>
+  <li><a href="#introduction-and-scope" id="toc-introduction-and-scope" class="nav-link" data-scroll-target="#introduction-and-scope"><span class="header-section-number">6</span> 1. Introduction and Scope</a>
   <ul class="collapse">
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">7.1</span> 1.1 Background</a></li>
-  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">7.2</span> 1.2 Scope</a></li>
-  <li><a href="#what-is-covered-here-and-what-is-in-the-parent-document" id="toc-what-is-covered-here-and-what-is-in-the-parent-document" class="nav-link" data-scroll-target="#what-is-covered-here-and-what-is-in-the-parent-document"><span class="header-section-number">7.3</span> 1.3 What Is Covered Here and What Is in the Parent Document</a></li>
-  <li><a href="#governance-principles" id="toc-governance-principles" class="nav-link" data-scroll-target="#governance-principles"><span class="header-section-number">7.4</span> 1.4 Governance Principles</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">6.1</span> 1.1 Background</a></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">6.2</span> 1.2 Scope</a></li>
+  <li><a href="#what-is-covered-here-and-what-is-in-the-parent-document" id="toc-what-is-covered-here-and-what-is-in-the-parent-document" class="nav-link" data-scroll-target="#what-is-covered-here-and-what-is-in-the-parent-document"><span class="header-section-number">6.3</span> 1.3 What Is Covered Here and What Is in the Parent Document</a></li>
+  <li><a href="#governance-principles" id="toc-governance-principles" class="nav-link" data-scroll-target="#governance-principles"><span class="header-section-number">6.4</span> 1.4 Governance Principles</a></li>
   </ul></li>
-  <li><a href="#python-tool-development-standards" id="toc-python-tool-development-standards" class="nav-link" data-scroll-target="#python-tool-development-standards"><span class="header-section-number">8</span> 2. Python Tool Development Standards</a>
+  <li><a href="#python-tool-development-standards" id="toc-python-tool-development-standards" class="nav-link" data-scroll-target="#python-tool-development-standards"><span class="header-section-number">7</span> 2. Python Tool Development Standards</a>
   <ul class="collapse">
-  <li><a href="#python-use-cases" id="toc-python-use-cases" class="nav-link" data-scroll-target="#python-use-cases"><span class="header-section-number">8.1</span> 2.1 Python Use Cases</a>
+  <li><a href="#python-use-cases" id="toc-python-use-cases" class="nav-link" data-scroll-target="#python-use-cases"><span class="header-section-number">7.1</span> 2.1 Python Use Cases</a>
   <ul class="collapse">
-  <li><a href="#flood-modeller-api-integration" id="toc-flood-modeller-api-integration" class="nav-link" data-scroll-target="#flood-modeller-api-integration"><span class="header-section-number">8.1.1</span> 2.1.1 Flood Modeller API Integration</a></li>
-  <li><a href="#machine-learning-tools" id="toc-machine-learning-tools" class="nav-link" data-scroll-target="#machine-learning-tools"><span class="header-section-number">8.1.2</span> 2.1.2 Machine Learning Tools</a></li>
+  <li><a href="#flood-modeller-api-integration" id="toc-flood-modeller-api-integration" class="nav-link" data-scroll-target="#flood-modeller-api-integration"><span class="header-section-number">7.1.1</span> 2.1.1 Flood Modeller API Integration</a></li>
+  <li><a href="#machine-learning-tools" id="toc-machine-learning-tools" class="nav-link" data-scroll-target="#machine-learning-tools"><span class="header-section-number">7.1.2</span> 2.1.2 Machine Learning Tools</a></li>
   </ul></li>
-  <li><a href="#coding-style-and-conventions" id="toc-coding-style-and-conventions" class="nav-link" data-scroll-target="#coding-style-and-conventions"><span class="header-section-number">8.2</span> 2.2 Coding Style and Conventions</a>
+  <li><a href="#coding-style-and-conventions" id="toc-coding-style-and-conventions" class="nav-link" data-scroll-target="#coding-style-and-conventions"><span class="header-section-number">7.2</span> 2.2 Coding Style and Conventions</a>
   <ul class="collapse">
-  <li><a href="#naming-conventions" id="toc-naming-conventions" class="nav-link" data-scroll-target="#naming-conventions"><span class="header-section-number">8.2.1</span> 2.2.1 Naming Conventions</a></li>
-  <li><a href="#type-hints" id="toc-type-hints" class="nav-link" data-scroll-target="#type-hints"><span class="header-section-number">8.2.2</span> 2.2.2 Type Hints</a></li>
-  <li><a href="#package-dependencies-and-the-polars-ecosystem" id="toc-package-dependencies-and-the-polars-ecosystem" class="nav-link" data-scroll-target="#package-dependencies-and-the-polars-ecosystem"><span class="header-section-number">8.2.3</span> 2.2.3 Package Dependencies and the polars Ecosystem</a></li>
-  <li><a href="#file-formats-and-model-artefacts" id="toc-file-formats-and-model-artefacts" class="nav-link" data-scroll-target="#file-formats-and-model-artefacts"><span class="header-section-number">8.2.4</span> 2.2.4 File Formats and Model Artefacts</a></li>
+  <li><a href="#naming-conventions" id="toc-naming-conventions" class="nav-link" data-scroll-target="#naming-conventions"><span class="header-section-number">7.2.1</span> 2.2.1 Naming Conventions</a></li>
+  <li><a href="#type-hints" id="toc-type-hints" class="nav-link" data-scroll-target="#type-hints"><span class="header-section-number">7.2.2</span> 2.2.2 Type Hints</a></li>
+  <li><a href="#package-dependencies-and-the-polars-ecosystem" id="toc-package-dependencies-and-the-polars-ecosystem" class="nav-link" data-scroll-target="#package-dependencies-and-the-polars-ecosystem"><span class="header-section-number">7.2.3</span> 2.2.3 Package Dependencies and the polars Ecosystem</a></li>
+  <li><a href="#file-formats-and-model-artefacts" id="toc-file-formats-and-model-artefacts" class="nav-link" data-scroll-target="#file-formats-and-model-artefacts"><span class="header-section-number">7.2.4</span> 2.2.4 File Formats and Model Artefacts</a></li>
   </ul></li>
-  <li><a href="#mandatory-header-block" id="toc-mandatory-header-block" class="nav-link" data-scroll-target="#mandatory-header-block"><span class="header-section-number">8.3</span> 2.3 Mandatory Header Block</a></li>
-  <li><a href="#documentation-requirements" id="toc-documentation-requirements" class="nav-link" data-scroll-target="#documentation-requirements"><span class="header-section-number">8.4</span> 2.4 Documentation Requirements</a></li>
+  <li><a href="#mandatory-header-block" id="toc-mandatory-header-block" class="nav-link" data-scroll-target="#mandatory-header-block"><span class="header-section-number">7.3</span> 2.3 Mandatory Header Block</a></li>
+  <li><a href="#documentation-requirements" id="toc-documentation-requirements" class="nav-link" data-scroll-target="#documentation-requirements"><span class="header-section-number">7.4</span> 2.4 Documentation Requirements</a></li>
   </ul></li>
-  <li><a href="#code-review---python-specific-requirements" id="toc-code-review---python-specific-requirements" class="nav-link" data-scroll-target="#code-review---python-specific-requirements"><span class="header-section-number">9</span> 3. Code Review - Python-Specific Requirements</a>
+  <li><a href="#code-review---python-specific-requirements" id="toc-code-review---python-specific-requirements" class="nav-link" data-scroll-target="#code-review---python-specific-requirements"><span class="header-section-number">8</span> 3. Code Review - Python-Specific Requirements</a>
   <ul class="collapse">
-  <li><a href="#python-review-checklist" id="toc-python-review-checklist" class="nav-link" data-scroll-target="#python-review-checklist"><span class="header-section-number">9.1</span> 3.1 Python Review Checklist</a>
+  <li><a href="#python-review-checklist" id="toc-python-review-checklist" class="nav-link" data-scroll-target="#python-review-checklist"><span class="header-section-number">8.1</span> 3.1 Python Review Checklist</a>
   <ul class="collapse">
-  <li><a href="#a.-correctness" id="toc-a.-correctness" class="nav-link" data-scroll-target="#a.-correctness"><span class="header-section-number">9.1.1</span> A. Correctness</a></li>
-  <li><a href="#b.-code-quality" id="toc-b.-code-quality" class="nav-link" data-scroll-target="#b.-code-quality"><span class="header-section-number">9.1.2</span> B. Code Quality</a></li>
-  <li><a href="#c.-testing" id="toc-c.-testing" class="nav-link" data-scroll-target="#c.-testing"><span class="header-section-number">9.1.3</span> C. Testing</a></li>
-  <li><a href="#d.-dependencies-and-reproducibility" id="toc-d.-dependencies-and-reproducibility" class="nav-link" data-scroll-target="#d.-dependencies-and-reproducibility"><span class="header-section-number">9.1.4</span> D. Dependencies and Reproducibility</a></li>
+  <li><a href="#a.-correctness" id="toc-a.-correctness" class="nav-link" data-scroll-target="#a.-correctness"><span class="header-section-number">8.1.1</span> A. Correctness</a></li>
+  <li><a href="#b.-code-quality" id="toc-b.-code-quality" class="nav-link" data-scroll-target="#b.-code-quality"><span class="header-section-number">8.1.2</span> B. Code Quality</a></li>
+  <li><a href="#c.-testing" id="toc-c.-testing" class="nav-link" data-scroll-target="#c.-testing"><span class="header-section-number">8.1.3</span> C. Testing</a></li>
+  <li><a href="#d.-dependencies-and-reproducibility" id="toc-d.-dependencies-and-reproducibility" class="nav-link" data-scroll-target="#d.-dependencies-and-reproducibility"><span class="header-section-number">8.1.4</span> D. Dependencies and Reproducibility</a></li>
   </ul></li>
-  <li><a href="#automated-quality-checks" id="toc-automated-quality-checks" class="nav-link" data-scroll-target="#automated-quality-checks"><span class="header-section-number">9.2</span> 3.2 Automated Quality Checks</a></li>
-  <li><a href="#testing-standards" id="toc-testing-standards" class="nav-link" data-scroll-target="#testing-standards"><span class="header-section-number">9.3</span> 3.3 Testing Standards</a></li>
+  <li><a href="#automated-quality-checks" id="toc-automated-quality-checks" class="nav-link" data-scroll-target="#automated-quality-checks"><span class="header-section-number">8.2</span> 3.2 Automated Quality Checks</a></li>
+  <li><a href="#testing-standards" id="toc-testing-standards" class="nav-link" data-scroll-target="#testing-standards"><span class="header-section-number">8.3</span> 3.3 Testing Standards</a></li>
   </ul></li>
-  <li><a href="#version-control-python-specific-implementation" id="toc-version-control-python-specific-implementation" class="nav-link" data-scroll-target="#version-control-python-specific-implementation"><span class="header-section-number">10</span> 4. Version Control — Python-Specific Implementation</a>
+  <li><a href="#version-control-python-specific-implementation" id="toc-version-control-python-specific-implementation" class="nav-link" data-scroll-target="#version-control-python-specific-implementation"><span class="header-section-number">9</span> 4. Version Control: Python-Specific Implementation</a>
   <ul class="collapse">
-  <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure"><span class="header-section-number">10.1</span> 4.1 Repository Structure</a></li>
-  <li><a href="#reproducibility-with-poetry" id="toc-reproducibility-with-poetry" class="nav-link" data-scroll-target="#reproducibility-with-poetry"><span class="header-section-number">10.2</span> 4.2 Reproducibility with poetry</a></li>
+  <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure"><span class="header-section-number">9.1</span> 4.1 Repository Structure</a></li>
+  <li><a href="#reproducibility-with-poetry" id="toc-reproducibility-with-poetry" class="nav-link" data-scroll-target="#reproducibility-with-poetry"><span class="header-section-number">9.2</span> 4.2 Reproducibility with poetry</a></li>
   </ul></li>
-  <li><a href="#custodianship" id="toc-custodianship" class="nav-link" data-scroll-target="#custodianship"><span class="header-section-number">11</span> 5. Custodianship</a></li>
-  <li><a href="#onboarding-and-training" id="toc-onboarding-and-training" class="nav-link" data-scroll-target="#onboarding-and-training"><span class="header-section-number">12</span> 6. Onboarding and Training</a>
+  <li><a href="#custodianship" id="toc-custodianship" class="nav-link" data-scroll-target="#custodianship"><span class="header-section-number">10</span> 5. Custodianship</a></li>
+  <li><a href="#onboarding-and-training" id="toc-onboarding-and-training" class="nav-link" data-scroll-target="#onboarding-and-training"><span class="header-section-number">11</span> 6. Onboarding and Training</a>
   <ul class="collapse">
-  <li><a href="#onboarding-for-new-team-members" id="toc-onboarding-for-new-team-members" class="nav-link" data-scroll-target="#onboarding-for-new-team-members"><span class="header-section-number">12.1</span> 6.1 Onboarding for New Team Members</a></li>
-  <li><a href="#ongoing-learning" id="toc-ongoing-learning" class="nav-link" data-scroll-target="#ongoing-learning"><span class="header-section-number">12.2</span> 6.2 Ongoing Learning</a></li>
+  <li><a href="#onboarding-for-new-team-members" id="toc-onboarding-for-new-team-members" class="nav-link" data-scroll-target="#onboarding-for-new-team-members"><span class="header-section-number">11.1</span> 6.1 Onboarding for New Team Members</a></li>
+  <li><a href="#ongoing-learning" id="toc-ongoing-learning" class="nav-link" data-scroll-target="#ongoing-learning"><span class="header-section-number">11.2</span> 6.2 Ongoing Learning</a></li>
   </ul></li>
-  <li><a href="#governance-exceptions-and-review" id="toc-governance-exceptions-and-review" class="nav-link" data-scroll-target="#governance-exceptions-and-review"><span class="header-section-number">13</span> 7. Governance, Exceptions, and Review</a></li>
-  <li><a href="#approved-by" id="toc-approved-by" class="nav-link" data-scroll-target="#approved-by"><span class="header-section-number">14</span> Approved by</a></li>
+  <li><a href="#governance-exceptions-and-review" id="toc-governance-exceptions-and-review" class="nav-link" data-scroll-target="#governance-exceptions-and-review"><span class="header-section-number">12</span> 7. Governance, Exceptions, and Review</a></li>
+  <li><a href="#approved-by" id="toc-approved-by" class="nav-link" data-scroll-target="#approved-by"><span class="header-section-number">13</span> Approved by</a></li>
   </ul>
 </nav>
     </div>
@@ -258,7 +258,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-python-governance" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></h1>
+<h1 class="title"><span id="sec-python-governance" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></h1>
 </div>
 
 
@@ -303,7 +303,7 @@ Document Metadata
 </tr>
 <tr class="even">
 <td><strong>Status</strong></td>
-<td>Draft — For Team Review</td>
+<td>Draft: For Team Review</td>
 </tr>
 <tr class="odd">
 <td><strong>Review Date</strong></td>
@@ -317,15 +317,15 @@ Document Metadata
 </table>
 </div>
 </div>
-<section id="purpose" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Purpose</h1>
+<section id="purpose" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Purpose</h1>
 <p>This document provides the detailed, Python-specific governance standards for tools developed by the Forecasting and Warning (F&amp;W) Team. It is a companion to the Data &amp; Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, tool register, and version control standards that apply to all team code regardless of language.</p>
 <p>This document covers what is specific to Python: the Flood Modeller API integration approach, ML tool standards, polars coding conventions, poetry dependency management, Python testing and CI tooling, and Python repository structure. Read this alongside the parent framework, not instead of it.</p>
 </section>
-<section id="introduction-and-scope" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> 1. Introduction and Scope</h1>
-<section id="background" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="background"><span class="header-section-number">7.1</span> 1.1 Background</h2>
+<section id="introduction-and-scope" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 1. Introduction and Scope</h1>
+<section id="background" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="background"><span class="header-section-number">6.1</span> 1.1 Background</h2>
 <p>The F&amp;W team’s analytical work primarily spans two languages. R, governed by the companion R Tool Governance document, handles the core hydrological data pipeline through the Flode package. Python sits alongside it for two specific and growing use cases: calling the Flood Modeller API to drive model runs using data that Flode has prepared and building and evaluating machine learning models for flood forecasting applications.</p>
 <p>Without consistent development standards, Python tools risk the same problems that motivated the R governance framework: unreproducible results, undocumented code, difficult onboarding, and key-person dependency. This document establishes proportionate, practical standards for Python development.</p>
 <table>
@@ -341,8 +341,8 @@ Document Metadata
 </tbody>
 </table>
 </section>
-<section id="scope" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="scope"><span class="header-section-number">7.2</span> 1.2 Scope</h2>
+<section id="scope" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="scope"><span class="header-section-number">6.2</span> 1.2 Scope</h2>
 <p>This document applies to all Python code produced by members of the team, including:</p>
 <ul>
 <li><p>Scripts and modules used to call the Flood Modeller API</p></li>
@@ -365,8 +365,8 @@ Document Metadata
 </tbody>
 </table>
 </section>
-<section id="what-is-covered-here-and-what-is-in-the-parent-document" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="what-is-covered-here-and-what-is-in-the-parent-document"><span class="header-section-number">7.3</span> 1.3 What Is Covered Here and What Is in the Parent Document</h2>
+<section id="what-is-covered-here-and-what-is-in-the-parent-document" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="what-is-covered-here-and-what-is-in-the-parent-document"><span class="header-section-number">6.3</span> 1.3 What Is Covered Here and What Is in the Parent Document</h2>
 <p>The following governance elements are defined in the Data &amp; Digital Asset Governance Framework and apply to all Python tools. They are not repeated here, refer to that document for the authoritative version:</p>
 <ul>
 <li><p>Owner → Steward → Custodian roles and grade requirements (Section 3)</p></li>
@@ -381,8 +381,8 @@ Document Metadata
 </ul>
 <p>This document covers everything that is specific to Python.</p>
 </section>
-<section id="governance-principles" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="governance-principles"><span class="header-section-number">7.4</span> 1.4 Governance Principles</h2>
+<section id="governance-principles" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="governance-principles"><span class="header-section-number">6.4</span> 1.4 Governance Principles</h2>
 <ul>
 <li><p>Reproducibility: All tools must produce consistent, auditable outputs.</p></li>
 <li><p>Accessibility: Standards must be achievable by all team members, with clear guidance for those newer to Python.</p></li>
@@ -391,8 +391,8 @@ Document Metadata
 </ul>
 </section>
 </section>
-<section id="python-tool-development-standards" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> 2. Python Tool Development Standards</h1>
+<section id="python-tool-development-standards" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 2. Python Tool Development Standards</h1>
 <p>The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 8.1–8.4). This section covers the Python-specific standards that apply within that governance structure.</p>
 <table>
 <colgroup>
@@ -406,11 +406,11 @@ Document Metadata
 <tbody>
 </tbody>
 </table>
-<section id="python-use-cases" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="python-use-cases"><span class="header-section-number">8.1</span> 2.1 Python Use Cases</h2>
+<section id="python-use-cases" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="python-use-cases"><span class="header-section-number">7.1</span> 2.1 Python Use Cases</h2>
 <p>Python tools in the team fall into two primary categories. Understanding which category a tool belongs to helps determine its appropriate dependencies, structure, and tier.</p>
-<section id="flood-modeller-api-integration" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="flood-modeller-api-integration"><span class="header-section-number">8.1.1</span> 2.1.1 Flood Modeller API Integration</h3>
+<section id="flood-modeller-api-integration" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="flood-modeller-api-integration"><span class="header-section-number">7.1.1</span> 2.1.1 Flood Modeller API Integration</h3>
 <p>The Flood Modeller API is a Python interface for driving Flood Modeller Pro model runs programmatically. Tools in this category typically: read data prepared by Flode (from Parquet or other outputs), construct and submit model runs via the API, retrieve and post-process results, and pass outputs back to Flode-compatible formats for further analysis.</p>
 <table>
 <colgroup>
@@ -425,8 +425,8 @@ Document Metadata
 </tbody>
 </table>
 </section>
-<section id="machine-learning-tools" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="machine-learning-tools"><span class="header-section-number">8.1.2</span> 2.1.2 Machine Learning Tools</h3>
+<section id="machine-learning-tools" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="machine-learning-tools"><span class="header-section-number">7.1.2</span> 2.1.2 Machine Learning Tools</h3>
 <p>ML tools cover the full model development lifecycle: data preparation, feature engineering, model training, validation, and inference. Key standards for ML tools are:</p>
 <ul>
 <li><p>Training and inference must be separated into distinct scripts or modules</p></li>
@@ -436,11 +436,11 @@ Document Metadata
 </ul>
 </section>
 </section>
-<section id="coding-style-and-conventions" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="coding-style-and-conventions"><span class="header-section-number">8.2</span> 2.2 Coding Style and Conventions</h2>
+<section id="coding-style-and-conventions" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="coding-style-and-conventions"><span class="header-section-number">7.2</span> 2.2 Coding Style and Conventions</h2>
 <p>All team Python code follows PEP 8, with the additions below.</p>
-<section id="naming-conventions" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="naming-conventions"><span class="header-section-number">8.2.1</span> 2.2.1 Naming Conventions</h3>
+<section id="naming-conventions" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="naming-conventions"><span class="header-section-number">7.2.1</span> 2.2.1 Naming Conventions</h3>
 <ul>
 <li><p>Functions and methods: snake_case verbs (e.g., run_model_scenario(), load_parquet_data())</p></li>
 <li><p>Variables: descriptive snake_case nouns (e.g., catchment_area_km2, peak_flow_cms)</p></li>
@@ -450,12 +450,12 @@ Document Metadata
 <li><p>File names: descriptive, date-prefixed for scripts (e.g., 2026-02_scenario_batch_run.py)</p></li>
 </ul>
 </section>
-<section id="type-hints" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="type-hints"><span class="header-section-number">8.2.2</span> 2.2.2 Type Hints</h3>
+<section id="type-hints" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="type-hints"><span class="header-section-number">7.2.2</span> 2.2.2 Type Hints</h3>
 <p>All function signatures in shared modules and Tier 1–2 scripts must include type hints. Type correctness is checked with mypy as part of CI (see Section 3.2).</p>
 </section>
-<section id="package-dependencies-and-the-polars-ecosystem" class="level3" data-number="8.2.3">
-<h3 data-number="8.2.3" class="anchored" data-anchor-id="package-dependencies-and-the-polars-ecosystem"><span class="header-section-number">8.2.3</span> 2.2.3 Package Dependencies and the polars Ecosystem</h3>
+<section id="package-dependencies-and-the-polars-ecosystem" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="package-dependencies-and-the-polars-ecosystem"><span class="header-section-number">7.2.3</span> 2.2.3 Package Dependencies and the polars Ecosystem</h3>
 <p>The team’s default data manipulation library is polars, not pandas. This mirrors the R framework’s preference for the fastverse: the team processes large volumes of tabular data, and performance and memory efficiency matter.</p>
 <table class="table">
 <colgroup>
@@ -563,8 +563,8 @@ Document Metadata
 </tbody>
 </table>
 </section>
-<section id="file-formats-and-model-artefacts" class="level3" data-number="8.2.4">
-<h3 data-number="8.2.4" class="anchored" data-anchor-id="file-formats-and-model-artefacts"><span class="header-section-number">8.2.4</span> 2.2.4 File Formats and Model Artefacts</h3>
+<section id="file-formats-and-model-artefacts" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="file-formats-and-model-artefacts"><span class="header-section-number">7.2.4</span> 2.2.4 File Formats and Model Artefacts</h3>
 <table class="table">
 <colgroup>
 <col style="width: 50%">
@@ -607,11 +607,12 @@ Document Metadata
 </tr>
 </tbody>
 </table>
+<p>For full technical detail on each format, including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions, see <a href="e-file-format-reference.html" class="quarto-xref"><span>Appendix&nbsp;E</span></a>. Format compliance for Tier 1 and Tier 2 tools is checked automatically by the <code>fw-governance</code> MCP server <code>check_file_formats</code> tool.</p>
 <p>All trained ML model artefacts saved to disk must be accompanied by a JSON metadata file containing: training date, Python and package versions, training dataset identifier, hyperparameters, and key evaluation metrics.</p>
 </section>
 </section>
-<section id="mandatory-header-block" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="mandatory-header-block"><span class="header-section-number">8.3</span> 2.3 Mandatory Header Block</h2>
+<section id="mandatory-header-block" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="mandatory-header-block"><span class="header-section-number">7.3</span> 2.3 Mandatory Header Block</h2>
 <p>Every script and module file must begin with the following header, completed in full:</p>
 <table>
 <colgroup>
@@ -626,8 +627,8 @@ Document Metadata
 </tbody>
 </table>
 </section>
-<section id="documentation-requirements" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="documentation-requirements"><span class="header-section-number">8.4</span> 2.4 Documentation Requirements</h2>
+<section id="documentation-requirements" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="documentation-requirements"><span class="header-section-number">7.4</span> 2.4 Documentation Requirements</h2>
 <table class="table">
 <colgroup>
 <col style="width: 50%">
@@ -656,22 +657,22 @@ Document Metadata
 </table>
 </section>
 </section>
-<section id="code-review---python-specific-requirements" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> 3. Code Review - Python-Specific Requirements</h1>
+<section id="code-review---python-specific-requirements" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 3. Code Review - Python-Specific Requirements</h1>
 <p>Review requirements by tier are set in the parent framework, Section 8.4. This section covers the Python-specific review checklist and automated tooling.</p>
-<section id="python-review-checklist" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="python-review-checklist"><span class="header-section-number">9.1</span> 3.1 Python Review Checklist</h2>
+<section id="python-review-checklist" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="python-review-checklist"><span class="header-section-number">8.1</span> 3.1 Python Review Checklist</h2>
 <p>All reviewers must work through this checklist. The completed checklist must be attached to the pull request before merging.</p>
-<section id="a.-correctness" class="level3" data-number="9.1.1">
-<h3 data-number="9.1.1" class="anchored" data-anchor-id="a.-correctness"><span class="header-section-number">9.1.1</span> A. Correctness</h3>
+<section id="a.-correctness" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="a.-correctness"><span class="header-section-number">8.1.1</span> A. Correctness</h3>
 <ul>
 <li><p>Does the code do what it claims to do in its documentation?</p></li>
 <li><p>Have edge cases (empty DataFrames, NaN values, out-of-range data, API failures) been handled?</p></li>
 <li><p>Are any assumptions about input data explicitly stated?</p></li>
 </ul>
 </section>
-<section id="b.-code-quality" class="level3" data-number="9.1.2">
-<h3 data-number="9.1.2" class="anchored" data-anchor-id="b.-code-quality"><span class="header-section-number">9.1.2</span> B. Code Quality</h3>
+<section id="b.-code-quality" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="b.-code-quality"><span class="header-section-number">8.1.2</span> B. Code Quality</h3>
 <ul>
 <li><p>Does the code follow team naming conventions, PEP 8, and type hint requirements?</p></li>
 <li><p>Is the header block complete and accurate?</p></li>
@@ -681,8 +682,8 @@ Document Metadata
 <li><p>For ML tools: are training and inference clearly separated? Is a metadata JSON saved with every model artefact?</p></li>
 </ul>
 </section>
-<section id="c.-testing" class="level3" data-number="9.1.3">
-<h3 data-number="9.1.3" class="anchored" data-anchor-id="c.-testing"><span class="header-section-number">9.1.3</span> C. Testing</h3>
+<section id="c.-testing" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="c.-testing"><span class="header-section-number">8.1.3</span> C. Testing</h3>
 <ul>
 <li><p>Have pytest tests been written or updated (Tier 1 mandatory, Tier 2 recommended)?</p></li>
 <li><p>Do existing tests pass?</p></li>
@@ -690,8 +691,8 @@ Document Metadata
 <li><p>For ML tools: is the evaluation reproducible (fixed random seed, documented split)?</p></li>
 </ul>
 </section>
-<section id="d.-dependencies-and-reproducibility" class="level3" data-number="9.1.4">
-<h3 data-number="9.1.4" class="anchored" data-anchor-id="d.-dependencies-and-reproducibility"><span class="header-section-number">9.1.4</span> D. Dependencies and Reproducibility</h3>
+<section id="d.-dependencies-and-reproducibility" class="level3" data-number="8.1.4">
+<h3 data-number="8.1.4" class="anchored" data-anchor-id="d.-dependencies-and-reproducibility"><span class="header-section-number">8.1.4</span> D. Dependencies and Reproducibility</h3>
 <ul>
 <li><p>Are all dependencies declared in pyproject.toml and the poetry.lock file committed?</p></li>
 <li><p>Can the tool be run from a fresh virtual environment without undeclared dependencies?</p></li>
@@ -699,8 +700,8 @@ Document Metadata
 </ul>
 </section>
 </section>
-<section id="automated-quality-checks" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="automated-quality-checks"><span class="header-section-number">9.2</span> 3.2 Automated Quality Checks</h2>
+<section id="automated-quality-checks" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="automated-quality-checks"><span class="header-section-number">8.2</span> 3.2 Automated Quality Checks</h2>
 <table class="table">
 <colgroup>
 <col style="width: 50%">
@@ -736,8 +737,8 @@ Document Metadata
 </tbody>
 </table>
 </section>
-<section id="testing-standards" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="testing-standards"><span class="header-section-number">9.3</span> 3.3 Testing Standards</h2>
+<section id="testing-standards" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="testing-standards"><span class="header-section-number">8.3</span> 3.3 Testing Standards</h2>
 <ul>
 <li><p>All Tier 1 functions must have unit tests covering expected outputs, edge cases, and known failure modes</p></li>
 <li><p>Test files must follow pytest conventions: tests/ directory at the project root, files named test_<module>.py</module></p></li>
@@ -747,8 +748,8 @@ Document Metadata
 </ul>
 </section>
 </section>
-<section id="version-control-python-specific-implementation" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> 4. Version Control — Python-Specific Implementation</h1>
+<section id="version-control-python-specific-implementation" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 4. Version Control: Python-Specific Implementation</h1>
 <p>Version control principles are defined in the parent framework, Section 8.5. This section covers the Python-specific implementation.</p>
 <table>
 <colgroup>
@@ -762,8 +763,8 @@ Document Metadata
 <tbody>
 </tbody>
 </table>
-<section id="repository-structure" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="repository-structure"><span class="header-section-number">10.1</span> 4.1 Repository Structure</h2>
+<section id="repository-structure" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="repository-structure"><span class="header-section-number">9.1</span> 4.1 Repository Structure</h2>
 <table>
 <colgroup>
 <col style="width: 100%">
@@ -777,8 +778,8 @@ Document Metadata
 </tbody>
 </table>
 </section>
-<section id="reproducibility-with-poetry" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="reproducibility-with-poetry"><span class="header-section-number">10.2</span> 4.2 Reproducibility with poetry</h2>
+<section id="reproducibility-with-poetry" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="reproducibility-with-poetry"><span class="header-section-number">9.2</span> 4.2 Reproducibility with poetry</h2>
 <p>All Python projects must use poetry for dependency management. This is the Python equivalent of renv: it pins exact package versions in a poetry.lock file.</p>
 <ul>
 <li><p>poetry new or poetry init must be run when a new project is created</p></li>
@@ -801,8 +802,8 @@ Document Metadata
 </table>
 </section>
 </section>
-<section id="custodianship" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> 5. Custodianship</h1>
+<section id="custodianship" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 5. Custodianship</h1>
 <p>Custodianship roles, grade requirements, the Tool Register, and handover and succession requirements for Python tools are defined in the parent framework. All requirements set out there apply in full.</p>
 <table>
 <colgroup>
@@ -818,10 +819,10 @@ Document Metadata
 </table>
 <p>For cross-language pipelines where an R tool feeds a Python component, custodianship must be assigned separately for each language component. The Owner may be the same person, but the Steward and Custodian assignments should reflect who is best placed to maintain each part. See also R Tool Governance Proposal, Section 5.</p>
 </section>
-<section id="onboarding-and-training" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> 6. Onboarding and Training</h1>
-<section id="onboarding-for-new-team-members" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="onboarding-for-new-team-members"><span class="header-section-number">12.1</span> 6.1 Onboarding for New Team Members</h2>
+<section id="onboarding-and-training" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 6. Onboarding and Training</h1>
+<section id="onboarding-for-new-team-members" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="onboarding-for-new-team-members"><span class="header-section-number">11.1</span> 6.1 Onboarding for New Team Members</h2>
 <p>All new team members must complete the following within their first four weeks:</p>
 <ul>
 <li><p>Read this governance document, the parent framework, and sign the acknowledgement form</p></li>
@@ -832,8 +833,8 @@ Document Metadata
 <li><p>Attend an introductory session with the Python Lead</p></li>
 </ul>
 </section>
-<section id="ongoing-learning" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="ongoing-learning"><span class="header-section-number">12.2</span> 6.2 Ongoing Learning</h2>
+<section id="ongoing-learning" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="ongoing-learning"><span class="header-section-number">11.2</span> 6.2 Ongoing Learning</h2>
 <table class="table">
 <colgroup>
 <col style="width: 50%">
@@ -887,13 +888,13 @@ Document Metadata
 <p>The team’s monthly R drop-in session includes Python topics. A separate Python knowledge-sharing session can be arranged on request with the Python Lead.</p>
 </section>
 </section>
-<section id="governance-exceptions-and-review" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> 7. Governance, Exceptions, and Review</h1>
+<section id="governance-exceptions-and-review" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> 7. Governance, Exceptions, and Review</h1>
 <p>The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, Section 12. The following applies specifically to Python tools:</p>
 <p>Overall responsibility for this document sits with the Python Lead (or R Lead where no dedicated Python Lead exists). The same Governance Working Group that oversees the R framework oversees this document. The Python Lead conducts an annual audit of all Tier 1 Python tools covering: header block completeness, type hint coverage, test coverage, documentation currency, poetry.lock consistency, and compliance with the branching strategy. Findings are reported to the team alongside the R framework audit.</p>
 </section>
-<section id="approved-by" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> Approved by</h1>
+<section id="approved-by" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Approved by</h1>
 <table class="table">
 <thead>
 <tr class="header">
@@ -1321,12 +1322,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./03-r-code-governance.html" class="pagination-link  aria-label=" &lt;span="" tool="" governance&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05-hydrometric-data.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Imported Hydrometric Data Framework</span>">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05-hydrometric-data.html" class="pagination-link" aria-label="<span class='chapter-number'>5</span>&nbsp; <span class='chapter-title'>Imported Hydrometric Data Framework</span>">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
