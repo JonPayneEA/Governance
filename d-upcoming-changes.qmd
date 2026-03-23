@@ -62,14 +62,21 @@ The suite is *Draft: For Review*. Approval blocks are unsigned and there is no s
 
 #### 2. Heavy on "What", Light on "How"
 
+::: {.callout-note}
+## Partially resolved at v1.4 — Hydrometric Data Register
+
+The Hydrometric Data Register format is now defined. It is a CSV file maintained by the `reach.io` R package ([github.com/JonPayneEA/reach.io](https://github.com/JonPayneEA/reach.io)) via `write_provenance_record()`. A separate Gauge Registry (Parquet) is managed by `build_gauge_registry()`. The directory structure is created by `setup_hydro_store()`. The Bronze schema is enforced by `apply_bronze_schema()`. The Hydrometric Data Framework (Chapter 5) has been updated to reflect this.
+:::
+
 The framework defines excellent structures (registers, run records, condition assessments, provenance records) but rarely explains how to create or maintain them in practice. There are no templates, no worked examples, and no indication of where registers live or what format they take.
 
 Specifically:
-- The Tool Register, Model Register, and Hydrometric Data Register are described in detail but never shown. Are they spreadsheets, YAML files, database tables? Where do they reside today?
+- The **Hydrometric Data Register** format is now resolved via `reach.io` (see note above).
+- The **Tool Register** and **Model Register** are described in detail but their physical form is still undefined. Are they spreadsheets, YAML files, database tables? Where do they reside?
 - Run records have a 13-field template but no completed example.
 - The data catalogue is required but its format is left open ("a structured document, a spreadsheet, or a dedicated section"), which in practice means it does not yet exist.
 
-**What is needed:** A companion implementation guide, or a dedicated chapter, covering: where registers live, what they look like when populated, and what a completed run record and condition assessment look like. See also the proposed implementation chapter below.
+**What is needed:** A companion implementation guide, or a dedicated chapter, covering: where the Tool and Model registers live, what they look like when populated, and what a completed run record and condition assessment look like. See also the proposed implementation chapter below.
 
 **Priority:** High.
 
@@ -196,3 +203,4 @@ An implementation chapter should make explicit which governance obligations the 
 | 2026-03-22 | Proposed implementation chapter | Under consideration |
 | 2026-03-22 | Accepted File Types moved to Appendix E; renamed File Format Reference; MCP `check_file_formats` tool added | Resolved |
 | 2026-03-23 | Implementation dates set: start 23 March 2026, target adoption 31 March 2026, review 31 March 2027; all companion document review dates updated | Partially resolved (Owner sign-off outstanding) |
+| 2026-03-23 | Hydrometric Data Register format resolved: CSV maintained by `reach.io` (`write_provenance_record()`); Gauge Registry (Parquet) via `build_gauge_registry()`; Chapter 5 updated | Partially resolved (Tool Register and Model Register format still undefined) |

@@ -76,13 +76,17 @@ When a new dataset is received, the Custodian must complete all of the following
 
 - Assign a unique dataset ID using the standard format: [SupplierCode]_[SiteID]_[DataType]_[YYYYMMDD] (e.g., EA_39001_Q_20260115)
 
-- Record the full provenance record (see Section 4.2) in the Hydrometric Data Register
+- Record the full provenance record (see Section 4.2) in the Hydrometric Data Register via `reach.io`'s `write_provenance_record()` function
 
-- Store the data in the Bronze layer of the team's data store - do not modify the file
+- Store the data in the Bronze layer of the team's data store using `reach.io`'s directory structure (created by `setup_hydro_store()`); do not modify the file
+
+- Apply the Bronze schema using `apply_bronze_schema()` to enforce the six mandatory columns (timestamp, value, supplier_flag, dataset_id, site_id, data_type) and correct data types
 
 - Check the file opens and is readable; record any format issues in the provenance record
 
 - Notify the Steward that a new Bronze dataset has been ingested
+
+For API-sourced gauges registered in the Gauge Registry, `reach.io`'s `run_backfill()` and `route_gauge()` functions automate the fetch, schema application, and provenance recording steps. The Custodian is still responsible for reviewing the resulting register entry and confirming completeness.
 
 Bronze data must never be modified after ingestion. If a supplier sends a corrected version of a dataset, the corrected version is ingested as a new Bronze dataset with its own dataset ID and provenance record, referencing the original.
 
@@ -521,7 +525,9 @@ When a model run uses hydrometric data, the run record must specify:
 
 # 10. Hydrometric Data Register
 
-The Hydrometric Data Register is the single consolidated record for all Bronze, Silver, and Gold datasets. It is an Excel workbook held in the team's designated data store, version-controlled alongside the data. In Databricks, the same fields are held as a Delta table in the fw_hydrometric catalog. The Steward is responsible for keeping it current.
+The Hydrometric Data Register is the single consolidated record for all Bronze, Silver, and Gold datasets. It is maintained by the `reach.io` R package as a CSV file held in the team's designated data store, version-controlled alongside the data. Register entries are written and updated programmatically via `reach.io`'s `write_provenance_record()` function; direct manual editing of the CSV is not permitted outside of Steward-approved corrections. In Databricks deployments, the same fields are held as a Delta table in the `fw_hydrometric` catalog. The Steward is responsible for keeping it current.
+
+A separate **Gauge Registry** (Parquet format) is also maintained by `reach.io` via `build_gauge_registry()`. It is the routing configuration for the ingestion pipeline and records, for each gauge: source system assignment, active status, backfill completion flag, and notes. Changes to the Gauge Registry require Steward approval and are committed with a brief note describing the reason.
 
 Rather than separate provenance, QC, and derivation records for each tier, the register uses a single table where each row is one dataset. The tier column identifies whether a row is Bronze, Silver, or Gold. Fields that only apply to certain tiers are left blank for others. This keeps everything queryable in one place and avoids the proliferation of separate files.
 
@@ -575,7 +581,7 @@ Rather than separate provenance, QC, and derivation records for each tier, the r
 
 ## 10.2 Data Quality Issue Log
 
-The Data Quality Issue Log is a second sheet in the same Excel workbook (or a second Delta table in Databricks). It records known quality problems that require action beyond routine QC. Each entry includes:
+The Data Quality Issue Log is a separate CSV file held alongside the Hydrometric Data Register (or a second Delta table in Databricks deployments). It records known quality problems that require action beyond routine QC. Each entry includes:
 
 - Issue ID and date raised
 
@@ -701,7 +707,8 @@ Data type codes: Q = flow, H = stage/water level, P = rainfall, SM = soil moistu
 | Datum | The vertical reference level to which water level measurements are made. |
 | Parquet | A columnar file format used as the standard storage format for all hydrometric datasets in this framework. Supports typed columns, compression, and efficient partial reads. |
 | Delta Lake | A storage layer built on Parquet that adds transactions, schema enforcement, and time-travel to tables in Databricks. Used for Bronze and Silver stores in DASH. |
-| Hydrometric Data Register | A single consolidated Excel workbook (or Delta table in Databricks) recording all Bronze, Silver, and Gold dataset metadata in one table. Replaces separate provenance, QC, and derivation record files. |
+| Hydrometric Data Register | A single consolidated CSV file maintained by `reach.io` (or a Delta table in Databricks) recording all Bronze, Silver, and Gold dataset metadata in one table. Entries are written programmatically via `write_provenance_record()`. Replaces separate provenance, QC, and derivation record files. |
+| Gauge Registry | A Parquet file maintained by `reach.io` via `build_gauge_registry()`. Records source system assignment, active status, backfill completion, and notes for each gauge. Acts as the routing configuration for the ingestion pipeline. |
 | qc_value | The analysis-ready value column in Silver and Gold Parquet. Equal to the Bronze value for Good data; populated with the estimated value for gap-filled rows; null for Rejected and No data rows. |
 | Static catchment attributes | Time-invariant descriptors of a catchment attached to an ML training set Gold product: area, BFI, elevation, soil type, and land cover. Repeated on every row in the Parquet file so the dataset is self-contained for model training. |
 | BFI | Base Flow Index. A measure of the proportion of river flow derived from groundwater or other slowly varying sources. Used as a static catchment attribute in ML training sets. |
