@@ -79,7 +79,7 @@ This appendix tracks alignment between the F&W governance document suite and the
 
 **Resolution:** A new section establishes the requirement for a data catalogue or business glossary maintained by the Steward. Minimum content is specified. The Steward responsibilities list now includes maintaining data definitions.
 
-**Documents changed:** Governance Framework (new §9.5, updated §3.2).
+**Documents changed:** Governance Framework (new §8, updated §3.2).
 
 ---
 
@@ -111,7 +111,7 @@ This appendix tracks alignment between the F&W governance document suite and the
 
 **Resolution:** A new section establishes a quarterly/annual/on-occurrence monitoring cadence, specifies what each report covers, and connects governance findings to the organisation's standard risk reporting channel.
 
-**Documents changed:** Governance Framework (new §12.5).
+**Documents changed:** Governance Framework (new §12).
 
 ---
 
@@ -127,7 +127,7 @@ This appendix tracks alignment between the F&W governance document suite and the
 
 **Resolution:** A new section addresses AI and data-driven model governance, including data access assessment, training data requirements, model transparency, replacement governance, and ongoing monitoring. The Training Framework now includes AI governance awareness in the relevant tracks.
 
-**Documents changed:** Governance Framework (new §13), Training Framework (Python/ML track).
+**Documents changed:** Governance Framework (new §14), Training Framework (Python/ML track).
 
 ---
 
@@ -143,7 +143,7 @@ This appendix tracks alignment between the F&W governance document suite and the
 
 **Resolution:** A callout has been added to the Tool Register section making explicit that all registers must record named individuals, not just role titles. This applies to the Tool Register, Model Register, and Hydrometric Data Register.
 
-**Documents changed:** Governance Framework (§8.6).
+**Documents changed:** Governance Framework (§7.6).
 
 ---
 
@@ -159,7 +159,7 @@ This appendix tracks alignment between the F&W governance document suite and the
 
 **Resolution:** A new section establishes this consideration, scoped proportionately to the team's capacity and licensing constraints. It is incorporated into the annual governance review.
 
-**Documents changed:** Governance Framework (new §14, updated §15 annual review).
+**Documents changed:** Governance Framework (new §13, updated §15 annual review).
 
 ---
 

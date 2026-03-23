@@ -74,6 +74,8 @@ Stewards are responsible for:
 - Assisting with periodic data maturity assessments as required by the organisation
 - Periodically considering whether team data assets have value to wider government, society, or the economy, and flagging opportunities to the Owner (see @sec-wider-value)
 
+Not all of these responsibilities carry equal weight at every tier. For Tier 3 assets, the core requirements are standards maintenance, register currency, and quality issue reporting. The fuller responsibilities (data lineage mapping, cross-functional liaison, maturity assessments, and wider value consideration) apply in proportion to asset criticality. All apply in full to Tier 1 assets.
+
 ### Custodian (Any Grade)
 
 The Custodian is responsible for capturing, storing, maintaining, and (where applicable) disposing of data and digital assets in line with the Owner's requirements. Custodians do the hands-on work: creating, running, storing, and maintaining assets correctly. They work closely with Stewards to ensure quality by executing within agreed systems according to rules and standards. Any team member can be a Custodian.
@@ -305,7 +307,7 @@ Data quality is everyone's responsibility. The following minimum standards apply
 ## Access and Sharing
 
 - All team members have read access to current model files by default
-- Write access to master model files requires Steward approval
+- Write access to master model files requires Steward approval; approval is recorded in the access log with the name of the person, the date, and the scope of access granted
 - Sharing data or tools outside the team (including to contractors) requires Owner approval
 - Sensitive datasets follow the organisation's data classification policy
 - Access rights are reviewed by Stewards every six months
@@ -317,11 +319,10 @@ A data incident is any event that affects the integrity, availability, or confid
 When an incident occurs:
 
 - The Custodian reports it to the Steward immediately
-- The Steward assesses the impact and decides whether to escalate to the Owner
-- The Owner is informed of any incident affecting a formal output or external stakeholder
 - All incidents are recorded in the governance log with a summary of what happened and what was done
+- The Steward escalates to the Owner immediately where the incident affects a formal output, an external stakeholder, or carries potential regulatory or reputational implications; for all other incidents, the Steward uses their judgement
 
-For code tools: a post-incident review must be completed within ten working days for any Tier 1 tool failure or emergency deployment (Route D).
+For any Tier 1 asset failure or emergency deployment (Route D), a post-incident review must be completed within ten working days. The review covers: what happened, what the impact was or could have been, what was done to resolve it, and what change is needed to prevent recurrence. The Steward is responsible for completing the review and submitting it to the Owner.
 
 ## Monitoring, Reporting, and Risk Management {#sec-monitoring-reporting}
 
@@ -369,7 +370,7 @@ This framework and the companion documents are reviewed annually by the Stewards
 
 The Delegated Steward conducts an annual audit of all Tier 1 code tools, covering header block completeness, test coverage, documentation currency, dependency lockfile consistency, and branching strategy compliance.
 
-Spot-check audits of model files and metadata records may be carried out at any time by Stewards.
+Stewards must carry out spot-check audits of Tier 2 model files and metadata records at least once per year, and of Tier 3 assets at least once every two years. Spot checks may be carried out at any time.
 
 ## Quick Reference: Who to Go To
 

@@ -301,7 +301,7 @@ For coupled or cascading systems, custodianship is assigned separately for each 
 | Notify Steward when condition rating drops to Requires Attention or below | Custodian |
 | Notify Owner when condition rating reaches Poor or below | Steward |
 | Impact assessment before deploying model changes | Custodian (draft), Steward (review for Tier 1) |
-| Annual audit of all Tier 1 models | Technical Lead / Steward |
+| Annual audit of all Tier 1 models | Delegated Steward |
 | Owner sign-off for Tier 1 promotion, deprecation, or continued use of a Poor-rated model | Owner |
 
 # 10. Review and Compliance
@@ -320,7 +320,7 @@ This document is reviewed annually alongside the parent framework and companion 
 
 - Feedback from Custodians on what is working and where the framework needs adjustment
 
-The Technical Lead conducts an annual audit of all Tier 1 models covering: condition rating currency, calibration record completeness, run record completeness for all formal outputs, Connection Register accuracy, and system diagram currency. Findings are reported to the Owner alongside the wider governance audit.
+The Delegated Steward conducts an annual audit of all Tier 1 models covering: condition rating currency, calibration record completeness, run record completeness for all formal outputs, Connection Register accuracy, and system diagram currency. Findings are reported to the Owner alongside the wider governance audit.
 
 | Exceptions process, escalation paths, and compliance requirements: see Data and Digital Asset Governance Framework v1.4, Section 11. |
 | --- |
