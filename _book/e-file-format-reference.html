@@ -299,7 +299,7 @@ Document Metadata
 </tr>
 <tr class="odd">
 <td><strong>Review Date</strong></td>
-<td>Pending first review</td>
+<td>2027-03-31</td>
 </tr>
 <tr class="even">
 <td><strong>Parent Document</strong></td>
@@ -716,7 +716,7 @@ Document Metadata
 <p>NetCDF is well-established and remains the required format for gridded outputs. For new workflows, two alternatives are worth knowing about.</p>
 <section id="zarr" class="level3" data-number="L.2.1">
 <h3 data-number="L.2.1" class="anchored" data-anchor-id="zarr"><span class="header-section-number">L.2.1</span> Zarr</h3>
-<p>Zarr stores arrays in chunks as individual files or objects in cloud storage. Unlike NetCDF, which is a single file, Zarr is designed for parallel read and write in cloud environments. If the team moves gridded data to cloud object storage, Zarr is more efficient than NetCDF for large datasets accessed by many concurrent jobs. It is readable by xarray with a simple backend swap (xr.open_zarr()). Zarr is not yet the team standard: discuss with the Tech Lead before adopting it in any Tier 1 workflow.</p>
+<p>Zarr stores arrays in chunks as individual files or objects in cloud storage. Unlike NetCDF, which is a single file, Zarr is designed for parallel read and write in cloud environments. If the team moves gridded data to cloud object storage, Zarr is more efficient than NetCDF for large datasets accessed by many concurrent jobs. It is readable by xarray with a simple backend swap (xr.open_zarr()). Zarr is not yet the team standard: discuss with the Delegated Steward before adopting it in any Tier 1 workflow.</p>
 </section>
 <section id="cloud-optimised-geotiff-cog" class="level3" data-number="L.2.2">
 <h3 data-number="L.2.2" class="anchored" data-anchor-id="cloud-optimised-geotiff-cog"><span class="header-section-number">L.2.2</span> Cloud-Optimised GeoTIFF (COG)</h3>
@@ -976,7 +976,7 @@ Document Metadata
 <tr class="even">
 <td>Zarr</td>
 <td>Cloud-native gridded data</td>
-<td>Discuss with Tech Lead</td>
+<td>Discuss with Delegated Steward</td>
 <td>Sharing outside DASH without agreement</td>
 </tr>
 <tr class="odd">

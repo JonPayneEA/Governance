@@ -337,7 +337,7 @@ Document Metadata
 </tr>
 <tr class="odd">
 <td><strong>Review Date</strong></td>
-<td>Pending first review</td>
+<td>2027-03-31</td>
 </tr>
 <tr class="even">
 <td><strong>Parent Document</strong></td>
@@ -450,11 +450,13 @@ Document Metadata
 <p>When a new dataset is received, the Custodian must complete all of the following before the data is stored:</p>
 <ul>
 <li><p>Assign a unique dataset ID using the standard format: [SupplierCode]<em>[SiteID]</em>[DataType]_[YYYYMMDD] (e.g., EA_39001_Q_20260115)</p></li>
-<li><p>Record the full provenance record (see Section 4.2) in the Hydrometric Data Register</p></li>
-<li><p>Store the data in the Bronze layer of the team’s data store - do not modify the file</p></li>
+<li><p>Record the full provenance record (see Section 4.2) in the Hydrometric Data Register via <code>reach.io</code>’s <code>write_provenance_record()</code> function</p></li>
+<li><p>Store the data in the Bronze layer of the team’s data store using <code>reach.io</code>’s directory structure (created by <code>setup_hydro_store()</code>); do not modify the file</p></li>
+<li><p>Apply the Bronze schema using <code>apply_bronze_schema()</code> to enforce the six mandatory columns (timestamp, value, supplier_flag, dataset_id, site_id, data_type) and correct data types</p></li>
 <li><p>Check the file opens and is readable; record any format issues in the provenance record</p></li>
 <li><p>Notify the Steward that a new Bronze dataset has been ingested</p></li>
 </ul>
+<p>For API-sourced gauges registered in the Gauge Registry, <code>reach.io</code>’s <code>run_backfill()</code> and <code>route_gauge()</code> functions automate the fetch, schema application, and provenance recording steps. The Custodian is still responsible for reviewing the resulting register entry and confirming completeness.</p>
 <p>Bronze data must never be modified after ingestion. If a supplier sends a corrected version of a dataset, the corrected version is ingested as a new Bronze dataset with its own dataset ID and provenance record, referencing the original.</p>
 </section>
 <section id="provenance-record" class="level2" data-number="8.2">
@@ -465,7 +467,7 @@ Document Metadata
 <section id="ownership-at-bronze" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="ownership-at-bronze"><span class="header-section-number">8.3</span> 4.3 Ownership at Bronze</h2>
 <p>The Custodian who ingests the data holds Bronze custodianship. They are responsible for completing the provenance record and storing the data correctly. The Steward is responsible for checking that provenance records are complete and that Bronze data is not being modified.</p>
-<p>Bronze data is owned by the team collectively - it represents an external input and no individual team member has the right to modify or delete it. Deletion of Bronze data requires Tech Lead approval and must be documented.</p>
+<p>Bronze data is owned by the team collectively - it represents an external input and no individual team member has the right to modify or delete it. Deletion of Bronze data requires Owner approval and must be documented.</p>
 <p>4.4 What Bronze Data Is Not For</p>
 <p>Bronze data is an archive, not a working dataset. It should not be:</p>
 <ul>
@@ -551,7 +553,7 @@ Document Metadata
 </section>
 <section id="stage-4-steward-review-and-promotion" class="level3" data-number="9.1.4">
 <h3 data-number="9.1.4" class="anchored" data-anchor-id="stage-4-steward-review-and-promotion"><span class="header-section-number">9.1.4</span> Stage 4: Steward Review and Promotion</h3>
-<p>Before data is promoted to Silver, the Steward or tech lead must review:</p>
+<p>Before data is promoted to Silver, the Steward or Delegated Steward must review:</p>
 <ul>
 <li><p>That the QC process has been followed and documented</p></li>
 <li><p>That flagging decisions are consistent with team standards</p></li>
@@ -644,7 +646,7 @@ Document Metadata
 </section>
 <section id="ownership-at-silver" class="level2" data-number="9.6">
 <h2 data-number="9.6" class="anchored" data-anchor-id="ownership-at-silver"><span class="header-section-number">9.6</span> 5.6 Ownership at Silver</h2>
-<p>The Steward or Tech Lead holds Silver ownership. They are accountable for the quality of Silver datasets and for ensuring QC records are complete and honest - including about limitations. The Custodian who carried out the QC is named in the record and is responsible for the decisions made during QC.</p>
+<p>The Steward or Delegated Steward holds Silver ownership. They are accountable for the quality of Silver datasets and for ensuring QC records are complete and honest - including about limitations. The Custodian who carried out the QC is named in the record and is responsible for the decisions made during QC.</p>
 <p>Silver data is the primary working dataset. Modellers and analysts should use Silver data and record which Silver dataset ID (and version) fed their work. If a modeller identifies a quality issue in Silver data, they must raise it with the Steward rather than correcting it locally.</p>
 </section>
 </section>
@@ -696,7 +698,7 @@ Document Metadata
 <section id="versioning-and-supersession" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="versioning-and-supersession"><span class="header-section-number">10.4</span> 6.4 Versioning and Supersession</h2>
 <p>When new Silver data becomes available, or when a quality issue is identified, a Gold dataset may need to be updated. A new version is created; the previous version is retained and its status changed to ‘Superseded’. Any model or analysis that used the superseded version must be flagged for review.</p>
-<p>The Steward or Tech Lead must be notified whenever a Gold dataset is superseded and must confirm whether dependent work needs to be revisited.</p>
+<p>The Steward or Delegated Steward must be notified whenever a Gold dataset is superseded and must confirm whether dependent work needs to be revisited.</p>
 </section>
 <section id="ownership-at-gold" class="level2" data-number="10.5">
 <h2 data-number="10.5" class="anchored" data-anchor-id="ownership-at-gold"><span class="header-section-number">10.5</span> 6.5 Ownership at Gold</h2>
@@ -1152,7 +1154,7 @@ Document Metadata
 </colgroup>
 <thead>
 <tr class="header">
-<th><em>The Parquet schemas defined in this section are the interface contract between the Hydrometric Data Framework and the AI/ML Test Environment. The ML training pipeline reads Gold Parquet using the column names and types defined in Sections 7.3 and 7.4. Any schema changes must be agreed between the Hydrometric Data Steward and the Python Lead before implementation.</em></th>
+<th><em>The Parquet schemas defined in this section are the interface contract between the Hydrometric Data Framework and the AI/ML Test Environment. The ML training pipeline reads Gold Parquet using the column names and types defined in Sections 7.3 and 7.4. Any schema changes must be agreed between the Steward and the Delegated Steward before implementation.</em></th>
 </tr>
 </thead>
 <tbody>
@@ -1166,11 +1168,11 @@ Document Metadata
 <p>The medallion structure is not just a filing system; it is a mechanism for identifying and acting on data quality problems over time. Quality issues discovered at Silver or Gold should feed back into improved processes and, where possible, improved data from suppliers.</p>
 <section id="flagging-systemic-issues" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="flagging-systemic-issues"><span class="header-section-number">12.1</span> 8.1 Flagging Systemic Issues</h2>
-<p>When a Custodian or Steward identifies a recurring quality problem - a gauge that consistently produces flatline values during high flows, a supplier format that loses trailing zeros, a rating curve that is clearly outdated - this should be escalated as a systemic issue rather than handled case by case. Systemic issues are recorded in the Data Quality Issue Log and assigned to the Tech Lead to manage.</p>
+<p>When a Custodian or Steward identifies a recurring quality problem - a gauge that consistently produces flatline values during high flows, a supplier format that loses trailing zeros, a rating curve that is clearly outdated - this should be escalated as a systemic issue rather than handled case by case. Systemic issues are recorded in the Data Quality Issue Log and assigned to the Delegated Steward to manage.</p>
 </section>
 <section id="supplier-engagement" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="supplier-engagement"><span class="header-section-number">12.2</span> 8.2 Supplier Engagement</h2>
-<p>Where a Bronze dataset contains quality problems that originate with the supplier (instrument failures, incorrect datum, outdated rating), the Tech Lead should:</p>
+<p>Where a Bronze dataset contains quality problems that originate with the supplier (instrument failures, incorrect datum, outdated rating), the Delegated Steward should:</p>
 <ul>
 <li><p>Document the issue precisely in the Silver QC record</p></li>
 <li><p>Raise the issue with the supplier in writing, referencing the specific time periods affected</p></li>
@@ -1181,7 +1183,7 @@ Document Metadata
 </section>
 <section id="rating-curve-reviews" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="rating-curve-reviews"><span class="header-section-number">12.3</span> 8.3 Rating Curve Reviews</h2>
-<p>Rating curves age. Channel geometry changes after flood events, vegetation and weed growth affects stage-discharge relationships seasonally, and structural changes at gauging stations invalidate previous curves. The Tech Lead is responsible for:</p>
+<p>Rating curves age. Channel geometry changes after flood events, vegetation and weed growth affects stage-discharge relationships seasonally, and structural changes at gauging stations invalidate previous curves. The Delegated Steward is responsible for:</p>
 <ul>
 <li><p>Maintaining a rating curve review schedule for all sites where the team applies its own rating</p></li>
 <li><p>Flagging in the Silver record when a rating review is overdue</p></li>
@@ -1237,7 +1239,8 @@ Document Metadata
 </section>
 <section id="hydrometric-data-register" class="level1" data-number="14">
 <h1 data-number="14"><span class="header-section-number">14</span> 10. Hydrometric Data Register</h1>
-<p>The Hydrometric Data Register is the single consolidated record for all Bronze, Silver, and Gold datasets. It is an Excel workbook held in the team’s designated data store, version-controlled alongside the data. In Databricks, the same fields are held as a Delta table in the fw_hydrometric catalog. The Steward is responsible for keeping it current.</p>
+<p>The Hydrometric Data Register is the single consolidated record for all Bronze, Silver, and Gold datasets. It is maintained by the <code>reach.io</code> R package as a CSV file held in the team’s designated data store, version-controlled alongside the data. Register entries are written and updated programmatically via <code>reach.io</code>’s <code>write_provenance_record()</code> function; direct manual editing of the CSV is not permitted outside of Steward-approved corrections. In Databricks deployments, the same fields are held as a Delta table in the <code>fw_hydrometric</code> catalog. The Steward is responsible for keeping it current.</p>
+<p>A separate <strong>Gauge Registry</strong> (Parquet format) is also maintained by <code>reach.io</code> via <code>build_gauge_registry()</code>. It is the routing configuration for the ingestion pipeline and records, for each gauge: source system assignment, active status, backfill completion flag, and notes. Changes to the Gauge Registry require Steward approval and are committed with a brief note describing the reason.</p>
 <p>Rather than separate provenance, QC, and derivation records for each tier, the register uses a single table where each row is one dataset. The tier column identifies whether a row is Bronze, Silver, or Gold. Fields that only apply to certain tiers are left blank for others. This keeps everything queryable in one place and avoids the proliferation of separate files.</p>
 <section id="register-fields" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="register-fields"><span class="header-section-number">14.1</span> 10.1 Register Fields</h2>
@@ -1472,7 +1475,7 @@ Document Metadata
 </section>
 <section id="data-quality-issue-log" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="data-quality-issue-log"><span class="header-section-number">14.2</span> 10.2 Data Quality Issue Log</h2>
-<p>The Data Quality Issue Log is a second sheet in the same Excel workbook (or a second Delta table in Databricks). It records known quality problems that require action beyond routine QC. Each entry includes:</p>
+<p>The Data Quality Issue Log is a separate CSV file held alongside the Hydrometric Data Register (or a second Delta table in Databricks deployments). It records known quality problems that require action beyond routine QC. Each entry includes:</p>
 <ul>
 <li><p>Issue ID and date raised</p></li>
 <li><p>Dataset(s) affected (Bronze and/or Silver IDs)</p></li>
@@ -1493,7 +1496,7 @@ Document Metadata
 <li><p>A data quality issue is raised, progressed, or resolved</p></li>
 <li><p>A supplier delivers a corrected or updated dataset</p></li>
 </ul>
-<p>The register is version-controlled. The Tech Lead commits changes with a note describing what was updated. Previous versions are retained as part of the retrospective traceability requirement.</p>
+<p>The register is version-controlled. The Delegated Steward commits changes with a note describing what was updated. Previous versions are retained as part of the retrospective traceability requirement.</p>
 </section>
 </section>
 <section id="access-sharing-and-retention" class="level1" data-number="15">
@@ -1525,7 +1528,7 @@ Document Metadata
 </section>
 <section id="roles-and-responsibilities" class="level1" data-number="16">
 <h1 data-number="16"><span class="header-section-number">16</span> 12. Roles and Responsibilities</h1>
-<p>The roles below follow the Owner, Steward, and Custodian model defined in the Data Ownership Model (CDDO, 2023) and applied in the Data &amp; Digital Asset Governance Framework v1.4. The specific responsibilities at each tier are summarised here.</p>
+<p>The roles below follow the Owner, Steward, and Custodian model defined in the Data Ownership Model (CDDO, 2023) and applied in the Data &amp; Digital Asset Governance Framework v1.4. The specific responsibilities at each tier are summarised here. The Data Owner for hydrometric data assets fulfils the Information Asset Owner (IAO) function for those assets; see <a href="01-governance-framework.html#sec-iao-relationship" class="quarto-xref"><span>Section&nbsp;2.3.6</span></a> in the parent framework for the full role mapping.</p>
 <table class="table">
 <colgroup>
 <col style="width: 25%">
@@ -1555,12 +1558,18 @@ Document Metadata
 <td>Reviews Silver quality before Gold proposals; signs off derivation records before Owner approval</td>
 </tr>
 <tr class="odd">
+<td>Delegated Steward (G6)</td>
+<td>Coordinates Bronze deletion with Owner; maintains register version control</td>
+<td>May act in place of Steward for Silver promotion review; manages Data Quality Issue Log entries; conducts rating curve reviews; leads supplier engagement</td>
+<td>Notified on Gold dataset supersession; confirms whether dependent work needs to be revisited</td>
+</tr>
+<tr class="even">
 <td>Custodian (any grade)</td>
 <td>Ingests data; completes provenance records; stores Bronze files correctly</td>
 <td>Carries out QC stages 1-3; records all QC decisions; notifies Steward for review</td>
 <td>Produces Gold derivation records under Steward guidance; flags supersession triggers</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Modeller / Analyst</td>
 <td>Does not interact with Bronze directly</td>
 <td>Uses Silver data; records Silver dataset IDs in run records; raises quality issues to Steward</td>
@@ -1579,7 +1588,7 @@ Document Metadata
 <li><p>Feedback from modellers and analysts on the usability of Silver and Gold data</p></li>
 <li><p>Changes to the team’s operational requirements that affect what Gold products are needed</p></li>
 </ul>
-<p>Exceptions to this framework - for example, using Bronze data directly in an urgent operational run - must be documented in the run record and reported to the Tech Lead. Repeated exceptions in the same area should trigger a review of whether the Silver pipeline needs to be accelerated for that data source.</p>
+<p>Exceptions to this framework - for example, using Bronze data directly in an urgent operational run - must be documented in the run record and reported to the Delegated Steward. Repeated exceptions in the same area should trigger a review of whether the Silver pipeline needs to be accelerated for that data source.</p>
 <table>
 <colgroup>
 <col style="width: 100%">
@@ -1701,21 +1710,25 @@ Document Metadata
 </tr>
 <tr class="even">
 <td>Hydrometric Data Register</td>
-<td>A single consolidated Excel workbook (or Delta table in Databricks) recording all Bronze, Silver, and Gold dataset metadata in one table. Replaces separate provenance, QC, and derivation record files.</td>
+<td>A single consolidated CSV file maintained by <code>reach.io</code> (or a Delta table in Databricks) recording all Bronze, Silver, and Gold dataset metadata in one table. Entries are written programmatically via <code>write_provenance_record()</code>. Replaces separate provenance, QC, and derivation record files.</td>
 </tr>
 <tr class="odd">
+<td>Gauge Registry</td>
+<td>A Parquet file maintained by <code>reach.io</code> via <code>build_gauge_registry()</code>. Records source system assignment, active status, backfill completion, and notes for each gauge. Acts as the routing configuration for the ingestion pipeline.</td>
+</tr>
+<tr class="even">
 <td>qc_value</td>
 <td>The analysis-ready value column in Silver and Gold Parquet. Equal to the Bronze value for Good data; populated with the estimated value for gap-filled rows; null for Rejected and No data rows.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Static catchment attributes</td>
 <td>Time-invariant descriptors of a catchment attached to an ML training set Gold product: area, BFI, elevation, soil type, and land cover. Repeated on every row in the Parquet file so the dataset is self-contained for model training.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>BFI</td>
 <td>Base Flow Index. A measure of the proportion of river flow derived from groundwater or other slowly varying sources. Used as a static catchment attribute in ML training sets.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>ML training set Gold</td>
 <td>A Gold product type holding Silver time series data at native 15-minute resolution with static catchment attributes attached. Distinct from aggregated Gold products and requires its own derivation record.</td>
 </tr>

@@ -302,138 +302,142 @@ ul.task-list li input[type="checkbox"] {
 <td>As defined in the Data Ownership Model (CDDO, 2023): an operational expert responsible for day-to-day activities supporting the governance decisions made by Data Owners</td>
 </tr>
 <tr class="even">
+<td>Delegated Steward</td>
+<td>A practitioner to whom the Steward delegates hands-on technical governance work. The delegation recognises that G7 Stewards are often people managers whose strengths lie in oversight and decision-making rather than technical depth; the Delegated Steward brings the domain expertise to carry out the work: assessing code quality, reviewing model condition, evaluating data pipelines, conducting annual Tier 1 audits, and producing corrective action plans. Typically at G6 grade. Delegation does not transfer accountability: the Steward remains responsible for all decisions. Defined in the Governance Framework Role Summary table.</td>
+</tr>
+<tr class="odd">
 <td>Data Custodian</td>
 <td>As defined in the Data Ownership Model (CDDO, 2023): an individual responsible for capturing, storing, and disposing of data in line with the Data Owner’s requirements</td>
 </tr>
-<tr class="odd">
-<td>Information Asset Owner (IAO)</td>
-<td>A senior individual accountable for the security, content, quality, and distribution of an information asset (typically a database or IT system). Defined in Cabinet Office guidance (updated October 2025). See <span class="quarto-unresolved-ref">?sec-iao</span></td>
-</tr>
 <tr class="even">
+<td>Information Asset Owner (IAO)</td>
+<td>A senior individual accountable for the security, content, quality, and distribution of an information asset (typically a database or IT system). Defined in Cabinet Office guidance (updated October 2025). See <a href="01-governance-framework.html#sec-iao-relationship" class="quarto-xref"><span>Section&nbsp;2.3.6</span></a></td>
+</tr>
+<tr class="odd">
 <td>Information Asset Manager (IAM)</td>
 <td>A delegated role working on behalf of the IAO, with regular responsibility for the proper management of information in their business area</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Data catalogue</td>
 <td>A maintained record of agreed data definitions, entities, and attributes used across the team. See <a href="01-governance-framework.html#sec-data-catalogue" class="quarto-xref"><span>Section&nbsp;2.8</span></a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Data lineage</td>
 <td>The documented chain showing where data came from, how it was transformed, and where it flows to</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Bronze</td>
 <td>The first tier of the medallion framework. Raw, unmodified data exactly as received from the supplier</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Silver</td>
 <td>The second tier. Quality-controlled data with flags applied and QC decisions documented</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Gold</td>
 <td>The third tier. Formally approved analysis-ready products derived from Silver data. Includes aggregated statistics, calibration inputs, and ML training sets</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Provenance</td>
 <td>The documented origin and history of a dataset: where it came from, when, how it was received, and what has been done to it</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Rating curve</td>
 <td>The relationship between water level (stage) and flow (discharge) at a gauging station, used to derive flow from level measurements</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Gap-filling</td>
 <td>Estimating values for missing time periods in a dataset using a documented method</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Quality flag</td>
 <td>A code attached to each data value indicating its quality status (Good, Estimated, Suspect, Rejected, No data, Below detection)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Flatline</td>
 <td>A sequence of identical repeated values in a time series, typically indicating a sensor or telemetry malfunction</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Medallion framework</td>
 <td>A data architecture pattern organising data into tiers of increasing quality and fitness for purpose. Adapted here for hydrological data management</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Hydrometric</td>
 <td>Relating to the measurement of water: flows, levels, rainfall, and related variables</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>NRFA</td>
 <td>National River Flow Archive: the UK’s national repository of river flow data</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Datum</td>
 <td>The vertical reference level to which water level measurements are made</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Parquet</td>
 <td>A columnar file format used as the standard storage format for all hydrometric datasets. Supports typed columns, compression, and efficient partial reads</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Delta Lake</td>
 <td>A storage layer built on Parquet that adds transactions, schema enforcement, and time-travel to tables in Databricks. Used for Bronze and Silver stores in DASH</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Q-FAIR</td>
 <td>Quality, Findable, Accessible, Interoperable, Reusable: the Defra data standards aims that this framework implements by design</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>DPIA</td>
 <td>Data Protection Impact Assessment: required where processing of personal data may result in high risk to individuals</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Data (Use and Access) Act 2025</td>
 <td>UK legislation governing data use, access, and sharing; referenced in updated IAO guidance</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>CDDO</td>
 <td>Central Digital and Data Office: the government body responsible for the Data Ownership Model</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Conventional Commits</td>
 <td>A commit message convention: <code>&lt;type&gt;(&lt;scope&gt;): &lt;description&gt;</code>. Permitted types: feat, fix, docs, refactor, test, chore</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>fastverse</td>
 <td>A suite of high-performance R packages (including data.table) that is the team’s default over the tidyverse</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>polars</td>
 <td>The team’s default Python data manipulation library, preferred over pandas for typed, high-performance tabular operations</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>ONNX</td>
 <td>Open Neural Network Exchange: the preferred format for archiving trained ML models intended for long-term operational use</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Black Box model</td>
 <td>A data-driven model that relates inputs directly to outputs without representing physical processes; includes neural network and transfer function models</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Condition rating</td>
 <td>A numerical score (0–10) produced by a model condition assessment, mapped to a descriptive rating from Critical to Good</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Cascading system</td>
 <td>A modelling system where the outputs of one model become the inputs to one or more downstream models</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Manual override point</td>
 <td>A defined point in a cascading system where an operator can substitute a model output with an observed or manually estimated value</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>BFI</td>
 <td>Base Flow Index: the proportion of river flow derived from groundwater or other slowly varying sources. Ranges from 0 to 1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Static catchment attributes</td>
 <td>Time-invariant descriptors of a catchment attached to an ML training set Gold product: area, BFI, elevation, soil type, and land cover</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>ML training set Gold</td>
 <td>A Gold product type holding Silver time series data at native 15-minute resolution with static catchment attributes attached. Distinct from aggregated Gold products</td>
 </tr>

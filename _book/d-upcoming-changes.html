@@ -255,16 +255,50 @@ ul.task-list li input[type="checkbox"] {
 <p>The following weaknesses were identified. Each is provisionally assigned a priority for resolution.</p>
 <section id="no-implementation-authority" class="level4" data-number="D.1.2.1">
 <h4 data-number="D.1.2.1" class="anchored" data-anchor-id="no-implementation-authority"><span class="header-section-number">D.1.2.1</span> 1. No Implementation Authority</h4>
-<p>The entire suite is <em>Draft: For Review</em>. Every approval block is blank. There are no target dates for sign-off, no effective date, no implementation plan, and no statement of what happens between now and formal adoption. A governance framework without an approval date is a set of suggestions.</p>
-<p><strong>What is needed:</strong> A cover section stating the effective date, a transition period for compliance, and target dates for populating each register with real asset entries. Owner signatures on the approval blocks.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Partially resolved at v1.4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Implementation dates have been set and are now recorded in the parent framework metadata block:</p>
+<ul>
+<li><strong>Implementation start:</strong> 23 March 2026</li>
+<li><strong>Target adoption:</strong> 31 March 2026 (end of financial year 2025-26)</li>
+<li><strong>Review date:</strong> 31 March 2027</li>
+</ul>
+<p>All companion document review dates have been updated to reflect the same review cycle.</p>
+<p>What still remains: Owner signatures on the approval blocks, and the transition period and register population targets described below. These require Owner engagement and cannot be set unilaterally.</p>
+</div>
+</div>
+<p>The suite is <em>Draft: For Review</em>. Approval blocks are unsigned and there is no statement of what happens between now and formal adoption. A governance framework without an approval date is a set of suggestions.</p>
+<p><strong>What is needed:</strong> Owner signatures on the approval blocks, and a transition period for compliance with target dates for populating each register with real asset entries.</p>
 <p><strong>Priority:</strong> High. Resolves before or at the point of adoption.</p>
 <hr>
 </section>
 <section id="heavy-on-what-light-on-how" class="level4" data-number="D.1.2.2">
 <h4 data-number="D.1.2.2" class="anchored" data-anchor-id="heavy-on-what-light-on-how"><span class="header-section-number">D.1.2.2</span> 2. Heavy on “What”, Light on “How”</h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Partially resolved at v1.4 — Hydrometric Data Register and Tool Register
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Hydrometric Data Register:</strong> A CSV file maintained by the <code>reach.io</code> R package (<a href="https://github.com/JonPayneEA/reach.io">github.com/JonPayneEA/reach.io</a>) via <code>write_provenance_record()</code>. A separate Gauge Registry (Parquet) is managed by <code>build_gauge_registry()</code>. Chapter 5 updated.</p>
+<p><strong>Tool Register:</strong> A generated CSV (<code>tool_register.csv</code>) produced by <code>scripts/build_tool_register.R</code>. The script queries the GitHub API for all repositories in the <code>JonPayneEA</code> organisation and merges each repository’s <code>governance.yml</code> with GitHub metadata. It is not hand-maintained. A <code>governance-template.yml</code> is provided for tool repositories to adopt. The parent framework (Section 7.6) has been updated to reflect this.</p>
+</div>
+</div>
 <p>The framework defines excellent structures (registers, run records, condition assessments, provenance records) but rarely explains how to create or maintain them in practice. There are no templates, no worked examples, and no indication of where registers live or what format they take.</p>
-<p>Specifically: - The Tool Register, Model Register, and Hydrometric Data Register are described in detail but never shown. Are they spreadsheets, YAML files, database tables? Where do they reside today? - Run records have a 13-field template but no completed example. - The data catalogue is required but its format is left open (“a structured document, a spreadsheet, or a dedicated section”), which in practice means it does not yet exist.</p>
-<p><strong>What is needed:</strong> A companion implementation guide, or a dedicated chapter, covering: where registers live, what they look like when populated, and what a completed run record and condition assessment look like. See also the proposed implementation chapter below.</p>
+<p>Specifically: - The <strong>Hydrometric Data Register</strong> format is now resolved via <code>reach.io</code> (see note above). - The <strong>Tool Register</strong> format is now resolved via <code>scripts/build_tool_register.R</code> (see note above). - The <strong>Model Register</strong> physical form is still undefined. - Run records have a 13-field template but no completed example. - The data catalogue is required but its format is left open (“a structured document, a spreadsheet, or a dedicated section”), which in practice means it does not yet exist.</p>
+<p><strong>What is needed:</strong> Decisions on the Model Register format, a completed run record example, and a data catalogue format decision.</p>
 <p><strong>Priority:</strong> High.</p>
 <hr>
 </section>
@@ -341,8 +375,21 @@ Resolved at v1.1
 </section>
 <section id="no-version-control-policy-for-the-framework-itself" class="level4" data-number="D.1.2.8">
 <h4 data-number="D.1.2.8" class="anchored" data-anchor-id="no-version-control-policy-for-the-framework-itself"><span class="header-section-number">D.1.2.8</span> 8. No Version Control Policy for the Framework Itself</h4>
-<p>The framework mandates version control for every other asset type but has no equivalent policy for changes to the governance documents themselves. What happens between annual reviews? Who approves minor corrections? How are changes to companion documents tracked against the parent framework version? The alignment register tracks divergences against external policy but not internal amendments.</p>
-<p><strong>What is needed:</strong> A brief change control section (perhaps in the Review and Compliance section) covering who may make corrections between reviews, what level of change triggers a version increment, and how changes are communicated to the team.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resolved at v1.4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A Framework Version Control subsection has been added to the Review and Compliance section. It defines three change categories (editorial, substantive, major), the approval route for each, the versioning convention (MAJOR.MINOR with <code>_quarto.yml</code> as master), and the team notification requirement for substantive and major changes.</p>
+</div>
+</div>
+<p><del>The framework mandates version control for every other asset type but has no equivalent policy for changes to the governance documents themselves. What happens between annual reviews? Who approves minor corrections? How are changes to companion documents tracked against the parent framework version? The alignment register tracks divergences against external policy but not internal amendments.</del></p>
+<p><del><strong>What is needed:</strong> A brief change control section (perhaps in the Review and Compliance section) covering who may make corrections between reviews, what level of change triggers a version increment, and how changes are communicated to the team.</del></p>
 <p><strong>Priority:</strong> Low.</p>
 <hr>
 </section>
@@ -430,6 +477,26 @@ Resolved at v1.1
 <tr class="odd">
 <td>2026-03-22</td>
 <td>Accepted File Types moved to Appendix E; renamed File Format Reference; MCP <code>check_file_formats</code> tool added</td>
+<td>Resolved</td>
+</tr>
+<tr class="even">
+<td>2026-03-23</td>
+<td>Implementation dates set: start 23 March 2026, target adoption 31 March 2026, review 31 March 2027; all companion document review dates updated</td>
+<td>Partially resolved (Owner sign-off outstanding)</td>
+</tr>
+<tr class="odd">
+<td>2026-03-23</td>
+<td>Hydrometric Data Register format resolved: CSV maintained by <code>reach.io</code> (<code>write_provenance_record()</code>); Gauge Registry (Parquet) via <code>build_gauge_registry()</code>; Chapter 5 updated</td>
+<td>Resolved</td>
+</tr>
+<tr class="even">
+<td>2026-03-23</td>
+<td>Tool Register format resolved: generated CSV from <code>scripts/build_tool_register.R</code> querying GitHub API and per-repo <code>governance.yml</code>; <code>governance-template.yml</code> added; Section 7.6 updated</td>
+<td>Resolved</td>
+</tr>
+<tr class="odd">
+<td>2026-03-23</td>
+<td>Framework version control policy added to Review and Compliance section: three-category change model, approval routes, versioning convention, team notification</td>
 <td>Resolved</td>
 </tr>
 </tbody>

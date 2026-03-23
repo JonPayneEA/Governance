@@ -239,7 +239,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-monitoring-reporting" id="toc-sec-monitoring-reporting" class="nav-link" data-scroll-target="#sec-monitoring-reporting"><span class="header-section-number">2.12</span> Monitoring, Reporting, and Risk Management</a></li>
   <li><a href="#sec-wider-value" id="toc-sec-wider-value" class="nav-link" data-scroll-target="#sec-wider-value"><span class="header-section-number">2.13</span> Wider Data Value</a></li>
   <li><a href="#sec-ai-governance" id="toc-sec-ai-governance" class="nav-link" data-scroll-target="#sec-ai-governance"><span class="header-section-number">2.14</span> AI and Machine Learning Governance</a></li>
-  <li><a href="#review-and-compliance" id="toc-review-and-compliance" class="nav-link" data-scroll-target="#review-and-compliance"><span class="header-section-number">2.15</span> Review and Compliance</a></li>
+  <li><a href="#review-and-compliance" id="toc-review-and-compliance" class="nav-link" data-scroll-target="#review-and-compliance"><span class="header-section-number">2.15</span> Review and Compliance</a>
+  <ul class="collapse">
+  <li><a href="#framework-version-control" id="toc-framework-version-control" class="nav-link" data-scroll-target="#framework-version-control"><span class="header-section-number">2.15.1</span> Framework Version Control</a></li>
+  </ul></li>
   <li><a href="#quick-reference-who-to-go-to" id="toc-quick-reference-who-to-go-to" class="nav-link" data-scroll-target="#quick-reference-who-to-go-to"><span class="header-section-number">2.16</span> Quick Reference: Who to Go To</a></li>
   </ul>
 </nav>
@@ -266,6 +269,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td>1.4</td>
+</tr>
+<tr class="even">
+<td><strong>Status</strong></td>
+<td>Draft: For Review</td>
+</tr>
+<tr class="odd">
+<td><strong>Implementation Start</strong></td>
+<td>23 March 2026</td>
+</tr>
+<tr class="even">
+<td><strong>Target Adoption</strong></td>
+<td>31 March 2026</td>
+</tr>
+<tr class="odd">
+<td><strong>Review Date</strong></td>
+<td>31 March 2027</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <section id="purpose" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="purpose"><span class="header-section-number">2.1</span> Purpose</h2>
 <p>This framework sets out how the Forecasting and Warning (F&amp;W) department manages its data, code, and digital assets. It defines who is responsible for what, at every level, covering all assets from strategic accountability for major datasets down to day-to-day maintenance of individual code tools.</p>
@@ -344,6 +383,7 @@ Owner Grade Requirement
 <li>Assisting with periodic data maturity assessments as required by the organisation</li>
 <li>Periodically considering whether team data assets have value to wider government, society, or the economy, and flagging opportunities to the Owner (see <a href="#sec-wider-value" class="quarto-xref"><span>Section&nbsp;2.13</span></a>)</li>
 </ul>
+<p>Not all of these responsibilities carry equal weight at every tier. For Tier 3 assets, the core requirements are standards maintenance, register currency, and quality issue reporting. The fuller responsibilities (data lineage mapping, cross-functional liaison, maturity assessments, and wider value consideration) apply in proportion to asset criticality. All apply in full to Tier 1 assets.</p>
 </section>
 <section id="custodian-any-grade" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="custodian-any-grade"><span class="header-section-number">2.3.3</span> Custodian (Any Grade)</h3>
@@ -393,7 +433,7 @@ Custodian Disposal Responsibility
 </tr>
 <tr class="even">
 <td>Steward</td>
-<td>Operational expert responsible for day-to-day governance. Maintains standards, reviews quality, manages access, oversees the Tool Register and data catalogue, handles governance queries, tracks data lineage, manages lifecycle. Grade 7 required for Tier 1 tools; Grade 7 recommended for all other assets. For operational day-to-day management, a Delegated Steward should be specified, generally at G6 grade.</td>
+<td>Operational expert responsible for day-to-day governance. Maintains standards, reviews quality, manages access, oversees the Tool Register and data catalogue, handles governance queries, tracks data lineage, manages lifecycle. Grade 7 required for Tier 1 tools; Grade 7 recommended for all other assets. Where the Steward’s strength is oversight and people management rather than technical depth, a Delegated Steward should be named to carry out the hands-on governance work: code quality assessment, model condition reviews, data pipeline evaluation, and the annual Tier 1 audit. Typically G6 grade.</td>
 </tr>
 <tr class="odd">
 <td>Custodian</td>
@@ -701,66 +741,69 @@ Custodian Disposal Responsibility
 </section>
 <section id="tool-register" class="level3" data-number="2.7.6">
 <h3 data-number="2.7.6" class="anchored" data-anchor-id="tool-register"><span class="header-section-number">2.7.6</span> Tool Register</h3>
-<p>Every code tool must be entered in the central Tool Register at the point it is shared with more than one team member. The register is version-controlled and held in the team repository.</p>
+<p>Every code tool must be entered in the central Tool Register at the point it is shared with more than one team member. The register is a CSV file (<code>tool_register.csv</code>) held in this governance repository and generated by <code>scripts/build_tool_register.R</code>. It is not edited by hand.</p>
+<p>The script works in two passes. First, it queries the GitHub API for all repositories in the <code>JonPayneEA</code> organisation and extracts the fields GitHub holds natively: repository name, URL, primary language, and topics. Second, for each repository it reads a <code>governance.yml</code> file from the repository root, which supplies the governance fields GitHub cannot know. Values in <code>governance.yml</code> take precedence over inferred values; GitHub topics are used as a fallback for tier and status.</p>
+<p>A template <code>governance.yml</code> is provided in this repository at <code>governance-template.yml</code>. Every tool repository must include a populated copy in its root. Two GitHub topic conventions are required on every tool repository, and used as fallback when <code>governance.yml</code> is absent or incomplete:</p>
+<ul>
+<li>Tier: one of <code>tier-1</code>, <code>tier-2</code>, <code>tier-3</code></li>
+<li>Status: one of <code>active</code>, <code>under-development</code>, <code>deprecated</code></li>
+</ul>
+<p>The resulting register fields are:</p>
 <table class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Field</th>
-<th>Description</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Tool Name</td>
-<td>Short descriptive name matching the repository directory</td>
+<td>GitHub repository name</td>
 </tr>
 <tr class="even">
 <td>Tier</td>
-<td>1, 2, or 3</td>
+<td><code>governance.yml</code> → GitHub topic</td>
 </tr>
 <tr class="odd">
 <td>Language</td>
-<td>R, Python, or both</td>
+<td><code>governance.yml</code> → GitHub detected language</td>
 </tr>
 <tr class="even">
-<td>Owner</td>
-<td>Name, grade, and role. Must be at Deputy Director level. Note if delegated and to whom.</td>
-</tr>
-<tr class="odd">
-<td>Steward</td>
-<td>Name, grade, and role. Must be Grade 7 for Tier 1 tools. Note if delegated.</td>
-</tr>
-<tr class="even">
-<td>Custodian(s)</td>
-<td>Name(s), grade(s), and role(s). Any grade. Note any delegations.</td>
-</tr>
-<tr class="odd">
-<td>IAO</td>
-<td>Name of the IAO, or note that the Owner fulfils this function.</td>
-</tr>
-<tr class="even">
-<td>Repository Location</td>
-<td>Link or path</td>
-</tr>
-<tr class="odd">
 <td>Status</td>
-<td>Active / Under Development / Deprecated</td>
+<td><code>governance.yml</code> → GitHub topic</td>
+</tr>
+<tr class="odd">
+<td>Owner (name, grade)</td>
+<td><code>governance.yml</code></td>
+</tr>
+<tr class="even">
+<td>Steward (name, grade, delegation)</td>
+<td><code>governance.yml</code></td>
+</tr>
+<tr class="odd">
+<td>Custodian(s)</td>
+<td><code>governance.yml</code></td>
+</tr>
+<tr class="even">
+<td>IAO</td>
+<td><code>governance.yml</code></td>
+</tr>
+<tr class="odd">
+<td>Repository Location</td>
+<td>GitHub repository URL</td>
 </tr>
 <tr class="even">
 <td>Last Reviewed</td>
-<td>Date of last audit or custodianship review</td>
+<td><code>governance.yml</code></td>
 </tr>
 <tr class="odd">
 <td>Notes</td>
-<td>Known issues, planned changes, or active exceptions</td>
+<td><code>governance.yml</code> → GitHub repository description</td>
 </tr>
 </tbody>
 </table>
-<p>The Tool Register must be updated whenever a custodianship role changes, a tool changes tier, or a tool is deprecated.</p>
+<p>The register must be regenerated whenever a custodianship role changes, a tool changes tier, or a tool is deprecated. Run <code>Rscript scripts/build_tool_register.R</code> and commit the updated <code>tool_register.csv</code>.</p>
 </section>
 <section id="handover-and-succession" class="level3" data-number="2.7.7">
 <h3 data-number="2.7.7" class="anchored" data-anchor-id="handover-and-succession"><span class="header-section-number">2.7.7</span> Handover and Succession</h3>
@@ -834,7 +877,7 @@ Custodian Disposal Responsibility
 <h2 data-number="2.10" class="anchored" data-anchor-id="access-and-sharing"><span class="header-section-number">2.10</span> Access and Sharing</h2>
 <ul>
 <li>All team members have read access to current model files by default</li>
-<li>Write access to master model files requires Steward approval</li>
+<li>Write access to master model files requires Steward approval; approval is recorded in the access log with the name of the person, the date, and the scope of access granted</li>
 <li>Sharing data or tools outside the team (including to contractors) requires Owner approval</li>
 <li>Sensitive datasets follow the organisation’s data classification policy</li>
 <li>Access rights are reviewed by Stewards every six months</li>
@@ -846,11 +889,10 @@ Custodian Disposal Responsibility
 <p>When an incident occurs:</p>
 <ul>
 <li>The Custodian reports it to the Steward immediately</li>
-<li>The Steward assesses the impact and decides whether to escalate to the Owner</li>
-<li>The Owner is informed of any incident affecting a formal output or external stakeholder</li>
 <li>All incidents are recorded in the governance log with a summary of what happened and what was done</li>
+<li>The Steward escalates to the Owner immediately where the incident affects a formal output, an external stakeholder, or carries potential regulatory or reputational implications; for all other incidents, the Steward uses their judgement</li>
 </ul>
-<p>For code tools: a post-incident review must be completed within ten working days for any Tier 1 tool failure or emergency deployment (Route D).</p>
+<p>For any Tier 1 asset failure or emergency deployment (Route D), a post-incident review must be completed within ten working days. The review covers: what happened, what the impact was or could have been, what was done to resolve it, and what change is needed to prevent recurrence. The Steward is responsible for completing the review and submitting it to the Owner.</p>
 </section>
 <section id="sec-monitoring-reporting" class="level2" data-number="2.12">
 <h2 data-number="2.12" class="anchored" data-anchor-id="sec-monitoring-reporting"><span class="header-section-number">2.12</span> Monitoring, Reporting, and Risk Management</h2>
@@ -886,7 +928,23 @@ Custodian Disposal Responsibility
 <li>Alignment with any updates to the CDDO Data Ownership Model, Defra Data Ownership Policy, IAO guidance, or relevant legislation</li>
 </ul>
 <p>The Delegated Steward conducts an annual audit of all Tier 1 code tools, covering header block completeness, test coverage, documentation currency, dependency lockfile consistency, and branching strategy compliance.</p>
-<p>Spot-check audits of model files and metadata records may be carried out at any time by Stewards.</p>
+<p>Stewards must carry out spot-check audits of Tier 2 model files and metadata records at least once per year, and of Tier 3 assets at least once every two years. Spot checks may be carried out at any time.</p>
+<section id="framework-version-control" class="level3" data-number="2.15.1">
+<h3 data-number="2.15.1" class="anchored" data-anchor-id="framework-version-control"><span class="header-section-number">2.15.1</span> Framework Version Control</h3>
+<p>Changes to this document and the companion documents fall into three categories.</p>
+<p><strong>Editorial corrections</strong> are typos, broken links, or formatting fixes that do not change meaning. The Delegated Steward may make and merge editorial corrections at any time without Owner sign-off. No version increment. No team notification required, though the change is visible in the git history.</p>
+<p><strong>Substantive changes</strong> are anything that changes a requirement, adds or removes a role, adds or removes a process step, or modifies a companion document in a way that affects practice. Substantive changes require Owner sign-off before they are merged. The minor version number increments (1.4 becomes 1.5). The Steward notifies the team by written summary within five working days of the merge, identifying which sections changed and why.</p>
+<p><strong>Major changes</strong> are restructures of the tier system, redefinition of core roles, or changes that require existing registers to be migrated or existing assets to be re-assessed. Major changes trigger a full review cycle and increment the major version number (1.4 becomes 2.0). They are treated the same as a new framework adoption.</p>
+<p>For all substantive and major changes, the procedure is:</p>
+<ol type="1">
+<li>Draft the change on a branch</li>
+<li>Record the rationale in the Change Log in Appendix D before requesting sign-off</li>
+<li>Obtain Owner sign-off</li>
+<li>Merge and increment the version number in <code>_quarto.yml</code> (master) and in the metadata block of the changed document</li>
+<li>Update the review dates in any companion documents that reference the changed section</li>
+</ol>
+<p>The version field in <code>_quarto.yml</code> is the master. All companion document metadata blocks reference it and must be kept in step.</p>
+</section>
 </section>
 <section id="quick-reference-who-to-go-to" class="level2" data-number="2.16">
 <h2 data-number="2.16" class="anchored" data-anchor-id="quick-reference-who-to-go-to"><span class="header-section-number">2.16</span> Quick Reference: Who to Go To</h2>

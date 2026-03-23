@@ -307,7 +307,7 @@ Document Metadata
 </tr>
 <tr class="odd">
 <td><strong>Review Date</strong></td>
-<td>Pending first review</td>
+<td>2027-03-31</td>
 </tr>
 <tr class="even">
 <td><strong>Parent Document</strong></td>
@@ -370,13 +370,13 @@ Document Metadata
 <p>The following governance elements are defined in the Data &amp; Digital Asset Governance Framework and apply to all Python tools. They are not repeated here, refer to that document for the authoritative version:</p>
 <ul>
 <li><p>Owner → Steward → Custodian roles and grade requirements (Section 3)</p></li>
-<li><p>Tool tier classification: Tier 1 / 2 / 3 (Section 8.1)</p></li>
-<li><p>Custodianship requirements by tier (Section 8.2)</p></li>
-<li><p>Routes to tool development: A, B, C, D (Section 8.3)</p></li>
-<li><p>Code review requirements by tier (Section 8.4)</p></li>
-<li><p>Version control principles: branching, commits, semantic versioning, reproducibility (Section 8.5)</p></li>
-<li><p>Tool Register fields and maintenance (Section 8.6)</p></li>
-<li><p>Handover and succession (Section 8.7)</p></li>
+<li><p>Tool tier classification: Tier 1 / 2 / 3 (Section 7.1)</p></li>
+<li><p>Custodianship requirements by tier (Section 7.2)</p></li>
+<li><p>Routes to tool development: A, B, C, D (Section 7.3)</p></li>
+<li><p>Code review requirements by tier (Section 7.4)</p></li>
+<li><p>Version control principles: branching, commits, semantic versioning, reproducibility (Section 7.5)</p></li>
+<li><p>Tool Register fields and maintenance (Section 7.6)</p></li>
+<li><p>Handover and succession (Section 7.7)</p></li>
 <li><p>Governance, exceptions, and annual audit (Section 12)</p></li>
 </ul>
 <p>This document covers everything that is specific to Python.</p>
@@ -393,14 +393,14 @@ Document Metadata
 </section>
 <section id="python-tool-development-standards" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> 2. Python Tool Development Standards</h1>
-<p>The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 8.1–8.4). This section covers the Python-specific standards that apply within that governance structure.</p>
+<p>The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 7.1–7.4). This section covers the Python-specific standards that apply within that governance structure.</p>
 <table>
 <colgroup>
 <col style="width: 100%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Tool tiers, development routes, review requirements by tier, and version control principles: see Data &amp; Digital Asset Governance Framework, Section 8.</th>
+<th>Tool tiers, development routes, review requirements by tier, and version control principles: see Data &amp; Digital Asset Governance Framework, Section 7.</th>
 </tr>
 </thead>
 <tbody>
@@ -498,7 +498,7 @@ Document Metadata
 </colgroup>
 <thead>
 <tr class="header">
-<th><strong>Guidance for Newer Python Users – polars</strong> If you are used to pandas, polars syntax will feel slightly different. The key shift is that polars expressions are evaluated lazily and column operations are written as expressions: df.select(pl.col(‘flow_cms’).mean().alias(‘mean_flow’)). The polars user guide at docs.pola.rs is the recommended starting point. Ask the Python Lead for a walkthrough if you are new to it.</th>
+<th><strong>Guidance for Newer Python Users – polars</strong> If you are used to pandas, polars syntax will feel slightly different. The key shift is that polars expressions are evaluated lazily and column operations are written as expressions: df.select(pl.col(‘flow_cms’).mean().alias(‘mean_flow’)). The polars user guide at docs.pola.rs is the recommended starting point. Ask the Delegated Steward for a walkthrough if you are new to it.</th>
 </tr>
 </thead>
 <tbody>
@@ -732,7 +732,7 @@ Document Metadata
 </tr>
 <tr class="odd">
 <td>pip-audit / safety</td>
-<td>Checks declared dependencies for known security vulnerabilities. Findings flagged to Python Lead.</td>
+<td>Checks declared dependencies for known security vulnerabilities. Findings flagged to Delegated Steward.</td>
 </tr>
 </tbody>
 </table>
@@ -827,10 +827,10 @@ Document Metadata
 <ul>
 <li><p>Read this governance document, the parent framework, and sign the acknowledgement form</p></li>
 <li><p>Set up the team’s Python environment: install Python (via pyenv or the team-specified version), install poetry, and clone the team repository</p></li>
-<li><p>Complete the team Python onboarding guide (available in docs/onboarding/) To be written</p></li>
+<li><p>Complete the team Python onboarding guide (available in docs/onboarding/ — see Upcoming Changes appendix for current status)</p></li>
 <li><p>Run poetry install on the main Python project and confirm the environment is working</p></li>
 <li><p>Review at least two merged pull requests to understand the review process</p></li>
-<li><p>Attend an introductory session with the Python Lead</p></li>
+<li><p>Attend an introductory session with the Delegated Steward</p></li>
 </ul>
 </section>
 <section id="ongoing-learning" class="level2" data-number="11.2">
@@ -885,13 +885,13 @@ Document Metadata
 </tr>
 </tbody>
 </table>
-<p>The team’s monthly R drop-in session includes Python topics. A separate Python knowledge-sharing session can be arranged on request with the Python Lead.</p>
+<p>The team’s monthly R drop-in session includes Python topics. A separate Python knowledge-sharing session can be arranged on request with the Delegated Steward.</p>
 </section>
 </section>
 <section id="governance-exceptions-and-review" class="level1" data-number="12">
 <h1 data-number="12"><span class="header-section-number">12</span> 7. Governance, Exceptions, and Review</h1>
 <p>The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, Section 12. The following applies specifically to Python tools:</p>
-<p>Overall responsibility for this document sits with the Python Lead (or R Lead where no dedicated Python Lead exists). The same Governance Working Group that oversees the R framework oversees this document. The Python Lead conducts an annual audit of all Tier 1 Python tools covering: header block completeness, type hint coverage, test coverage, documentation currency, poetry.lock consistency, and compliance with the branching strategy. Findings are reported to the team alongside the R framework audit.</p>
+<p>Overall responsibility for this document sits with the Delegated Steward. The same Governance Working Group that oversees the R framework oversees this document. The Delegated Steward conducts an annual audit of all Tier 1 Python tools covering: header block completeness, type hint coverage, test coverage, documentation currency, poetry.lock consistency, and compliance with the branching strategy. Findings are reported to the team alongside the R framework audit.</p>
 </section>
 <section id="approved-by" class="level1" data-number="13">
 <h1 data-number="13"><span class="header-section-number">13</span> Approved by</h1>
