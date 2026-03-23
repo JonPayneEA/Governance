@@ -87,6 +87,12 @@ Specifically:
 
 #### 3. Governance Load Not Matched to Capacity
 
+::: {.callout-note}
+## Partially resolved at v1.4
+
+A phased compliance timeline has been added to the new Implementation chapter (Chapter 8, @sec-implementation). Phase 1 obligations apply from 1 April 2026 and cover registration and role confirmation only. Full framework obligations, including quarterly summaries, condition assessments, and the annual audit, apply from 1 April 2027. The `fw-governance` MCP server (Appendix F, @sec-mcp-server-spec) automates the mechanical portions of the monitoring obligations once registers are in place. Outstanding: the timeline requires Owner agreement before the effective date.
+:::
+
 The framework creates a significant and recurring administrative burden:
 
 - Quarterly governance summaries from the Steward
@@ -97,7 +103,7 @@ The framework creates a significant and recurring administrative burden:
 - Annual framework review with Owner sign-off
 - Annual training verification
 
-For a team where, by the problem statement's own admission, models currently lack version records and tools lack owners, this is a large step change with no phasing. The risk is that the framework is adopted on paper but not in practice because no one has capacity to run all the review cycles. The MCP server specification (see Appendix E, if adopted) directly addresses this by automating the mechanical portions of many of these obligations.
+For a team where, by the problem statement's own admission, models currently lack version records and tools lack owners, this is a large step change with no phasing. The risk is that the framework is adopted on paper but not in practice because no one has capacity to run all the review cycles. The `fw-governance` MCP server (Appendix F, @sec-mcp-server-spec) directly addresses this by automating the mechanical portions of many of these obligations.
 
 **What is needed:** Either a phased compliance timeline that ramps obligations up over 12–18 months as registers are populated and tooling is in place, or explicit acknowledgement that certain obligations (e.g. quarterly summaries, formal condition assessments) do not apply until named assets are registered.
 
@@ -215,3 +221,5 @@ An implementation chapter should make explicit which governance obligations the 
 | 2026-03-23 | Hydrometric Data Register format resolved: CSV maintained by `reach.io` (`write_provenance_record()`); Gauge Registry (Parquet) via `build_gauge_registry()`; Chapter 5 updated | Resolved |
 | 2026-03-23 | Tool Register format resolved: generated CSV from `scripts/build_tool_register.R` querying GitHub API and per-repo `governance.yml`; `governance-template.yml` added; Section 7.6 updated | Resolved |
 | 2026-03-23 | Framework version control policy added to Review and Compliance section: three-category change model, approval routes, versioning convention, team notification | Resolved |
+| 2026-03-23 | Implementation chapter added (Chapter 8): effective date, phased compliance timeline, register setup for all five registers, MCP server overview and delivery phases, action sequence with target dates | Partially resolved (Weakness 3) |
+| 2026-03-23 | MCP server specification added as Appendix F (`f-mcp-server-spec.qmd`); `mcp-server-spec.md` remains as source file | Added |

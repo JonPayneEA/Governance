@@ -25,6 +25,7 @@ The book is configured in `_quarto.yml`. Chapter and appendix order is defined t
 - `05-hydrometric-data.qmd` — Bronze/Silver/Gold medallion architecture, Parquet schemas, QC flag system
 - `06-flood-model-governance.qmd` — FMP/PDM/Black Box governance, model condition scoring, connection register
 - `07-training-framework.qmd` — role-based training tracks and sign-off requirements
+- `08-implementation.qmd` — phased adoption timeline, register setup for all five registers, MCP server overview, action sequence with target dates
 
 **Appendices**:
 - `a-glossary.qmd` — terms
@@ -32,9 +33,10 @@ The book is configured in `_quarto.yml`. Chapter and appendix order is defined t
 - `c-alignment-register.qmd` — tracks divergences from government policy and their resolutions
 - `d-upcoming-changes.qmd` — proposed changes, open weaknesses, and resolved items with changelog
 - `e-file-format-reference.qmd` — technical reference for accepted formats (moved from Chapter 2; normative rules live in the domain chapters)
+- `f-mcp-server-spec.qmd` — fw-governance MCP server: tool catalogue, configuration schema, transport options, implementation notes
 
 **Other files**:
-- `mcp-server-spec.md` — specification for the `fw-governance` MCP server that automates compliance checks against the registers; not part of the rendered book
+- `mcp-server-spec.md` — source file for Appendix F; kept as the authoritative plain-Markdown version
 - `water-theme.scss` — custom SCSS theme layered on top of the Quarto `cosmo` base theme
 - `styles.css` — supplementary CSS (callout colours, table sizing, `.version-badge`)
 
@@ -53,7 +55,7 @@ The book is configured in `_quarto.yml`. Chapter and appendix order is defined t
 The document suite has a strict parent-child dependency:
 
 - `01-governance-framework.qmd` is the parent. When roles, tier definitions, or the asset register structure change there, the same change must be checked in all companion documents.
-- `05-hydrometric-data.qmd` defines the Parquet column schemas for Bronze, Silver, and Gold. These schemas are the interface contract with the MCP server spec (`mcp-server-spec.md` `[parquet_schemas.*]`). Schema changes require updating both files.
+- `05-hydrometric-data.qmd` defines the Parquet column schemas for Bronze, Silver, and Gold. These schemas are the interface contract with the MCP server spec (`f-mcp-server-spec.qmd` / `mcp-server-spec.md` `[parquet_schemas.*]`). Schema changes require updating both files.
 - `e-file-format-reference.qmd` is reference-only. Normative format requirements (Parquet mandatory, CSV restricted) are stated in the domain chapters; this appendix provides the technical rationale only.
 - `c-alignment-register.qmd` must be updated whenever the framework diverges from or re-aligns with CDDO/Defra policy.
 - `d-upcoming-changes.qmd` is the living record of proposed and resolved changes. When a weakness is fixed, mark it resolved there with a changelog entry rather than deleting it.
