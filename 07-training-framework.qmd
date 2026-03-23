@@ -35,7 +35,7 @@ Training is organised into four layers: a core that all staff complete; a fundam
 | **PDM models** Parameter sets · calibration records · data inputs · relationship to FMP boundaries | **1D, 2D, and linked models** Scheme types · solver options · output interpretation | **reach.***** packages** data.table · Parquet · Arrow · Bronze store structure · fastverse | **AI/ML environment** Databricks · MLflow · Unity Catalog · data tier requirements by stage |
 | **Crossover****: Rating Curves** Parameter sets · optimisation · data inputs and requirements · modelled ratings | **Crossover: FMP API scripting** Python orchestration · Tier 1 tool obligations · run record requirements |  | **LSTM pipelines** Feature engineering · static attributes · Gold data · ONNX export · model handover |
 | ▼ |
-| **Role-based sign-off** **Custodian**: core + fundamentals + cross-cutting + specialist track(s) **Steward**: as custodian + awareness of adjacent tracks        **Owner**: core + governance obligations only |
+| **Role-based sign-off** **Custodian**: core + fundamentals + cross-cutting + specialist track(s) **Steward**: as custodian + awareness of adjacent tracks  **Delegated Steward**: as Steward + Tier 1 audit and corrective action obligations  **Owner**: core + governance obligations only |
 
 *Figure 1: Staff training framework structure*
 
@@ -508,6 +508,7 @@ The table below sets out the minimum training required for each role. Where a te
 | **All staff** | Core (Section 2) |
 | **Custodian (any asset)** | Core + relevant fundamentals + cross-cutting (Section 4) + specialist track for the asset type |
 | **Steward** | Core + relevant fundamentals + cross-cutting + specialist track for the assets overseen + awareness session on adjacent tracks where relevant |
+| **Delegated Steward** | As Steward for all assets within the delegated domain. Additionally: Tier 1 annual audit requirements, corrective action planning, and non-compliance escalation procedures as set out in the parent framework. |
 | **Owner** | Core + governance obligations from Section 4 only; no specialist track required |
 | **Tier 1 tool or model Custodian** | All of the above for their track, plus confirmation from a senior reviewer before being listed on the register |
 | **FMP API developer** | Core + hydraulics fundamentals + data and coding fundamentals + cross-cutting + hydraulic modelling track + crossover module |

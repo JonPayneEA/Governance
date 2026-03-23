@@ -52,17 +52,17 @@ The following governance elements are defined in the Data & Digital Asset Govern
 
 - Tool tier classification: Tier 1 / 2 / 3 (Section 5)
 
-- Custodianship requirements by tier (Section 8.2)
+- Custodianship requirements by tier (Section 7.2)
 
-- Routes to tool development: A, B, C, D (Section 8.3)
+- Routes to tool development: A, B, C, D (Section 7.3)
 
-- Code review requirements by tier (Section 8.4)
+- Code review requirements by tier (Section 7.4)
 
-- Version control principles: branching, commits, semantic versioning, reproducibility (Section 8.5)
+- Version control principles: branching, commits, semantic versioning, reproducibility (Section 7.5)
 
-- Tool Register fields and maintenance (Section 8.6)
+- Tool Register fields and maintenance (Section 7.6)
 
-- Handover and succession (Section 8.7)
+- Handover and succession (Section 7.7)
 
 - Governance, exceptions, and annual audit (Section 12)
 

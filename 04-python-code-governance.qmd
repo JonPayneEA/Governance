@@ -53,19 +53,19 @@ The following governance elements are defined in the Data & Digital Asset Govern
 
 - Owner → Steward → Custodian roles and grade requirements (Section 3)
 
-- Tool tier classification: Tier 1 / 2 / 3 (Section 8.1)
+- Tool tier classification: Tier 1 / 2 / 3 (Section 7.1)
 
-- Custodianship requirements by tier (Section 8.2)
+- Custodianship requirements by tier (Section 7.2)
 
-- Routes to tool development: A, B, C, D (Section 8.3)
+- Routes to tool development: A, B, C, D (Section 7.3)
 
-- Code review requirements by tier (Section 8.4)
+- Code review requirements by tier (Section 7.4)
 
-- Version control principles: branching, commits, semantic versioning, reproducibility (Section 8.5)
+- Version control principles: branching, commits, semantic versioning, reproducibility (Section 7.5)
 
-- Tool Register fields and maintenance (Section 8.6)
+- Tool Register fields and maintenance (Section 7.6)
 
-- Handover and succession (Section 8.7)
+- Handover and succession (Section 7.7)
 
 - Governance, exceptions, and annual audit (Section 12)
 
@@ -83,9 +83,9 @@ This document covers everything that is specific to Python.
 
 # 2. Python Tool Development Standards
 
-The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 8.1–8.4). This section covers the Python-specific standards that apply within that governance structure.
+The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 7.1–7.4). This section covers the Python-specific standards that apply within that governance structure.
 
-| Tool tiers, development routes, review requirements by tier, and version control principles: see Data & Digital Asset Governance Framework, Section 8. |
+| Tool tiers, development routes, review requirements by tier, and version control principles: see Data & Digital Asset Governance Framework, Section 7. |
 | --- |
 
 ## 2.1 Python Use Cases
@@ -313,7 +313,7 @@ All new team members must complete the following within their first four weeks:
 
 - Set up the team's Python environment: install Python (via pyenv or the team-specified version), install poetry, and clone the team repository
 
-- Complete the team Python onboarding guide (available in docs/onboarding/) To be written
+- Complete the team Python onboarding guide (available in docs/onboarding/ — see Upcoming Changes appendix for current status)
 
 - Run poetry install on the main Python project and confirm the environment is working
 
