@@ -17,12 +17,14 @@ book:
     - 05-hydrometric-data.qmd
     - 06-flood-model-governance.qmd
     - 07-training-framework.qmd
+    - 08-implementation.qmd
   appendices:
     - a-glossary.qmd
     - b-document-hierarchy.qmd
     - c-alignment-register.qmd
     - d-upcoming-changes.qmd
     - e-file-format-reference.qmd
+    - f-mcp-server-spec.qmd
 
 format:
   html:

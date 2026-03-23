@@ -1,0 +1,186 @@
+# Implementation {#sec-implementation}
+
+::: {.callout-note}
+## Document Metadata
+| Field | Detail |
+|---|---|
+| **Version** | 1.0 |
+| **Status** | Draft: For Review |
+| **Review Date** | 2027-03-31 |
+| **Parent Document** | Data & Digital Asset Governance Framework v1.4 |
+:::
+
+The framework defines what is required. This chapter describes how to get there. The gap between a framework being published and a team operating to it is where governance efforts most often fail. This chapter makes that path explicit: effective dates, a phased compliance timeline that matches obligations to available capacity, practical guidance on setting up each register, and an explanation of how the `fw-governance` MCP server reduces the manual burden once it is in place.
+
+## 1. Effective Date and Starting Point {#sec-effective-date}
+
+Framework v1.4 takes effect on 1 April 2026.
+
+At that date, the following are already in place:
+
+- The **Tool Register** format is resolved. `scripts/build_tool_register.R` builds the register automatically from header blocks in version-controlled repositories and produces `registers/tool_register.xlsx`.
+- The **Hydrometric Data Register** is operational via `reach.io`. Bronze, Silver, and Gold dataset entries are created and maintained within that package.
+
+The following are not yet in place on 1 April 2026:
+
+- The **Model Register** physical form is not yet populated. The format is defined in @sec-register-setup below; initial entries are to be created during Phase 1.
+- The **data catalogue** exists as a requirement but has no entries. The format is resolved in @sec-register-setup; seeding begins during Phase 2.
+- The **Connection Register** has not been formally populated. It exists as a concept in the flood model governance chapter; the populated register is a Phase 1 deliverable.
+- **Owner signatures** on the framework approval blocks are outstanding. These are required before the end of Phase 1.
+
+Full compliance with every obligation in this framework is not expected on 1 April 2026. The phased timeline in the next section defines what is expected and when.
+
+## 2. Phased Compliance Timeline {#sec-phased-compliance}
+
+The framework creates a significant recurring governance load. Imposing it in full from day one, on a team where many assets currently lack formal owners or version records, would produce paper compliance rather than real adoption. The three phases below phase obligations in as registers are populated and tooling matures.
+
+| Obligation | Phase 1 (Apr–Jun 2026) | Phase 2 (Jul 2026–Mar 2027) | Phase 3 (from Apr 2027) |
+|---|:---:|:---:|:---:|
+| Roles confirmed for all Tier 1 assets | Required | Required | Required |
+| Tool Register and Model Register populated (Tier 1) | Required | Required | Required |
+| Header blocks on all Tier 1 tools | Required | Required | Required |
+| Hydrometric Data Register active | Required | Required | Required |
+| Quarterly governance summaries | Not required | Required (from Oct 2026) | Required |
+| Condition assessments for Tier 1 models | Not required | Required | Required |
+| Tier 1 tool coverage and documentation standards | Best effort | Corrective actions for any gaps | Required |
+| Connection Register populated | Required | Required | Required |
+| Data catalogue seeded | Not required | Required by Jun 2027 | Required |
+| Tier 2 asset registration | Not required | Begins | Required |
+| Tier 2 and Tier 3 review obligations | Not required | Not required | Required |
+| Annual Tier 1 audit | Not required | Not required | First due Jun 2027 |
+
+{.striped}
+
+### Phase 1 — Foundation (1 April to 30 June 2026)
+
+The purpose of Phase 1 is to establish the factual basis for governance: who owns what, what exists, and where it lives. No reporting or review obligations apply during this phase. The work is registration and role confirmation.
+
+All currently active Tier 1 assets must have a confirmed Owner, Steward, and at least one Custodian by the end of Phase 1. All Tier 1 tools must have correct header blocks and be in version control. The Tool Register must be built and reviewed. The Model Register must have initial entries for all Tier 1 models. The Connection Register must be populated for all active Tier 1 model connections. The Hydrometric Data Register must have entries for all active Bronze and Silver datasets used in Tier 1 model runs.
+
+### Phase 2 — Steady State for Tier 1 (1 July 2026 to 31 March 2027)
+
+Phase 2 activates the monitoring obligations that depend on Phase 1 being complete. The first quarterly governance summary is due in October 2026, covering the July to September quarter. Condition assessments for all Tier 1 models are required during this phase. Tier 1 code tools that do not meet coverage and documentation standards must have corrective action plans in place by 31 December 2026.
+
+Tier 2 asset registration begins during Phase 2, but review obligations for Tier 2 assets do not apply until Phase 3. The data catalogue format decision is made and initial entries added during this phase.
+
+### Phase 3 — Full Framework (from 1 April 2027)
+
+All obligations in this framework are in force from 1 April 2027. The first annual Tier 1 audit is due by 30 June 2027. Tier 2 and Tier 3 monitoring obligations apply at the cadences stated in @sec-governance-framework.
+
+## 3. Register Setup {#sec-register-setup}
+
+### Tool Register
+
+The Tool Register is built automatically by `scripts/build_tool_register.R`. The script reads header blocks from all version-controlled R and Python tools the Steward specifies, extracts the structured fields, and writes `registers/tool_register.xlsx` with one row per tool.
+
+Prerequisites: all tools included in the register must have correct, complete header blocks (see @sec-r-governance and @sec-python-governance for the required fields). The script will flag missing or malformed fields; these must be corrected before the register entry is accepted. The Steward reviews the generated register and commits it to version control. The `fw-governance` MCP server `get_tool_info` tool reads this file.
+
+### Model Register
+
+Format: Excel workbook at `registers/model_register.xlsx`. One row per model. The Steward creates initial entries manually from existing model documentation; subsequent updates are the Custodian's responsibility after each significant change.
+
+Mandatory fields:
+
+| Field | Description |
+|---|---|
+| `model_id` | Unique identifier following the naming convention in @sec-flood-model-governance |
+| `model_type` | FMP, PDM, Black Box, or Boundary Conditions |
+| `tier` | 1, 2, or 3 |
+| `owner` | Name and grade |
+| `steward` | Name and grade |
+| `custodians` | Names (comma-separated) |
+| `current_version` | Version string (e.g. `3.2.0`) |
+| `condition_score` | Integer 0–10 from most recent assessment |
+| `condition_rating` | Derived from score: Good, Satisfactory, Requires Attention, Poor, Critical |
+| `last_assessed_date` | ISO date of most recent condition assessment |
+| `calibration_record` | Path to calibration documentation |
+| `status` | Active, Under Development, Deprecated |
+| `connected_model_ids` | IDs of all directly connected models (comma-separated) |
+
+The MCP server `get_model_info` tool reads this file.
+
+### Hydrometric Data Register
+
+Maintained via `reach.io`. Bronze entries are created at ingestion; Silver and Gold entries are created at the point of promotion. The register is the source of truth for the MCP server `get_dataset_info` tool. See @sec-hydrometric-data for the full data management process.
+
+### Data Catalogue
+
+Format: TOML file at `governance/data_catalogue.toml`. Each entry covers the fields below.
+
+```toml
+[[terms]]
+term = "BFI"
+definition = "Base Flow Index. The proportion of river flow derived from groundwater or other slowly varying sources. Ranges from 0 to 1."
+source = "FEH / HOST classification"
+source_version = "FEH Web Service v3"
+used_in = ["Gold ML training sets", "Static catchment attributes"]
+notes = "NRFA publishes BFI per gauge; team uses BFIHOST19 for ungauged catchments"
+```
+
+The Steward seeds the catalogue with the terms in the glossary (@sec-glossary) that have agreed team definitions. Custodians propose additions by pull request. The MCP server `lookup_definition` tool reads this file.
+
+### Connection Register
+
+Format: Excel workbook at `registers/connection_register.xlsx`. One row per directed connection between models. The modelling Steward creates the initial register from existing documentation; Custodians update it when connections change.
+
+Mandatory fields:
+
+| Field | Description |
+|---|---|
+| `connection_id` | Unique identifier |
+| `upstream_model_id` | Upstream model (provides output) |
+| `downstream_model_id` | Downstream model (receives input) |
+| `connection_type` | Boundary conditions, flow routing, direct input, etc. |
+| `output_variables` | Variable(s) passed from upstream |
+| `input_variables` | Variable(s) received by downstream |
+| `transfer_method` | File, API, shared storage, etc. |
+| `manual_override_available` | Y or N |
+| `failure_mode` | What happens downstream if the connection fails |
+
+The MCP server `get_connections` tool reads this file.
+
+## 4. The fw-governance MCP Server {#sec-mcp-overview}
+
+The `fw-governance` MCP server exposes the governance registers, validation rules, and scaffolding utilities as tools that AI coding assistants and CI pipelines can call directly. The practical effect is that compliance checking moves from code review to the point of authoring. A developer asking Claude Code to scaffold a new Tier 1 R tool gets a correctly structured project with a pre-filled header block and a draft Tool Register entry. A developer running their code through a pre-commit hook gets immediate feedback on format violations before the commit lands.
+
+The server covers five domains: register lookups, code validation, data pipeline validation, scaffolding and generation, and governance reporting. The governance reporting tools — `governance_summary` and `audit_tier1` — directly address the capacity concern in Weakness 3: the quarterly summary and annual audit become largely automated once the registers are populated.
+
+The server is delivered in four phases, aligned to the compliance timeline above.
+
+| Server phase | Tools included | Available from |
+|---|---|---|
+| 1 | `get_governance_rule`, `validate_header`, `generate_header`, `scaffold_tool`, `validate_naming`, `validate_commit_message`, `check_file_formats` | 1 April 2026 |
+| 2 | `get_tool_info`, `get_model_info`, `get_dataset_info`, `check_tier_compliance`, `generate_review_checklist`, `generate_run_record` | 1 July 2026 |
+| 3 | `validate_parquet_schema`, `validate_bronze_ingestion`, `check_silver_readiness`, `check_gold_readiness`, `get_connections`, `pre_review` | 1 October 2026 |
+| 4 | `governance_summary`, `audit_tier1`, `lookup_definition` | 1 January 2027 |
+
+{.striped}
+
+Phase 1 tools require only the `governance-rules.toml` configuration file and no register access. They are available from the framework effective date. Later phases require the registers to be populated, which is why their availability is tied to the compliance phases.
+
+The full tool catalogue, configuration schema, transport options, and implementation notes are in @sec-mcp-server-spec.
+
+## 5. From Current State to Steady State {#sec-action-sequence}
+
+The table below is the practical sequence of actions required to move from the current state to steady-state compliance. Dates are targets, not aspirations.
+
+| Action | Owner | Target date |
+|---|---|---|
+| Confirm Owner, Steward, and Custodians for all active Tier 1 assets | Steward | 1 April 2026 |
+| Add header blocks to any Tier 1 tools that lack them | Custodians | 1 April 2026 |
+| Run `build_tool_register.R`, review output, commit | Steward | 15 April 2026 |
+| Create initial Model Register entries for all Tier 1 models | Steward | 30 April 2026 |
+| Deploy `fw-governance` MCP server Phase 1 tools | Custodian (technical lead) | 30 April 2026 |
+| Populate Connection Register for all active Tier 1 connections | Modelling Steward | 31 May 2026 |
+| Obtain Owner signatures on framework approval blocks | Steward | 30 June 2026 |
+| Seed data catalogue with glossary terms | Steward | 30 June 2026 |
+| Deploy MCP server Phase 2 tools | Custodian (technical lead) | 1 July 2026 |
+| Begin Tier 2 asset registration | Stewards | 1 July 2026 |
+| First quarterly governance summary | Steward | 31 October 2026 |
+| Complete first condition assessments for all Tier 1 models | Modelling Custodians | 31 December 2026 |
+| Deploy MCP server Phase 3 and 4 tools | Custodian (technical lead) | 1 January 2027 |
+| All Tier 1 tools meeting coverage and documentation standards | Custodians | 31 March 2027 |
+| Full framework obligations in force | All | 1 April 2027 |
+| First annual Tier 1 audit | Steward | 30 June 2027 |
+
+{.striped}
