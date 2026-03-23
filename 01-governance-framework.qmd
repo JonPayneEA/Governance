@@ -101,7 +101,7 @@ Custodians are responsible for:
 | Role | Definition and Responsibilities |
 |---|---|
 | Owner | Senior individual with ultimate accountability for a data or asset domain. Sets strategic direction, approves major decisions, ensures compliance. Deputy Director grade required (see note above). May be delegated to another Deputy Director or equivalent. |
-| Steward | Operational expert responsible for day-to-day governance. Maintains standards, reviews quality, manages access, oversees the Tool Register and data catalogue, handles governance queries, tracks data lineage, manages lifecycle. Grade 7 required for Tier 1 tools; Grade 7 recommended for all other assets. For operational day-to-day management, a Delegated Steward should be specified, generally at G6 grade. |
+| Steward | Operational expert responsible for day-to-day governance. Maintains standards, reviews quality, manages access, oversees the Tool Register and data catalogue, handles governance queries, tracks data lineage, manages lifecycle. Grade 7 required for Tier 1 tools; Grade 7 recommended for all other assets. Where the Steward's strength is oversight and people management rather than technical depth, a Delegated Steward should be named to carry out the hands-on governance work: code quality assessment, model condition reviews, data pipeline evaluation, and the annual Tier 1 audit. Typically G6 grade. |
 | Custodian | Technical expert responsible for capturing, storing, maintaining, and disposing of assets correctly. Creates, stores, and maintains assets and tools to agreed standards. Carries out disposal when authorised. Any grade. May be delegated to any team member. |
 
 ### Delegation
