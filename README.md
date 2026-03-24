@@ -1,6 +1,6 @@
 # Governance
 
-<img src="figures/logo.svg" align="right" width="220"/>
+<img src="figures/logo.svg" align="right" width="250"/>
 
 Hosting governance documentation in Quarto
 
