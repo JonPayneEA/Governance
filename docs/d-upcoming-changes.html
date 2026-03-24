@@ -149,6 +149,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Implementation</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -186,6 +192,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./e-file-format-reference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">File Format Reference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./f-mcp-server-spec.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">fw-governance MCP Server Specification</span></span></a>
   </div>
 </li>
       </ul>
@@ -304,6 +316,19 @@ Partially resolved at v1.4 — Hydrometric Data Register and Tool Register
 </section>
 <section id="governance-load-not-matched-to-capacity" class="level4" data-number="D.1.2.3">
 <h4 data-number="D.1.2.3" class="anchored" data-anchor-id="governance-load-not-matched-to-capacity"><span class="header-section-number">D.1.2.3</span> 3. Governance Load Not Matched to Capacity</h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Partially resolved at v1.4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A phased compliance timeline has been added to the new Implementation chapter (Chapter 8, <a href="08-implementation.html" class="quarto-xref"><span>Chapter&nbsp;8</span></a>). Phase 1 obligations apply from 1 April 2026 and cover registration and role confirmation only. Full framework obligations, including quarterly summaries, condition assessments, and the annual audit, apply from 1 April 2027. The <code>fw-governance</code> MCP server (Appendix F, <a href="f-mcp-server-spec.html" class="quarto-xref"><span>Appendix&nbsp;F</span></a>) automates the mechanical portions of the monitoring obligations once registers are in place. Outstanding: the timeline requires Owner agreement before the effective date.</p>
+</div>
+</div>
 <p>The framework creates a significant and recurring administrative burden:</p>
 <ul>
 <li>Quarterly governance summaries from the Steward</li>
@@ -314,7 +339,7 @@ Partially resolved at v1.4 — Hydrometric Data Register and Tool Register
 <li>Annual framework review with Owner sign-off</li>
 <li>Annual training verification</li>
 </ul>
-<p>For a team where, by the problem statement’s own admission, models currently lack version records and tools lack owners, this is a large step change with no phasing. The risk is that the framework is adopted on paper but not in practice because no one has capacity to run all the review cycles. The MCP server specification (see Appendix E, if adopted) directly addresses this by automating the mechanical portions of many of these obligations.</p>
+<p>For a team where, by the problem statement’s own admission, models currently lack version records and tools lack owners, this is a large step change with no phasing. The risk is that the framework is adopted on paper but not in practice because no one has capacity to run all the review cycles. The <code>fw-governance</code> MCP server (Appendix F, <a href="f-mcp-server-spec.html" class="quarto-xref"><span>Appendix&nbsp;F</span></a>) directly addresses this by automating the mechanical portions of many of these obligations.</p>
 <p><strong>What is needed:</strong> Either a phased compliance timeline that ramps obligations up over 12–18 months as registers are populated and tooling is in place, or explicit acknowledgement that certain obligations (e.g.&nbsp;quarterly summaries, formal condition assessments) do not apply until named assets are registered.</p>
 <p><strong>Priority:</strong> Medium.</p>
 <hr>
@@ -498,6 +523,16 @@ Resolved at v1.4
 <td>2026-03-23</td>
 <td>Framework version control policy added to Review and Compliance section: three-category change model, approval routes, versioning convention, team notification</td>
 <td>Resolved</td>
+</tr>
+<tr class="even">
+<td>2026-03-23</td>
+<td>Implementation chapter added (Chapter 8): effective date, phased compliance timeline, register setup for all five registers, MCP server overview and delivery phases, action sequence with target dates</td>
+<td>Partially resolved (Weakness 3)</td>
+</tr>
+<tr class="odd">
+<td>2026-03-23</td>
+<td>MCP server specification added as Appendix F (<code>f-mcp-server-spec.qmd</code>); <code>mcp-server-spec.md</code> remains as source file</td>
+<td>Added</td>
 </tr>
 </tbody>
 </table>

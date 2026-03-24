@@ -1,0 +1,2634 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.526">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data and Digital Asset Governance - Appendix F — fw-governance MCP Server Specification</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./e-file-format-reference.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="./f-mcp-server-spec.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">fw-governance MCP Server Specification</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data and Digital Asset Governance</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Problem Statement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-governance-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data and Digital Asset Governance Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-r-code-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-python-code-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-hydrometric-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-flood-model-governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-training-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Implementation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./b-document-hierarchy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Document Hierarchy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./c-alignment-register.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Alignment Register</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./d-upcoming-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Upcoming Changes and Improvements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./e-file-format-reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">File Format Reference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./f-mcp-server-spec.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">fw-governance MCP Server Specification</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">F.1</span> 1. Overview</a>
+  <ul class="collapse">
+  <li><a href="#design-principles" id="toc-design-principles" class="nav-link" data-scroll-target="#design-principles"><span class="header-section-number">F.1.1</span> 1.1 Design Principles</a></li>
+  <li><a href="#backend-data-sources" id="toc-backend-data-sources" class="nav-link" data-scroll-target="#backend-data-sources"><span class="header-section-number">F.1.2</span> 1.2 Backend Data Sources</a></li>
+  </ul></li>
+  <li><a href="#tool-catalogue" id="toc-tool-catalogue" class="nav-link" data-scroll-target="#tool-catalogue"><span class="header-section-number">F.2</span> 2. Tool Catalogue</a>
+  <ul class="collapse">
+  <li><a href="#domain-a-register-lookups" id="toc-domain-a-register-lookups" class="nav-link" data-scroll-target="#domain-a-register-lookups"><span class="header-section-number">F.2.1</span> Domain A: Register Lookups</a></li>
+  <li><a href="#domain-b-code-validation" id="toc-domain-b-code-validation" class="nav-link" data-scroll-target="#domain-b-code-validation"><span class="header-section-number">F.2.2</span> Domain B: Code Validation</a></li>
+  <li><a href="#domain-c-data-pipeline-validation" id="toc-domain-c-data-pipeline-validation" class="nav-link" data-scroll-target="#domain-c-data-pipeline-validation"><span class="header-section-number">F.2.3</span> Domain C: Data Pipeline Validation</a></li>
+  <li><a href="#domain-d-scaffolding-and-generation" id="toc-domain-d-scaffolding-and-generation" class="nav-link" data-scroll-target="#domain-d-scaffolding-and-generation"><span class="header-section-number">F.2.4</span> Domain D: Scaffolding and Generation</a></li>
+  <li><a href="#domain-e-governance-reporting" id="toc-domain-e-governance-reporting" class="nav-link" data-scroll-target="#domain-e-governance-reporting"><span class="header-section-number">F.2.5</span> Domain E: Governance Reporting</a></li>
+  </ul></li>
+  <li><a href="#configuration-schema-governance-rules.toml" id="toc-configuration-schema-governance-rules.toml" class="nav-link" data-scroll-target="#configuration-schema-governance-rules.toml"><span class="header-section-number">F.3</span> 3. Configuration Schema: <code>governance-rules.toml</code></a></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes"><span class="header-section-number">F.4</span> 4. Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#transport" id="toc-transport" class="nav-link" data-scroll-target="#transport"><span class="header-section-number">F.4.1</span> 4.1 Transport</a></li>
+  <li><a href="#technology" id="toc-technology" class="nav-link" data-scroll-target="#technology"><span class="header-section-number">F.4.2</span> 4.2 Technology</a></li>
+  <li><a href="#register-access" id="toc-register-access" class="nav-link" data-scroll-target="#register-access"><span class="header-section-number">F.4.3</span> 4.3 Register Access</a></li>
+  <li><a href="#authentication-and-access-control" id="toc-authentication-and-access-control" class="nav-link" data-scroll-target="#authentication-and-access-control"><span class="header-section-number">F.4.4</span> 4.4 Authentication and Access Control</a></li>
+  <li><a href="#phased-delivery" id="toc-phased-delivery" class="nav-link" data-scroll-target="#phased-delivery"><span class="header-section-number">F.4.5</span> 4.5 Phased Delivery</a></li>
+  </ul></li>
+  <li><a href="#example-interaction" id="toc-example-interaction" class="nav-link" data-scroll-target="#example-interaction"><span class="header-section-number">F.5</span> 5. Example Interaction</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="./f-mcp-server-spec.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">fw-governance MCP Server Specification</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-mcp-server-spec" class="quarto-section-identifier">Appendix F — fw-governance MCP Server Specification</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Document Metadata
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td>0.1</td>
+</tr>
+<tr class="even">
+<td><strong>Status</strong></td>
+<td>Draft</td>
+</tr>
+<tr class="odd">
+<td><strong>Review Date</strong></td>
+<td>2027-03-31</td>
+</tr>
+<tr class="even">
+<td><strong>Parent Document</strong></td>
+<td>Data &amp; Digital Asset Governance Framework v1.4</td>
+</tr>
+<tr class="odd">
+<td><strong>Note</strong></td>
+<td>This appendix is the technical specification for the <code>fw-governance</code> MCP server. It is a companion to the governance documents; the normative requirements the server enforces are stated in the domain chapters. For an overview of how the server fits into the adoption process, see <a href="08-implementation.html#sec-mcp-overview" class="quarto-xref"><span>Section&nbsp;8.4</span></a>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="overview" class="level2" data-number="F.1">
+<h2 data-number="F.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">F.1</span> 1. Overview</h2>
+<p>This document specifies a Model Context Protocol (MCP) server that exposes the Forecasting &amp; Warning team’s governance registers, validation rules, and scaffolding utilities as tools. The server is designed to be consumed by AI coding assistants (Claude Code, Copilot, Cursor) and by CI pipelines, so that governance compliance is checked at the point of authoring rather than only at code review.</p>
+<p>The server name is <code>fw-governance</code>.</p>
+<section id="design-principles" class="level3" data-number="F.1.1">
+<h3 data-number="F.1.1" class="anchored" data-anchor-id="design-principles"><span class="header-section-number">F.1.1</span> 1.1 Design Principles</h3>
+<ul>
+<li><strong>Single server, many tools.</strong> One MCP server covers all governance domains (code, data, models) to avoid tool fragmentation.</li>
+<li><strong>Registers as backend.</strong> The Tool Register, Model Register, Hydrometric Data Register, Connection Register, and Data Catalogue are the source of truth. The server reads them; it does not duplicate them.</li>
+<li><strong>Rules as configuration.</strong> Governance rules (header formats, naming patterns, schema definitions, tier requirements, prohibited packages) are encoded in a <code>governance-rules.toml</code> configuration file. When the framework is updated, the config file is updated; no server code changes needed.</li>
+<li><strong>Read-heavy, write-light.</strong> Most tools are lookups and validations. The few write operations (scaffolding, register drafting) produce local files or draft entries that a human commits; the server never writes directly to registers.</li>
+<li><strong>Fail informative.</strong> Every validation tool returns structured results with a pass/fail per check, the governance reference (document, section), and a plain-language explanation of what to fix.</li>
+</ul>
+</section>
+<section id="backend-data-sources" class="level3" data-number="F.1.2">
+<h3 data-number="F.1.2" class="anchored" data-anchor-id="backend-data-sources"><span class="header-section-number">F.1.2</span> 1.2 Backend Data Sources</h3>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Format</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tool Register</td>
+<td>Excel or Delta table</td>
+<td><code>registers/tool_register.xlsx</code> or <code>fw_hydrometric.tool_register</code></td>
+</tr>
+<tr class="even">
+<td>Model Register</td>
+<td>Excel or Delta table</td>
+<td><code>registers/model_register.xlsx</code></td>
+</tr>
+<tr class="odd">
+<td>Hydrometric Data Register</td>
+<td>Excel or Delta table</td>
+<td><code>registers/hydrometric_data_register.xlsx</code> or <code>fw_hydrometric</code> catalog</td>
+</tr>
+<tr class="even">
+<td>Connection Register</td>
+<td>Excel or Delta table</td>
+<td><code>registers/connection_register.xlsx</code></td>
+</tr>
+<tr class="odd">
+<td>Data Catalogue</td>
+<td>TOML or YAML</td>
+<td><code>governance/data_catalogue.toml</code></td>
+</tr>
+<tr class="even">
+<td>Governance Rules</td>
+<td>TOML</td>
+<td><code>governance/rules.toml</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="tool-catalogue" class="level2" data-number="F.2">
+<h2 data-number="F.2" class="anchored" data-anchor-id="tool-catalogue"><span class="header-section-number">F.2</span> 2. Tool Catalogue</h2>
+<p>Tools are grouped into five domains. Each tool definition includes: name, description, parameters, return schema, and the governance section it implements.</p>
+<hr>
+<section id="domain-a-register-lookups" class="level3" data-number="F.2.1">
+<h3 data-number="F.2.1" class="anchored" data-anchor-id="domain-a-register-lookups"><span class="header-section-number">F.2.1</span> Domain A: Register Lookups</h3>
+<p>These tools provide read access to the governance registers. They answer the question: <em>what does the governance framework say about this asset?</em></p>
+<section id="get_tool_info" class="level4" data-number="F.2.1.1">
+<h4 data-number="F.2.1.1" class="anchored" data-anchor-id="get_tool_info"><span class="header-section-number">F.2.1.1</span> <code>get_tool_info</code></h4>
+<p>Look up a code tool in the Tool Register.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Returns the full Tool Register entry for a named tool, including tier, owner, steward, custodian(s), status, repository location, and last review date.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Framework §8.6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tool_name</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Tool name as it appears in the register (case-insensitive fuzzy match)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tool_name"</span><span class="fu">:</span> <span class="st">"ensemble_processor"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tier"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"language"</span><span class="fu">:</span> <span class="st">"R"</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"owner"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Neil Ryan"</span><span class="fu">,</span> <span class="dt">"grade"</span><span class="fu">:</span> <span class="st">"DD"</span><span class="fu">,</span> <span class="dt">"delegated"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">},</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"steward"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Jane Smith"</span><span class="fu">,</span> <span class="dt">"grade"</span><span class="fu">:</span> <span class="st">"G7"</span><span class="fu">,</span> <span class="dt">"delegated"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">},</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"custodians"</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Tom Brown"</span><span class="fu">,</span> <span class="dt">"grade"</span><span class="fu">:</span> <span class="st">"HEO"</span><span class="fu">}</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"repository"</span><span class="fu">:</span> <span class="st">"https://github.com/fw-team/ensemble-processor"</span><span class="fu">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"status"</span><span class="fu">:</span> <span class="st">"Active"</span><span class="fu">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"last_reviewed"</span><span class="fu">:</span> <span class="st">"2025-11-15"</span><span class="fu">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"notes"</span><span class="fu">:</span> <span class="st">"Annual audit due 2026-11"</span><span class="fu">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tier_requirements"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"review"</span><span class="fu">:</span> <span class="st">"Mandatory peer review + senior sign-off"</span><span class="fu">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"testing"</span><span class="fu">:</span> <span class="st">"70% line coverage, testthat"</span><span class="fu">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"ci"</span><span class="fu">:</span> <span class="st">"lintr, testthat, renv::status(), covr"</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="get_model_info" class="level4" data-number="F.2.1.2">
+<h4 data-number="F.2.1.2" class="anchored" data-anchor-id="get_model_info"><span class="header-section-number">F.2.1.2</span> <code>get_model_info</code></h4>
+<p>Look up a flood model in the Model Register.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Returns the Model Register entry including type, tier, condition rating, calibration reference, connected models, and custodian details.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Flood Model Governance §3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>model_id</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Model ID (e.g.&nbsp;<code>SEVERN_FMP_v3.2</code>) or partial match</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"model_id"</span><span class="fu">:</span> <span class="st">"SEVERN_FMP_v3.2"</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"model_type"</span><span class="fu">:</span> <span class="st">"FMP 1D"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tier"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"owner"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Neil Ryan"</span><span class="fu">,</span> <span class="dt">"grade"</span><span class="fu">:</span> <span class="st">"DD"</span><span class="fu">},</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"steward"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Jane Smith"</span><span class="fu">,</span> <span class="dt">"grade"</span><span class="fu">:</span> <span class="st">"G7"</span><span class="fu">},</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"custodians"</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Tom Brown"</span><span class="fu">}</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"current_version"</span><span class="fu">:</span> <span class="st">"3.2.0"</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"condition"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"score"</span><span class="fu">:</span> <span class="dv">8</span><span class="fu">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"rating"</span><span class="fu">:</span> <span class="st">"Satisfactory"</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"assessed_date"</span><span class="fu">:</span> <span class="st">"2025-09-20"</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"factors"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"data_currency"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"structural_integrity"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"calibration_currency"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"software_currency"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"documentation"</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"connected_models"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"SEVERN_PDM_v2.1"</span><span class="ot">,</span> <span class="st">"SEVERN_LOWER_FMP_v1.4"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"status"</span><span class="fu">:</span> <span class="st">"Active"</span><span class="fu">,</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"calibration_record"</span><span class="fu">:</span> <span class="st">"docs/calibration/SEVERN_FMP_v3.2_cal.md"</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="get_dataset_info" class="level4" data-number="F.2.1.3">
+<h4 data-number="F.2.1.3" class="anchored" data-anchor-id="get_dataset_info"><span class="header-section-number">F.2.1.3</span> <code>get_dataset_info</code></h4>
+<p>Look up a hydrometric dataset in the Hydrometric Data Register.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Returns the register entry for a Bronze, Silver, or Gold dataset, including provenance, QC status, lineage, and approval details.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Hydrometric Data §10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dataset_id</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Full or partial dataset ID (e.g.&nbsp;<code>EA_39001_Q_20260115</code>)</td>
+</tr>
+<tr class="even">
+<td><code>tier</code></td>
+<td>string</td>
+<td>no</td>
+<td>Filter by <code>Bronze</code>, <code>Silver</code>, or <code>Gold</code></td>
+</tr>
+<tr class="odd">
+<td><code>site_id</code></td>
+<td>string</td>
+<td>no</td>
+<td>Filter by site identifier</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"dataset_id"</span><span class="fu">:</span> <span class="st">"EA_39001_Q_20260115_SILVER_v1"</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tier"</span><span class="fu">:</span> <span class="st">"Silver"</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"status"</span><span class="fu">:</span> <span class="st">"Active"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"bronze_source_id"</span><span class="fu">:</span> <span class="st">"EA_39001_Q_20260115"</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"data_type"</span><span class="fu">:</span> <span class="st">"Q"</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"site_id"</span><span class="fu">:</span> <span class="st">"39001"</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"time_period"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"start"</span><span class="fu">:</span> <span class="st">"2020-01-01"</span><span class="fu">,</span> <span class="dt">"end"</span><span class="fu">:</span> <span class="st">"2025-12-31"</span><span class="fu">},</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"temporal_resolution"</span><span class="fu">:</span> <span class="st">"15min"</span><span class="fu">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"qc_summary"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"good"</span><span class="fu">:</span> <span class="dv">98542</span><span class="fu">,</span> <span class="dt">"estimated"</span><span class="fu">:</span> <span class="dv">312</span><span class="fu">,</span> <span class="dt">"suspect"</span><span class="fu">:</span> <span class="dv">45</span><span class="fu">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"rejected"</span><span class="fu">:</span> <span class="dv">23</span><span class="fu">,</span> <span class="dt">"no_data"</span><span class="fu">:</span> <span class="dv">180</span><span class="fu">,</span> <span class="dt">"below_detection"</span><span class="fu">:</span> <span class="dv">0</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"qc_completed_by"</span><span class="fu">:</span> <span class="st">"Tom Brown"</span><span class="fu">,</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"qc_reviewed_by"</span><span class="fu">:</span> <span class="st">"Jane Smith"</span><span class="fu">,</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"file_path"</span><span class="fu">:</span> <span class="st">"silver/Q/39001/EA_39001_Q_20260115_SILVER_v1.parquet"</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="get_connections" class="level4" data-number="F.2.1.4">
+<h4 data-number="F.2.1.4" class="anchored" data-anchor-id="get_connections"><span class="header-section-number">F.2.1.4</span> <code>get_connections</code></h4>
+<p>Look up all upstream and downstream model connections for a given model.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Returns all Connection Register entries where the specified model is either the upstream or downstream component. Used before deploying model changes to identify impact scope.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Flood Model Governance §5.2, §5.4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>model_id</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Model ID to query connections for</td>
+</tr>
+<tr class="even">
+<td><code>direction</code></td>
+<td>string</td>
+<td>no</td>
+<td><code>upstream</code>, <code>downstream</code>, or <code>both</code> (default: <code>both</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Array of connection entries with connection ID, upstream/downstream model, connection type, output/input variables, transfer method, manual override availability, and failure mode.</p>
+<hr>
+</section>
+<section id="lookup_definition" class="level4" data-number="F.2.1.5">
+<h4 data-number="F.2.1.5" class="anchored" data-anchor-id="lookup_definition"><span class="header-section-number">F.2.1.5</span> <code>lookup_definition</code></h4>
+<p>Look up a term in the Data Catalogue.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Returns the agreed team definition for a data term, entity, or attribute. Includes source, version, and any notes on conflicts with external definitions.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Framework §9.5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>term</code></td>
+<td>string</td>
+<td>yes</td>
+<td>The term to look up (fuzzy matched)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"term"</span><span class="fu">:</span> <span class="st">"BFI"</span><span class="fu">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"definition"</span><span class="fu">:</span> <span class="st">"Base Flow Index. The proportion of river flow derived from groundwater or other slowly varying sources. Ranges from 0 to 1."</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"source"</span><span class="fu">:</span> <span class="st">"FEH / HOST classification"</span><span class="fu">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"source_version"</span><span class="fu">:</span> <span class="st">"FEH Web Service v3"</span><span class="fu">,</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"used_in"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Gold ML training sets"</span><span class="ot">,</span> <span class="st">"Static catchment attributes"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"notes"</span><span class="fu">:</span> <span class="st">"NRFA publishes BFI per gauge; team uses BFIHOST19 for ungauged catchments"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="get_governance_rule" class="level4" data-number="F.2.1.6">
+<h4 data-number="F.2.1.6" class="anchored" data-anchor-id="get_governance_rule"><span class="header-section-number">F.2.1.6</span> <code>get_governance_rule</code></h4>
+<p>Look up a specific governance rule by topic.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Returns the applicable governance rule for a given topic, including the requirement text, which tiers it applies to, the source document and section, and any exceptions. This is the tool a coding assistant calls when it needs to know “what are the rules for X?”</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>All documents</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>topic</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Natural language topic (e.g.&nbsp;<code>pandas usage</code>, <code>header block</code>, <code>code review tier 2</code>, <code>parquet schema bronze</code>, <code>commit message format</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"topic"</span><span class="fu">:</span> <span class="st">"pandas usage"</span><span class="fu">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"rule"</span><span class="fu">:</span> <span class="st">"pandas must not be used in Tier 1 operational tools or in shared modules. It may be used freely in Tier 3 exploratory work and Jupyter notebooks."</span><span class="fu">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"applies_to"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"tiers"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="dv">2</span><span class="ot">]</span><span class="fu">,</span> <span class="dt">"languages"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Python"</span><span class="ot">]</span><span class="fu">},</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"source"</span><span class="fu">:</span> <span class="st">"Python Tool Governance §2.2.3"</span><span class="fu">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"alternative"</span><span class="fu">:</span> <span class="st">"polars (primary); pyarrow for Parquet I/O"</span><span class="fu">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"exceptions"</span><span class="fu">:</span> <span class="st">"Tier 3 exploratory work and Jupyter notebooks"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="domain-b-code-validation" class="level3" data-number="F.2.2">
+<h3 data-number="F.2.2" class="anchored" data-anchor-id="domain-b-code-validation"><span class="header-section-number">F.2.2</span> Domain B: Code Validation</h3>
+<p>These tools check source files against governance rules. They answer: <em>does this code comply?</em></p>
+<section id="validate_header" class="level4" data-number="F.2.2.1">
+<h4 data-number="F.2.2.1" class="anchored" data-anchor-id="validate_header"><span class="header-section-number">F.2.2.1</span> <code>validate_header</code></h4>
+<p>Check whether a source file has a complete, correctly formatted header block.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Parses the header block from a source file and checks each field against the mandatory header template for the relevant language. Returns pass/fail per field with an explanation of what is missing or malformed.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>R Governance §2.4, Python Governance §2.3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>file_path</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Path to the source file</td>
+</tr>
+<tr class="even">
+<td><code>language</code></td>
+<td>string</td>
+<td>no</td>
+<td><code>R</code> or <code>Python</code> (auto-detected from extension if omitted)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"file"</span><span class="fu">:</span> <span class="st">"src/ensemble_processor.R"</span><span class="fu">,</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"language"</span><span class="fu">:</span> <span class="st">"R"</span><span class="fu">,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"header_found"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"fields"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Tool"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"Ensemble Processor"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">},</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Description"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"Aggregates ensemble members"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">},</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Flode Module"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">"fix"</span><span class="fu">:</span> <span class="st">"Add '# Flode Module: [module or standalone]'"</span><span class="fu">},</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Author"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"Tom Brown, tom.brown@ea.gov.uk"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">},</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Created"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"2025-06-01"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">},</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Modified"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">"fix"</span><span class="fu">:</span> <span class="st">"Add '# Modified: YYYY-MM-DD - [initials]: [change summary]'"</span><span class="fu">},</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Tier"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"1"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">},</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Inputs"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"Parquet ensemble output"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">},</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Outputs"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"Aggregated forecast Parquet"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">},</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Dependencies"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"data.table, arrow"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">}</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"overall"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"missing_count"</span><span class="fu">:</span> <span class="dv">2</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="check_tier_compliance" class="level4" data-number="F.2.2.2">
+<h4 data-number="F.2.2.2" class="anchored" data-anchor-id="check_tier_compliance"><span class="header-section-number">F.2.2.2</span> <code>check_tier_compliance</code></h4>
+<p>Check whether a source file or project meets the governance requirements for its declared tier.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Runs a comprehensive compliance check for a tool against its declared tier. Covers: header completeness, documentation requirements (README, docstrings/roxygen2, runbook), testing presence and coverage, dependency lockfile status, prohibited package usage, naming conventions, and type hints (Python). Returns a structured checklist mirroring the code review checklist.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>R Governance §3.1, Python Governance §3.1, Framework §8.4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>project_path</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Path to the tool’s root directory</td>
+</tr>
+<tr class="even">
+<td><code>language</code></td>
+<td>string</td>
+<td>no</td>
+<td><code>R</code> or <code>Python</code> (auto-detected)</td>
+</tr>
+<tr class="odd">
+<td><code>tier</code></td>
+<td>integer</td>
+<td>no</td>
+<td>1, 2, or 3 (read from header if omitted)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tool"</span><span class="fu">:</span> <span class="st">"ensemble_processor"</span><span class="fu">,</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"language"</span><span class="fu">:</span> <span class="st">"R"</span><span class="fu">,</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tier"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"checks"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"header_block"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"Missing Flode Module and Modified fields"</span><span class="fu">},</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"readme"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"PASS"</span><span class="fu">},</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"roxygen2_docs"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"WARN"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"3 of 12 exported functions lack roxygen2 documentation"</span><span class="fu">},</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"runbook"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"No user guide or runbook found in docs/"</span><span class="fu">},</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"tests_present"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"PASS"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"tests/testthat/ contains 8 test files"</span><span class="fu">},</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"test_coverage"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"62% line coverage (minimum 70% for Tier 1)"</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="dv">62</span><span class="fu">},</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lockfile"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"PASS"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"renv.lock present and committed"</span><span class="fu">},</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lockfile_sync"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"PASS"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"renv::status() reports no issues"</span><span class="fu">},</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"prohibited_packages"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"PASS"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"No tidyverse/dplyr imports detected"</span><span class="fu">},</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"naming_conventions"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"WARN"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"2 functions use camelCase instead of snake_case"</span><span class="fu">},</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"hard_coded_paths"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"PASS"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"No absolute paths detected; here() used throughout"</span><span class="fu">},</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"changelog"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"PASS"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"CHANGELOG.md present and has entries"</span><span class="fu">}</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"overall"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"pass_count"</span><span class="fu">:</span> <span class="dv">8</span><span class="fu">,</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"fail_count"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"warn_count"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"blocking_failures"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"header_block"</span><span class="ot">,</span> <span class="st">"runbook"</span><span class="ot">,</span> <span class="st">"test_coverage"</span><span class="ot">]</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="validate_commit_message" class="level4" data-number="F.2.2.3">
+<h4 data-number="F.2.2.3" class="anchored" data-anchor-id="validate_commit_message"><span class="header-section-number">F.2.2.3</span> <code>validate_commit_message</code></h4>
+<p>Check whether a commit message follows Conventional Commits.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Validates a commit message against the team’s Conventional Commits convention. Checks type is permitted (<code>feat</code>, <code>fix</code>, <code>docs</code>, <code>refactor</code>, <code>test</code>, <code>chore</code>), scope is present, description is present and not too long, and body explains <em>why</em> not just <em>what</em>.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Framework §8.5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>message</code></td>
+<td>string</td>
+<td>yes</td>
+<td>The full commit message</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"value"</span><span class="fu">:</span> <span class="st">"update"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">"fix"</span><span class="fu">:</span> <span class="st">"Use one of: feat, fix, docs, refactor, test, chore"</span><span class="fu">},</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"scope"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">"fix"</span><span class="fu">:</span> <span class="st">"Add scope in parentheses, e.g. feat(ensemble):"</span><span class="fu">},</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"updated the threshold logic"</span><span class="fu">,</span> <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">},</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"body"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"present"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">"fix"</span><span class="fu">:</span> <span class="st">"Add a body explaining why this change was made"</span><span class="fu">}</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="validate_parquet_schema" class="level4" data-number="F.2.2.4">
+<h4 data-number="F.2.2.4" class="anchored" data-anchor-id="validate_parquet_schema"><span class="header-section-number">F.2.2.4</span> <code>validate_parquet_schema</code></h4>
+<p>Check whether a Parquet file matches the required schema for its data tier.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Reads the schema of a Parquet file and validates it against the mandatory column definitions for Bronze, Silver, or Gold tier as defined in the Hydrometric Data Framework. Checks column names, types, presence of mandatory columns, and absence of prohibited columns (e.g.&nbsp;extra columns in Bronze).</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Hydrometric Data §7.2, §7.3, §7.4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>file_path</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Path to the Parquet file</td>
+</tr>
+<tr class="even">
+<td><code>expected_tier</code></td>
+<td>string</td>
+<td>yes</td>
+<td><code>Bronze</code>, <code>Silver</code>, <code>Gold_timeseries</code>, <code>Gold_aggregated</code>, or <code>Gold_ml_training</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"file"</span><span class="fu">:</span> <span class="st">"bronze/EA/Q/2024/EA_39001_Q_20240101.parquet"</span><span class="fu">,</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"expected_tier"</span><span class="fu">:</span> <span class="st">"Bronze"</span><span class="fu">,</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"row_count"</span><span class="fu">:</span> <span class="dv">105120</span><span class="fu">,</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"columns_found"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"timestamp"</span><span class="ot">,</span> <span class="st">"value"</span><span class="ot">,</span> <span class="st">"supplier_flag"</span><span class="ot">,</span> <span class="st">"dataset_id"</span><span class="ot">,</span> <span class="st">"site_id"</span><span class="ot">,</span> <span class="st">"data_type"</span><span class="ot">,</span> <span class="st">"notes"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"checks"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mandatory_columns"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"status"</span><span class="fu">:</span> <span class="st">"PASS"</span><span class="fu">,</span> <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"All 6 mandatory columns present"</span><span class="fu">},</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"column_types"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"status"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"timestamp is string, expected timestamp[ns, UTC]"</span><span class="fu">,</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"violations"</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span><span class="dt">"column"</span><span class="fu">:</span> <span class="st">"timestamp"</span><span class="fu">,</span> <span class="dt">"found"</span><span class="fu">:</span> <span class="st">"string"</span><span class="fu">,</span> <span class="dt">"expected"</span><span class="fu">:</span> <span class="st">"timestamp[ns, UTC]"</span><span class="fu">}</span><span class="ot">]</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"prohibited_columns"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"status"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"detail"</span><span class="fu">:</span> <span class="st">"Column 'notes' is not in the Bronze schema. Bronze must contain only the listed columns."</span><span class="fu">,</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"violations"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"notes"</span><span class="ot">]</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"overall"</span><span class="fu">:</span> <span class="st">"FAIL"</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="validate_naming" class="level4" data-number="F.2.2.5">
+<h4 data-number="F.2.2.5" class="anchored" data-anchor-id="validate_naming"><span class="header-section-number">F.2.2.5</span> <code>validate_naming</code></h4>
+<p>Check whether an identifier follows the team’s naming convention for its asset type.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Validates a dataset ID, model ID, file name, or tool name against the relevant naming convention.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Hydrometric Data Appendix A, Framework §6.2, Flood Model Governance §3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>identifier</code></td>
+<td>string</td>
+<td>yes</td>
+<td>The name/ID to validate</td>
+</tr>
+<tr class="even">
+<td><code>asset_type</code></td>
+<td>string</td>
+<td>yes</td>
+<td>One of: <code>bronze_dataset</code>, <code>silver_dataset</code>, <code>gold_dataset</code>, <code>model_id</code>, <code>fmp_file</code>, <code>pdm_parameter_set</code>, <code>tool_name</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"identifier"</span><span class="fu">:</span> <span class="st">"EA_39001_Q_20260115"</span><span class="fu">,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"asset_type"</span><span class="fu">:</span> <span class="st">"bronze_dataset"</span><span class="fu">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"parsed"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"supplier"</span><span class="fu">:</span> <span class="st">"EA"</span><span class="fu">,</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"site_id"</span><span class="fu">:</span> <span class="st">"39001"</span><span class="fu">,</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"data_type"</span><span class="fu">:</span> <span class="st">"Q"</span><span class="fu">,</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"2026-01-15"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"pattern"</span><span class="fu">:</span> <span class="st">"[SupplierCode]_[SiteID]_[DataType]_[YYYYMMDD]"</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="pre_review" class="level4" data-number="F.2.2.6">
+<h4 data-number="F.2.2.6" class="anchored" data-anchor-id="pre_review"><span class="header-section-number">F.2.2.6</span> <code>pre_review</code></h4>
+<p>Run the full code review checklist automatically, flagging items that need human judgement.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Executes every mechanical check from the R or Python review checklist and returns a structured result that can be attached to a pull request. Items that require human judgement (e.g.&nbsp;“does the code do what it claims?”) are returned as <code>NEEDS_HUMAN_REVIEW</code> with the checklist question text.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>R Governance §3.1, Python Governance §3.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>project_path</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Path to the tool’s root directory</td>
+</tr>
+<tr class="even">
+<td><code>language</code></td>
+<td>string</td>
+<td>no</td>
+<td>Auto-detected</td>
+</tr>
+<tr class="odd">
+<td><code>tier</code></td>
+<td>integer</td>
+<td>no</td>
+<td>Read from header if omitted</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A structured object with four sections (Correctness, Code Quality, Testing, Dependencies and Reproducibility), each containing an array of checklist items with <code>status</code> of <code>PASS</code>, <code>FAIL</code>, <code>WARN</code>, or <code>NEEDS_HUMAN_REVIEW</code>.</p>
+<hr>
+</section>
+<section id="check_file_formats" class="level4" data-number="F.2.2.7">
+<h4 data-number="F.2.2.7" class="anchored" data-anchor-id="check_file_formats"><span class="header-section-number">F.2.2.7</span> <code>check_file_formats</code></h4>
+<p>Scan a directory for file format violations against the team’s accepted format rules.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Walks a project or data directory and checks every data file against the format rules in <code>governance-rules.toml</code>. Flags files that use prohibited formats (e.g.&nbsp;CSV in a pipeline directory, Excel outside a deliverables folder), files that use a discouraged format where a preferred one exists, and any format that is unexpected for the directory context. Returns pass/fail per file with the governance reference and a plain-language fix. Does not open file contents; checks extension and location only. For schema-level validation of Parquet files, use <code>validate_parquet_schema</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>File Format Reference (Appendix E); Hydrometric Data §7; R Governance §2.2.4; Python Governance §2.2.4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>path</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Directory to scan (recursively)</td>
+</tr>
+<tr class="even">
+<td><code>context</code></td>
+<td>string</td>
+<td>no</td>
+<td>One of: <code>pipeline</code>, <code>bronze</code>, <code>silver</code>, <code>gold</code>, <code>model</code>, <code>deliverables</code>, <code>any</code> (default: <code>any</code>). Determines which rules apply.</td>
+</tr>
+<tr class="odd">
+<td><code>tier</code></td>
+<td>integer</td>
+<td>no</td>
+<td>1, 2, or 3. Stricter rules apply at Tier 1 (prohibited formats are hard failures; at Tier 3 they are warnings).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"data/catchment_flows/"</span><span class="fu">,</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"context"</span><span class="fu">:</span> <span class="st">"pipeline"</span><span class="fu">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tier"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"files_scanned"</span><span class="fu">:</span> <span class="dv">47</span><span class="fu">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"violations"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"file"</span><span class="fu">:</span> <span class="st">"data/catchment_flows/processed/severn_q_2024.csv"</span><span class="fu">,</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"issue"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"rule"</span><span class="fu">:</span> <span class="st">"CSV is prohibited in pipeline directories at all tiers"</span><span class="fu">,</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"governance_ref"</span><span class="fu">:</span> <span class="st">"File Format Reference §8.1; Hydrometric Data §7"</span><span class="fu">,</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"fix"</span><span class="fu">:</span> <span class="st">"Convert to Parquet using polars.DataFrame.write_parquet() or arrow::write_parquet(). Retain the CSV only if it is a Bronze ingest of a supplier-delivered file."</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"file"</span><span class="fu">:</span> <span class="st">"data/catchment_flows/interim/temp_output.xlsx"</span><span class="fu">,</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"issue"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"rule"</span><span class="fu">:</span> <span class="st">"Excel is prohibited in pipeline directories. Permitted only in deliverables/ for stakeholder outputs."</span><span class="fu">,</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"governance_ref"</span><span class="fu">:</span> <span class="st">"File Format Reference §9.2"</span><span class="fu">,</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"fix"</span><span class="fu">:</span> <span class="st">"Write intermediate results as Parquet. If this is a stakeholder deliverable, move to deliverables/ and generate programmatically from a Parquet source."</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"warnings"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"file"</span><span class="fu">:</span> <span class="st">"data/catchment_flows/archive/old_run_2022.feather"</span><span class="fu">,</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"issue"</span><span class="fu">:</span> <span class="st">"WARN"</span><span class="fu">,</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"rule"</span><span class="fu">:</span> <span class="st">"Feather is acceptable for high-speed intermediate files within a single pipeline but Parquet is preferred for archived outputs."</span><span class="fu">,</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"governance_ref"</span><span class="fu">:</span> <span class="st">"R Governance §2.2.4"</span><span class="fu">,</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"fix"</span><span class="fu">:</span> <span class="st">"Consider converting to Parquet if this file is retained long-term or shared with Python tools."</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"overall"</span><span class="fu">:</span> <span class="st">"FAIL"</span><span class="fu">,</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"fail_count"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"warn_count"</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="domain-c-data-pipeline-validation" class="level3" data-number="F.2.3">
+<h3 data-number="F.2.3" class="anchored" data-anchor-id="domain-c-data-pipeline-validation"><span class="header-section-number">F.2.3</span> Domain C: Data Pipeline Validation</h3>
+<p>These tools check data assets against the medallion architecture rules.</p>
+<section id="validate_bronze_ingestion" class="level4" data-number="F.2.3.1">
+<h4 data-number="F.2.3.1" class="anchored" data-anchor-id="validate_bronze_ingestion"><span class="header-section-number">F.2.3.1</span> <code>validate_bronze_ingestion</code></h4>
+<p>Check whether a Bronze ingestion is ready to be stored.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Given a raw file and a proposed dataset ID, validates that: the dataset ID follows naming conventions, the file can be read, mandatory Parquet columns are present and typed correctly, and a provenance record draft can be generated from available metadata. Does <strong>not</strong> write to the register.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Hydrometric Data §4.1, §4.2, §7.2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>file_path</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Path to the raw supplier file or converted Parquet</td>
+</tr>
+<tr class="even">
+<td><code>dataset_id</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Proposed Bronze dataset ID</td>
+</tr>
+<tr class="odd">
+<td><code>supplier</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Supplier code (EA, NRFA, MO, etc.)</td>
+</tr>
+<tr class="even">
+<td><code>data_type</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Q, H, P, SM, or SWE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Schema validation results plus a draft provenance record with fields pre-filled from the file metadata and parameters, and empty fields flagged for manual completion.</p>
+<hr>
+</section>
+<section id="check_silver_readiness" class="level4" data-number="F.2.3.2">
+<h4 data-number="F.2.3.2" class="anchored" data-anchor-id="check_silver_readiness"><span class="header-section-number">F.2.3.2</span> <code>check_silver_readiness</code></h4>
+<p>Assess whether a Silver dataset meets promotion criteria.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Reads a Silver-candidate Parquet file and checks: all Silver schema columns present and correctly typed, every row has a <code>qc_flag</code> value, <code>qc_value</code> is populated correctly relative to flags, <code>estimation_method</code> is populated for all flag=2 rows, and flag distribution is summarised. Returns a promotion readiness assessment.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Hydrometric Data §5, §7.3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>file_path</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Path to the Silver candidate Parquet file</td>
+</tr>
+<tr class="even">
+<td><code>bronze_source_id</code></td>
+<td>string</td>
+<td>yes</td>
+<td>The Bronze dataset ID this was derived from</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Schema validation, flag distribution summary, gap-fill coverage, and a promotion checklist with pass/fail per requirement.</p>
+<hr>
+</section>
+<section id="check_gold_readiness" class="level4" data-number="F.2.3.3">
+<h4 data-number="F.2.3.3" class="anchored" data-anchor-id="check_gold_readiness"><span class="header-section-number">F.2.3.3</span> <code>check_gold_readiness</code></h4>
+<p>Assess whether a Gold dataset meets approval criteria.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Validates a Gold-candidate Parquet file against the appropriate Gold schema (timeseries, aggregated, or ML training set). For ML training sets, additionally checks that static catchment attributes are present, typed correctly, and repeated on every row. Returns an approval readiness assessment and a draft derivation record.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Hydrometric Data §6, §7.4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>file_path</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Path to the Gold candidate Parquet file</td>
+</tr>
+<tr class="even">
+<td><code>gold_type</code></td>
+<td>string</td>
+<td>yes</td>
+<td><code>timeseries</code>, <code>aggregated</code>, or <code>ml_training</code></td>
+</tr>
+<tr class="odd">
+<td><code>silver_source_ids</code></td>
+<td>array[string]</td>
+<td>yes</td>
+<td>Silver dataset IDs used as input</td>
+</tr>
+<tr class="even">
+<td><code>purpose</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Intended use of this Gold product</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Schema validation, lineage check against Silver sources, and a draft derivation record template.</p>
+<hr>
+</section>
+</section>
+<section id="domain-d-scaffolding-and-generation" class="level3" data-number="F.2.4">
+<h3 data-number="F.2.4" class="anchored" data-anchor-id="domain-d-scaffolding-and-generation"><span class="header-section-number">F.2.4</span> Domain D: Scaffolding and Generation</h3>
+<p>These tools generate compliant skeletons and templates. They answer: <em>set me up correctly from the start.</em></p>
+<section id="scaffold_tool" class="level4" data-number="F.2.4.1">
+<h4 data-number="F.2.4.1" class="anchored" data-anchor-id="scaffold_tool"><span class="header-section-number">F.2.4.1</span> <code>scaffold_tool</code></h4>
+<p>Generate a new tool project with correct structure, header, and configuration.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Creates a directory structure, header-block template, README skeleton, test skeleton, and dependency management initialisation (renv or poetry) for a new tool at the specified tier. Also produces a draft Tool Register entry for manual review and commit.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>R Governance §4.1, Python Governance §4.1, Framework §8.3, §8.6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>name</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Tool name (snake_case)</td>
+</tr>
+<tr class="even">
+<td><code>language</code></td>
+<td>string</td>
+<td>yes</td>
+<td><code>R</code> or <code>Python</code></td>
+</tr>
+<tr class="odd">
+<td><code>tier</code></td>
+<td>integer</td>
+<td>yes</td>
+<td>1, 2, or 3</td>
+</tr>
+<tr class="even">
+<td><code>author</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Author name and email</td>
+</tr>
+<tr class="odd">
+<td><code>description</code></td>
+<td>string</td>
+<td>yes</td>
+<td>One-sentence description</td>
+</tr>
+<tr class="even">
+<td><code>use_case</code></td>
+<td>string</td>
+<td>no</td>
+<td>Python only: <code>flood_modeller_api</code>, <code>ml</code>, <code>data_processing</code>, or <code>other</code></td>
+</tr>
+<tr class="odd">
+<td><code>flode_module</code></td>
+<td>string</td>
+<td>no</td>
+<td>R only: target Flode module or <code>standalone</code></td>
+</tr>
+<tr class="even">
+<td><code>route</code></td>
+<td>string</td>
+<td>no</td>
+<td>Development route: <code>A</code>, <code>B</code>, <code>C</code>, or <code>D</code> (default: <code>A</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Object describing all files created, their paths, and the draft Tool Register entry.</p>
+<p><strong>Example output structure (Python, Tier 2, ML):</strong></p>
+<pre><code>ml_flood_predictor/
+├── src/
+│   └── ml_flood_predictor/
+│       ├── __init__.py
+│       ├── train.py          # Header block pre-filled, training scaffold
+│       └── infer.py          # Header block pre-filled, inference scaffold
+├── tests/
+│   └── test_ml_flood_predictor.py  # pytest skeleton
+├── docs/
+│   └── README.md             # Skeleton with purpose, tier, governance links
+├── pyproject.toml            # poetry init with polars, pytest, ruff, mypy
+└── .register_entry.json      # Draft Tool Register entry for Steward review</code></pre>
+<hr>
+</section>
+<section id="generate_header" class="level4" data-number="F.2.4.2">
+<h4 data-number="F.2.4.2" class="anchored" data-anchor-id="generate_header"><span class="header-section-number">F.2.4.2</span> <code>generate_header</code></h4>
+<p>Generate a correctly formatted header block for an existing file.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Produces the mandatory header block for R or Python, pre-filled with the provided metadata. Returns the header as a string ready to paste at the top of a file.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>R Governance §2.4, Python Governance §2.3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>language</code></td>
+<td>string</td>
+<td>yes</td>
+<td><code>R</code> or <code>Python</code></td>
+</tr>
+<tr class="even">
+<td><code>tool_name</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Tool name</td>
+</tr>
+<tr class="odd">
+<td><code>description</code></td>
+<td>string</td>
+<td>yes</td>
+<td>One-sentence description</td>
+</tr>
+<tr class="even">
+<td><code>author</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Name and email</td>
+</tr>
+<tr class="odd">
+<td><code>tier</code></td>
+<td>integer</td>
+<td>yes</td>
+<td>1, 2, or 3</td>
+</tr>
+<tr class="even">
+<td><code>inputs</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Description of inputs</td>
+</tr>
+<tr class="odd">
+<td><code>outputs</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Description of outputs</td>
+</tr>
+<tr class="even">
+<td><code>dependencies</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Non-standard package list</td>
+</tr>
+<tr class="odd">
+<td><code>use_case</code></td>
+<td>string</td>
+<td>no</td>
+<td>Python only</td>
+</tr>
+<tr class="even">
+<td><code>flode_module</code></td>
+<td>string</td>
+<td>no</td>
+<td>R only</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The complete header block as a formatted string.</p>
+<hr>
+</section>
+<section id="generate_run_record" class="level4" data-number="F.2.4.3">
+<h4 data-number="F.2.4.3" class="anchored" data-anchor-id="generate_run_record"><span class="header-section-number">F.2.4.3</span> <code>generate_run_record</code></h4>
+<p>Generate a pre-filled model run record template.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Pulls the current model version, condition rating, and connection list from the Model Register and Connection Register, and produces a run record template with those fields pre-filled. The operator completes the remaining fields (input datasets, scenario, outputs, warnings).</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Flood Model Governance §6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>model_id</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Model ID from the Model Register</td>
+</tr>
+<tr class="even">
+<td><code>run_type</code></td>
+<td>string</td>
+<td>yes</td>
+<td><code>operational</code>, <code>hindcast</code>, <code>scenario</code>, <code>calibration</code>, or <code>validation</code></td>
+</tr>
+<tr class="odd">
+<td><code>run_by</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Name of the person running the model</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A Markdown or YAML run record template with model metadata pre-filled.</p>
+<hr>
+</section>
+<section id="generate_review_checklist" class="level4" data-number="F.2.4.4">
+<h4 data-number="F.2.4.4" class="anchored" data-anchor-id="generate_review_checklist"><span class="header-section-number">F.2.4.4</span> <code>generate_review_checklist</code></h4>
+<p>Generate the correct code review checklist for a language and tier.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Returns the full review checklist appropriate for the specified language and tier, formatted as Markdown checkboxes ready to paste into a pull request description.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>R Governance §3.1, Python Governance §3.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>language</code></td>
+<td>string</td>
+<td>yes</td>
+<td><code>R</code> or <code>Python</code></td>
+</tr>
+<tr class="even">
+<td><code>tier</code></td>
+<td>integer</td>
+<td>yes</td>
+<td>1, 2, or 3</td>
+</tr>
+<tr class="odd">
+<td><code>is_ml</code></td>
+<td>boolean</td>
+<td>no</td>
+<td>Python only: includes ML-specific checklist items</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Markdown-formatted checklist string.</p>
+<hr>
+</section>
+</section>
+<section id="domain-e-governance-reporting" class="level3" data-number="F.2.5">
+<h3 data-number="F.2.5" class="anchored" data-anchor-id="domain-e-governance-reporting"><span class="header-section-number">F.2.5</span> Domain E: Governance Reporting</h3>
+<p>These tools support the Steward’s monitoring and reporting obligations.</p>
+<section id="governance_summary" class="level4" data-number="F.2.5.1">
+<h4 data-number="F.2.5.1" class="anchored" data-anchor-id="governance_summary"><span class="header-section-number">F.2.5.1</span> <code>governance_summary</code></h4>
+<p>Generate a quarterly governance summary.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Reads all registers and produces the quarterly summary required by the monitoring framework: asset counts by tier, tier changes in period, overdue reviews, open data quality issues, and any condition ratings below Satisfactory.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Framework §12.5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>period_start</code></td>
+<td>string</td>
+<td>no</td>
+<td>ISO date (default: 3 months ago)</td>
+</tr>
+<tr class="even">
+<td><code>period_end</code></td>
+<td>string</td>
+<td>no</td>
+<td>ISO date (default: today)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Structured summary object covering all reporting categories.</p>
+<hr>
+</section>
+<section id="audit_tier1" class="level4" data-number="F.2.5.2">
+<h4 data-number="F.2.5.2" class="anchored" data-anchor-id="audit_tier1"><span class="header-section-number">F.2.5.2</span> <code>audit_tier1</code></h4>
+<p>Run the annual Tier 1 audit checks across all registered Tier 1 assets.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td>Iterates over all Tier 1 entries in the Tool Register and Model Register. For each tool, runs <code>check_tier_compliance</code>. For each model, checks condition rating currency and calibration record completeness. Returns a consolidated audit report.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance ref</strong></td>
+<td>Framework §12</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>asset_type</code></td>
+<td>string</td>
+<td>no</td>
+<td><code>tools</code>, <code>models</code>, or <code>all</code> (default: <code>all</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Array of per-asset audit results with an overall summary.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="configuration-schema-governance-rules.toml" class="level2" data-number="F.3">
+<h2 data-number="F.3" class="anchored" data-anchor-id="configuration-schema-governance-rules.toml"><span class="header-section-number">F.3</span> 3. Configuration Schema: <code>governance-rules.toml</code></h2>
+<p>The rules file encodes the checkable governance requirements so they can be updated without changing server code.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[meta]</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dt">framework_version</span> <span class="op">=</span> <span class="st">"1.4"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">last_updated</span> <span class="op">=</span> <span class="st">"2026-03-22"</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">[header.R]</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="dt">fields</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Tool"</span><span class="op">,</span> <span class="st">"Description"</span><span class="op">,</span> <span class="st">"Flode Module"</span><span class="op">,</span> <span class="st">"Author"</span><span class="op">,</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Created"</span><span class="op">,</span> <span class="st">"Modified"</span><span class="op">,</span> <span class="st">"Tier"</span><span class="op">,</span> <span class="st">"Inputs"</span><span class="op">,</span> <span class="st">"Outputs"</span><span class="op">,</span> <span class="st">"Dependencies"</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="op">]</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="dt">date_format</span> <span class="op">=</span> <span class="st">"YYYY-MM-DD"</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="kw">[header.Python]</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="dt">fields</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Tool"</span><span class="op">,</span> <span class="st">"Description"</span><span class="op">,</span> <span class="st">"Use Case"</span><span class="op">,</span> <span class="st">"Author"</span><span class="op">,</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Created"</span><span class="op">,</span> <span class="st">"Modified"</span><span class="op">,</span> <span class="st">"Tier"</span><span class="op">,</span> <span class="st">"Inputs"</span><span class="op">,</span> <span class="st">"Outputs"</span><span class="op">,</span> <span class="st">"Dependencies"</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="op">]</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="dt">date_format</span> <span class="op">=</span> <span class="st">"YYYY-MM-DD"</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="kw">[file_type_rules]</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Governance ref: File Format Reference (Appendix E)</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Formats required in each storage context</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="dt">pipeline_data</span>       <span class="op">=</span> <span class="op">[</span><span class="st">"parquet"</span><span class="op">]</span>       <span class="co"># Bronze, Silver, Gold, and all intermediate pipeline data</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="dt">gridded_data</span>        <span class="op">=</span> <span class="op">[</span><span class="st">"nc"</span><span class="op">,</span> <span class="st">"zarr"</span><span class="op">]</span>    <span class="co"># NetCDF required; Zarr requires Tech Lead agreement</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="dt">spatial_internal</span>    <span class="op">=</span> <span class="op">[</span><span class="st">"parquet"</span><span class="op">]</span>       <span class="co"># GeoParquet for all spatial data in internal workflows</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="dt">model_fmp</span>           <span class="op">=</span> <span class="op">[</span><span class="st">"ief"</span><span class="op">,</span> <span class="st">"dat"</span><span class="op">,</span> <span class="st">"ied"</span><span class="op">,</span> <span class="st">"inp"</span><span class="op">,</span> <span class="st">"ini"</span><span class="op">,</span> <span class="st">"gxy"</span><span class="op">,</span> <span class="st">"zzn"</span><span class="op">,</span> <span class="st">"zzs"</span><span class="op">]</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="dt">model_pdm</span>           <span class="op">=</span> <span class="op">[]</span>                <span class="co"># PDM files are vendor-defined; no extension restriction</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="dt">ml_artefacts</span>        <span class="op">=</span> <span class="op">[</span><span class="st">"onnx"</span><span class="op">,</span> <span class="st">"json"</span><span class="op">]</span>  <span class="co"># ONNX for archived models; JSON for metadata</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Formats restricted to specific contexts</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="kw">[file_type_rules.restricted]</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="dt">csv</span>  <span class="op">=</span> <span class="st">"deliverables, bronze_raw_ingest"</span>   <span class="co"># Permitted only for small external exchange or supplier Bronze ingest</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="dt">xlsx</span> <span class="op">=</span> <span class="st">"deliverables"</span>                      <span class="co"># Permitted only for stakeholder deliverables</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="dt">feather</span> <span class="op">=</span> <span class="st">"pipeline_intermediate"</span>          <span class="co"># High-speed intermediate within a single R pipeline only</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="dt">rds</span>  <span class="op">=</span> <span class="st">"pipeline_intermediate"</span>             <span class="co"># R-specific intermediate objects only; not for shared outputs</span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="dt">pkl</span>  <span class="op">=</span> <span class="st">"never"</span>                             <span class="co"># Never use pickle for shared or archived artefacts</span></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Formats prohibited everywhere</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="kw">[file_type_rules.prohibited]</span></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="dt">formats</span>  <span class="op">=</span> <span class="op">[</span><span class="st">"xls"</span><span class="op">,</span> <span class="st">"rdata"</span><span class="op">,</span> <span class="st">"RData"</span><span class="op">]</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="dt">reason</span>   <span class="op">=</span> <span class="st">"Legacy formats with no permitted use case in team workflows"</span></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Severity by tier: violations are FAIL at Tier 1/2, WARN at Tier 3</span></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="kw">[file_type_rules.severity]</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="dt">tier1</span> <span class="op">=</span> <span class="st">"FAIL"</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="dt">tier2</span> <span class="op">=</span> <span class="st">"FAIL"</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="dt">tier3</span> <span class="op">=</span> <span class="st">"WARN"</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="kw">[naming_patterns]</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="dt">bronze_dataset</span> <span class="op">=</span> <span class="st">'</span><span class="vs">^\w+_\w+_[QHPSM]\w*_\d{8}$</span><span class="st">'</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="dt">silver_dataset</span> <span class="op">=</span> <span class="st">'</span><span class="vs">^\w+_\w+_[QHPSM]\w*_\d{8}_SILVER_v\d+$</span><span class="st">'</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="dt">gold_dataset</span> <span class="op">=</span> <span class="st">'</span><span class="vs">^\w+_[QHPSM]\w*_GOLD_\w+_v\d+$</span><span class="st">'</span></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="dt">model_id</span> <span class="op">=</span> <span class="st">'</span><span class="vs">^\w+_(FMP|PDM|BB)_v\d+\.\d+$</span><span class="st">'</span></span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a><span class="dt">fmp_file</span> <span class="op">=</span> <span class="st">'</span><span class="vs">^\w+_\w+_\w+_v\d+\.\d+\.\d+_\d{8}$</span><span class="st">'</span></span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a><span class="dt">commit_message</span> <span class="op">=</span> <span class="st">'</span><span class="vs">^(feat|fix|docs|refactor|test|chore)\(.+\): .+</span><span class="st">'</span></span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a><span class="dt">function_name_r</span> <span class="op">=</span> <span class="st">'</span><span class="vs">^[a-z][a-z0-9_]*$</span><span class="st">'</span></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="dt">function_name_python</span> <span class="op">=</span> <span class="st">'</span><span class="vs">^[a-z][a-z0-9_]*$</span><span class="st">'</span></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a><span class="dt">class_name_python</span> <span class="op">=</span> <span class="st">'</span><span class="vs">^[A-Z][a-zA-Z0-9]*$</span><span class="st">'</span></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a><span class="kw">[prohibited_packages]</span></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a><span class="dt">R_tier1</span> <span class="op">=</span> <span class="op">[</span><span class="st">"dplyr"</span><span class="op">,</span> <span class="st">"tidyr"</span><span class="op">,</span> <span class="st">"purrr"</span><span class="op">,</span> <span class="st">"readr"</span><span class="op">,</span> <span class="st">"stringr"</span><span class="op">,</span> <span class="st">"forcats"</span><span class="op">,</span> <span class="st">"tibble"</span><span class="op">]</span></span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a><span class="dt">R_tier2</span> <span class="op">=</span> <span class="op">[</span><span class="st">"dplyr"</span><span class="op">,</span> <span class="st">"tidyr"</span><span class="op">,</span> <span class="st">"purrr"</span><span class="op">,</span> <span class="st">"readr"</span><span class="op">,</span> <span class="st">"stringr"</span><span class="op">,</span> <span class="st">"forcats"</span><span class="op">,</span> <span class="st">"tibble"</span><span class="op">]</span></span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a><span class="dt">Python_tier1</span> <span class="op">=</span> <span class="op">[</span><span class="st">"pandas"</span><span class="op">]</span></span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a><span class="dt">Python_tier2</span> <span class="op">=</span> <span class="op">[</span><span class="st">"pandas"</span><span class="op">]</span></span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a><span class="kw">[parquet_schemas.Bronze]</span></span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a><span class="dt">mandatory_columns</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"timestamp"</span><span class="op">,    </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"timestamp[ns, UTC]"</span><span class="op">},</span></span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"value"</span><span class="op">,        </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"float64"</span><span class="op">},</span></span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"supplier_flag"</span><span class="op">, </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"dataset_id"</span><span class="op">,   </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"site_id"</span><span class="op">,      </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"data_type"</span><span class="op">,    </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a><span class="op">]</span></span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a><span class="dt">optional_columns</span> <span class="op">=</span> <span class="op">[</span><span class="st">"raw_value_str"</span><span class="op">,</span> <span class="st">"uncertainty"</span><span class="op">,</span> <span class="st">"sensor_id"</span><span class="op">]</span></span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a><span class="dt">extra_columns_allowed</span> <span class="op">=</span> <span class="cn">false</span></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a><span class="kw">[parquet_schemas.Silver]</span></span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a><span class="dt">added_columns</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"qc_flag"</span><span class="op">,              </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"int32"</span><span class="op">},</span></span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"qc_value"</span><span class="op">,             </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"float64"</span><span class="op">},</span></span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"estimation_method"</span><span class="op">,    </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"rating_curve_version"</span><span class="op">, </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"extrapolated"</span><span class="op">,         </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"bool"</span><span class="op">},</span></span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"silver_dataset_id"</span><span class="op">,    </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"qc_version"</span><span class="op">,           </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"int32"</span><span class="op">},</span></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a><span class="op">]</span></span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a><span class="kw">[parquet_schemas.Gold_ml_training]</span></span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a><span class="dt">added_columns</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"training_set_id"</span><span class="op">,      </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"flag_exclusion_rule"</span><span class="op">,  </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"catchment_area_km2"</span><span class="op">,   </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"float64"</span><span class="op">},</span></span>
+<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"bfi"</span><span class="op">,                  </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"float64"</span><span class="op">},</span></span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"mean_elevation_m"</span><span class="op">,     </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"float64"</span><span class="op">},</span></span>
+<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"dominant_soil_type"</span><span class="op">,   </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"land_cover_class"</span><span class="op">,     </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"string"</span><span class="op">},</span></span>
+<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"gauge_easting"</span><span class="op">,        </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"float64"</span><span class="op">},</span></span>
+<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"gauge_northing"</span><span class="op">,       </span><span class="dt">type</span><span class="op"> =</span> <span class="st">"float64"</span><span class="op">},</span></span>
+<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a><span class="op">]</span></span>
+<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a><span class="kw">[testing]</span></span>
+<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a><span class="dt">tier1_min_coverage</span> <span class="op">=</span> <span class="dv">70</span></span>
+<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a><span class="dt">tier2_min_coverage</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a><span class="dt">tier3_min_coverage</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a><span class="kw">[review_requirements]</span></span>
+<span id="cb13-108"><a href="#cb13-108" aria-hidden="true" tabindex="-1"></a><span class="dt">tier1</span> <span class="op">=</span> <span class="st">"Mandatory peer review + senior sign-off before first production deployment"</span></span>
+<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a><span class="dt">tier2</span> <span class="op">=</span> <span class="st">"Peer review required; reviewer must have intermediate proficiency"</span></span>
+<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a><span class="dt">tier3</span> <span class="op">=</span> <span class="st">"Self-review checklist minimum; peer review encouraged"</span></span>
+<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a><span class="kw">[condition_rating]</span></span>
+<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a><span class="dt">good</span> <span class="op">=</span> <span class="op">[</span><span class="dv">9</span><span class="op">,</span> <span class="dv">10</span><span class="op">]</span></span>
+<span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a><span class="dt">satisfactory</span> <span class="op">=</span> <span class="op">[</span><span class="dv">7</span><span class="op">,</span> <span class="dv">8</span><span class="op">]</span></span>
+<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a><span class="dt">requires_attention</span> <span class="op">=</span> <span class="op">[</span><span class="dv">5</span><span class="op">,</span> <span class="dv">6</span><span class="op">]</span></span>
+<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a><span class="dt">poor</span> <span class="op">=</span> <span class="op">[</span><span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">]</span></span>
+<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a><span class="dt">critical</span> <span class="op">=</span> <span class="op">[</span><span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="implementation-notes" class="level2" data-number="F.4">
+<h2 data-number="F.4" class="anchored" data-anchor-id="implementation-notes"><span class="header-section-number">F.4</span> 4. Implementation Notes</h2>
+<section id="transport" class="level3" data-number="F.4.1">
+<h3 data-number="F.4.1" class="anchored" data-anchor-id="transport"><span class="header-section-number">F.4.1</span> 4.1 Transport</h3>
+<p>The server should support both <code>stdio</code> (for local Claude Code / editor integration) and <code>SSE</code> (for network access from Databricks notebooks or CI runners). Start with <code>stdio</code> for the Claude Code use case; add SSE when the Databricks integration is needed.</p>
+</section>
+<section id="technology" class="level3" data-number="F.4.2">
+<h3 data-number="F.4.2" class="anchored" data-anchor-id="technology"><span class="header-section-number">F.4.2</span> 4.2 Technology</h3>
+<p>Python is the natural implementation language given the team’s existing tooling. Key dependencies: <code>mcp</code> (the MCP Python SDK), <code>polars</code> (for Parquet schema inspection), <code>openpyxl</code> (for reading Excel registers), <code>tomllib</code> (for rules config), and <code>pathlib</code> throughout.</p>
+</section>
+<section id="register-access" class="level3" data-number="F.4.3">
+<h3 data-number="F.4.3" class="anchored" data-anchor-id="register-access"><span class="header-section-number">F.4.3</span> 4.3 Register Access</h3>
+<p>The server reads registers at startup and caches them. A <code>refresh_registers</code> tool (not exposed externally) reloads from disk. For Delta table backends in Databricks, the server uses <code>deltalake</code> to read tables directly. The server never writes to registers; all write operations produce draft files that a human reviews and commits.</p>
+</section>
+<section id="authentication-and-access-control" class="level3" data-number="F.4.4">
+<h3 data-number="F.4.4" class="anchored" data-anchor-id="authentication-and-access-control"><span class="header-section-number">F.4.4</span> 4.4 Authentication and Access Control</h3>
+<p>For <code>stdio</code> transport (local use), no authentication is needed; the user’s filesystem permissions apply. For <code>SSE</code> transport, the server should sit behind the team’s existing authentication. No governance data is classified above OFFICIAL, so standard network controls are sufficient.</p>
+</section>
+<section id="phased-delivery" class="level3" data-number="F.4.5">
+<h3 data-number="F.4.5" class="anchored" data-anchor-id="phased-delivery"><span class="header-section-number">F.4.5</span> 4.5 Phased Delivery</h3>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Tools</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><code>get_governance_rule</code>, <code>validate_header</code>, <code>generate_header</code>, <code>scaffold_tool</code>, <code>validate_naming</code>, <code>validate_commit_message</code>, <code>check_file_formats</code></td>
+<td>Immediate developer friction reduction; governance rules and format checks available at point of coding</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>get_tool_info</code>, <code>get_model_info</code>, <code>get_dataset_info</code>, <code>check_tier_compliance</code>, <code>generate_review_checklist</code>, <code>generate_run_record</code></td>
+<td>Register integration; code review automation</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><code>validate_parquet_schema</code>, <code>validate_bronze_ingestion</code>, <code>check_silver_readiness</code>, <code>check_gold_readiness</code>, <code>get_connections</code>, <code>pre_review</code></td>
+<td>Full data pipeline validation</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><code>governance_summary</code>, <code>audit_tier1</code>, <code>lookup_definition</code></td>
+<td>Steward reporting and data catalogue integration</td>
+</tr>
+</tbody>
+</table>
+<p><code>check_file_formats</code> is included in Phase 1 because it requires only <code>governance-rules.toml</code> (no register access) and provides immediate enforcement of the file format rules that were previously ungoverned. It is also the natural candidate for a pre-commit git hook, which can be wired up from day one independently of the full MCP server.</p>
+<hr>
+</section>
+</section>
+<section id="example-interaction" class="level2" data-number="F.5">
+<h2 data-number="F.5" class="anchored" data-anchor-id="example-interaction"><span class="header-section-number">F.5</span> 5. Example Interaction</h2>
+<p>A developer using Claude Code to write a new R tool:</p>
+<pre><code>Developer: Create a new Tier 2 R tool for calculating flood frequency statistics
+
+Claude Code:
+  → calls scaffold_tool(name="flood_freq_stats", language="R", tier=2,
+      author="Tom Brown, tom.brown@ea.gov.uk",
+      description="Calculates flood frequency statistics from Gold flow data",
+      flode_module="reach.hydro", route="A")
+  ← receives: directory structure created, header pre-filled, renv initialised,
+     draft register entry at .register_entry.json
+
+Developer: [writes the main function]
+
+Claude Code:
+  → calls check_tier_compliance(project_path="./flood_freq_stats", tier=2)
+  ← receives: PASS on header, README, naming; WARN on roxygen2 coverage;
+     FAIL on tests (none written yet)
+
+Developer: [writes tests, prepares PR]
+
+Claude Code:
+  → calls generate_review_checklist(language="R", tier=2)
+  ← receives: Markdown checklist pasted into PR description
+
+  → calls pre_review(project_path="./flood_freq_stats")
+  ← receives: 10 of 16 checks auto-passed, 2 auto-failed,
+     4 marked NEEDS_HUMAN_REVIEW
+
+Developer: [fixes the 2 failures, submits PR with checklist]</code></pre>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./e-file-format-reference.html" class="pagination-link  aria-label=" &lt;span="" format="" reference&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">File Format Reference</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
