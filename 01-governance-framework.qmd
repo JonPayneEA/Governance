@@ -10,6 +10,12 @@
 | **Review Date** | 31 March 2027 |
 :::
 
+The F&W team has built up a substantial collection of models, code tools, and datasets over several years. That growth was not planned. It happened as individual projects demanded it, and the result is an asset base where ownership is uneven, maintenance histories are inconsistent, and no single record exists of what the team holds or who is accountable for it.
+
+That situation was already a problem. It became pressing when the team began adopting machine learning tools at scale: LSTM pipelines, MLflow experiment tracking, automated boundary-condition workflows, MCP servers. These are not passive reference files. They make predictions that feed operational decisions. A model with unclear provenance or an ML tool with no defined owner is a liability, and the pace of adoption meant the gap between what the team was building and what it could formally account for was widening.
+
+This framework addresses both things: it establishes clear ownership for what the team already has, and it sets the terms on which new tools can be adopted and used.
+
 ## Purpose
 
 This framework sets out how the Forecasting and Warning (F&W) department manages its data, code, and digital assets. It defines who is responsible for what, at every level, covering all assets from strategic accountability for major datasets down to day-to-day maintenance of individual code tools.
