@@ -10,6 +10,12 @@
 | **Review Date** | 31 March 2027 |
 :::
 
+The F&W team has accumulated a substantial body of models, code tools, and datasets. Structural changes to the organisation, siloed working across teams, and staff churn have compounded over that time. Ownership has shifted without being formally transferred. Institutional knowledge has left with departing staff. Work has been duplicated because one team did not know another had already done it. The result is an asset base that no single person has a complete picture of, and where accountability is informal and assumed rather than defined.
+
+This framework is a deliberate reset. It establishes clear ownership for what the team already holds, and it builds structures resilient to the conditions that caused the problem: structures that survive reorganisation, that do not depend on any one individual, and that work across team boundaries rather than within them.
+
+It also sets the foundation for responsible adoption of new capabilities. The team is actively investigating AI and machine learning tools. Before any of those can be used in operational settings, a credible governance baseline needs to exist. This framework is that baseline.
+
 ## Purpose
 
 This framework sets out how the Forecasting and Warning (F&W) department manages its data, code, and digital assets. It defines who is responsible for what, at every level, covering all assets from strategic accountability for major datasets down to day-to-day maintenance of individual code tools.
