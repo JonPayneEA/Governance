@@ -8,6 +8,7 @@ book:
   author: "Jonathan Payne"
   date: "March 2026"
   version: "1.4"
+  logo: figures/logo.svg
   search: true
   chapters:
     - index.qmd
