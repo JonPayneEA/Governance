@@ -71,9 +71,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -490,74 +487,59 @@ Note
 <p>This framework does not replace the governance documents. It sets out how staff become competent to work within them. The sign-off forms in Appendix A record that training has been completed, not that it substitutes for reading the source documents.</p>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<div>
-<pre class="mermaid mermaid-js">flowchart TD
-    CORE["**Core — all staff**\nGovernance framework · roles · tier system · version control · Bronze/Silver/Gold"]
-
-    subgraph FUND["Fundamentals — complete the track(s) relevant to your role"]
-        direction LR
-        HF["**Hydrology fundamentals**\nCatchments · runoff · hydrographs · flow routing · performance metrics · Rating Curves"]
-        HXF["**Hydraulics fundamentals**\nOpen-channel flow · floodplain dynamics · boundary conditions · 1D/2D schemes"]
-        DCF["**Data and coding fundamentals**\nGit · file formats · tabular data · scripting concepts · reproducibility"]
-        HF ~~~ HXF ~~~ DCF
-    end
-
-    CC["**Cross-cutting: Model calibration and configuration** — all flood model staff\nModel register · run records · calibration/validation · boundary conditions · black box governance"]
-
-    subgraph SPEC["Specialist tracks — complete the track(s) that match your role"]
-        direction LR
-        subgraph HM["Hydrological modelling"]
-            direction TB
-            HM1["**Hydrometric data**\nHDE · WISKI · Bronze/Silver/Gold"]
-            HM2["**PDM models**\nParameter sets · calibration records · data inputs"]
-            HM3["**Crossover: Rating Curves**\nParameter sets · optimisation · modelled ratings"]
-            HM1 --- HM2 --- HM3
-        end
-        subgraph HX["Hydraulic modelling"]
-            direction TB
-            HX1["**FMP governance**\nFile structure · naming · version control for binaries"]
-            HX2["**1D, 2D and linked models**\nScheme types · solver options · output interpretation"]
-            HX3["**Crossover: FMP API scripting**\nPython orchestration · Tier 1 obligations · run records"]
-            HX1 --- HX2 --- HX3
-        end
-        subgraph RD["R development"]
-            direction TB
-            RD1["**R governance**\nrenv · branching · code review · tool tiers · data.table"]
-            RD2["**reach.* packages**\ndata.table · Parquet · Arrow · Bronze store · fastverse"]
-            RD1 --- RD2
-        end
-        subgraph PM["Python and ML"]
-            direction TB
-            PM1["**Python governance**\npoetry · Git · code review · training/inference separation"]
-            PM2["**AI/ML environment**\nDatabricks · MLflow · Unity Catalog · data tier requirements"]
-            PM3["**LSTM pipelines**\nFeature engineering · Gold data · ONNX export · model handover"]
-            PM1 --- PM2 --- PM3
-        end
-    end
-
-    SIGNOFF["**Role-based sign-off**\nCustodian: core + fundamentals + cross-cutting + specialist track(s)\nSteward: as Custodian + awareness of adjacent tracks\nDelegated Steward: as Steward + Tier 1 audit obligations\nOwner: core + governance obligations only"]
-
-    CORE --&gt; FUND
-    FUND --&gt; CC
-    CC --&gt; SPEC
-    SPEC --&gt; SIGNOFF
-</pre>
-</div>
-<p>Figure 1: Staff training framework structure</p>
-</div>
-</div>
-</div>
+<!-- ```{mermaid} -->
+<!-- %%| fig-cap: "Figure 1: Staff training framework structure" -->
+<!-- flowchart TD -->
+<!--     CORE["**Core — all staff**\nGovernance framework · roles · tier system · version control · Bronze/Silver/Gold"] -->
+<!--     subgraph FUND["Fundamentals — complete the track(s) relevant to your role"] -->
+<!--         direction LR -->
+<!--         HF["**Hydrology fundamentals**\nCatchments · runoff · hydrographs · flow routing · performance metrics · Rating Curves"] -->
+<!--         HXF["**Hydraulics fundamentals**\nOpen-channel flow · floodplain dynamics · boundary conditions · 1D/2D schemes"] -->
+<!--         DCF["**Data and coding fundamentals**\nGit · file formats · tabular data · scripting concepts · reproducibility"] -->
+<!--         HF ~~~ HXF ~~~ DCF -->
+<!--     end -->
+<!--     CC["**Cross-cutting: Model calibration and configuration** — all flood model staff\nModel register · run records · calibration/validation · boundary conditions · black box governance"] -->
+<!--     subgraph SPEC["Specialist tracks — complete the track(s) that match your role"] -->
+<!--         direction LR -->
+<!--         subgraph HM["Hydrological modelling"] -->
+<!--             direction TB -->
+<!--             HM1["**Hydrometric data**\nHDE · WISKI · Bronze/Silver/Gold"] -->
+<!--             HM2["**PDM models**\nParameter sets · calibration records · data inputs"] -->
+<!--             HM3["**Crossover: Rating Curves**\nParameter sets · optimisation · modelled ratings"] -->
+<!--             HM1 --- HM2 --- HM3 -->
+<!--         end -->
+<!--         subgraph HX["Hydraulic modelling"] -->
+<!--             direction TB -->
+<!--             HX1["**FMP governance**\nFile structure · naming · version control for binaries"] -->
+<!--             HX2["**1D, 2D and linked models**\nScheme types · solver options · output interpretation"] -->
+<!--             HX3["**Crossover: FMP API scripting**\nPython orchestration · Tier 1 obligations · run records"] -->
+<!--             HX1 --- HX2 --- HX3 -->
+<!--         end -->
+<!--         subgraph RD["R development"] -->
+<!--             direction TB -->
+<!--             RD1["**R governance**\nrenv · branching · code review · tool tiers · data.table"] -->
+<!--             RD2["**reach.* packages**\ndata.table · Parquet · Arrow · Bronze store · fastverse"] -->
+<!--             RD1 --- RD2 -->
+<!--         end -->
+<!--         subgraph PM["Python and ML"] -->
+<!--             direction TB -->
+<!--             PM1["**Python governance**\npoetry · Git · code review · training/inference separation"] -->
+<!--             PM2["**AI/ML environment**\nDatabricks · MLflow · Unity Catalog · data tier requirements"] -->
+<!--             PM3["**LSTM pipelines**\nFeature engineering · Gold data · ONNX export · model handover"] -->
+<!--             PM1 --- PM2 --- PM3 -->
+<!--         end -->
+<!--     end -->
+<!--     SIGNOFF["**Role-based sign-off**\nCustodian: core + fundamentals + cross-cutting + specialist track(s)\nSteward: as Custodian + awareness of adjacent tracks\nDelegated Steward: as Steward + Tier 1 audit obligations\nOwner: core + governance obligations only"] -->
+<!--     CORE -->
+<p>FUND –&gt; <!--     FUND --> CC –&gt; <!--     CC --> SPEC –&gt; <!--     SPEC --> SIGNOFF –&gt; <!-- ``` --></p>
 </section>
 <section id="framework-structure" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> 1. Framework structure</h1>
 <p>The framework has four layers. Each layer builds on the one before it.</p>
 <table class="table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 85%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -633,7 +615,7 @@ Note
 <h3 data-number="11.1.2" class="anchored" data-anchor-id="recommended-resources"><span class="header-section-number">11.1.2</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 49%">
+<col style="width: 50%">
 <col style="width: 50%">
 </colgroup>
 <thead>
@@ -704,8 +686,8 @@ Note
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="recommended-resources-1"><span class="header-section-number">11.2.2</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 45%">
-<col style="width: 54%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -774,8 +756,8 @@ Note
 <h3 data-number="11.3.2" class="anchored" data-anchor-id="recommended-resources-2"><span class="header-section-number">11.3.2</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -901,8 +883,8 @@ Note
 <h3 data-number="13.1.2" class="anchored" data-anchor-id="recommended-resources-3"><span class="header-section-number">13.1.2</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 32%">
-<col style="width: 67%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -941,8 +923,8 @@ Note
 <h3 data-number="13.1.4" class="anchored" data-anchor-id="recommended-resources-4"><span class="header-section-number">13.1.4</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -988,8 +970,8 @@ Note
 <h3 data-number="13.2.2" class="anchored" data-anchor-id="recommended-resources-5"><span class="header-section-number">13.2.2</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1042,8 +1024,8 @@ Note
 <h3 data-number="13.2.5" class="anchored" data-anchor-id="recommended-resources-6"><span class="header-section-number">13.2.5</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 30%">
-<col style="width: 69%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1081,8 +1063,8 @@ Note
 <h3 data-number="13.3.2" class="anchored" data-anchor-id="recommended-resources-7"><span class="header-section-number">13.3.2</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 18%">
-<col style="width: 81%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1134,8 +1116,8 @@ Note
 <h3 data-number="13.3.4" class="anchored" data-anchor-id="recommended-resources-8"><span class="header-section-number">13.3.4</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 66%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1192,8 +1174,8 @@ Note
 <h3 data-number="13.4.2" class="anchored" data-anchor-id="recommended-resources-9"><span class="header-section-number">13.4.2</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 32%">
-<col style="width: 67%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1240,7 +1222,7 @@ Note
 <h3 data-number="13.4.4" class="anchored" data-anchor-id="recommended-resources-10"><span class="header-section-number">13.4.4</span> Recommended resources</h3>
 <table class="table">
 <colgroup>
-<col style="width: 49%">
+<col style="width: 50%">
 <col style="width: 50%">
 </colgroup>
 <thead>
@@ -1295,8 +1277,8 @@ Note
 <p>The table below sets out the minimum training required for each role. Where a team member holds multiple roles (for example, Custodian on an R tool and Custodian on a flood model), they must complete the requirements for each.</p>
 <table class="table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 85%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1397,9 +1379,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 72%">
-<col style="width: 12%">
-<col style="width: 14%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1477,9 +1459,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 75%">
-<col style="width: 11%">
-<col style="width: 13%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1537,9 +1519,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 69%">
-<col style="width: 14%">
-<col style="width: 16%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1597,9 +1579,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 70%">
-<col style="width: 14%">
-<col style="width: 15%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1657,9 +1639,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 76%">
-<col style="width: 11%">
-<col style="width: 12%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1772,9 +1754,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 74%">
-<col style="width: 12%">
-<col style="width: 13%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1842,9 +1824,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 75%">
-<col style="width: 11%">
-<col style="width: 13%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1902,9 +1884,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 76%">
-<col style="width: 11%">
-<col style="width: 12%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1947,9 +1929,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 76%">
-<col style="width: 10%">
-<col style="width: 12%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -2047,9 +2029,9 @@ Note
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
 <table class="table">
 <colgroup>
-<col style="width: 73%">
-<col style="width: 12%">
-<col style="width: 14%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
