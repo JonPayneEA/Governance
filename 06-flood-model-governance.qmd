@@ -17,6 +17,8 @@ This document sets out detailed governance standards for the flood models used a
 
 Two areas are given particular attention here. First, model condition: a structured way of assessing how fit for purpose a model is over time, accounting for factors beyond operational performance alone, including age, data currency, structural integrity, and known deficiencies. Second, model connections: how models are linked together in cascading systems, where the outputs of one model become the inputs to another, and what governance is required to keep those connections auditable and reliable.
 
+This document is not a guide to modelling practice. It does not prescribe how to build, calibrate, or configure a model. Its concern is the other side of that work: how models are recorded, assessed, connected, and kept accountable over time, and what level of oversight each type of model requires.
+
 | ***Companion documents: Data and Digital Asset Governance Framework v1.4** |
 | --- |
 | Hydrometric Data Framework v1.3 │ Python Tool Governance v1.3 │ R Tool Governance v1.3* |
