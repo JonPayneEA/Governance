@@ -17,27 +17,63 @@ This document sets out the staff training framework for the Forecasting and Warn
 
 Training is organised into four layers: a core that all staff complete; a fundamentals band covering scientific and technical foundations; a cross-cutting section that applies to all modellers regardless of specialism; and specialist tracks for hydrological modelling, hydraulic modelling, R development, and Python and machine learning. A crossover module sits between the hydraulic and Python tracks for staff working with the Flood Modeller API in Python.
 
-| **Relationship to the governance suite** This framework does not replace the governance documents. It sets out how staff become competent to work within them. The sign-off forms in Appendix A record that training has been completed, not that it substitutes for reading the source documents. |
-| --- |
+::: {.callout-note}
+This framework does not replace the governance documents. It sets out how staff become competent to work within them. The sign-off forms in Appendix A record that training has been completed, not that it substitutes for reading the source documents.
+:::
 
-| **Core (all staff)** Governance framework  ·  Owner / Steward /Custodian roles  ·  tier system  ·  version control  ·  Bronze / Silver / Gold architecture |
-| --- |
-| ▼ |
-| *Fundamentals: complete the track(s) relevant to your role* |
-| **Hydrology fundamentals** Catchments · runoff · hydrographs · flow routing · performance metrics · catchment descriptors  ·  Rating Curves | **Hydraulics fundamentals** Open-channel flow · floodplain dynamics · boundary conditions · model uncertainty · 1D/2D schemes | **Data and coding fundamentals** Git · file formats · tabular data · scripting concepts · environments and reproducibility |
-| ▼ |
-| *Cross-cutting: all staff who work with flood models* |
-| **Cross-cutting: ****M****odel**** calibration ****and configuration**** ** Model register  ·  run records  ·  calibration and validation  ·  boundary conditions  ·  connection register Black box governance  ·  condition assessments  ·  cascading systems  ·  impact assessments  ·  system diagrams  ·  black box |
-| ▼ |
-| *Specialist tracks: complete the track(s) that match your role* |
-| **Hydrological modelling** | **Hydraulic modelling** | **R development** | **Python and ML** |
-| **Hydrometric data** HDE · WISKI · Bronze ingestion · Silver QC · Gold approval | **FMP governance** File structure · naming conventions · version control for binary files | **R governance** renv · branching · code review · tool tiers · data.table requirement | **Python governance** poetry · Git · code review · tool tiers · training / inference separation |
-| **PDM models** Parameter sets · calibration records · data inputs · relationship to FMP boundaries | **1D, 2D, and linked models** Scheme types · solver options · output interpretation | **reach.***** packages** data.table · Parquet · Arrow · Bronze store structure · fastverse | **AI/ML environment** Databricks · MLflow · Unity Catalog · data tier requirements by stage |
-| **Crossover****: Rating Curves** Parameter sets · optimisation · data inputs and requirements · modelled ratings | **Crossover: FMP API scripting** Python orchestration · Tier 1 tool obligations · run record requirements |  | **LSTM pipelines** Feature engineering · static attributes · Gold data · ONNX export · model handover |
-| ▼ |
-| **Role-based sign-off** **Custodian**: core + fundamentals + cross-cutting + specialist track(s) **Steward**: as custodian + awareness of adjacent tracks  **Delegated Steward**: as Steward + Tier 1 audit and corrective action obligations  **Owner**: core + governance obligations only |
+```{mermaid}
+%%| fig-cap: "Figure 1: Staff training framework structure"
+flowchart TD
+    CORE["**Core — all staff**\nGovernance framework · roles · tier system · version control · Bronze/Silver/Gold"]
 
-*Figure 1: Staff training framework structure*
+    subgraph FUND["Fundamentals — complete the track(s) relevant to your role"]
+        direction LR
+        HF["**Hydrology fundamentals**\nCatchments · runoff · hydrographs · flow routing · performance metrics · Rating Curves"]
+        HXF["**Hydraulics fundamentals**\nOpen-channel flow · floodplain dynamics · boundary conditions · 1D/2D schemes"]
+        DCF["**Data and coding fundamentals**\nGit · file formats · tabular data · scripting concepts · reproducibility"]
+        HF ~~~ HXF ~~~ DCF
+    end
+
+    CC["**Cross-cutting: Model calibration and configuration** — all flood model staff\nModel register · run records · calibration/validation · boundary conditions · black box governance"]
+
+    subgraph SPEC["Specialist tracks — complete the track(s) that match your role"]
+        direction LR
+        subgraph HM["Hydrological modelling"]
+            direction TB
+            HM1["**Hydrometric data**\nHDE · WISKI · Bronze/Silver/Gold"]
+            HM2["**PDM models**\nParameter sets · calibration records · data inputs"]
+            HM3["**Crossover: Rating Curves**\nParameter sets · optimisation · modelled ratings"]
+            HM1 --- HM2 --- HM3
+        end
+        subgraph HX["Hydraulic modelling"]
+            direction TB
+            HX1["**FMP governance**\nFile structure · naming · version control for binaries"]
+            HX2["**1D, 2D and linked models**\nScheme types · solver options · output interpretation"]
+            HX3["**Crossover: FMP API scripting**\nPython orchestration · Tier 1 obligations · run records"]
+            HX1 --- HX2 --- HX3
+        end
+        subgraph RD["R development"]
+            direction TB
+            RD1["**R governance**\nrenv · branching · code review · tool tiers · data.table"]
+            RD2["**reach.* packages**\ndata.table · Parquet · Arrow · Bronze store · fastverse"]
+            RD1 --- RD2
+        end
+        subgraph PM["Python and ML"]
+            direction TB
+            PM1["**Python governance**\npoetry · Git · code review · training/inference separation"]
+            PM2["**AI/ML environment**\nDatabricks · MLflow · Unity Catalog · data tier requirements"]
+            PM3["**LSTM pipelines**\nFeature engineering · Gold data · ONNX export · model handover"]
+            PM1 --- PM2 --- PM3
+        end
+    end
+
+    SIGNOFF["**Role-based sign-off**\nCustodian: core + fundamentals + cross-cutting + specialist track(s)\nSteward: as Custodian + awareness of adjacent tracks\nDelegated Steward: as Steward + Tier 1 audit obligations\nOwner: core + governance obligations only"]
+
+    CORE --> FUND
+    FUND --> CC
+    CC --> SPEC
+    SPEC --> SIGNOFF
+```
 
 # 1. Framework structure
 
