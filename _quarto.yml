@@ -8,6 +8,7 @@ book:
   author: "Jonathan Payne"
   date: "March 2026"
   version: "1.4"
+  logo: figures/logo.svg
   search: true
   reader-mode: true
   navbar:
@@ -75,7 +76,7 @@ format:
   html:
     theme: 
       light: [cosmo, water-theme.scss]
-      dark: [darkly]
+      dark: [darkly, water-theme-dark.scss]
     toc: true
     toc-depth: 3
     toc-title: "Contents"
