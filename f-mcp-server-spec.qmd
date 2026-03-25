@@ -1,4 +1,4 @@
-# MCP Server Specification
+# MCP Server Specification {#sec-mcp-server-spec}
 
 ***`fw-governance`***
 

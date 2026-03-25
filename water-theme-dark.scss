@@ -1,0 +1,184 @@
+/*-- scss:defaults --*/
+
+// ── Water / Flood palette — dark variant ───────────────────────────────────
+// These sit on top of the darkly base theme. All light-mode colours are
+// replaced with values that hold contrast against dark backgrounds.
+
+// Deep-water black: page body background (slightly warmer than pure black)
+$deep-water:       #0D1B2A;
+// Channel midnight: sidebar and card backgrounds
+$channel-midnight: #112233;
+// Navigation dark: navbar
+$nav-dark:         #0A1520;
+// Mid-channel blue: primary interactive elements and links (brighter for dark)
+$mid-channel:      #3AAEDC;
+// Floodplain highlight: hover/active states (brightest accent)
+$floodplain:       #5BC8F0;
+// Low-contrast blue: muted text, section numbers, borders
+$muted-current:    #3A7FA0;
+// Body text: off-white with a faint blue cast
+$pale-water:       #D8EBF5;
+
+// ── Bootstrap variable overrides ──────────────────────────────────────────
+$primary:          $mid-channel;
+$link-color:       $mid-channel;
+
+$body-bg:          $deep-water;
+$body-color:       $pale-water;
+
+$headings-color:   #A8D8EE;
+
+$code-bg:          #0F2030;
+$code-color:       #7FD4F5;
+
+// ── Quarto-specific layout variables ──────────────────────────────────────
+$navbar-bg:        $nav-dark;
+$navbar-fg:        #C0DFEE;
+$sidebar-bg:       $channel-midnight;
+
+// ── Typography ────────────────────────────────────────────────────────────
+$font-size-root:   16px;
+$headings-font-weight: 600;
+
+/*-- scss:rules --*/
+
+// ── Sidebar refinements ───────────────────────────────────────────────────
+.sidebar-navigation .active > a,
+.sidebar-item-container .sidebar-item-section .active {
+  color: $floodplain;
+  border-left: 3px solid $mid-channel;
+  padding-left: 0.4em;
+  font-weight: 600;
+}
+
+.sidebar-section-header {
+  color: $muted-current;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+}
+
+// ── Navbar ────────────────────────────────────────────────────────────────
+.navbar-brand {
+  color: #C0DFEE !important;
+  font-weight: 700;
+}
+
+.navbar-nav .nav-link {
+  color: #8FBFD8 !important;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #FFFFFF !important;
+}
+
+// ── TOC (right-hand table of contents) ────────────────────────────────────
+#TOC a {
+  color: $muted-current;
+}
+#TOC a:hover {
+  color: $floodplain;
+  text-decoration: none;
+}
+#TOC .active {
+  color: $mid-channel;
+  font-weight: 600;
+  border-left: 2px solid $mid-channel;
+  padding-left: 0.3em;
+}
+
+// ── Headings hierarchy ────────────────────────────────────────────────────
+h1.title,
+.chapter h1,
+h1 {
+  color: #A8D8EE;
+  border-bottom: 2px solid $muted-current;
+  padding-bottom: 0.25em;
+}
+
+h2 {
+  color: #8FC8E4;
+  border-bottom: 1px solid #1E3D52;
+  padding-bottom: 0.15em;
+}
+
+h3, h4, h5 {
+  color: #7ABCD8;
+}
+
+// ── Links ─────────────────────────────────────────────────────────────────
+a {
+  color: $mid-channel;
+  text-decoration-color: $muted-current;
+}
+a:hover {
+  color: $floodplain;
+  text-decoration-color: $mid-channel;
+}
+
+// ── Tables ────────────────────────────────────────────────────────────────
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: #0F2535;
+  color: $pale-water;
+}
+
+thead {
+  background-color: $nav-dark;
+  color: #A8D8EE;
+}
+
+// ── Code blocks ───────────────────────────────────────────────────────────
+pre.sourceCode,
+div.sourceCode {
+  border-left: 3px solid $muted-current;
+  border-radius: 4px;
+  background-color: $code-bg;
+}
+
+// ── Callout overrides ─────────────────────────────────────────────────────
+// Note: teal, darkened for dark backgrounds
+.callout-note {
+  border-left-color: #0AADAD !important;
+  background-color: #0A2828;
+}
+.callout-note .callout-title {
+  background-color: #0D3535;
+  color: #5DCCCC;
+}
+
+// Warning: amber, darkened
+.callout-warning {
+  border-left-color: #C86010 !important;
+  background-color: #291A08;
+}
+.callout-warning .callout-title {
+  background-color: #352210;
+  color: #E8943A;
+}
+
+// Important: flood-alert red, darkened
+.callout-important {
+  border-left-color: #C02530 !important;
+  background-color: #250A0C;
+}
+.callout-important .callout-title {
+  background-color: #330D10;
+  color: #E06070;
+}
+
+// ── Section number colour ─────────────────────────────────────────────────
+.header-section-number {
+  color: $muted-current;
+}
+
+// ── Page footer ───────────────────────────────────────────────────────────
+.nav-footer {
+  background-color: $nav-dark;
+  color: #7AAFCC;
+  border-top: 2px solid $muted-current;
+}
+
+.nav-footer a {
+  color: $mid-channel;
+}
