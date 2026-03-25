@@ -1,14 +1,17 @@
-# fw-governance MCP Server Specification {#sec-mcp-server-spec}
+# MCP Server Specification
 
-::: {.callout-note}
+***`fw-governance`***
+
+::: callout-note
 ## Document Metadata
-| Field | Detail |
-|---|---|
-| **Version** | 0.1 |
-| **Status** | Draft |
-| **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v1.4 |
-| **Note** | This appendix is the technical specification for the `fw-governance` MCP server. It is a companion to the governance documents; the normative requirements the server enforces are stated in the domain chapters. For an overview of how the server fits into the adoption process, see @sec-mcp-overview. |
+
+| Field               | Detail                                                                                                                                                                                                                                                                                                     |
+|------------------------------------|------------------------------------|
+| **Version**         | 0.1                                                                                                                                                                                                                                                                                                        |
+| **Status**          | Draft                                                                                                                                                                                                                                                                                                      |
+| **Review Date**     | 2027-03-31                                                                                                                                                                                                                                                                                                 |
+| **Parent Document** | Data & Digital Asset Governance Framework v1.4                                                                                                                                                                                                                                                             |
+| **Note**            | This appendix is the technical specification for the `fw-governance` MCP server. It is a companion to the governance documents; the normative requirements the server enforces are stated in the domain chapters. For an overview of how the server fits into the adoption process, see @sec-mcp-overview. |
 :::
 
 ## 1. Overview
@@ -19,30 +22,30 @@ The server name is `fw-governance`.
 
 ### 1.1 Design Principles
 
-- **Single server, many tools.** One MCP server covers all governance domains (code, data, models) to avoid tool fragmentation.
-- **Registers as backend.** The Tool Register, Model Register, Hydrometric Data Register, Connection Register, and Data Catalogue are the source of truth. The server reads them; it does not duplicate them.
-- **Rules as configuration.** Governance rules (header formats, naming patterns, schema definitions, tier requirements, prohibited packages) are encoded in a `governance-rules.toml` configuration file. When the framework is updated, the config file is updated; no server code changes needed.
-- **Read-heavy, write-light.** Most tools are lookups and validations. The few write operations (scaffolding, register drafting) produce local files or draft entries that a human commits; the server never writes directly to registers.
-- **Fail informative.** Every validation tool returns structured results with a pass/fail per check, the governance reference (document, section), and a plain-language explanation of what to fix.
+-   **Single server, many tools.** One MCP server covers all governance domains (code, data, models) to avoid tool fragmentation.
+-   **Registers as backend.** The Tool Register, Model Register, Hydrometric Data Register, Connection Register, and Data Catalogue are the source of truth. The server reads them; it does not duplicate them.
+-   **Rules as configuration.** Governance rules (header formats, naming patterns, schema definitions, tier requirements, prohibited packages) are encoded in a `governance-rules.toml` configuration file. When the framework is updated, the config file is updated; no server code changes needed.
+-   **Read-heavy, write-light.** Most tools are lookups and validations. The few write operations (scaffolding, register drafting) produce local files or draft entries that a human commits; the server never writes directly to registers.
+-   **Fail informative.** Every validation tool returns structured results with a pass/fail per check, the governance reference (document, section), and a plain-language explanation of what to fix.
 
 ### 1.2 Backend Data Sources
 
-| Source | Format | Location |
-|---|---|---|
-| Tool Register | Excel or Delta table | `registers/tool_register.xlsx` or `fw_hydrometric.tool_register` |
-| Model Register | Excel or Delta table | `registers/model_register.xlsx` |
+| Source                    | Format               | Location                                                               |
+|------------------------|------------------------|------------------------|
+| Tool Register             | Excel or Delta table | `registers/tool_register.xlsx` or `fw_hydrometric.tool_register`       |
+| Model Register            | Excel or Delta table | `registers/model_register.xlsx`                                        |
 | Hydrometric Data Register | Excel or Delta table | `registers/hydrometric_data_register.xlsx` or `fw_hydrometric` catalog |
-| Connection Register | Excel or Delta table | `registers/connection_register.xlsx` |
-| Data Catalogue | TOML or YAML | `governance/data_catalogue.toml` |
-| Governance Rules | TOML | `governance/rules.toml` |
+| Connection Register       | Excel or Delta table | `registers/connection_register.xlsx`                                   |
+| Data Catalogue            | TOML or YAML         | `governance/data_catalogue.toml`                                       |
+| Governance Rules          | TOML                 | `governance/rules.toml`                                                |
 
----
+------------------------------------------------------------------------
 
 ## 2. Tool Catalogue
 
 Tools are grouped into five domains. Each tool definition includes: name, description, parameters, return schema, and the governance section it implements.
 
----
+------------------------------------------------------------------------
 
 ### Domain A: Register Lookups
 
@@ -52,20 +55,20 @@ These tools provide read access to the governance registers. They answer the que
 
 Look up a code tool in the Tool Register.
 
-| Field | Detail |
-|---|---|
-| **Description** | Returns the full Tool Register entry for a named tool, including tier, owner, steward, custodian(s), status, repository location, and last review date. |
-| **Governance ref** | Framework §8.6 |
+| Field              | Detail                                                                                                                                                  |
+|------------------------------------|------------------------------------|
+| **Description**    | Returns the full Tool Register entry for a named tool, including tier, owner, steward, custodian(s), status, repository location, and last review date. |
+| **Governance ref** | Framework §8.6                                                                                                                                          |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `tool_name` | string | yes | Tool name as it appears in the register (case-insensitive fuzzy match) |
+| Name        | Type   | Required | Description                                                            |
+|------------------|------------------|------------------|------------------|
+| `tool_name` | string | yes      | Tool name as it appears in the register (case-insensitive fuzzy match) |
 
 **Returns:**
 
-```json
+``` json
 {
   "tool_name": "ensemble_processor",
   "tier": 1,
@@ -85,26 +88,26 @@ Look up a code tool in the Tool Register.
 }
 ```
 
----
+------------------------------------------------------------------------
 
 #### `get_model_info`
 
 Look up a flood model in the Model Register.
 
-| Field | Detail |
-|---|---|
-| **Description** | Returns the Model Register entry including type, tier, condition rating, calibration reference, connected models, and custodian details. |
-| **Governance ref** | Flood Model Governance §3 |
+| Field              | Detail                                                                                                                                   |
+|------------------------------------|------------------------------------|
+| **Description**    | Returns the Model Register entry including type, tier, condition rating, calibration reference, connected models, and custodian details. |
+| **Governance ref** | Flood Model Governance §3                                                                                                                |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `model_id` | string | yes | Model ID (e.g. `SEVERN_FMP_v3.2`) or partial match |
+| Name       | Type   | Required | Description                                        |
+|------------------|------------------|------------------|------------------|
+| `model_id` | string | yes      | Model ID (e.g. `SEVERN_FMP_v3.2`) or partial match |
 
 **Returns:**
 
-```json
+``` json
 {
   "model_id": "SEVERN_FMP_v3.2",
   "model_type": "FMP 1D",
@@ -131,28 +134,28 @@ Look up a flood model in the Model Register.
 }
 ```
 
----
+------------------------------------------------------------------------
 
 #### `get_dataset_info`
 
 Look up a hydrometric dataset in the Hydrometric Data Register.
 
-| Field | Detail |
-|---|---|
-| **Description** | Returns the register entry for a Bronze, Silver, or Gold dataset, including provenance, QC status, lineage, and approval details. |
-| **Governance ref** | Hydrometric Data §10 |
+| Field              | Detail                                                                                                                            |
+|------------------------------------|------------------------------------|
+| **Description**    | Returns the register entry for a Bronze, Silver, or Gold dataset, including provenance, QC status, lineage, and approval details. |
+| **Governance ref** | Hydrometric Data §10                                                                                                              |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `dataset_id` | string | yes | Full or partial dataset ID (e.g. `EA_39001_Q_20260115`) |
-| `tier` | string | no | Filter by `Bronze`, `Silver`, or `Gold` |
-| `site_id` | string | no | Filter by site identifier |
+| Name         | Type   | Required | Description                                             |
+|------------------|------------------|------------------|------------------|
+| `dataset_id` | string | yes      | Full or partial dataset ID (e.g. `EA_39001_Q_20260115`) |
+| `tier`       | string | no       | Filter by `Bronze`, `Silver`, or `Gold`                 |
+| `site_id`    | string | no       | Filter by site identifier                               |
 
 **Returns:**
 
-```json
+``` json
 {
   "dataset_id": "EA_39001_Q_20260115_SILVER_v1",
   "tier": "Silver",
@@ -172,46 +175,46 @@ Look up a hydrometric dataset in the Hydrometric Data Register.
 }
 ```
 
----
+------------------------------------------------------------------------
 
 #### `get_connections`
 
 Look up all upstream and downstream model connections for a given model.
 
-| Field | Detail |
-|---|---|
-| **Description** | Returns all Connection Register entries where the specified model is either the upstream or downstream component. Used before deploying model changes to identify impact scope. |
-| **Governance ref** | Flood Model Governance §5.2, §5.4 |
+| Field              | Detail                                                                                                                                                                          |
+|------------------------------------|------------------------------------|
+| **Description**    | Returns all Connection Register entries where the specified model is either the upstream or downstream component. Used before deploying model changes to identify impact scope. |
+| **Governance ref** | Flood Model Governance §5.2, §5.4                                                                                                                                               |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `model_id` | string | yes | Model ID to query connections for |
-| `direction` | string | no | `upstream`, `downstream`, or `both` (default: `both`) |
+| Name        | Type   | Required | Description                                           |
+|------------------|------------------|------------------|------------------|
+| `model_id`  | string | yes      | Model ID to query connections for                     |
+| `direction` | string | no       | `upstream`, `downstream`, or `both` (default: `both`) |
 
 **Returns:** Array of connection entries with connection ID, upstream/downstream model, connection type, output/input variables, transfer method, manual override availability, and failure mode.
 
----
+------------------------------------------------------------------------
 
 #### `lookup_definition`
 
 Look up a term in the Data Catalogue.
 
-| Field | Detail |
-|---|---|
-| **Description** | Returns the agreed team definition for a data term, entity, or attribute. Includes source, version, and any notes on conflicts with external definitions. |
-| **Governance ref** | Framework §9.5 |
+| Field              | Detail                                                                                                                                                    |
+|------------------------------------|------------------------------------|
+| **Description**    | Returns the agreed team definition for a data term, entity, or attribute. Includes source, version, and any notes on conflicts with external definitions. |
+| **Governance ref** | Framework §9.5                                                                                                                                            |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `term` | string | yes | The term to look up (fuzzy matched) |
+| Name   | Type   | Required | Description                         |
+|--------|--------|----------|-------------------------------------|
+| `term` | string | yes      | The term to look up (fuzzy matched) |
 
 **Returns:**
 
-```json
+``` json
 {
   "term": "BFI",
   "definition": "Base Flow Index. The proportion of river flow derived from groundwater or other slowly varying sources. Ranges from 0 to 1.",
@@ -222,26 +225,26 @@ Look up a term in the Data Catalogue.
 }
 ```
 
----
+------------------------------------------------------------------------
 
 #### `get_governance_rule`
 
 Look up a specific governance rule by topic.
 
-| Field | Detail |
-|---|---|
-| **Description** | Returns the applicable governance rule for a given topic, including the requirement text, which tiers it applies to, the source document and section, and any exceptions. This is the tool a coding assistant calls when it needs to know "what are the rules for X?" |
-| **Governance ref** | All documents |
+| Field              | Detail                                                                                                                                                                                                                                                                |
+|------------------------------------|------------------------------------|
+| **Description**    | Returns the applicable governance rule for a given topic, including the requirement text, which tiers it applies to, the source document and section, and any exceptions. This is the tool a coding assistant calls when it needs to know "what are the rules for X?" |
+| **Governance ref** | All documents                                                                                                                                                                                                                                                         |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `topic` | string | yes | Natural language topic (e.g. `pandas usage`, `header block`, `code review tier 2`, `parquet schema bronze`, `commit message format`) |
+| Name    | Type   | Required | Description                                                                                                                          |
+|------------------|------------------|------------------|------------------|
+| `topic` | string | yes      | Natural language topic (e.g. `pandas usage`, `header block`, `code review tier 2`, `parquet schema bronze`, `commit message format`) |
 
 **Returns:**
 
-```json
+``` json
 {
   "topic": "pandas usage",
   "rule": "pandas must not be used in Tier 1 operational tools or in shared modules. It may be used freely in Tier 3 exploratory work and Jupyter notebooks.",
@@ -252,7 +255,7 @@ Look up a specific governance rule by topic.
 }
 ```
 
----
+------------------------------------------------------------------------
 
 ### Domain B: Code Validation
 
@@ -262,21 +265,21 @@ These tools check source files against governance rules. They answer: *does this
 
 Check whether a source file has a complete, correctly formatted header block.
 
-| Field | Detail |
-|---|---|
-| **Description** | Parses the header block from a source file and checks each field against the mandatory header template for the relevant language. Returns pass/fail per field with an explanation of what is missing or malformed. |
-| **Governance ref** | R Governance §2.4, Python Governance §2.3 |
+| Field              | Detail                                                                                                                                                                                                             |
+|------------------------------------|------------------------------------|
+| **Description**    | Parses the header block from a source file and checks each field against the mandatory header template for the relevant language. Returns pass/fail per field with an explanation of what is missing or malformed. |
+| **Governance ref** | R Governance §2.4, Python Governance §2.3                                                                                                                                                                          |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `file_path` | string | yes | Path to the source file |
-| `language` | string | no | `R` or `Python` (auto-detected from extension if omitted) |
+| Name        | Type   | Required | Description                                               |
+|------------------|------------------|------------------|------------------|
+| `file_path` | string | yes      | Path to the source file                                   |
+| `language`  | string | no       | `R` or `Python` (auto-detected from extension if omitted) |
 
 **Returns:**
 
-```json
+``` json
 {
   "file": "src/ensemble_processor.R",
   "language": "R",
@@ -298,28 +301,28 @@ Check whether a source file has a complete, correctly formatted header block.
 }
 ```
 
----
+------------------------------------------------------------------------
 
 #### `check_tier_compliance`
 
 Check whether a source file or project meets the governance requirements for its declared tier.
 
-| Field | Detail |
-|---|---|
-| **Description** | Runs a comprehensive compliance check for a tool against its declared tier. Covers: header completeness, documentation requirements (README, docstrings/roxygen2, runbook), testing presence and coverage, dependency lockfile status, prohibited package usage, naming conventions, and type hints (Python). Returns a structured checklist mirroring the code review checklist. |
-| **Governance ref** | R Governance §3.1, Python Governance §3.1, Framework §8.4 |
+| Field              | Detail                                                                                                                                                                                                                                                                                                                                                                            |
+|------------------------------------|------------------------------------|
+| **Description**    | Runs a comprehensive compliance check for a tool against its declared tier. Covers: header completeness, documentation requirements (README, docstrings/roxygen2, runbook), testing presence and coverage, dependency lockfile status, prohibited package usage, naming conventions, and type hints (Python). Returns a structured checklist mirroring the code review checklist. |
+| **Governance ref** | R Governance §3.1, Python Governance §3.1, Framework §8.4                                                                                                                                                                                                                                                                                                                         |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `project_path` | string | yes | Path to the tool's root directory |
-| `language` | string | no | `R` or `Python` (auto-detected) |
-| `tier` | integer | no | 1, 2, or 3 (read from header if omitted) |
+| Name           | Type    | Required | Description                              |
+|----------------|---------|----------|------------------------------------------|
+| `project_path` | string  | yes      | Path to the tool's root directory        |
+| `language`     | string  | no       | `R` or `Python` (auto-detected)          |
+| `tier`         | integer | no       | 1, 2, or 3 (read from header if omitted) |
 
 **Returns:**
 
-```json
+``` json
 {
   "tool": "ensemble_processor",
   "language": "R",
@@ -346,26 +349,26 @@ Check whether a source file or project meets the governance requirements for its
 }
 ```
 
----
+------------------------------------------------------------------------
 
 #### `validate_commit_message`
 
 Check whether a commit message follows Conventional Commits.
 
-| Field | Detail |
-|---|---|
-| **Description** | Validates a commit message against the team's Conventional Commits convention. Checks type is permitted (`feat`, `fix`, `docs`, `refactor`, `test`, `chore`), scope is present, description is present and not too long, and body explains *why* not just *what*. |
-| **Governance ref** | Framework §8.5 |
+| Field              | Detail                                                                                                                                                                                                                                                            |
+|------------------------------------|------------------------------------|
+| **Description**    | Validates a commit message against the team's Conventional Commits convention. Checks type is permitted (`feat`, `fix`, `docs`, `refactor`, `test`, `chore`), scope is present, description is present and not too long, and body explains *why* not just *what*. |
+| **Governance ref** | Framework §8.5                                                                                                                                                                                                                                                    |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `message` | string | yes | The full commit message |
+| Name      | Type   | Required | Description             |
+|-----------|--------|----------|-------------------------|
+| `message` | string | yes      | The full commit message |
 
 **Returns:**
 
-```json
+``` json
 {
   "valid": false,
   "type": {"value": "update", "valid": false, "fix": "Use one of: feat, fix, docs, refactor, test, chore"},
@@ -375,27 +378,27 @@ Check whether a commit message follows Conventional Commits.
 }
 ```
 
----
+------------------------------------------------------------------------
 
 #### `validate_parquet_schema`
 
 Check whether a Parquet file matches the required schema for its data tier.
 
-| Field | Detail |
-|---|---|
-| **Description** | Reads the schema of a Parquet file and validates it against the mandatory column definitions for Bronze, Silver, or Gold tier as defined in the Hydrometric Data Framework. Checks column names, types, presence of mandatory columns, and absence of prohibited columns (e.g. extra columns in Bronze). |
-| **Governance ref** | Hydrometric Data §7.2, §7.3, §7.4 |
+| Field              | Detail                                                                                                                                                                                                                                                                                                   |
+|------------------------------------|------------------------------------|
+| **Description**    | Reads the schema of a Parquet file and validates it against the mandatory column definitions for Bronze, Silver, or Gold tier as defined in the Hydrometric Data Framework. Checks column names, types, presence of mandatory columns, and absence of prohibited columns (e.g. extra columns in Bronze). |
+| **Governance ref** | Hydrometric Data §7.2, §7.3, §7.4                                                                                                                                                                                                                                                                        |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `file_path` | string | yes | Path to the Parquet file |
-| `expected_tier` | string | yes | `Bronze`, `Silver`, `Gold_timeseries`, `Gold_aggregated`, or `Gold_ml_training` |
+| Name            | Type   | Required | Description                                                                     |
+|------------------|------------------|------------------|------------------|
+| `file_path`     | string | yes      | Path to the Parquet file                                                        |
+| `expected_tier` | string | yes      | `Bronze`, `Silver`, `Gold_timeseries`, `Gold_aggregated`, or `Gold_ml_training` |
 
 **Returns:**
 
-```json
+``` json
 {
   "file": "bronze/EA/Q/2024/EA_39001_Q_20240101.parquet",
   "expected_tier": "Bronze",
@@ -418,27 +421,27 @@ Check whether a Parquet file matches the required schema for its data tier.
 }
 ```
 
----
+------------------------------------------------------------------------
 
 #### `validate_naming`
 
 Check whether an identifier follows the team's naming convention for its asset type.
 
-| Field | Detail |
-|---|---|
-| **Description** | Validates a dataset ID, model ID, file name, or tool name against the relevant naming convention. |
-| **Governance ref** | Hydrometric Data Appendix A, Framework §6.2, Flood Model Governance §3 |
+| Field              | Detail                                                                                            |
+|------------------------------------|------------------------------------|
+| **Description**    | Validates a dataset ID, model ID, file name, or tool name against the relevant naming convention. |
+| **Governance ref** | Hydrometric Data Appendix A, Framework §6.2, Flood Model Governance §3                            |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `identifier` | string | yes | The name/ID to validate |
-| `asset_type` | string | yes | One of: `bronze_dataset`, `silver_dataset`, `gold_dataset`, `model_id`, `fmp_file`, `pdm_parameter_set`, `tool_name` |
+| Name         | Type   | Required | Description                                                                                                          |
+|------------------|------------------|------------------|------------------|
+| `identifier` | string | yes      | The name/ID to validate                                                                                              |
+| `asset_type` | string | yes      | One of: `bronze_dataset`, `silver_dataset`, `gold_dataset`, `model_id`, `fmp_file`, `pdm_parameter_set`, `tool_name` |
 
 **Returns:**
 
-```json
+``` json
 {
   "identifier": "EA_39001_Q_20260115",
   "asset_type": "bronze_dataset",
@@ -453,49 +456,49 @@ Check whether an identifier follows the team's naming convention for its asset t
 }
 ```
 
----
+------------------------------------------------------------------------
 
 #### `pre_review`
 
 Run the full code review checklist automatically, flagging items that need human judgement.
 
-| Field | Detail |
-|---|---|
-| **Description** | Executes every mechanical check from the R or Python review checklist and returns a structured result that can be attached to a pull request. Items that require human judgement (e.g. "does the code do what it claims?") are returned as `NEEDS_HUMAN_REVIEW` with the checklist question text. |
-| **Governance ref** | R Governance §3.1, Python Governance §3.1 |
+| Field              | Detail                                                                                                                                                                                                                                                                                            |
+|------------------------------------|------------------------------------|
+| **Description**    | Executes every mechanical check from the R or Python review checklist and returns a structured result that can be attached to a pull request. Items that require human judgement (e.g. "does the code do what it claims?") are returned as `NEEDS_HUMAN_REVIEW` with the checklist question text. |
+| **Governance ref** | R Governance §3.1, Python Governance §3.1                                                                                                                                                                                                                                                         |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `project_path` | string | yes | Path to the tool's root directory |
-| `language` | string | no | Auto-detected |
-| `tier` | integer | no | Read from header if omitted |
+| Name           | Type    | Required | Description                       |
+|----------------|---------|----------|-----------------------------------|
+| `project_path` | string  | yes      | Path to the tool's root directory |
+| `language`     | string  | no       | Auto-detected                     |
+| `tier`         | integer | no       | Read from header if omitted       |
 
 **Returns:** A structured object with four sections (Correctness, Code Quality, Testing, Dependencies and Reproducibility), each containing an array of checklist items with `status` of `PASS`, `FAIL`, `WARN`, or `NEEDS_HUMAN_REVIEW`.
 
----
+------------------------------------------------------------------------
 
 #### `check_file_formats`
 
 Scan a directory for file format violations against the team's accepted format rules.
 
-| Field | Detail |
-|---|---|
-| **Description** | Walks a project or data directory and checks every data file against the format rules in `governance-rules.toml`. Flags files that use prohibited formats (e.g. CSV in a pipeline directory, Excel outside a deliverables folder), files that use a discouraged format where a preferred one exists, and any format that is unexpected for the directory context. Returns pass/fail per file with the governance reference and a plain-language fix. Does not open file contents; checks extension and location only. For schema-level validation of Parquet files, use `validate_parquet_schema`. |
-| **Governance ref** | File Format Reference (Appendix E); Hydrometric Data §7; R Governance §2.2.4; Python Governance §2.2.4 |
+| Field              | Detail                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|------------------------------------|------------------------------------|
+| **Description**    | Walks a project or data directory and checks every data file against the format rules in `governance-rules.toml`. Flags files that use prohibited formats (e.g. CSV in a pipeline directory, Excel outside a deliverables folder), files that use a discouraged format where a preferred one exists, and any format that is unexpected for the directory context. Returns pass/fail per file with the governance reference and a plain-language fix. Does not open file contents; checks extension and location only. For schema-level validation of Parquet files, use `validate_parquet_schema`. |
+| **Governance ref** | File Format Reference (Appendix E); Hydrometric Data §7; R Governance §2.2.4; Python Governance §2.2.4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `path` | string | yes | Directory to scan (recursively) |
-| `context` | string | no | One of: `pipeline`, `bronze`, `silver`, `gold`, `model`, `deliverables`, `any` (default: `any`). Determines which rules apply. |
-| `tier` | integer | no | 1, 2, or 3. Stricter rules apply at Tier 1 (prohibited formats are hard failures; at Tier 3 they are warnings). |
+| Name      | Type    | Required | Description                                                                                                                    |
+|------------------|------------------|------------------|------------------|
+| `path`    | string  | yes      | Directory to scan (recursively)                                                                                                |
+| `context` | string  | no       | One of: `pipeline`, `bronze`, `silver`, `gold`, `model`, `deliverables`, `any` (default: `any`). Determines which rules apply. |
+| `tier`    | integer | no       | 1, 2, or 3. Stricter rules apply at Tier 1 (prohibited formats are hard failures; at Tier 3 they are warnings).                |
 
 **Returns:**
 
-```json
+``` json
 {
   "path": "data/catchment_flows/",
   "context": "pipeline",
@@ -532,7 +535,7 @@ Scan a directory for file format violations against the team's accepted format r
 }
 ```
 
----
+------------------------------------------------------------------------
 
 ### Domain C: Data Pipeline Validation
 
@@ -542,65 +545,65 @@ These tools check data assets against the medallion architecture rules.
 
 Check whether a Bronze ingestion is ready to be stored.
 
-| Field | Detail |
-|---|---|
-| **Description** | Given a raw file and a proposed dataset ID, validates that: the dataset ID follows naming conventions, the file can be read, mandatory Parquet columns are present and typed correctly, and a provenance record draft can be generated from available metadata. Does **not** write to the register. |
-| **Governance ref** | Hydrometric Data §4.1, §4.2, §7.2 |
+| Field              | Detail                                                                                                                                                                                                                                                                                              |
+|------------------------------------|------------------------------------|
+| **Description**    | Given a raw file and a proposed dataset ID, validates that: the dataset ID follows naming conventions, the file can be read, mandatory Parquet columns are present and typed correctly, and a provenance record draft can be generated from available metadata. Does **not** write to the register. |
+| **Governance ref** | Hydrometric Data §4.1, §4.2, §7.2                                                                                                                                                                                                                                                                   |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `file_path` | string | yes | Path to the raw supplier file or converted Parquet |
-| `dataset_id` | string | yes | Proposed Bronze dataset ID |
-| `supplier` | string | yes | Supplier code (EA, NRFA, MO, etc.) |
-| `data_type` | string | yes | Q, H, P, SM, or SWE |
+| Name         | Type   | Required | Description                                        |
+|------------------|------------------|------------------|------------------|
+| `file_path`  | string | yes      | Path to the raw supplier file or converted Parquet |
+| `dataset_id` | string | yes      | Proposed Bronze dataset ID                         |
+| `supplier`   | string | yes      | Supplier code (EA, NRFA, MO, etc.)                 |
+| `data_type`  | string | yes      | Q, H, P, SM, or SWE                                |
 
 **Returns:** Schema validation results plus a draft provenance record with fields pre-filled from the file metadata and parameters, and empty fields flagged for manual completion.
 
----
+------------------------------------------------------------------------
 
 #### `check_silver_readiness`
 
 Assess whether a Silver dataset meets promotion criteria.
 
-| Field | Detail |
-|---|---|
-| **Description** | Reads a Silver-candidate Parquet file and checks: all Silver schema columns present and correctly typed, every row has a `qc_flag` value, `qc_value` is populated correctly relative to flags, `estimation_method` is populated for all flag=2 rows, and flag distribution is summarised. Returns a promotion readiness assessment. |
-| **Governance ref** | Hydrometric Data §5, §7.3 |
+| Field              | Detail                                                                                                                                                                                                                                                                                                                              |
+|------------------------------------|------------------------------------|
+| **Description**    | Reads a Silver-candidate Parquet file and checks: all Silver schema columns present and correctly typed, every row has a `qc_flag` value, `qc_value` is populated correctly relative to flags, `estimation_method` is populated for all flag=2 rows, and flag distribution is summarised. Returns a promotion readiness assessment. |
+| **Governance ref** | Hydrometric Data §5, §7.3                                                                                                                                                                                                                                                                                                           |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `file_path` | string | yes | Path to the Silver candidate Parquet file |
-| `bronze_source_id` | string | yes | The Bronze dataset ID this was derived from |
+| Name               | Type   | Required | Description                                 |
+|------------------|------------------|------------------|------------------|
+| `file_path`        | string | yes      | Path to the Silver candidate Parquet file   |
+| `bronze_source_id` | string | yes      | The Bronze dataset ID this was derived from |
 
 **Returns:** Schema validation, flag distribution summary, gap-fill coverage, and a promotion checklist with pass/fail per requirement.
 
----
+------------------------------------------------------------------------
 
 #### `check_gold_readiness`
 
 Assess whether a Gold dataset meets approval criteria.
 
-| Field | Detail |
-|---|---|
-| **Description** | Validates a Gold-candidate Parquet file against the appropriate Gold schema (timeseries, aggregated, or ML training set). For ML training sets, additionally checks that static catchment attributes are present, typed correctly, and repeated on every row. Returns an approval readiness assessment and a draft derivation record. |
-| **Governance ref** | Hydrometric Data §6, §7.4 |
+| Field              | Detail                                                                                                                                                                                                                                                                                                                                |
+|------------------------------------|------------------------------------|
+| **Description**    | Validates a Gold-candidate Parquet file against the appropriate Gold schema (timeseries, aggregated, or ML training set). For ML training sets, additionally checks that static catchment attributes are present, typed correctly, and repeated on every row. Returns an approval readiness assessment and a draft derivation record. |
+| **Governance ref** | Hydrometric Data §6, §7.4                                                                                                                                                                                                                                                                                                             |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `file_path` | string | yes | Path to the Gold candidate Parquet file |
-| `gold_type` | string | yes | `timeseries`, `aggregated`, or `ml_training` |
-| `silver_source_ids` | array[string] | yes | Silver dataset IDs used as input |
-| `purpose` | string | yes | Intended use of this Gold product |
+| Name                | Type            | Required | Description                                  |
+|------------------|------------------|------------------|------------------|
+| `file_path`         | string          | yes      | Path to the Gold candidate Parquet file      |
+| `gold_type`         | string          | yes      | `timeseries`, `aggregated`, or `ml_training` |
+| `silver_source_ids` | array\[string\] | yes      | Silver dataset IDs used as input             |
+| `purpose`           | string          | yes      | Intended use of this Gold product            |
 
 **Returns:** Schema validation, lineage check against Silver sources, and a draft derivation record template.
 
----
+------------------------------------------------------------------------
 
 ### Domain D: Scaffolding and Generation
 
@@ -610,29 +613,29 @@ These tools generate compliant skeletons and templates. They answer: *set me up 
 
 Generate a new tool project with correct structure, header, and configuration.
 
-| Field | Detail |
-|---|---|
-| **Description** | Creates a directory structure, header-block template, README skeleton, test skeleton, and dependency management initialisation (renv or poetry) for a new tool at the specified tier. Also produces a draft Tool Register entry for manual review and commit. |
-| **Governance ref** | R Governance §4.1, Python Governance §4.1, Framework §8.3, §8.6 |
+| Field              | Detail                                                                                                                                                                                                                                                        |
+|------------------------------------|------------------------------------|
+| **Description**    | Creates a directory structure, header-block template, README skeleton, test skeleton, and dependency management initialisation (renv or poetry) for a new tool at the specified tier. Also produces a draft Tool Register entry for manual review and commit. |
+| **Governance ref** | R Governance §4.1, Python Governance §4.1, Framework §8.3, §8.6                                                                                                                                                                                               |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `name` | string | yes | Tool name (snake_case) |
-| `language` | string | yes | `R` or `Python` |
-| `tier` | integer | yes | 1, 2, or 3 |
-| `author` | string | yes | Author name and email |
-| `description` | string | yes | One-sentence description |
-| `use_case` | string | no | Python only: `flood_modeller_api`, `ml`, `data_processing`, or `other` |
-| `flode_module` | string | no | R only: target Flode module or `standalone` |
-| `route` | string | no | Development route: `A`, `B`, `C`, or `D` (default: `A`) |
+| Name           | Type    | Required | Description                                                            |
+|------------------|------------------|------------------|------------------|
+| `name`         | string  | yes      | Tool name (snake_case)                                                 |
+| `language`     | string  | yes      | `R` or `Python`                                                        |
+| `tier`         | integer | yes      | 1, 2, or 3                                                             |
+| `author`       | string  | yes      | Author name and email                                                  |
+| `description`  | string  | yes      | One-sentence description                                               |
+| `use_case`     | string  | no       | Python only: `flood_modeller_api`, `ml`, `data_processing`, or `other` |
+| `flode_module` | string  | no       | R only: target Flode module or `standalone`                            |
+| `route`        | string  | no       | Development route: `A`, `B`, `C`, or `D` (default: `A`)                |
 
 **Returns:** Object describing all files created, their paths, and the draft Tool Register entry.
 
 **Example output structure (Python, Tier 2, ML):**
 
-```
+```         
 ml_flood_predictor/
 ├── src/
 │   └── ml_flood_predictor/
@@ -647,77 +650,77 @@ ml_flood_predictor/
 └── .register_entry.json      # Draft Tool Register entry for Steward review
 ```
 
----
+------------------------------------------------------------------------
 
 #### `generate_header`
 
 Generate a correctly formatted header block for an existing file.
 
-| Field | Detail |
-|---|---|
-| **Description** | Produces the mandatory header block for R or Python, pre-filled with the provided metadata. Returns the header as a string ready to paste at the top of a file. |
-| **Governance ref** | R Governance §2.4, Python Governance §2.3 |
+| Field              | Detail                                                                                                                                                          |
+|------------------------------------|------------------------------------|
+| **Description**    | Produces the mandatory header block for R or Python, pre-filled with the provided metadata. Returns the header as a string ready to paste at the top of a file. |
+| **Governance ref** | R Governance §2.4, Python Governance §2.3                                                                                                                       |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `language` | string | yes | `R` or `Python` |
-| `tool_name` | string | yes | Tool name |
-| `description` | string | yes | One-sentence description |
-| `author` | string | yes | Name and email |
-| `tier` | integer | yes | 1, 2, or 3 |
-| `inputs` | string | yes | Description of inputs |
-| `outputs` | string | yes | Description of outputs |
-| `dependencies` | string | yes | Non-standard package list |
-| `use_case` | string | no | Python only |
-| `flode_module` | string | no | R only |
+| Name           | Type    | Required | Description               |
+|----------------|---------|----------|---------------------------|
+| `language`     | string  | yes      | `R` or `Python`           |
+| `tool_name`    | string  | yes      | Tool name                 |
+| `description`  | string  | yes      | One-sentence description  |
+| `author`       | string  | yes      | Name and email            |
+| `tier`         | integer | yes      | 1, 2, or 3                |
+| `inputs`       | string  | yes      | Description of inputs     |
+| `outputs`      | string  | yes      | Description of outputs    |
+| `dependencies` | string  | yes      | Non-standard package list |
+| `use_case`     | string  | no       | Python only               |
+| `flode_module` | string  | no       | R only                    |
 
 **Returns:** The complete header block as a formatted string.
 
----
+------------------------------------------------------------------------
 
 #### `generate_run_record`
 
 Generate a pre-filled model run record template.
 
-| Field | Detail |
-|---|---|
-| **Description** | Pulls the current model version, condition rating, and connection list from the Model Register and Connection Register, and produces a run record template with those fields pre-filled. The operator completes the remaining fields (input datasets, scenario, outputs, warnings). |
-| **Governance ref** | Flood Model Governance §6 |
+| Field              | Detail                                                                                                                                                                                                                                                                              |
+|------------------------------------|------------------------------------|
+| **Description**    | Pulls the current model version, condition rating, and connection list from the Model Register and Connection Register, and produces a run record template with those fields pre-filled. The operator completes the remaining fields (input datasets, scenario, outputs, warnings). |
+| **Governance ref** | Flood Model Governance §6                                                                                                                                                                                                                                                           |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `model_id` | string | yes | Model ID from the Model Register |
-| `run_type` | string | yes | `operational`, `hindcast`, `scenario`, `calibration`, or `validation` |
-| `run_by` | string | yes | Name of the person running the model |
+| Name       | Type   | Required | Description                                                           |
+|------------------|------------------|------------------|------------------|
+| `model_id` | string | yes      | Model ID from the Model Register                                      |
+| `run_type` | string | yes      | `operational`, `hindcast`, `scenario`, `calibration`, or `validation` |
+| `run_by`   | string | yes      | Name of the person running the model                                  |
 
 **Returns:** A Markdown or YAML run record template with model metadata pre-filled.
 
----
+------------------------------------------------------------------------
 
 #### `generate_review_checklist`
 
 Generate the correct code review checklist for a language and tier.
 
-| Field | Detail |
-|---|---|
-| **Description** | Returns the full review checklist appropriate for the specified language and tier, formatted as Markdown checkboxes ready to paste into a pull request description. |
-| **Governance ref** | R Governance §3.1, Python Governance §3.1 |
+| Field              | Detail                                                                                                                                                              |
+|------------------------------------|------------------------------------|
+| **Description**    | Returns the full review checklist appropriate for the specified language and tier, formatted as Markdown checkboxes ready to paste into a pull request description. |
+| **Governance ref** | R Governance §3.1, Python Governance §3.1                                                                                                                           |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `language` | string | yes | `R` or `Python` |
-| `tier` | integer | yes | 1, 2, or 3 |
-| `is_ml` | boolean | no | Python only: includes ML-specific checklist items |
+| Name       | Type    | Required | Description                                       |
+|------------------|------------------|------------------|------------------|
+| `language` | string  | yes      | `R` or `Python`                                   |
+| `tier`     | integer | yes      | 1, 2, or 3                                        |
+| `is_ml`    | boolean | no       | Python only: includes ML-specific checklist items |
 
 **Returns:** Markdown-formatted checklist string.
 
----
+------------------------------------------------------------------------
 
 ### Domain E: Governance Reporting
 
@@ -727,46 +730,46 @@ These tools support the Steward's monitoring and reporting obligations.
 
 Generate a quarterly governance summary.
 
-| Field | Detail |
-|---|---|
-| **Description** | Reads all registers and produces the quarterly summary required by the monitoring framework: asset counts by tier, tier changes in period, overdue reviews, open data quality issues, and any condition ratings below Satisfactory. |
-| **Governance ref** | Framework §12.5 |
+| Field              | Detail                                                                                                                                                                                                                              |
+|------------------------------------|------------------------------------|
+| **Description**    | Reads all registers and produces the quarterly summary required by the monitoring framework: asset counts by tier, tier changes in period, overdue reviews, open data quality issues, and any condition ratings below Satisfactory. |
+| **Governance ref** | Framework §12.5                                                                                                                                                                                                                     |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `period_start` | string | no | ISO date (default: 3 months ago) |
-| `period_end` | string | no | ISO date (default: today) |
+| Name           | Type   | Required | Description                      |
+|----------------|--------|----------|----------------------------------|
+| `period_start` | string | no       | ISO date (default: 3 months ago) |
+| `period_end`   | string | no       | ISO date (default: today)        |
 
 **Returns:** Structured summary object covering all reporting categories.
 
----
+------------------------------------------------------------------------
 
 #### `audit_tier1`
 
 Run the annual Tier 1 audit checks across all registered Tier 1 assets.
 
-| Field | Detail |
-|---|---|
-| **Description** | Iterates over all Tier 1 entries in the Tool Register and Model Register. For each tool, runs `check_tier_compliance`. For each model, checks condition rating currency and calibration record completeness. Returns a consolidated audit report. |
-| **Governance ref** | Framework §12 |
+| Field              | Detail                                                                                                                                                                                                                                            |
+|------------------------------------|------------------------------------|
+| **Description**    | Iterates over all Tier 1 entries in the Tool Register and Model Register. For each tool, runs `check_tier_compliance`. For each model, checks condition rating currency and calibration record completeness. Returns a consolidated audit report. |
+| **Governance ref** | Framework §12                                                                                                                                                                                                                                     |
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| `asset_type` | string | no | `tools`, `models`, or `all` (default: `all`) |
+| Name         | Type   | Required | Description                                  |
+|------------------|------------------|------------------|------------------|
+| `asset_type` | string | no       | `tools`, `models`, or `all` (default: `all`) |
 
 **Returns:** Array of per-asset audit results with an overall summary.
 
----
+------------------------------------------------------------------------
 
 ## 3. Configuration Schema: `governance-rules.toml`
 
 The rules file encodes the checkable governance requirements so they can be updated without changing server code.
 
-```toml
+``` toml
 [meta]
 framework_version = "1.4"
 last_updated = "2026-03-22"
@@ -886,7 +889,7 @@ poor = [3, 4]
 critical = [0, 2]
 ```
 
----
+------------------------------------------------------------------------
 
 ## 4. Implementation Notes
 
@@ -908,22 +911,22 @@ For `stdio` transport (local use), no authentication is needed; the user's files
 
 ### 4.5 Phased Delivery
 
-| Phase | Tools | Value |
-|---|---|---|
-| 1 | `get_governance_rule`, `validate_header`, `generate_header`, `scaffold_tool`, `validate_naming`, `validate_commit_message`, `check_file_formats` | Immediate developer friction reduction; governance rules and format checks available at point of coding |
-| 2 | `get_tool_info`, `get_model_info`, `get_dataset_info`, `check_tier_compliance`, `generate_review_checklist`, `generate_run_record` | Register integration; code review automation |
-| 3 | `validate_parquet_schema`, `validate_bronze_ingestion`, `check_silver_readiness`, `check_gold_readiness`, `get_connections`, `pre_review` | Full data pipeline validation |
-| 4 | `governance_summary`, `audit_tier1`, `lookup_definition` | Steward reporting and data catalogue integration |
+| Phase | Tools                                                                                                                                            | Value                                                                                                   |
+|------------------------|------------------------|------------------------|
+| 1     | `get_governance_rule`, `validate_header`, `generate_header`, `scaffold_tool`, `validate_naming`, `validate_commit_message`, `check_file_formats` | Immediate developer friction reduction; governance rules and format checks available at point of coding |
+| 2     | `get_tool_info`, `get_model_info`, `get_dataset_info`, `check_tier_compliance`, `generate_review_checklist`, `generate_run_record`               | Register integration; code review automation                                                            |
+| 3     | `validate_parquet_schema`, `validate_bronze_ingestion`, `check_silver_readiness`, `check_gold_readiness`, `get_connections`, `pre_review`        | Full data pipeline validation                                                                           |
+| 4     | `governance_summary`, `audit_tier1`, `lookup_definition`                                                                                         | Steward reporting and data catalogue integration                                                        |
 
 `check_file_formats` is included in Phase 1 because it requires only `governance-rules.toml` (no register access) and provides immediate enforcement of the file format rules that were previously ungoverned. It is also the natural candidate for a pre-commit git hook, which can be wired up from day one independently of the full MCP server.
 
----
+------------------------------------------------------------------------
 
 ## 5. Example Interaction
 
 A developer using Claude Code to write a new R tool:
 
-```
+```         
 Developer: Create a new Tier 2 R tool for calculating flood frequency statistics
 
 Claude Code:

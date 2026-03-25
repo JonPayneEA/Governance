@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data and Digital Asset Governance - Appendix F — fw-governance MCP Server Specification</title>
+<title>Data and Digital Asset Governance - Appendix F — MCP Server Specification</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,10 +131,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Projects</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-useful-datasets" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Useful datasets</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-useful-datasets">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/JonPayneEA/flode">
+ <span class="dropdown-text">flode</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/JonPayneEA/reach.io">
+ <span class="dropdown-text">reach.io</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/JonPayneEA/reach.hydro">
+ <span class="dropdown-text">reach.hydro</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tools</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools">    
         <li>
     <a class="dropdown-item" href="https://github.com/JonPayneEA/flode">
  <span class="dropdown-text">flode</span></a>
@@ -174,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="./f-mcp-server-spec.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">fw-governance MCP Server Specification</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="./f-mcp-server-spec.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">MCP Server Specification</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -320,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./f-mcp-server-spec.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">fw-governance MCP Server Specification</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">MCP Server Specification</span></span></a>
   </div>
 </li>
       </ul>
@@ -364,9 +383,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="./f-mcp-server-spec.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">fw-governance MCP Server Specification</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./a-glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="./f-mcp-server-spec.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">MCP Server Specification</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-mcp-server-spec" class="quarto-section-identifier">Appendix F — fw-governance MCP Server Specification</span></h1>
+<h1 class="title">Appendix F — MCP Server Specification</h1>
 </div>
 
 
@@ -383,6 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p><strong><em><code>fw-governance</code></em></strong></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1014,6 +1034,12 @@ Document Metadata
 </table>
 <p><strong>Parameters:</strong></p>
 <table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 54%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -1301,6 +1327,12 @@ Document Metadata
 </table>
 <p><strong>Parameters:</strong></p>
 <table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -2011,6 +2043,12 @@ Document Metadata
 </table>
 <p><strong>Parameters:</strong></p>
 <table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
