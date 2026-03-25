@@ -1,0 +1,318 @@
+---
+title: "Data and Digital Asset Governance"
+subtitle: "Forecasting and Warning"
+author: "Jonathan Payne"
+date: "March 2026"
+format:
+  revealjs:
+    theme: moon
+    slide-number: true
+    logo: figures/logo.svg
+    footer: "F&W Data and Digital Asset Governance v1.4"
+    transition: slide
+    toc: false
+    css: styles.css
+    width: 1280
+    height: 720
+---
+
+# Why This Work Was Needed {background-color="#0D2E4A"}
+
+## The Problem
+
+The F&W team has accumulated a substantial body of models, code tools, and datasets over many years.
+
+::: {.incremental}
+- Structural reorganisations and staff churn have shifted ownership without it being formally transferred
+- Institutional knowledge has left with departing staff
+- Work has been duplicated because one team did not know another had already done it
+- No single person has a complete picture of what the team holds
+- Accountability has been informal and assumed rather than defined
+:::
+
+## The Response
+
+::: {.callout-note}
+This framework is a deliberate reset.
+:::
+
+It establishes:
+
+- **Clear ownership** for what the team already holds
+- **Structures resilient** to reorganisation and staff churn
+- **Cross-team accountability** rather than siloed arrangements
+
+It also sets the foundation for responsible adoption of AI and machine learning. Before any of those tools can be used in operational settings, a credible governance baseline must exist. **This framework is that baseline.**
+
+# Document Structure {background-color="#0D2E4A"}
+
+## Where This Framework Sits
+
+```{mermaid}
+flowchart TD
+    A["**Data Ownership Model** (CDDO, 2023)"]
+    B["**Defra Data Ownership Policy** (LIT 59312, 2025)"]
+    C["**Cabinet Office IAO Guidance** (2025)"]
+    D["**National Data Strategy** (HM Government, 2020)"]
+
+    subgraph ORG["Organisational Policies"]
+        direction LR
+        O1["Data Governance"] ~~~ O2["Records Management"] ~~~ O3["Digital Assets"] ~~~ O4["IT Security"]
+    end
+
+    subgraph FW["F&W Governance Suite"]
+        direction LR
+        P["**Data and Digital Asset\nGovernance Framework v1.4**\n(parent document)"]
+    end
+
+    subgraph COMP["Companion Documents"]
+        direction LR
+        C1["R Tool\nGovernance"]
+        C2["Python Tool\nGovernance"]
+        C3["Hydrometric\nData Framework"]
+        C4["Flood Model\nGovernance"]
+        C5["Training\nFramework"]
+        C6["File Format\nReference"]
+    end
+
+    A & B & C & D --> ORG
+    ORG --> FW
+    P --> COMP
+```
+
+## Precedence Rules
+
+Where documents conflict, the higher layer takes precedence.
+
+| Layer | Takes precedence on |
+|---|---|
+| CDDO Data Ownership Model | Role definitions (Owner, Steward, Custodian) |
+| Defra Data Ownership Policy | Departmental application of those roles |
+| Cabinet Office IAO Guidance | Security classification and IAO accountabilities |
+| Organisational policies | Data handling, retention, IT infrastructure |
+| Parent framework | Anything not covered by a companion document |
+| Companion documents | Domain-specific standards within their scope |
+
+: {.striped}
+
+Where a companion document is silent on a governance matter, the parent framework applies.
+
+# Roles and Accountability {background-color="#0D2E4A"}
+
+## Role Summary
+
+| Role | Grade | Core responsibility |
+|---|---|---|
+| **Owner** | Deputy Director | Ultimate accountability. Strategic decisions. Approves major changes and Gold data products. |
+| **Steward** | Grade 7 | Day-to-day governance. Maintains standards, manages quality, oversees registers. |
+| **Delegated Steward** | Grade 6 | Technical depth for Tier 1 assets. Code reviews, model condition assessments, annual audit. |
+| **Custodian** | Any grade | Hands-on work. Creates, stores, and maintains assets to agreed standards. |
+
+: {.striped}
+
+::: {.callout-note}
+Delegation does not transfer accountability. The original role holder remains responsible.
+:::
+
+## Owner
+
+**Deputy Director grade. One per major asset domain.**
+
+Owners hold ultimate accountability for meaning, content, quality, and distribution of their assets.
+
+**Key responsibilities:**
+
+- Approve what data and models the team uses and produces
+- Sign off on promotion of any asset to Tier 1
+- Resolve escalated disputes about data quality or access
+- Approve Gold datasets before they enter operational use
+- Ensure the team meets organisational data governance obligations
+- Consider whether team assets have value to wider government or society
+
+::: {.callout-note}
+The CDDO model recommends senior-level ownership; Defra policy recommends SCS. This framework requires Deputy Director grade, reflecting the operational significance of F&W assets to Flood Incident Management.
+:::
+
+## Steward and Delegated Steward
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Steward — Grade 7**
+
+Operational point of contact with data expertise.
+
+- Define and maintain data standards and naming conventions
+- Keep asset and tool registers current
+- Approve access requests and tier promotions
+- Review model quality and metadata completeness
+- Manage data lifecycle: archival, retention, disposal
+- Report risks and quality issues to the Owner
+:::
+
+::: {.column width="50%"}
+**Delegated Steward — Grade 6**
+
+Named where the Steward's strength is oversight rather than technical depth.
+
+- Code quality assessment and peer review
+- Model condition reviews
+- Data pipeline evaluation
+- Annual Tier 1 audit
+
+Reports to the Steward. Does not replace the Steward's accountability.
+:::
+
+::::
+
+## Custodian
+
+**Any grade. The team member who does the work.**
+
+Custodians execute within agreed systems according to rules and standards set by Stewards.
+
+**Key responsibilities:**
+
+- Follow naming conventions, folder structures, and coding standards
+- Use version control correctly for all assets
+- Record model run settings, tool configurations, and issues encountered
+- Flag data quality problems or tool failures to their Steward promptly
+- Not share assets outside agreed channels without permission
+- Carry out disposal of assets when directed, documenting the decision, date, method, and authorisation
+
+::: {.callout-note}
+Any team member can be a Custodian. A single person may hold Custodian responsibility for multiple assets.
+:::
+
+# The Tier System {background-color="#0D2E4A"}
+
+## Why Tiers?
+
+Not all assets carry the same risk.
+
+> A script that broke at 2am during a live flood event is a different problem to one that broke during a research exercise the following week.
+
+The tier system makes that difference explicit, and calibrates governance overhead accordingly.
+
+::: {.incremental}
+- The **same three tiers** apply to data, models, and code tools
+- This gives the team a **shared language for risk** across asset types
+- Tier describes **operational criticality**, not quality or maturity
+- A technically excellent piece of work **begins at Tier 3** until its governance is confirmed
+:::
+
+## The Three Tiers
+
+| Tier | Description | Data | Models | Tools |
+|---|---|---|---|---|
+| **Tier 1** Operational | Used in live forecasting. Failure has direct operational consequences. | Formally approved datasets feeding live model runs | FMP, PDM, Black Box, Boundary Conditions in the forecast chain | Scripts and pipelines running in live forecasting |
+| **Tier 2** Analytical | Regularly used, not in the critical path. | Calibration inputs, validated datasets for post-event analysis | Models under active development or used for post-event analysis | Visualisation tools, performance dashboards |
+| **Tier 3** Experimental | Research or prototype. Not in production. | Exploratory datasets, unvalidated inputs | New model configurations being calibrated or tested | Research notebooks, proof-of-concept tools, ML experiments |
+
+: {.striped}
+
+::: {.callout-important}
+An asset must not be used in live forecasting until formally promoted to Tier 1. Promotion requires Owner sign-off.
+:::
+
+# The Medallion Architecture {background-color="#0D2E4A"}
+
+## Two Frameworks, Two Questions
+
+The tier system and the medallion architecture are independent.
+
+| Framework | Question it answers |
+|---|---|
+| **Tier system** (1, 2, 3) | How critical is this asset to the live forecasting service? |
+| **Medallion architecture** (Bronze, Silver, Gold) | How far has this data progressed through quality assurance? |
+
+A Silver dataset for the River Wye may be used in a Tier 2 post-event analysis today and promoted to supply a Tier 1 operational model tomorrow, without changing anything about the data itself.
+
+**The operational tier describes the use. The medallion tier describes the data's quality state.**
+
+## The Three Medallion Tiers
+
+```{mermaid}
+flowchart LR
+    B["🥉 **Bronze**\nRaw\nAs received from supplier\nImmutable — never modified"]
+    S["🥈 **Silver**\nQuality Controlled\nChecked, flagged, corrected\nAll decisions documented"]
+    G["🥇 **Gold**\nAnalysis-Ready\nDerived products\nFormally approved for named purpose"]
+
+    B -->|"QC process\nSteward approval"| S
+    S -->|"Derivation\nOwner approval"| G
+```
+
+::: {.callout-note}
+**Key principle:** Each tier is a distinct, preserved state. Data is never overwritten in place. Moving data to the next tier creates a new dataset; the previous tier is always retained.
+:::
+
+## Bronze — Raw Ingested Data
+
+**Data exactly as received. Nothing corrected, removed, or reformatted beyond what is needed to store it.**
+
+::: {.incremental}
+- Assigned a unique dataset ID: `[SupplierCode]_[SiteID]_[DataType]_[YYYYMMDD]`
+- Full provenance record created at ingestion: supplier, site, period, resolution, units, receipt date, file path
+- Stored read-only from the moment of ingestion
+- Even obvious errors are preserved — corrections happen at Silver, not Bronze
+- Deletion requires Owner approval and must be documented
+:::
+
+::: {.callout-warning}
+Bronze data is an archive, not a working dataset. It must not be used directly as model input or shared externally without checking the supplier's licence.
+:::
+
+## Silver — Quality Controlled Data
+
+**Bronze data that has been checked, flagged, corrected where appropriate, and fully documented.**
+
+The QC process has four stages:
+
+| Stage | What happens |
+|---|---|
+| **1. Automated checks** | Range, rate-of-change, flatline, gap, duplicate detection. Produces a flag dataset — no values changed. |
+| **2. Expert review** | Custodian reviews flagged data against nearby gauges and known events. Assigns quality flags. |
+| **3. Gap and error handling** | Each issue resolved: retain as flagged, reject, gap-fill with documented method, or reject the dataset. |
+| **4. Steward approval** | Steward reviews the QC record and approves promotion to Silver. |
+
+: {.striped}
+
+Quality flags: **1 Good · 2 Estimated · 3 Suspect · 4 Rejected · 5 No data · 6 Below detection**
+
+## Gold — Analysis-Ready Products
+
+**Derived from Silver. A specific product, created for a named purpose, formally approved by the Owner.**
+
+Gold is not simply "better Silver." It is a deliberate decision.
+
+Examples:
+
+::: {.incremental}
+- Catchment-averaged rainfall series constructed from multiple Silver gauge records
+- Annual maximum flow series approved for flood frequency analysis
+- Daily mean flow record approved as the reference series for model calibration
+- Design event hydrograph derived from observed events
+- ML training set: named, approved collection of 15-minute Silver data with static catchment attributes attached
+:::
+
+::: {.callout-important}
+Gold datasets require **Owner approval** before entering operational use. Any model or analysis using a superseded Gold version must be flagged for review.
+:::
+
+# Summary {background-color="#0D2E4A"}
+
+## What This Framework Provides
+
+| Governance element | What it gives the team |
+|---|---|
+| **Roles** | Named accountability at every level — nothing falls through the gap between "everyone's responsibility" and "no one's responsibility" |
+| **Tiers** | A shared language for risk across data, models, and tools — calibrates oversight to what actually matters |
+| **Medallion architecture** | Reproducibility, efficiency, and confidence — any formal output can be traced from Gold back to Bronze |
+| **Document hierarchy** | Clear precedence — no ambiguity about which document governs when sources conflict |
+
+: {.striped}
+
+---
+
+**The full governance suite is available at:**
+[https://jonpayneea.github.io/Governance/](https://jonpayneea.github.io/Governance/)
