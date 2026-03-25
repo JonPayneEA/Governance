@@ -7,11 +7,10 @@ format:
   revealjs:
     theme: moon
     slide-number: true
-    logo: figures/logo.svg
+    logo: ../figures/logo.svg
     footer: "F&W Data and Digital Asset Governance v1.4"
     transition: slide
     toc: false
-    css: styles.css
     width: 1280
     height: 720
 ---
