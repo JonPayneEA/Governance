@@ -1,7 +1,7 @@
 project:
   type: book
   output-dir: docs
-
+  
 book:
   title: "Data and Digital Asset Governance"
   subtitle: "Forecasting and Warning"
@@ -10,15 +10,60 @@ book:
   version: "1.4"
   logo: figures/logo.svg
   search: true
+  reader-mode: true
+  navbar:
+    background: primary
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Useful datasets"
+        menu:
+         - text: "flode"
+           href: https://github.com/JonPayneEA/flode
+         - text: "reach.io"
+           href: https://github.com/JonPayneEA/reach.io
+         - text: "reach.hydro"
+           href: https://github.com/JonPayneEA/reach.hydro
+      - text: "Tools"
+        menu:
+         - text: "flode"
+           href: https://github.com/JonPayneEA/flode
+         - text: "reach.io"
+           href: https://github.com/JonPayneEA/reach.io
+         - text: "reach.hydro"
+           href: https://github.com/JonPayneEA/reach.hydro
+    right:
+      - icon: github
+        href: https://github.com
+  page-footer:
+    left: |
+      The Forecastin & Warning Data and Digital Asset Governance was written by 
+      Jonathan Payne.
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+  cover-image: figures/logo.svg
+  favicon: figures/logo.svg
+  site-url: https://jonpayneea.github.io/Governance/
+  repo-url: https://github.com/JonPayneEA/Governance
+  repo-branch: main
+  repo-actions: [edit, issue]
   chapters:
     - index.qmd
     - 01-governance-framework.qmd
-    - 03-r-code-governance.qmd
-    - 04-python-code-governance.qmd
-    - 05-hydrometric-data.qmd
-    - 06-flood-model-governance.qmd
-    - 07-training-framework.qmd
-    - 08-implementation.qmd
+    - part: Code Companions
+      chapters:
+        - 03-r-code-governance.qmd
+        - 04-python-code-governance.qmd
+    - part: Data Companions
+      chapters:
+        - 05-hydrometric-data.qmd
+    - part: Model Companions
+      chapters:
+        - 06-flood-model-governance.qmd
+    - part: Training and Implementation
+      chapters:
+        - 07-training-framework.qmd
+        - 08-implementation.qmd
   appendices:
     - a-glossary.qmd
     - b-document-hierarchy.qmd
@@ -29,8 +74,11 @@ book:
 
 format:
   html:
-    theme: [cosmo, water-theme.scss]
+    theme: 
+      light: [cosmo, water-theme.scss]
+      dark: [darkly]
     toc: true
     toc-depth: 3
+    toc-title: "Contents"
     number-sections: true
     css: styles.css
