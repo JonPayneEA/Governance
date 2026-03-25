@@ -1,15 +1,15 @@
 # Staff Training Framework {#sec-training-framework}
 
-::: {.callout-note}
+::: callout-note
 ## Document Metadata
-| Field | Detail |
-|---|---|
-| **Version** | 1.1 |
-| **Status** | Draft: For Team Review |
-| **Review Date** | 2027-03-31 |
+
+| Field               | Detail                                         |
+|---------------------|------------------------------------------------|
+| **Version**         | 1.1                                            |
+| **Status**          | Draft: For Team Review                         |
+| **Review Date**     | 2027-03-31                                     |
 | **Parent Document** | Data & Digital Asset Governance Framework v1.4 |
 :::
-
 
 # Purpose
 
@@ -17,7 +17,7 @@ This document sets out the staff training framework for the Forecasting and Warn
 
 Training is organised into four layers: a core that all staff complete; a fundamentals band covering scientific and technical foundations; a cross-cutting section that applies to all modellers regardless of specialism; and specialist tracks for hydrological modelling, hydraulic modelling, R development, and Python and machine learning. A crossover module sits between the hydraulic and Python tracks for staff working with the Flood Modeller API in Python.
 
-::: {.callout-note}
+::: callout-note
 This framework does not replace the governance documents. It sets out how staff become competent to work within them. The sign-off forms in Appendix A record that training has been completed, not that it substitutes for reading the source documents.
 :::
 
@@ -79,13 +79,13 @@ flowchart TD
 
 The framework has four layers. Each layer builds on the one before it.
 
-| **Layer** | **Who completes it** |
-| --- | --- |
-| **Core** | All staff, regardless of role or specialism |
-| **Fundamentals** | Staff take the track(s) relevant to their role: hydrology fundamentals, hydraulics fundamentals, and/or data and coding fundamentals |
-| **Cross-cutting** | All staff who work with flood models in any capacity |
-| **Specialist tracks** | Staff take the track(s) that match their work: hydrological modelling, hydraulic modelling, R development, Python and ML |
-| **Crossover module** | Any staff member working with the Flood Modeller API in Python, regardless of primary track |
+| **Layer**             | **Who completes it**                                                                                                                 |
+|------------------------------------|------------------------------------|
+| **Core**              | All staff, regardless of role or specialism                                                                                          |
+| **Fundamentals**      | Staff take the track(s) relevant to their role: hydrology fundamentals, hydraulics fundamentals, and/or data and coding fundamentals |
+| **Cross-cutting**     | All staff who work with flood models in any capacity                                                                                 |
+| **Specialist tracks** | Staff take the track(s) that match their work: hydrological modelling, hydraulic modelling, R development, Python and ML             |
+| **Crossover module**  | Any staff member working with the Flood Modeller API in Python, regardless of primary track                                          |
 
 The diagram below shows the full structure. Arrows indicate the recommended completion order.
 
@@ -95,19 +95,19 @@ Every team member must complete the core section before starting any specialist 
 
 ## 2.1 Topics covered
 
-- The Data and Digital Asset Governance Framework: purpose, scope, and where it sits alongside other organisational policies
+-   The Data and Digital Asset Governance Framework: purpose, scope, and where it sits alongside other organisational policies
 
-- The Owner, Steward, and Custodian role structure: what each role does, grade requirements, and how delegation works
+-   The Owner, Steward, and Custodian role structure: what each role does, grade requirements, and how delegation works
 
-- The tier system: Tier 1 operational, Tier 2 analytical, and Tier 3 experimental assets; what each means in practice
+-   The tier system: Tier 1 operational, Tier 2 analytical, and Tier 3 experimental assets; what each means in practice
 
-- Version control basics: what version control is, why it matters for reproducibility and audit, and what is expected of all team members
+-   Version control basics: what version control is, why it matters for reproducibility and audit, and what is expected of all team members
 
-- The Bronze, Silver, and Gold data architecture: what the medallion tiers mean, how data moves between them, and why only Gold data may be used in Tier 1 operations
+-   The Bronze, Silver, and Gold data architecture: what the medallion tiers mean, how data moves between them, and why only Gold data may be used in Tier 1 operations
 
-- Q-FAIR principles: what Quality, Findable, Accessible, Interoperable, and Reusable mean in the team context
+-   Q-FAIR principles: what Quality, Findable, Accessible, Interoperable, and Reusable mean in the team context
 
-- The Tool Register and Model Register: what they are, why they exist, and what triggers an update
+-   The Tool Register and Model Register: what they are, why they exist, and what triggers an update
 
 ## 2.2 Expected outcome
 
@@ -125,33 +125,33 @@ Recommended for: all staff working with hydrological models, hydrometric data, o
 
 ### Key concepts to build
 
-- Catchment water balance and the main controls on runoff generation: soil moisture, antecedent conditions, infiltration, and the distinction between overland flow and subsurface pathways
+-   Catchment water balance and the main controls on runoff generation: soil moisture, antecedent conditions, infiltration, and the distinction between overland flow and subsurface pathways
 
-- Hydrograph anatomy: rising limb, peak, recession; what shape tells you about a catchment; how antecedent conditions shift the response
+-   Hydrograph anatomy: rising limb, peak, recession; what shape tells you about a catchment; how antecedent conditions shift the response
 
-- Unit hydrograph theory and its limitations; why PDM uses a more physically-based approach
+-   Unit hydrograph theory and its limitations; why PDM uses a more physically-based approach
 
-- Flow routing: lag and attenuation through a channel; the difference between hydrological and hydraulic routing
+-   Flow routing: lag and attenuation through a channel; the difference between hydrological and hydraulic routing
 
-- Evapotranspiration: potential versus actual ET; the Penman-Monteith approach; why it matters for PDM calibration
+-   Evapotranspiration: potential versus actual ET; the Penman-Monteith approach; why it matters for PDM calibration
 
-- Model performance metrics: NSE, KGE, FAR, and RMSE; what good values look like; why certain metrics are used over others, e.g. KGE is preferred over NSE for peak flows
+-   Model performance metrics: NSE, KGE, FAR, and RMSE; what good values look like; why certain metrics are used over others, e.g. KGE is preferred over NSE for peak flows
 
-- Catchment descriptors: BFI, area, mean elevation, soil type, land cover; where they come from (FEH, HOST classification) and how they are useful in a real time context
+-   Catchment descriptors: BFI, area, mean elevation, soil type, land cover; where they come from (FEH, HOST classification) and how they are useful in a real time context
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
-| Beven, K. (2012). Rainfall-Runoff Modelling: The Primer. 2nd ed. Wiley-Blackwell. | The standard reference for conceptual and physical rainfall-runoff models. Chapter 2 on catchment water balance and Chapter 5 on PDM-type models are directly relevant. Read alongside PDM documentation. |
-| Peel, M.C. & McMahon, T.A. (2020). Hydrological processes. Wiley Interdisciplinary Reviews. doi:10.1002/wat2.1461 | A concise overview of modern catchment hydrology. Useful for grounding the more theoretical concepts from Beven in current practice. |
-| Flood Estimation Handbook (FEH) online service: fehweb.ceh.ac.uk | The UK standard for flood frequency estimation. Relevant for understanding catchment descriptors (BFIHOST, PROPWET, URBEXT) that appear in PDM parameter sets and ML feature tables. |
-| Kling, H. et al. (2012). Runoff conditions in the upper Danube basin. Journal of Hydrology. doi:10.1016/j.jhydrol.2012.01.011 | The paper that defines KGE. Short and readable. Understand why KGE decomposes NSE into correlation, bias, and variability components, and when this matters for calibration. |
-| NRFA (National River Flow Archive): nrfa.ceh.ac.uk | Explore real UK flow records, catchment descriptors, and hydrograph shapes. Browsing gauges you will work with is one of the best ways to build intuition for catchment response. |
-| Bell, V.A. et al. (2007). Development of a high resolution grid-based river flow model for use with regional climate model output. Hydrology and Earth System Sciences. doi:10.5194/hess-11-532-2007 | Background on grid-based hydrological modelling in a UK operational context. Useful for understanding how the national modelling infrastructure relates to catchment-scale work. |
+| **Resource**                                                                                                                                                                                         | **What to take from it**                                                                                                                                                                                  |
+|------------------------------------|------------------------------------|
+| Beven, K. (2012). Rainfall-Runoff Modelling: The Primer. 2nd ed. Wiley-Blackwell.                                                                                                                    | The standard reference for conceptual and physical rainfall-runoff models. Chapter 2 on catchment water balance and Chapter 5 on PDM-type models are directly relevant. Read alongside PDM documentation. |
+| Peel, M.C. & McMahon, T.A. (2020). Hydrological processes. Wiley Interdisciplinary Reviews. doi:10.1002/wat2.1461                                                                                    | A concise overview of modern catchment hydrology. Useful for grounding the more theoretical concepts from Beven in current practice.                                                                      |
+| Flood Estimation Handbook (FEH) online service: fehweb.ceh.ac.uk                                                                                                                                     | The UK standard for flood frequency estimation. Relevant for understanding catchment descriptors (BFIHOST, PROPWET, URBEXT) that appear in PDM parameter sets and ML feature tables.                      |
+| Kling, H. et al. (2012). Runoff conditions in the upper Danube basin. Journal of Hydrology. doi:10.1016/j.jhydrol.2012.01.011                                                                        | The paper that defines KGE. Short and readable. Understand why KGE decomposes NSE into correlation, bias, and variability components, and when this matters for calibration.                              |
+| NRFA (National River Flow Archive): nrfa.ceh.ac.uk                                                                                                                                                   | Explore real UK flow records, catchment descriptors, and hydrograph shapes. Browsing gauges you will work with is one of the best ways to build intuition for catchment response.                         |
+| Bell, V.A. et al. (2007). Development of a high resolution grid-based river flow model for use with regional climate model output. Hydrology and Earth System Sciences. doi:10.5194/hess-11-532-2007 | Background on grid-based hydrological modelling in a UK operational context. Useful for understanding how the national modelling infrastructure relates to catchment-scale work.                          |
 
-| **F****&****W context note** The PDM (Probability Distributed Model) is the team's primary rainfall-runoff tool. Its parameter sets encode the catchment characteristics above. When you read about soil moisture storage capacity or drainage parameters in a PDM calibration record, the concepts above are what those parameters represent. The goal of reading this material is to be able to look at a parameter set and understand what it is saying about the catchment, not just treat it as a set of numbers to store. |
-| --- |
+| **F&W context note** The PDM (Probability Distributed Model) is the team's primary rainfall-runoff tool. Its parameter sets encode the catchment characteristics above. When you read about soil moisture storage capacity or drainage parameters in a PDM calibration record, the concepts above are what those parameters represent. The goal of reading this material is to be able to look at a parameter set and understand what it is saying about the catchment, not just treat it as a set of numbers to store. |
+|------------------------------------------------------------------------|
 
 ## 3.2 Hydraulics fundamentals
 
@@ -161,35 +161,35 @@ Recommended for: all FMP users. Also useful for Python developers working with F
 
 ### Key concepts to build
 
-- Continuity and momentum: the Saint-Venant equations and what simplifications the 1D diffusion wave and kinematic wave approaches make, and when those simplifications are acceptable
+-   Continuity and momentum: the Saint-Venant equations and what simplifications the 1D diffusion wave and kinematic wave approaches make, and when those simplifications are acceptable
 
-- Critical flow, Froude number, and why transitions between subcritical and supercritical flow cause solver instability in 1D schemes
+-   Critical flow, Froude number, and why transitions between subcritical and supercritical flow cause solver instability in 1D schemes
 
-- Cross-section representation in 1D models: how a river cross-section is surveyed, stored in a DAT file, and used to compute conveyance; the role of roughness coefficients (Manning's n)
+-   Cross-section representation in 1D models: how a river cross-section is surveyed, stored in a DAT file, and used to compute conveyance; the role of roughness coefficients (Manning's n)
 
-- Floodplain representation: how 1D models use flood storage cells or ISIS/FMP pseudo-2D structures; where this breaks down compared to a full 2D solution
+-   Floodplain representation: how 1D models use flood storage cells or ISIS/FMP pseudo-2D structures; where this breaks down compared to a full 2D solution
 
-- Boundary conditions in hydraulic models: upstream inflow hydrographs, downstream rating curves or tidal boundaries, lateral inflows; how errors in boundaries propagate through the model
+-   Boundary conditions in hydraulic models: upstream inflow hydrographs, downstream rating curves or tidal boundaries, lateral inflows; how errors in boundaries propagate through the model
 
-- Model calibration and validation: roughness adjustment as the primary calibration parameter; NSE and water level error as performance metrics; the distinction between well-calibrated and well-conditioned
+-   Model calibration and validation: roughness adjustment as the primary calibration parameter; NSE and water level error as performance metrics; the distinction between well-calibrated and well-conditioned
 
-- 2D shallow water equations: depth-averaged flow; when to use a 2D domain rather than 1D; computational cost trade-offs
+-   2D shallow water equations: depth-averaged flow; when to use a 2D domain rather than 1D; computational cost trade-offs
 
-- Linked 1D-2D modelling: what the link does, how flow transfers between the 1D channel and the 2D floodplain domain, and what can go wrong at the interface
+-   Linked 1D-2D modelling: what the link does, how flow transfers between the 1D channel and the 2D floodplain domain, and what can go wrong at the interface
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
-| Cunge, J.A., Holly, F.M. & Verwey, A. (1980). Practical Aspects of Computational River Hydraulics. Pitman. | The foundational text for 1D computational hydraulics. Chapters 2-4 on the Saint-Venant equations and their numerical solution are the theoretical basis for FMP's 1D solver. Dense but worth the effort for anyone who will be diagnosing model instabilities. |
-| Bates, P.D., Horritt, M.S. & Fewtrell, T.J. (2010). A simple inertial formulation of the shallow water equations for efficient 2D flood inundation modelling. Journal of Hydrology. doi:10.1016/j.jhydrol.2010.03.027 | Introduces the LISFLOOD-FP approach underlying many 2D solvers. Read for intuition about what a 2D shallow water solver is doing and where diffusion-wave approximations are valid. |
-| Flood Modeller Pro documentation: floodmodeller.com/support | The FMP user manual and technical reference. Before using the software, read the sections on 1D scheme types (ISIS units), boundary conditions, and the 2D solver options. This is the operational reference, not a textbook. |
-| Environment Agency (2012). Coastal Flood Boundary Conditions for the UK. Technical Report. | Background on the tidal boundary conditions used at the downstream end of estuarine FMP models. Relevant for any model that is tidally influenced. |
-| Hunter, N.M. et al. (2007). Benchmarking 2D hydraulic models for urban flood simulations. Proceedings of the ICE - Water Management. doi:10.1680/wama.2007.160.1.13 | A comparison of 2D model performance across test cases. Useful for understanding what 2D models do well and poorly, and what that means for interpreting results. |
-| Horritt, M.S. & Bates, P.D. (2002). Evaluation of 1D and 2D numerical models for predicting river flood inundation. Journal of Hydrology. doi:10.1016/S0022-1694(02)00121-X | Classic comparison of 1D versus 2D performance for floodplain inundation. |
+| **Resource**                                                                                                                                                                                                          | **What to take from it**                                                                                                                                                                                                                                        |
+|------------------------------------|------------------------------------|
+| Cunge, J.A., Holly, F.M. & Verwey, A. (1980). Practical Aspects of Computational River Hydraulics. Pitman.                                                                                                            | The foundational text for 1D computational hydraulics. Chapters 2-4 on the Saint-Venant equations and their numerical solution are the theoretical basis for FMP's 1D solver. Dense but worth the effort for anyone who will be diagnosing model instabilities. |
+| Bates, P.D., Horritt, M.S. & Fewtrell, T.J. (2010). A simple inertial formulation of the shallow water equations for efficient 2D flood inundation modelling. Journal of Hydrology. doi:10.1016/j.jhydrol.2010.03.027 | Introduces the LISFLOOD-FP approach underlying many 2D solvers. Read for intuition about what a 2D shallow water solver is doing and where diffusion-wave approximations are valid.                                                                             |
+| Flood Modeller Pro documentation: floodmodeller.com/support                                                                                                                                                           | The FMP user manual and technical reference. Before using the software, read the sections on 1D scheme types (ISIS units), boundary conditions, and the 2D solver options. This is the operational reference, not a textbook.                                   |
+| Environment Agency (2012). Coastal Flood Boundary Conditions for the UK. Technical Report.                                                                                                                            | Background on the tidal boundary conditions used at the downstream end of estuarine FMP models. Relevant for any model that is tidally influenced.                                                                                                              |
+| Hunter, N.M. et al. (2007). Benchmarking 2D hydraulic models for urban flood simulations. Proceedings of the ICE - Water Management. doi:10.1680/wama.2007.160.1.13                                                   | A comparison of 2D model performance across test cases. Useful for understanding what 2D models do well and poorly, and what that means for interpreting results.                                                                                               |
+| Horritt, M.S. & Bates, P.D. (2002). Evaluation of 1D and 2D numerical models for predicting river flood inundation. Journal of Hydrology. doi:10.1016/S0022-1694(02)00121-X                                           | Classic comparison of 1D versus 2D performance for floodplain inundation.                                                                                                                                                                                       |
 
-| **F****&****W context note** FMP models in the operational system are driven by PDM outputs as upstream boundary conditions. This means an error in the PDM (wrong parameter set, stale calibration) propagates directly into the hydraulic model's results. When you are diagnosing a forecast that looks wrong, the first question is often whether the issue is in the hydraulic model or in the boundary conditions it received. Understanding both ends of the pipeline is what makes this team's work different from standalone hydraulic modelling applied in other parts of the business. |
-| --- |
+| **F&W context note** FMP models in the operational system are driven by PDM outputs as upstream boundary conditions. This means an error in the PDM (wrong parameter set, stale calibration) propagates directly into the hydraulic model's results. When you are diagnosing a forecast that looks wrong, the first question is often whether the issue is in the hydraulic model or in the boundary conditions it received. Understanding both ends of the pipeline is what makes this team's work different from standalone hydraulic modelling applied in other parts of the business. |
+|------------------------------------------------------------------------|
 
 ## 3.3 Data and coding fundamentals
 
@@ -199,33 +199,33 @@ Recommended for: all staff who will write, review, or run code. Provides the gro
 
 ### Key concepts to build
 
-- Git fundamentals: commits as snapshots, branches as parallel lines of work, pull requests as the review gateway; what a merge conflict is and how to resolve one
+-   Git fundamentals: commits as snapshots, branches as parallel lines of work, pull requests as the review gateway; what a merge conflict is and how to resolve one
 
-- Why version control matters in operational forecasting: a script that produced a forecast six months ago must be reproducible; that requires knowing exactly which version of the code and which package versions were used
+-   Why version control matters in operational forecasting: a script that produced a forecast six months ago must be reproducible; that requires knowing exactly which version of the code and which package versions were used
 
-- Tabular data concepts: the difference between long and wide format; what a join is; what missing values represent and why treating them carelessly causes silent errors
+-   Tabular data concepts: the difference between long and wide format; what a join is; what missing values represent and why treating them carelessly causes silent errors
 
-- File formats: why Parquet is used instead of CSV for large datasets; what columnar storage means for query performance; when JSON is appropriate
+-   File formats: why Parquet is used instead of CSV for large datasets; what columnar storage means for query performance; when JSON is appropriate
 
-- Package management: why pinning package versions matters; what a lockfile does; the difference between a development dependency and a runtime dependency
+-   Package management: why pinning package versions matters; what a lockfile does; the difference between a development dependency and a runtime dependency
 
-- Code review: what a reviewer is looking for (correctness, clarity, test coverage, governance compliance); how to give feedback that is specific and actionable; how to receive it
+-   Code review: what a reviewer is looking for (correctness, clarity, test coverage, governance compliance); how to give feedback that is specific and actionable; how to receive it
 
-- Functions and modularity: why a 500-line script is harder to maintain than ten 50-line functions; what a pure function is; why side effects in functions are dangerous in a pipeline context
+-   Functions and modularity: why a 500-line script is harder to maintain than ten 50-line functions; what a pure function is; why side effects in functions are dangerous in a pipeline context
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
-| Happy Git and GitHub for the useR: happygitwithr.com (Bryan, J.) | The clearest practical introduction to Git for data scientists. Even if you will primarily use Python, read chapters 1-20 for the concepts. The R-specific parts are optional at this stage. |
-| Pro Git (free): git-scm.com/book | The comprehensive Git reference. Chapters 1-3 cover everything needed for day-to-day use. Chapter 3 on branching is particularly important for understanding the team's workflow. |
-| Wickham, H. (2019). Advanced R, 2nd ed. (free): adv-r.hadley.nz -- Chapter 2: Names and values; Chapter 6: Functions | Even for non-R users, chapters 2 and 6 give a clear conceptual model of how functions and environments work. The ideas transfer directly to Python. |
+| **Resource**                                                                                                                          | **What to take from it**                                                                                                                                                                                    |
+|------------------------------------|------------------------------------|
+| Happy Git and GitHub for the useR: happygitwithr.com (Bryan, J.)                                                                      | The clearest practical introduction to Git for data scientists. Even if you will primarily use Python, read chapters 1-20 for the concepts. The R-specific parts are optional at this stage.                |
+| Pro Git (free): git-scm.com/book                                                                                                      | The comprehensive Git reference. Chapters 1-3 cover everything needed for day-to-day use. Chapter 3 on branching is particularly important for understanding the team's workflow.                           |
+| Wickham, H. (2019). Advanced R, 2nd ed. (free): adv-r.hadley.nz -- Chapter 2: Names and values; Chapter 6: Functions                  | Even for non-R users, chapters 2 and 6 give a clear conceptual model of how functions and environments work. The ideas transfer directly to Python.                                                         |
 | Wilson, G. et al. (2017). Good enough practices in scientific computing. PLOS Computational Biology. doi:10.1371/journal.pcbi.1005510 | A practical manifesto for reproducible scientific code. Read the sections on project organisation, keeping track of changes, and making code readable. Maps directly to the team's governance requirements. |
-| Apache Arrow / Parquet overview: arrow.apache.org/docs/format/Columnar.html | A readable explanation of columnar storage and why it matters. Understanding this makes the Bronze store's Parquet structure and partitioning strategy make sense rather than feel arbitrary. |
-| The Missing Semester of Your CS Education (MIT): missing.csail.mit.edu | Short video lectures on shell tools, Git, and editors. Particularly useful if command-line work feels unfamiliar. The Git lecture is one of the best short introductions available. |
+| Apache Arrow / Parquet overview: arrow.apache.org/docs/format/Columnar.html                                                           | A readable explanation of columnar storage and why it matters. Understanding this makes the Bronze store's Parquet structure and partitioning strategy make sense rather than feel arbitrary.               |
+| The Missing Semester of Your CS Education (MIT): missing.csail.mit.edu                                                                | Short video lectures on shell tools, Git, and editors. Particularly useful if command-line work feels unfamiliar. The Git lecture is one of the best short introductions available.                         |
 
-| **F****&****W context note** The team uses R and Python in different parts of the pipeline. R (via the reach.* packages) handles data ingestion, quality control, ensemble processing, and visualisation. Python handles the Flood Modeller API, ML training pipelines, and the Databricks environment. The two connect via Parquet files: R writes to the Bronze/Silver/Gold store; Python reads from it. Understanding both languages at a conceptual level, even if you only write in one, makes it much easier to debug problems at the boundary between them. |
-| --- |
+| **F&W context note** The team uses R and Python in different parts of the pipeline. R (via the reach.\* packages) handles data ingestion, quality control, ensemble processing, and visualisation. Python handles the Flood Modeller API, ML training pipelines, and the Databricks environment. The two connect via Parquet files: R writes to the Bronze/Silver/Gold store; Python reads from it. Understanding both languages at a conceptual level, even if you only write in one, makes it much easier to debug problems at the boundary between them. |
+|------------------------------------------------------------------------|
 
 # 4. Cross-cutting: Model calibration and configuration
 
@@ -233,65 +233,65 @@ This section is required for all staff who work with flood models in any capacit
 
 ## 4.1 Model register and model IDs
 
-- What the Model Register is and how it differs from the Tool Register
+-   What the Model Register is and how it differs from the Tool Register
 
-- The model ID convention: [CatchmentID]_[ModelType]_[Version] and what each element means
+-   The model ID convention: \[CatchmentID\]*\[ModelType\]*\[Version\] and what each element means
 
-- When a model must be entered in the register: at first use in a formal output or when shared with another team member
+-   When a model must be entered in the register: at first use in a formal output or when shared with another team member
 
-- What fields must be completed and who is responsible for keeping them current
+-   What fields must be completed and who is responsible for keeping them current
 
 ## 4.2 Model configuration
 
 Model configuration covers the decisions made in setting up a model for a run: the input data used, the boundary conditions applied, and any overrides or adjustments made. These decisions must be documented so that any output can be reproduced and audited.
 
-- Run records: what must be recorded for every formal model run, including model ID and version, input data IDs, boundary condition datasets, software version, and any overrides applied
+-   Run records: what must be recorded for every formal model run, including model ID and version, input data IDs, boundary condition datasets, software version, and any overrides applied
 
-- Boundary conditions: what they are, the main types (upstream inflow, tidal, lateral inflow, reservoir rules, gate settings), and what governance applies to each
+-   Boundary conditions: what they are, the main types (upstream inflow, tidal, lateral inflow, reservoir rules, gate settings), and what governance applies to each
 
-- Calibration and validation records: what must be documented, the distinction between calibration and validation, and what performance thresholds are required before a model can be promoted to Tier 1
+-   Calibration and validation records: what must be documented, the distinction between calibration and validation, and what performance thresholds are required before a model can be promoted to Tier 1
 
-- Impact assessment for model changes: how to identify downstream models affected by a change before deploying it
+-   Impact assessment for model changes: how to identify downstream models affected by a change before deploying it
 
 ## 4.3 Model condition
 
 Model condition is a structured assessment of how fit for purpose a model is at a given point. It is distinct from whether a model is currently producing acceptable outputs -- a model can be performing within tolerance while being in poor condition.
 
-- What condition assessment covers: data currency, structural integrity, calibration currency, software currency, and documentation completeness
+-   What condition assessment covers: data currency, structural integrity, calibration currency, software currency, and documentation completeness
 
-- Condition scoring: the 0-10 scale and what the descriptive ratings (Good, Acceptable, Poor, Critical) mean operationally
+-   Condition scoring: the 0-10 scale and what the descriptive ratings (Good, Acceptable, Poor, Critical) mean operationally
 
-- Review schedules: standard annual reviews and triggered reviews following significant events
+-   Review schedules: standard annual reviews and triggered reviews following significant events
 
-- How condition propagates: a poor-condition upstream model passes uncertainty to all downstream models, regardless of their own condition score
+-   How condition propagates: a poor-condition upstream model passes uncertainty to all downstream models, regardless of their own condition score
 
 ## 4.4 Model connections and cascading systems
 
-- What the Connection Register is and why it exists
+-   What the Connection Register is and why it exists
 
-- Connection types: how PDM outputs drive FMP models, how FMP models drive downstream FMP models, and where black box models fit
+-   Connection types: how PDM outputs drive FMP models, how FMP models drive downstream FMP models, and where black box models fit
 
-- System diagrams: what they must show and who maintains them
+-   System diagrams: what they must show and who maintains them
 
-- Manual override points: what they are, who can authorise their use, and what must be recorded when they are used
+-   Manual override points: what they are, who can authorise their use, and what must be recorded when they are used
 
-- Failure modes: what happens to downstream models when an upstream connection fails
+-   Failure modes: what happens to downstream models when an upstream connection fails
 
 ## 4.5 Black box models
 
 Black box models relate inputs directly to outputs without representing physical processes in between. This includes transfer function models and, in the team's development pipeline, LSTM neural network models. Because their internal workings are not physically interpretable, they carry specific governance risks.
 
-- What distinguishes a black box model from a physically-based model, and what governance risks this creates
+-   What distinguishes a black box model from a physically-based model, and what governance risks this creates
 
-- Why performance degradation in a black box model may not be apparent until a significant event occurs
+-   Why performance degradation in a black box model may not be apparent until a significant event occurs
 
-- The requirement for a documented training dataset and the difference between training data and operational input data
+-   The requirement for a documented training dataset and the difference between training data and operational input data
 
-- Why all black box models used in operational forecasting are Tier 1 assets by default
+-   Why all black box models used in operational forecasting are Tier 1 assets by default
 
-- Condition assessment for black box models: why it matters more than for physically-based models and how it is carried out
+-   Condition assessment for black box models: why it matters more than for physically-based models and how it is carried out
 
-- Deprecation and handover: what must be recorded when a black box model is replaced by a newer ML model
+-   Deprecation and handover: what must be recorded when a black box model is replaced by a newer ML model
 
 # 5. Specialist tracks
 
@@ -305,46 +305,46 @@ For staff developing, maintaining, or running PDM configurations and working wit
 
 The PDM is a conceptual rainfall-runoff model that transforms rainfall and potential evapotranspiration inputs into catchment runoff. In the team's system, PDM outputs are the primary upstream inflow boundary for FMP hydraulic models. A poorly calibrated PDM directly degrades every downstream model that relies on its output.
 
-- PDM model structure: the soil moisture storage component, the groundwater recharge component, and the routing module; what each parameter controls physically
+-   PDM model structure: the soil moisture storage component, the groundwater recharge component, and the routing module; what each parameter controls physically
 
-- Parameter sets as versioned assets: why two analysts calibrating the same catchment on different data periods can produce materially different parameter sets; why this makes version control and calibration records non-negotiable
+-   Parameter sets as versioned assets: why two analysts calibrating the same catchment on different data periods can produce materially different parameter sets; why this makes version control and calibration records non-negotiable
 
-- Naming and storage: the required naming convention, the prohibition on local machine storage, and what a complete parameter set repository entry looks like
+-   Naming and storage: the required naming convention, the prohibition on local machine storage, and what a complete parameter set repository entry looks like
 
-- Calibration records: what must be documented -- calibration period, input data IDs and versions, events used, performance metrics (NSE, KGE, volume error), and known limitations
+-   Calibration records: what must be documented -- calibration period, input data IDs and versions, events used, performance metrics (NSE, KGE, volume error), and known limitations
 
-- How PDM outputs become FMP boundary conditions: the format, temporal resolution, and what happens when a PDM run produces negative flows or physically implausible values
+-   How PDM outputs become FMP boundary conditions: the format, temporal resolution, and what happens when a PDM run produces negative flows or physically implausible values
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
+| **Resource**                                                                                                         | **What to take from it**                                                                                                                                                                                                                           |
+|------------------------------------|------------------------------------|
 | Moore, R.J. (2007). The PDM rainfall-runoff model. Hydrology and Earth System Sciences. doi:10.5194/hess-11-483-2007 | The primary reference for the PDM. Read this before attempting to interpret or adjust a parameter set. Focus on the soil moisture storage function and how the shape parameter controls the distribution of storage capacity across the catchment. |
-| PDM user manual (internal): available from the Steward | Covers the software interface, input file formats, parameter definitions, and output structure. Essential reading before running a calibration. Pay particular attention to the section on parameter sensitivity. |
-| Wagener, T. et al. (2004). Rainfall-Runoff Modelling in Hydrology. Wiley. | A broader treatment of conceptual model calibration and uncertainty. Chapter 4 on parameter estimation and Chapter 6 on performance assessment directly support PDM calibration practice. |
+| PDM user manual (internal): available from the Steward                                                               | Covers the software interface, input file formats, parameter definitions, and output structure. Essential reading before running a calibration. Pay particular attention to the section on parameter sensitivity.                                  |
+| Wagener, T. et al. (2004). Rainfall-Runoff Modelling in Hydrology. Wiley.                                            | A broader treatment of conceptual model calibration and uncertainty. Chapter 4 on parameter estimation and Chapter 6 on performance assessment directly support PDM calibration practice.                                                          |
 
 ### Hydrometric data
 
 The Bronze-to-Gold pipeline is the team's mechanism for moving raw gauge data into a form that is fit for model calibration and ML training. Understanding it from end to end is essential before using any data for a formal purpose.
 
-- Data sources: the EA Hydrology Data Explorer (HDE) API and WISKI; what each provides; the difference between near-real-time telemetry data and quality-controlled archive data
+-   Data sources: the EA Hydrology Data Explorer (HDE) API and WISKI; what each provides; the difference between near-real-time telemetry data and quality-controlled archive data
 
-- Bronze: raw ingestion from the HDE API; the partitioned Parquet store structure (site_id, year); why Bronze is immutable and what that means in practice if you find an error
+-   Bronze: raw ingestion from the HDE API; the partitioned Parquet store structure (site_id, year); why Bronze is immutable and what that means in practice if you find an error
 
-- Silver: quality control; what the supplier quality flags and q-codes mean; what manual review adds beyond automated flagging; the completeness threshold for Silver promotion
+-   Silver: quality control; what the supplier quality flags and q-codes mean; what manual review adds beyond automated flagging; the completeness threshold for Silver promotion
 
-- Gold: formal approval for a named purpose; what a Gold derivation record must contain; who may approve Gold data; why only Gold data may be used in Tier 1 model runs or ML training promoted to operational use
+-   Gold: formal approval for a named purpose; what a Gold derivation record must contain; who may approve Gold data; why only Gold data may be used in Tier 1 model runs or ML training promoted to operational use
 
-- Q-FAIR compliance: what Findable, Accessible, Interoperable, and Reusable mean for a Gold dataset in this context; what the quality gate adds beyond FAIR
+-   Q-FAIR compliance: what Findable, Accessible, Interoperable, and Reusable mean for a Gold dataset in this context; what the quality gate adds beyond FAIR
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
-| Environment Agency Hydrology Data Explorer: environment.data.gov.uk/hydrology | Browse the gauges the team works with. Understand the data fields returned by the API: dateTime, value, completeness, quality, and qcode. This is the source of everything in the Bronze store. |
-| WMO (2010). Manual on Stream Gauging. WMO-No. 1044. | The international standard for hydrometric practice. Volume I chapters on discharge measurement and rating curves give the physical basis for the data the team ingests. Helps interpret quality flags sensibly rather than mechanically. |
-| Marsh, T. & Hannaford, J. (2008). UK Hydrometric Register. Centre for Ecology and Hydrology. | Background on the UK gauging network, instrumentation types, and known data quality issues by gauge type. Useful context for understanding why some gauges have persistent quality problems. |
-| reach.io package documentation (internal): available in docs/reach.io/ | The team's R package for reading from and writing to the Bronze/Silver/Gold store. Read the function reference for ingest_bronze(), promote_silver(), and approve_gold() before handling any data in the pipeline. |
+| **Resource**                                                                                 | **What to take from it**                                                                                                                                                                                                                  |
+|------------------------------------|------------------------------------|
+| Environment Agency Hydrology Data Explorer: environment.data.gov.uk/hydrology                | Browse the gauges the team works with. Understand the data fields returned by the API: dateTime, value, completeness, quality, and qcode. This is the source of everything in the Bronze store.                                           |
+| WMO (2010). Manual on Stream Gauging. WMO-No. 1044.                                          | The international standard for hydrometric practice. Volume I chapters on discharge measurement and rating curves give the physical basis for the data the team ingests. Helps interpret quality flags sensibly rather than mechanically. |
+| Marsh, T. & Hannaford, J. (2008). UK Hydrometric Register. Centre for Ecology and Hydrology. | Background on the UK gauging network, instrumentation types, and known data quality issues by gauge type. Useful context for understanding why some gauges have persistent quality problems.                                              |
+| reach.io package documentation (internal): available in docs/reach.io/                       | The team's R package for reading from and writing to the Bronze/Silver/Gold store. Read the function reference for ingest_bronze(), promote_silver(), and approve_gold() before handling any data in the pipeline.                        |
 
 ## 5.2 Hydraulic modelling
 
@@ -354,55 +354,55 @@ For staff developing, maintaining, or running FMP models. Complete the hydraulic
 
 FMP models are binary files. Unlike R or Python scripts, you cannot easily read a diff of what changed between two versions. This makes formal version control and run records the only reliable mechanism for tracing what model produced what output.
 
-- Folder structure: the required directory layout for every FMP project; why deviating from it breaks the automated tools that read model files
+-   Folder structure: the required directory layout for every FMP project; why deviating from it breaks the automated tools that read model files
 
-- File naming: the model ID convention [CatchmentID]_[ModelType]_[Version]; how version numbers increment at patch, minor, and major levels; what constitutes a major change requiring Owner sign-off
+-   File naming: the model ID convention \[CatchmentID\]*\[ModelType\]*\[Version\]; how version numbers increment at patch, minor, and major levels; what constitutes a major change requiring Owner sign-off
 
-- Version control for binary files: using Git LFS or the agreed repository structure for FMP project files; how to tag a version used in a formal output so it can be recovered; the prohibition on local-only storage
+-   Version control for binary files: using Git LFS or the agreed repository structure for FMP project files; how to tag a version used in a formal output so it can be recovered; the prohibition on local-only storage
 
-- Run records: completing every required field; the difference between a casual test run and a formal output; what triggers the obligation to complete a run record
+-   Run records: completing every required field; the difference between a casual test run and a formal output; what triggers the obligation to complete a run record
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
-| Flood Modeller Pro user manual: floodmodeller.com/support | The primary reference. Before working on any model, read the sections covering the unit types you will encounter (ISIS River, ISIS Spill, ISIS Reservoir, 2D domain). The reference manual section on each unit explains what each parameter does. |
-| Flood Modeller Pro worked examples (included with software installation) | Work through the 1D steady-state and 1D unsteady examples before touching a live model. The unsteady examples are the most relevant to operational forecasting. |
-| Horritt, M.S. & Bates, P.D. (2002) -- see Section 3.2 resources | Re-read with operational intent: when you are deciding options for a new model build, this paper is the reference for that decision. |
-| Environment Agency (2010). Flood risk assessment: the requirements for FRMPs. Technical guidance. | Context for how flood models are used in a regulatory and operational setting in England. Useful background for understanding why model condition and documentation standards are not just bureaucracy. |
+| **Resource**                                                                                      | **What to take from it**                                                                                                                                                                                                                           |
+|------------------------------------|------------------------------------|
+| Flood Modeller Pro user manual: floodmodeller.com/support                                         | The primary reference. Before working on any model, read the sections covering the unit types you will encounter (ISIS River, ISIS Spill, ISIS Reservoir, 2D domain). The reference manual section on each unit explains what each parameter does. |
+| Flood Modeller Pro worked examples (included with software installation)                          | Work through the 1D steady-state and 1D unsteady examples before touching a live model. The unsteady examples are the most relevant to operational forecasting.                                                                                    |
+| Horritt, M.S. & Bates, P.D. (2002) -- see Section 3.2 resources                                   | Re-read with operational intent: when you are deciding options for a new model build, this paper is the reference for that decision.                                                                                                               |
+| Environment Agency (2010). Flood risk assessment: the requirements for FRMPs. Technical guidance. | Context for how flood models are used in a regulatory and operational setting in England. Useful background for understanding why model condition and documentation standards are not just bureaucracy.                                            |
 
-### 1D, 2D, and linked configurations 
+### 1D, 2D, and linked configurations
 
-*Information on 2D and linked configurations have been included **due to their use in modelled rating curve development. Though for most day-to-day **forecast modelling tasks, 1D modelling will suffice.*
+*Information on 2D and linked configurations have been included **due to their use in modelled rating curve development. Though for most day-to-day** forecast modelling tasks, 1D modelling will suffice.*
 
-- Choosing a scheme: the criteria for 1D (well-defined channel, limited floodplain complexity), 2D (significant floodplain flow paths, urban areas), and linked (channel + complex floodplain); how computational cost scales
+-   Choosing a scheme: the criteria for 1D (well-defined channel, limited floodplain complexity), 2D (significant floodplain flow paths, urban areas), and linked (channel + complex floodplain); how computational cost scales
 
-- GXY files: the reach centreline format; how GXY geometry is used for spatial referencing and for the reach.* package's spatial tools
+-   GXY files: the reach centreline format; how GXY geometry is used for spatial referencing and for the reach.\* package's spatial tools
 
-- DAT files: node coordinates and cross-section data; how to read a DAT file and what each section header means; the label format used in the team's model register
+-   DAT files: node coordinates and cross-section data; how to read a DAT file and what each section header means; the label format used in the team's model register
 
-- Running a model: steady-state versus unsteady; what a warm-up period is and why it matters for operational runs; what to check in the output before trusting results
+-   Running a model: steady-state versus unsteady; what a warm-up period is and why it matters for operational runs; what to check in the output before trusting results
 
-- Diagnosing instabilities: what negative flow, mass balance errors, and numerical blowup look like in FMP output; the common causes and how to address them without breaking the calibration
+-   Diagnosing instabilities: what negative flow, mass balance errors, and numerical blowup look like in FMP output; the common causes and how to address them without breaking the calibration
 
 ### Crossover module: FMP API scripting
 
 Required for any staff member running FMP models via Python scripts rather than the GUI, regardless of primary track. Complete this in conjunction with the Python governance track (5.4).
 
-- What the Flood Modeller API exposes: how to open a model, set boundary conditions programmatically, run the solver, and read outputs; the Python object model for FMP projects
+-   What the Flood Modeller API exposes: how to open a model, set boundary conditions programmatically, run the solver, and read outputs; the Python object model for FMP projects
 
-- Tier 1 tool obligations: a Python script that runs an operational FMP model is a Tier 1 tool; it requires poetry for dependency management, Git version control, a run record for each execution, 70% test coverage, and a disaster recovery runbook
+-   Tier 1 tool obligations: a Python script that runs an operational FMP model is a Tier 1 tool; it requires poetry for dependency management, Git version control, a run record for each execution, 70% test coverage, and a disaster recovery runbook
 
-- How tool and model governance interact: the Model Register records the model version; the Tool Register records the script version; a run record must reference both
+-   How tool and model governance interact: the Model Register records the model version; the Tool Register records the script version; a run record must reference both
 
-- Testing FMP orchestration scripts: what to test (boundary condition setting, output reading, error handling) and what not to test (the FMP solver itself)
+-   Testing FMP orchestration scripts: what to test (boundary condition setting, output reading, error handling) and what not to test (the FMP solver itself)
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
-| Flood Modeller Pro API documentation: floodmodeller.com/api | The primary reference for the Python API. Read the quickstart guide and the worked examples for running unsteady simulations. The API wraps the same solver as the GUI, so GUI knowledge transfers directly. |
-| Flood Modeller API GitHub repository: github.com/People-Places-Solutions/floodmodeller-api | The source code and issue tracker for the open-source API package. Useful for understanding what the API does under the hood and for reporting bugs. |
+| **Resource**                                                                               | **What to take from it**                                                                                                                                                                                     |
+|------------------------------------|------------------------------------|
+| Flood Modeller Pro API documentation: floodmodeller.com/api                                | The primary reference for the Python API. Read the quickstart guide and the worked examples for running unsteady simulations. The API wraps the same solver as the GUI, so GUI knowledge transfers directly. |
+| Flood Modeller API GitHub repository: github.com/People-Places-Solutions/floodmodeller-api | The source code and issue tracker for the open-source API package. Useful for understanding what the API does under the hood and for reporting bugs.                                                         |
 
 ## 5.3 R development
 
@@ -412,63 +412,63 @@ For staff writing, maintaining, or reviewing R code. Complete the data and codin
 
 The R Tool Governance document sets the standards. This track is about being able to work within those standards in practice, not just knowing they exist.
 
-- Tool tier classification in R: assess a tool by asking who is affected if it fails -- Tier 1 if the answer is an operational forecast; Tier 2 if the answer is an analytical output; Tier 3 if it is experimental
+-   Tool tier classification in R: assess a tool by asking who is affected if it fails -- Tier 1 if the answer is an operational forecast; Tier 2 if the answer is an analytical output; Tier 3 if it is experimental
 
-- renv in practice: renv::init() when starting a new project; renv::snapshot() before every commit that changes a package; renv::restore() when setting up a colleague's project; what to do when the lockfile and installed packages diverge
+-   renv in practice: renv::init() when starting a new project; renv::snapshot() before every commit that changes a package; renv::restore() when setting up a colleague's project; what to do when the lockfile and installed packages diverge
 
-- The prohibition on dplyr and tidyverse in team tools: this is a hard rule, not a preference. data.table is faster, has a stable API, and reduces dependencies. You may use tidyverse in personal exploration but never in shared tools
+-   The prohibition on dplyr and tidyverse in team tools: this is a hard rule, not a preference. data.table is faster, has a stable API, and reduces dependencies. You may use tidyverse in personal exploration but never in shared tools
 
-- The code review process: how to open a pull request; what the reviewer checks (correctness, test coverage, documentation, governance header, dependency changes); what blocks a merge
-
-### Recommended resources
-
-| **Resource** | **What to take from it** |
-| --- | --- |
-| R Tool Governance document (internal) | Read in full before writing any shared R code. The sections on tool tiers, code review requirements by tier, and the renv workflow are the most operationally important. |
-| data.table wiki: rdatatable.gitlab.io/data.table | The authoritative reference for data.table. The 'Getting started' vignettes cover the DT[i, j, by] syntax. The 'Reference semantics' vignette explains why modifying by reference matters for performance. Read before writing any data manipulation code. |
-| Fastverse documentation: fastverse.github.io/fastverse | Overview of the fastverse ecosystem (data.table, collapse, kit). Understand what each package contributes and when to reach for collapse versus data.table. |
-| R Packages, 2nd ed. (free): r-pkgs.org (Wickham & Bryan) | The standard reference for R package development. Read chapters on package structure, documentation (roxygen2), and testing (testthat) before contributing to the reach.* packages. |
-| testthat documentation: testthat.r-lib.org | Read the 'Testing basics' article before writing any tests. Understand the difference between expect_equal, expect_identical, and expect_error; how to structure test files; and how test_that() groups related expectations. |
-| Happy Git with R: happygitwithr.com (Bryan) | If the Git workflow is new, work through chapters 1-20. The sections on branching and pull requests are directly relevant to the team's review process. |
-
-### The flode (reach.*) package suite
-
-All reusable R code goes into the reach.* packages – these are consolidated into *flode*. Understanding the package structure before writing code prevents duplication and keeps the codebase coherent.
-
-- **reach.io:** data ingestion and the Parquet store; reading from and writing to the Bronze/Silver/Gold tiers; the HDE API connector; Arrow dataset handling
-
-- **reach.hydro****:** hydrological calculations; PDM utilities; flow statistics; catchment descriptor access
-
-- **reach.ensemble****:** ensemble forecast processing; probability of exceedance calculations; ensemble spread metrics
-
-- **reach.validate****:** model performance metrics (NSE, KGE, FAR, RMSE); calibration assessment utilities; event identification
-
-- **reach.viz:** standardised visualisation functions; hydrograph plotting; ensemble fan charts; map utilities using sf and leaflet
-
-- **reach.utils**: shared utilities used across packages; date/time handling; logging via cli; configuration helpers
+-   The code review process: how to open a pull request; what the reviewer checks (correctness, test coverage, documentation, governance header, dependency changes); what blocks a merge
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
-| reach.* package documentation (internal): available in docs/reach.*/ | Read the README for each package you will contribute to before writing code. The function register lists what exists; duplicate functions are a maintenance burden. |
-| data.table cheat sheet: community resource at github.com/Rdatatable/data.table/wiki | A quick reference for common operations. Keep it open while writing data manipulation code until the syntax is second nature. |
-| Arrow R package documentation: arrow.apache.org/docs/r | Read the 'Working with Arrow Datasets' article to understand how Arrow handles partitioned Parquet stores. This is what reach.io uses under the hood for the Bronze store. |
-| collapse package documentation: sebkrantz.github.io/collapse | Reference for the collapse package. Focus on the fmutate(), fgroup_by(), and fsummarise() functions, which replace dplyr equivalents in the fastverse workflow. |
+| **Resource**                                             | **What to take from it**                                                                                                                                                                                                                                     |
+|------------------------------------|------------------------------------|
+| R Tool Governance document (internal)                    | Read in full before writing any shared R code. The sections on tool tiers, code review requirements by tier, and the renv workflow are the most operationally important.                                                                                     |
+| data.table wiki: rdatatable.gitlab.io/data.table         | The authoritative reference for data.table. The 'Getting started' vignettes cover the DT\[i, j, by\] syntax. The 'Reference semantics' vignette explains why modifying by reference matters for performance. Read before writing any data manipulation code. |
+| Fastverse documentation: fastverse.github.io/fastverse   | Overview of the fastverse ecosystem (data.table, collapse, kit). Understand what each package contributes and when to reach for collapse versus data.table.                                                                                                  |
+| R Packages, 2nd ed. (free): r-pkgs.org (Wickham & Bryan) | The standard reference for R package development. Read chapters on package structure, documentation (roxygen2), and testing (testthat) before contributing to the reach.\* packages.                                                                         |
+| testthat documentation: testthat.r-lib.org               | Read the 'Testing basics' article before writing any tests. Understand the difference between expect_equal, expect_identical, and expect_error; how to structure test files; and how test_that() groups related expectations.                                |
+| Happy Git with R: happygitwithr.com (Bryan)              | If the Git workflow is new, work through chapters 1-20. The sections on branching and pull requests are directly relevant to the team's review process.                                                                                                      |
+
+### The flode (reach.\*) package suite
+
+All reusable R code goes into the reach.\* packages -- these are consolidated into *flode*. Understanding the package structure before writing code prevents duplication and keeps the codebase coherent.
+
+-   **reach.io:** data ingestion and the Parquet store; reading from and writing to the Bronze/Silver/Gold tiers; the HDE API connector; Arrow dataset handling
+
+-   **reach.hydro:** hydrological calculations; PDM utilities; flow statistics; catchment descriptor access
+
+-   **reach.ensemble:** ensemble forecast processing; probability of exceedance calculations; ensemble spread metrics
+
+-   **reach.validate:** model performance metrics (NSE, KGE, FAR, RMSE); calibration assessment utilities; event identification
+
+-   **reach.viz:** standardised visualisation functions; hydrograph plotting; ensemble fan charts; map utilities using sf and leaflet
+
+-   **reach.utils**: shared utilities used across packages; date/time handling; logging via cli; configuration helpers
+
+### Recommended resources
+
+| **Resource**                                                                        | **What to take from it**                                                                                                                                                   |
+|------------------------------------|------------------------------------|
+| reach.\* package documentation (internal): available in docs/reach.\*/              | Read the README for each package you will contribute to before writing code. The function register lists what exists; duplicate functions are a maintenance burden.        |
+| data.table cheat sheet: community resource at github.com/Rdatatable/data.table/wiki | A quick reference for common operations. Keep it open while writing data manipulation code until the syntax is second nature.                                              |
+| Arrow R package documentation: arrow.apache.org/docs/r                              | Read the 'Working with Arrow Datasets' article to understand how Arrow handles partitioned Parquet stores. This is what reach.io uses under the hood for the Bronze store. |
+| collapse package documentation: sebkrantz.github.io/collapse                        | Reference for the collapse package. Focus on the fmutate(), fgroup_by(), and fsummarise() functions, which replace dplyr equivalents in the fastverse workflow.            |
 
 ### Tier 1 tool standards
 
-*Currently no R tools are implemented in **supporting live operational forecasting.*
+\*Currently no R tools are implemented in \*\*supporting live operational forecasting.\*
 
 Any R tool in the operational forecast chain is Tier 1 from the moment it is promoted. The additional requirements beyond standard development practice are:
 
-- Test coverage: 70% line coverage measured by covr; the CI pipeline enforces this and blocks merges if the threshold is not met; coverage reports are generated on every pull request
+-   Test coverage: 70% line coverage measured by covr; the CI pipeline enforces this and blocks merges if the threshold is not met; coverage reports are generated on every pull request
 
-- Disaster recovery runbooks: a runbook documents what to do if the tool fails during an operational event; it must specify the manual workaround, who to contact, and how long the fallback is viable
+-   Disaster recovery runbooks: a runbook documents what to do if the tool fails during an operational event; it must specify the manual workaround, who to contact, and how long the fallback is viable
 
-- Handover notes: required when a Custodian changes; covers the tool's purpose, known quirks, technical debt, open issues, and scheduled maintenance; stored in docs/ alongside the code
+-   Handover notes: required when a Custodian changes; covers the tool's purpose, known quirks, technical debt, open issues, and scheduled maintenance; stored in docs/ alongside the code
 
-- Senior reviewer confirmation: before a team member is listed as Custodian on a Tier 1 tool, a senior reviewer must confirm in writing that they have demonstrated competence to maintain it
+-   Senior reviewer confirmation: before a team member is listed as Custodian on a Tier 1 tool, a senior reviewer must confirm in writing that they have demonstrated competence to maintain it
 
 ## 5.4 Python and machine learning
 
@@ -478,284 +478,284 @@ For staff writing Python tools or working in the AI/ML development environment. 
 
 The Python Tool Governance document mirrors the R governance document in structure. The key operational differences are the dependency management tool (poetry rather than renv), the deployment environment (Databricks as well as local execution), and the strict training/inference separation requirement.
 
-- poetry in practice: poetry new or poetry init to start a project; poetry add <package> to add dependencies (never pip install directly in a managed project); poetry install when setting up a colleague's project; poetry shell to activate the environment; committing poetry.lock with every dependency change
+-   poetry in practice: poetry new or poetry init to start a project; poetry add <package> to add dependencies (never pip install directly in a managed project); poetry install when setting up a colleague's project; poetry shell to activate the environment; committing poetry.lock with every dependency change
 
-- Training and inference separation: the training pipeline and the inference pipeline must be in separate scripts with no shared mutable state; this is a governance requirement, not just a design preference; the reason is auditability -- the Steward must be able to confirm which training run produced the deployed model
+-   Training and inference separation: the training pipeline and the inference pipeline must be in separate scripts with no shared mutable state; this is a governance requirement, not just a design preference; the reason is auditability -- the Steward must be able to confirm which training run produced the deployed model
 
-- Tool tier classification: the same criteria as R; a Python script that runs operational inference is Tier 1 from the moment it is deployed, regardless of how experimental the development felt
+-   Tool tier classification: the same criteria as R; a Python script that runs operational inference is Tier 1 from the moment it is deployed, regardless of how experimental the development felt
 
-- Code review: the same process as R; reviewers additionally check that training and inference are separated, that MLflow logging is complete, and that the Gold data requirement is met
+-   Code review: the same process as R; reviewers additionally check that training and inference are separated, that MLflow logging is complete, and that the Gold data requirement is met
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
-| Python Tool Governance document (internal): available from the Steward | Read in full before writing any shared Python code. The sections on poetry, training/inference separation, and Tier 1 obligations are the most operationally important. |
-| Poetry documentation: python-poetry.org/docs | Read 'Basic usage' and 'Managing dependencies' before starting any project. The section on dependency groups is relevant for separating development and runtime dependencies. |
-| Real Python -- Python Virtual Environments Primer: realpython.com/python-virtual-environments-a-primer | Understand what a virtual environment is and why it exists before using poetry. Poetry automates this, but knowing what it is doing prevents confusion when something goes wrong. |
-| MLflow documentation: mlflow.org/docs/latest | Read the 'Tracking' and 'Models' sections. Understand how experiments, runs, parameters, metrics, and artefacts relate to each other. This is the logging infrastructure for all ML work in the team. |
-| Databricks documentation -- Unity Catalog: docs.databricks.com/en/data-governance/unity-catalog | Read the overview and the section on catalogs, schemas, and tables. Unity Catalog is how data is governed inside Databricks; understanding its structure is necessary before reading from or writing to the DASH platform. |
+| **Resource**                                                                                           | **What to take from it**                                                                                                                                                                                                   |
+|------------------------------------|------------------------------------|
+| Python Tool Governance document (internal): available from the Steward                                 | Read in full before writing any shared Python code. The sections on poetry, training/inference separation, and Tier 1 obligations are the most operationally important.                                                    |
+| Poetry documentation: python-poetry.org/docs                                                           | Read 'Basic usage' and 'Managing dependencies' before starting any project. The section on dependency groups is relevant for separating development and runtime dependencies.                                              |
+| Real Python -- Python Virtual Environments Primer: realpython.com/python-virtual-environments-a-primer | Understand what a virtual environment is and why it exists before using poetry. Poetry automates this, but knowing what it is doing prevents confusion when something goes wrong.                                          |
+| MLflow documentation: mlflow.org/docs/latest                                                           | Read the 'Tracking' and 'Models' sections. Understand how experiments, runs, parameters, metrics, and artefacts relate to each other. This is the logging infrastructure for all ML work in the team.                      |
+| Databricks documentation -- Unity Catalog: docs.databricks.com/en/data-governance/unity-catalog        | Read the overview and the section on catalogs, schemas, and tables. Unity Catalog is how data is governed inside Databricks; understanding its structure is necessary before reading from or writing to the DASH platform. |
 
 ### The AI/ML test environment
 
 ML development in the team happens in a staged environment on DEFRA's DASH Databricks platform. The stages exist to separate experimental work from anything that could affect operational outputs.
 
-- **Stage 1** -- canned datasets: development uses CAMELS-GB v2 and UK-Flow15; no EA operational data; the goal is to validate the pipeline architecture before touching real data
+-   **Stage 1** -- canned datasets: development uses CAMELS-GB v2 and UK-Flow15; no EA operational data; the goal is to validate the pipeline architecture before touching real data
 
-- **Stage 2** -- EA data integration: Silver-tier hydrometric data from the Bronze/Silver/Gold store; Steward approval required; data IDs must be logged to MLflow
+-   **Stage 2** -- EA data integration: Silver-tier hydrometric data from the Bronze/Silver/Gold store; Steward approval required; data IDs must be logged to MLflow
 
-- **Stage 3** -- pseudo-operational testing: Gold-tier data; real-time feed integration; results assessed against existing black box models on the same events before any promotion decision
+-   **Stage 3** -- pseudo-operational testing: Gold-tier data; real-time feed integration; results assessed against existing black box models on the same events before any promotion decision
 
-- Progression between stages is evidence-led: a stage is complete when the Steward agrees the evidence warrants moving on, not when a calendar date is reached
+-   Progression between stages is evidence-led: a stage is complete when the Steward agrees the evidence warrants moving on, not when a calendar date is reached
 
-- MLflow logging requirements: every experiment run must log the model architecture, all hyperparameters, the training data ID and version, validation metrics (NSE, KGE on held-out events), and the ONNX model artefact
+-   MLflow logging requirements: every experiment run must log the model architecture, all hyperparameters, the training data ID and version, validation metrics (NSE, KGE on held-out events), and the ONNX model artefact
 
 ### Recommended resources
 
-| **Resource** | **What to take from it** |
-| --- | --- |
-| Kratzert, F. et al. (2018). Rainfall-runoff modelling using Long Short-Term Memory (LSTM) networks. Hydrology and Earth System Sciences. doi:10.5194/hess-22-6005-2018 | The paper that established LSTMs as serious tools for rainfall-runoff modelling. Read before writing any LSTM code. Understand what the model is learning and why LSTM architecture suits sequential hydrological data. |
-| Kratzert, F. et al. (2019). Towards learning universal, regional, and local hydrological behaviors via machine learning applied to large-sample datasets. Hydrology and Earth System Sciences. doi:10.5194/hess-23-5089-2019 | The follow-up paper introducing static catchment attributes as LSTM inputs (equivalent to the team's BFI, area, elevation features). Read to understand why static attributes improve regionalisation. |
-| CAMELS-GB dataset documentation: doi.org/10.5285/8344e4f3-d2ea-44f5-8afa-86d2987543a9 | The Stage 1 training dataset. Read the dataset documentation to understand what attributes are included and how they align with the team's feature engineering pipeline. |
-| PyTorch documentation -- nn.LSTM: pytorch.org/docs/stable/generated/torch.nn.LSTM.html | The reference for the LSTM implementation used in the training pipeline. Understand the input shape (sequence_length, batch_size, input_size) before writing any training code -- shape errors are the most common source of bugs. |
-| MLflow Python API reference: mlflow.org/docs/latest/python_api | Reference for mlflow.log_param(), mlflow.log_metric(), mlflow.log_artifact(), and mlflow.pytorch.log_model(). All four are required in every training run. |
-| ONNX documentation: onnx.ai/onnx/intro | Background on the ONNX model format used for archiving Tier 1 models. Read the overview and the Python export guide. ONNX export is required before any model can be promoted to Tier 1. |
+| **Resource**                                                                                                                                                                                                                 | **What to take from it**                                                                                                                                                                                                           |
+|------------------------------------|------------------------------------|
+| Kratzert, F. et al. (2018). Rainfall-runoff modelling using Long Short-Term Memory (LSTM) networks. Hydrology and Earth System Sciences. doi:10.5194/hess-22-6005-2018                                                       | The paper that established LSTMs as serious tools for rainfall-runoff modelling. Read before writing any LSTM code. Understand what the model is learning and why LSTM architecture suits sequential hydrological data.            |
+| Kratzert, F. et al. (2019). Towards learning universal, regional, and local hydrological behaviors via machine learning applied to large-sample datasets. Hydrology and Earth System Sciences. doi:10.5194/hess-23-5089-2019 | The follow-up paper introducing static catchment attributes as LSTM inputs (equivalent to the team's BFI, area, elevation features). Read to understand why static attributes improve regionalisation.                             |
+| CAMELS-GB dataset documentation: doi.org/10.5285/8344e4f3-d2ea-44f5-8afa-86d2987543a9                                                                                                                                        | The Stage 1 training dataset. Read the dataset documentation to understand what attributes are included and how they align with the team's feature engineering pipeline.                                                           |
+| PyTorch documentation -- nn.LSTM: pytorch.org/docs/stable/generated/torch.nn.LSTM.html                                                                                                                                       | The reference for the LSTM implementation used in the training pipeline. Understand the input shape (sequence_length, batch_size, input_size) before writing any training code -- shape errors are the most common source of bugs. |
+| MLflow Python API reference: mlflow.org/docs/latest/python_api                                                                                                                                                               | Reference for mlflow.log_param(), mlflow.log_metric(), mlflow.log_artifact(), and mlflow.pytorch.log_model(). All four are required in every training run.                                                                         |
+| ONNX documentation: onnx.ai/onnx/intro                                                                                                                                                                                       | Background on the ONNX model format used for archiving Tier 1 models. Read the overview and the Python export guide. ONNX export is required before any model can be promoted to Tier 1.                                           |
 
 ### LSTM pipelines
 
 The LSTM pipeline has three components: feature engineering, training, and inference. Each is a separate script. The governance requirement for separation means they must not share mutable state or call each other at runtime.
 
-- Feature engineering: constructing the input tensors from Silver or Gold hydrometric time series; sequence length and lookback window selection; normalisation using training-set statistics only (never the full dataset, to prevent data leakage); fixed random seeds for reproducible train/test splits
+-   Feature engineering: constructing the input tensors from Silver or Gold hydrometric time series; sequence length and lookback window selection; normalisation using training-set statistics only (never the full dataset, to prevent data leakage); fixed random seeds for reproducible train/test splits
 
-- Static catchment attributes: BFI, catchment area, mean elevation, soil type, land cover, and gauge coordinates; loaded from the fw_gold Parquet store; concatenated with dynamic inputs at training time, not baked into the sequence
+-   Static catchment attributes: BFI, catchment area, mean elevation, soil type, land cover, and gauge coordinates; loaded from the fw_gold Parquet store; concatenated with dynamic inputs at training time, not baked into the sequence
 
-- Training pipeline: LSTM architecture definition; training loop with early stopping; validation on held-out events; hyperparameter logging to MLflow; ONNX export on completion
+-   Training pipeline: LSTM architecture definition; training loop with early stopping; validation on held-out events; hyperparameter logging to MLflow; ONNX export on completion
 
-- Inference pipeline: loading the promoted LSTM from the MLflow registry; running against incoming Silver data; the inference script must not import from the training script
+-   Inference pipeline: loading the promoted LSTM from the MLflow registry; running against incoming Silver data; the inference script must not import from the training script
 
-- Model handover: when an LSTM replaces an existing black box model, the retiring model's Tool Register entry is set to Deprecated with a reference to the replacing model's MLflow run ID; the Connection Register is updated to reflect the new upstream model
+-   Model handover: when an LSTM replaces an existing black box model, the retiring model's Tool Register entry is set to Deprecated with a reference to the replacing model's MLflow run ID; the Connection Register is updated to reflect the new upstream model
 
 # 6. Role-based requirements
 
 The table below sets out the minimum training required for each role. Where a team member holds multiple roles (for example, Custodian on an R tool and Custodian on a flood model), they must complete the requirements for each.
 
-| **Role** | **Minimum training required** |
-| --- | --- |
-| **All staff** | Core (Section 2) |
-| **Custodian (any asset)** | Core + relevant fundamentals + cross-cutting (Section 4) + specialist track for the asset type |
-| **Steward** | Core + relevant fundamentals + cross-cutting + specialist track for the assets overseen + awareness session on adjacent tracks where relevant |
-| **Delegated Steward** | As Steward for all assets within the delegated domain. Additionally: Tier 1 annual audit requirements, corrective action planning, and non-compliance escalation procedures as set out in the parent framework. |
-| **Owner** | Core + governance obligations from Section 4 only; no specialist track required |
-| **Tier 1 tool or model Custodian** | All of the above for their track, plus confirmation from a senior reviewer before being listed on the register |
-| **FMP API developer** | Core + hydraulics fundamentals + data and coding fundamentals + cross-cutting + hydraulic modelling track + crossover module |
+| **Role**                           | **Minimum training required**                                                                                                                                                                                   |
+|------------------------------------|------------------------------------|
+| **All staff**                      | Core (Section 2)                                                                                                                                                                                                |
+| **Custodian (any asset)**          | Core + relevant fundamentals + cross-cutting (Section 4) + specialist track for the asset type                                                                                                                  |
+| **Steward**                        | Core + relevant fundamentals + cross-cutting + specialist track for the assets overseen + awareness session on adjacent tracks where relevant                                                                   |
+| **Delegated Steward**              | As Steward for all assets within the delegated domain. Additionally: Tier 1 annual audit requirements, corrective action planning, and non-compliance escalation procedures as set out in the parent framework. |
+| **Owner**                          | Core + governance obligations from Section 4 only; no specialist track required                                                                                                                                 |
+| **Tier 1 tool or model Custodian** | All of the above for their track, plus confirmation from a senior reviewer before being listed on the register                                                                                                  |
+| **FMP API developer**              | Core + hydraulics fundamentals + data and coding fundamentals + cross-cutting + hydraulic modelling track + crossover module                                                                                    |
 
 # 7. Recording completion
 
 Training completion is recorded using the sign-off forms in Appendix A. A separate form exists for each track. The Steward is responsible for keeping completed forms and for confirming that custodians on Tier 1 assets have completed the required training before being listed on the register.
 
-- New team members must complete core and any required fundamentals within their first four weeks, as set out in the onboarding sections of the R and Python governance documents
+-   New team members must complete core and any required fundamentals within their first four weeks, as set out in the onboarding sections of the R and Python governance documents
 
-- Cross-cutting training must be completed before a team member is named as Custodian on any model asset
+-   Cross-cutting training must be completed before a team member is named as Custodian on any model asset
 
-- Specialist track training must be completed before a team member is named as Custodian on any asset within that track
+-   Specialist track training must be completed before a team member is named as Custodian on any asset within that track
 
-- Tier 1 additional requirements must be met and confirmed before a team member takes on Tier 1 custodianship
+-   Tier 1 additional requirements must be met and confirmed before a team member takes on Tier 1 custodianship
 
-- Forms are stored in docs/training/ in the team repository alongside the acknowledgement forms from the governance documents
+-   Forms are stored in docs/training/ in the team repository alongside the acknowledgement forms from the governance documents
 
 | **Annual review** Training completion is reviewed as part of the annual governance audit. The Steward checks that all named Custodians have current sign-offs for the assets they hold. Where gaps are found, they are treated as a governance risk and actioned before the next audit cycle. |
-| --- |
+|------------------------------------------------------------------------|
 
 # Approved by
 
-| **Role** | **Name / Signature** | **Date** |
-| --- | --- | --- |
-| Head of Flood Forecasting |  |  |
-| Senior Modeller / Technical Lead |  |  |
-| Team Representative |  |  |
+| **Role**                         | **Name / Signature** | **Date** |
+|----------------------------------|----------------------|----------|
+| Head of Flood Forecasting        |                      |          |
+| Senior Modeller / Technical Lead |                      |          |
+| Team Representative              |                      |          |
 
 # Appendix A: Training sign-off forms
 
 Each form below covers one training section. The completing staff member signs (or dates) the 'Completed' column for each item. The verifying colleague (Steward or Delegated Steward) signs the 'Verified by' column.
 
-Store completed forms in: docs/training/[StaffName]_[Track]_[Year].docx
+Store completed forms in: docs/training/\[StaffName\]*\[Track\]*\[Year\].docx
 
 ## A.1 Core
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **Core training item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **Governance framework** |
-| Read the Data & Digital Asset Governance Framework v1.4 |  |  |
-| Can describe the Owner, Steward, and Custodian roles and grade requirements |  |  |
-| Can explain the Tier 1 / Tier 2 / Tier 3 classification and give an example of each |  |  |
-| Understands the Tool Register and Model Register: purpose and update triggers |  |  |
-| **Data architecture** |
-| Can describe Bronze, Silver, and Gold tiers and what each represents |  |  |
-| Understands why only Gold data may be used in Tier 1 operational runs |  |  |
-| Can explain Q-FAIR and what each principle means in the team context |  |  |
-| **Version control** |
-| Understands what version control is and why it is required for reproducibility |  |  |
-| Knows where assets must be stored and that local-only storage is not permitted |  |  |
+| **Core training item**                                                              | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **Governance framework**                                                            |               |                 |
+| Read the Data & Digital Asset Governance Framework v1.4                             |               |                 |
+| Can describe the Owner, Steward, and Custodian roles and grade requirements         |               |                 |
+| Can explain the Tier 1 / Tier 2 / Tier 3 classification and give an example of each |               |                 |
+| Understands the Tool Register and Model Register: purpose and update triggers       |               |                 |
+| **Data architecture**                                                               |               |                 |
+| Can describe Bronze, Silver, and Gold tiers and what each represents                |               |                 |
+| Understands why only Gold data may be used in Tier 1 operational runs               |               |                 |
+| Can explain Q-FAIR and what each principle means in the team context                |               |                 |
+| **Version control**                                                                 |               |                 |
+| Understands what version control is and why it is required for reproducibility      |               |                 |
+| Knows where assets must be stored and that local-only storage is not permitted      |               |                 |
 
 ## A.2 Hydrology fundamentals
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **Hydrology fundamentals item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **Concepts** |
-| Can describe the water cycle and catchment response to rainfall |  |  |
-| Can read and interpret a hydrograph |  |  |
-| Understands flow routing in a catchment and channel network |  |  |
-| **Data and metrics** |
-| Understands what hydrometric data is and what affects its quality |  |  |
-| Can explain NSE, KGE, and FAR and what good values look like |  |  |
-| Can name the main catchment descriptors used in model configuration and ML feature engineering |  |  |
+| **Hydrology fundamentals item**                                                                | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **Concepts**                                                                                   |               |                 |
+| Can describe the water cycle and catchment response to rainfall                                |               |                 |
+| Can read and interpret a hydrograph                                                            |               |                 |
+| Understands flow routing in a catchment and channel network                                    |               |                 |
+| **Data and metrics**                                                                           |               |                 |
+| Understands what hydrometric data is and what affects its quality                              |               |                 |
+| Can explain NSE, KGE, and FAR and what good values look like                                   |               |                 |
+| Can name the main catchment descriptors used in model configuration and ML feature engineering |               |                 |
 
 ## A.3 Hydraulics fundamentals
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **Hydraulics fundamentals item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **Concepts** |
-| Can describe the difference between subcritical and supercritical flow |  |  |
-| Can explain when 1D, 2D, and linked schemes are appropriate |  |  |
-| Understands how floodplain roughness affects model outputs |  |  |
-| **Outputs and uncertainty** |
-| Can interpret flow, level, and velocity model outputs |  |  |
-| Understands the main sources of uncertainty in hydraulic models |  |  |
-| Can describe what boundary conditions are and the main types |  |  |
+| **Hydraulics fundamentals item**                                       | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **Concepts**                                                           |               |                 |
+| Can describe the difference between subcritical and supercritical flow |               |                 |
+| Can explain when 1D, 2D, and linked schemes are appropriate            |               |                 |
+| Understands how floodplain roughness affects model outputs             |               |                 |
+| **Outputs and uncertainty**                                            |               |                 |
+| Can interpret flow, level, and velocity model outputs                  |               |                 |
+| Understands the main sources of uncertainty in hydraulic models        |               |                 |
+| Can describe what boundary conditions are and the main types           |               |                 |
 
 ## A.4 Data and coding fundamentals
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **Data and coding fundamentals item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **Data and tools** |
-| Can describe Parquet, JSON, and binary file formats and when each is used |  |  |
-| Understands what a commit, branch, and pull request are in Git |  |  |
-| Can explain what a code review is and what reviewers look for |  |  |
-| **Scripting and environments** |
-| Can explain what a function and a package dependency are |  |  |
-| Understands what renv and poetry do and why locked environments matter |  |  |
-| Completed at least two pull request reviews in the team repository |  |  |
+| **Data and coding fundamentals item**                                     | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **Data and tools**                                                        |               |                 |
+| Can describe Parquet, JSON, and binary file formats and when each is used |               |                 |
+| Understands what a commit, branch, and pull request are in Git            |               |                 |
+| Can explain what a code review is and what reviewers look for             |               |                 |
+| **Scripting and environments**                                            |               |                 |
+| Can explain what a function and a package dependency are                  |               |                 |
+| Understands what renv and poetry do and why locked environments matter    |               |                 |
+| Completed at least two pull request reviews in the team repository        |               |                 |
 
 ## A.5 Cross-cutting: model configuration and black box models
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **Cross-cutting training item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **Model**** register and configuration** |
-| Can construct a model ID following the [CatchmentID]_[ModelType]_[Version] convention |  |  |
-| Knows when a model must be entered in the register |  |  |
-| Can complete a run record covering all required fields |  |  |
-| Understands what boundary conditions are and what governance applies to each type |  |  |
-| Can describe what a calibration record must contain |  |  |
-| Understands the impact assessment requirement before deploying a model change |  |  |
-| **Model condition and connections** |
-| Can describe what condition assessment covers and how the 0-10 score maps to operational risk |  |  |
-| Understands review schedules and what triggers an unscheduled review |  |  |
-| Can explain how poor condition propagates through connected models |  |  |
-| Understands what the Connection Register records and when it must be updated |  |  |
-| Can describe what a system diagram must show |  |  |
-| Understands what manual override points are and what must be recorded when used |  |  |
-| **Black box models** |
-| Can explain why black box models carry specific governance risks compared to physically-based models |  |  |
-| Understands why all operational black box models are Tier 1 assets |  |  |
-| Knows what a training dataset record must contain |  |  |
-| Can describe what must be recorded when a black box model is replaced |  |  |
+| **Cross-cutting training item**                                                                      | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **Model**\*\* register and configuration\*\*                                                         |               |                 |
+| Can construct a model ID following the \[CatchmentID\]*\[ModelType\]*\[Version\] convention          |               |                 |
+| Knows when a model must be entered in the register                                                   |               |                 |
+| Can complete a run record covering all required fields                                               |               |                 |
+| Understands what boundary conditions are and what governance applies to each type                    |               |                 |
+| Can describe what a calibration record must contain                                                  |               |                 |
+| Understands the impact assessment requirement before deploying a model change                        |               |                 |
+| **Model condition and connections**                                                                  |               |                 |
+| Can describe what condition assessment covers and how the 0-10 score maps to operational risk        |               |                 |
+| Understands review schedules and what triggers an unscheduled review                                 |               |                 |
+| Can explain how poor condition propagates through connected models                                   |               |                 |
+| Understands what the Connection Register records and when it must be updated                         |               |                 |
+| Can describe what a system diagram must show                                                         |               |                 |
+| Understands what manual override points are and what must be recorded when used                      |               |                 |
+| **Black box models**                                                                                 |               |                 |
+| Can explain why black box models carry specific governance risks compared to physically-based models |               |                 |
+| Understands why all operational black box models are Tier 1 assets                                   |               |                 |
+| Knows what a training dataset record must contain                                                    |               |                 |
+| Can describe what must be recorded when a black box model is replaced                                |               |                 |
 
 ## A.6 Hydrological modelling track
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **Hydrological modelling track item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **PDM models** |
-| Understands PDM parameter set structure and why they are sensitive assets |  |  |
-| Knows the naming convention and storage requirements for parameter sets |  |  |
-| Can produce a complete calibration record |  |  |
-| Can explain how PDM outputs become FMP boundary conditions |  |  |
-| **Hydrometric data** |
-| Understands the Bronze ingestion pipeline: what it captures, partitioning, and immutability |  |  |
-| Can explain the Silver QC process and what supplier flags and quality codes mean |  |  |
-| Understands Gold approval requirements and who may approve Gold data |  |  |
-| Knows which data tier is required for each operational use case |  |  |
+| **Hydrological modelling track item**                                                       | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **PDM models**                                                                              |               |                 |
+| Understands PDM parameter set structure and why they are sensitive assets                   |               |                 |
+| Knows the naming convention and storage requirements for parameter sets                     |               |                 |
+| Can produce a complete calibration record                                                   |               |                 |
+| Can explain how PDM outputs become FMP boundary conditions                                  |               |                 |
+| **Hydrometric data**                                                                        |               |                 |
+| Understands the Bronze ingestion pipeline: what it captures, partitioning, and immutability |               |                 |
+| Can explain the Silver QC process and what supplier flags and quality codes mean            |               |                 |
+| Understands Gold approval requirements and who may approve Gold data                        |               |                 |
+| Knows which data tier is required for each operational use case                             |               |                 |
 
 ## A.7 Hydraulic modelling track
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **Hydraulic modelling track item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **FMP governance** |
-| Knows the required folder structure and naming conventions |  |  |
-| Understands version control for binary model files and the 'both versions retained' requirement |  |  |
-| Can confirm model files are stored in the agreed repository location |  |  |
-| **1D, 2D, and linked configurations** |
-| Can describe when each scheme type is appropriate and the trade-offs involved |  |  |
-| Understands GXY and DAT file formats and what they contain |  |  |
-| Can interpret standard model output variables |  |  |
+| **Hydraulic modelling track item**                                                              | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **FMP governance**                                                                              |               |                 |
+| Knows the required folder structure and naming conventions                                      |               |                 |
+| Understands version control for binary model files and the 'both versions retained' requirement |               |                 |
+| Can confirm model files are stored in the agreed repository location                            |               |                 |
+| **1D, 2D, and linked configurations**                                                           |               |                 |
+| Can describe when each scheme type is appropriate and the trade-offs involved                   |               |                 |
+| Understands GXY and DAT file formats and what they contain                                      |               |                 |
+| Can interpret standard model output variables                                                   |               |                 |
 
 ## A.8 Crossover module: FMP API scripting
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **Crossover module item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **FMP API and tool governance** |
-| Understands what the Flood Modeller API exposes and how Python scripts interact with it |  |  |
-| Can list the Tier 1 tool obligations that apply to FMP orchestration scripts |  |  |
-| Knows how run records must be completed when a model is run via script |  |  |
-| Understands the distinction between the Model Register (the model) and the Tool Register (the script) |  |  |
+| **Crossover module item**                                                                             | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **FMP API and tool governance**                                                                       |               |                 |
+| Understands what the Flood Modeller API exposes and how Python scripts interact with it               |               |                 |
+| Can list the Tier 1 tool obligations that apply to FMP orchestration scripts                          |               |                 |
+| Knows how run records must be completed when a model is run via script                                |               |                 |
+| Understands the distinction between the Model Register (the model) and the Tool Register (the script) |               |                 |
 
 ## A.9 R development track
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **R development track item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **R governance** |
-| Has read the R Tool Governance document in full |  |  |
-| Can classify an R tool into Tier 1, 2, or 3 and list what each requires |  |  |
-| Understands the pull request and code review process |  |  |
-| Has set up renv and confirmed renv::restore() works on the main repository |  |  |
-| Understands the prohibition on dplyr/tidyverse in team tools and can identify the data.table equivalents |  |  |
-| **reach.***** packages and data patterns** |
-| Can describe the six reach.* modules and what each is for |  |  |
-| Can perform common data.table operations: filtering, grouping, joins |  |  |
-| Can read and write Parquet files and understands Hive partitioning |  |  |
-| Understands the Bronze store structure and what the partitioning keys mean |  |  |
-| **Tier 1 standards (required for Tier 1 custodianship only)** |
-| Has written testthat tests meeting 70% line coverage |  |  |
-| Can produce a handover note covering all required fields |  |  |
-| Has reviewed and understands the disaster recovery runbook template |  |  |
-| Has received senior reviewer confirmation of Tier 1 competence |  |  |
+| **R development track item**                                                                             | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **R governance**                                                                                         |               |                 |
+| Has read the R Tool Governance document in full                                                          |               |                 |
+| Can classify an R tool into Tier 1, 2, or 3 and list what each requires                                  |               |                 |
+| Understands the pull request and code review process                                                     |               |                 |
+| Has set up renv and confirmed renv::restore() works on the main repository                               |               |                 |
+| Understands the prohibition on dplyr/tidyverse in team tools and can identify the data.table equivalents |               |                 |
+| **reach.**\*\*\* packages and data patterns\*\*                                                          |               |                 |
+| Can describe the six reach.\* modules and what each is for                                               |               |                 |
+| Can perform common data.table operations: filtering, grouping, joins                                     |               |                 |
+| Can read and write Parquet files and understands Hive partitioning                                       |               |                 |
+| Understands the Bronze store structure and what the partitioning keys mean                               |               |                 |
+| **Tier 1 standards (required for Tier 1 custodianship only)**                                            |               |                 |
+| Has written testthat tests meeting 70% line coverage                                                     |               |                 |
+| Can produce a handover note covering all required fields                                                 |               |                 |
+| Has reviewed and understands the disaster recovery runbook template                                      |               |                 |
+| Has received senior reviewer confirmation of Tier 1 competence                                           |               |                 |
 
 ## A.10 Python and ML track
 
-Completed by: ___________________________     Role: ___________________________     Date: _______________
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-| **Python and ML track item** | **Completed** | **Verified by** |
-| --- | --- | --- |
-| **Python governance** |
-| Has read the Python Tool Governance document in full |  |  |
-| Has set up a poetry project and confirmed the lockfile is committed |  |  |
-| Understands the prohibition on pip install in managed projects |  |  |
-| Can classify a Python tool and describe what each tier requires |  |  |
-| Understands the training and inference separation requirement |  |  |
-| **AI/ML environment** |
-| Can describe what Unity Catalog and MLflow do in the DASH environment |  |  |
-| Knows what must be logged to MLflow for every experiment run |  |  |
-| Understands the staged build approach and which data tier applies at each stage |  |  |
-| Knows the Gold data requirement for Tier 1 inference pipelines |  |  |
-| **LSTM pipelines** |
-| Can describe what the feature engineering pipeline does and what its outputs represent |  |  |
-| Knows which catchment attributes are used and how they are attached to training data |  |  |
-| Understands what ONNX export is and why it is required |  |  |
-| Understands the model handover process when an LSTM replaces a black box model |  |  |
+| **Python and ML track item**                                                           | **Completed** | **Verified by** |
+|------------------------|------------------------|------------------------|
+| **Python governance**                                                                  |               |                 |
+| Has read the Python Tool Governance document in full                                   |               |                 |
+| Has set up a poetry project and confirmed the lockfile is committed                    |               |                 |
+| Understands the prohibition on pip install in managed projects                         |               |                 |
+| Can classify a Python tool and describe what each tier requires                        |               |                 |
+| Understands the training and inference separation requirement                          |               |                 |
+| **AI/ML environment**                                                                  |               |                 |
+| Can describe what Unity Catalog and MLflow do in the DASH environment                  |               |                 |
+| Knows what must be logged to MLflow for every experiment run                           |               |                 |
+| Understands the staged build approach and which data tier applies at each stage        |               |                 |
+| Knows the Gold data requirement for Tier 1 inference pipelines                         |               |                 |
+| **LSTM pipelines**                                                                     |               |                 |
+| Can describe what the feature engineering pipeline does and what its outputs represent |               |                 |
+| Knows which catchment attributes are used and how they are attached to training data   |               |                 |
+| Understands what ONNX export is and why it is required                                 |               |                 |
+| Understands the model handover process when an LSTM replaces a black box model         |               |                 |
