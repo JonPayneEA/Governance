@@ -8,30 +8,30 @@ book:
   author: "Jonathan Payne"
   date: "March 2026"
   version: "1.4"
+  logo: figures/logo.svg
   search: true
   reader-mode: true
   navbar:
-    logo: figures/logo.svg
     background: primary
     left:
       - text: "Home"
         href: index.qmd
       - text: "Useful datasets"
         menu:
-          - text: "flode"
-            href: https://github.com/JonPayneEA/flode
-          - text: "reach.io"
-            href: https://github.com/JonPayneEA/reach.io
-          - text: "reach.hydro"
-            href: https://github.com/JonPayneEA/reach.hydro
+         - text: "flode"
+           href: https://github.com/JonPayneEA/flode
+         - text: "reach.io"
+           href: https://github.com/JonPayneEA/reach.io
+         - text: "reach.hydro"
+           href: https://github.com/JonPayneEA/reach.hydro
       - text: "Tools"
         menu:
-          - text: "flode"
-            href: https://github.com/JonPayneEA/flode
-          - text: "reach.io"
-            href: https://github.com/JonPayneEA/reach.io
-          - text: "reach.hydro"
-            href: https://github.com/JonPayneEA/reach.hydro
+         - text: "flode"
+           href: https://github.com/JonPayneEA/flode
+         - text: "reach.io"
+           href: https://github.com/JonPayneEA/reach.io
+         - text: "reach.hydro"
+           href: https://github.com/JonPayneEA/reach.hydro
     right:
       - icon: github
         href: https://github.com
