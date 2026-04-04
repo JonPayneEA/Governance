@@ -10,7 +10,7 @@
 | **Version**         | 0.1                                                                                                                                                                                                                                                                                                        |
 | **Status**          | Draft                                                                                                                                                                                                                                                                                                      |
 | **Review Date**     | 2027-03-31                                                                                                                                                                                                                                                                                                 |
-| **Parent Document** | Data & Digital Asset Governance Framework v1.5                                                                                                                                                                                                                                                             |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0                                                                                                                                                                                                                                                             |
 | **Note**            | This appendix is the technical specification for the `fw-governance` MCP server. It is a companion to the governance documents; the normative requirements the server enforces are stated in the domain chapters. For an overview of how the server fits into the adoption process, see @sec-mcp-overview. |
 :::
 
@@ -247,11 +247,11 @@ Look up a specific governance rule by topic.
 ``` json
 {
   "topic": "pandas usage",
-  "rule": "pandas must not be used in Tier 1 operational tools or in shared modules. It may be used freely in Tier 3 exploratory work and Jupyter notebooks.",
+  "rule": "pandas must not be used in Tier 3 operational tools or in shared modules. It may be used freely in Tier 1 exploratory work and Jupyter notebooks.",
   "applies_to": {"tiers": [1, 2], "languages": ["Python"]},
   "source": "Python Tool Governance §2.2.3",
   "alternative": "polars (primary); pyarrow for Parquet I/O",
-  "exceptions": "Tier 3 exploratory work and Jupyter notebooks"
+  "exceptions": "Tier 1 exploratory work and Jupyter notebooks"
 }
 ```
 
@@ -333,7 +333,7 @@ Check whether a source file or project meets the governance requirements for its
     "roxygen2_docs": {"status": "WARN", "detail": "3 of 12 exported functions lack roxygen2 documentation"},
     "runbook": {"status": "FAIL", "detail": "No user guide or runbook found in docs/"},
     "tests_present": {"status": "PASS", "detail": "tests/testthat/ contains 8 test files"},
-    "test_coverage": {"status": "FAIL", "detail": "62% line coverage (minimum 70% for Tier 1)", "value": 62},
+    "test_coverage": {"status": "FAIL", "detail": "62% line coverage (minimum 70% for Tier 3)", "value": 62},
     "lockfile": {"status": "PASS", "detail": "renv.lock present and committed"},
     "lockfile_sync": {"status": "PASS", "detail": "renv::status() reports no issues"},
     "prohibited_packages": {"status": "PASS", "detail": "No tidyverse/dplyr imports detected"},
@@ -494,7 +494,7 @@ Scan a directory for file format violations against the team's accepted format r
 |------------------|------------------|------------------|------------------|
 | `path`    | string  | yes      | Directory to scan (recursively)                                                                                                |
 | `context` | string  | no       | One of: `pipeline`, `bronze`, `silver`, `gold`, `model`, `deliverables`, `any` (default: `any`). Determines which rules apply. |
-| `tier`    | integer | no       | 1, 2, or 3. Stricter rules apply at Tier 1 (prohibited formats are hard failures; at Tier 3 they are warnings).                |
+| `tier`    | integer | no       | 1, 2, or 3. Stricter rules apply at Tier 3 (prohibited formats are hard failures; at Tier 1 they are warnings).                |
 
 **Returns:**
 
@@ -748,11 +748,11 @@ Generate a quarterly governance summary.
 
 #### `audit_tier1`
 
-Run the annual Tier 1 audit checks across all registered Tier 1 assets.
+Run the annual Tier 3 audit checks across all registered Tier 3 assets.
 
 | Field              | Detail                                                                                                                                                                                                                                            |
 |------------------------------------|------------------------------------|
-| **Description**    | Iterates over all Tier 1 entries in the Tool Register and Model Register. For each tool, runs `check_tier_compliance`. For each model, checks condition rating currency and calibration record completeness. Returns a consolidated audit report. |
+| **Description**    | Iterates over all Tier 3 entries in the Tool Register and Model Register. For each tool, runs `check_tier_compliance`. For each model, checks condition rating currency and calibration record completeness. Returns a consolidated audit report. |
 | **Governance ref** | Framework §12                                                                                                                                                                                                                                     |
 
 **Parameters:**
@@ -812,7 +812,7 @@ pkl  = "never"                             # Never use pickle for shared or arch
 formats  = ["xls", "rdata", "RData"]
 reason   = "Legacy formats with no permitted use case in team workflows"
 
-# Severity by tier: violations are FAIL at Tier 1/2, WARN at Tier 3
+# Severity by tier: violations are FAIL at Tier 3/2, WARN at Tier 1
 [file_type_rules.severity]
 tier1 = "FAIL"
 tier2 = "FAIL"

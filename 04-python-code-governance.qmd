@@ -7,7 +7,7 @@
 | **Version** | 1.3 |
 | **Status** | Draft: For Team Review |
 | **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v1.5 │ Data Ownership Model (CDDO, 2024) |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ Data Ownership Model (CDDO, 2024) |
 :::
 
 
@@ -53,7 +53,7 @@ The following governance elements are defined in the Data & Digital Asset Govern
 
 - Owner → Steward → Custodian roles and grade requirements (Section 3)
 
-- Tool tier classification: Tier 1 / 2 / 3 (Section 7.1)
+- Tool tier classification: Tier 3 / 2 / 1 (Section 7.1)
 
 - Custodianship requirements by tier (Section 7.2)
 
@@ -109,7 +109,7 @@ ML tools cover the full model development lifecycle: data preparation, feature e
 
 - Evaluation scripts must be reproducible: fixed random seeds (if required), documented train/test splits, and version-pinned dependencies
 
-- Inference pipelines used operationally are Tier 1 regardless of how the model was trained
+- Inference pipelines used operationally are Tier 3 regardless of how the model was trained
 
 ## 2.2 Coding Style and Conventions
 
@@ -131,7 +131,7 @@ All team Python code follows PEP 8, with the additions below.
 
 ### 2.2.2 Type Hints
 
-All function signatures in shared modules and Tier 1–2 scripts must include type hints. Type correctness is checked with mypy as part of CI (see Section 3.2).
+All function signatures in shared modules and Tier 3–2 scripts must include type hints. Type correctness is checked with mypy as part of CI (see Section 3.2).
 
 ### 2.2.3 Package Dependencies and the polars Ecosystem
 
@@ -145,14 +145,14 @@ The team's default data manipulation library is polars, not pandas. This mirrors
 | Explicit lazy evaluation | polars' lazy API allows downstream tools to read only the columns and rows they need from large Flode outputs, without loading the full dataset into memory. |
 | Type safety | polars enforces strict typing across columns. pandas allows mixed-type columns and silent type coercions that can cause hard-to-debug errors in operational pipelines. |
 
-pandas must not be used in Tier 1 operational tools or in shared modules. It may be used freely in Tier 3 exploratory work and Jupyter notebooks.
+pandas must not be used in Tier 3 operational tools or in shared modules. It may be used freely in Tier 1 exploratory work and Jupyter notebooks.
 
 | **Guidance for Newer Python Users – polars** If you are used to pandas, polars syntax will feel slightly different. The key shift is that polars expressions are evaluated lazily and column operations are written as expressions: df.select(pl.col('flow_cms').mean().alias('mean_flow')). The polars user guide at docs.pola.rs is the recommended starting point. Ask the Delegated Steward for a walkthrough if you are new to it. |
 | --- |
 
 | **Task** | **Preferred Package(s)** |
 | --- | --- |
-| Tabular data manipulation | polars (primary); avoid pandas in Tier 1–2 |
+| Tabular data manipulation | polars (primary); avoid pandas in Tier 3–2 |
 | Reading/writing Parquet (Flode outputs) | polars (pl.read_parquet / pl.scan_parquet) or pyarrow directly |
 | Numerical computation | numpy; scipy for statistical functions |
 | ML model development | scikit-learn for traditional ML; pytorch or tensorflow for deep learning (document choice in header block) |
@@ -176,7 +176,7 @@ pandas must not be used in Tier 1 operational tools or in shared modules. It may
 | JSON (.json) | Acceptable for model metadata, hyperparameters, and configuration. |
 | Excel (.xlsx) | Restricted to stakeholder deliverables only. Use openpyxl if required. |
 
-For full technical detail on each format, including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions, see @sec-file-format-reference. Format compliance for Tier 1 and Tier 2 tools is checked automatically by the `fw-governance` MCP server `check_file_formats` tool.
+For full technical detail on each format, including partitioning conventions, type requirements, spatial format comparisons, and the rationale for CSV and Excel restrictions, see @sec-file-format-reference. Format compliance for Tier 3 and Tier 2 tools is checked automatically by the `fw-governance` MCP server `check_file_formats` tool.
 
 All trained ML model artefacts saved to disk must be accompanied by a JSON metadata file containing: training date, Python and package versions, training dataset identifier, hyperparameters, and key evaluation metrics.
 
@@ -191,9 +191,9 @@ Every script and module file must begin with the following header, completed in 
 
 | **Tier** | **Required Documentation** |
 | --- | --- |
-| Tier 1 – Operational | Mandatory header block; Google-style or NumPy-style docstrings for all public functions and classes; a README.md; a user guide or runbook; change log maintained in Git |
+| Tier 3 – Operational | Mandatory header block; Google-style or NumPy-style docstrings for all public functions and classes; a README.md; a user guide or runbook; change log maintained in Git |
 | Tier 2 – Analytical | Mandatory header block; docstrings for key functions; a README.md |
-| Tier 3 – Experimental | Mandatory header block; inline comments sufficient; Jupyter notebooks must have a markdown cell at the top describing purpose and known limitations |
+| Tier 1 – Experimental | Mandatory header block; inline comments sufficient; Jupyter notebooks must have a markdown cell at the top describing purpose and known limitations |
 
 # 3. Code Review - Python-Specific Requirements
 
@@ -221,13 +221,13 @@ All reviewers must work through this checklist. The completed checklist must be 
 
 - Is the code free of hard-coded file paths (use pathlib)?
 
-- Is polars used for data manipulation in Tier 1–2 tools (not pandas)?
+- Is polars used for data manipulation in Tier 3–2 tools (not pandas)?
 
 - For ML tools: are training and inference clearly separated? Is a metadata JSON saved with every model artefact?
 
 ### C. Testing
 
-- Have pytest tests been written or updated (Tier 1 mandatory, Tier 2 recommended)?
+- Have pytest tests been written or updated (Tier 3 mandatory, Tier 2 recommended)?
 
 - Do existing tests pass?
 
@@ -248,20 +248,20 @@ All reviewers must work through this checklist. The completed checklist must be 
 | **Tool** | **Purpose** |
 | --- | --- |
 | ruff | Linting and formatting: replaces flake8, black, and isort in a single fast tool. Formatting is enforced (blocks merge if failing). |
-| mypy | Static type checking: validates type hints against function signatures and usage. Failures block merge for Tier 1–2 tools. |
+| mypy | Static type checking: validates type hints against function signatures and usage. Failures block merge for Tier 3–2 tools. |
 | pytest | Runs the test suite. Failures always block merge. |
-| pytest-cov | Measures test coverage. Tier 1 tools must meet 70% line coverage. |
+| pytest-cov | Measures test coverage. Tier 3 tools must meet 70% line coverage. |
 | pip-audit / safety | Checks declared dependencies for known security vulnerabilities. Findings flagged to Delegated Steward. |
 
 ## 3.3 Testing Standards
 
-- All Tier 1 functions must have unit tests covering expected outputs, edge cases, and known failure modes
+- All Tier 3 functions must have unit tests covering expected outputs, edge cases, and known failure modes
 
 - Test files must follow pytest conventions: tests/ directory at the project root, files named test_<module>.py
 
 - Tests should use small, embedded data fixtures (via pytest fixtures) rather than reading external files
 
-- Minimum 70% line coverage required for Tier 1 tools (measured via pytest-cov)
+- Minimum 70% line coverage required for Tier 3 tools (measured via pytest-cov)
 
 - For ML tools: include a smoke test that loads a saved model artefact and runs inference on a minimal fixture dataset
 
@@ -274,7 +274,7 @@ Version control principles are defined in the parent framework, Section 8.5. Thi
 
 ## 4.1 Repository Structure
 
-| **python/** **flood-modeller-****api/ #**** Flood Modeller API integration tools** **operational/ #**** Tier 1 tools** **analytical/ #**** Tier 2 tools** **experimental/ #**** Tier 3 tools** **shared/ #**** Shared modules used across tools** **tests/ #**** pytest test suite** **docs/ #**** Documentation and runbooks** **pyproject.toml** **README.md** **ml/ #**** Machine learning tools** **pipelines/ #**** Training and inference scripts** **models/ #**** Saved model artefacts and metadata** **shared/ #**** Shared feature engineering and evaluation modules** **tests/** **pyproject.toml** **README.md** |
+| **python/** **flood-modeller-****api/ #**** Flood Modeller API integration tools** **operational/ #**** Tier 3 tools** **analytical/ #**** Tier 2 tools** **experimental/ #**** Tier 1 tools** **shared/ #**** Shared modules used across tools** **tests/ #**** pytest test suite** **docs/ #**** Documentation and runbooks** **pyproject.toml** **README.md** **ml/ #**** Machine learning tools** **pipelines/ #**** Training and inference scripts** **models/ #**** Saved model artefacts and metadata** **shared/ #**** Shared feature engineering and evaluation modules** **tests/** **pyproject.toml** **README.md** |
 | --- |
 
 ## 4.2 Reproducibility with poetry
@@ -298,7 +298,7 @@ All Python projects must use poetry for dependency management. This is the Pytho
 
 Custodianship roles, grade requirements, the Tool Register, and handover and succession requirements for Python tools are defined in the parent framework. All requirements set out there apply in full.
 
-| **Owner/Steward/Custodian roles and grades: Section 3. Tier-specific custodianship requirements: Section 7.2. Tool Register: Section 7.6. Handover and succession: Section 7.7. All references are to the Data ****&**** Digital Asset Governance Framework v1.5.** |
+| **Owner/Steward/Custodian roles and grades: Section 3. Tier-specific custodianship requirements: Section 7.2. Tool Register: Section 7.6. Handover and succession: Section 7.7. All references are to the Data ****&**** Digital Asset Governance Framework v2.0.** |
 | --- |
 
 For cross-language pipelines where an R tool feeds a Python component, custodianship must be assigned separately for each language component. The Owner may be the same person, but the Steward and Custodian assignments should reflect who is best placed to maintain each part. See also R Tool Governance Proposal, Section 5.
@@ -341,7 +341,7 @@ The team's monthly R drop-in session includes Python topics. A separate Python k
 
 The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, Section 12. The following applies specifically to Python tools:
 
-Overall responsibility for this document sits with the Delegated Steward. The same Governance Working Group that oversees the R framework oversees this document. The Delegated Steward conducts an annual audit of all Tier 1 Python tools covering: header block completeness, type hint coverage, test coverage, documentation currency, poetry.lock consistency, and compliance with the branching strategy. Findings are reported to the team alongside the R framework audit.
+Overall responsibility for this document sits with the Delegated Steward. The same Governance Working Group that oversees the R framework oversees this document. The Delegated Steward conducts an annual audit of all Tier 3 Python tools covering: header block completeness, type hint coverage, test coverage, documentation currency, poetry.lock consistency, and compliance with the branching strategy. Findings are reported to the team alongside the R framework audit.
 
 # Approved by
 

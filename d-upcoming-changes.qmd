@@ -96,8 +96,8 @@ A phased compliance timeline has been added to the new Implementation chapter (C
 The framework creates a significant and recurring administrative burden:
 
 - Quarterly governance summaries from the Steward
-- Annual Tier 1 audit across all tools, models, and data
-- Annual condition assessments for all Tier 1 models
+- Annual Tier 3 audit across all tools, models, and data
+- Annual condition assessments for all Tier 3 models
 - Six-monthly access reviews
 - Monthly Data Quality Issue Log reviews
 - Annual framework review with Owner sign-off
@@ -115,8 +115,8 @@ For a team where, by the problem statement's own admission, models currently lac
 
 The framework is strong within individual asset types but weak at the interfaces between them:
 
-- **Data-to-model:** Gold datasets feed Tier 1 models, but there is no mechanism for the data Steward to notify the modelling Steward when a Gold dataset is superseded. The model run record captures the dataset ID used, but there is no trigger to check whether that ID is still the current approved version.
-- **Code-to-model:** The Tool Register and Model Register are separate with no cross-referencing. If a Tier 1 R tool depends on the output format of a Tier 1 FMP model, that dependency is not captured anywhere.
+- **Data-to-model:** Gold datasets feed Tier 3 models, but there is no mechanism for the data Steward to notify the modelling Steward when a Gold dataset is superseded. The model run record captures the dataset ID used, but there is no trigger to check whether that ID is still the current approved version.
+- **Code-to-model:** The Tool Register and Model Register are separate with no cross-referencing. If a Tier 3 R tool depends on the output format of a Tier 3 FMP model, that dependency is not captured anywhere.
 - **Cross-language pipelines:** A pipeline that uses both R and Python has no single point of governance accountability.
 
 **What is needed:** A cross-asset dependency field in each register, or a connection register extended to cover data-to-model and tool-to-model links as well as model-to-model links. The MCP server's `get_connections` tool and its unified register backend are the natural implementation vehicle.
@@ -140,11 +140,11 @@ The Accepted File Types document has been moved to Appendix E and renamed *File 
 
 #### 6. Owner Accountability is Structurally Thin
 
-The Owner (Deputy Director) is required to approve Tier 1 promotions, Gold datasets, Poor/Critical model conditions, AI service access, external data sharing, disposal, and the annual framework review. However, the Owner has no required training beyond a brief core module covering governance obligations, no required attendance at any review meeting, and no required interaction with any register or report beyond receiving the quarterly summary.
+The Owner (Deputy Director) is required to approve Tier 3 promotions, Gold datasets, Poor/Critical model conditions, AI service access, external data sharing, disposal, and the annual framework review. However, the Owner has no required training beyond a brief core module covering governance obligations, no required attendance at any review meeting, and no required interaction with any register or report beyond receiving the quarterly summary.
 
 In practice this creates a risk that the Steward makes real decisions and the Owner rubber-stamps them, which would undermine the governance model the framework depends on. The framework has grade requirements for Steward (G7) and Custodian (any), but no substantive engagement requirements for the Owner beyond sign-off.
 
-**What is needed:** A brief Owner engagement checklist as part of the annual review, for example confirmation that the Owner has reviewed the quarterly summary, can name the Tier 1 assets in their domain, and has seen the condition ratings for those assets.
+**What is needed:** A brief Owner engagement checklist as part of the annual review, for example confirmation that the Owner has reviewed the quarterly summary, can name the Tier 3 assets in their domain, and has seen the condition ratings for those assets.
 
 **Priority:** Low. More a maturity improvement than a structural gap.
 
@@ -208,7 +208,7 @@ Proposed scope:
 | Templates and worked examples | A completed Tool Register entry, a completed run record, a completed condition assessment, a provenance record; for real or illustrative assets |
 | MCP tooling | How the `fw-governance` MCP server (see the MCP server specification) automates compliance checks, register drafting, and Steward reporting, and how this reduces the manual burden identified in weakness 3 above |
 | Phased obligations | Which governance obligations apply from day one, which require populated registers before they are meaningful, and which await MCP tooling |
-| Getting to steady state | What the governance system looks like when all Tier 1 assets are registered, all registers are current, and all automated checks are running, and a realistic path from here to there |
+| Getting to steady state | What the governance system looks like when all Tier 3 assets are registered, all registers are current, and all automated checks are running, and a realistic path from here to there |
 
 The MCP server specification is the technical foundation for automating the bulk of the administrative burden. Specifically:
 
@@ -234,7 +234,7 @@ An implementation chapter should make explicit which governance obligations the 
 
 The Owner's role is structurally present but not operationally required. Sign-off is needed in several places, but nothing in the framework ensures the Owner understands what they are signing off on. An Owner who reads only the quarterly summary and approves what the Steward recommends is technically compliant, but the governance model depends on the Owner being meaningfully accountable.
 
-**Resolved at v1.5:** Annual engagement checklist added to Review and Compliance section. Before signing off, the Owner must confirm they can name Tier 1 assets in their domain, have read the quarterly summary, are aware of condition ratings, have reviewed all promotions and exceptions from the period, and know the status of any open incidents.
+**Resolved at v1.5:** Annual engagement checklist added to Review and Compliance section. Before signing off, the Owner must confirm they can name Tier 3 assets in their domain, have read the quarterly summary, are aware of condition ratings, have reviewed all promotions and exceptions from the period, and know the status of any open incidents.
 
 ### Steward Perspective
 
@@ -244,7 +244,7 @@ The Delegated Steward role creates indirection without defining where authority 
 
 Cross-asset governance remained incomplete. When a Gold dataset is superseded, nothing required the data Steward to notify the modelling Steward.
 
-**Resolved at v1.5:** Cross-asset notification requirement added to the Registers section. Supersession of a Gold dataset or material change to a Tier 1 output triggers a notification obligation to all dependent domain Stewards, using the Connection Register as the reference for which dependencies exist.
+**Resolved at v1.5:** Cross-asset notification requirement added to the Registers section. Supersession of a Gold dataset or material change to a Tier 3 output triggers a notification obligation to all dependent domain Stewards, using the Connection Register as the reference for which dependencies exist.
 
 ### Custodian Perspective
 
@@ -256,7 +256,7 @@ Three working notes left in Chapter 6 would undermine confidence in anyone readi
 
 | Item | Status |
 |---|---|
-| No capacity guidance (maximum Tier 1 assets per Custodian) | Open. No agreed ceiling to document. |
+| No capacity guidance (maximum Tier 3 assets per Custodian) | Open. No agreed ceiling to document. |
 | Python onboarding guide not written | Open. Reference in Python governance §6.1; guide needed at `docs/onboarding/`. |
 | Flode module naming decision | Open. Callout in R governance §2.1.1 marks names as provisional. |
 | Owner signatures on approval blocks | Open. Cannot be set unilaterally. |
@@ -282,3 +282,4 @@ Three working notes left in Chapter 6 would undermine confidence in anyone readi
 | 2026-04-04 | Delegated Steward decision authority clarified in Delegation section | Resolved |
 | 2026-04-04 | Cross-asset supersession notification requirement added to Registers section | Partial (Weakness 4) |
 | 2026-04-04 | Chapter 6 §2.3: Black Box placeholder replaced with descriptive text; §5.1 manual override row removed; §7.2 heading renamed to Calibration Performance Standards | Partially resolved (Weakness 7) |
+| 2026-04-04 | Tier numbering reversed to align with wider business convention: Tier 3 = Operational, Tier 2 = Analytical, Tier 1 = Experimental. Major version increment to 2.0. | Major change |

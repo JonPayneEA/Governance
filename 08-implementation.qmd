@@ -7,7 +7,7 @@
 | **Version** | 1.0 |
 | **Status** | Draft: For Review |
 | **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v1.5 |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0 |
 :::
 
 The framework defines what is required. This chapter describes how to get there. The gap between a framework being published and a team operating to it is where governance efforts most often fail. This chapter makes that path explicit: effective dates, a phased compliance timeline that matches obligations to available capacity, practical guidance on setting up each register, and an explanation of how the `fw-governance` MCP server reduces the manual burden once it is in place.
@@ -36,18 +36,18 @@ The framework creates a significant recurring governance load. Imposing it in fu
 
 | Obligation | Phase 1 (Apr–Jun 2026) | Phase 2 (Jul 2026–Mar 2027) | Phase 3 (from Apr 2027) |
 |---|:---:|:---:|:---:|
-| Roles confirmed for all Tier 1 assets | Required | Required | Required |
-| Tool Register and Model Register populated (Tier 1) | Required | Required | Required |
-| Header blocks on all Tier 1 tools | Required | Required | Required |
+| Roles confirmed for all Tier 3 assets | Required | Required | Required |
+| Tool Register and Model Register populated (Tier 3) | Required | Required | Required |
+| Header blocks on all Tier 3 tools | Required | Required | Required |
 | Hydrometric Data Register active | Required | Required | Required |
 | Quarterly governance summaries | Not required | Required (from Oct 2026) | Required |
-| Condition assessments for Tier 1 models | Not required | Required | Required |
-| Tier 1 tool coverage and documentation standards | Best effort | Corrective actions for any gaps | Required |
+| Condition assessments for Tier 3 models | Not required | Required | Required |
+| Tier 3 tool coverage and documentation standards | Best effort | Corrective actions for any gaps | Required |
 | Connection Register populated | Required | Required | Required |
 | Data catalogue seeded | Not required | Required by Jun 2027 | Required |
 | Tier 2 asset registration | Not required | Begins | Required |
-| Tier 2 and Tier 3 review obligations | Not required | Not required | Required |
-| Annual Tier 1 audit | Not required | Not required | First due Jun 2027 |
+| Tier 2 and Tier 1 review obligations | Not required | Not required | Required |
+| Annual Tier 3 audit | Not required | Not required | First due Jun 2027 |
 
 {.striped}
 
@@ -55,17 +55,17 @@ The framework creates a significant recurring governance load. Imposing it in fu
 
 The purpose of Phase 1 is to establish the factual basis for governance: who owns what, what exists, and where it lives. No reporting or review obligations apply during this phase. The work is registration and role confirmation.
 
-All currently active Tier 1 assets must have a confirmed Owner, Steward, and at least one Custodian by the end of Phase 1. All Tier 1 tools must have correct header blocks and be in version control. The Tool Register must be built and reviewed. The Model Register must have initial entries for all Tier 1 models. The Connection Register must be populated for all active Tier 1 model connections. The Hydrometric Data Register must have entries for all active Bronze and Silver datasets used in Tier 1 model runs.
+All currently active Tier 3 assets must have a confirmed Owner, Steward, and at least one Custodian by the end of Phase 1. All Tier 3 tools must have correct header blocks and be in version control. The Tool Register must be built and reviewed. The Model Register must have initial entries for all Tier 3 models. The Connection Register must be populated for all active Tier 3 model connections. The Hydrometric Data Register must have entries for all active Bronze and Silver datasets used in Tier 3 model runs.
 
-### Phase 2 — Steady State for Tier 1 (1 July 2026 to 31 March 2027)
+### Phase 2 — Steady State for Tier 3 (1 July 2026 to 31 March 2027)
 
-Phase 2 activates the monitoring obligations that depend on Phase 1 being complete. The first quarterly governance summary is due in October 2026, covering the July to September quarter. Condition assessments for all Tier 1 models are required during this phase. Tier 1 code tools that do not meet coverage and documentation standards must have corrective action plans in place by 31 December 2026.
+Phase 2 activates the monitoring obligations that depend on Phase 1 being complete. The first quarterly governance summary is due in October 2026, covering the July to September quarter. Condition assessments for all Tier 3 models are required during this phase. Tier 3 code tools that do not meet coverage and documentation standards must have corrective action plans in place by 31 December 2026.
 
 Tier 2 asset registration begins during Phase 2, but review obligations for Tier 2 assets do not apply until Phase 3. The data catalogue format decision is made and initial entries added during this phase.
 
 ### Phase 3 — Full Framework (from 1 April 2027)
 
-All obligations in this framework are in force from 1 April 2027. The first annual Tier 1 audit is due by 30 June 2027. Tier 2 and Tier 3 monitoring obligations apply at the cadences stated in @sec-governance-framework.
+All obligations in this framework are in force from 1 April 2027. The first annual Tier 3 audit is due by 30 June 2027. Tier 2 and Tier 1 monitoring obligations apply at the cadences stated in @sec-governance-framework.
 
 ## 3. Register Setup {#sec-register-setup}
 
@@ -141,7 +141,7 @@ The MCP server `get_connections` tool reads this file.
 
 ## 4. The fw-governance MCP Server {#sec-mcp-overview}
 
-The `fw-governance` MCP server exposes the governance registers, validation rules, and scaffolding utilities as tools that AI coding assistants and CI pipelines can call directly. The practical effect is that compliance checking moves from code review to the point of authoring. A developer asking Claude Code to scaffold a new Tier 1 R tool gets a correctly structured project with a pre-filled header block and a draft Tool Register entry. A developer running their code through a pre-commit hook gets immediate feedback on format violations before the commit lands.
+The `fw-governance` MCP server exposes the governance registers, validation rules, and scaffolding utilities as tools that AI coding assistants and CI pipelines can call directly. The practical effect is that compliance checking moves from code review to the point of authoring. A developer asking Claude Code to scaffold a new Tier 3 R tool gets a correctly structured project with a pre-filled header block and a draft Tool Register entry. A developer running their code through a pre-commit hook gets immediate feedback on format violations before the commit lands.
 
 The server covers five domains: register lookups, code validation, data pipeline validation, scaffolding and generation, and governance reporting. The governance reporting tools — `governance_summary` and `audit_tier1` — directly address the capacity concern in Weakness 3: the quarterly summary and annual audit become largely automated once the registers are populated.
 
@@ -166,21 +166,21 @@ The table below is the practical sequence of actions required to move from the c
 
 | Action | Owner | Target date |
 |---|---|---|
-| Confirm Owner, Steward, and Custodians for all active Tier 1 assets | Steward | 1 April 2026 |
-| Add header blocks to any Tier 1 tools that lack them | Custodians | 1 April 2026 |
+| Confirm Owner, Steward, and Custodians for all active Tier 3 assets | Steward | 1 April 2026 |
+| Add header blocks to any Tier 3 tools that lack them | Custodians | 1 April 2026 |
 | Run `build_tool_register.R`, review output, commit | Steward | 15 April 2026 |
-| Create initial Model Register entries for all Tier 1 models | Steward | 30 April 2026 |
+| Create initial Model Register entries for all Tier 3 models | Steward | 30 April 2026 |
 | Deploy `fw-governance` MCP server Phase 1 tools | Custodian (technical lead) | 30 April 2026 |
-| Populate Connection Register for all active Tier 1 connections | Modelling Steward | 31 May 2026 |
+| Populate Connection Register for all active Tier 3 connections | Modelling Steward | 31 May 2026 |
 | Obtain Owner signatures on framework approval blocks | Steward | 30 June 2026 |
 | Seed data catalogue with glossary terms | Steward | 30 June 2026 |
 | Deploy MCP server Phase 2 tools | Custodian (technical lead) | 1 July 2026 |
 | Begin Tier 2 asset registration | Stewards | 1 July 2026 |
 | First quarterly governance summary | Steward | 31 October 2026 |
-| Complete first condition assessments for all Tier 1 models | Modelling Custodians | 31 December 2026 |
+| Complete first condition assessments for all Tier 3 models | Modelling Custodians | 31 December 2026 |
 | Deploy MCP server Phase 3 and 4 tools | Custodian (technical lead) | 1 January 2027 |
-| All Tier 1 tools meeting coverage and documentation standards | Custodians | 31 March 2027 |
+| All Tier 3 tools meeting coverage and documentation standards | Custodians | 31 March 2027 |
 | Full framework obligations in force | All | 1 April 2027 |
-| First annual Tier 1 audit | Steward | 30 June 2027 |
+| First annual Tier 3 audit | Steward | 30 June 2027 |
 
 {.striped}

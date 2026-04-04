@@ -6,7 +6,7 @@
 | Flood Modeller Pro (FMP) | Hydraulic modelling software used for 1D/2D flood simulation |
 | PDM | Probability Distributed Model: a conceptual rainfall-runoff model |
 | Flode | The team's internal R package (Flood Operations Development Environment) |
-| Tier 1 / 2 / 3 | Asset classification by operational criticality. Tier 1 = live forecasting, Tier 2 = analytical, Tier 3 = experimental |
+| Tier 3 / 2 / 1 | Asset classification by operational criticality. Tier 3 = live forecasting, Tier 2 = analytical, Tier 1 = experimental |
 | Semantic versioning | Version numbering system: Major.Minor.Patch (e.g. 2.1.0). MAJOR = breaking change, MINOR = new functionality, PATCH = bug fix |
 | Metadata | Information describing a dataset or model: what it is, where it came from, when it was created |
 | Calibration | The process of adjusting model parameters so outputs match observed data |
@@ -19,7 +19,7 @@
 | CI | Continuous Integration: automated checks (tests, linting) that run on every code change |
 | Data Owner | As defined in the Data Ownership Model (CDDO, 2023): a senior individual with dedicated accountability for a logical grouping of data and in-depth knowledge of the overall business strategy in their data remit |
 | Data Steward | As defined in the Data Ownership Model (CDDO, 2023): an operational expert responsible for day-to-day activities supporting the governance decisions made by Data Owners |
-| Delegated Steward | A practitioner to whom the Steward delegates hands-on technical governance work. The delegation recognises that G7 Stewards are often people managers whose strengths lie in oversight and decision-making rather than technical depth; the Delegated Steward brings the domain expertise to carry out the work: assessing code quality, reviewing model condition, evaluating data pipelines, conducting annual Tier 1 audits, and producing corrective action plans. Typically at G6 grade. Delegation does not transfer accountability: the Steward remains responsible for all decisions. Defined in the Governance Framework Role Summary table. |
+| Delegated Steward | A practitioner to whom the Steward delegates hands-on technical governance work. The delegation recognises that G7 Stewards are often people managers whose strengths lie in oversight and decision-making rather than technical depth; the Delegated Steward brings the domain expertise to carry out the work: assessing code quality, reviewing model condition, evaluating data pipelines, conducting annual Tier 3 audits, and producing corrective action plans. Typically at G6 grade. Delegation does not transfer accountability: the Steward remains responsible for all decisions. Defined in the Governance Framework Role Summary table. |
 | Data Custodian | As defined in the Data Ownership Model (CDDO, 2023): an individual responsible for capturing, storing, and disposing of data in line with the Data Owner's requirements |
 | Information Asset Owner (IAO) | A senior individual accountable for the security, content, quality, and distribution of an information asset (typically a database or IT system). Defined in Cabinet Office guidance (updated October 2025). See @sec-iao-relationship |
 | Information Asset Manager (IAM) | A delegated role working on behalf of the IAO, with regular responsibility for the proper management of information in their business area |

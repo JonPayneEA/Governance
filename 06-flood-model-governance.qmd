@@ -7,7 +7,7 @@
 | **Version** | 1.3 |
 | **Status** | Draft: For Team Review |
 | **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v1.5 │ Data Ownership Model (CDDO, 2024) |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ Data Ownership Model (CDDO, 2024) |
 :::
 
 
@@ -19,7 +19,7 @@ Two areas are given particular attention here. First, model condition: a structu
 
 This document is not a guide to modelling practice. It does not prescribe how to build, calibrate, or configure a model. Its concern is the other side of that work: how models are recorded, assessed, connected, and kept accountable over time, and what level of oversight each type of model requires.
 
-| ***Companion documents: Data and Digital Asset Governance Framework v1.5** |
+| ***Companion documents: Data and Digital Asset Governance Framework v2.0** |
 | --- |
 | Hydrometric Data Framework v1.3 │ Python Tool Governance v1.3 │ R Tool Governance v1.3* |
 
@@ -68,7 +68,7 @@ Black Boxes are data-driven models that relate inputs directly to outputs withou
 
 Black Box models carry a specific governance risk: because their internal workings are not as easily physically interpretable, it can be difficult to identify when a model has become unreliable. The model condition framework in Section 4 is particularly important for Black Box models, as performance degradation may not be apparent until a significant event occurs.
 
-All Black Boxesused in operational forecasting are Tier 1 assets. They must have a named Custodian, a documented training dataset, and a formal condition assessment on the schedule defined in Section 4. 
+All Black Boxesused in operational forecasting are Tier 3 assets. They must have a named Custodian, a documented training dataset, and a formal condition assessment on the schedule defined in Section 4. 
 
 ## 2.4 Boundary Conditions
 
@@ -95,8 +95,8 @@ The Steward is responsible for keeping the Model Register current. It must be up
 | Model ID | Unique identifier: [CatchmentID]_[ModelType]_[Version] (e.g., SEVERN_FMP_v3.2) |
 | Model type | FMP 1D, PDM, Black Box, Triton, or coupled |
 | Tier | 1, 2, or 3 following the parent framework tier definitions |
-| Owner | Name, grade, and role. Deputy Director required for Tier 1. |
-| Steward | Name, grade, and role. Grade 7 required for Tier 1. |
+| Owner | Name, grade, and role. Deputy Director required for Tier 3. |
+| Steward | Name, grade, and role. Grade 7 required for Tier 3. |
 | Custodian(s) | Name(s) and role(s). Any grade. |
 | Repository location | Link or path to model files |
 | Current version | Semantic version number of the live model |
@@ -141,9 +141,9 @@ Condition assessments are carried out on a rolling schedule. The schedule is set
 
 | **Tier** | **Standard review cycle** | **Triggered review** |
 | --- | --- | --- |
-| Tier 1 - Operational | Annual | After any significant flood event where model performance can be assessed; after any physical change to the modelled system; after a software upgrade; on handover of custodianship. Automated methods can be introduced. |
+| Tier 3 - Operational | Annual | After any significant flood event where model performance can be assessed; after any physical change to the modelled system; after a software upgrade; on handover of custodianship. Automated methods can be introduced. |
 | Tier 2 - Analytical | Every two years | After significant physical changes; after a major data update; on handover of custodianship |
-| Tier 3 - Experimental | On promotion to Tier 2 or above | At the Steward's discretion |
+| Tier 1 - Experimental | On promotion to Tier 2 or above | At the Steward's discretion |
 
 A triggered review does not reset the standard cycle clock. A model that receives a triggered review in month six of a twelve-month cycle is still due its standard review at month twelve unless the Steward decides otherwise.
 
@@ -202,7 +202,7 @@ Before any change to a model is deployed, the Custodian must consult the Connect
 
 - Whether the condition assessment for downstream models needs to be updated to reflect the changed upstream input
 
-For Tier 1 models, the impact assessment is a required step before a pull request is merged and before a new model version is deployed to the operational environment. It must be documented in the run record or change log for the upstream model being updated.
+For Tier 3 models, the impact assessment is a required step before a pull request is merged and before a new model version is deployed to the operational environment. It must be documented in the run record or change log for the upstream model being updated.
 
 # 6. Model Run Records
 
@@ -225,13 +225,13 @@ For every model run that produces a formal output such as performance testing, t
 | Warnings and errors | Any warnings, errors, or unexpected behaviour observed during the run |
 | Notes | Anything the analyst considers relevant to interpreting the outputs |
 
-| Run records are stored in the /docs directory alongside the model project files. For Tier 1 operational runs, the Steward is notified of any run where a manual override was used or where model warnings were observed. |
+| Run records are stored in the /docs directory alongside the model project files. For Tier 3 operational runs, the Steward is notified of any run where a manual override was used or where model warnings were observed. |
 | --- |
 |  |
 
 # 7. Calibration and Validation
 
-Calibration is the process of adjusting model parameters so that simulated outputs match observed data. Validation is testing those parameters against observed data not used in calibration. Both are required before a model can be promoted to Tier 1 and must be repeated whenever the model is significantly updated.
+Calibration is the process of adjusting model parameters so that simulated outputs match observed data. Validation is testing those parameters against observed data not used in calibration. Both are required before a model can be promoted to Tier 3 and must be repeated whenever the model is significantly updated.
 
 ## 7.1 Calibration Records
 
@@ -262,9 +262,9 @@ Thresholds are stored in the Model Register alongside each model's entry and rev
 
 A model moves between tiers as its use becomes more established or as it is superseded. Promotion and deprecation follow the same principles as the tool tier system in the parent framework, with the additions below specific to flood models.
 
-## 8.1 Promotion to Tier 1
+## 8.1 Promotion to Tier 3
 
-Promotion of a model to Tier 1 operational status requires:
+Promotion of a model to Tier 3 operational status requires:
 
 - A complete calibration record meeting performance thresholds at all key sites
 
@@ -278,7 +278,7 @@ Promotion of a model to Tier 1 operational status requires:
 
 - Owner sign-off
 
-Promotion to Tier 1 does not mean the model will not change. It means that changes to a Tier 1 model follow the full change process including impact assessment, run record, and Steward review before deployment.
+Promotion to Tier 3 does not mean the model will not change. It means that changes to a Tier 3 model follow the full change process including impact assessment, run record, and Steward review before deployment.
 
 ## 8.2 Deprecation
 
@@ -290,7 +290,7 @@ Where a deprecated model provided inputs to downstream models, the Connection Re
 
 The Owner, Steward, and Custodian roles from the parent framework apply to all flood models. The following additions are specific to this document.
 
-For coupled or cascading systems, custodianship is assigned separately for each model component. Where one person is the Custodian for both an upstream and a downstream model, the Steward must satisfy themselves that there is sufficient independent oversight of the connection between them. For Tier 1 cascades involving more than three connected models, the Steward should consider whether a dedicated system-level Custodian is warranted.
+For coupled or cascading systems, custodianship is assigned separately for each model component. Where one person is the Custodian for both an upstream and a downstream model, the Steward must satisfy themselves that there is sufficient independent oversight of the connection between them. For Tier 3 cascades involving more than three connected models, the Steward should consider whether a dedicated system-level Custodian is warranted.
 
 | **Responsibility** | **Role** |
 | --- | --- |
@@ -301,9 +301,9 @@ For coupled or cascading systems, custodianship is assigned separately for each 
 | Complete run records for all formal outputs | Custodian |
 | Notify Steward when condition rating drops to Requires Attention or below | Custodian |
 | Notify Owner when condition rating reaches Poor or below | Steward |
-| Impact assessment before deploying model changes | Custodian (draft), Steward (review for Tier 1) |
-| Annual audit of all Tier 1 models | Delegated Steward |
-| Owner sign-off for Tier 1 promotion, deprecation, or continued use of a Poor-rated model | Owner |
+| Impact assessment before deploying model changes | Custodian (draft), Steward (review for Tier 3) |
+| Annual audit of all Tier 3 models | Delegated Steward |
+| Owner sign-off for Tier 3 promotion, deprecation, or continued use of a Poor-rated model | Owner |
 
 # 10. Review and Compliance
 
@@ -321,9 +321,9 @@ This document is reviewed annually alongside the parent framework and companion 
 
 - Feedback from Custodians on what is working and where the framework needs adjustment
 
-The Delegated Steward conducts an annual audit of all Tier 1 models covering: condition rating currency, calibration record completeness, run record completeness for all formal outputs, Connection Register accuracy, and system diagram currency. Findings are reported to the Owner alongside the wider governance audit.
+The Delegated Steward conducts an annual audit of all Tier 3 models covering: condition rating currency, calibration record completeness, run record completeness for all formal outputs, Connection Register accuracy, and system diagram currency. Findings are reported to the Owner alongside the wider governance audit.
 
-| Exceptions process, escalation paths, and compliance requirements: see Data and Digital Asset Governance Framework v1.5, Section 11. |
+| Exceptions process, escalation paths, and compliance requirements: see Data and Digital Asset Governance Framework v2.0, Section 11. |
 | --- |
 
 # Approved by

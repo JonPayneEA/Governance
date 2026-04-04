@@ -3,7 +3,7 @@
 ::: {.callout-note}
 | | |
 |---|---|
-| **Version** | 1.5 |
+| **Version** | 2.0 |
 | **Status** | Draft: For Review |
 | **Implementation Start** | 23 March 2026 |
 | **Target Adoption** | 31 March 2026 |
@@ -59,7 +59,7 @@ Owners are responsible for:
 
 - Approving what data and models the team uses and produces
 - Deciding who can access sensitive or nationally significant outputs
-- Signing off on major changes to modelling approach, data standards, or tool promotion to Tier 1
+- Signing off on major changes to modelling approach, data standards, or tool promotion to Tier 3
 - Resolving escalated disputes about data quality, access, or tool governance
 - Ensuring the team meets organisational data governance obligations
 - Understanding how assets are being used, who by, and whether they are controlled properly
@@ -90,7 +90,7 @@ Stewards are responsible for:
 - Assisting with periodic data maturity assessments as required by the organisation
 - Periodically considering whether team data assets have value to wider government, society, or the economy, and flagging opportunities to the Owner (see @sec-wider-value)
 
-Not all of these responsibilities carry equal weight at every tier. For Tier 3 assets, the core requirements are standards maintenance, register currency, and quality issue reporting. The fuller responsibilities (data lineage mapping, cross-functional liaison, maturity assessments, and wider value consideration) apply in proportion to asset criticality. All apply in full to Tier 1 assets.
+Not all of these responsibilities carry equal weight at every tier. For Tier 1 assets, the core requirements are standards maintenance, register currency, and quality issue reporting. The fuller responsibilities (data lineage mapping, cross-functional liaison, maturity assessments, and wider value consideration) apply in proportion to asset criticality. All apply in full to Tier 3 assets.
 
 ### Custodian (Any Grade)
 
@@ -117,7 +117,7 @@ Custodians are responsible for:
 | Role | Definition and Responsibilities |
 |---|---|
 | Owner | Senior individual with ultimate accountability for a data or asset domain. Sets strategic direction, approves major decisions, ensures compliance. Deputy Director grade required (see note above). May be delegated to another Deputy Director or equivalent. |
-| Steward | Operational expert responsible for day-to-day governance. Maintains standards, reviews quality, manages access, oversees the Tool Register and data catalogue, handles governance queries, tracks data lineage, manages lifecycle. Grade 7 required for Tier 1 tools; Grade 7 recommended for all other assets. Where the Steward's strength is oversight and people management rather than technical depth, a Delegated Steward should be named to carry out the hands-on governance work: code quality assessment, model condition reviews, data pipeline evaluation, and the annual Tier 1 audit. Typically G6 grade. |
+| Steward | Operational expert responsible for day-to-day governance. Maintains standards, reviews quality, manages access, oversees the Tool Register and data catalogue, handles governance queries, tracks data lineage, manages lifecycle. Grade 7 required for Tier 3 tools; Grade 7 recommended for all other assets. Where the Steward's strength is oversight and people management rather than technical depth, a Delegated Steward should be named to carry out the hands-on governance work: code quality assessment, model condition reviews, data pipeline evaluation, and the annual Tier 3 audit. Typically G6 grade. |
 | Custodian | Technical expert responsible for capturing, storing, maintaining, and disposing of assets correctly. Creates, stores, and maintains assets and tools to agreed standards. Carries out disposal when authorised. Any grade. May be delegated to any team member. |
 
 ### Delegation
@@ -177,17 +177,17 @@ This aligns with the CDDO requirement that every essential shared data asset has
 
 Not all assets carry the same risk. A script that broke at 2am during a live flood event is a different problem to one that broke during a research exercise the following week. The tier system exists to make that difference explicit, and to calibrate the governance overhead accordingly.
 
-All team assets, whether data, models, or code tools, are classified into one of three tiers based on their role in live operational forecasting. Tier 1 is operational: failure has direct consequences for the service. Tier 2 is analytical: regularly used, but not in the critical path. Tier 3 is experimental: research or prototype work, not in production. The tier determines the level of oversight required. It does not describe quality or maturity in isolation; a technically excellent piece of work begins at Tier 3 until its governance is confirmed.
+All team assets, whether data, models, or code tools, are classified into one of three tiers based on their role in live operational forecasting. Tier 3 is operational: failure has direct consequences for the service. Tier 2 is analytical: regularly used, but not in the critical path. Tier 1 is experimental: research or prototype work, not in production. The tier determines the level of oversight required. It does not describe quality or maturity in isolation; a technically excellent piece of work begins at Tier 1 until its governance is confirmed.
 
 The same three tiers apply to every asset type. That uniformity is deliberate. It gives the team a shared language for risk, regardless of whether the asset in question is a hydrometric dataset, a hydraulic model, or a Python script.
 
 | Tier | Description | Data | Models | Tools |
 |---|---|---|---|---|
-| **Tier 1:** Operational | Used in live forecasting. Failure has direct operational consequences. | Formally approved datasets feeding live model runs or supporting the service | FMP, PDM, Black Box and Boundary Conditions used in the operational forecast chain | Scripts and pipelines running in live forecasting or critical to supporting the service |
+| **Tier 3:** Operational | Used in live forecasting. Failure has direct operational consequences. | Formally approved datasets feeding live model runs or supporting the service | FMP, PDM, Black Box and Boundary Conditions used in the operational forecast chain | Scripts and pipelines running in live forecasting or critical to supporting the service |
 | **Tier 2:** Analytical | Regularly used but not in the critical forecasting path. | Calibration inputs, validated datasets used for post-event analysis | Models under active development or used for post-event analysis | Visualisation tools, performance dashboards, model comparison tools |
-| **Tier 3:** Experimental | Research or prototype stage. Not in production. | Exploratory datasets, preliminary ingestion, unvalidated inputs | New model configurations being calibrated or tested | Research notebooks, proof-of-concept tools, ML experiments |
+| **Tier 1:** Experimental | Research or prototype stage. Not in production. | Exploratory datasets, preliminary ingestion, unvalidated inputs | New model configurations being calibrated or tested | Research notebooks, proof-of-concept tools, ML experiments |
 
-Promotion to Tier 1 requires Owner sign-off for all asset types. Demotion or deprecation requires Owner approval. Assets begin at Tier 3 and are promoted as their maturity and governance are confirmed. An asset must not be used in live forecasting until it has been formally promoted to Tier 1.
+Promotion to Tier 3 requires Owner sign-off for all asset types. Demotion or deprecation requires Owner approval. Assets begin at Tier 1 and are promoted as their maturity and governance are confirmed. An asset must not be used in live forecasting until it has been formally promoted to Tier 3.
 
 ### Data Tiers and the Medallion Architecture
 
@@ -195,9 +195,9 @@ Hydrometric data arrives from many sources and rarely arrives clean. A gauge rec
 
 The medallion architecture addresses this by making quality stages explicit. Bronze is the unmodified record of what was received. Silver is the result of documented quality control. Gold is a formally approved product derived from Silver and cleared for a specific operational use. Each stage represents a distinct level of accountability. Moving data from one stage to the next requires deliberate action and a recorded decision. That is not bureaucracy; it is how the team knows what it is working with.
 
-The medallion and the operational tier system answer different questions. The tier system asks: how critical is this asset to the live service? The medallion asks: how far has this data been through quality assurance? For code tools and models these two dimensions tend to move together. For hydrometric data they are genuinely independent, and that independence matters. The same Silver dataset might supply a Tier 2 post-event analysis today and a Tier 1 operational model run next month. The data's quality state has not changed; only its use has. Conflating the two frameworks would mean re-approving data every time its purpose changed.
+The medallion and the operational tier system answer different questions. The tier system asks: how critical is this asset to the live service? The medallion asks: how far has this data been through quality assurance? For code tools and models these two dimensions tend to move together. For hydrometric data they are genuinely independent, and that independence matters. The same Silver dataset might supply a Tier 2 post-event analysis today and a Tier 3 operational model run next month. The data's quality state has not changed; only its use has. Conflating the two frameworks would mean re-approving data every time its purpose changed.
 
-The medallion architecture is not optional. Only Gold-tier data may be used as input to Tier 1 model runs or ML model training that may one day be promoted to operational use. See @sec-hydrometric-data for the full schema requirements and QC process.
+The medallion architecture is not optional. Only Gold-tier data may be used as input to Tier 3 model runs or ML model training that may one day be promoted to operational use. See @sec-hydrometric-data for the full schema requirements and QC process.
 
 ### Model Tiers
 
@@ -205,7 +205,7 @@ Flood models, including FMP hydraulic models, PDM rainfall-runoff configurations
 
 ### Tool Tiers
 
-Code tools written in R or Python follow the same tier system. A tool's tier reflects the operational consequences of failure. Tier 1 tools require the most rigorous development, testing, and custodianship standards. See @sec-r-governance and @sec-python-governance for language-specific requirements.
+Code tools written in R or Python follow the same tier system. A tool's tier reflects the operational consequences of failure. Tier 3 tools require the most rigorous development, testing, and custodianship standards. See @sec-r-governance and @sec-python-governance for language-specific requirements.
 
 ## Asset Registers {#sec-asset-registers}
 
@@ -215,7 +215,7 @@ The team maintains five registers and one data catalogue. Together they answer t
 
 The problems this framework was built to address — informal ownership, lost institutional knowledge, duplicated work — all share a common cause: the team's assets were not systematically recorded. Registers are the remedy. They make ownership visible, make the asset base navigable, and create the audit trail needed for accountability.
 
-Register maintenance is not optional. The Steward is accountable for keeping all registers current. The Custodian is responsible for notifying the Steward whenever an asset changes in a way that requires a register update. An asset not recorded in the relevant register is treated as unmanaged: it may not be used in formal outputs or operational forecasting, it cannot be promoted to Tier 1, and accountability for it cannot be enforced.
+Register maintenance is not optional. The Steward is accountable for keeping all registers current. The Custodian is responsible for notifying the Steward whenever an asset changes in a way that requires a register update. An asset not recorded in the relevant register is treated as unmanaged: it may not be used in formal outputs or operational forecasting, it cannot be promoted to Tier 3, and accountability for it cannot be enforced.
 
 ### The Registers
 
@@ -237,11 +237,11 @@ Detailed field specifications, update procedures, and the initial setup sequence
 
 Every entry in any register must identify the asset's named Owner, Steward, and Custodian. The minimum metadata fields are defined at @sec-metadata-requirements.
 
-The Steward includes register currency in the quarterly governance summary (@sec-monitoring-reporting). Registers are reviewed as part of the annual Tier 1 audit. Assets with no register entry, or with stale entries where the named Custodian has left, are escalated to the Owner for resolution.
+The Steward includes register currency in the quarterly governance summary (@sec-monitoring-reporting). Registers are reviewed as part of the annual Tier 3 audit. Assets with no register entry, or with stale entries where the named Custodian has left, are escalated to the Owner for resolution.
 
 ### Cross-Asset Notification
 
-When a Gold-tier dataset is superseded or a Tier 1 model's output format changes, the Steward responsible for that asset must notify any Steward whose domain depends on it. The Connection Register is the reference: any registered dependency on the changed asset creates an obligation to notify. The notified Steward must confirm with their Custodians that any affected run records, model configurations, or tool outputs are still valid. This requirement applies regardless of whether the dependency crosses language or domain boundaries.
+When a Gold-tier dataset is superseded or a Tier 3 model's output format changes, the Steward responsible for that asset must notify any Steward whose domain depends on it. The Connection Register is the reference: any registered dependency on the changed asset creates an obligation to notify. The notified Steward must confirm with their Custodians that any affected run records, model configurations, or tool outputs are still valid. This requirement applies regardless of whether the dependency crosses language or domain boundaries.
 
 ## Flood Model Governance
 
@@ -263,16 +263,16 @@ All code tools are classified into one of three tiers based on their operational
 
 | Tier | Description | Examples |
 |---|---|---|
-| Tier 1: Operational | Used in live forecasting; failure has direct operational consequences | Ensemble processing scripts, alert threshold tools, Flood Modeller API orchestration, operational ML inference pipelines |
+| Tier 3: Operational | Used in live forecasting; failure has direct operational consequences | Ensemble processing scripts, alert threshold tools, Flood Modeller API orchestration, operational ML inference pipelines |
 | Tier 2: Analytical | Regularly used but not in the critical forecasting path | Visualisation tools, performance metrics dashboards, model comparison tools |
-| Tier 3: Experimental | Research or prototype stage; not in production | New model evaluation scripts, proof-of-concept tools, ML experiments, research notebooks |
+| Tier 1: Experimental | Research or prototype stage; not in production | New model evaluation scripts, proof-of-concept tools, ML experiments, research notebooks |
 
 ### Custodianship Requirements by Tier
 
-| Role | Tier 1: Operational | Tier 2 and 3: Analytical / Experimental |
+| Role | Tier 3: Operational | Tier 2 and 3: Analytical / Experimental |
 |---|---|---|
 | Owner | Deputy Director required. Must be a different individual from the Steward. | Deputy Director strongly recommended. A senior manager with equivalent accountability may be assigned where agreed with the Delegated Steward. |
-| Steward | Grade 7 required. Delegated Steward recommended. | Grade 7 recommended. A capable team member at a lower grade may act as Steward for Tier 3 tools where the role is combined with Custodian. |
+| Steward | Grade 7 required. Delegated Steward recommended. | Grade 7 recommended. A capable team member at a lower grade may act as Steward for Tier 1 tools where the role is combined with Custodian. |
 | Custodian | Runs scheduled CI checks, monitors for issues, escalates to Steward promptly, maintains disaster recovery runbook. | Runs tests before major language version upgrades, flags broken dependencies to Steward. |
 
 When a team member leaves or changes role, custodianship must be formally reassigned before their departure.
@@ -283,9 +283,9 @@ There are four routes by which a new tool enters the team's codebase. The route 
 
 | Route | Description | Typical Origin |
 |---|---|---|
-| A: New Standalone Tool | A new script or module developed from scratch. Begins at Tier 3 and may be promoted. Proposed via a Git issue; Steward confirms route and tier within five working days. | Identified gap in team capability; new forecasting requirement |
+| A: New Standalone Tool | A new script or module developed from scratch. Begins at Tier 1 and may be promoted. Proposed via a Git issue; Steward confirms route and tier within five working days. | Identified gap in team capability; new forecasting requirement |
 | B: Shared Module / Package Contribution | A function or class developed for inclusion in a shared package (Flode for R, shared module for Python). Follows a promotion pathway with API review by the Steward Lead. | Recurring code pattern across tools; refactoring of existing standalone tool |
-| C: Adoption of External Package | An externally developed package being formally adopted for team use. Personal Tier 3 use is acceptable; shared or production use requires evaluation and sign-off. | Discovered package that meets a team need; tool shared by a partner organisation |
+| C: Adoption of External Package | An externally developed package being formally adopted for team use. Personal Tier 1 use is acceptable; shared or production use requires evaluation and sign-off. | Discovered package that meets a team need; tool shared by a partner organisation |
 | D: Emergency / Hotfix | A tool or fix developed under time pressure. Verbal authorisation from the Steward required before work begins. | Forecasting failure; urgent fix required |
 
 For Route C, all external packages must be evaluated against six criteria before adoption in shared or production code: active maintenance, compatible licence, acceptable performance impact, manageable dependency footprint, genuine necessity, and sufficient community adoption.
@@ -296,15 +296,15 @@ For Route D, no more than two emergency route deployments per twelve-month perio
 
 | Tier | Review Requirement |
 |---|---|
-| Tier 1: Operational | Mandatory peer review by a second team member before merging to main. Senior reviewer sign-off before first production deployment. Annual audit of all Tier 1 tools. |
+| Tier 3: Operational | Mandatory peer review by a second team member before merging to main. Senior reviewer sign-off before first production deployment. Annual audit of all Tier 3 tools. |
 | Tier 2: Analytical | Peer review required before merging to main. Reviewer must have at least intermediate proficiency in the relevant language. |
-| Tier 3: Experimental | Self-review checklist minimum. Peer review strongly encouraged before sharing with others. |
+| Tier 1: Experimental | Self-review checklist minimum. Peer review strongly encouraged before sharing with others. |
 
 ### Version Control Principles
 
 All code tools used by more than one person must be managed in Git. No shared tool may exist solely on a local machine or shared drive.
 
-**Branching:** the team follows a simplified Git Flow model: `main` (production-ready only, no direct commits), `develop` (integration branch), `feature/<n>` (individual work), `hotfix/<n>` (urgent fixes to Tier 1), `release/<version>` (versioned releases).
+**Branching:** the team follows a simplified Git Flow model: `main` (production-ready only, no direct commits), `develop` (integration branch), `feature/<n>` (individual work), `hotfix/<n>` (urgent fixes to Tier 3), `release/<version>` (versioned releases).
 
 **Commits:** all commits must follow the Conventional Commits convention `<type>(<scope>): <short description>` with a body explaining why, not just what. Permitted types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`.
 
@@ -320,7 +320,7 @@ The script works in two passes. First, it queries the GitHub API for all reposit
 
 A template `governance.yml` is provided in this repository at `governance-template.yml`. Every tool repository must include a populated copy in its root. Two GitHub topic conventions are required on every tool repository, and used as fallback when `governance.yml` is absent or incomplete:
 
-- Tier: one of `tier-1`, `tier-2`, `tier-3`
+- Tier: one of `tier-3`, `tier-2`, `tier-1`
 - Status: one of `active`, `under-development`, `deprecated`
 
 The resulting register fields are:
@@ -345,7 +345,7 @@ The register must be regenerated whenever a custodianship role changes, a tool c
 
 When a Steward or Custodian changes, the outgoing person must produce a handover note before they leave. The note covers: the tool's purpose and known quirks, current technical debt or open issues, the status of any open pull requests, and scheduled maintenance tasks. It is stored in the tool's `docs/` directory.
 
-For Tier 1 tools, the incoming Steward must run the full test suite and confirm it passes before formally accepting the handover. The Delegated Steward must be notified of all Tier 1 custodianship changes.
+For Tier 3 tools, the incoming Steward must run the full test suite and confirm it passes before formally accepting the handover. The Delegated Steward must be notified of all Tier 3 custodianship changes.
 
 ## Data Catalogue and Centralised Definitions {#sec-data-catalogue}
 
@@ -391,7 +391,7 @@ When an incident occurs:
 - All incidents are recorded in the governance log with a summary of what happened and what was done
 - The Steward escalates to the Owner immediately where the incident affects a formal output, an external stakeholder, or carries potential regulatory or reputational implications; for all other incidents, the Steward uses their judgement
 
-For any Tier 1 asset failure or emergency deployment (Route D), a post-incident review must be completed within ten working days. The review covers: what happened, what the impact was or could have been, what was done to resolve it, and what change is needed to prevent recurrence. The Steward is responsible for completing the review and submitting it to the Owner.
+For any Tier 3 asset failure or emergency deployment (Route D), a post-incident review must be completed within ten working days. The review covers: what happened, what the impact was or could have been, what was done to resolve it, and what change is needed to prevent recurrence. The Steward is responsible for completing the review and submitting it to the Owner.
 
 ## Monitoring, Reporting, and Risk Management {#sec-monitoring-reporting}
 
@@ -399,11 +399,11 @@ The CDDO Data Ownership Model requires that ownership policies include monitorin
 
 **Quarterly:** The Steward produces a governance summary covering: data quality trends from the Hydrometric Data Framework quarterly summaries, open Data Quality Issue Log entries and their age, Tool Register and Model Register currency, any incidents or near-misses in the quarter, and supplier engagement outcomes. This summary is shared with the Owner and feeds into the team's quarterly governance review.
 
-**Annually:** The Delegated Steward conducts a full governance audit of all Tier 1 assets (code tools, models, and data). Findings are compiled into an annual governance report, which is presented to the Owner and submitted to the organisational risk management process. The report covers: compliance rates across all Tier 1 assets, condition rating trends for models, test coverage and documentation currency for tools, data quality trends, and any governance exceptions granted during the year.
+**Annually:** The Delegated Steward conducts a full governance audit of all Tier 3 assets (code tools, models, and data). Findings are compiled into an annual governance report, which is presented to the Owner and submitted to the organisational risk management process. The report covers: compliance rates across all Tier 3 assets, condition rating trends for models, test coverage and documentation currency for tools, data quality trends, and any governance exceptions granted during the year.
 
 **On occurrence:** Data incidents, governance exceptions, and emergency deployments (Route D) are reported to the Steward immediately and to the Owner where they affect formal outputs. Patterns of recurring incidents or exceptions are flagged in the quarterly summary and, if persistent, escalated to the organisation's risk register.
 
-**Non-compliance.** Where the annual audit identifies assets that do not meet the requirements of this framework, the Delegated Steward produces a corrective action plan within one month of the audit report. The plan specifies the gap, the required action, the responsible Custodian or Steward, and a target date. Assets with outstanding corrective actions are flagged in the quarterly summary until resolved. Persistent or repeated non-compliance with Tier 1 requirements is escalated to the Owner and documented in the governance log. An asset that has failed to meet a corrective action target without documented justification must not be used in a new formal output until the gap is resolved.
+**Non-compliance.** Where the annual audit identifies assets that do not meet the requirements of this framework, the Delegated Steward produces a corrective action plan within one month of the audit report. The plan specifies the gap, the required action, the responsible Custodian or Steward, and a target date. Assets with outstanding corrective actions are flagged in the quarterly summary until resolved. Persistent or repeated non-compliance with Tier 3 requirements is escalated to the Owner and documented in the governance log. An asset that has failed to meet a corrective action target without documented justification must not be used in a new formal output until the gap is resolved.
 
 The Owner is responsible for ensuring that governance findings are communicated to the broader organisational governance and risk management structures as appropriate.
 
@@ -421,7 +421,7 @@ The team uses AI and ML tools in two ways: commercial or external services that 
 
 **Assessment before access.** Before any AI or ML service is given access to team data, the Steward must assess three things: what data the service will access and at what tier, whether that data contains personal or sensitive information requiring a DPIA, and whether the service complies with government Secure by Design principles. The assessment is a short written record, approved by the Owner and stored alongside the relevant Tool Register entry or dataset provenance record. This applies equally to commercial tools (such as Microsoft Copilot or cloud inference APIs) and to internally developed inference pipelines.
 
-**ML models in operational use.** Any ML model whose outputs feed Tier 1 forecasts is itself a Tier 1 asset. It must have a named Custodian, a training dataset recorded as a Gold product (see @sec-hydrometric-data), version-controlled model artefacts with a JSON metadata file, and a formal condition assessment on the Tier 1 review schedule. The Python governance document (@sec-python-governance) sets out the technical requirements for training and inference separation, metadata files, and ONNX archiving.
+**ML models in operational use.** Any ML model whose outputs feed Tier 3 forecasts is itself a Tier 3 asset. It must have a named Custodian, a training dataset recorded as a Gold product (see @sec-hydrometric-data), version-controlled model artefacts with a JSON metadata file, and a formal condition assessment on the Tier 3 review schedule. The Python governance document (@sec-python-governance) sets out the technical requirements for training and inference separation, metadata files, and ONNX archiving.
 
 **Run record requirements.** For any ML model used in an operational forecast, the run record must identify the model version, the training dataset version, and any known limitations. Where an ML model replaces a physically-based model, the replacement decision must be documented, comparative performance evidence provided, and the change approved by the Owner before deployment.
 
@@ -437,9 +437,9 @@ This framework and the companion documents are reviewed annually by the Stewards
 - Feedback from Custodians on what is working and what is not
 - Alignment with any updates to the CDDO Data Ownership Model, Defra Data Ownership Policy, IAO guidance, or relevant legislation
 
-The Delegated Steward conducts an annual audit of all Tier 1 code tools, covering header block completeness, test coverage, documentation currency, dependency lockfile consistency, and branching strategy compliance.
+The Delegated Steward conducts an annual audit of all Tier 3 code tools, covering header block completeness, test coverage, documentation currency, dependency lockfile consistency, and branching strategy compliance.
 
-Stewards must carry out spot-check audits of Tier 2 model files and metadata records at least once per year, and of Tier 3 assets at least once every two years. Spot checks may be carried out at any time.
+Stewards must carry out spot-check audits of Tier 2 model files and metadata records at least once per year, and of Tier 1 assets at least once every two years. Spot checks may be carried out at any time.
 
 ### Framework Version Control
 
@@ -465,10 +465,10 @@ The version field in `_quarto.yml` is the master. All companion document metadat
 
 Owner sign-off on the annual review is not a formality. Before signing, the Owner must be able to confirm each of the following:
 
-- I can name the Tier 1 assets in my domain and identify their named Custodian.
+- I can name the Tier 3 assets in my domain and identify their named Custodian.
 - I have read the most recent quarterly governance summary produced by the Steward.
-- I am aware of the current condition ratings for Tier 1 models in my domain and have been briefed on any asset rated Requires Attention or below.
-- I have reviewed and approved any Tier 1 promotions, Gold dataset approvals, or exception requests raised during the review period.
+- I am aware of the current condition ratings for Tier 3 models in my domain and have been briefed on any asset rated Requires Attention or below.
+- I have reviewed and approved any Tier 3 promotions, Gold dataset approvals, or exception requests raised during the review period.
 - I am aware of any open incidents or escalated quality issues from the previous year and their resolution status.
 
 Where the Owner cannot confirm one or more of these, the Steward must provide a briefing before sign-off is given. This is not a barrier to adoption; it is the minimum engagement the role requires.
@@ -482,8 +482,8 @@ Where the Owner cannot confirm one or more of these, the Steward must provide a 
 | I've found a data quality problem | Steward |
 | I want to propose a new code tool | Custodian to Steward or Delegated Steward; raise a Git issue |
 | I want to adopt an external package for production use | Custodian to Steward or Delegated Steward; see R or Python companion doc |
-| I need to know if a tool version is approved for Tier 1 use | Steward |
-| A Tier 1 tool has failed during a live forecast | Steward immediately, then Owner; follow Route D |
+| I need to know if a tool version is approved for Tier 3 use | Steward |
+| A Tier 3 tool has failed during a live forecast | Steward immediately, then Owner; follow Route D |
 | I've made a mistake that affected a published output | Steward immediately, then Owner depending on scale of issue |
 | I want to change the governance framework or a companion document | Steward (draft), Owner (approval) |
 | I want to give an AI tool access to team data | Steward (assessment), Owner (approval) |
