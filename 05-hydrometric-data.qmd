@@ -7,7 +7,7 @@
 | **Version** | 1.3 |
 | **Status** | Draft: For Team Review |
 | **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v1.4 │ Data Ownership Model (CDDO, 2024) |
+| **Parent Document** | Data & Digital Asset Governance Framework v1.5 │ Data Ownership Model (CDDO, 2024) |
 :::
 
 
@@ -19,7 +19,7 @@ Without a clear framework, the risks are real: data used at different stages of 
 
 This framework addresses those risks by defining how imported hydrometric data moves through three quality tiers: Bronze, Silver, and Gold - from raw ingestion to analysis-ready products. It sets out who owns and is responsible for data at each tier, how quality is assessed and recorded, how provenance is tracked, how data is stored, and how data quality is improved over time.
 
-| *This framework is a companion to the Data **&** Digital Asset Governance Framework v1.4, which sets out the Owner, Steward, and Custodian roles and governance principles that apply here. The roles used in this document follow that framework.* |
+| *This framework is a companion to the Data **&** Digital Asset Governance Framework v1.5, which sets out the Owner, Steward, and Custodian roles and governance principles that apply here. The roles used in this document follow that framework.* |
 | --- |
 
 ## 2. Scope
@@ -645,7 +645,7 @@ Most hydrometric data supplied by external organisations carries restrictions on
 
 # 12. Roles and Responsibilities
 
-The roles below follow the Owner, Steward, and Custodian model defined in the Data Ownership Model (CDDO, 2023) and applied in the Data & Digital Asset Governance Framework v1.4. The specific responsibilities at each tier are summarised here. The Data Owner for hydrometric data assets fulfils the Information Asset Owner (IAO) function for those assets; see @sec-iao-relationship in the parent framework for the full role mapping.
+The roles below follow the Owner, Steward, and Custodian model defined in the Data Ownership Model (CDDO, 2023) and applied in the Data & Digital Asset Governance Framework v1.5. The specific responsibilities at each tier are summarised here. The Data Owner for hydrometric data assets fulfils the Information Asset Owner (IAO) function for those assets; see @sec-iao-relationship in the parent framework for the full role mapping.
 
 | **Role** | **Bronze** | **Silver** | **Gold** |
 | --- | --- | --- | --- |
@@ -671,7 +671,7 @@ This framework is reviewed annually by the Steward and approved by the Owner. Th
 
 Exceptions to this framework - for example, using Bronze data directly in an urgent operational run - must be documented in the run record and reported to the Delegated Steward. Repeated exceptions in the same area should trigger a review of whether the Silver pipeline needs to be accelerated for that data source.
 
-| *This framework operates under the Owner, Steward, and Custodian model in the Data **&** Digital Asset Governance Framework v1.4. The exceptions process, escalation paths, and annual audit requirements in that document apply here.* |
+| *This framework operates under the Owner, Steward, and Custodian model in the Data **&** Digital Asset Governance Framework v1.5. The exceptions process, escalation paths, and annual audit requirements in that document apply here.* |
 | --- |
 
 # Appendix A - Naming Conventions

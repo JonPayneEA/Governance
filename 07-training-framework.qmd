@@ -8,7 +8,7 @@
 | **Version**         | 1.1                                            |
 | **Status**          | Draft: For Team Review                         |
 | **Review Date**     | 2027-03-31                                     |
-| **Parent Document** | Data & Digital Asset Governance Framework v1.4 |
+| **Parent Document** | Data & Digital Asset Governance Framework v1.5 |
 :::
 
 # Purpose
@@ -587,7 +587,7 @@ Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\
 | **Core training item**                                                              | **Completed** | **Verified by** |
 |------------------------|------------------------|------------------------|
 | **Governance framework**                                                            |               |                 |
-| Read the Data & Digital Asset Governance Framework v1.4                             |               |                 |
+| Read the Data & Digital Asset Governance Framework v1.5                             |               |                 |
 | Can describe the Owner, Steward, and Custodian roles and grade requirements         |               |                 |
 | Can explain the Tier 1 / Tier 2 / Tier 3 classification and give an example of each |               |                 |
 | Understands the Tool Register and Model Register: purpose and update triggers       |               |                 |

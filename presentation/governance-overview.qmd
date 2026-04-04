@@ -61,7 +61,7 @@ flowchart TD
 
     subgraph FW["F&W Governance Suite"]
         direction LR
-        P["**Data and Digital Asset\nGovernance Framework v1.4**\n(parent document)"]
+        P["**Data and Digital Asset\nGovernance Framework v1.5**\n(parent document)"]
     end
 
     subgraph COMP["Companion Documents"]

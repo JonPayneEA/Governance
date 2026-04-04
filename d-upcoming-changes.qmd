@@ -152,6 +152,18 @@ In practice this creates a risk that the Steward makes real decisions and the Ow
 
 #### 7. Incomplete Sections Undermine Credibility
 
+::: {.callout-note}
+## Partially resolved at v1.5
+
+- Chapter 6, §2.3: Black Box placeholder replaced with descriptive text
+- Chapter 6, §5.1: Manual override point row removed (team does not use manual overrides)
+- Chapter 6, §7.2: Section heading renamed to "Calibration Performance Standards"
+
+Remaining:
+- Chapter 3, Flode module table: `NEEDS MODIFICATION` flag retained pending team naming decision (see alignment register)
+- Chapter 4: Python onboarding guide (`docs/onboarding/`) not yet written; Section 6.1 references it with a status note
+:::
+
 Several passages in the current draft are working notes rather than governance text:
 
 - Chapter 6, §2.3: `SEE BLACK BOX DOCUMENT ALAN SENT ME`
@@ -210,6 +222,48 @@ An implementation chapter should make explicit which governance obligations the 
 
 ---
 
+---
+
+## Review: Stakeholder Perspective Assessment (April 2026)
+
+**Reviewer:** Claude (AI assistant), prompted by Jonathan Payne, April 2026
+
+**Scope:** Full document suite reviewed from the operational perspective of each governance role: what is unclear or unworkable for an Owner, a Steward, and a Custodian reading and applying this framework.
+
+### Owner Perspective
+
+The Owner's role is structurally present but not operationally required. Sign-off is needed in several places, but nothing in the framework ensures the Owner understands what they are signing off on. An Owner who reads only the quarterly summary and approves what the Steward recommends is technically compliant, but the governance model depends on the Owner being meaningfully accountable.
+
+**Resolved at v1.5:** Annual engagement checklist added to Review and Compliance section. Before signing off, the Owner must confirm they can name Tier 1 assets in their domain, have read the quarterly summary, are aware of condition ratings, have reviewed all promotions and exceptions from the period, and know the status of any open incidents.
+
+### Steward Perspective
+
+The Delegated Steward role creates indirection without defining where authority sits. The Steward is accountable, but the Delegated Steward does the work. When they disagree, the framework did not specify whose view prevails or how the disagreement is recorded.
+
+**Resolved at v1.5:** Delegation section updated to specify which decisions require Steward sign-off (tier promotions, access requests, condition assessments leading to suspension, Owner escalations) and what happens when the two disagree (Steward's view prevails; disagreement recorded in register).
+
+Cross-asset governance remained incomplete. When a Gold dataset is superseded, nothing required the data Steward to notify the modelling Steward.
+
+**Resolved at v1.5:** Cross-asset notification requirement added to the Registers section. Supersession of a Gold dataset or material change to a Tier 1 output triggers a notification obligation to all dependent domain Stewards, using the Connection Register as the reference for which dependencies exist.
+
+### Custodian Perspective
+
+Three working notes left in Chapter 6 would undermine confidence in anyone reading it for operational guidance.
+
+**Resolved at v1.5:** See Weakness 7 note above. Black Box description written; manual override row removed; §7.2 heading renamed.
+
+### Open Items from This Review
+
+| Item | Status |
+|---|---|
+| No capacity guidance (maximum Tier 1 assets per Custodian) | Open. No agreed ceiling to document. |
+| Python onboarding guide not written | Open. Reference in Python governance §6.1; guide needed at `docs/onboarding/`. |
+| Flode module naming decision | Open. Callout in R governance §2.1.1 marks names as provisional. |
+| Owner signatures on approval blocks | Open. Cannot be set unilaterally. |
+| Model Register physical format undefined | Open (from prior review, Weakness 2). |
+
+---
+
 ## Change Log
 
 | Date | Item | Status |
@@ -223,3 +277,8 @@ An implementation chapter should make explicit which governance obligations the 
 | 2026-03-23 | Framework version control policy added to Review and Compliance section: three-category change model, approval routes, versioning convention, team notification | Resolved |
 | 2026-03-23 | Implementation chapter added (Chapter 8): effective date, phased compliance timeline, register setup for all five registers, MCP server overview and delivery phases, action sequence with target dates | Partially resolved (Weakness 3) |
 | 2026-03-23 | MCP server specification added as Appendix F (`f-mcp-server-spec.qmd`); `mcp-server-spec.md` remains as source file | Added |
+| 2026-04-04 | Stakeholder perspective review completed (Owner, Steward, Custodian) | Recorded |
+| 2026-04-04 | Owner annual engagement requirement added to Review and Compliance section | Resolved (Weakness 6) |
+| 2026-04-04 | Delegated Steward decision authority clarified in Delegation section | Resolved |
+| 2026-04-04 | Cross-asset supersession notification requirement added to Registers section | Partial (Weakness 4) |
+| 2026-04-04 | Chapter 6 §2.3: Black Box placeholder replaced with descriptive text; §5.1 manual override row removed; §7.2 heading renamed to Calibration Performance Standards | Partially resolved (Weakness 7) |

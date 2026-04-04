@@ -3,7 +3,7 @@
 ::: {.callout-note}
 | | |
 |---|---|
-| **Version** | 1.4 |
+| **Version** | 1.5 |
 | **Status** | Draft: For Review |
 | **Implementation Start** | 23 March 2026 |
 | **Target Adoption** | 31 March 2026 |
@@ -130,6 +130,8 @@ Any role may be formally delegated. Delegation must be:
 
 Delegation does not transfer accountability. The original role holder remains responsible even when a role has been delegated.
 
+For the Delegated Steward specifically: the Delegated Steward may make and record operational decisions — recommending approval or rejection of code reviews, flagging model condition ratings, and compiling audit findings — but decisions that carry governance consequences require Steward sign-off. These are: approving or rejecting a tier promotion, approving or denying an access request, signing off a condition assessment that results in a recommended suspension, and any finding that would be escalated to the Owner. The Steward remains accountable for all of these. Where the Steward and Delegated Steward disagree on a finding or recommendation, the Steward's decision takes precedence and the disagreement must be recorded in the relevant register entry.
+
 ### Relationship to the Information Asset Owner Role {#sec-iao-relationship}
 
 The Cabinet Office IAO guidance (updated October 2025) and the Defra Data Ownership Policy both recognise the Information Asset Owner (IAO) as a distinct role focused on the security, content, quality, and distribution of information assets. The CDDO Data Ownership Model notes that organisations may wish to combine the Data Owner and IAO roles where appropriate.
@@ -236,6 +238,10 @@ Detailed field specifications, update procedures, and the initial setup sequence
 Every entry in any register must identify the asset's named Owner, Steward, and Custodian. The minimum metadata fields are defined at @sec-metadata-requirements.
 
 The Steward includes register currency in the quarterly governance summary (@sec-monitoring-reporting). Registers are reviewed as part of the annual Tier 1 audit. Assets with no register entry, or with stale entries where the named Custodian has left, are escalated to the Owner for resolution.
+
+### Cross-Asset Notification
+
+When a Gold-tier dataset is superseded or a Tier 1 model's output format changes, the Steward responsible for that asset must notify any Steward whose domain depends on it. The Connection Register is the reference: any registered dependency on the changed asset creates an obligation to notify. The notified Steward must confirm with their Custodians that any affected run records, model configurations, or tool outputs are still valid. This requirement applies regardless of whether the dependency crosses language or domain boundaries.
 
 ## Flood Model Governance
 
@@ -454,6 +460,18 @@ For all substantive and major changes, the procedure is:
 5. Update the review dates in any companion documents that reference the changed section
 
 The version field in `_quarto.yml` is the master. All companion document metadata blocks reference it and must be kept in step.
+
+### Owner Annual Engagement Requirement
+
+Owner sign-off on the annual review is not a formality. Before signing, the Owner must be able to confirm each of the following:
+
+- I can name the Tier 1 assets in my domain and identify their named Custodian.
+- I have read the most recent quarterly governance summary produced by the Steward.
+- I am aware of the current condition ratings for Tier 1 models in my domain and have been briefed on any asset rated Requires Attention or below.
+- I have reviewed and approved any Tier 1 promotions, Gold dataset approvals, or exception requests raised during the review period.
+- I am aware of any open incidents or escalated quality issues from the previous year and their resolution status.
+
+Where the Owner cannot confirm one or more of these, the Steward must provide a briefing before sign-off is given. This is not a barrier to adoption; it is the minimum engagement the role requires.
 
 ## Quick Reference: Who to Go To
 

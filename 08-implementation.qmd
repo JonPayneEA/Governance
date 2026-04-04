@@ -7,7 +7,7 @@
 | **Version** | 1.0 |
 | **Status** | Draft: For Review |
 | **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v1.4 |
+| **Parent Document** | Data & Digital Asset Governance Framework v1.5 |
 :::
 
 The framework defines what is required. This chapter describes how to get there. The gap between a framework being published and a team operating to it is where governance efforts most often fail. This chapter makes that path explicit: effective dates, a phased compliance timeline that matches obligations to available capacity, practical guidance on setting up each register, and an explanation of how the `fw-governance` MCP server reduces the manual burden once it is in place.
