@@ -8,7 +8,7 @@
 | **Version**         | 1.1                                            |
 | **Status**          | Draft: For Team Review                         |
 | **Review Date**     | 2027-03-31                                     |
-| **Parent Document** | Data & Digital Asset Governance Framework v1.4 |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0 |
 :::
 
 # Purpose
@@ -49,7 +49,7 @@ This framework does not replace the governance documents. It sets out how staff 
 <!--             direction TB -->
 <!--             HX1["**FMP governance**\nFile structure · naming · version control for binaries"] -->
 <!--             HX2["**1D, 2D and linked models**\nScheme types · solver options · output interpretation"] -->
-<!--             HX3["**Crossover: FMP API scripting**\nPython orchestration · Tier 1 obligations · run records"] -->
+<!--             HX3["**Crossover: FMP API scripting**\nPython orchestration · Tier 3 obligations · run records"] -->
 <!--             HX1 --- HX2 --- HX3 -->
 <!--         end -->
 <!--         subgraph RD["R development"] -->
@@ -67,7 +67,7 @@ This framework does not replace the governance documents. It sets out how staff 
 <!--         end -->
 <!--     end -->
 
-<!--     SIGNOFF["**Role-based sign-off**\nCustodian: core + fundamentals + cross-cutting + specialist track(s)\nSteward: as Custodian + awareness of adjacent tracks\nDelegated Steward: as Steward + Tier 1 audit obligations\nOwner: core + governance obligations only"] -->
+<!--     SIGNOFF["**Role-based sign-off**\nCustodian: core + fundamentals + cross-cutting + specialist track(s)\nSteward: as Custodian + awareness of adjacent tracks\nDelegated Steward: as Steward + Tier 3 audit obligations\nOwner: core + governance obligations only"] -->
 
 <!--     CORE --> FUND -->
 <!--     FUND --> CC -->
@@ -99,11 +99,11 @@ Every team member must complete the core section before starting any specialist 
 
 -   The Owner, Steward, and Custodian role structure: what each role does, grade requirements, and how delegation works
 
--   The tier system: Tier 1 operational, Tier 2 analytical, and Tier 3 experimental assets; what each means in practice
+-   The tier system: Tier 3 operational, Tier 2 analytical, and Tier 1 experimental assets; what each means in practice
 
 -   Version control basics: what version control is, why it matters for reproducibility and audit, and what is expected of all team members
 
--   The Bronze, Silver, and Gold data architecture: what the medallion tiers mean, how data moves between them, and why only Gold data may be used in Tier 1 operations
+-   The Bronze, Silver, and Gold data architecture: what the medallion tiers mean, how data moves between them, and why only Gold data may be used in Tier 3 operations
 
 -   Q-FAIR principles: what Quality, Findable, Accessible, Interoperable, and Reusable mean in the team context
 
@@ -249,7 +249,7 @@ Model configuration covers the decisions made in setting up a model for a run: t
 
 -   Boundary conditions: what they are, the main types (upstream inflow, tidal, lateral inflow, reservoir rules, gate settings), and what governance applies to each
 
--   Calibration and validation records: what must be documented, the distinction between calibration and validation, and what performance thresholds are required before a model can be promoted to Tier 1
+-   Calibration and validation records: what must be documented, the distinction between calibration and validation, and what performance thresholds are required before a model can be promoted to Tier 3
 
 -   Impact assessment for model changes: how to identify downstream models affected by a change before deploying it
 
@@ -287,7 +287,7 @@ Black box models relate inputs directly to outputs without representing physical
 
 -   The requirement for a documented training dataset and the difference between training data and operational input data
 
--   Why all black box models used in operational forecasting are Tier 1 assets by default
+-   Why all black box models used in operational forecasting are Tier 3 assets by default
 
 -   Condition assessment for black box models: why it matters more than for physically-based models and how it is carried out
 
@@ -333,7 +333,7 @@ The Bronze-to-Gold pipeline is the team's mechanism for moving raw gauge data in
 
 -   Silver: quality control; what the supplier quality flags and q-codes mean; what manual review adds beyond automated flagging; the completeness threshold for Silver promotion
 
--   Gold: formal approval for a named purpose; what a Gold derivation record must contain; who may approve Gold data; why only Gold data may be used in Tier 1 model runs or ML training promoted to operational use
+-   Gold: formal approval for a named purpose; what a Gold derivation record must contain; who may approve Gold data; why only Gold data may be used in Tier 3 model runs or ML training promoted to operational use
 
 -   Q-FAIR compliance: what Findable, Accessible, Interoperable, and Reusable mean for a Gold dataset in this context; what the quality gate adds beyond FAIR
 
@@ -391,7 +391,7 @@ Required for any staff member running FMP models via Python scripts rather than 
 
 -   What the Flood Modeller API exposes: how to open a model, set boundary conditions programmatically, run the solver, and read outputs; the Python object model for FMP projects
 
--   Tier 1 tool obligations: a Python script that runs an operational FMP model is a Tier 1 tool; it requires poetry for dependency management, Git version control, a run record for each execution, 70% test coverage, and a disaster recovery runbook
+-   Tier 3 tool obligations: a Python script that runs an operational FMP model is a Tier 3 tool; it requires poetry for dependency management, Git version control, a run record for each execution, 70% test coverage, and a disaster recovery runbook
 
 -   How tool and model governance interact: the Model Register records the model version; the Tool Register records the script version; a run record must reference both
 
@@ -412,7 +412,7 @@ For staff writing, maintaining, or reviewing R code. Complete the data and codin
 
 The R Tool Governance document sets the standards. This track is about being able to work within those standards in practice, not just knowing they exist.
 
--   Tool tier classification in R: assess a tool by asking who is affected if it fails -- Tier 1 if the answer is an operational forecast; Tier 2 if the answer is an analytical output; Tier 3 if it is experimental
+-   Tool tier classification in R: assess a tool by asking who is affected if it fails -- Tier 3 if the answer is an operational forecast; Tier 2 if the answer is an analytical output; Tier 1 if it is experimental
 
 -   renv in practice: renv::init() when starting a new project; renv::snapshot() before every commit that changes a package; renv::restore() when setting up a colleague's project; what to do when the lockfile and installed packages diverge
 
@@ -456,11 +456,11 @@ All reusable R code goes into the reach.\* packages -- these are consolidated in
 | Arrow R package documentation: arrow.apache.org/docs/r                              | Read the 'Working with Arrow Datasets' article to understand how Arrow handles partitioned Parquet stores. This is what reach.io uses under the hood for the Bronze store. |
 | collapse package documentation: sebkrantz.github.io/collapse                        | Reference for the collapse package. Focus on the fmutate(), fgroup_by(), and fsummarise() functions, which replace dplyr equivalents in the fastverse workflow.            |
 
-### Tier 1 tool standards
+### Tier 3 tool standards
 
 \*Currently no R tools are implemented in \*\*supporting live operational forecasting.\*
 
-Any R tool in the operational forecast chain is Tier 1 from the moment it is promoted. The additional requirements beyond standard development practice are:
+Any R tool in the operational forecast chain is Tier 3 from the moment it is promoted. The additional requirements beyond standard development practice are:
 
 -   Test coverage: 70% line coverage measured by covr; the CI pipeline enforces this and blocks merges if the threshold is not met; coverage reports are generated on every pull request
 
@@ -468,7 +468,7 @@ Any R tool in the operational forecast chain is Tier 1 from the moment it is pro
 
 -   Handover notes: required when a Custodian changes; covers the tool's purpose, known quirks, technical debt, open issues, and scheduled maintenance; stored in docs/ alongside the code
 
--   Senior reviewer confirmation: before a team member is listed as Custodian on a Tier 1 tool, a senior reviewer must confirm in writing that they have demonstrated competence to maintain it
+-   Senior reviewer confirmation: before a team member is listed as Custodian on a Tier 3 tool, a senior reviewer must confirm in writing that they have demonstrated competence to maintain it
 
 ## 5.4 Python and machine learning
 
@@ -482,7 +482,7 @@ The Python Tool Governance document mirrors the R governance document in structu
 
 -   Training and inference separation: the training pipeline and the inference pipeline must be in separate scripts with no shared mutable state; this is a governance requirement, not just a design preference; the reason is auditability -- the Steward must be able to confirm which training run produced the deployed model
 
--   Tool tier classification: the same criteria as R; a Python script that runs operational inference is Tier 1 from the moment it is deployed, regardless of how experimental the development felt
+-   Tool tier classification: the same criteria as R; a Python script that runs operational inference is Tier 3 from the moment it is deployed, regardless of how experimental the development felt
 
 -   Code review: the same process as R; reviewers additionally check that training and inference are separated, that MLflow logging is complete, and that the Gold data requirement is met
 
@@ -490,7 +490,7 @@ The Python Tool Governance document mirrors the R governance document in structu
 
 | **Resource**                                                                                           | **What to take from it**                                                                                                                                                                                                   |
 |------------------------------------|------------------------------------|
-| Python Tool Governance document (internal): available from the Steward                                 | Read in full before writing any shared Python code. The sections on poetry, training/inference separation, and Tier 1 obligations are the most operationally important.                                                    |
+| Python Tool Governance document (internal): available from the Steward                                 | Read in full before writing any shared Python code. The sections on poetry, training/inference separation, and Tier 3 obligations are the most operationally important.                                                    |
 | Poetry documentation: python-poetry.org/docs                                                           | Read 'Basic usage' and 'Managing dependencies' before starting any project. The section on dependency groups is relevant for separating development and runtime dependencies.                                              |
 | Real Python -- Python Virtual Environments Primer: realpython.com/python-virtual-environments-a-primer | Understand what a virtual environment is and why it exists before using poetry. Poetry automates this, but knowing what it is doing prevents confusion when something goes wrong.                                          |
 | MLflow documentation: mlflow.org/docs/latest                                                           | Read the 'Tracking' and 'Models' sections. Understand how experiments, runs, parameters, metrics, and artefacts relate to each other. This is the logging infrastructure for all ML work in the team.                      |
@@ -519,7 +519,7 @@ ML development in the team happens in a staged environment on DEFRA's DASH Datab
 | CAMELS-GB dataset documentation: doi.org/10.5285/8344e4f3-d2ea-44f5-8afa-86d2987543a9                                                                                                                                        | The Stage 1 training dataset. Read the dataset documentation to understand what attributes are included and how they align with the team's feature engineering pipeline.                                                           |
 | PyTorch documentation -- nn.LSTM: pytorch.org/docs/stable/generated/torch.nn.LSTM.html                                                                                                                                       | The reference for the LSTM implementation used in the training pipeline. Understand the input shape (sequence_length, batch_size, input_size) before writing any training code -- shape errors are the most common source of bugs. |
 | MLflow Python API reference: mlflow.org/docs/latest/python_api                                                                                                                                                               | Reference for mlflow.log_param(), mlflow.log_metric(), mlflow.log_artifact(), and mlflow.pytorch.log_model(). All four are required in every training run.                                                                         |
-| ONNX documentation: onnx.ai/onnx/intro                                                                                                                                                                                       | Background on the ONNX model format used for archiving Tier 1 models. Read the overview and the Python export guide. ONNX export is required before any model can be promoted to Tier 1.                                           |
+| ONNX documentation: onnx.ai/onnx/intro                                                                                                                                                                                       | Background on the ONNX model format used for archiving Tier 3 models. Read the overview and the Python export guide. ONNX export is required before any model can be promoted to Tier 3.                                           |
 
 ### LSTM pipelines
 
@@ -544,14 +544,14 @@ The table below sets out the minimum training required for each role. Where a te
 | **All staff**                      | Core (Section 2)                                                                                                                                                                                                |
 | **Custodian (any asset)**          | Core + relevant fundamentals + cross-cutting (Section 4) + specialist track for the asset type                                                                                                                  |
 | **Steward**                        | Core + relevant fundamentals + cross-cutting + specialist track for the assets overseen + awareness session on adjacent tracks where relevant                                                                   |
-| **Delegated Steward**              | As Steward for all assets within the delegated domain. Additionally: Tier 1 annual audit requirements, corrective action planning, and non-compliance escalation procedures as set out in the parent framework. |
+| **Delegated Steward**              | As Steward for all assets within the delegated domain. Additionally: Tier 3 annual audit requirements, corrective action planning, and non-compliance escalation procedures as set out in the parent framework. |
 | **Owner**                          | Core + governance obligations from Section 4 only; no specialist track required                                                                                                                                 |
-| **Tier 1 tool or model Custodian** | All of the above for their track, plus confirmation from a senior reviewer before being listed on the register                                                                                                  |
+| **Tier 3 tool or model Custodian** | All of the above for their track, plus confirmation from a senior reviewer before being listed on the register                                                                                                  |
 | **FMP API developer**              | Core + hydraulics fundamentals + data and coding fundamentals + cross-cutting + hydraulic modelling track + crossover module                                                                                    |
 
 # 7. Recording completion
 
-Training completion is recorded using the sign-off forms in Appendix A. A separate form exists for each track. The Steward is responsible for keeping completed forms and for confirming that custodians on Tier 1 assets have completed the required training before being listed on the register.
+Training completion is recorded using the sign-off forms in Appendix A. A separate form exists for each track. The Steward is responsible for keeping completed forms and for confirming that custodians on Tier 3 assets have completed the required training before being listed on the register.
 
 -   New team members must complete core and any required fundamentals within their first four weeks, as set out in the onboarding sections of the R and Python governance documents
 
@@ -559,7 +559,7 @@ Training completion is recorded using the sign-off forms in Appendix A. A separa
 
 -   Specialist track training must be completed before a team member is named as Custodian on any asset within that track
 
--   Tier 1 additional requirements must be met and confirmed before a team member takes on Tier 1 custodianship
+-   Tier 3 additional requirements must be met and confirmed before a team member takes on Tier 3 custodianship
 
 -   Forms are stored in docs/training/ in the team repository alongside the acknowledgement forms from the governance documents
 
@@ -587,13 +587,13 @@ Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\
 | **Core training item**                                                              | **Completed** | **Verified by** |
 |------------------------|------------------------|------------------------|
 | **Governance framework**                                                            |               |                 |
-| Read the Data & Digital Asset Governance Framework v1.4                             |               |                 |
+| Read the Data & Digital Asset Governance Framework v2.0                             |               |                 |
 | Can describe the Owner, Steward, and Custodian roles and grade requirements         |               |                 |
-| Can explain the Tier 1 / Tier 2 / Tier 3 classification and give an example of each |               |                 |
+| Can explain the Tier 3 / Tier 2 / Tier 1 classification and give an example of each |               |                 |
 | Understands the Tool Register and Model Register: purpose and update triggers       |               |                 |
 | **Data architecture**                                                               |               |                 |
 | Can describe Bronze, Silver, and Gold tiers and what each represents                |               |                 |
-| Understands why only Gold data may be used in Tier 1 operational runs               |               |                 |
+| Understands why only Gold data may be used in Tier 3 operational runs               |               |                 |
 | Can explain Q-FAIR and what each principle means in the team context                |               |                 |
 | **Version control**                                                                 |               |                 |
 | Understands what version control is and why it is required for reproducibility      |               |                 |
@@ -666,7 +666,7 @@ Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\
 | Understands what manual override points are and what must be recorded when used                      |               |                 |
 | **Black box models**                                                                                 |               |                 |
 | Can explain why black box models carry specific governance risks compared to physically-based models |               |                 |
-| Understands why all operational black box models are Tier 1 assets                                   |               |                 |
+| Understands why all operational black box models are Tier 3 assets                                   |               |                 |
 | Knows what a training dataset record must contain                                                    |               |                 |
 | Can describe what must be recorded when a black box model is replaced                                |               |                 |
 
@@ -710,7 +710,7 @@ Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\
 |------------------------|------------------------|------------------------|
 | **FMP API and tool governance**                                                                       |               |                 |
 | Understands what the Flood Modeller API exposes and how Python scripts interact with it               |               |                 |
-| Can list the Tier 1 tool obligations that apply to FMP orchestration scripts                          |               |                 |
+| Can list the Tier 3 tool obligations that apply to FMP orchestration scripts                          |               |                 |
 | Knows how run records must be completed when a model is run via script                                |               |                 |
 | Understands the distinction between the Model Register (the model) and the Tool Register (the script) |               |                 |
 
@@ -722,7 +722,7 @@ Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\
 |------------------------|------------------------|------------------------|
 | **R governance**                                                                                         |               |                 |
 | Has read the R Tool Governance document in full                                                          |               |                 |
-| Can classify an R tool into Tier 1, 2, or 3 and list what each requires                                  |               |                 |
+| Can classify an R tool into Tier 3, 2, or 3 and list what each requires                                  |               |                 |
 | Understands the pull request and code review process                                                     |               |                 |
 | Has set up renv and confirmed renv::restore() works on the main repository                               |               |                 |
 | Understands the prohibition on dplyr/tidyverse in team tools and can identify the data.table equivalents |               |                 |
@@ -731,11 +731,11 @@ Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\
 | Can perform common data.table operations: filtering, grouping, joins                                     |               |                 |
 | Can read and write Parquet files and understands Hive partitioning                                       |               |                 |
 | Understands the Bronze store structure and what the partitioning keys mean                               |               |                 |
-| **Tier 1 standards (required for Tier 1 custodianship only)**                                            |               |                 |
+| **Tier 3 standards (required for Tier 3 custodianship only)**                                            |               |                 |
 | Has written testthat tests meeting 70% line coverage                                                     |               |                 |
 | Can produce a handover note covering all required fields                                                 |               |                 |
 | Has reviewed and understands the disaster recovery runbook template                                      |               |                 |
-| Has received senior reviewer confirmation of Tier 1 competence                                           |               |                 |
+| Has received senior reviewer confirmation of Tier 3 competence                                           |               |                 |
 
 ## A.10 Python and ML track
 
@@ -753,7 +753,7 @@ Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\
 | Can describe what Unity Catalog and MLflow do in the DASH environment                  |               |                 |
 | Knows what must be logged to MLflow for every experiment run                           |               |                 |
 | Understands the staged build approach and which data tier applies at each stage        |               |                 |
-| Knows the Gold data requirement for Tier 1 inference pipelines                         |               |                 |
+| Knows the Gold data requirement for Tier 3 inference pipelines                         |               |                 |
 | **LSTM pipelines**                                                                     |               |                 |
 | Can describe what the feature engineering pipeline does and what its outputs represent |               |                 |
 | Knows which catchment attributes are used and how they are attached to training data   |               |                 |

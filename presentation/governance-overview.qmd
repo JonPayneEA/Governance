@@ -61,7 +61,7 @@ flowchart TD
 
     subgraph FW["F&W Governance Suite"]
         direction LR
-        P["**Data and Digital Asset\nGovernance Framework v1.4**\n(parent document)"]
+        P["**Data and Digital Asset\nGovernance Framework v2.0**\n(parent document)"]
     end
 
     subgraph COMP["Companion Documents"]
@@ -104,7 +104,7 @@ Where a companion document is silent on a governance matter, the parent framewor
 |---|---|---|
 | **Owner** | Deputy Director | Ultimate accountability. Strategic decisions. Approves major changes and Gold data products. |
 | **Steward** | Grade 7 | Day-to-day governance. Maintains standards, manages quality, oversees registers. |
-| **Delegated Steward** | Grade 6 | Technical depth for Tier 1 assets. Code reviews, model condition assessments, annual audit. |
+| **Delegated Steward** | Grade 6 | Technical depth for Tier 3 assets. Code reviews, model condition assessments, annual audit. |
 | **Custodian** | Any grade | Hands-on work. Creates, stores, and maintains assets to agreed standards. |
 
 : {.striped}
@@ -122,7 +122,7 @@ Owners hold ultimate accountability for meaning, content, quality, and distribut
 **Key responsibilities:**
 
 - Approve what data and models the team uses and produces
-- Sign off on promotion of any asset to Tier 1
+- Sign off on promotion of any asset to Tier 3
 - Resolve escalated disputes about data quality or access
 - Approve Gold datasets before they enter operational use
 - Ensure the team meets organisational data governance obligations
@@ -157,7 +157,7 @@ Named where the Steward's strength is oversight rather than technical depth.
 - Code quality assessment and peer review
 - Model condition reviews
 - Data pipeline evaluation
-- Annual Tier 1 audit
+- Annual Tier 3 audit
 
 Reports to the Steward. Does not replace the Steward's accountability.
 :::
@@ -197,21 +197,21 @@ The tier system makes that difference explicit, and calibrates governance overhe
 - The **same three tiers** apply to data, models, and code tools
 - This gives the team a **shared language for risk** across asset types
 - Tier describes **operational criticality**, not quality or maturity
-- A technically excellent piece of work **begins at Tier 3** until its governance is confirmed
+- A technically excellent piece of work **begins at Tier 1** until its governance is confirmed
 :::
 
 ## The Three Tiers
 
 | Tier | Description | Data | Models | Tools |
 |---|---|---|---|---|
-| **Tier 1** Operational | Used in live forecasting. Failure has direct operational consequences. | Formally approved datasets feeding live model runs | FMP, PDM, Black Box, Boundary Conditions in the forecast chain | Scripts and pipelines running in live forecasting |
+| **Tier 3** Operational | Used in live forecasting. Failure has direct operational consequences. | Formally approved datasets feeding live model runs | FMP, PDM, Black Box, Boundary Conditions in the forecast chain | Scripts and pipelines running in live forecasting |
 | **Tier 2** Analytical | Regularly used, not in the critical path. | Calibration inputs, validated datasets for post-event analysis | Models under active development or used for post-event analysis | Visualisation tools, performance dashboards |
-| **Tier 3** Experimental | Research or prototype. Not in production. | Exploratory datasets, unvalidated inputs | New model configurations being calibrated or tested | Research notebooks, proof-of-concept tools, ML experiments |
+| **Tier 1** Experimental | Research or prototype. Not in production. | Exploratory datasets, unvalidated inputs | New model configurations being calibrated or tested | Research notebooks, proof-of-concept tools, ML experiments |
 
 : {.striped}
 
 ::: {.callout-important}
-An asset must not be used in live forecasting until formally promoted to Tier 1. Promotion requires Owner sign-off.
+An asset must not be used in live forecasting until formally promoted to Tier 3. Promotion requires Owner sign-off.
 :::
 
 # The Medallion Architecture {background-color="#0D2E4A"}
@@ -225,7 +225,7 @@ The tier system and the medallion architecture are independent.
 | **Tier system** (1, 2, 3) | How critical is this asset to the live forecasting service? |
 | **Medallion architecture** (Bronze, Silver, Gold) | How far has this data progressed through quality assurance? |
 
-A Silver dataset for the River Wye may be used in a Tier 2 post-event analysis today and promoted to supply a Tier 1 operational model tomorrow, without changing anything about the data itself.
+A Silver dataset for the River Wye may be used in a Tier 2 post-event analysis today and promoted to supply a Tier 3 operational model tomorrow, without changing anything about the data itself.
 
 **The operational tier describes the use. The medallion tier describes the data's quality state.**
 

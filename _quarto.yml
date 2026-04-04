@@ -7,7 +7,7 @@ book:
   subtitle: "Forecasting and Warning"
   author: "Jonathan Payne"
   date: "March 2026"
-  version: "1.4"
+  version: "2.0"
   search: true
   reader-mode: true
   navbar:
