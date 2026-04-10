@@ -7,7 +7,7 @@
 | **Version** | 1.1 |
 | **Status** | Draft: For Team Review |
 | **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ Data Ownership Model |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0 | Data Ownership Model |
 | **Note** | Moved from Chapter 2 to Appendix E at v1.1. This is a reference document. The normative file format requirements are enforced through the Hydrometric Data Framework (@sec-hydrometric-data), R Tool Governance (@sec-r-governance), and Python Tool Governance (@sec-python-governance). Format compliance is checked automatically by the `fw-governance` MCP server `check_file_formats` tool. |
 :::
 

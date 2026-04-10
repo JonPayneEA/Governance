@@ -7,7 +7,7 @@
 | **Version** | 1.3 |
 | **Status** | Draft: For Team Review |
 | **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ Data Ownership Model (CDDO, 2024) |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0 | Data Ownership Model (CDDO, 2024) |
 :::
 
 The four model types used by the team are distinct in how they are built, calibrated, and connected. The diagram below gives a landscape view of what they are and how they relate before the chapter covers each in detail.
@@ -38,7 +38,7 @@ This document is not a guide to modelling practice. It does not prescribe how to
 
 | ***Companion documents: Data and Digital Asset Governance Framework v2.0** |
 | --- |
-| Hydrometric Data Framework v1.3 │ Python Tool Governance v1.3 │ R Tool Governance v1.3* |
+| Hydrometric Data Framework v1.3 | Python Tool Governance v1.3 | R Tool Governance v1.3* |
 
 ## 1. Scope
 
@@ -56,7 +56,7 @@ This framework applies to all flood models used by the team in operational forec
 
 - Model calibration and validation records
 
-| **Out of Scope** Code tools used to run, process, or post-process model outputs are governed by the R and Python Tool Governances. Hydrometric │ input data used for calibration is governed by the Hydrometric Data Framework. This document covers the models themselves and the connections between them. |
+| **Out of Scope** Code tools used to run, process, or post-process model outputs are governed by the R and Python Tool Governances. Hydrometric | input data used for calibration is governed by the Hydrometric Data Framework. This document covers the models themselves and the connections between them. |
 | --- |
 
 ## 2. Model Types and Responsibilities
