@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.526">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data and Digital Asset Governance - 7&nbsp; Staff Training Framework</title>
+<title>7&nbsp; Staff Training Framework – Data and Digital Asset Governance</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,17 +36,20 @@ ul.task-list li input[type="checkbox"] {
 <link href="./08-implementation.html" rel="next">
 <link href="./06-flood-model-governance.html" rel="prev">
 <link href="./figures/logo.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-e0c03bc3632b47f7234019fbc2bd5f3a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-ae002f5eb1fc3b3cf7a79ee90cc96253.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-e0c03bc3632b47f7234019fbc2bd5f3a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,7 +82,169 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -84,14 +252,15 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./figures/logo.svg" alt="" class="navbar-logo">
+    <img src="./figures/logo.svg" alt="" class="navbar-logo light-content">
+    <img src="./figures/logo.svg" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Data and Digital Asset Governance</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -101,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-useful-datasets" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-useful-datasets" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Useful datasets</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-useful-datasets">    
@@ -120,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Tools</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tools">    
@@ -147,7 +316,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools tools-wide">
+            <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/JonPayneEA/Governance" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -160,11 +329,11 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-training-framework.html">Training and Implementation</a></li><li class="breadcrumb-item"><a href="./07-training-framework.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -189,9 +358,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Code Companions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -212,9 +381,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Companions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -229,9 +398,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Model Companions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -246,9 +415,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Training and Implementation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -269,9 +438,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -380,7 +549,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#recommended-resources-7" id="toc-recommended-resources-7" class="nav-link" data-scroll-target="#recommended-resources-7"><span class="header-section-number">13.3.2</span> Recommended resources</a></li>
   <li><a href="#the-flode-reach.-package-suite" id="toc-the-flode-reach.-package-suite" class="nav-link" data-scroll-target="#the-flode-reach.-package-suite"><span class="header-section-number">13.3.3</span> The flode (reach.*) package suite</a></li>
   <li><a href="#recommended-resources-8" id="toc-recommended-resources-8" class="nav-link" data-scroll-target="#recommended-resources-8"><span class="header-section-number">13.3.4</span> Recommended resources</a></li>
-  <li><a href="#tier-1-tool-standards" id="toc-tier-1-tool-standards" class="nav-link" data-scroll-target="#tier-1-tool-standards"><span class="header-section-number">13.3.5</span> Tier 1 tool standards</a></li>
+  <li><a href="#tier-3-tool-standards" id="toc-tier-3-tool-standards" class="nav-link" data-scroll-target="#tier-3-tool-standards"><span class="header-section-number">13.3.5</span> Tier 3 tool standards</a></li>
   </ul></li>
   <li><a href="#python-and-machine-learning" id="toc-python-and-machine-learning" class="nav-link" data-scroll-target="#python-and-machine-learning"><span class="header-section-number">13.4</span> 5.4 Python and machine learning</a>
   <ul class="collapse">
@@ -413,6 +582,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-training-framework.html">Training and Implementation</a></li><li class="breadcrumb-item"><a href="./07-training-framework.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-training-framework" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></h1>
@@ -438,11 +608,11 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Document Metadata
+<span class="screen-reader-only">Note</span>Document Metadata
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Field</th>
@@ -464,7 +634,7 @@ Document Metadata
 </tr>
 <tr class="even">
 <td><strong>Parent Document</strong></td>
-<td>Data &amp; Digital Asset Governance Framework v1.4</td>
+<td>Data &amp; Digital Asset Governance Framework v2.0</td>
 </tr>
 </tbody>
 </table>
@@ -512,7 +682,7 @@ Note
 <!--             direction TB -->
 <!--             HX1["**FMP governance**\nFile structure · naming · version control for binaries"] -->
 <!--             HX2["**1D, 2D and linked models**\nScheme types · solver options · output interpretation"] -->
-<!--             HX3["**Crossover: FMP API scripting**\nPython orchestration · Tier 1 obligations · run records"] -->
+<!--             HX3["**Crossover: FMP API scripting**\nPython orchestration · Tier 3 obligations · run records"] -->
 <!--             HX1 --- HX2 --- HX3 -->
 <!--         end -->
 <!--         subgraph RD["R development"] -->
@@ -529,14 +699,14 @@ Note
 <!--             PM1 --- PM2 --- PM3 -->
 <!--         end -->
 <!--     end -->
-<!--     SIGNOFF["**Role-based sign-off**\nCustodian: core + fundamentals + cross-cutting + specialist track(s)\nSteward: as Custodian + awareness of adjacent tracks\nDelegated Steward: as Steward + Tier 1 audit obligations\nOwner: core + governance obligations only"] -->
+<!--     SIGNOFF["**Role-based sign-off**\nCustodian: core + fundamentals + cross-cutting + specialist track(s)\nSteward: as Custodian + awareness of adjacent tracks\nDelegated Steward: as Steward + Tier 3 audit obligations\nOwner: core + governance obligations only"] -->
 <!--     CORE -->
 <p>FUND –&gt; <!--     FUND --> CC –&gt; <!--     CC --> SPEC –&gt; <!--     SPEC --> SIGNOFF –&gt; <!-- ``` --></p>
 </section>
 <section id="framework-structure" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> 1. Framework structure</h1>
 <p>The framework has four layers. Each layer builds on the one before it.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -580,9 +750,9 @@ Note
 <ul>
 <li><p>The Data and Digital Asset Governance Framework: purpose, scope, and where it sits alongside other organisational policies</p></li>
 <li><p>The Owner, Steward, and Custodian role structure: what each role does, grade requirements, and how delegation works</p></li>
-<li><p>The tier system: Tier 1 operational, Tier 2 analytical, and Tier 3 experimental assets; what each means in practice</p></li>
+<li><p>The tier system: Tier 3 operational, Tier 2 analytical, and Tier 1 experimental assets; what each means in practice</p></li>
 <li><p>Version control basics: what version control is, why it matters for reproducibility and audit, and what is expected of all team members</p></li>
-<li><p>The Bronze, Silver, and Gold data architecture: what the medallion tiers mean, how data moves between them, and why only Gold data may be used in Tier 1 operations</p></li>
+<li><p>The Bronze, Silver, and Gold data architecture: what the medallion tiers mean, how data moves between them, and why only Gold data may be used in Tier 3 operations</p></li>
 <li><p>Q-FAIR principles: what Quality, Findable, Accessible, Interoperable, and Reusable mean in the team context</p></li>
 <li><p>The Tool Register and Model Register: what they are, why they exist, and what triggers an update</p></li>
 </ul>
@@ -613,7 +783,7 @@ Note
 </section>
 <section id="recommended-resources" class="level3" data-number="11.1.2">
 <h3 data-number="11.1.2" class="anchored" data-anchor-id="recommended-resources"><span class="header-section-number">11.1.2</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -651,7 +821,7 @@ Note
 </tr>
 </tbody>
 </table>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 100%">
 </colgroup>
@@ -684,7 +854,7 @@ Note
 </section>
 <section id="recommended-resources-1" class="level3" data-number="11.2.2">
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="recommended-resources-1"><span class="header-section-number">11.2.2</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -722,7 +892,7 @@ Note
 </tr>
 </tbody>
 </table>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 100%">
 </colgroup>
@@ -754,7 +924,7 @@ Note
 </section>
 <section id="recommended-resources-2" class="level3" data-number="11.3.2">
 <h3 data-number="11.3.2" class="anchored" data-anchor-id="recommended-resources-2"><span class="header-section-number">11.3.2</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -792,7 +962,7 @@ Note
 </tr>
 </tbody>
 </table>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 100%">
 </colgroup>
@@ -825,7 +995,7 @@ Note
 <ul>
 <li><p>Run records: what must be recorded for every formal model run, including model ID and version, input data IDs, boundary condition datasets, software version, and any overrides applied</p></li>
 <li><p>Boundary conditions: what they are, the main types (upstream inflow, tidal, lateral inflow, reservoir rules, gate settings), and what governance applies to each</p></li>
-<li><p>Calibration and validation records: what must be documented, the distinction between calibration and validation, and what performance thresholds are required before a model can be promoted to Tier 1</p></li>
+<li><p>Calibration and validation records: what must be documented, the distinction between calibration and validation, and what performance thresholds are required before a model can be promoted to Tier 3</p></li>
 <li><p>Impact assessment for model changes: how to identify downstream models affected by a change before deploying it</p></li>
 </ul>
 </section>
@@ -856,7 +1026,7 @@ Note
 <li><p>What distinguishes a black box model from a physically-based model, and what governance risks this creates</p></li>
 <li><p>Why performance degradation in a black box model may not be apparent until a significant event occurs</p></li>
 <li><p>The requirement for a documented training dataset and the difference between training data and operational input data</p></li>
-<li><p>Why all black box models used in operational forecasting are Tier 1 assets by default</p></li>
+<li><p>Why all black box models used in operational forecasting are Tier 3 assets by default</p></li>
 <li><p>Condition assessment for black box models: why it matters more than for physically-based models and how it is carried out</p></li>
 <li><p>Deprecation and handover: what must be recorded when a black box model is replaced by a newer ML model</p></li>
 </ul>
@@ -881,7 +1051,7 @@ Note
 </section>
 <section id="recommended-resources-3" class="level3" data-number="13.1.2">
 <h3 data-number="13.1.2" class="anchored" data-anchor-id="recommended-resources-3"><span class="header-section-number">13.1.2</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -915,13 +1085,13 @@ Note
 <li><p>Data sources: the EA Hydrology Data Explorer (HDE) API and WISKI; what each provides; the difference between near-real-time telemetry data and quality-controlled archive data</p></li>
 <li><p>Bronze: raw ingestion from the HDE API; the partitioned Parquet store structure (site_id, year); why Bronze is immutable and what that means in practice if you find an error</p></li>
 <li><p>Silver: quality control; what the supplier quality flags and q-codes mean; what manual review adds beyond automated flagging; the completeness threshold for Silver promotion</p></li>
-<li><p>Gold: formal approval for a named purpose; what a Gold derivation record must contain; who may approve Gold data; why only Gold data may be used in Tier 1 model runs or ML training promoted to operational use</p></li>
+<li><p>Gold: formal approval for a named purpose; what a Gold derivation record must contain; who may approve Gold data; why only Gold data may be used in Tier 3 model runs or ML training promoted to operational use</p></li>
 <li><p>Q-FAIR compliance: what Findable, Accessible, Interoperable, and Reusable mean for a Gold dataset in this context; what the quality gate adds beyond FAIR</p></li>
 </ul>
 </section>
 <section id="recommended-resources-4" class="level3" data-number="13.1.4">
 <h3 data-number="13.1.4" class="anchored" data-anchor-id="recommended-resources-4"><span class="header-section-number">13.1.4</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -968,7 +1138,7 @@ Note
 </section>
 <section id="recommended-resources-5" class="level3" data-number="13.2.2">
 <h3 data-number="13.2.2" class="anchored" data-anchor-id="recommended-resources-5"><span class="header-section-number">13.2.2</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -1015,14 +1185,14 @@ Note
 <p>Required for any staff member running FMP models via Python scripts rather than the GUI, regardless of primary track. Complete this in conjunction with the Python governance track (5.4).</p>
 <ul>
 <li><p>What the Flood Modeller API exposes: how to open a model, set boundary conditions programmatically, run the solver, and read outputs; the Python object model for FMP projects</p></li>
-<li><p>Tier 1 tool obligations: a Python script that runs an operational FMP model is a Tier 1 tool; it requires poetry for dependency management, Git version control, a run record for each execution, 70% test coverage, and a disaster recovery runbook</p></li>
+<li><p>Tier 3 tool obligations: a Python script that runs an operational FMP model is a Tier 3 tool; it requires poetry for dependency management, Git version control, a run record for each execution, 70% test coverage, and a disaster recovery runbook</p></li>
 <li><p>How tool and model governance interact: the Model Register records the model version; the Tool Register records the script version; a run record must reference both</p></li>
 <li><p>Testing FMP orchestration scripts: what to test (boundary condition setting, output reading, error handling) and what not to test (the FMP solver itself)</p></li>
 </ul>
 </section>
 <section id="recommended-resources-6" class="level3" data-number="13.2.5">
 <h3 data-number="13.2.5" class="anchored" data-anchor-id="recommended-resources-6"><span class="header-section-number">13.2.5</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -1053,7 +1223,7 @@ Note
 <h3 data-number="13.3.1" class="anchored" data-anchor-id="r-governance"><span class="header-section-number">13.3.1</span> R governance</h3>
 <p>The R Tool Governance document sets the standards. This track is about being able to work within those standards in practice, not just knowing they exist.</p>
 <ul>
-<li><p>Tool tier classification in R: assess a tool by asking who is affected if it fails – Tier 1 if the answer is an operational forecast; Tier 2 if the answer is an analytical output; Tier 3 if it is experimental</p></li>
+<li><p>Tool tier classification in R: assess a tool by asking who is affected if it fails – Tier 3 if the answer is an operational forecast; Tier 2 if the answer is an analytical output; Tier 1 if it is experimental</p></li>
 <li><p>renv in practice: renv::init() when starting a new project; renv::snapshot() before every commit that changes a package; renv::restore() when setting up a colleague’s project; what to do when the lockfile and installed packages diverge</p></li>
 <li><p>The prohibition on dplyr and tidyverse in team tools: this is a hard rule, not a preference. data.table is faster, has a stable API, and reduces dependencies. You may use tidyverse in personal exploration but never in shared tools</p></li>
 <li><p>The code review process: how to open a pull request; what the reviewer checks (correctness, test coverage, documentation, governance header, dependency changes); what blocks a merge</p></li>
@@ -1061,7 +1231,7 @@ Note
 </section>
 <section id="recommended-resources-7" class="level3" data-number="13.3.2">
 <h3 data-number="13.3.2" class="anchored" data-anchor-id="recommended-resources-7"><span class="header-section-number">13.3.2</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -1114,7 +1284,7 @@ Note
 </section>
 <section id="recommended-resources-8" class="level3" data-number="13.3.4">
 <h3 data-number="13.3.4" class="anchored" data-anchor-id="recommended-resources-8"><span class="header-section-number">13.3.4</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -1145,15 +1315,15 @@ Note
 </tbody>
 </table>
 </section>
-<section id="tier-1-tool-standards" class="level3" data-number="13.3.5">
-<h3 data-number="13.3.5" class="anchored" data-anchor-id="tier-1-tool-standards"><span class="header-section-number">13.3.5</span> Tier 1 tool standards</h3>
+<section id="tier-3-tool-standards" class="level3" data-number="13.3.5">
+<h3 data-number="13.3.5" class="anchored" data-anchor-id="tier-3-tool-standards"><span class="header-section-number">13.3.5</span> Tier 3 tool standards</h3>
 <p>*Currently no R tools are implemented in **supporting live operational forecasting.*</p>
-<p>Any R tool in the operational forecast chain is Tier 1 from the moment it is promoted. The additional requirements beyond standard development practice are:</p>
+<p>Any R tool in the operational forecast chain is Tier 3 from the moment it is promoted. The additional requirements beyond standard development practice are:</p>
 <ul>
 <li><p>Test coverage: 70% line coverage measured by covr; the CI pipeline enforces this and blocks merges if the threshold is not met; coverage reports are generated on every pull request</p></li>
 <li><p>Disaster recovery runbooks: a runbook documents what to do if the tool fails during an operational event; it must specify the manual workaround, who to contact, and how long the fallback is viable</p></li>
 <li><p>Handover notes: required when a Custodian changes; covers the tool’s purpose, known quirks, technical debt, open issues, and scheduled maintenance; stored in docs/ alongside the code</p></li>
-<li><p>Senior reviewer confirmation: before a team member is listed as Custodian on a Tier 1 tool, a senior reviewer must confirm in writing that they have demonstrated competence to maintain it</p></li>
+<li><p>Senior reviewer confirmation: before a team member is listed as Custodian on a Tier 3 tool, a senior reviewer must confirm in writing that they have demonstrated competence to maintain it</p></li>
 </ul>
 </section>
 </section>
@@ -1166,13 +1336,13 @@ Note
 <ul>
 <li><p>poetry in practice: poetry new or poetry init to start a project; poetry add <package> to add dependencies (never pip install directly in a managed project); poetry install when setting up a colleague’s project; poetry shell to activate the environment; committing poetry.lock with every dependency change</package></p></li>
 <li><p>Training and inference separation: the training pipeline and the inference pipeline must be in separate scripts with no shared mutable state; this is a governance requirement, not just a design preference; the reason is auditability – the Steward must be able to confirm which training run produced the deployed model</p></li>
-<li><p>Tool tier classification: the same criteria as R; a Python script that runs operational inference is Tier 1 from the moment it is deployed, regardless of how experimental the development felt</p></li>
+<li><p>Tool tier classification: the same criteria as R; a Python script that runs operational inference is Tier 3 from the moment it is deployed, regardless of how experimental the development felt</p></li>
 <li><p>Code review: the same process as R; reviewers additionally check that training and inference are separated, that MLflow logging is complete, and that the Gold data requirement is met</p></li>
 </ul>
 </section>
 <section id="recommended-resources-9" class="level3" data-number="13.4.2">
 <h3 data-number="13.4.2" class="anchored" data-anchor-id="recommended-resources-9"><span class="header-section-number">13.4.2</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -1186,7 +1356,7 @@ Note
 <tbody>
 <tr class="odd">
 <td>Python Tool Governance document (internal): available from the Steward</td>
-<td>Read in full before writing any shared Python code. The sections on poetry, training/inference separation, and Tier 1 obligations are the most operationally important.</td>
+<td>Read in full before writing any shared Python code. The sections on poetry, training/inference separation, and Tier 3 obligations are the most operationally important.</td>
 </tr>
 <tr class="even">
 <td>Poetry documentation: python-poetry.org/docs</td>
@@ -1220,7 +1390,7 @@ Note
 </section>
 <section id="recommended-resources-10" class="level3" data-number="13.4.4">
 <h3 data-number="13.4.4" class="anchored" data-anchor-id="recommended-resources-10"><span class="header-section-number">13.4.4</span> Recommended resources</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -1254,7 +1424,7 @@ Note
 </tr>
 <tr class="even">
 <td>ONNX documentation: onnx.ai/onnx/intro</td>
-<td>Background on the ONNX model format used for archiving Tier 1 models. Read the overview and the Python export guide. ONNX export is required before any model can be promoted to Tier 1.</td>
+<td>Background on the ONNX model format used for archiving Tier 3 models. Read the overview and the Python export guide. ONNX export is required before any model can be promoted to Tier 3.</td>
 </tr>
 </tbody>
 </table>
@@ -1275,7 +1445,7 @@ Note
 <section id="role-based-requirements" class="level1" data-number="14">
 <h1 data-number="14"><span class="header-section-number">14</span> 6. Role-based requirements</h1>
 <p>The table below sets out the minimum training required for each role. Where a team member holds multiple roles (for example, Custodian on an R tool and Custodian on a flood model), they must complete the requirements for each.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -1301,14 +1471,14 @@ Note
 </tr>
 <tr class="even">
 <td><strong>Delegated Steward</strong></td>
-<td>As Steward for all assets within the delegated domain. Additionally: Tier 1 annual audit requirements, corrective action planning, and non-compliance escalation procedures as set out in the parent framework.</td>
+<td>As Steward for all assets within the delegated domain. Additionally: Tier 3 annual audit requirements, corrective action planning, and non-compliance escalation procedures as set out in the parent framework.</td>
 </tr>
 <tr class="odd">
 <td><strong>Owner</strong></td>
 <td>Core + governance obligations from Section 4 only; no specialist track required</td>
 </tr>
 <tr class="even">
-<td><strong>Tier 1 tool or model Custodian</strong></td>
+<td><strong>Tier 3 tool or model Custodian</strong></td>
 <td>All of the above for their track, plus confirmation from a senior reviewer before being listed on the register</td>
 </tr>
 <tr class="odd">
@@ -1320,15 +1490,15 @@ Note
 </section>
 <section id="recording-completion" class="level1" data-number="15">
 <h1 data-number="15"><span class="header-section-number">15</span> 7. Recording completion</h1>
-<p>Training completion is recorded using the sign-off forms in Appendix A. A separate form exists for each track. The Steward is responsible for keeping completed forms and for confirming that custodians on Tier 1 assets have completed the required training before being listed on the register.</p>
+<p>Training completion is recorded using the sign-off forms in Appendix A. A separate form exists for each track. The Steward is responsible for keeping completed forms and for confirming that custodians on Tier 3 assets have completed the required training before being listed on the register.</p>
 <ul>
 <li><p>New team members must complete core and any required fundamentals within their first four weeks, as set out in the onboarding sections of the R and Python governance documents</p></li>
 <li><p>Cross-cutting training must be completed before a team member is named as Custodian on any model asset</p></li>
 <li><p>Specialist track training must be completed before a team member is named as Custodian on any asset within that track</p></li>
-<li><p>Tier 1 additional requirements must be met and confirmed before a team member takes on Tier 1 custodianship</p></li>
+<li><p>Tier 3 additional requirements must be met and confirmed before a team member takes on Tier 3 custodianship</p></li>
 <li><p>Forms are stored in docs/training/ in the team repository alongside the acknowledgement forms from the governance documents</p></li>
 </ul>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 100%">
 </colgroup>
@@ -1343,7 +1513,7 @@ Note
 </section>
 <section id="approved-by" class="level1" data-number="16">
 <h1 data-number="16"><span class="header-section-number">16</span> Approved by</h1>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th><strong>Role</strong></th>
@@ -1377,7 +1547,7 @@ Note
 <section id="a.1-core" class="level2" data-number="17.1">
 <h2 data-number="17.1" class="anchored" data-anchor-id="a.1-core"><span class="header-section-number">17.1</span> A.1 Core</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1397,7 +1567,7 @@ Note
 <td></td>
 </tr>
 <tr class="even">
-<td>Read the Data &amp; Digital Asset Governance Framework v1.4</td>
+<td>Read the Data &amp; Digital Asset Governance Framework v2.0</td>
 <td></td>
 <td></td>
 </tr>
@@ -1407,7 +1577,7 @@ Note
 <td></td>
 </tr>
 <tr class="even">
-<td>Can explain the Tier 1 / Tier 2 / Tier 3 classification and give an example of each</td>
+<td>Can explain the Tier 3 / Tier 2 / Tier 1 classification and give an example of each</td>
 <td></td>
 <td></td>
 </tr>
@@ -1427,7 +1597,7 @@ Note
 <td></td>
 </tr>
 <tr class="even">
-<td>Understands why only Gold data may be used in Tier 1 operational runs</td>
+<td>Understands why only Gold data may be used in Tier 3 operational runs</td>
 <td></td>
 <td></td>
 </tr>
@@ -1457,7 +1627,7 @@ Note
 <section id="a.2-hydrology-fundamentals" class="level2" data-number="17.2">
 <h2 data-number="17.2" class="anchored" data-anchor-id="a.2-hydrology-fundamentals"><span class="header-section-number">17.2</span> A.2 Hydrology fundamentals</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1517,7 +1687,7 @@ Note
 <section id="a.3-hydraulics-fundamentals" class="level2" data-number="17.3">
 <h2 data-number="17.3" class="anchored" data-anchor-id="a.3-hydraulics-fundamentals"><span class="header-section-number">17.3</span> A.3 Hydraulics fundamentals</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1577,7 +1747,7 @@ Note
 <section id="a.4-data-and-coding-fundamentals" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="a.4-data-and-coding-fundamentals"><span class="header-section-number">17.4</span> A.4 Data and coding fundamentals</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1637,7 +1807,7 @@ Note
 <section id="a.5-cross-cutting-model-configuration-and-black-box-models" class="level2" data-number="17.5">
 <h2 data-number="17.5" class="anchored" data-anchor-id="a.5-cross-cutting-model-configuration-and-black-box-models"><span class="header-section-number">17.5</span> A.5 Cross-cutting: model configuration and black box models</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1732,7 +1902,7 @@ Note
 <td></td>
 </tr>
 <tr class="odd">
-<td>Understands why all operational black box models are Tier 1 assets</td>
+<td>Understands why all operational black box models are Tier 3 assets</td>
 <td></td>
 <td></td>
 </tr>
@@ -1752,7 +1922,7 @@ Note
 <section id="a.6-hydrological-modelling-track" class="level2" data-number="17.6">
 <h2 data-number="17.6" class="anchored" data-anchor-id="a.6-hydrological-modelling-track"><span class="header-section-number">17.6</span> A.6 Hydrological modelling track</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1822,7 +1992,7 @@ Note
 <section id="a.7-hydraulic-modelling-track" class="level2" data-number="17.7">
 <h2 data-number="17.7" class="anchored" data-anchor-id="a.7-hydraulic-modelling-track"><span class="header-section-number">17.7</span> A.7 Hydraulic modelling track</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1882,7 +2052,7 @@ Note
 <section id="a.8-crossover-module-fmp-api-scripting" class="level2" data-number="17.8">
 <h2 data-number="17.8" class="anchored" data-anchor-id="a.8-crossover-module-fmp-api-scripting"><span class="header-section-number">17.8</span> A.8 Crossover module: FMP API scripting</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1907,7 +2077,7 @@ Note
 <td></td>
 </tr>
 <tr class="odd">
-<td>Can list the Tier 1 tool obligations that apply to FMP orchestration scripts</td>
+<td>Can list the Tier 3 tool obligations that apply to FMP orchestration scripts</td>
 <td></td>
 <td></td>
 </tr>
@@ -1927,7 +2097,7 @@ Note
 <section id="a.9-r-development-track" class="level2" data-number="17.9">
 <h2 data-number="17.9" class="anchored" data-anchor-id="a.9-r-development-track"><span class="header-section-number">17.9</span> A.9 R development track</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1952,7 +2122,7 @@ Note
 <td></td>
 </tr>
 <tr class="odd">
-<td>Can classify an R tool into Tier 1, 2, or 3 and list what each requires</td>
+<td>Can classify an R tool into Tier 3, 2, or 3 and list what each requires</td>
 <td></td>
 <td></td>
 </tr>
@@ -1997,7 +2167,7 @@ Note
 <td></td>
 </tr>
 <tr class="even">
-<td><strong>Tier 1 standards (required for Tier 1 custodianship only)</strong></td>
+<td><strong>Tier 3 standards (required for Tier 3 custodianship only)</strong></td>
 <td></td>
 <td></td>
 </tr>
@@ -2017,7 +2187,7 @@ Note
 <td></td>
 </tr>
 <tr class="even">
-<td>Has received senior reviewer confirmation of Tier 1 competence</td>
+<td>Has received senior reviewer confirmation of Tier 3 competence</td>
 <td></td>
 <td></td>
 </tr>
@@ -2027,7 +2197,7 @@ Note
 <section id="a.10-python-and-ml-track" class="level2" data-number="17.10">
 <h2 data-number="17.10" class="anchored" data-anchor-id="a.10-python-and-ml-track"><span class="header-section-number">17.10</span> A.10 Python and ML track</h2>
 <p>Completed by: ___________________________ Role: ___________________________ Date: _______________</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -2092,7 +2262,7 @@ Note
 <td></td>
 </tr>
 <tr class="odd">
-<td>Knows the Gold data requirement for Tier 1 inference pipelines</td>
+<td>Knows the Gold data requirement for Tier 3 inference pipelines</td>
 <td></td>
 <td></td>
 </tr>
@@ -2130,187 +2300,71 @@ Note
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
       return false;
     }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -2318,172 +2372,184 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
       return codeEl.innerText;
     }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/jonpayneea\.github\.io\/Governance\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
         }
       }
     }
-    stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
-        }
-      }
-    }
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        typesetMath(container);
-        return container.innerHTML
-      } else {
-        typesetMath(note);
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      typesetMath(note);
-      return note.innerHTML;
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2491,193 +2557,169 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./06-flood-model-governance.html" class="pagination-link  aria-label=" &lt;span="" model="" governance&lt;="" span&gt;"="">
+      <a href="./06-flood-model-governance.html" class="pagination-link" aria-label="Flood Model Governance">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./08-implementation.html" class="pagination-link" aria-label="<span class='chapter-number'>8</span>&nbsp; <span class='chapter-title'>Implementation</span>">
+      <a href="./08-implementation.html" class="pagination-link" aria-label="Implementation">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Implementation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2690,7 +2732,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/07-training-framework.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

@@ -8,3 +8,5 @@
 # Presentation render output (render locally from presentation/)
 /presentation/governance-overview.html
 /presentation/governance-overview_files/
+
+**/*.quarto_ipynb
