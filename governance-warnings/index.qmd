@@ -1,0 +1,17 @@
+---
+title: "About this document"
+---
+
+## Warning Team governance
+
+This document records the Warning Team's adoption of the NFWS governance
+framework. The team covers three Warning Hub Teams.
+
+Core standards are defined in `governance-core` v3.0 and are not repeated here.
+
+| | |
+|---|---|
+| **Core version pinned** | governance-core v3.0 |
+| **Team Steward** | [Warning Manager name], G7 |
+| **CDT liaison** | To be assigned |
+| **Last reviewed** | 2026-06-09 |

@@ -1,0 +1,20 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Warning Team Governance"
+  subtitle: "National Forecasting and Warning Service"
+  author: "Warning Team Steward"
+  date: "2026"
+  chapters:
+    - index.qmd
+    - roles.qmd
+    - assets.qmd
+    - deviations.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true

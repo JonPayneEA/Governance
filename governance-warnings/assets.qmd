@@ -1,0 +1,26 @@
+---
+title: "Assets"
+---
+
+# Team asset register {#sec-assets}
+
+## Tier 3 assets
+
+The Flood Warning Asset Governance companion (`companions/flood-warnings.qmd`)
+is currently scope-only. Until it is complete, governance of these assets
+defaults to the core framework.
+
+| Asset | Type | Register entry | Custodian |
+|---|---|---|---|
+| Warning threshold configurations | Dataset/Config | [Register location] | [Named Custodian] |
+| Warning issuance tooling | Tool | Tool Register | [Named Custodian] |
+
+## Shared dataset consumption
+
+These datasets are governed by the CDT Steward. The Warning Team's role
+is Custodian only.
+
+| Dataset | Shared Asset Register entry | Team Custodian contact |
+|---|---|---|
+| Gauge metadata | Shared Asset Register | [Named Custodian] |
+| Catchment shapefiles | Shared Asset Register | [Named Custodian] |

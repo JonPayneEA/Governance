@@ -1,0 +1,39 @@
+---
+title: "Roles"
+---
+
+# Named role holders {#sec-roles}
+
+## Owner
+
+| | |
+|---|---|
+| **Name** | [NFWS Deputy Director] |
+| **Grade** | Deputy Director |
+| **Domain** | National Forecasting and Warning Service |
+
+## Steward
+
+| | |
+|---|---|
+| **Name** | [Warning Manager name] |
+| **Grade** | G7 |
+| **Delegated Steward** | [Name, if applicable] |
+
+## Custodians
+
+Custodians are assigned per asset category. The table below covers the main
+asset categories owned by the Warning Team.
+
+| Asset category | Custodian | Grade |
+|---|---|---|
+| Warning threshold configurations | [Named Custodian] | [Grade] |
+| Warning issuance tooling | [Named Custodian] | [Grade] |
+| Impact information tools | [Named Custodian] | [Grade] |
+
+## CDT liaison
+
+| | |
+|---|---|
+| **Name** | To be assigned |
+| **Contact** | [Email] |
