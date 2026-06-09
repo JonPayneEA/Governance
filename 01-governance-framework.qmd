@@ -10,23 +10,23 @@
 | **Review Date** | 31 March 2027 |
 :::
 
-The F&W team has accumulated a substantial body of models, code tools, and datasets. Structural changes to the organisation, siloed working across teams, and staff churn have compounded over that time. Ownership has shifted without being formally transferred. Institutional knowledge has left with departing staff. Work has been duplicated because one team did not know another had already done it. The result is an asset base that no single person has a complete picture of, and where accountability is informal and assumed rather than defined.
+The team has accumulated a substantial body of models, code tools, and datasets. Structural changes to the organisation, siloed working across teams, and staff churn have compounded over that time. Ownership has shifted without being formally transferred. Institutional knowledge has left with departing staff. Work has been duplicated because one team did not know another had already done it. The result is an asset base that no single person has a complete picture of, and where accountability is informal and assumed rather than defined.
 
 This framework is a deliberate reset. It establishes clear ownership for what the team already holds, and it builds structures resilient to the conditions that caused the problem: structures that survive reorganisation, that do not depend on any one individual, and that work across team boundaries rather than within them.
 
 It also sets the foundation for responsible adoption of new capabilities. The team is actively investigating AI and machine learning tools. Before any of those can be used in operational settings, a credible governance baseline needs to exist. This framework is that baseline.
 
-## Purpose
+## Purpose {#sec-framework-purpose}
 
-This framework sets out how the Forecasting and Warning (F&W) department manages its data, code, and digital assets. It defines who is responsible for what, at every level, covering all assets from strategic accountability for major datasets down to day-to-day maintenance of individual code tools.
+This framework sets out how NFWS manages its data, code, and digital assets. It defines who is responsible for what, at every level, covering all assets from strategic accountability for major datasets down to day-to-day maintenance of individual code tools.
 
 The framework operates at two levels. This document covers governance principles, roles, and standards that apply to all assets regardless of type. Companion documents cover detailed code-level guidance for tools written in each language. Where those documents are silent, this framework takes precedence. This framework does not replace or supersede existing technical guidance, such as the RTMDG, it is a guide to how we manage assets not construct them.
 
-The Owner, Steward, and Custodian roles used throughout this framework are defined in the Data Ownership Model and Central Digital and Data Office (CDDO) roadmap 2022 to 2025, which is the top-level authority for data ownership roles and responsibilities across government. This framework applies those roles to the specific assets and working practices of the F&W team.
+The Owner, Steward, and Custodian roles used throughout this framework are defined in the Data Ownership Model and Central Digital and Data Office (CDDO) roadmap 2022 to 2025, which is the top-level authority for data ownership roles and responsibilities across government. This framework applies those roles to the specific assets and working practices of the team.
 
 This work also directly supports the team's obligations under Defra's Q-FAIR data standards aims. Q-FAIR requires that data assets are of sufficient Quality to be Findable, Accessible, Interoperable, and Reusable. Rather than treating Q-FAIR compliance as a separate reporting exercise, this framework and its companion documents build it in by design. Structured asset registers make data and tools findable. Consistent file formats and schemas make them interoperable and reusable. Defined access controls and storage locations make them accessible. The tier-based quality gates and quality flags directly address the Quality dimension. Compliance is therefore a natural outcome of following the framework, not additional work on top of it.
 
-## Scope
+## Scope {#sec-framework-scope}
 
 This framework applies to all data, code, and digital assets the team creates, maintains, or relies on, including:
 
@@ -42,11 +42,11 @@ This framework applies to all data, code, and digital assets the team creates, m
 - Validation and verification records
 - Documentation and supporting reports
 
-## Governance Roles
+## Governance Roles {#sec-governance-roles}
 
 The team uses an Owner, Steward, and Custodian model as defined in the government Data Ownership Model (CDDO, 2024). Each role has a defined grade, clear responsibilities, and can be formally delegated. These roles apply to all asset types covered by this framework, including model files, datasets, and code tools.
 
-### Owner (Deputy Director)
+### Owner (Deputy Director) {#sec-owner-role}
 
 The Owner is a senior individual with dedicated accountability for a logical grouping of data or assets and in-depth knowledge of the overall business strategy in their area. Owners hold ultimate accountability for meaning, content, quality, and distribution of their assets. They make strategic decisions about how assets are used, shared, or retired. There is one Owner per major asset or tool.
 
@@ -69,7 +69,7 @@ Owners are responsible for:
 - Ensuring security measures are in place to protect data in transit, received, or transferred to another organisation
 - Considering where data assets may have value to wider government, society, and the economy, and the protection and exploitation approaches required to realise that value (see @sec-wider-value)
 
-### Steward (Grade 7)
+### Steward (Grade 7) {#sec-steward-role}
 
 The Steward is responsible for day-to-day operational activities needed to support governance decisions made by Owners. Stewards are the operational points of contact with data expertise. They make sure standards are followed and assets are fit for purpose. Each asset or tool should have a named Steward.
 
@@ -92,13 +92,13 @@ Stewards are responsible for:
 
 Not all of these responsibilities carry equal weight at every tier. For Tier 1 assets, the core requirements are standards maintenance, register currency, and quality issue reporting. The fuller responsibilities (data lineage mapping, cross-functional liaison, maturity assessments, and wider value consideration) apply in proportion to asset criticality. All apply in full to Tier 3 assets.
 
-### Custodian (Any Grade)
+### Custodian (Any Grade) {#sec-custodian-role}
 
 The Custodian is responsible for capturing, storing, maintaining, and (where applicable) disposing of data and digital assets in line with the Owner's requirements. Custodians do the hands-on work: creating, running, storing, and maintaining assets correctly. They work closely with Stewards to ensure quality by executing within agreed systems according to rules and standards. Any team member can be a Custodian.
 
 ::: {.callout-note}
 ## Custodian Disposal Responsibility
-The CDDO Data Ownership Model and Defra Data Ownership Policy both define the Custodian as responsible for "capturing, storing and disposing of data." The majority of data held by the F&W team is observed environmental data (river flows, rainfall, water levels) which is generally retained indefinitely as it cannot be recreated and has enduring scientific and audit value. However, the disposal responsibility is included here to cover assets where retention limits do apply: superseded configuration files, deprecated tool artefacts, or data received under licence terms that include a disposal obligation. Disposal of any data requires Owner approval and must be documented.
+The CDDO Data Ownership Model and Defra Data Ownership Policy both define the Custodian as responsible for "capturing, storing and disposing of data." The majority of data held by the team is observed environmental data (river flows, rainfall, water levels) which is generally retained indefinitely as it cannot be recreated and has enduring scientific and audit value. However, the disposal responsibility is included here to cover assets where retention limits do apply: superseded configuration files, deprecated tool artefacts, or data received under licence terms that include a disposal obligation. Disposal of any data requires Owner approval and must be documented.
 :::
 
 Custodians are responsible for:
@@ -112,7 +112,7 @@ Custodians are responsible for:
 - Carrying out disposal of data or digital assets when directed by the Owner and Steward, and documenting the disposal decision, date, method, and authorisation
 - Ensuring that changes to data content and controls can be audited
 
-### Role Summary
+### Role Summary {#sec-role-summary}
 
 | Role | Definition and Responsibilities |
 |---|---|
@@ -120,7 +120,7 @@ Custodians are responsible for:
 | Steward | Operational expert responsible for day-to-day governance. Maintains standards, reviews quality, manages access, oversees the Tool Register and data catalogue, handles governance queries, tracks data lineage, manages lifecycle. Grade 7 required for Tier 3 tools; Grade 7 recommended for all other assets. Where the Steward's strength is oversight and people management rather than technical depth, a Delegated Steward should be named to carry out the hands-on governance work: code quality assessment, model condition reviews, data pipeline evaluation, and the annual Tier 3 audit. Typically G6 grade. |
 | Custodian | Technical expert responsible for capturing, storing, maintaining, and disposing of assets correctly. Creates, stores, and maintains assets and tools to agreed standards. Carries out disposal when authorised. Any grade. May be delegated to any team member. |
 
-### Delegation
+### Delegation {#sec-delegation}
 
 Any role may be formally delegated. Delegation must be:
 
@@ -130,13 +130,13 @@ Any role may be formally delegated. Delegation must be:
 
 Delegation does not transfer accountability. The original role holder remains responsible even when a role has been delegated.
 
-For the Delegated Steward specifically: the Delegated Steward may make and record operational decisions — recommending approval or rejection of code reviews, flagging model condition ratings, and compiling audit findings — but decisions that carry governance consequences require Steward sign-off. These are: approving or rejecting a tier promotion, approving or denying an access request, signing off a condition assessment that results in a recommended suspension, and any finding that would be escalated to the Owner. The Steward remains accountable for all of these. Where the Steward and Delegated Steward disagree on a finding or recommendation, the Steward's decision takes precedence and the disagreement must be recorded in the relevant register entry.
+For the Delegated Steward specifically: the Delegated Steward may make and record operational decisions (recommending approval or rejection of code reviews, flagging model condition ratings, and compiling audit findings) but decisions that carry governance consequences require Steward sign-off. These are: approving or rejecting a tier promotion, approving or denying an access request, signing off a condition assessment that results in a recommended suspension, and any finding that would be escalated to the Owner. The Steward remains accountable for all of these. Where the Steward and Delegated Steward disagree on a finding or recommendation, the Steward's decision takes precedence and the disagreement must be recorded in the relevant register entry.
 
 ### Relationship to the Information Asset Owner Role {#sec-iao-relationship}
 
 The Cabinet Office IAO guidance (updated October 2025) and the Defra Data Ownership Policy both recognise the Information Asset Owner (IAO) as a distinct role focused on the security, content, quality, and distribution of information assets. The CDDO Data Ownership Model notes that organisations may wish to combine the Data Owner and IAO roles where appropriate.
 
-Within the F&W team, the Data Owner fulfils the IAO function for the team's asset domain. The Deputy Director who holds the Owner role is accountable for the information assets (databases, data stores, model repositories) that contain the team's data, as well as for the data itself. This combined accountability is appropriate given the team's structure: the same individual needs oversight of both the logical data groupings and the systems that hold them.
+Within NFWS, the Data Owner fulfils the IAO function for the team's asset domain. The Deputy Director who holds the Owner role is accountable for the information assets (databases, data stores, model repositories) that contain the team's data, as well as for the data itself. This combined accountability is appropriate given the team's structure: the same individual needs oversight of both the logical data groupings and the systems that hold them.
 
 Where the team's data assets are held within wider organisational information assets (for example, data held within a shared Databricks environment or a centrally managed file store), the team's Data Owner coordinates with the organisational IAO for that system to ensure that access controls, security measures, and risk assessments are aligned.
 
@@ -151,16 +151,16 @@ The following accountabilities from the IAO guidance are explicitly held by the 
 - Ensuring compliance with the Data Protection Act 2018, the Data (Use and Access) Act 2025, UK GDPR, FOI and EIR regulations, and the Public Records Act
 - Ensuring that any AI service has been assessed before it is allowed access to team information assets (see @sec-ai-governance)
 
-## Asset Categories
+## Asset Categories {#sec-asset-categories}
 
 The team's assets are grouped into four categories. Each has a designated Owner and Steward.
 
-| Category | Examples | Owner / Steward |
+| Category | Examples | Named Role Holders |
 |---|---|---|
-| Model files | Flood Modeller Pro projects, PDM parameter sets, boundary files | Owner: Deputy Director (Modelling); Steward: Senior Modeller (G7); Custodian: District Lead (any) |
-| Input data | Rainfall records, flow data, gridded raster, catchment shapefiles | Owner: Deputy Director (Data); Steward: Data Manager (G7) |
-| Model outputs | Flood extents, hydrographs, performance reports, ensemble outputs | Owner: Deputy Director (Modelling); Steward: Senior Modeller (G7) |
-| Code and tools | R and Python scripts, automation pipelines, shared modules | Owner: Deputy Director (Technology); Steward: Lead Developer (G7) |
+| Model files | Flood Modeller Pro projects, PDM parameter sets, boundary files | Refer to your team's `roles.qmd` for named role holders. |
+| Input data | Rainfall records, flow data, gridded raster, catchment shapefiles | Refer to your team's `roles.qmd` for named role holders. |
+| Model outputs | Flood extents, hydrographs, performance reports, ensemble outputs | Refer to your team's `roles.qmd` for named role holders. |
+| Code and tools | R and Python scripts, automation pipelines, shared modules | Refer to your team's `roles.qmd` for named role holders. |
 
 ### Asset Register Metadata Requirements {#sec-metadata-requirements}
 
@@ -173,7 +173,7 @@ Every data asset or tool entered in the team's registers (Tool Register, Model R
 
 This aligns with the CDDO requirement that every essential shared data asset has accurate metadata including the name and roles of responsible Data Owners and Data Steward(s), and with the Defra requirement to additionally include Custodians and IAOs.
 
-## The Tier System
+## The Tier System {#sec-tier-system}
 
 Not all assets carry the same risk. A script that broke at 2am during a live flood event is a different problem to one that broke during a research exercise the following week. The tier system exists to make that difference explicit, and to calibrate the governance overhead accordingly.
 
@@ -213,7 +213,7 @@ The team maintains five registers and one data catalogue. Together they answer t
 
 ### Why Registers Are Required
 
-The problems this framework was built to address — informal ownership, lost institutional knowledge, duplicated work — all share a common cause: the team's assets were not systematically recorded. Registers are the remedy. They make ownership visible, make the asset base navigable, and create the audit trail needed for accountability.
+The problems this framework was built to address (informal ownership, lost institutional knowledge, duplicated work) all share a common cause: the team's assets were not systematically recorded. Registers are the remedy. They make ownership visible, make the asset base navigable, and create the audit trail needed for accountability.
 
 Register maintenance is not optional. The Steward is accountable for keeping all registers current. The Custodian is responsible for notifying the Steward whenever an asset changes in a way that requires a register update. An asset not recorded in the relevant register is treated as unmanaged: it may not be used in formal outputs or operational forecasting, it cannot be promoted to Tier 3, and accountability for it cannot be enforced.
 
@@ -243,7 +243,7 @@ The Steward includes register currency in the quarterly governance summary (@sec
 
 When a Gold-tier dataset is superseded or a Tier 3 model's output format changes, the Steward responsible for that asset must notify any Steward whose domain depends on it. The Connection Register is the reference: any registered dependency on the changed asset creates an obligation to notify. The notified Steward must confirm with their Custodians that any affected run records, model configurations, or tool outputs are still valid. This requirement applies regardless of whether the dependency crosses language or domain boundaries.
 
-## Flood Model Governance
+## Flood Model Governance {#sec-flood-model-overview}
 
 FMP model files require formal version control because they contain binary and configuration files that change with every calibration update, boundary condition revision, or software upgrade. Both the current model and all superseded versions must be retained. A model that produced a formal output must remain recoverable in the exact state it was in when that output was produced. No FMP files may be held on local machines or unmanaged drives.
 
@@ -251,13 +251,13 @@ PDM parameter sets, calibration records, and coupled model configurations follow
 
 The detailed requirements for folder structure, naming conventions, version control, run records, condition assessment, and model connections are set out in the Flood Model Governance document (@sec-flood-model-governance). The requirements there are normative and must be followed by all Custodians working with operational models.
 
-## Code and Tool Governance
+## Code and Tool Governance {#sec-code-tool-governance}
 
-The department currently develops and maintains code tools in R and Python. These tools are governed by the same Owner, Steward, and Custodian framework as all other assets, with additional requirements that reflect the specific risks of code: unreproducible results, undocumented behaviour, and key-person dependency.
+The team currently develops and maintains code tools in R and Python. These tools are governed by the same Owner, Steward, and Custodian framework as all other assets, with additional requirements that reflect the specific risks of code: unreproducible results, undocumented behaviour, and key-person dependency.
 
 This section sets out the governance principles that apply to all code tools regardless of language. Detailed, language-specific standards are in @sec-r-governance and @sec-python-governance.
 
-### Tool Classification
+### Tool Classification {#sec-tool-classification}
 
 All code tools are classified into one of three tiers based on their operational role. Governance requirements increase with tier level.
 
@@ -267,7 +267,7 @@ All code tools are classified into one of three tiers based on their operational
 | Tier 2: Analytical | Regularly used but not in the critical forecasting path | Visualisation tools, performance metrics dashboards, model comparison tools |
 | Tier 1: Experimental | Research or prototype stage; not in production | New model evaluation scripts, proof-of-concept tools, ML experiments, research notebooks |
 
-### Custodianship Requirements by Tier
+### Custodianship Requirements by Tier {#sec-custodianship-by-tier}
 
 | Role | Tier 3: Operational | Tier 2 and 3: Analytical / Experimental |
 |---|---|---|
@@ -277,7 +277,7 @@ All code tools are classified into one of three tiers based on their operational
 
 When a team member leaves or changes role, custodianship must be formally reassigned before their departure.
 
-### Routes to Tool Development
+### Routes to Tool Development {#sec-routes-to-development}
 
 There are four routes by which a new tool enters the team's codebase. The route must be agreed at the point of initiation and recorded in the Tool Register.
 
@@ -292,7 +292,7 @@ For Route C, all external packages must be evaluated against six criteria before
 
 For Route D, no more than two emergency route deployments per twelve-month period for the same tool area is acceptable before triggering a review of the underlying operational code tools.
 
-### Code Review Requirements
+### Code Review Requirements {#sec-code-review-requirements}
 
 | Tier | Review Requirement |
 |---|---|
@@ -300,7 +300,7 @@ For Route D, no more than two emergency route deployments per twelve-month perio
 | Tier 2: Analytical | Peer review required before merging to main. Reviewer must have at least intermediate proficiency in the relevant language. |
 | Tier 1: Experimental | Self-review checklist minimum. Peer review strongly encouraged before sharing with others. |
 
-### Version Control Principles
+### Version Control Principles {#sec-version-control}
 
 All code tools used by more than one person must be managed in Git. No shared tool may exist solely on a local machine or shared drive.
 
@@ -341,7 +341,7 @@ The resulting register fields are:
 
 The register must be regenerated whenever a custodianship role changes, a tool changes tier, or a tool is deprecated. Run `Rscript scripts/build_tool_register.R` and commit the updated `tool_register.csv`.
 
-### Handover and Succession
+### Handover and Succession {#sec-handover-succession}
 
 When a Steward or Custodian changes, the outgoing person must produce a handover note before they leave. The note covers: the tool's purpose and known quirks, current technical debt or open issues, the status of any open pull requests, and scheduled maintenance tasks. It is stored in the tool's `docs/` directory.
 
@@ -360,7 +360,7 @@ The data catalogue should cover at minimum:
 
 The catalogue is maintained by the Steward and reviewed as part of the annual governance audit. It may take the form of a structured document, a spreadsheet, or a dedicated section within the team's internal documentation site.
 
-## Data Quality
+## Data Quality {#sec-data-quality}
 
 Data quality is everyone's responsibility. The following minimum standards apply to all datasets.
 
@@ -373,7 +373,7 @@ Data quality is everyone's responsibility. The following minimum standards apply
 | Traceability | Every input can be traced back to its source | Custodian |
 | Reproducibility | Anyone with access to the inputs and model should get the same outputs | Steward or Custodian (audit) |
 
-## Access and Sharing
+## Access and Sharing {#sec-access-sharing}
 
 - All team members have read access to current model files by default
 - Write access to master model files requires Steward approval; approval is recorded in the access log with the name of the person, the date, and the scope of access granted
@@ -381,7 +381,7 @@ Data quality is everyone's responsibility. The following minimum standards apply
 - Sensitive datasets follow the organisation's data classification policy
 - Access rights are reviewed by Stewards every six months
 
-## Data Incidents and Escalation
+## Data Incidents and Escalation {#sec-data-incidents}
 
 A data incident is any event that affects the integrity, availability, or confidentiality of team assets including accidental deletion, use of wrong input data in a published output, tool failure in a live operational forecast environment, or unauthorised sharing.
 
@@ -427,7 +427,7 @@ The team uses AI and ML tools in two ways: commercial or external services that 
 
 The Steward monitors developments in AI legislation and government guidance that affect the team's use of ML tools. This is reviewed as part of the annual governance audit.
 
-## Review and Compliance
+## Review and Compliance {#sec-review-compliance}
 
 This framework and the companion documents are reviewed annually by the Stewards (or subject matter experts), with Owner sign-off. The review considers:
 
@@ -441,7 +441,7 @@ The Delegated Steward conducts an annual audit of all Tier 3 code tools, coverin
 
 Stewards must carry out spot-check audits of Tier 2 model files and metadata records at least once per year, and of Tier 1 assets at least once every two years. Spot checks may be carried out at any time.
 
-### Framework Version Control
+### Framework Version Control {#sec-version-control-framework}
 
 Changes to this document and the companion documents fall into three categories.
 
@@ -461,7 +461,7 @@ For all substantive and major changes, the procedure is:
 
 The version field in `_quarto.yml` is the master. All companion document metadata blocks reference it and must be kept in step.
 
-### Owner Annual Engagement Requirement
+### Owner Annual Engagement Requirement {#sec-owner-engagement}
 
 Owner sign-off on the annual review is not a formality. Before signing, the Owner must be able to confirm each of the following:
 
