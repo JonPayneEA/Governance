@@ -13,7 +13,7 @@ The **F&W Service** (transitioning to the National Forecasting and Warning Servi
 | Team | G7 Manager | Status | In scope |
 |---|---|---|---|
 | Flood Forecasting Centre (FFC) | Head of Centre (assigned) | Operational | No — out of scope |
-| Forecasting Team | Forecasting Manager | **Vacancy** | Yes |
+| Forecasting Team | Forecasting Manager (assigned) | Operational | Yes |
 | Warning Team | Warning Manager (assigned) | Operational | Yes |
 | Service Management | Service Management Manager (assigned) | Operational | Peripheral — standards and guidance role |
 | F&W Transformation | Transformation Manager (assigned) | Operational | No |
@@ -41,7 +41,7 @@ The current governance document is a single Quarto book scoped to the former For
 ## Goals
 
 - Make it straightforward to add a new operational team under the framework
-- Establish a central data team with shared dataset stewardship and a capability/embedding programme
+- Make the case for a Central Data Team (CDT) and define what it would look like — laying the groundwork for it to be formally established
 - Make companion documents team-agnostic so they are inherited, not rewritten, by each new team
 - Add scope-defined companion documents for Flood Warnings and Procedure Tools
 - Fix brittle cross-references throughout
@@ -111,7 +111,7 @@ F&W / NFWS Deputy Director (Owner)
 │     ├── Capability Programme (training, standards, AI tooling)
 │     └── Embedded liaisons → one per in-scope team
 │
-├── Forecasting Team (G7 Steward — currently vacant) ── governance-forecasting
+├── Forecasting Team (G7 Steward) ───────────────────── governance-forecasting
 ├── Warning Team (G7 Steward) ────────────────────────── governance-warnings
 │
 │   [Peripheral — standards and guidance role only]
@@ -122,15 +122,23 @@ F&W / NFWS Deputy Director (Owner)
 └── F&W Transformation Team (G7 Manager)
 ```
 
-The F&W/NFWS Deputy Director is the Owner across all in-scope teams. The central data team G7 Steward (once established) reports to the DD and produces the quarterly governance summary covering shared dataset health and framework adoption. Operational team Stewards report to the DD for their domain assets and coordinate with the central data team G7 on shared assets. The Forecasting Manager G7 post is currently vacant — governance arrangements for that team during the vacancy period must be addressed in the implementation plan.
+The F&W/NFWS Deputy Director is the Owner across all in-scope teams. The central data team G7 Steward (once established) reports to the DD and produces the quarterly governance summary covering shared dataset health and framework adoption. Operational team Stewards report to the DD for their domain assets and coordinate with the central data team G7 on shared assets.
+
+This framework is being developed within the Forecasting Team because the Service Management team, while responsible for service standards and guidance, does not hold the digital and data expertise needed to author or maintain it. The governance framework and the CDT it proposes are therefore a Forecasting Team-led initiative, operating within the wider NFWS structure.
 
 ---
 
 ## Central Data Team Chapter (new: `02-central-data-team.qmd`)
 
-### Structure
+### The case for a CDT
 
-The central data team is headed by a G7 Steward accountable to the Deputy Director Owner. It is not embedded within any operational team — it sits above them and serves all of them.
+The governance problems this framework addresses — duplicated dataset derivation, fragmented tool ownership, no shared standards, no coordinated AI adoption — all point to the same structural gap: there is no team with a cross-cutting mandate for data and digital capability across NFWS. Service Management holds the vision and standards brief but not the technical depth. Individual operational teams hold the technical depth but not the cross-team view.
+
+A Central Data Team (CDT) fills that gap. This framework defines what it would do, how it would sit within the existing structure, and what governance responsibilities it would hold. It does not create the CDT — that is an organisational decision for the Deputy Director. But the framework is designed so that when the CDT is established, it steps into a defined role rather than building from scratch.
+
+### Structure (proposed)
+
+The CDT would be headed by a G7 Steward accountable to the Deputy Director Owner. It would not be embedded within any operational team — it would sit across them, serving all in-scope teams.
 
 ### Shared Stewardship Model
 
@@ -215,6 +223,5 @@ No companion writing is required unless the team has a genuinely unique asset ty
 - Writing the detailed content of the Flood Warnings and Procedure Tools companions (scope only for now)
 - Populating the Shared Asset Register (operational work, not a document change)
 - Creating team repos other than the initial `governance-forecasting` and `governance-warnings` migrations
-- Resolving the Forecasting Manager G7 vacancy (operational matter, not a document change)
-- Formally establishing the central data team as an organisational unit (governance/HR matter)
+- Formally establishing the CDT as an organisational unit (HR/organisational matter — the framework makes the case, not the decision)
 - Changes to the R or Python companion content beyond removing F&W-specific language
