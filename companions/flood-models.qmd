@@ -52,7 +52,7 @@ FMP models simulate the movement of water through river channels and floodplains
 
 FMP models require formal version control because they contain binary and configuration files that can change with each calibration update, boundary condition change, or software upgrade. A model that produces a formal output and a model that has been subsequently updated must both be retained, with the version used for each output clearly identified.
 
-All FMP model files must follow the folder structure and naming conventions set out in @sec-flood-folder-structure. The Custodian is responsible for keeping model files in the agreed location and not on local machines or unmanaged drives.
+All FMP model files must follow the folder structure and naming conventions defined by the team's Steward. No FMP files may be held on local machines or unmanaged drives.
 
 ## 2.2 PDM Rainfall-Runoff Models
 
@@ -204,7 +204,7 @@ Before any change to a model is deployed, the Custodian must consult the Connect
 
 For Tier 3 models, the impact assessment is a required step before a pull request is merged and before a new model version is deployed to the operational environment. It must be documented in the run record or change log for the upstream model being updated.
 
-# 6. Model Run Records {#sec-flood-folder-structure}
+# 6. Model Run Records {#sec-flood-run-records}
 
 For every model run that produces a formal output such as performance testing, the Custodian must complete a run record. This is the mechanism by which any output can be traced back to the exact model version, input data, and boundary conditions used to produce it.
 
