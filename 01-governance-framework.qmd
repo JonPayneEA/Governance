@@ -171,7 +171,7 @@ The following accountabilities from the IAO guidance are explicitly held by the 
 
 ## Asset Categories {#sec-asset-categories}
 
-The team's assets are grouped into four categories. Each has a designated Owner and Steward.
+The team's assets are grouped into six categories. Each has a designated Owner and Steward.
 
 | Category | Examples | Ownership assignment |
 |---|---|---|
@@ -179,6 +179,8 @@ The team's assets are grouped into four categories. Each has a designated Owner 
 | Input data | Rainfall records, flow data, gridded raster, catchment shapefiles | Roles are assigned in the team's own governance repository. See the team onboarding guide. |
 | Model outputs | Flood extents, hydrographs, performance reports, ensemble outputs | Roles are assigned in the team's own governance repository. See the team onboarding guide. |
 | Code and tools | R and Python scripts, automation pipelines, shared modules | Roles are assigned in the team's own governance repository. See the team onboarding guide. |
+| Warning configurations | Threshold configurations, trigger criteria, issuance rules. Warning area definitions are nationally maintained reference data held in the Shared Asset Register (@sec-shared-datasets) rather than as team-created assets. | Roles are assigned in the team's own governance repository. See the team onboarding guide. |
+| Procedures and operational documentation | SOPs, decision trees, playbooks, escalation guides, operational briefing notes. Procedures used in live incidents carry Tier 3 operational consequences but follow a documentary review cycle rather than the technical tier system. See @sec-procedure-tools. | Roles are assigned in the team's own governance repository. See the team onboarding guide. |
 
 ::: {.callout-note}
 ## Role assignment
@@ -232,7 +234,7 @@ Code tools written in R or Python follow the same tier system. A tool's tier ref
 
 ## Asset Registers {#sec-asset-registers}
 
-The team maintains five registers and one data catalogue. Together they answer the question no single person should have to carry in their head: what does the team hold, who is responsible for it, what state is it in, and how does it connect to everything else.
+The team maintains six registers and one data catalogue. Together they answer the question no single person should have to carry in their head: what does the team hold, who is responsible for it, what state is it in, and how does it connect to everything else.
 
 ### Why Registers Are Required {#sec-registers-why}
 
@@ -248,11 +250,14 @@ Register maintenance is not optional. The Steward is accountable for keeping all
 | **Model Register** | All flood models (FMP, PDM, Black Box, Boundary Conditions): tier, condition ratings, calibration records | `registers/model_register.xlsx` |
 | **Hydrometric Data Register** | All Bronze, Silver, and Gold datasets: provenance, QC records, derivation records | `reach.io` package / Delta table in Databricks |
 | **Connection Register** | Directed connections between models in cascading systems: transfer method, failure modes, override points | `registers/connection_register.xlsx` |
+| **Warning Configuration Register** | Warning threshold configurations and trigger criteria: version, approval record, associated gauge IDs, review date | `registers/warning_config_register.xlsx` |
 | **Data Catalogue** | Agreed definitions for all data terms used across the team | `governance/data_catalogue.toml` |
 
 : {.striped}
 
-Each register is version-controlled. No register is edited by hand except under Steward approval. The Hydrometric Data Register is written programmatically via `reach.io`; the Tool Register is built by `scripts/build_tool_register.R`. The Model Register and Connection Register are maintained by the Steward, with updates submitted by Custodians after any significant change to an asset.
+Each register is version-controlled. No register is edited by hand except under Steward approval. The Hydrometric Data Register is written programmatically via `reach.io`; the Tool Register is built by `scripts/build_tool_register.R`. The Model Register, Connection Register, and Warning Configuration Register are maintained by the Steward, with updates submitted by Custodians after any significant change to an asset.
+
+Procedures are not tracked in a central register. Each team maintains a version-controlled Procedures Index in its own governance repository, listing every active procedure with its version, review date, named Owner, and sign-off record. The Steward includes procedure currency in the quarterly governance summary.
 
 Detailed field specifications, update procedures, and the initial setup sequence for each register are in the companion documents (@sec-flood-model-governance, @sec-hydrometric-data) and in the Implementation chapter (@sec-implementation). The Tool Register is defined in full at @sec-tool-register below.
 
