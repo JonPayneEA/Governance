@@ -266,6 +266,57 @@ The Steward includes register currency in the quarterly governance summary (@sec
 
 When a Gold-tier dataset is superseded or a Tier 3 model's output format changes, the Steward responsible for that asset must notify any Steward whose domain depends on it. The Connection Register is the reference: any registered dependency on the changed asset creates an obligation to notify. The notified Steward must confirm with their Custodians that any affected run records, model configurations, or tool outputs are still valid. This requirement applies regardless of whether the dependency crosses language or domain boundaries.
 
+## Catchment History and Condition {#sec-catchment-condition}
+
+The tier system tells you how critical an asset is to the live service. The medallion architecture tells you how far a dataset has been through quality assurance. Neither tells you whether the asset still accurately represents the physical system it was built to describe.
+
+That is a separate question, and it is the more fundamental one. A model may carry a high condition score and still be wrong, because the catchment it represents has changed since it was calibrated. A warning threshold may have passed Gold-tier approval and still be inappropriate, because the flow-stage relationship it depends on has since shifted. A procedure may be formally signed off and still direct responders incorrectly, because the flood defence it references no longer operates as it did.
+
+Physical catchments change. They change suddenly through flood events. They change gradually through channel morphology, land use, and vegetation. They change deliberately through infrastructure works, gauge relocations, and rating curve revisions. Every significant change to a catchment is a potential invalidation event for every digital asset that represents it, across every team that holds one.
+
+### Catchment change events {#sec-catchment-events}
+
+A catchment change event is any physical or observational change that may affect the representativeness of existing digital assets for a given catchment. The following count:
+
+- A significant flood event: one that produces flows exceeding the calibrated range of existing assets, or causes observable geomorphological change
+- Construction or modification of flood defences, weirs, or control structures
+- Channel modifications, major bank erosion, or in-channel works
+- Relocation or replacement of a flow or stage gauge
+- Revision of a rating curve used as input to operational models or warning thresholds
+- Land use or vegetation change large enough to affect runoff response
+
+No single team has full sight of all these events across a catchment. That is why the cross-team notification mechanism at @sec-cross-asset-notification exists, and why the CDT's cross-service mandate at @sec-central-data-team is structurally necessary.
+
+### Catchment History Log {#sec-catchment-history-log}
+
+Each team maintains a Catchment History Log for the catchments in its domain. The log records catchment change events with a date, a description of the change, and an assessment of which digital assets are affected. The Steward holds the log in the team's governance repository and reviews it as part of the quarterly governance summary (@sec-monitoring-reporting).
+
+| Field | Description |
+|---|---|
+| Event date | Date the event occurred or was identified |
+| Catchment | The catchment or catchments affected |
+| Event type | Flood event, physical works, gauge change, rating curve revision, other |
+| Description | What happened and, where known, its physical extent or significance |
+| Assets affected | Asset IDs (models, datasets, thresholds, procedures) that may no longer be representative |
+| Review status | Pending / Under review / Reviewed: no change required / Reviewed: update required |
+| Outcome | What was done, or what is planned, for each affected asset |
+
+: Catchment History Log fields {.striped}
+
+### Cross-team notification {#sec-catchment-cross-notification}
+
+When a catchment change event affects assets held by more than one team, the Steward who identifies the event must notify all other Stewards whose assets relate to that catchment. Notification must be specific: it must name the event, the catchment, and the assets the notifying Steward believes are affected in the receiving team's domain.
+
+The receiving Steward is responsible for assessing the impact on their own assets and recording the outcome in their own log. A Steward who receives notification and takes no action is in breach of their responsibilities under this framework.
+
+For catchments where both Forecasting and Warning teams hold operational assets, any flood event that triggers a model condition review under @sec-flood-condition-cycle also counts as a catchment change event requiring notification to the Warning Steward.
+
+### Condition as a judgement {#sec-catchment-condition-framing}
+
+The per-asset condition frameworks in the companion documents provide scoring criteria and required actions. They make condition judgements systematic and auditable. They are not substitutes for the judgement itself.
+
+The flood model condition score at @sec-flood-condition answers: how fit for purpose is this model? The catchment condition concept answers the prior question: has the physical system changed in a way that requires all asset types to be reassessed, not just models? Both questions matter. The second is frequently not asked.
+
 ## Flood Model Governance {#sec-flood-model-overview}
 
 FMP model files require formal version control because they contain binary and configuration files that change with every calibration update, boundary condition revision, or software upgrade. Both the current model and all superseded versions must be retained. A model that produced a formal output must remain recoverable in the exact state it was in when that output was produced. No FMP files may be held on local machines or unmanaged drives.
