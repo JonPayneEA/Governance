@@ -55,6 +55,7 @@ The G7 Steward produces the quarterly governance summary defined at @sec-monitor
 The diagram below shows where the CDT sits relative to the existing NFWS structure. The dashed node indicates the proposed addition.
 
 ```{mermaid}
+%%| fig-width: 6
 graph TD
     DD["Deputy Director · Owner"]
     CDT["CDT G7 Steward"]

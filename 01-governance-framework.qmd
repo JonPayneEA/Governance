@@ -35,6 +35,7 @@ This framework applies to all digital assets produced or consumed by in-scope NF
 The Forecasting teams (Fluvial and Coastal Modelling, and Local Forecasting Service) and the Warning Hub teams are in scope. The Flood Forecasting Centre operates under a separate governance arrangement as a joint Met Office and Environment Agency service and is out of scope.
 
 ```{mermaid}
+%%| fig-width: 6
 graph TD
     DD["Deputy Director · NFWS Owner"]
     SM["Service Management"]

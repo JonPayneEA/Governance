@@ -66,7 +66,8 @@ The diagrams below show the structural difference between independent derivation
 **Current state.** Each team pulls from the same source but processes the data independently. Three separate Bronze-to-Gold pipelines produce three separate Gold-tier products. No single point of accountability exists across them.
 
 ```{mermaid}
-graph LR
+%%| fig-width: 6
+graph TD
     SRC["Source data"]
     FFM["FFM<br/>(independent derivation)"]
     LFS["LFS<br/>(independent derivation)"]
@@ -90,7 +91,8 @@ graph LR
 **Proposed state.** The CDT holds a single derivation pipeline. One Gold-tier product, one authoritative approval record, one point of accountability. Consuming teams use that product directly as Custodians.
 
 ```{mermaid}
-graph LR
+%%| fig-width: 6
+graph TD
     SRC["Source data"]
     CDT["CDT<br/>(single Gold derivation)"]
     FFM_T3["FFM Tier 3 assets"]
