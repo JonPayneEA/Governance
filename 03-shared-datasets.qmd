@@ -1,8 +1,72 @@
 # Shared Datasets {#sec-shared-datasets}
 
+::: {.callout-note}
+| | |
+|---|---|
+| **Version** | 1.0 |
+| **Status** | Draft: For Review |
+| **Review Date** | 2027-03-31 |
+| **Parent Document** | Data and Digital Asset Governance Framework v3.0 |
+:::
+
 ::: {.callout-warning}
 ## In preparation
 This chapter is under development. The Shared Asset Register format and shared dataset stewardship model will be defined here. Cross-references to this section from other chapters refer to content that is forthcoming.
 :::
 
-*Content to be written.*
+## The problem with independent derivation {#sec-shared-derivation-problem}
+
+When multiple teams each derive their own version of the same dataset, three things happen in parallel. Provenance trails diverge: each team makes different decisions about source selection, transformation steps, and version pinning. QC decisions diverge: thresholds, outlier treatment, and approval criteria are set independently by each team's Steward. Gold-tier approvals multiply: the same underlying data may carry several separate approval records, none of which is aware of the others.
+
+The result is a set of datasets that look equivalent but are not. No single person can vouch for all of them. If a query or audit spans teams, the differences are either invisible or inexplicable.
+
+This matters most in operational settings. If a model trained on one team's derivation and a model trained on another team's derivation are producing different outputs, there is no clean way to determine whether the difference comes from the models themselves or from the data they were given. The audit trail stops at the team boundary. That problem compounds as AI and ML tools are adopted across NFWS. A model trained on inconsistently derived data cannot be trusted in operational settings, and the inconsistency may not become visible until the model is already in use.
+
+## What a shared dataset is {#sec-shared-dataset-definition}
+
+A dataset is "shared" in the governance sense if more than one in-scope NFWS team uses it as an input to their Tier 3 assets or their ML training pipelines. The shared designation is not about the dataset's size or importance. It is about the number of teams depending on it and the risk that independent derivation creates.
+
+Likely shared datasets include gauge metadata, catchment shapefiles, nationally consistent hydrometric baselines, and rating curves. These are inputs that multiple teams require, that change infrequently, and where any divergence in derivation creates silent inconsistency downstream. Being shared does not make a dataset more important. It makes the governance stakes higher, because a problem in a shared dataset propagates to every team that depends on it.
+
+## The Shared Asset Register {#sec-shared-asset-register}
+
+Shared datasets are declared once in the Shared Asset Register, held in this repository. The CDT G7 Steward is responsible for maintaining it. A dataset cannot be shared in the governance sense until it has a register entry. Teams may use the same underlying data informally before that point, but the governance obligations in this chapter do not apply until the register entry exists and the first Gold-tier approval has been recorded.
+
+The register entry is the single authoritative record for a shared dataset. It holds the derivation method, the approval history, and the list of consuming teams. When the dataset changes, the register entry is updated. When a consuming team is added or removed, the register entry is updated. The register is not a catalogue. It is a live accountability document.
+
+| Field | Description |
+|---|---|
+| Dataset name | Unique identifier for the shared dataset |
+| Derivation method | How the dataset is produced: source, transformation steps, and tooling used |
+| Gold-tier approval record | Date of Gold-tier approval, approving Steward, and approval conditions |
+| CDT Steward | Named CDT G7 Steward responsible for this entry |
+| Consuming teams | Names of in-scope teams using the dataset as input |
+| Custodian contacts | Named Custodian contact per consuming team |
+| Last review date | Date of last register review |
+| Notes | Any limitations, known issues, or conditions on use |
+
+: Shared Asset Register fields {.striped}
+
+## Roles for shared datasets {#sec-shared-dataset-roles}
+
+| Role | Holder | Responsibility |
+|---|---|---|
+| Owner | Deputy Director | Approves Gold-tier approval for shared datasets. Approves retirement of a shared dataset. |
+| Steward | CDT G7 Steward | Maintains the Shared Asset Register. Holds the Gold-tier derivation record. Notifies consuming teams of updates. |
+| Custodian | Named contact in each consuming team | Uses the dataset as supplied. Does not derive an independent copy. Reports quality issues to the CDT Steward. |
+
+: Roles for shared datasets {.striped}
+
+Consuming teams must not derive their own version of a shared dataset. If a team believes the shared version is wrong or unsuitable, the correct route is to report the problem to the CDT Steward, not to derive a separate version. The CDT Steward is responsible for resolving the issue and updating the register.
+
+## Notification requirements {#sec-shared-dataset-notification}
+
+When a shared dataset is updated or superseded, the CDT Steward notifies all consuming team Stewards before the change takes effect. Notification is not a courtesy. It is a required step in the update process, and no change to a shared dataset is complete until all consuming Stewards have been informed.
+
+The notified Steward must confirm with their Custodians that any dependent model configurations or tool outputs remain valid after the update. This mirrors the cross-asset notification requirement at @sec-cross-asset-notification, extended across team boundaries. Where a Gold-tier shared dataset feeds Tier 3 model runs, notification is mandatory, not discretionary. A Steward who receives notification and takes no action is in breach of their responsibilities under this framework.
+
+## Proposing a new shared dataset {#sec-proposing-shared-dataset}
+
+Any team Steward may propose that a dataset be moved to shared status. The proposal goes to the CDT G7 Steward and must include: which teams currently use the dataset, the derivation method in use in each team, and why independent derivation presents a risk. A vague concern is not sufficient. The proposal should identify where the divergence is already occurring or where it is likely to occur as the dataset is used more widely.
+
+The CDT Steward assesses the proposal and, if agreed, takes on Steward responsibility and adds the entry to the register. Owner approval is required before the first Gold-tier record is created. A proposal is not a request for the CDT to do more work. It is a request for the CDT to coordinate derivation that is already being done separately, and to provide a single authoritative version in place of several independent ones.
