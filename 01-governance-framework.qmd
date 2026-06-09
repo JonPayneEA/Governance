@@ -331,9 +331,17 @@ All code tools used by more than one person must be managed in Git. No shared to
 
 **Commits:** all commits must follow the Conventional Commits convention `<type>(<scope>): <short description>` with a body explaining why, not just what. Permitted types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`.
 
-**Versioning:** all tools and packages follow Semantic Versioning (MAJOR.MINOR.PATCH). Releases are tagged in Git and accompanied by a `CHANGELOG.md` entry.
+**Versioning:** all tools and packages follow Semantic Versioning (MAJOR.MINOR.PATCH). The version number is recorded in three places: the Git release tag (e.g. `v2.1.0`), the `CHANGELOG.md` entry, and the package metadata file (`DESCRIPTION` for R, `pyproject.toml` for Python). It is never appended to a file name. A file called `process_data.R` must not become `process_data_v2.1.0.R`. The commit history and release tags are the version record. Embedding versions in file names duplicates that record, creates ambiguity, and breaks as soon as files are moved or renamed.
 
 **Reproducibility:** all dependencies must be pinned and committed alongside the code: `renv.lock` for R tools, `poetry.lock` for Python tools. Code must be runnable from a clean environment without undeclared dependencies.
+
+**Releases:** a release is a named, tagged point in the commit history. To cut a release: merge the `release/<version>` branch to `main`, tag the commit (`git tag -a v2.1.0 -m "Release v2.1.0"`), push the tag (`git push origin v2.1.0`), and update `CHANGELOG.md` on `develop`. No files are renamed. The tag is the version marker.
+
+::: {.callout-note}
+## File naming versus Git versioning
+These rules apply to **code tools managed in Git**. Model files (FMP, PDM, boundary conditions) are not code and are typically held on shared drives rather than in a Git repository. For those assets, version numbers in file names are the appropriate convention. See @sec-flood-file-standards for model file naming rules.
+:::
+
 
 ### Tool Register {#sec-tool-register}
 

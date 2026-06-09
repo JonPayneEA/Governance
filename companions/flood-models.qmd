@@ -84,6 +84,60 @@ A boundary condition dataset is not simply a data file. It represents a set of d
 | Structure and reservoir  operating rules | Agreed operating procedure document, version-controlled | Version of operating rules noted; any deviation from standard rules flagged in run record |
 | Tidal flap / gate settings | Asset configuration record or operational instruction | Source and date of configuration noted; operational changes logged if applied mid-run |
 
+## 2.5 File, Folder, and Naming Standards {#sec-flood-file-standards}
+
+Model files are not managed in Git in the same way code tools are. They are binary or structured text files, often large, held in shared drives or dedicated repositories. Version control for model files is achieved through a combination of file naming conventions, a versioned folder structure, and the Model Register. This section defines those conventions.
+
+### Folder structure
+
+Every model project must use the following layout. No ad-hoc structures are permitted.
+
+```
+[CatchmentID]_[Position]_[ProjectName]/
+├── inputs/    — raw and processed input data, or links to the shared dataset
+├── model/     — primary model files (FMP: .ief, .dat, .ied, .inp)
+├── outputs/   — model results and exported data (FMP: .zzn, .zzs)
+├── docs/      — notes, run records, calibration records, reports
+└── archive/   — superseded model versions
+```
+
+No model files may be held on local machines or unmanaged drives. The `/archive` directory is the model equivalent of Git history: superseded versions are moved there, never deleted. A model that produced a formal output must remain recoverable in the exact state it was in when that output was produced.
+
+### File naming
+
+Version numbers are embedded in file names because model files are not managed through Git commits and tags. The register records the date each version was created; the date does not belong in the file name.
+
+**FMP and general model files:**
+
+```
+[CatchmentID]_[Position]_[ModelType]_v[MAJOR.MINOR.PATCH]
+```
+
+Example: `SEVERN_UPPER_FMP_v2.3.1`
+
+**PDM parameter sets:**
+
+```
+[CatchmentID]_[Gauged|Ungauged]_PDM_v[MAJOR.MINOR.PATCH]
+```
+
+Example: `SEVERN_UPPER_Gauged_PDM_v1.4.0`
+
+**Rules:**
+
+- No spaces. Underscores throughout.
+- Version numbers follow Semantic Versioning: MAJOR for structural or calibration changes that materially alter outputs; MINOR for parameter or boundary condition updates; PATCH for corrections that do not change calibration.
+- Every version used in a formal output or submitted externally must be recorded in the Model Register with the version number, a change log entry, and a reference to the run record.
+
+### Version control approach
+
+Model files are versioned by incrementing the version number in the file name and archiving the previous version. This is distinct from code versioning in Git, where file names do not change and the commit history is the version record. Both approaches apply Semantic Versioning; they apply it differently because the assets are different.
+
+::: {.callout-note}
+## Code tools that process model files
+R and Python tools used to run, process, or analyse models are code assets, not model assets. They are versioned via Git tags following the code version control principles in @sec-version-control. Their file names do not change between versions.
+:::
+
 # 3. Model Register
 
 Every flood model used by the team must be entered in the Model Register at the point it is used in a formal output or shared with another team member. The register is version-controlled and held in the team repository. It is distinct from the Tool Register in the parent framework, which covers code tools; the Model Register covers the hydraulic and hydrological models themselves.
