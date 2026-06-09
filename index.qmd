@@ -2,36 +2,50 @@
 title: "Preface"
 ---
 
-## Forecasting and Warning Data and Digital Asset Governance
+## National Forecasting and Warning Service
 
-The Forecasting and Warning team operates a complex set of flood models, data pipelines, and code tools that collectively underpin operational Flood Incident Management. As the team and its technical environment have grown, a clear gap has emerged: there is no consistent, documented framework governing how these assets are built, managed, or handed over.
+The National Forecasting and Warning Service (NFWS) runs flood models, data pipelines, code tools, and warning systems across multiple teams. The work is operationally consequential: outputs inform real decisions during flood events. That demands documented standards.
 
-This has practical consequences. Models are updated without version records. Code tools lack owners, documentation, or tests. Hydrometric data enters pipelines without a traceable audit trail. When a team member leaves or moves on, knowledge leaves with them. When a tool fails, there is no standard process for understanding what went wrong or how to fix it.
+This book (`governance-core`) defines the standards that apply across NFWS: role definitions, the tier system for asset classification, quality thresholds, and companion standards for each asset type. It does not name individual role holders or record specific team assets. That responsibility belongs to each team.
 
-The absence of governance also creates a compliance risk. The team's assets and outputs are used to inform real decisions during flood events. Without documented quality standards, provenance tracking, and role accountability, it is difficult to demonstrate that those outputs are fit for purpose.
+Every in-scope team maintains its own governance repository (`governance-<team>`). That repository names the current role holders, records the team's assets, pins to a `governance-core` release, and documents any formal departures from core standards.
 
-This work establishes a governance framework to address these gaps. It sets out clear roles and responsibilities, defines quality standards for data and models, and establishes proportionate rules for code development and tool promotion. The aim is not to add bureaucracy, but to give the team a shared foundation: one that supports reproducible outputs, safe handovers, and confident operational delivery.
+The two teams currently in scope are the Forecasting Team and the Warning Team. The Flood Forecasting Centre operates under separate governance arrangements and is outside this framework's scope.
+
+## How a team adopts this framework
+
+1. Create a `governance-<team>` repository from the starter template.
+2. Pin to the current `governance-core` release in `index.qmd`.
+3. Fill in named role holders in `roles.qmd`.
+4. Register Tier 3 assets in `assets.qmd`.
+5. Identify shared datasets and notify the central data team Steward.
+6. Note the assigned central data team liaison in `index.qmd`.
 
 ## Document Suite
 
 | Document | Version | Status |
 |---|---|---|
-| Data and Digital Asset Governance Framework | 1.4 | Draft -- For Review |
-| R Tool Governance | 1.3 | Draft -- For Team Review |
-| Python Tool Governance | 1.3 | Draft -- For Team Review |
-| Imported Hydrometric Data Framework | 1.3 | Draft -- For Team Review |
-| Flood Model Governance | 1.2 | Draft -- For Team Review |
-| Staff Training Framework | 1.1 | Draft -- For Team Review |
+| Data and Digital Asset Governance Framework | 3.0 | Draft |
+| Central Data Team | 1.0 | Draft |
+| Shared Datasets | 1.0 | Draft |
+| Future Directions | 1.0 | Draft |
+| R Tool Governance | 2.0 | Draft |
+| Python Tool Governance | 2.0 | Draft |
+| Hydrometric Data Framework | 2.0 | Draft |
+| Flood Model Governance | 2.0 | Draft |
+| Flood Warning Asset Governance | 1.0 | Scope only |
+| Procedure Tools Governance | 1.0 | Scope only |
+| Training Framework | 2.0 | Draft |
 | Glossary *(Appendix A)* | 1.0 | Draft |
 | Document Hierarchy *(Appendix B)* | 1.0 | Draft |
 | Alignment Register *(Appendix C)* | 1.0 | Draft |
-| Upcoming Changes and Improvements *(Appendix D)* | 1.0 | Draft |
+| Upcoming Changes *(Appendix D)* | 1.0 | Draft |
 | File Format Reference *(Appendix E)* | 1.0 | Draft |
 | MCP Server Specification *(Appendix F)* | 1.0 | Draft |
 : Document suite overview {.striped}
 
 ::: {.callout-note}
-## Version 1.4 Changes
+## Version 3.0 Changes
 
-This version incorporates alignment corrections against the CDDO Data Ownership Model (2023), the Defra Data Ownership Policy (2025), the Cabinet Office IAO role guidance (2025), and the National Data Strategy. A full record of changes is in @sec-divergence-resolution.
+This version restructures the document from a single-team book to a departmental framework covering all NFWS teams. Three new chapters have been added: Central Data Team, Shared Datasets, and Future Directions. Two new companion stubs are included: Flood Warning Asset Governance and Procedure Tools Governance. All existing companion documents have been updated to version 2.0.
 :::
