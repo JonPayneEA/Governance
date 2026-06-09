@@ -41,6 +41,8 @@ This is a coordination role, not a supervisory one. The liaison does not direct 
 
 The CDT is headed by a G7 Steward who reports directly to the Deputy Director. It does not sit within any operational team. It serves all in-scope teams. That structural independence is what gives it the cross-service mandate that no operational team can hold.
 
+Where workload demands it, the CDT G7 Steward may designate a Delegated Steward to carry out hands-on governance work: condition assessments, shared dataset audits, and annual Tier 3 findings for shared assets. The G7 Steward retains accountability for all decisions.
+
 The G7 Steward produces the quarterly governance summary defined at @sec-monitoring-reporting. That summary covers shared dataset health across all in-scope teams and tracks framework adoption. It is the principal mechanism by which the Deputy Director, as Owner, maintains oversight of shared asset governance across the service.
 
 | Role | Grade | Accountability |
@@ -48,7 +50,7 @@ The G7 Steward produces the quarterly governance summary defined at @sec-monitor
 | Deputy Director (Owner) | Deputy Director | Holds Owner role for all NFWS shared assets. Receives quarterly governance summary. Signs off major changes to the framework. |
 | CDT G7 Steward | G7 | Reports to the Deputy Director. Holds Steward role for the Shared Asset Register. Produces quarterly governance summary. Owns the core companion documents. |
 | Operational team G7 Stewards | G7 | Report to the Deputy Director for their domain assets. Coordinate with the CDT G7 on shared dataset matters. |
-| CDT Liaison (per team) | Any grade | Custodian-level role. Attends team governance reviews. Coordinates shared dataset proposals and framework onboarding. |
+| CDT Liaison (per team) | Custodian (any grade) | Custodian-level role. Attends team governance reviews. Coordinates shared dataset proposals and framework onboarding. |
 
 ## How this framework supports the case {#sec-cdt-framework-support}
 

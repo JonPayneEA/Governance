@@ -1,3 +1,8 @@
 # Shared Datasets {#sec-shared-datasets}
 
+::: {.callout-warning}
+## In preparation
+This chapter is under development. The Shared Asset Register format and shared dataset stewardship model will be defined here. Cross-references to this section from other chapters refer to content that is forthcoming.
+:::
+
 *Content to be written.*
