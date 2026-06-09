@@ -1,0 +1,34 @@
+---
+title: "Roles"
+---
+
+# Named role holders {#sec-roles}
+
+## Owner
+
+| | |
+|---|---|
+| **Name** | [Deputy Director name] |
+| **Grade** | Deputy Director |
+| **Domain** | [Domain covered] |
+
+## Steward
+
+| | |
+|---|---|
+| **Name** | [G7 Steward name] |
+| **Grade** | G7 |
+| **Delegated Steward** | [Name, if applicable] |
+
+## Custodians
+
+| Asset | Custodian | Grade |
+|---|---|---|
+| [Asset name] | [Name] | [Grade] |
+
+## CDT liaison
+
+| | |
+|---|---|
+| **Name** | [CDT liaison name] |
+| **Contact** | [Email] |

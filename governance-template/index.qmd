@@ -1,0 +1,15 @@
+---
+title: "About this document"
+---
+
+## [Team name] governance
+
+This document records [team name]'s adoption of the NFWS governance framework.
+Core standards are defined in `governance-core` and are not repeated here.
+
+| | |
+|---|---|
+| **Core version pinned** | governance-core v3.0 |
+| **Team Steward** | [Name, grade] |
+| **CDT liaison** | [Name] |
+| **Last reviewed** | [Date] |

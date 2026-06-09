@@ -1,0 +1,23 @@
+---
+title: "Assets"
+---
+
+# Team asset register {#sec-assets}
+
+## Tier 3 assets
+
+List all assets this team owns at Tier 3. For each asset, record its entry
+in the relevant central register and note any team-specific configuration.
+
+| Asset | Type | Register entry | Custodian |
+|---|---|---|---|
+| [Name] | [Tool / Model / Dataset] | [Register location] | [Name] |
+
+## Shared dataset consumption
+
+List all shared datasets this team uses. These are governed by the CDT Steward.
+The team's role is Custodian only.
+
+| Dataset | Shared Asset Register entry | Team Custodian contact |
+|---|---|---|
+| [Name] | [Entry reference] | [Name] |
