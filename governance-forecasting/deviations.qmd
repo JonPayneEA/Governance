@@ -1,0 +1,13 @@
+---
+title: "Deviations"
+---
+
+# Formal deviations from core standards {#sec-deviations}
+
+This section records formal departures from the companion standards in
+`governance-core`. Deviations require Owner approval.
+
+If this section is empty, the team operates fully to core standards.
+
+| Companion | Section | Deviation | Rationale | Approved by | Date |
+|---|---|---|---|---|---|

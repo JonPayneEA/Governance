@@ -1,0 +1,18 @@
+---
+title: "About this document"
+---
+
+## Forecasting Team governance
+
+This document records the Forecasting Team's adoption of the NFWS governance
+framework. The team covers three Local Forecasting Teams, one Coastal Modelling
+Team, two Fluvial Modelling Teams, and a Senior Technical Advisor.
+
+Core standards are defined in `governance-core` v3.0 and are not repeated here.
+
+| | |
+|---|---|
+| **Core version pinned** | governance-core v3.0 |
+| **Team Steward** | [Forecasting Manager name], G7 |
+| **CDT liaison** | To be assigned |
+| **Last reviewed** | 2026-06-09 |

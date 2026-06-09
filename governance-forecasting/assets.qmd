@@ -1,0 +1,24 @@
+---
+title: "Assets"
+---
+
+# Team asset register {#sec-assets}
+
+## Tier 3 assets
+
+| Asset | Type | Register entry | Custodian |
+|---|---|---|---|
+| Operational FMP models | Model | Model Register | [Named Custodian] |
+| Operational PDM configurations | Model | Model Register | [Named Custodian] |
+| Operational R tooling | Tool | Tool Register | [Named Custodian] |
+| Operational Python tooling | Tool | Tool Register | [Named Custodian] |
+
+## Shared dataset consumption
+
+These datasets are governed by the CDT Steward. The Forecasting Team's role
+is Custodian only.
+
+| Dataset | Shared Asset Register entry | Team Custodian contact |
+|---|---|---|
+| Gauge metadata | Shared Asset Register | [Named Custodian] |
+| Catchment shapefiles | Shared Asset Register | [Named Custodian] |

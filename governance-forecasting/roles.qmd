@@ -1,0 +1,41 @@
+---
+title: "Roles"
+---
+
+# Named role holders {#sec-roles}
+
+## Owner
+
+| | |
+|---|---|
+| **Name** | [NFWS Deputy Director] |
+| **Grade** | Deputy Director |
+| **Domain** | National Forecasting and Warning Service |
+
+## Steward
+
+| | |
+|---|---|
+| **Name** | [Forecasting Manager name] |
+| **Grade** | G7 |
+| **Delegated Steward** | [Name, if applicable] |
+
+## Custodians
+
+Custodians are assigned per asset category. The table below covers the main
+asset categories owned by the Forecasting Team.
+
+| Asset category | Custodian | Grade |
+|---|---|---|
+| Flood models (FMP) | [Named Custodian] | [Grade] |
+| Flood models (PDM) | [Named Custodian] | [Grade] |
+| Operational R tooling | [Named Custodian] | [Grade] |
+| Operational Python tooling | [Named Custodian] | [Grade] |
+| Hydrometric datasets (operational use) | [Named Custodian] | [Grade] |
+
+## CDT liaison
+
+| | |
+|---|---|
+| **Name** | To be assigned |
+| **Contact** | [Email] |
