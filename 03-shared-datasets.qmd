@@ -59,6 +59,44 @@ The register entry is the single authoritative record for a shared dataset. It h
 
 Consuming teams must not derive their own version of a shared dataset. If a team believes the shared version is wrong or unsuitable, the correct route is to report the problem to the CDT Steward, not to derive a separate version. The CDT Steward is responsible for resolving the issue and updating the register.
 
+## Data flow: current and proposed {#sec-shared-dataset-flow}
+
+The diagrams below show the structural difference between independent derivation and shared stewardship.
+
+**Current state.** Each team pulls from the same source but processes the data independently. Three separate Bronze-to-Gold pipelines produce three separate Gold-tier products. No single point of accountability exists across them.
+
+```{mermaid}
+graph LR
+    SRC["Source data\ngauges · partner orgs\nnational datasets"]
+
+    SRC --> FFM["FFM\nBronze → Silver → Gold\n(independent derivation)"]
+    SRC --> LFS["LFS\nBronze → Silver → Gold\n(independent derivation)"]
+    SRC --> WH["Warning Hubs\nBronze → Silver → Gold\n(independent derivation)"]
+
+    FFM --> FFM_T3["FFM Tier 3 assets"]
+    LFS --> LFS_T3["LFS Tier 3 assets"]
+    WH --> WH_T3["Warning Hub Tier 3 assets"]
+
+    style FFM fill:#fff0f0,stroke:#cc6666
+    style LFS fill:#fff0f0,stroke:#cc6666
+    style WH fill:#fff0f0,stroke:#cc6666
+```
+
+**Proposed state.** The CDT holds a single derivation pipeline. One Gold-tier product, one authoritative approval record, one point of accountability. Consuming teams use that product directly as Custodians.
+
+```{mermaid}
+graph LR
+    SRC["Source data\ngauges · partner orgs\nnational datasets"]
+
+    SRC --> CDT["CDT\nBronze → Silver → Gold\n(single derivation)"]
+
+    CDT --> FFM_T3["FFM Tier 3 assets"]
+    CDT --> LFS_T3["LFS Tier 3 assets"]
+    CDT --> WH_T3["Warning Hub Tier 3 assets"]
+
+    style CDT fill:#fffbea,stroke:#c8a000,stroke-width:2px
+```
+
 ## Notification requirements {#sec-shared-dataset-notification}
 
 When a shared dataset is updated or superseded, the CDT Steward notifies all consuming team Stewards before the change takes effect. Notification is not a courtesy. It is a required step in the update process, and no change to a shared dataset is complete until all consuming Stewards have been informed.

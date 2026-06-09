@@ -52,6 +52,24 @@ The G7 Steward produces the quarterly governance summary defined at @sec-monitor
 | Operational team G7 Stewards | G7 | Report to the Deputy Director for their domain assets. Coordinate with the CDT G7 on shared dataset matters. |
 | CDT Liaison (per team) | Custodian (any grade) | Custodian-level role. Attends team governance reviews. Coordinates shared dataset proposals and framework onboarding. |
 
+The diagram below shows where the CDT sits relative to the existing NFWS structure. The dashed node indicates the proposed addition.
+
+```{mermaid}
+graph TD
+    DD["Deputy Director · Owner"]
+    CDT["CDT G7 Steward\n· Shared dataset stewardship\n· Companion document ownership\n· Framework maintenance"]
+    SM["Service Management"]
+    FM["Forecasting Manager G7\n· FFM and LFS assets"]
+    WM["Warning Manager G7\n· Warning Hub assets"]
+
+    DD --> CDT
+    DD --> SM
+    DD --> FM
+    DD --> WM
+
+    style CDT fill:#fffbea,stroke:#c8a000,stroke-width:2px,stroke-dasharray:5 5
+```
+
 ## How this framework supports the case {#sec-cdt-framework-support}
 
 This framework is designed so that when the CDT is established, it steps into a defined role. The Shared Asset Register format is specified at @sec-shared-datasets. The quarterly reporting cadence is defined at @sec-monitoring-reporting. The companion ownership model is described at @sec-cdt-capability. The CDT does not need to invent any of this.

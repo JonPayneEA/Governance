@@ -28,19 +28,36 @@ This work also directly supports the team's obligations under Defra's Q-FAIR dat
 
 ## Scope {#sec-framework-scope}
 
-This framework applies to all data, code, and digital assets the team creates, maintains, or relies on, including:
+This framework applies to all digital assets produced or consumed by in-scope NFWS teams: datasets, models, code, configuration files, documentation, and derived outputs. Companion documents define asset-specific requirements within each domain. Where a companion document does not address a particular asset type, the principles and roles in this framework apply directly.
 
-- Flood Modeller Pro model files and projects
-- PDM (Probability Distributed Model) configurations and parameter sets
-- Model Boundary Conditions and Connections
-- ARMA Parameters
-- Black Box configurations
-- Any configuration documentation and recommendations
-- Quality assured input datasets (rainfall, flow, stage, catchment data, boundary conditions)
-- Model outputs (flood extents, hydrographs, performance metrics)
-- R and Python tools used to support, process, run, or analyse models
-- Validation and verification records
-- Documentation and supporting reports
+### Teams in scope {#sec-scope-teams}
+
+The Forecasting teams (Fluvial and Coastal Modelling, and Local Forecasting Service) and the Warning Hub teams are in scope. The Flood Forecasting Centre operates under a separate governance arrangement as a joint Met Office and Environment Agency service and is out of scope.
+
+```{mermaid}
+graph TD
+    DD["Deputy Director · NFWS Owner"]
+    SM["Service Management"]
+    FM["Forecasting Manager G7"]
+    WM["Warning Manager G7"]
+    FFM["Fluvial & Coastal\nModelling"]
+    LFS["Local Forecasting\nService"]
+    WH["Warning Hub Teams"]
+    FFC["Flood Forecasting Centre\n— out of scope"]
+
+    DD --> SM
+    DD --> FM
+    DD --> WM
+    DD --- FFC
+
+    FM --> FFM
+    FM --> LFS
+    WM --> WH
+
+    style FFC fill:#f0f0f0,stroke:#bbb,color:#999
+```
+
+A full list of companion documents and their scope boundaries is in the document suite table in the preface.
 
 ## Governance Roles {#sec-governance-roles}
 
