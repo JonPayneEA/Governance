@@ -279,6 +279,46 @@ The Steward includes register currency in the quarterly governance summary (@sec
 
 When a Gold-tier dataset is superseded or a Tier 3 model's output format changes, the Steward responsible for that asset must notify any Steward whose domain depends on it. The Connection Register is the reference: any registered dependency on the changed asset creates an obligation to notify. The notified Steward must confirm with their Custodians that any affected run records, model configurations, or tool outputs are still valid. This requirement applies regardless of whether the dependency crosses language or domain boundaries.
 
+## Asset Naming and File Standards {#sec-asset-naming}
+
+Code tools managed in Git are versioned through commits, tags, and package metadata. Version numbers do not appear in file names. The rules for code are set out at @sec-version-control.
+
+Complex digital assets held outside Git — model files, warning configurations, procedures, and reference datasets — follow a file-based versioning convention. Version numbers are embedded in file names because the file store itself provides no equivalent of a commit history. The register records when each version was created; the date does not belong in the file name.
+
+### Folder structure
+
+Every asset project must use the following layout. No ad-hoc structures. No files held solely on local machines or unmanaged drives.
+
+```
+[CatchmentID]_[Position]_[ProjectName]/
+├── inputs/    — raw or processed input data
+├── model/     — primary asset files
+├── outputs/   — results and exported data
+├── docs/      — notes, run records, calibration records, reports
+└── archive/   — superseded versions
+```
+
+The `archive/` directory is the non-Git equivalent of version history. Superseded versions are moved there, never deleted. An asset that produced a formal output must remain recoverable in the exact state it was in when that output was produced.
+
+### File naming
+
+```
+[CatchmentID]_[Position]_[AssetType]_v[MAJOR.MINOR.PATCH]
+```
+
+Examples:
+
+| Asset | File name |
+|---|---|
+| FMP hydraulic model | `SEVERN_UPPER_FMP_v2.3.1` |
+| PDM parameter set | `SEVERN_UPPER_Gauged_PDM_v1.4.0` |
+| Warning threshold configuration | `SEVERN_UPPER_ThresholdConfig_v1.0.2` |
+| Operational procedure | `SEVERN_UPPER_SevereWarningProcedure_v2.1.0` |
+
+**Rules:** no spaces; underscores throughout; version numbers follow Semantic Versioning (MAJOR for changes that materially alter behaviour or outputs; MINOR for parameter or content updates; PATCH for corrections that do not change the substance of the asset).
+
+Companion documents may define asset-specific variants of this convention. Where a companion document specifies a different format, that format takes precedence for assets in its scope. Where no companion document addresses a specific asset type, this convention applies by default.
+
 ## Catchment History and Condition {#sec-catchment-condition}
 
 The tier system tells you how critical an asset is to the live service. The medallion architecture tells you how far a dataset has been through quality assurance. Neither tells you whether the asset still accurately represents the physical system it was built to describe.
