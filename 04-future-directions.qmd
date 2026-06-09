@@ -1,3 +1,44 @@
 # Future Directions {#sec-future-directions}
 
-*Content to be written.*
+::: {.callout-note}
+| | |
+|---|---|
+| **Version** | 1.0 |
+| **Status** | Draft: For Review |
+| **Review Date** | 2027-03-31 |
+| **Parent Document** | Data and Digital Asset Governance Framework v3.0 |
+:::
+
+This chapter does not create governance obligations. Where future capabilities require new obligations, those will come through updates to the relevant companion documents. This chapter records the direction of travel so that decisions made now are consistent with where the service is heading.
+
+## Why shared data comes first {#sec-future-data-first}
+
+ML models trained on inconsistently derived data cannot be trusted in operational settings. A model may perform well against its own training set and fail against another team's data, not because the model is wrong, but because the datasets are not the same thing described differently. AI tooling that accesses data with unclear provenance cannot be assessed for risk, because risk assessment starts with knowing what the data are and where they came from. The shared dataset work in @sec-shared-datasets and the Gold-tier approval process in @sec-hydrometric-data are not administrative tidying. They are the precondition for credible AI adoption across NFWS.
+
+The existing framework already requires that ML models in operational use draw from Gold-tier training datasets (@sec-ai-governance). What changes here is scope. That requirement now applies across teams, not just within one. A model trained by the Forecasting Team and a model trained by the Warning Team must draw from the same approved datasets if their outputs are to be compared or combined. Without that, comparison is not analysis: it is noise presented as signal.
+
+Before any AI tool is adopted at NFWS level, the provenance chain must be auditable from model output back to approved source data. That chain does not currently exist across team boundaries. Building it is what this framework does. The AI roadmap below is only credible because of that foundation.
+
+## AI adoption roadmap {#sec-ai-roadmap}
+
+### Near term: one to two years {#sec-ai-near-term}
+
+The most immediate AI applications are assistive. Large language models used for procedure drafting or decision support during incidents, automated data quality flagging in the Bronze-to-Silver pipeline, and ML tools that surface relevant historical flood events during an incident: none of these require capabilities that do not already exist, and each fits within the existing governance framework without modification.
+
+The CDT's role in the near term is evaluation. Before any team adopts a candidate tool for shared or production use, the CDT assesses it against the criteria in @sec-ai-governance. This is not a bottleneck function. It is the mechanism by which adoption happens with consistent standards across teams rather than ad hoc.
+
+### Medium term: two to four years {#sec-ai-medium-term}
+
+ML inference pipelines in the operational forecast chain are already Tier 3 assets under the existing framework where their outputs feed Tier 3 model runs. The additional requirement at NFWS level is a cross-team coordination layer. Training datasets must be drawn from the Shared Asset Register (@sec-shared-asset-register). Model artefacts must be version-controlled under CDT oversight. Where the same model type is used by more than one team, condition assessments must be coordinated so that the same model is not assessed to different standards by different owners.
+
+The Python companion document (@sec-python-governance) sets out the technical requirements for ML tools. What this chapter adds is the coordination expectation: teams do not govern shared model types independently at this stage of the service's development.
+
+### Long term {#sec-ai-long-term}
+
+At service-wide scale, the goal is a published register of assessed AI tools alongside the existing Tool and Model Registers, and shared evaluation frameworks that teams can apply independently for lower-risk tooling. The CDT moves from evaluating individual tools to maintaining the framework that teams operate within. That shift only makes sense once the shared data foundations are in place and the near-term evaluation work has produced a usable body of assessed tools to draw from.
+
+## CDT capability programme trajectory {#sec-cdt-trajectory}
+
+In year one, the programme's focus is register currency, shared dataset consolidation, and supporting the Forecasting and Warning teams through initial adoption. AI tool assessment is added once the shared data foundation is sufficiently stable to support it. Sequencing matters here: assessment against a data standard that is still being defined produces assessment results that will need to be revised.
+
+By year three, the programme is in a different phase: training delivery, cross-team standards maintenance, and the published AI tool register in operation. The trajectory between those two points is not fixed. It depends on the pace of NFWS's own AI adoption, which depends in turn on operational demand and the availability of tools that meet the assessment criteria. The framework provides the structure. The CDT's programme responds to what the service actually needs.
