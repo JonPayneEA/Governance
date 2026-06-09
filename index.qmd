@@ -16,10 +16,10 @@ The two teams currently in scope are the Forecasting Team and the Warning Team. 
 
 1. Create a `governance-<team>` repository from the starter template.
 2. Pin to the current `governance-core` release in `index.qmd`.
-3. Fill in named role holders in `roles.qmd`.
+3. Record named role holders in `roles.qmd`.
 4. Register Tier 3 assets in `assets.qmd`.
-5. Identify shared datasets and notify the central data team Steward.
-6. Note the assigned central data team liaison in `index.qmd`.
+5. Identify shared datasets and notify the Central Data Team Steward.
+6. Record the assigned Central Data Team liaison in `index.qmd`.
 
 ## Document Suite
 
