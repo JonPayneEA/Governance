@@ -529,8 +529,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#sec-cdt-gap" id="toc-sec-cdt-gap" class="nav-link active" data-scroll-target="#sec-cdt-gap"><span class="header-section-number">3.1</span> The gap this framework cannot close</a></li>
+  <li><a href="#sec-cdt-role" id="toc-sec-cdt-role" class="nav-link" data-scroll-target="#sec-cdt-role"><span class="header-section-number">3.2</span> What a Central Data Team would do</a>
+  <ul class="collapse">
+  <li><a href="#sec-cdt-stewardship" id="toc-sec-cdt-stewardship" class="nav-link" data-scroll-target="#sec-cdt-stewardship"><span class="header-section-number">3.2.1</span> Shared dataset stewardship</a></li>
+  <li><a href="#sec-cdt-capability" id="toc-sec-cdt-capability" class="nav-link" data-scroll-target="#sec-cdt-capability"><span class="header-section-number">3.2.2</span> Capability programme</a></li>
+  <li><a href="#sec-cdt-embedding" id="toc-sec-cdt-embedding" class="nav-link" data-scroll-target="#sec-cdt-embedding"><span class="header-section-number">3.2.3</span> Embedding model</a></li>
+  </ul></li>
+  <li><a href="#sec-cdt-structure" id="toc-sec-cdt-structure" class="nav-link" data-scroll-target="#sec-cdt-structure"><span class="header-section-number">3.3</span> Proposed structure</a></li>
+  <li><a href="#sec-cdt-framework-support" id="toc-sec-cdt-framework-support" class="nav-link" data-scroll-target="#sec-cdt-framework-support"><span class="header-section-number">3.4</span> How this framework supports the case</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/02-central-data-team.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -555,9 +569,115 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Content to be written.</em></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td><strong>Status</strong></td>
+<td>Draft: For Review</td>
+</tr>
+<tr class="odd">
+<td><strong>Review Date</strong></td>
+<td>2027-03-31</td>
+</tr>
+<tr class="even">
+<td><strong>Parent Document</strong></td>
+<td>Data and Digital Asset Governance Framework v3.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="sec-cdt-gap" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-cdt-gap"><span class="header-section-number">3.1</span> The gap this framework cannot close</h2>
+<p>The governance problems this framework addresses share a cause. Datasets are derived independently by multiple teams because there is no shared stewardship. The AI assessment process is fragmented because no team has a cross-service mandate. The framework itself was written from within the Forecasting Team because Service Management, which holds the standards and vision brief for NFWS, does not have the digital and data expertise to own or maintain it. That is not a criticism of Service Management; it is a description of where technical capacity currently sits.</p>
+<p>Individual operational teams hold real technical depth. What they do not hold is a view across team boundaries. Each team can manage its own assets well. None of them is positioned to manage the assets multiple teams share, to spot duplication across the service, or to maintain standards coherently for all in-scope teams. These are structural gaps, not gaps in competence or effort.</p>
+<p>Service Management cannot fill the technical gap from above. Operational teams cannot fill the cross-service gap from within. A Central Data Team is the structural answer.</p>
+</section>
+<section id="sec-cdt-role" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-cdt-role"><span class="header-section-number">3.2</span> What a Central Data Team would do</h2>
+<section id="sec-cdt-stewardship" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="sec-cdt-stewardship"><span class="header-section-number">3.2.1</span> Shared dataset stewardship</h3>
+<p>Datasets used by more than one team are currently derived independently by each team that needs them. That means duplicated effort, inconsistent outputs, and no single point of accountability when quality problems arise. A CDT holds Steward responsibility for those datasets via the Shared Asset Register (<a href="03-shared-datasets.html" class="quarto-xref"><span>Chapter 4</span></a>). The CDT G7 Steward is the named Steward for every entry in that register.</p>
+<p>Operational teams consuming a shared dataset are Custodians of it, not Stewards. They do not derive their own copy and do not hold their own Gold-tier approval. The authoritative version is the one the CDT holds. Consuming teams work from that version. Any quality concerns go to the CDT Steward for resolution.</p>
+</section>
+<section id="sec-cdt-capability" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="sec-cdt-capability"><span class="header-section-number">3.2.2</span> Capability programme</h3>
+<p>The CDT owns the companion documents: the R governance companion, the Python governance companion, and the domain companions for hydrometric data, flood models, flood warnings, and procedure tools. It publishes updates through the core release cycle defined in the parent framework. This is not a passive custodial role. The CDT actively maintains standards, responds to changes in tools and practice, and keeps the documents current.</p>
+<p>The CDT also holds the shared tooling: the packages and utilities that multiple teams use. Training for the framework is covered in the training companion (<a href="companions/training-framework.html" class="quarto-xref"><span>Chapter 12</span></a>). The CDT coordinates delivery of that training across in-scope teams, tracking completion against the role-based requirements set out there.</p>
+</section>
+<section id="sec-cdt-embedding" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="sec-cdt-embedding"><span class="header-section-number">3.2.3</span> Embedding model</h3>
+<p>Each operational team has a named CDT liaison. The liaison role is Custodian grade and open to any member of the team. The liaison attends team governance reviews, coordinates shared dataset proposals between the team and the CDT, and supports onboarding when a team adopts the framework or when a new team comes into scope.</p>
+<p>This is a coordination role, not a supervisory one. The liaison does not direct the team’s technical work. They are the point of contact between the team and the CDT, and the person responsible for making sure shared dataset concerns reach the CDT Steward rather than being resolved unilaterally.</p>
+</section>
+</section>
+<section id="sec-cdt-structure" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-cdt-structure"><span class="header-section-number">3.3</span> Proposed structure</h2>
+<p>The CDT is headed by a G7 Steward who reports directly to the Deputy Director. It does not sit within any operational team. It serves all in-scope teams. That structural independence is what gives it the cross-service mandate that no operational team can hold.</p>
+<p>Where workload demands it, the CDT G7 Steward may designate a Delegated Steward to carry out hands-on governance work: condition assessments, shared dataset audits, and annual Tier 3 findings for shared assets. The G7 Steward retains accountability for all decisions.</p>
+<p>The G7 Steward produces the quarterly governance summary defined at <a href="01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.13</span></a>. That summary covers shared dataset health across all in-scope teams and tracks framework adoption. It is the principal mechanism by which the Deputy Director, as Owner, maintains oversight of shared asset governance across the service.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Grade</th>
+<th>Accountability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Deputy Director (Owner)</td>
+<td>Deputy Director</td>
+<td>Holds Owner role for all NFWS shared assets. Receives quarterly governance summary. Signs off major changes to the framework.</td>
+</tr>
+<tr class="even">
+<td>CDT G7 Steward</td>
+<td>G7</td>
+<td>Reports to the Deputy Director. Holds Steward role for the Shared Asset Register. Produces quarterly governance summary. Owns the core companion documents.</td>
+</tr>
+<tr class="odd">
+<td>Operational team G7 Stewards</td>
+<td>G7</td>
+<td>Report to the Deputy Director for their domain assets. Coordinate with the CDT G7 on shared dataset matters.</td>
+</tr>
+<tr class="even">
+<td>CDT Liaison (per team)</td>
+<td>Custodian (any grade)</td>
+<td>Custodian-level role. Attends team governance reviews. Coordinates shared dataset proposals and framework onboarding.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-cdt-framework-support" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-cdt-framework-support"><span class="header-section-number">3.4</span> How this framework supports the case</h2>
+<p>This framework is designed so that when the CDT is established, it steps into a defined role. The Shared Asset Register format is specified at <a href="03-shared-datasets.html" class="quarto-xref"><span>Chapter 4</span></a>. The quarterly reporting cadence is defined at <a href="01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.13</span></a>. The companion ownership model is described at <a href="#sec-cdt-capability" class="quarto-xref"><span>Section 3.2.2</span></a>. The CDT does not need to invent any of this.</p>
+<p>What it needs is resource. The next action is a decision by the Deputy Director to fund and establish the team. Everything else is already in place.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -993,7 +1113,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/02-central-data-team.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/02-central-data-team.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

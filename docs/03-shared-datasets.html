@@ -529,8 +529,19 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#sec-shared-derivation-problem" id="toc-sec-shared-derivation-problem" class="nav-link active" data-scroll-target="#sec-shared-derivation-problem"><span class="header-section-number">4.1</span> The problem with independent derivation</a></li>
+  <li><a href="#sec-shared-dataset-definition" id="toc-sec-shared-dataset-definition" class="nav-link" data-scroll-target="#sec-shared-dataset-definition"><span class="header-section-number">4.2</span> What a shared dataset is</a></li>
+  <li><a href="#sec-shared-asset-register" id="toc-sec-shared-asset-register" class="nav-link" data-scroll-target="#sec-shared-asset-register"><span class="header-section-number">4.3</span> The Shared Asset Register</a></li>
+  <li><a href="#sec-shared-dataset-roles" id="toc-sec-shared-dataset-roles" class="nav-link" data-scroll-target="#sec-shared-dataset-roles"><span class="header-section-number">4.4</span> Roles for shared datasets</a></li>
+  <li><a href="#sec-shared-dataset-notification" id="toc-sec-shared-dataset-notification" class="nav-link" data-scroll-target="#sec-shared-dataset-notification"><span class="header-section-number">4.5</span> Notification requirements</a></li>
+  <li><a href="#sec-proposing-shared-dataset" id="toc-sec-proposing-shared-dataset" class="nav-link" data-scroll-target="#sec-proposing-shared-dataset"><span class="header-section-number">4.6</span> Proposing a new shared dataset</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/03-shared-datasets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -555,9 +566,166 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Content to be written.</em></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td><strong>Status</strong></td>
+<td>Draft: For Review</td>
+</tr>
+<tr class="odd">
+<td><strong>Review Date</strong></td>
+<td>2027-03-31</td>
+</tr>
+<tr class="even">
+<td><strong>Parent Document</strong></td>
+<td>Data and Digital Asset Governance Framework v3.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>In preparation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This chapter is under development. The Shared Asset Register format and shared dataset stewardship model will be defined here. Cross-references to this section from other chapters refer to content that is forthcoming.</p>
+</div>
+</div>
+<section id="sec-shared-derivation-problem" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-shared-derivation-problem"><span class="header-section-number">4.1</span> The problem with independent derivation</h2>
+<p>When multiple teams each derive their own version of the same dataset, three things happen in parallel. Provenance trails diverge: each team makes different decisions about source selection, transformation steps, and version pinning. QC decisions diverge: thresholds, outlier treatment, and approval criteria are set independently by each team’s Steward. Gold-tier approvals multiply: the same underlying data may carry several separate approval records, none of which is aware of the others.</p>
+<p>The result is a set of datasets that look equivalent but are not. No single person can vouch for all of them. If a query or audit spans teams, the differences are either invisible or inexplicable.</p>
+<p>This matters most in operational settings. If a model trained on one team’s derivation and a model trained on another team’s derivation are producing different outputs, there is no clean way to determine whether the difference comes from the models themselves or from the data they were given. The audit trail stops at the team boundary. That problem compounds as AI and ML tools are adopted across NFWS. A model trained on inconsistently derived data cannot be trusted in operational settings, and the inconsistency may not become visible until the model is already in use.</p>
+</section>
+<section id="sec-shared-dataset-definition" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-shared-dataset-definition"><span class="header-section-number">4.2</span> What a shared dataset is</h2>
+<p>A dataset is “shared” in the governance sense if more than one in-scope NFWS team uses it as an input to their Tier 3 assets or their ML training pipelines. The shared designation is not about the dataset’s size or importance. It is about the number of teams depending on it and the risk that independent derivation creates.</p>
+<p>Likely shared datasets include gauge metadata, catchment shapefiles, nationally consistent hydrometric baselines, and rating curves. These are inputs that multiple teams require, that change infrequently, and where any divergence in derivation creates silent inconsistency downstream. Being shared does not make a dataset more important. It makes the governance stakes higher, because a problem in a shared dataset propagates to every team that depends on it.</p>
+</section>
+<section id="sec-shared-asset-register" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-shared-asset-register"><span class="header-section-number">4.3</span> The Shared Asset Register</h2>
+<p>Shared datasets are declared once in the Shared Asset Register, held in this repository. The CDT G7 Steward is responsible for maintaining it. A dataset cannot be shared in the governance sense until it has a register entry. Teams may use the same underlying data informally before that point, but the governance obligations in this chapter do not apply until the register entry exists and the first Gold-tier approval has been recorded.</p>
+<p>The register entry is the single authoritative record for a shared dataset. It holds the derivation method, the approval history, and the list of consuming teams. When the dataset changes, the register entry is updated. When a consuming team is added or removed, the register entry is updated. The register is not a catalogue. It is a live accountability document.</p>
+<table class="table-striped caption-top table">
+<caption>Shared Asset Register fields</caption>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dataset name</td>
+<td>Unique identifier for the shared dataset</td>
+</tr>
+<tr class="even">
+<td>Derivation method</td>
+<td>How the dataset is produced: source, transformation steps, and tooling used</td>
+</tr>
+<tr class="odd">
+<td>Gold-tier approval record</td>
+<td>Date of Gold-tier approval, approving Steward, and approval conditions</td>
+</tr>
+<tr class="even">
+<td>CDT Steward</td>
+<td>Named CDT G7 Steward responsible for this entry</td>
+</tr>
+<tr class="odd">
+<td>Consuming teams</td>
+<td>Names of in-scope teams using the dataset as input</td>
+</tr>
+<tr class="even">
+<td>Custodian contacts</td>
+<td>Named Custodian contact per consuming team</td>
+</tr>
+<tr class="odd">
+<td>Last review date</td>
+<td>Date of last register review</td>
+</tr>
+<tr class="even">
+<td>Notes</td>
+<td>Any limitations, known issues, or conditions on use</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-shared-dataset-roles" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-shared-dataset-roles"><span class="header-section-number">4.4</span> Roles for shared datasets</h2>
+<table class="table-striped caption-top table">
+<caption>Roles for shared datasets</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Holder</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Owner</td>
+<td>Deputy Director</td>
+<td>Approves Gold-tier approval for shared datasets. Approves retirement of a shared dataset.</td>
+</tr>
+<tr class="even">
+<td>Steward</td>
+<td>CDT G7 Steward</td>
+<td>Maintains the Shared Asset Register. Holds the Gold-tier derivation record. Notifies consuming teams of updates.</td>
+</tr>
+<tr class="odd">
+<td>Custodian</td>
+<td>Named contact in each consuming team</td>
+<td>Uses the dataset as supplied. Does not derive an independent copy. Reports quality issues to the CDT Steward.</td>
+</tr>
+</tbody>
+</table>
+<p>Consuming teams must not derive their own version of a shared dataset. If a team believes the shared version is wrong or unsuitable, the correct route is to report the problem to the CDT Steward, not to derive a separate version. The CDT Steward is responsible for resolving the issue and updating the register.</p>
+</section>
+<section id="sec-shared-dataset-notification" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-shared-dataset-notification"><span class="header-section-number">4.5</span> Notification requirements</h2>
+<p>When a shared dataset is updated or superseded, the CDT Steward notifies all consuming team Stewards before the change takes effect. Notification is not a courtesy. It is a required step in the update process, and no change to a shared dataset is complete until all consuming Stewards have been informed.</p>
+<p>The notified Steward must confirm with their Custodians that any dependent model configurations or tool outputs remain valid after the update. This mirrors the cross-asset notification requirement at <a href="01-governance-framework.html#sec-cross-asset-notification" class="quarto-xref"><span>Section 2.6.4</span></a>, extended across team boundaries. Where a Gold-tier shared dataset feeds Tier 3 model runs, notification is mandatory, not discretionary. A Steward who receives notification and takes no action is in breach of their responsibilities under this framework.</p>
+</section>
+<section id="sec-proposing-shared-dataset" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sec-proposing-shared-dataset"><span class="header-section-number">4.6</span> Proposing a new shared dataset</h2>
+<p>Any team Steward may propose that a dataset be moved to shared status. The proposal goes to the CDT G7 Steward and must include: which teams currently use the dataset, the derivation method in use in each team, and why independent derivation presents a risk. A vague concern is not sufficient. The proposal should identify where the divergence is already occurring or where it is likely to occur as the dataset is used more widely.</p>
+<p>The CDT Steward assesses the proposal and, if agreed, takes on Steward responsibility and adds the entry to the register. Owner approval is required before the first Gold-tier record is created. A proposal is not a request for the CDT to do more work. It is a request for the CDT to coordinate derivation that is already being done separately, and to provide a single authoritative version in place of several independent ones.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -993,7 +1161,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/03-shared-datasets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/03-shared-datasets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

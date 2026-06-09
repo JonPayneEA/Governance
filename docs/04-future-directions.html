@@ -529,8 +529,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#sec-future-data-first" id="toc-sec-future-data-first" class="nav-link active" data-scroll-target="#sec-future-data-first"><span class="header-section-number">5.1</span> Why shared data comes first</a></li>
+  <li><a href="#sec-ai-roadmap" id="toc-sec-ai-roadmap" class="nav-link" data-scroll-target="#sec-ai-roadmap"><span class="header-section-number">5.2</span> AI adoption roadmap</a>
+  <ul class="collapse">
+  <li><a href="#sec-ai-near-term" id="toc-sec-ai-near-term" class="nav-link" data-scroll-target="#sec-ai-near-term"><span class="header-section-number">5.2.1</span> Near term: one to two years</a></li>
+  <li><a href="#sec-ai-medium-term" id="toc-sec-ai-medium-term" class="nav-link" data-scroll-target="#sec-ai-medium-term"><span class="header-section-number">5.2.2</span> Medium term: two to four years</a></li>
+  <li><a href="#sec-ai-long-term" id="toc-sec-ai-long-term" class="nav-link" data-scroll-target="#sec-ai-long-term"><span class="header-section-number">5.2.3</span> Long term</a></li>
+  </ul></li>
+  <li><a href="#sec-cdt-trajectory" id="toc-sec-cdt-trajectory" class="nav-link" data-scroll-target="#sec-cdt-trajectory"><span class="header-section-number">5.3</span> CDT capability programme trajectory</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/04-future-directions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -555,9 +568,73 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Content to be written.</em></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td><strong>Status</strong></td>
+<td>Draft: For Review</td>
+</tr>
+<tr class="odd">
+<td><strong>Review Date</strong></td>
+<td>2027-03-31</td>
+</tr>
+<tr class="even">
+<td><strong>Parent Document</strong></td>
+<td>Data and Digital Asset Governance Framework v3.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>This chapter does not create governance obligations. Where future capabilities require new obligations, those will come through updates to the relevant companion documents. This chapter records the direction of travel so that decisions made now are consistent with where the service is heading.</p>
+<section id="sec-future-data-first" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-future-data-first"><span class="header-section-number">5.1</span> Why shared data comes first</h2>
+<p>ML models trained on inconsistently derived data cannot be trusted in operational settings. A model may perform well against its own training set and fail against another team’s data, not because the model is wrong, but because the datasets are not the same thing described differently. AI tooling that accesses data with unclear provenance cannot be assessed for risk, because risk assessment starts with knowing what the data are and where they came from. The shared dataset work in <a href="03-shared-datasets.html" class="quarto-xref"><span>Chapter 4</span></a> and the Gold-tier approval process in <a href="companions/hydrometric-data.html" class="quarto-xref"><span>Chapter 8</span></a> are not administrative tidying. They are the precondition for credible AI adoption across NFWS.</p>
+<p>The existing framework already requires that ML models in operational use draw from Gold-tier training datasets (<a href="01-governance-framework.html#sec-ai-governance" class="quarto-xref"><span>Section 2.15</span></a>). What changes here is scope. That requirement now applies across teams, not just within one. A model trained by the Forecasting Team and a model trained by the Warning Team must draw from the same approved datasets if their outputs are to be compared or combined. Without that, comparison is not analysis: it is noise presented as signal.</p>
+<p>Before any AI tool is adopted at NFWS level, the provenance chain must be auditable from model output back to approved source data. That chain does not currently exist across team boundaries. Building it is what this framework does. The AI roadmap below is only credible because of that foundation.</p>
+</section>
+<section id="sec-ai-roadmap" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-ai-roadmap"><span class="header-section-number">5.2</span> AI adoption roadmap</h2>
+<section id="sec-ai-near-term" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="sec-ai-near-term"><span class="header-section-number">5.2.1</span> Near term: one to two years</h3>
+<p>The most immediate AI applications are assistive. Large language models used for procedure drafting or decision support during incidents, automated data quality flagging in the Bronze-to-Silver pipeline, and ML tools that surface relevant historical flood events during an incident: none of these require capabilities that do not already exist, and each fits within the existing governance framework without modification.</p>
+<p>The CDT’s role in the near term is evaluation. Before any team adopts a candidate tool for shared or production use, the CDT assesses it against the criteria in <a href="01-governance-framework.html#sec-ai-governance" class="quarto-xref"><span>Section 2.15</span></a>. This is not a bottleneck function. It is the mechanism by which adoption happens with consistent standards across teams rather than ad hoc.</p>
+</section>
+<section id="sec-ai-medium-term" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="sec-ai-medium-term"><span class="header-section-number">5.2.2</span> Medium term: two to four years</h3>
+<p>ML inference pipelines in the operational forecast chain are already Tier 3 assets under the existing framework where their outputs feed Tier 3 model runs. The additional requirement at NFWS level is a cross-team coordination layer. Training datasets must be drawn from the Shared Asset Register (<a href="03-shared-datasets.html#sec-shared-asset-register" class="quarto-xref"><span>Section 4.3</span></a>). Model artefacts must be version-controlled under CDT oversight. Where the same model type is used by more than one team, condition assessments must be coordinated so that the same model is not assessed to different standards by different owners.</p>
+<p>The Python companion document (<a href="companions/python-governance.html" class="quarto-xref"><span>Chapter 7</span></a>) sets out the technical requirements for ML tools. What this chapter adds is the coordination expectation: teams do not govern shared model types independently at this stage of the service’s development.</p>
+</section>
+<section id="sec-ai-long-term" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="sec-ai-long-term"><span class="header-section-number">5.2.3</span> Long term</h3>
+<p>At service-wide scale, the goal is a published register of assessed AI tools alongside the existing Tool and Model Registers, and shared evaluation frameworks that teams can apply independently for lower-risk tooling. The CDT moves from evaluating individual tools to maintaining the framework that teams operate within. That shift only makes sense once the shared data foundations are in place and the near-term evaluation work has produced a usable body of assessed tools to draw from.</p>
+</section>
+</section>
+<section id="sec-cdt-trajectory" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-cdt-trajectory"><span class="header-section-number">5.3</span> CDT capability programme trajectory</h2>
+<p>In year one, the programme’s focus is register currency, shared dataset consolidation, and supporting the Forecasting and Warning teams through initial adoption. AI tool assessment is added once the shared data foundation is sufficiently stable to support it. Sequencing matters here: assessment against a data standard that is still being defined produces assessment results that will need to be revised.</p>
+<p>By year three, the programme is in a different phase: training delivery, cross-team standards maintenance, and the published AI tool register in operation. The trajectory between those two points is not fixed. It depends on the pace of NFWS’s own AI adoption, which depends in turn on operational demand and the availability of tools that meet the assessment criteria. The framework provides the structure. The CDT’s programme responds to what the service actually needs.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -993,7 +1070,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/04-future-directions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/04-future-directions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

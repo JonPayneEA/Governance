@@ -558,7 +558,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#file-formats-and-export-standards" id="toc-file-formats-and-export-standards" class="nav-link" data-scroll-target="#file-formats-and-export-standards"><span class="header-section-number">9.2.4</span> 2.2.4 File Formats and Export Standards</a></li>
   </ul></li>
   <li><a href="#object-oriented-programming-in-flode" id="toc-object-oriented-programming-in-flode" class="nav-link" data-scroll-target="#object-oriented-programming-in-flode"><span class="header-section-number">9.3</span> 2.3 Object-Oriented Programming in Flode</a></li>
-  <li><a href="#mandatory-header-block" id="toc-mandatory-header-block" class="nav-link" data-scroll-target="#mandatory-header-block"><span class="header-section-number">9.4</span> 2.4 Mandatory Header Block</a></li>
+  <li><a href="#sec-r-header-block" id="toc-sec-r-header-block" class="nav-link" data-scroll-target="#sec-r-header-block"><span class="header-section-number">9.4</span> 2.4 Mandatory Header Block</a></li>
   <li><a href="#documentation-requirements" id="toc-documentation-requirements" class="nav-link" data-scroll-target="#documentation-requirements"><span class="header-section-number">9.5</span> 2.5 Documentation Requirements</a></li>
   </ul></li>
   <li><a href="#code-review---r-specific-requirements" id="toc-code-review---r-specific-requirements" class="nav-link" data-scroll-target="#code-review---r-specific-requirements"><span class="header-section-number">10</span> 3. Code Review - R-Specific Requirements</a>
@@ -653,7 +653,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="purpose" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Purpose</h1>
-<p>This document provides the detailed, R-specific governance standards for tools developed by the Forecasting and Warning Teams. It is a companion to the Data &amp; Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, digital and data assets registers, and version control standards that apply to all team code regardless of language.</p>
+<p>This document provides the detailed, R-specific governance standards for tools developed by the team. It is a companion to the Data &amp; Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, digital and data assets registers, and version control standards that apply to all team code regardless of language.</p>
 <p>This document covers what is specific to R: the in-house <em>Flode</em> package architecture, fastverse coding conventions, renv dependency management, R testing and CI tooling, and R repository structure. Please read this alongside the parent framework, not instead of it.</p>
 <table class="caption-top">
 <colgroup>
@@ -672,14 +672,14 @@ ul.task-list li input[type="checkbox"] {
 <h1 data-number="8"><span class="header-section-number">8</span> 1. Introduction and Scope</h1>
 <section id="background" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="background"><span class="header-section-number">8.1</span> 1.1 Background</h2>
-<p>The Forecasting and Warning (F&amp;W) Teams rely on a growing suite of R scripts, packages, and analytical tools to support both operational forecasting and associated research activities. As the team grows and the codebase matures, inconsistent development practices create risks including unreproducible results, undocumented tools, difficult onboarding, and vulnerabilities to key-person dependency.</p>
+<p>The team relies on a growing suite of R scripts, packages, and analytical tools to support both operational forecasting and associated research activities. As the team grows and the codebase matures, inconsistent development practices create risks including unreproducible results, undocumented tools, difficult onboarding, and vulnerabilities to key-person dependency.</p>
 <p>This governance proposal establishes a structured, practical framework to address these risks while remaining accessible to team members at all levels of R proficiency. This ranges from early-career modellers and analysts writing their first functions to senior technical advisors developing complex modelling packages.</p>
 </section>
 <section id="scope" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="scope"><span class="header-section-number">8.2</span> 1.2 Scope</h2>
 <p>This document applies to all R code produced by members of the team, including:</p>
 <ul>
-<li><p>R scripts used in support of operational F&amp;W workflows</p></li>
+<li><p>R scripts used in support of operational forecasting workflows</p></li>
 <li><p>Internal R packages and reusable function libraries</p></li>
 <li><p>Pre-processing and post-processing tools</p></li>
 <li><p>Visualisation and reporting utilities</p></li>
@@ -702,15 +702,15 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="8.3" class="anchored" data-anchor-id="what-is-covered-here-and-what-is-in-the-parent-document"><span class="header-section-number">8.3</span> 1.3 What Is Covered Here and What Is in the Parent Document</h2>
 <p>The following governance elements are defined in the Data &amp; Digital Asset Governance Framework and apply to all R tools. They are not repeated here; refer to that document for the authoritative version:</p>
 <ul>
-<li><p>Owner → Steward → Custodian roles and grade requirements (Section 3)</p></li>
-<li><p>Tool tier classification: Tier 3 / 2 / 1 (Section 5)</p></li>
-<li><p>Custodianship requirements by tier (Section 7.2)</p></li>
-<li><p>Routes to tool development: A, B, C, D (Section 7.3)</p></li>
-<li><p>Code review requirements by tier (Section 7.4)</p></li>
-<li><p>Version control principles: branching, commits, semantic versioning, reproducibility (Section 7.5)</p></li>
-<li><p>Tool Register fields and maintenance (Section 7.6)</p></li>
-<li><p>Handover and succession (Section 7.7)</p></li>
-<li><p>Governance, exceptions, and annual audit (Section 12)</p></li>
+<li><p>Owner → Steward → Custodian roles and grade requirements (<a href="../01-governance-framework.html#sec-governance-roles" class="quarto-xref"><span>Section 2.3</span></a>)</p></li>
+<li><p>Tool tier classification: Tier 3 / 2 / 1 (<a href="../01-governance-framework.html#sec-tier-system" class="quarto-xref"><span>Section 2.5</span></a>)</p></li>
+<li><p>Custodianship requirements by tier (<a href="../01-governance-framework.html#sec-custodianship-by-tier" class="quarto-xref"><span>Section 2.8.2</span></a>)</p></li>
+<li><p>Routes to tool development: A, B, C, D (<a href="../01-governance-framework.html#sec-routes-to-development" class="quarto-xref"><span>Section 2.8.3</span></a>)</p></li>
+<li><p>Code review requirements by tier (<a href="../01-governance-framework.html#sec-code-review-requirements" class="quarto-xref"><span>Section 2.8.4</span></a>)</p></li>
+<li><p>Version control principles: branching, commits, semantic versioning, reproducibility (<a href="../01-governance-framework.html#sec-version-control" class="quarto-xref"><span>Section 2.8.5</span></a>)</p></li>
+<li><p>Tool Register fields and maintenance (<a href="../01-governance-framework.html#sec-tool-register" class="quarto-xref"><span>Section 2.8.6</span></a>)</p></li>
+<li><p>Handover and succession (<a href="../01-governance-framework.html#sec-handover-succession" class="quarto-xref"><span>Section 2.8.7</span></a>)</p></li>
+<li><p>Governance, exceptions, and annual audit (<a href="../01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.13</span></a>)</p></li>
 </ul>
 <p>This document covers everything that is specific to R.</p>
 </section>
@@ -735,14 +735,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="r-tool-development-standards" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> 2. R Tool Development Standards</h1>
-<p>The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 7.1–7.4). This section covers the R-specific standards that apply within that governance structure.</p>
+<p>The governance tier system, routes to development, and review requirements are defined in the parent framework (<a href="../01-governance-framework.html#sec-code-tool-governance" class="quarto-xref"><span>Section 2.8</span></a>). This section covers the R-specific standards that apply within that governance structure.</p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 100%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Tool tiers, development routes, review requirements by tier, and version control principles: see Data &amp; Digital Asset Governance Framework, Section 7.</th>
+<th>Tool tiers, development routes, review requirements by tier, and version control principles: see <a href="../01-governance-framework.html#sec-code-tool-governance" class="quarto-xref"><span>Section 2.8</span></a>.</th>
 </tr>
 </thead>
 <tbody>
@@ -849,7 +849,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="code-structure" class="level3" data-number="9.2.2">
 <h3 data-number="9.2.2" class="anchored" data-anchor-id="code-structure"><span class="header-section-number">9.2.2</span> 2.2.2 Code Structure</h3>
 <ul>
-<li><p>Scripts must begin with a standardised header block (see Section 2.4)</p></li>
+<li><p>Scripts must begin with a standardised header block (see <a href="#sec-r-header-block" class="quarto-xref"><span>Section 9.4</span></a>)</p></li>
 <li><p>Functions should follow the single-responsibility principle: one function, one task</p></li>
 <li><p>Scripts should not exceed 300 lines; longer scripts should be refactored into functions or sub-scripts</p></li>
 <li><p>Avoid hard-coded file paths; use relative paths or a centralised configuration file</p></li>
@@ -1040,8 +1040,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="mandatory-header-block" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="mandatory-header-block"><span class="header-section-number">9.4</span> 2.4 Mandatory Header Block</h2>
+<section id="sec-r-header-block" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="sec-r-header-block"><span class="header-section-number">9.4</span> 2.4 Mandatory Header Block</h2>
 <p>Every script and function file must include the following header, completed in full:</p>
 <pre><code># ============================================================ # 
 # Tool: [Tool name] 
@@ -1088,7 +1088,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="code-review---r-specific-requirements" class="level1" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> 3. Code Review - R-Specific Requirements</h1>
-<p>Review requirements by tier (mandatory peer review, senior sign-off for Tier 3, annual audit) are set in the parent framework, Section 8.4. This section covers the R-specific review checklist and automated tooling.</p>
+<p>Review requirements by tier (mandatory peer review, senior sign-off for Tier 3, annual audit) are set in the parent framework, <a href="../01-governance-framework.html#sec-code-review-requirements" class="quarto-xref"><span>Section 2.8.4</span></a>. This section covers the R-specific review checklist and automated tooling.</p>
 <section id="r-review-checklist" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="r-review-checklist"><span class="header-section-number">10.1</span> 3.1 R Review Checklist</h2>
 <p>All reviewers must work through this checklist. The completed checklist must be attached to the pull request before merging.</p>
@@ -1173,14 +1173,14 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Minimum 70% line coverage required for Tier 3 tools (measured via covr)</p></li>
 </ul>
 <p><strong>4. Version Control: R-Specific Implementation</strong></p>
-<p>Version control principles (branching strategy, commit standards, semantic versioning, and reproducibility requirements) are defined in the parent framework, Section 8.5. This section covers the R-specific implementation.</p>
+<p>Version control principles (branching strategy, commit standards, semantic versioning, and reproducibility requirements) are defined in the parent framework, <a href="../01-governance-framework.html#sec-version-control" class="quarto-xref"><span>Section 2.8.5</span></a>. This section covers the R-specific implementation.</p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 100%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Branching strategy, commit standards, semantic versioning: see Data &amp; Digital Asset Governance Framework, Section 8.5.</th>
+<th>Branching strategy, commit standards, semantic versioning: see <a href="../01-governance-framework.html#sec-version-control" class="quarto-xref"><span>Section 2.8.5</span></a>.</th>
 </tr>
 </thead>
 <tbody>
@@ -1234,7 +1234,7 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Owner/Steward/Custodian roles and grades: Section 3. Tier-specific custodianship requirements: Section 7.2. Tool Register: Section 7.6. Handover and succession: Section 7.7. All references are to the Data &amp; Digital Asset Governance Framework v2.0.</th>
+<th>Owner/Steward/Custodian roles and grades: <a href="../01-governance-framework.html#sec-governance-roles" class="quarto-xref"><span>Section 2.3</span></a>. Tier-specific custodianship requirements: <a href="../01-governance-framework.html#sec-custodianship-by-tier" class="quarto-xref"><span>Section 2.8.2</span></a>. Tool Register: <a href="../01-governance-framework.html#sec-tool-register" class="quarto-xref"><span>Section 2.8.6</span></a>. Handover and succession: <a href="../01-governance-framework.html#sec-handover-succession" class="quarto-xref"><span>Section 2.8.7</span></a>. All references are to the Data &amp; Digital Asset Governance Framework v2.0.</th>
 </tr>
 </thead>
 <tbody>
@@ -1305,14 +1305,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="governance-exceptions-and-review" class="level1" data-number="13">
 <h1 data-number="13"><span class="header-section-number">13</span> 7. Governance, Exceptions, and Review</h1>
-<p>The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, Section 12. The following applies specifically to R tools:</p>
+<p>The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, <a href="../01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.13</span></a>. The following applies specifically to R tools:</p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 100%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Exceptions process, compliance and audit, document review schedule: see Data &amp; Digital Asset Governance Framework, Section 12.</th>
+<th>Exceptions process, compliance and audit, document review schedule: see <a href="../01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.13</span></a>.</th>
 </tr>
 </thead>
 <tbody>

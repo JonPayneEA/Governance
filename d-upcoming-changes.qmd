@@ -264,6 +264,22 @@ Three working notes left in Chapter 6 would undermine confidence in anyone readi
 
 ---
 
+## v3.0 — 2026-06-09 {#sec-changelog-v3-0}
+
+**Major restructure.** The single-team governance book has been restructured into a departmental framework for the National Forecasting and Warning Service.
+
+Changes:
+
+- Companion documents moved to `companions/` subdirectory and made team-agnostic
+- Three new chapters: Central Data Team (@sec-central-data-team), Shared Datasets (@sec-shared-datasets), Future Directions (@sec-future-directions)
+- Two new companion stubs: Flood Warning Asset Governance (@sec-flood-warnings), Procedure Tools Governance (@sec-procedure-tools)
+- All section-number cross-references replaced with `@sec-` Quarto labels throughout
+- Team repo content created for Forecasting Team and Warning Team
+- Starter template added at `governance-template/`
+- Subtitle updated to "National Forecasting and Warning Service"
+
+---
+
 ## Change Log
 
 | Date | Item | Status |

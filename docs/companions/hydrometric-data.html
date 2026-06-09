@@ -542,7 +542,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#bronze-tier---raw-ingested-data" id="toc-bronze-tier---raw-ingested-data" class="nav-link" data-scroll-target="#bronze-tier---raw-ingested-data"><span class="header-section-number">11</span> 4. Bronze Tier - Raw Ingested Data</a>
   <ul class="collapse">
   <li><a href="#ingestion-requirements" id="toc-ingestion-requirements" class="nav-link" data-scroll-target="#ingestion-requirements"><span class="header-section-number">11.1</span> 4.1 Ingestion Requirements</a></li>
-  <li><a href="#provenance-record" id="toc-provenance-record" class="nav-link" data-scroll-target="#provenance-record"><span class="header-section-number">11.2</span> 4.2 Provenance Record</a></li>
+  <li><a href="#sec-hydro-provenance" id="toc-sec-hydro-provenance" class="nav-link" data-scroll-target="#sec-hydro-provenance"><span class="header-section-number">11.2</span> 4.2 Provenance Record</a></li>
   <li><a href="#ownership-at-bronze" id="toc-ownership-at-bronze" class="nav-link" data-scroll-target="#ownership-at-bronze"><span class="header-section-number">11.3</span> 4.3 Ownership at Bronze</a></li>
   </ul></li>
   <li><a href="#silver-tier---quality-controlled-data" id="toc-silver-tier---quality-controlled-data" class="nav-link" data-scroll-target="#silver-tier---quality-controlled-data"><span class="header-section-number">12</span> 5. Silver Tier - Quality Controlled Data</a>
@@ -554,8 +554,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#stage-3-gap-and-error-handling" id="toc-stage-3-gap-and-error-handling" class="nav-link" data-scroll-target="#stage-3-gap-and-error-handling"><span class="header-section-number">12.1.3</span> Stage 3: Gap and Error Handling</a></li>
   <li><a href="#stage-4-steward-review-and-promotion" id="toc-stage-4-steward-review-and-promotion" class="nav-link" data-scroll-target="#stage-4-steward-review-and-promotion"><span class="header-section-number">12.1.4</span> Stage 4: Steward Review and Promotion</a></li>
   </ul></li>
-  <li><a href="#quality-flags" id="toc-quality-flags" class="nav-link" data-scroll-target="#quality-flags"><span class="header-section-number">12.2</span> 5.2 Quality Flags</a></li>
-  <li><a href="#rating-curves-and-flow-derivation" id="toc-rating-curves-and-flow-derivation" class="nav-link" data-scroll-target="#rating-curves-and-flow-derivation"><span class="header-section-number">12.3</span> 5.3 Rating Curves and Flow Derivation</a></li>
+  <li><a href="#sec-hydro-qc-flags" id="toc-sec-hydro-qc-flags" class="nav-link" data-scroll-target="#sec-hydro-qc-flags"><span class="header-section-number">12.2</span> 5.2 Quality Flags</a></li>
+  <li><a href="#sec-hydro-rating-curve" id="toc-sec-hydro-rating-curve" class="nav-link" data-scroll-target="#sec-hydro-rating-curve"><span class="header-section-number">12.3</span> 5.3 Rating Curves and Flow Derivation</a></li>
   <li><a href="#silver-dataset-naming-and-storage" id="toc-silver-dataset-naming-and-storage" class="nav-link" data-scroll-target="#silver-dataset-naming-and-storage"><span class="header-section-number">12.4</span> 5.4 Silver Dataset Naming and Storage</a></li>
   <li><a href="#silver-qc-record" id="toc-silver-qc-record" class="nav-link" data-scroll-target="#silver-qc-record"><span class="header-section-number">12.5</span> 5.5 Silver QC Record</a></li>
   <li><a href="#ownership-at-silver" id="toc-ownership-at-silver" class="nav-link" data-scroll-target="#ownership-at-silver"><span class="header-section-number">12.6</span> 5.6 Ownership at Silver</a></li>
@@ -564,10 +564,10 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#what-qualifies-as-gold" id="toc-what-qualifies-as-gold" class="nav-link" data-scroll-target="#what-qualifies-as-gold"><span class="header-section-number">13.1</span> 6.1 What Qualifies as Gold</a></li>
   <li><a href="#creating-a-gold-dataset" id="toc-creating-a-gold-dataset" class="nav-link" data-scroll-target="#creating-a-gold-dataset"><span class="header-section-number">13.2</span> 6.2 Creating a Gold Dataset</a></li>
-  <li><a href="#gold-derivation-record" id="toc-gold-derivation-record" class="nav-link" data-scroll-target="#gold-derivation-record"><span class="header-section-number">13.3</span> 6.3 Gold Derivation Record</a></li>
+  <li><a href="#sec-hydro-gold-derivation" id="toc-sec-hydro-gold-derivation" class="nav-link" data-scroll-target="#sec-hydro-gold-derivation"><span class="header-section-number">13.3</span> 6.3 Gold Derivation Record</a></li>
   <li><a href="#versioning-and-supersession" id="toc-versioning-and-supersession" class="nav-link" data-scroll-target="#versioning-and-supersession"><span class="header-section-number">13.4</span> 6.4 Versioning and Supersession</a></li>
   <li><a href="#ownership-at-gold" id="toc-ownership-at-gold" class="nav-link" data-scroll-target="#ownership-at-gold"><span class="header-section-number">13.5</span> 6.5 Ownership at Gold</a></li>
-  <li><a href="#ml-training-sets-as-gold-products" id="toc-ml-training-sets-as-gold-products" class="nav-link" data-scroll-target="#ml-training-sets-as-gold-products"><span class="header-section-number">13.6</span> 6.6 ML Training Sets as Gold Products</a></li>
+  <li><a href="#sec-hydro-ml-gold" id="toc-sec-hydro-ml-gold" class="nav-link" data-scroll-target="#sec-hydro-ml-gold"><span class="header-section-number">13.6</span> 6.6 ML Training Sets as Gold Products</a></li>
   </ul></li>
   <li><a href="#parquet-storage-schema" id="toc-parquet-storage-schema" class="nav-link" data-scroll-target="#parquet-storage-schema"><span class="header-section-number">14</span> 7. Parquet Storage Schema</a>
   <ul class="collapse">
@@ -592,16 +592,16 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#recording-data-use-in-model-runs" id="toc-recording-data-use-in-model-runs" class="nav-link" data-scroll-target="#recording-data-use-in-model-runs"><span class="header-section-number">16.2</span> 9.2 Recording Data Use in Model Runs</a></li>
   <li><a href="#retrospective-traceability" id="toc-retrospective-traceability" class="nav-link" data-scroll-target="#retrospective-traceability"><span class="header-section-number">16.3</span> 9.3 Retrospective Traceability</a></li>
   </ul></li>
-  <li><a href="#hydrometric-data-register" id="toc-hydrometric-data-register" class="nav-link" data-scroll-target="#hydrometric-data-register"><span class="header-section-number">17</span> 10. Hydrometric Data Register</a>
+  <li><a href="#sec-hydro-register" id="toc-sec-hydro-register" class="nav-link" data-scroll-target="#sec-hydro-register"><span class="header-section-number">17</span> 10. Hydrometric Data Register</a>
   <ul class="collapse">
-  <li><a href="#register-fields" id="toc-register-fields" class="nav-link" data-scroll-target="#register-fields"><span class="header-section-number">17.1</span> 10.1 Register Fields</a></li>
+  <li><a href="#sec-hydro-register-fields" id="toc-sec-hydro-register-fields" class="nav-link" data-scroll-target="#sec-hydro-register-fields"><span class="header-section-number">17.1</span> 10.1 Register Fields</a></li>
   <li><a href="#data-quality-issue-log" id="toc-data-quality-issue-log" class="nav-link" data-scroll-target="#data-quality-issue-log"><span class="header-section-number">17.2</span> 10.2 Data Quality Issue Log</a></li>
   <li><a href="#register-maintenance" id="toc-register-maintenance" class="nav-link" data-scroll-target="#register-maintenance"><span class="header-section-number">17.3</span> 10.3 Register Maintenance</a></li>
   </ul></li>
   <li><a href="#access-sharing-and-retention" id="toc-access-sharing-and-retention" class="nav-link" data-scroll-target="#access-sharing-and-retention"><span class="header-section-number">18</span> 11. Access, Sharing, and Retention</a>
   <ul class="collapse">
-  <li><a href="#retention" id="toc-retention" class="nav-link" data-scroll-target="#retention"><span class="header-section-number">18.1</span> 11.1 Retention</a></li>
-  <li><a href="#access" id="toc-access" class="nav-link" data-scroll-target="#access"><span class="header-section-number">18.2</span> 11.2 Access</a></li>
+  <li><a href="#sec-hydro-bronze-retention" id="toc-sec-hydro-bronze-retention" class="nav-link" data-scroll-target="#sec-hydro-bronze-retention"><span class="header-section-number">18.1</span> 11.1 Retention</a></li>
+  <li><a href="#sec-hydro-access" id="toc-sec-hydro-access" class="nav-link" data-scroll-target="#sec-hydro-access"><span class="header-section-number">18.2</span> 11.2 Access</a></li>
   <li><a href="#data-licensing-and-third-party-constraints" id="toc-data-licensing-and-third-party-constraints" class="nav-link" data-scroll-target="#data-licensing-and-third-party-constraints"><span class="header-section-number">18.3</span> 11.3 Data Licensing and Third-Party Constraints</a></li>
   </ul></li>
   <li><a href="#roles-and-responsibilities" id="toc-roles-and-responsibilities" class="nav-link" data-scroll-target="#roles-and-responsibilities"><span class="header-section-number">19</span> 12. Roles and Responsibilities</a></li>
@@ -785,7 +785,7 @@ ul.task-list li input[type="checkbox"] {
 <p>When a new dataset is received, the Custodian must complete all of the following before the data is stored:</p>
 <ul>
 <li><p>Assign a unique dataset ID using the standard format: [SupplierCode]<em>[SiteID]</em>[DataType]_[YYYYMMDD] (e.g., EA_39001_Q_20260115)</p></li>
-<li><p>Record the full provenance record (see Section 4.2) in the Hydrometric Data Register via <code>reach.io</code>’s <code>write_provenance_record()</code> function</p></li>
+<li><p>Record the full provenance record (see <a href="#sec-hydro-provenance" class="quarto-xref"><span>Section 11.2</span></a>) in the Hydrometric Data Register via <code>reach.io</code>’s <code>write_provenance_record()</code> function</p></li>
 <li><p>Store the data in the Bronze layer of the team’s data store using <code>reach.io</code>’s directory structure (created by <code>setup_hydro_store()</code>); do not modify the file</p></li>
 <li><p>Apply the Bronze schema using <code>apply_bronze_schema()</code> to enforce the six mandatory columns (timestamp, value, supplier_flag, dataset_id, site_id, data_type) and correct data types</p></li>
 <li><p>Check the file opens and is readable; record any format issues in the provenance record</p></li>
@@ -794,9 +794,9 @@ ul.task-list li input[type="checkbox"] {
 <p>For API-sourced gauges registered in the Gauge Registry, <code>reach.io</code>’s <code>run_backfill()</code> and <code>route_gauge()</code> functions automate the fetch, schema application, and provenance recording steps. The Custodian is still responsible for reviewing the resulting register entry and confirming completeness.</p>
 <p>Bronze data must never be modified after ingestion. If a supplier sends a corrected version of a dataset, the corrected version is ingested as a new Bronze dataset with its own dataset ID and provenance record, referencing the original.</p>
 </section>
-<section id="provenance-record" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="provenance-record"><span class="header-section-number">11.2</span> 4.2 Provenance Record</h2>
-<p>Every Bronze dataset must have a complete provenance record in the Hydrometric Data Register (Section 10). This is the single most important thing recorded at Bronze - without it, no downstream use of the data can be properly audited. See Section 10.1 for the full field list.</p>
+<section id="sec-hydro-provenance" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="sec-hydro-provenance"><span class="header-section-number">11.2</span> 4.2 Provenance Record</h2>
+<p>Every Bronze dataset must have a complete provenance record in the Hydrometric Data Register (<a href="#sec-hydro-register" class="quarto-xref"><span>Chapter 17</span></a>). This is the single most important thing recorded at Bronze - without it, no downstream use of the data can be properly audited. See <a href="#sec-hydro-register-fields" class="quarto-xref"><span>Section 17.1</span></a> for the full field list.</p>
 <p>The key fields recorded at ingestion are: dataset ID, supplier, site identifier, data type, time period, temporal resolution, units, datum or rating reference, file format as received, date received, received by, method of receipt, any supplier quality flags and their meaning, known limitations stated by the supplier, file path, and any notes on unusual aspects of the delivery.</p>
 </section>
 <section id="ownership-at-bronze" class="level2" data-number="11.3">
@@ -846,9 +846,9 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="12.1.2" class="anchored" data-anchor-id="stage-2-visual-and-expert-review"><span class="header-section-number">12.1.2</span> Stage 2: Visual and Expert Review</h3>
 <p>A Custodian with appropriate domain knowledge reviews the flagged data. For flow and level data this includes checking against nearby gauges, upstream/downstream consistency, and known events. The review produces:</p>
 <ul>
-<li><p>A revised flag dataset - each value receives a quality flag (see Section 5.2)</p></li>
+<li><p>A revised flag dataset - each value receives a quality flag (see <a href="#sec-hydro-qc-flags" class="quarto-xref"><span>Section 12.2</span></a>)</p></li>
 <li><p>A review note for any value that is flagged as suspect or rejected</p></li>
-<li><p>A rating curve assessment for flow data (see Section 5.3)</p></li>
+<li><p>A rating curve assessment for flow data (see <a href="#sec-hydro-rating-curve" class="quarto-xref"><span>Section 12.3</span></a>)</p></li>
 </ul>
 </section>
 <section id="stage-3-gap-and-error-handling" class="level3" data-number="12.1.3">
@@ -898,8 +898,8 @@ ul.task-list li input[type="checkbox"] {
 <p>The Steward records their approval in the Hydrometric Data Register. Only after Steward approval is the dataset status set to Silver.</p>
 </section>
 </section>
-<section id="quality-flags" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="quality-flags"><span class="header-section-number">12.2</span> 5.2 Quality Flags</h2>
+<section id="sec-hydro-qc-flags" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="sec-hydro-qc-flags"><span class="header-section-number">12.2</span> 5.2 Quality Flags</h2>
 <p>Every value in a Silver dataset carries a quality flag. The team uses the following flag scheme, which is compatible with the Environment Agency’s national flag convention:</p>
 <table class="caption-top table">
 <colgroup>
@@ -957,8 +957,8 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>Flags must be stored as a separate column or parallel file - never overwrite the value itself. A flag of 2 (Estimated) must always be accompanied by an estimation method field.</p>
 </section>
-<section id="rating-curves-and-flow-derivation" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="rating-curves-and-flow-derivation"><span class="header-section-number">12.3</span> 5.3 Rating Curves and Flow Derivation</h2>
+<section id="sec-hydro-rating-curve" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="sec-hydro-rating-curve"><span class="header-section-number">12.3</span> 5.3 Rating Curves and Flow Derivation</h2>
 <p>For stage (water level) data where the team derives flow using a rating curve, the Silver record must include:</p>
 <ul>
 <li><p>The rating curve version used (name, version number, valid stage range, source/authority)</p></li>
@@ -976,7 +976,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="silver-qc-record" class="level2" data-number="12.5">
 <h2 data-number="12.5" class="anchored" data-anchor-id="silver-qc-record"><span class="header-section-number">12.5</span> 5.5 Silver QC Record</h2>
-<p>Each Silver dataset must have a complete QC record in the Hydrometric Data Register (Section 10). See Section 10.1 for the full field list.</p>
+<p>Each Silver dataset must have a complete QC record in the Hydrometric Data Register (<a href="#sec-hydro-register" class="quarto-xref"><span>Chapter 17</span></a>). See <a href="#sec-hydro-register-fields" class="quarto-xref"><span>Section 17.1</span></a> for the full field list.</p>
 <p>The key fields recorded at Silver promotion are: Silver dataset ID, Bronze source ID, Custodian who carried out QC, Steward who reviewed and approved, QC date, automated checks run and tool used, flag count summary by type, gap-filling method and extent if applied, rating curve version and valid range if applied, any remaining known issues, comparison datasets used during expert review, and file path.</p>
 </section>
 <section id="ownership-at-silver" class="level2" data-number="12.6">
@@ -1020,14 +1020,14 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p>Custodian or modeller proposes the Gold product, specifying: its purpose, which Silver datasets it draws from, the derivation method, and the intended use</p></li>
 <li><p>Steward reviews the proposal and the underlying Silver data quality, particularly flag counts and known issues</p></li>
-<li><p>Derivation is carried out and documented in a Gold derivation record (see Section 6.3)</p></li>
+<li><p>Derivation is carried out and documented in a Gold derivation record (see <a href="#sec-hydro-gold-derivation" class="quarto-xref"><span>Section 13.3</span></a>)</p></li>
 <li><p>Owner reviews and formally approves the Gold dataset before it enters operational use</p></li>
 <li><p>Gold dataset is registered in the Hydrometric Data Register with status ‘Approved’</p></li>
 </ul>
 </section>
-<section id="gold-derivation-record" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="gold-derivation-record"><span class="header-section-number">13.3</span> 6.3 Gold Derivation Record</h2>
-<p>Each Gold dataset must have a complete derivation record in the Hydrometric Data Register (Section 10). See Section 10.1 for the full field list.</p>
+<section id="sec-hydro-gold-derivation" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="sec-hydro-gold-derivation"><span class="header-section-number">13.3</span> 6.3 Gold Derivation Record</h2>
+<p>Each Gold dataset must have a complete derivation record in the Hydrometric Data Register (<a href="#sec-hydro-register" class="quarto-xref"><span>Chapter 17</span></a>). See <a href="#sec-hydro-register-fields" class="quarto-xref"><span>Section 17.1</span></a> for the full field list.</p>
 <p>The key fields recorded when a Gold dataset is created are: Gold dataset ID, purpose and who approved it, Silver source dataset IDs and versions, derivation method (aggregation, merging, event extraction, or native resolution for ML training sets), Silver quality gate summary (flag counts, gap extent, known issues), any exclusions and the reason, Custodian or analyst who produced it, Owner approval name and date, intended use and any restrictions on use, expiry or review date, and file path.</p>
 </section>
 <section id="versioning-and-supersession" class="level2" data-number="13.4">
@@ -1039,8 +1039,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="13.5" class="anchored" data-anchor-id="ownership-at-gold"><span class="header-section-number">13.5</span> 6.5 Ownership at Gold</h2>
 <p>Gold datasets are owned by the Owner and stewarded by the Steward. No one else can approve a new Gold dataset or change its status. This is the highest accountability level because Gold data directly informs business decisions, model calibration choices, and potentially regulatory outputs or KPIs.</p>
 </section>
-<section id="ml-training-sets-as-gold-products" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="ml-training-sets-as-gold-products"><span class="header-section-number">13.6</span> 6.6 ML Training Sets as Gold Products</h2>
+<section id="sec-hydro-ml-gold" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="sec-hydro-ml-gold"><span class="header-section-number">13.6</span> 6.6 ML Training Sets as Gold Products</h2>
 <p>Unlike most Gold products, an ML training set does not aggregate or reduce the underlying Silver data. It stays at the native 15-minute resolution. What makes it a Gold product is that it represents a set of deliberate, documented decisions about which data to use and how, combined with Steward confirmation that the Silver quality is sufficient for model training.</p>
 <p>A Silver dataset is ready to become a Gold ML training set when all of the following conditions are met:</p>
 <ul>
@@ -1236,7 +1236,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>qc_flag</td>
 <td>int32</td>
-<td>Team quality flag (1=Good, 2=Estimated, 3=Suspect, 4=Rejected, 5=No data, 6=Below detection). See Section 5.2. Every row must have a qc_flag at Silver.</td>
+<td>Team quality flag (1=Good, 2=Estimated, 3=Suspect, 4=Rejected, 5=No data, 6=Below detection). See <a href="#sec-hydro-qc-flags" class="quarto-xref"><span>Section 12.2</span></a>. Every row must have a qc_flag at Silver.</td>
 </tr>
 <tr class="even">
 <td>qc_value</td>
@@ -1375,7 +1375,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <section id="ml-training-set-gold" class="level3" data-number="14.4.1">
 <h3 data-number="14.4.1" class="anchored" data-anchor-id="ml-training-set-gold"><span class="header-section-number">14.4.1</span> ML Training Set Gold</h3>
-<p>For Gold ML training sets (Section 6.6), use the time series Gold schema with the following additional columns. Static catchment attributes are repeated on every row so a single Parquet file is self-contained for training without needing a join. Approval details are held in the register.</p>
+<p>For Gold ML training sets (<a href="#sec-hydro-ml-gold" class="quarto-xref"><span>Section 13.6</span></a>), use the time series Gold schema with the following additional columns. Static catchment attributes are repeated on every row so a single Parquet file is self-contained for training without needing a join. Approval details are held in the register.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -1551,7 +1551,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p>What flags are present in the Silver data feeding this Gold product?</p></li>
 <li><p>Has the supplier’s original data been corrected? If so, how, why, and by whom?</p></li>
 </ul>
-<p>The Hydrometric Data Register (Section 10) maintains this lineage by linking Gold IDs to Silver IDs to Bronze IDs.</p>
+<p>The Hydrometric Data Register (<a href="#sec-hydro-register" class="quarto-xref"><span>Chapter 17</span></a>) maintains this lineage by linking Gold IDs to Silver IDs to Bronze IDs.</p>
 </section>
 <section id="recording-data-use-in-model-runs" class="level2" data-number="16.2">
 <h2 data-number="16.2" class="anchored" data-anchor-id="recording-data-use-in-model-runs"><span class="header-section-number">16.2</span> 9.2 Recording Data Use in Model Runs</h2>
@@ -1565,20 +1565,20 @@ ul.task-list li input[type="checkbox"] {
 <section id="retrospective-traceability" class="level2" data-number="16.3">
 <h2 data-number="16.3" class="anchored" data-anchor-id="retrospective-traceability"><span class="header-section-number">16.3</span> 9.3 Retrospective Traceability</h2>
 <ul>
-<li><p>Bronze datasets are never deleted (see Section 11.1)</p></li>
+<li><p>Bronze datasets are never deleted (see <a href="#sec-hydro-bronze-retention" class="quarto-xref"><span>Section 18.1</span></a>)</p></li>
 <li><p>Silver versions are retained even when superseded</p></li>
 <li><p>Gold versions are retained even when superseded, with their status changed to ‘Superseded’</p></li>
 <li><p>The Hydrometric Data Register is backed up as part of the team’s standard data backup process</p></li>
 </ul>
 </section>
 </section>
-<section id="hydrometric-data-register" class="level1" data-number="17">
+<section id="sec-hydro-register" class="level1" data-number="17">
 <h1 data-number="17"><span class="header-section-number">17</span> 10. Hydrometric Data Register</h1>
 <p>The Hydrometric Data Register is the single consolidated record for all Bronze, Silver, and Gold datasets. It is maintained by the <code>reach.io</code> R package as a CSV file held in the team’s designated data store, version-controlled alongside the data. Register entries are written and updated programmatically via <code>reach.io</code>’s <code>write_provenance_record()</code> function; direct manual editing of the CSV is not permitted outside of Steward-approved corrections. In Databricks deployments, the same fields are held as a Delta table in the <code>fw_hydrometric</code> catalog. The Steward is responsible for keeping it current.</p>
 <p>A separate <strong>Gauge Registry</strong> (Parquet format) is also maintained by <code>reach.io</code> via <code>build_gauge_registry()</code>. It is the routing configuration for the ingestion pipeline and records, for each gauge: source system assignment, active status, backfill completion flag, and notes. Changes to the Gauge Registry require Steward approval and are committed with a brief note describing the reason.</p>
 <p>Rather than separate provenance, QC, and derivation records for each tier, the register uses a single table where each row is one dataset. The tier column identifies whether a row is Bronze, Silver, or Gold. Fields that only apply to certain tiers are left blank for others. This keeps everything queryable in one place and avoids the proliferation of separate files.</p>
-<section id="register-fields" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="register-fields"><span class="header-section-number">17.1</span> 10.1 Register Fields</h2>
+<section id="sec-hydro-register-fields" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="sec-hydro-register-fields"><span class="header-section-number">17.1</span> 10.1 Register Fields</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -1836,14 +1836,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="access-sharing-and-retention" class="level1" data-number="18">
 <h1 data-number="18"><span class="header-section-number">18</span> 11. Access, Sharing, and Retention</h1>
-<section id="retention" class="level2" data-number="18.1">
-<h2 data-number="18.1" class="anchored" data-anchor-id="retention"><span class="header-section-number">18.1</span> 11.1 Retention</h2>
+<section id="sec-hydro-bronze-retention" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="sec-hydro-bronze-retention"><span class="header-section-number">18.1</span> 11.1 Retention</h2>
 <p>Bronze data are retained indefinitely. It is the permanent record of what was received and cannot be recreated. It must never be deleted without Owner approval.</p>
 <p>Silver data is retained for as long as the Bronze data it was derived from is retained. Superseded Silver versions are kept alongside the current version with their status clearly labelled.</p>
 <p>Gold data is retained for as long as any model, output, or decision that used it may need to be audited. In practice this is indefinitely for any Gold dataset that contributed to a formal flood risk output.</p>
 </section>
-<section id="access" class="level2" data-number="18.2">
-<h2 data-number="18.2" class="anchored" data-anchor-id="access"><span class="header-section-number">18.2</span> 11.2 Access</h2>
+<section id="sec-hydro-access" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="sec-hydro-access"><span class="header-section-number">18.2</span> 11.2 Access</h2>
 <ul>
 <li><p>Bronze: Custodians and Stewards have read access. Write access at Bronze is limited to the ingestion Custodian at the point of ingestion - after that, Bronze is read-only</p></li>
 <li><p>Silver: All team members have read access. Write access (creating or revising a Silver dataset) requires Custodian role and Steward review</p></li>
@@ -2091,7 +2091,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="c.2-databricks-dash---unity-catalog" class="level2" data-number="23.2">
 <h2 data-number="23.2" class="anchored" data-anchor-id="c.2-databricks-dash---unity-catalog"><span class="header-section-number">23.2</span> C.2 Databricks DASH - Unity Catalog</h2>
-<p>In Databricks, data is held as Delta Lake tables rather than flat files. The tier structure maps directly to Unity Catalog schemas, which enforces the access controls defined in Section 11.2.</p>
+<p>In Databricks, data is held as Delta Lake tables rather than flat files. The tier structure maps directly to Unity Catalog schemas, which enforces the access controls defined in <a href="#sec-hydro-access" class="quarto-xref"><span>Section 18.2</span></a>.</p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 100%">

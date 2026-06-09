@@ -541,24 +541,24 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#flood-modeller-pro-fmp-hydraulic-models" id="toc-flood-modeller-pro-fmp-hydraulic-models" class="nav-link" data-scroll-target="#flood-modeller-pro-fmp-hydraulic-models"><span class="header-section-number">12.1</span> 2.1 Flood Modeller Pro (FMP) Hydraulic Models</a></li>
   <li><a href="#pdm-rainfall-runoff-models" id="toc-pdm-rainfall-runoff-models" class="nav-link" data-scroll-target="#pdm-rainfall-runoff-models"><span class="header-section-number">12.2</span> 2.2 PDM Rainfall-Runoff Models</a></li>
   <li><a href="#black-box-methods" id="toc-black-box-methods" class="nav-link" data-scroll-target="#black-box-methods"><span class="header-section-number">12.3</span> 2.3 Black Box Methods</a></li>
-  <li><a href="#boundary-conditions" id="toc-boundary-conditions" class="nav-link" data-scroll-target="#boundary-conditions"><span class="header-section-number">12.4</span> 2.4 Boundary Conditions</a></li>
+  <li><a href="#sec-flood-boundary-conditions" id="toc-sec-flood-boundary-conditions" class="nav-link" data-scroll-target="#sec-flood-boundary-conditions"><span class="header-section-number">12.4</span> 2.4 Boundary Conditions</a></li>
   </ul></li>
   <li><a href="#model-register" id="toc-model-register" class="nav-link" data-scroll-target="#model-register"><span class="header-section-number">13</span> 3. Model Register</a></li>
-  <li><a href="#model-condition" id="toc-model-condition" class="nav-link" data-scroll-target="#model-condition"><span class="header-section-number">14</span> 4. Model Condition</a>
+  <li><a href="#sec-flood-condition" id="toc-sec-flood-condition" class="nav-link" data-scroll-target="#sec-flood-condition"><span class="header-section-number">14</span> 4. Model Condition</a>
   <ul class="collapse">
   <li><a href="#condition-factors" id="toc-condition-factors" class="nav-link" data-scroll-target="#condition-factors"><span class="header-section-number">14.1</span> 4.1 Condition Factors</a></li>
   <li><a href="#condition-ratings" id="toc-condition-ratings" class="nav-link" data-scroll-target="#condition-ratings"><span class="header-section-number">14.2</span> 4.2 Condition Ratings</a></li>
-  <li><a href="#review-schedule" id="toc-review-schedule" class="nav-link" data-scroll-target="#review-schedule"><span class="header-section-number">14.3</span> 4.3 Review Schedule</a></li>
+  <li><a href="#sec-flood-condition-cycle" id="toc-sec-flood-condition-cycle" class="nav-link" data-scroll-target="#sec-flood-condition-cycle"><span class="header-section-number">14.3</span> 4.3 Review Schedule</a></li>
   <li><a href="#condition-and-model-connections" id="toc-condition-and-model-connections" class="nav-link" data-scroll-target="#condition-and-model-connections"><span class="header-section-number">14.4</span> 4.4 Condition and Model Connections</a></li>
   </ul></li>
-  <li><a href="#model-connections" id="toc-model-connections" class="nav-link" data-scroll-target="#model-connections"><span class="header-section-number">15</span> 5. Model Connections</a>
+  <li><a href="#sec-flood-connections" id="toc-sec-flood-connections" class="nav-link" data-scroll-target="#sec-flood-connections"><span class="header-section-number">15</span> 5. Model Connections</a>
   <ul class="collapse">
-  <li><a href="#connection-types" id="toc-connection-types" class="nav-link" data-scroll-target="#connection-types"><span class="header-section-number">15.1</span> 5.1 Connection Types</a></li>
+  <li><a href="#sec-flood-connection-types" id="toc-sec-flood-connection-types" class="nav-link" data-scroll-target="#sec-flood-connection-types"><span class="header-section-number">15.1</span> 5.1 Connection Types</a></li>
   <li><a href="#connection-register" id="toc-connection-register" class="nav-link" data-scroll-target="#connection-register"><span class="header-section-number">15.2</span> 5.2 Connection Register</a></li>
   <li><a href="#system-diagrams" id="toc-system-diagrams" class="nav-link" data-scroll-target="#system-diagrams"><span class="header-section-number">15.3</span> 5.3 System Diagrams</a></li>
   <li><a href="#impact-assessment-for-model-changes" id="toc-impact-assessment-for-model-changes" class="nav-link" data-scroll-target="#impact-assessment-for-model-changes"><span class="header-section-number">15.4</span> 5.4 Impact Assessment for Model Changes</a></li>
   </ul></li>
-  <li><a href="#model-run-records" id="toc-model-run-records" class="nav-link" data-scroll-target="#model-run-records"><span class="header-section-number">16</span> 6. Model Run Records</a></li>
+  <li><a href="#sec-flood-run-records" id="toc-sec-flood-run-records" class="nav-link" data-scroll-target="#sec-flood-run-records"><span class="header-section-number">16</span> 6. Model Run Records</a></li>
   <li><a href="#calibration-and-validation" id="toc-calibration-and-validation" class="nav-link" data-scroll-target="#calibration-and-validation"><span class="header-section-number">17</span> 7. Calibration and Validation</a>
   <ul class="collapse">
   <li><a href="#calibration-records" id="toc-calibration-records" class="nav-link" data-scroll-target="#calibration-records"><span class="header-section-number">17.1</span> 7.1 Calibration Records</a></li>
@@ -643,7 +643,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="purpose" class="level1" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> Purpose</h1>
-<p>This document sets out detailed governance standards for the flood models used and maintained by the Forecasting and Warning (F&amp;W) team. It covers Flood Modeller Pro hydraulic models, PDM rainfall-runoff models, Black Box elements, and the boundary conditions that connect them. It is a companion to the Data and Digital Asset Governance Framework, which sets out the broader roles, tier system, and version control principles that apply to all team assets.</p>
+<p>This document sets out detailed governance standards for the flood models used and maintained by the team. It covers Flood Modeller Pro hydraulic models, PDM rainfall-runoff models, Black Box elements, and the boundary conditions that connect them. It is a companion to the Data and Digital Asset Governance Framework, which sets out the broader roles, tier system, and version control principles that apply to all team assets.</p>
 <p>Two areas are given particular attention here. First, model condition: a structured way of assessing how fit for purpose a model is over time, accounting for factors beyond operational performance alone, including age, data currency, structural integrity, and known deficiencies. Second, model connections: how models are linked together in cascading systems, where the outputs of one model become the inputs to another, and what governance is required to keep those connections auditable and reliable.</p>
 <p>This document is not a guide to modelling practice. It does not prescribe how to build, calibrate, or configure a model. Its concern is the other side of that work: how models are recorded, assessed, connected, and kept accountable over time, and what level of oversight each type of model requires.</p>
 <table class="caption-top table">
@@ -664,7 +664,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="scope" class="level1" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> 1. Scope</h1>
-<p>This framework applies to all flood models used by the F&amp;W team in operational forecasting, model development, or research activities, including:</p>
+<p>This framework applies to all flood models used by the team in operational forecasting, model development, or research activities, including:</p>
 <ul>
 <li><p>Flood Modeller Pro (FMP) 1D and 2D hydraulic models</p></li>
 <li><p>PDM (Probability Distributed Model) rainfall-runflow configurations and parameter sets</p></li>
@@ -693,7 +693,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="12.1" class="anchored" data-anchor-id="flood-modeller-pro-fmp-hydraulic-models"><span class="header-section-number">12.1</span> 2.1 Flood Modeller Pro (FMP) Hydraulic Models</h2>
 <p>FMP models simulate the movement of water through river channels and floodplains using 1D network schemes, 2D domain solvers, or linked 1D-2D configurations. They are the core hydraulic routing tools in the team’s operational system. For flood forecast modelling requirements we limit our use of these to1D simulations only, but also implement hydrological routing elements too such as Muskingum Cunge and it’s variable parameter variant.</p>
 <p>FMP models require formal version control because they contain binary and configuration files that can change with each calibration update, boundary condition change, or software upgrade. A model that produces a formal output and a model that has been subsequently updated must both be retained, with the version used for each output clearly identified.</p>
-<p>All FMP model files must follow the folder structure and naming conventions in the parent framework (Section 6). The Custodian is responsible for keeping model files in the agreed location and not on local machines or unmanaged drives.</p>
+<p>All FMP model files must follow the folder structure and naming conventions defined by the team’s Steward. No FMP files may be held on local machines or unmanaged drives.</p>
 </section>
 <section id="pdm-rainfall-runoff-models" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="pdm-rainfall-runoff-models"><span class="header-section-number">12.2</span> 2.2 PDM Rainfall-Runoff Models</h2>
@@ -704,11 +704,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="black-box-methods" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="black-box-methods"><span class="header-section-number">12.3</span> 2.3 Black Box Methods</h2>
 <p>Black Boxes are data-driven models that relate inputs directly to outputs without representing the physical processes in between. In the team’s operational context this includes transfer functions that route gauged flows between sites and regression-based routing models trained on historical observed records.</p>
-<p>Black Box models carry a specific governance risk: because their internal workings are not as easily physically interpretable, it can be difficult to identify when a model has become unreliable. The model condition framework in Section 4 is particularly important for Black Box models, as performance degradation may not be apparent until a significant event occurs.</p>
-<p>All Black Boxesused in operational forecasting are Tier 3 assets. They must have a named Custodian, a documented training dataset, and a formal condition assessment on the schedule defined in Section 4.</p>
+<p>Black Box models carry a specific governance risk: because their internal workings are not as easily physically interpretable, it can be difficult to identify when a model has become unreliable. The model condition framework in <a href="#sec-flood-condition" class="quarto-xref"><span>Chapter 14</span></a> is particularly important for Black Box models, as performance degradation may not be apparent until a significant event occurs.</p>
+<p>All Black Boxes used in operational forecasting are Tier 3 assets. They must have a named Custodian, a documented training dataset, and a formal condition assessment on the schedule defined in <a href="#sec-flood-condition" class="quarto-xref"><span>Chapter 14</span></a>.</p>
 </section>
-<section id="boundary-conditions" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="boundary-conditions"><span class="header-section-number">12.4</span> 2.4 Boundary Conditions</h2>
+<section id="sec-flood-boundary-conditions" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="sec-flood-boundary-conditions"><span class="header-section-number">12.4</span> 2.4 Boundary Conditions</h2>
 <p>Boundary conditions are the forcing inputs that drive model runs: upstream flow inflows, tidal water levels at downstream boundaries, lateral inflows from ungauged catchments, reservoir release rules, and operational interventions such as gate settings. They are distinct assets from the models themselves and require their own version control and documentation.</p>
 <p>A boundary condition dataset is not simply a data file. It represents a set of decisions about what inputs are appropriate for a given model and scenario. Those decisions must be documented so that a model run can be reproduced and audited.</p>
 <table class="caption-top table">
@@ -808,11 +808,11 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Condition rating</td>
-<td>Current condition score and date assessed (see Section 4)</td>
+<td>Current condition score and date assessed (see <a href="#sec-flood-condition" class="quarto-xref"><span>Chapter 14</span></a>)</td>
 </tr>
 <tr class="odd">
 <td>Connected models</td>
-<td>IDs of models that provide inputs to or receive outputs from this model (see Section 5)</td>
+<td>IDs of models that provide inputs to or receive outputs from this model (see <a href="#sec-flood-connections" class="quarto-xref"><span>Chapter 15</span></a>)</td>
 </tr>
 <tr class="even">
 <td>Status</td>
@@ -829,7 +829,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="model-condition" class="level1" data-number="14">
+<section id="sec-flood-condition" class="level1" data-number="14">
 <h1 data-number="14"><span class="header-section-number">14</span> 4. Model Condition</h1>
 <p>Model condition is an assessment of how fit for purpose a model is at a given point in time. It is distinct from model performance in a narrow operational sense. A model may still produce outputs within acceptable error bounds while being in poor condition: its input data may be out of date, its channel geometry may no longer reflect the physical system, its software version may be unsupported (assuming changes to FM module adaptor), or its calibration may have been carried out on data that does not represent current catchment behaviour.</p>
 <p>Condition assessment is the mechanism by which the team identifies models that need investment before problems emerge in operational use, rather than after. It provides an auditable basis for prioritising model maintenance work and for informing decisions about when a model should be retired or rebuilt.</p>
@@ -904,7 +904,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>9-10</td>
 <td>Good</td>
-<td>Routine monitoring. Review on standard cycle (see Section 4.3).</td>
+<td>Routine monitoring. Review on standard cycle (see <a href="#sec-flood-condition-cycle" class="quarto-xref"><span>Section 14.3</span></a>).</td>
 </tr>
 <tr class="even">
 <td>7-8</td>
@@ -929,8 +929,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="review-schedule" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="review-schedule"><span class="header-section-number">14.3</span> 4.3 Review Schedule</h2>
+<section id="sec-flood-condition-cycle" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="sec-flood-condition-cycle"><span class="header-section-number">14.3</span> 4.3 Review Schedule</h2>
 <p>Condition assessments are carried out on a rolling schedule. The schedule is set by the Steward and recorded in the Model Register.</p>
 <table class="caption-top table">
 <colgroup>
@@ -967,15 +967,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="condition-and-model-connections" class="level2" data-number="14.4">
 <h2 data-number="14.4" class="anchored" data-anchor-id="condition-and-model-connections"><span class="header-section-number">14.4</span> 4.4 Condition and Model Connections</h2>
-<p>Where a model in poor condition provides inputs to downstream models, the condition risk propagates. If a PDM with a Poor calibration currency rating drives the upstream boundary of an FMP model, the FMP model’s outputs carry the same uncertainty regardless of the FMP model’s own condition score. The model connections register (Section 5) must be consulted during every condition assessment to identify whether a model’s condition affects connected models, and this must be recorded in the condition assessment note.</p>
+<p>Where a model in poor condition provides inputs to downstream models, the condition risk propagates. If a PDM with a Poor calibration currency rating drives the upstream boundary of an FMP model, the FMP model’s outputs carry the same uncertainty regardless of the FMP model’s own condition score. The model connections register (<a href="#sec-flood-connections" class="quarto-xref"><span>Chapter 15</span></a>) must be consulted during every condition assessment to identify whether a model’s condition affects connected models, and this must be recorded in the condition assessment note.</p>
 </section>
 </section>
-<section id="model-connections" class="level1" data-number="15">
+<section id="sec-flood-connections" class="level1" data-number="15">
 <h1 data-number="15"><span class="header-section-number">15</span> 5. Model Connections</h1>
 <p>Flood forecasting systems are rarely a single model in isolation. In most catchments, the team operates cascading systems: PDM models produce catchment runoff that drives FMP hydraulic models; FMP models route flows downstream to become boundary conditions for further FMP models; tidal models set downstream boundaries for fluvial models; Black Boxes route flows between points or create behaviors that can’t be replicated in our hydraulic models.</p>
 <p>Understanding these connections is essential for three reasons. First, an error or condition problem in an upstream model propagates downstream and affects every connected model’s outputs. Second, when a model is updated or recalibrated, the team needs to know which downstream models may be affected. Third, in an operational failure, knowing the connection structure allows the team to identify workarounds or manual overrides that maintain forecast coverage.</p>
-<section id="connection-types" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="connection-types"><span class="header-section-number">15.1</span> 5.1 Connection Types</h2>
+<section id="sec-flood-connection-types" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="sec-flood-connection-types"><span class="header-section-number">15.1</span> 5.1 Connection Types</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -1042,7 +1042,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Connection type</td>
-<td>From the types defined in Section 5.1</td>
+<td>From the types defined in <a href="#sec-flood-connection-types" class="quarto-xref"><span>Section 15.1</span></a></td>
 </tr>
 <tr class="odd">
 <td>Output variable</td>
@@ -1092,7 +1092,7 @@ ul.task-list li input[type="checkbox"] {
 <p>For Tier 3 models, the impact assessment is a required step before a pull request is merged and before a new model version is deployed to the operational environment. It must be documented in the run record or change log for the upstream model being updated.</p>
 </section>
 </section>
-<section id="model-run-records" class="level1" data-number="16">
+<section id="sec-flood-run-records" class="level1" data-number="16">
 <h1 data-number="16"><span class="header-section-number">16</span> 6. Model Run Records</h1>
 <p>For every model run that produces a formal output such as performance testing, the Custodian must complete a run record. This is the mechanism by which any output can be traced back to the exact model version, input data, and boundary conditions used to produce it.</p>
 <table class="caption-top table">
@@ -1133,7 +1133,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td>Boundary conditions</td>
-<td>Description and version of all boundary condition datasets used (see Section 2.4)</td>
+<td>Description and version of all boundary condition datasets used (see <a href="#sec-flood-boundary-conditions" class="quarto-xref"><span>Section 12.4</span></a>)</td>
 </tr>
 <tr class="even">
 <td>Connection overrides</td>
@@ -1252,7 +1252,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="calibration-performance-standards" class="level2" data-number="17.2">
 <h2 data-number="17.2" class="anchored" data-anchor-id="calibration-performance-standards"><span class="header-section-number">17.2</span> 7.2 Calibration Performance Standards</h2>
-<p>The Steward defines and maintains performance thresholds for each model type and each key site. These thresholds form part of the condition assessment (Section 4) and the calibration approval process. A calibration that does not meet thresholds at any key site must be reviewed by the Steward before the model version is approved for operational use.</p>
+<p>The Steward defines and maintains performance thresholds for each model type and each key site. These thresholds form part of the condition assessment (<a href="#sec-flood-condition" class="quarto-xref"><span>Chapter 14</span></a>) and the calibration approval process. A calibration that does not meet thresholds at any key site must be reviewed by the Steward before the model version is approved for operational use.</p>
 <p>Thresholds are stored in the Model Register alongside each model’s entry and reviewed as part of the annual audit. Where a threshold is relaxed for a specific model or site, the Owner must approve the relaxation and the reason must be recorded.</p>
 </section>
 </section>
@@ -1355,7 +1355,7 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Exceptions process, escalation paths, and compliance requirements: see Data and Digital Asset Governance Framework v2.0, Section 11.</th>
+<th>Exceptions process, escalation paths, and compliance requirements: see <a href="../01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.13</span></a>.</th>
 </tr>
 </thead>
 <tbody>
