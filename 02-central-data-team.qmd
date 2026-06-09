@@ -1,3 +1,57 @@
 # Central Data Team {#sec-central-data-team}
 
-*Content to be written.*
+::: {.callout-note}
+| | |
+|---|---|
+| **Version** | 1.0 |
+| **Status** | Draft: For Review |
+| **Review Date** | 2027-03-31 |
+| **Parent Document** | Data and Digital Asset Governance Framework v3.0 |
+:::
+
+## The gap this framework cannot close {#sec-cdt-gap}
+
+The governance problems this framework addresses share a cause. Datasets are derived independently by multiple teams because there is no shared stewardship. The AI assessment process is fragmented because no team has a cross-service mandate. The framework itself was written from within the Forecasting Team because Service Management, which holds the standards and vision brief for NFWS, does not have the digital and data expertise to own or maintain it. That is not a criticism of Service Management; it is a description of where technical capacity currently sits.
+
+Individual operational teams hold real technical depth. What they do not hold is a view across team boundaries. Each team can manage its own assets well. None of them is positioned to manage the assets multiple teams share, to spot duplication across the service, or to maintain standards coherently for all in-scope teams. These are structural gaps, not gaps in competence or effort.
+
+Service Management cannot fill the technical gap from above. Operational teams cannot fill the cross-service gap from within. A Central Data Team is the structural answer.
+
+## What a Central Data Team would do {#sec-cdt-role}
+
+### Shared dataset stewardship {#sec-cdt-stewardship}
+
+Datasets used by more than one team are currently derived independently by each team that needs them. That means duplicated effort, inconsistent outputs, and no single point of accountability when quality problems arise. A CDT holds Steward responsibility for those datasets via the Shared Asset Register (@sec-shared-datasets). The CDT G7 Steward is the named Steward for every entry in that register.
+
+Operational teams consuming a shared dataset are Custodians of it, not Stewards. They do not derive their own copy and do not hold their own Gold-tier approval. The authoritative version is the one the CDT holds. Consuming teams work from that version. Any quality concerns go to the CDT Steward for resolution.
+
+### Capability programme {#sec-cdt-capability}
+
+The CDT owns the companion documents: the R governance companion, the Python governance companion, and the domain companions for hydrometric data, flood models, flood warnings, and procedure tools. It publishes updates through the core release cycle defined in the parent framework. This is not a passive custodial role. The CDT actively maintains standards, responds to changes in tools and practice, and keeps the documents current.
+
+The CDT also holds the shared tooling: the packages and utilities that multiple teams use. Training for the framework is covered in the training companion (@sec-training-framework). The CDT coordinates delivery of that training across in-scope teams, tracking completion against the role-based requirements set out there.
+
+### Embedding model {#sec-cdt-embedding}
+
+Each operational team has a named CDT liaison. The liaison role is Custodian grade and open to any member of the team. The liaison attends team governance reviews, coordinates shared dataset proposals between the team and the CDT, and supports onboarding when a team adopts the framework or when a new team comes into scope.
+
+This is a coordination role, not a supervisory one. The liaison does not direct the team's technical work. They are the point of contact between the team and the CDT, and the person responsible for making sure shared dataset concerns reach the CDT Steward rather than being resolved unilaterally.
+
+## Proposed structure {#sec-cdt-structure}
+
+The CDT is headed by a G7 Steward who reports directly to the Deputy Director. It does not sit within any operational team. It serves all in-scope teams. That structural independence is what gives it the cross-service mandate that no operational team can hold.
+
+The G7 Steward produces the quarterly governance summary defined at @sec-monitoring-reporting. That summary covers shared dataset health across all in-scope teams and tracks framework adoption. It is the principal mechanism by which the Deputy Director, as Owner, maintains oversight of shared asset governance across the service.
+
+| Role | Grade | Accountability |
+|---|---|---|
+| Deputy Director (Owner) | Deputy Director | Holds Owner role for all NFWS shared assets. Receives quarterly governance summary. Signs off major changes to the framework. |
+| CDT G7 Steward | G7 | Reports to the Deputy Director. Holds Steward role for the Shared Asset Register. Produces quarterly governance summary. Owns the core companion documents. |
+| Operational team G7 Stewards | G7 | Report to the Deputy Director for their domain assets. Coordinate with the CDT G7 on shared dataset matters. |
+| CDT Liaison (per team) | Any grade | Custodian-level role. Attends team governance reviews. Coordinates shared dataset proposals and framework onboarding. |
+
+## How this framework supports the case {#sec-cdt-framework-support}
+
+This framework is designed so that when the CDT is established, it steps into a defined role. The Shared Asset Register format is specified at @sec-shared-datasets. The quarterly reporting cadence is defined at @sec-monitoring-reporting. The companion ownership model is described at @sec-cdt-capability. The CDT does not need to invent any of this.
+
+What it needs is resource. The next action is a decision by the Deputy Director to fund and establish the team. Everything else is already in place.
