@@ -202,9 +202,9 @@ This aligns with the CDDO requirement that every essential shared data asset has
 
 Not all assets carry the same risk. A script that broke at 2am during a live flood event is a different problem to one that broke during a research exercise the following week. The tier system exists to make that difference explicit, and to calibrate the governance overhead accordingly.
 
-All team assets, whether data, models, or code tools, are classified into one of three tiers based on their role in live operational forecasting. Tier 3 is operational: failure has direct consequences for the service. Tier 2 is analytical: regularly used, but not in the critical path. Tier 1 is experimental: research or prototype work, not in production. The tier determines the level of oversight required. It does not describe quality or maturity in isolation; a technically excellent piece of work begins at Tier 1 until its governance is confirmed.
+All team assets, whether data, models, code tools, warning configurations, or procedures, are classified into one of three tiers based on their role in live operational service. Tier 3 is operational: failure has direct consequences for the service. Tier 2 is analytical: regularly used, but not in the critical path. Tier 1 is experimental: research or prototype work, not in production. The tier determines the level of oversight required. It does not describe quality or maturity in isolation; a technically excellent piece of work begins at Tier 1 until its governance is confirmed.
 
-The same three tiers apply to every asset type. That uniformity is deliberate. It gives the team a shared language for risk, regardless of whether the asset in question is a hydrometric dataset, a hydraulic model, or a Python script.
+The same three tiers apply to every asset type. That uniformity is deliberate. It gives the team a shared language for risk, regardless of whether the asset in question is a hydrometric dataset, a hydraulic model, a Python script, a threshold configuration, or an operational procedure.
 
 | Tier | Description | Data | Models | Tools |
 |---|---|---|---|---|
@@ -231,6 +231,14 @@ Flood models, including FMP hydraulic models, PDM rainfall-runoff configurations
 ### Tool Tiers {#sec-tool-tiers}
 
 Code tools written in R or Python follow the same tier system. A tool's tier reflects the operational consequences of failure. Tier 3 tools require the most rigorous development, testing, and custodianship standards. See @sec-r-governance and @sec-python-governance for language-specific requirements.
+
+### Warning Configuration Tiers {#sec-warning-config-tiers}
+
+Warning threshold configurations, trigger criteria, and issuance rules are classified under the same three-tier system. A configuration's tier reflects its role in live warning operations. Tier 3 configurations are those actively used in live warning issuance: an incorrect threshold either triggers a warning that should not be issued, or fails to trigger one that should. Tier 2 covers configurations under review or used for post-event threshold analysis. Tier 1 covers proposed changes being assessed against historical data before any operational use. Owner sign-off is required before a configuration can be used in live issuance. See @sec-flood-warnings for detailed standards and the Warning Configuration Register.
+
+### Procedure Tiers {#sec-procedure-tiers}
+
+Procedures follow the same three-tier system applied to documentary assets. The tier reflects the operational consequence of following an incorrect or outdated procedure, not its length or complexity. A procedure used during a live flood incident is Tier 3: if it is wrong, the wrong action is taken in real time. A procedure used for internal review, training, or audit is Tier 2. A draft procedure under development or consultation is Tier 1. Owner sign-off is required before a procedure is used in a live incident. See @sec-procedure-tools for the documentary review cycle and sign-off requirements.
 
 ## Asset Registers {#sec-asset-registers}
 
