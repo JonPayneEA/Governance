@@ -6,11 +6,22 @@
 
 ---
 
+## Organisational Context
+
+The **National Forecasting and Warning Service (NFWS)** is headed by a Deputy Director. The operational teams within scope of this framework are:
+
+- **FFM** (Fluvial and Coastal Flood Modelling) and **LFS** (Local Forecasting Service) — share a single G7 Steward
+- **Warning team** — G7 Steward
+
+The **Flood Forecasting Centre (FFC)** has its own G7 Steward but is **out of scope** for this work.
+
+---
+
 ## Problem Statement
 
-The current governance document is a single Quarto book scoped to the Forecasting and Warning (F&W) team. As the team has grown and new departments look to adopt the same framework, three problems have emerged:
+The current governance document is a single Quarto book scoped to the former Forecasting and Warning (F&W) team. As NFWS has grown and new teams look to adopt the same framework, three problems have emerged:
 
-1. **Adding a new team is unclear.** Companion documents are written F&W-specifically. There is no template or process for a new team to onboard without reworking core content.
+1. **Adding a new team is unclear.** Companion documents are written for a single team. There is no template or process for a new team to onboard without reworking core content.
 2. **Shared datasets have no single owner.** Datasets used by multiple teams are derived independently, creating duplicated QC effort and divergent provenance trails. No Steward holds clear cross-team responsibility.
 3. **Cross-references are brittle.** Companion documents reference the parent by section number ("Section 7.2") which breaks whenever the parent is restructured.
 
@@ -23,6 +34,7 @@ The current governance document is a single Quarto book scoped to the Forecastin
 - Make companion documents team-agnostic so they are inherited, not rewritten, by each new team
 - Add scope-defined companion documents for Flood Warnings and Procedure Tools
 - Fix brittle cross-references throughout
+- Add a Future Directions chapter to shape responsible AI adoption across NFWS
 
 ---
 
@@ -55,6 +67,7 @@ governance-core/
     d-upcoming-changes.qmd
     e-file-format-reference.qmd
     f-mcp-server-spec.qmd
+  04-future-directions.qmd      # NEW: AI adoption roadmap, emerging capabilities
   governance-template.yml      # Template for tool repos
   scripts/build_tool_register.R
 ```
@@ -80,19 +93,22 @@ governance-<team>/
 ## Governance Hierarchy
 
 ```
-Deputy Director (Owner)
+NFWS Deputy Director (Owner)
 │
 ├── Central Data Team (G7 Steward)
 │     ├── Shared Asset Register (Gold-tier datasets used by multiple teams)
 │     ├── Capability Programme (training, standards, tooling)
 │     └── Embedded liaisons → one per operational team
 │
-├── F&W Team (G7 Steward) ──────────────── governance-fw
-├── Coastal Team (G7 Steward) ──────────── governance-coastal
+├── FFM + LFS (shared G7 Steward) ──────── governance-ffm-lfs
+├── Warning Team (G7 Steward) ───────────── governance-warnings
 └── [further teams] ─────────────────────── governance-<team>
+
+Out of scope:
+  Flood Forecasting Centre (FFC, G7 Steward) — not covered by this framework
 ```
 
-The Deputy Director Owner sits above all teams. The central data team G7 Steward reports to the DD and produces the quarterly governance summary covering shared dataset health and framework adoption across teams. Operational team Stewards report to the DD for their domain assets and coordinate with the central data team G7 on shared assets.
+The NFWS Deputy Director is the Owner across all in-scope teams. The central data team G7 Steward reports to the DD and produces the quarterly governance summary covering shared dataset health and framework adoption across teams. Operational team Stewards (FFM/LFS shared G7, Warnings G7) report to the DD for their domain assets and coordinate with the central data team G7 on shared assets.
 
 ---
 
@@ -121,7 +137,7 @@ The central data team is headed by a G7 Steward accountable to the Deputy Direct
 
 All four existing companions (R, Python, Hydrometric Data, Flood Models) are moved into `governance-core/companions/` and made team-agnostic:
 
-- Remove all F&W-specific language ("the F&W team", "Senior Modeller (G7)", etc.) — replace with generic terms ("the team's Steward", "the named G7 Steward")
+- Remove all team-specific language ("the F&W team", "Senior Modeller (G7)", etc.) — replace with generic terms ("the team's Steward", "the named G7 Steward")
 - Replace all section-number cross-references ("Section 7.2", "Section 7.3") with proper `@sec-` Quarto labels pointing into `governance-core`
 - Named role holders move out of companion docs entirely — they live in each team's `roles.qmd`
 
@@ -134,6 +150,22 @@ All four existing companions (R, Python, Hydrometric Data, Flood Models) are mov
 **Procedure Tools (`procedure-tools.qmd`)**
 
 *Scope:* Governs operational procedure documentation and the tools that produce or display it: Standard Operating Procedures, decision trees, response playbooks, and associated tooling. Covers document ownership (Owner/Steward/Custodian model), version control for procedure documents, review cadences, and dependencies on Tier 3 code tools. Out of scope: the warning assets that procedures reference (covered in `flood-warnings.qmd`) and code tool governance (covered in `r-governance.qmd` and `python-governance.qmd`).
+
+---
+
+## Future Directions Chapter (new: `04-future-directions.qmd`)
+
+This chapter sits in `governance-core` and is one of the primary motivations for the restructure. It is not a technical specification — it is a directional statement that gives NFWS a documented position on where the framework is heading and why. It serves two audiences: senior stakeholders who need to understand the strategic intent, and technical staff who need to know what is coming and how to prepare.
+
+The chapter covers three areas:
+
+**AI adoption roadmap.** Builds directly on the existing AI and ML governance section in the framework (which covers assessment before access and ML models in operational use). The future directions chapter looks forward: what classes of AI capability are the service likely to adopt over the next two to three years, what governance structures need to be in place before that is credible, and what the central data team's role is in evaluating and onboarding new AI tooling safely. This includes large language models used for procedure drafting or decision support, ML inference pipelines in the operational forecast chain, and automated data quality tools.
+
+**Shared data as an enabler.** The shift to a central Shared Asset Register and single-derivation Gold datasets is not just a governance improvement — it is the precondition for meaningful AI work across teams. Models trained on inconsistently derived data, or on data whose provenance is unclear, cannot be trusted in operational settings. This section makes that argument explicitly, connecting the structural changes in this redesign to the AI ambition.
+
+**Capability programme trajectory.** How the central data team's embedding and delivery model is expected to evolve as AI tooling matures: from individual tool assessments to shared evaluation frameworks, from team-level training to service-wide competency standards.
+
+The chapter is deliberately forward-looking and does not create new governance obligations. Where future capabilities require new obligations, those will be introduced through companion document updates at the time.
 
 ---
 
@@ -168,5 +200,5 @@ No companion writing is required unless the team has a genuinely unique asset ty
 
 - Writing the detailed content of the Flood Warnings and Procedure Tools companions (scope only for now)
 - Populating the Shared Asset Register (operational work, not a document change)
-- Creating `governance-coastal` or any team repo other than migrating `governance-fw`
+- Creating team repos other than the initial `governance-ffm-lfs` and `governance-warnings` migrations
 - Changes to the R or Python companion content beyond removing F&W-specific language
