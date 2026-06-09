@@ -4,10 +4,10 @@ project:
   
 book:
   title: "Data and Digital Asset Governance"
-  subtitle: "Forecasting and Warning"
+  subtitle: "National Forecasting and Warning Service"
   author: "Jonathan Payne"
-  date: "March 2026"
-  version: "2.0"
+  date: "2026"
+  version: "3.0"
   search: true
   reader-mode: true
   navbar:
@@ -37,8 +37,7 @@ book:
         href: https://github.com
   page-footer:
     left: |
-      The Forecastin & Warning Data and Digital Asset Governance was written by 
-      Jonathan Payne.
+      The NFWS Data and Digital Asset Governance was written by Jonathan Payne.
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
   cover-image: figures/logo.svg
@@ -50,19 +49,26 @@ book:
   chapters:
     - index.qmd
     - 01-governance-framework.qmd
-    - part: Code Companions
+    - 02-central-data-team.qmd
+    - 03-shared-datasets.qmd
+    - 04-future-directions.qmd
+    - part: "Code companions"
       chapters:
-        - 03-r-code-governance.qmd
-        - 04-python-code-governance.qmd
-    - part: Data Companions
+        - companions/r-governance.qmd
+        - companions/python-governance.qmd
+    - part: "Data companions"
       chapters:
-        - 05-hydrometric-data.qmd
-    - part: Model Companions
+        - companions/hydrometric-data.qmd
+    - part: "Model companions"
       chapters:
-        - 06-flood-model-governance.qmd
-    - part: Training and Implementation
+        - companions/flood-models.qmd
+    - part: "Warning and procedure companions"
       chapters:
-        - 07-training-framework.qmd
+        - companions/flood-warnings.qmd
+        - companions/procedure-tools.qmd
+    - part: "Training and implementation"
+      chapters:
+        - companions/training-framework.qmd
         - 08-implementation.qmd
   appendices:
     - a-glossary.qmd

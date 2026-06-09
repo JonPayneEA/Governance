@@ -2,58 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jonpayneea.github.io/Governance/index.html</loc>
-    <lastmod>2026-03-24T19:29:11.683Z</lastmod>
+    <lastmod>2026-06-09T09:15:13.595Z</lastmod>
   </url>
   <url>
     <loc>https://jonpayneea.github.io/Governance/01-governance-framework.html</loc>
-    <lastmod>2026-04-10T10:14:38.097Z</lastmod>
+    <lastmod>2026-06-09T09:15:13.556Z</lastmod>
   </url>
   <url>
-    <loc>https://jonpayneea.github.io/Governance/03-r-code-governance.html</loc>
-    <lastmod>2026-04-10T10:14:38.099Z</lastmod>
+    <loc>https://jonpayneea.github.io/Governance/02-central-data-team.html</loc>
+    <lastmod>2026-06-09T11:11:35.919Z</lastmod>
   </url>
   <url>
-    <loc>https://jonpayneea.github.io/Governance/04-python-code-governance.html</loc>
-    <lastmod>2026-04-10T10:14:38.101Z</lastmod>
+    <loc>https://jonpayneea.github.io/Governance/03-shared-datasets.html</loc>
+    <lastmod>2026-06-09T11:11:38.218Z</lastmod>
   </url>
   <url>
-    <loc>https://jonpayneea.github.io/Governance/05-hydrometric-data.html</loc>
-    <lastmod>2026-04-10T10:14:38.101Z</lastmod>
+    <loc>https://jonpayneea.github.io/Governance/04-future-directions.html</loc>
+    <lastmod>2026-06-09T11:11:40.315Z</lastmod>
   </url>
   <url>
-    <loc>https://jonpayneea.github.io/Governance/06-flood-model-governance.html</loc>
-    <lastmod>2026-04-10T10:14:38.106Z</lastmod>
+    <loc>https://jonpayneea.github.io/Governance/companions/r-governance.html</loc>
+    <lastmod>2026-06-09T09:15:13.573Z</lastmod>
   </url>
   <url>
-    <loc>https://jonpayneea.github.io/Governance/07-training-framework.html</loc>
-    <lastmod>2026-04-10T10:14:38.108Z</lastmod>
+    <loc>https://jonpayneea.github.io/Governance/companions/python-governance.html</loc>
+    <lastmod>2026-06-09T09:15:13.573Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jonpayneea.github.io/Governance/companions/hydrometric-data.html</loc>
+    <lastmod>2026-06-09T09:15:13.577Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jonpayneea.github.io/Governance/companions/flood-models.html</loc>
+    <lastmod>2026-06-09T09:15:13.577Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jonpayneea.github.io/Governance/companions/flood-warnings.html</loc>
+    <lastmod>2026-06-09T11:11:43.342Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jonpayneea.github.io/Governance/companions/procedure-tools.html</loc>
+    <lastmod>2026-06-09T11:11:45.825Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jonpayneea.github.io/Governance/companions/training-framework.html</loc>
+    <lastmod>2026-06-09T09:15:13.580Z</lastmod>
   </url>
   <url>
     <loc>https://jonpayneea.github.io/Governance/08-implementation.html</loc>
-    <lastmod>2026-04-10T10:14:38.110Z</lastmod>
+    <lastmod>2026-06-09T09:15:13.580Z</lastmod>
   </url>
   <url>
     <loc>https://jonpayneea.github.io/Governance/a-glossary.html</loc>
-    <lastmod>2026-04-10T10:14:38.114Z</lastmod>
+    <lastmod>2026-06-09T09:15:13.588Z</lastmod>
   </url>
   <url>
     <loc>https://jonpayneea.github.io/Governance/b-document-hierarchy.html</loc>
-    <lastmod>2026-03-23T14:25:05.208Z</lastmod>
+    <lastmod>2026-06-09T09:15:13.588Z</lastmod>
   </url>
   <url>
     <loc>https://jonpayneea.github.io/Governance/c-alignment-register.html</loc>
-    <lastmod>2026-03-23T14:25:05.208Z</lastmod>
+    <lastmod>2026-06-09T09:15:13.595Z</lastmod>
   </url>
   <url>
     <loc>https://jonpayneea.github.io/Governance/d-upcoming-changes.html</loc>
-    <lastmod>2026-04-10T10:14:38.115Z</lastmod>
+    <lastmod>2026-06-09T09:15:13.595Z</lastmod>
   </url>
   <url>
     <loc>https://jonpayneea.github.io/Governance/e-file-format-reference.html</loc>
-    <lastmod>2026-04-10T10:14:38.118Z</lastmod>
+    <lastmod>2026-06-09T09:15:13.595Z</lastmod>
   </url>
   <url>
     <loc>https://jonpayneea.github.io/Governance/f-mcp-server-spec.html</loc>
-    <lastmod>2026-04-10T10:14:38.120Z</lastmod>
+    <lastmod>2026-06-09T09:15:13.595Z</lastmod>
   </url>
 </urlset>
