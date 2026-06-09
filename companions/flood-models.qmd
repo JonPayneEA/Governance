@@ -13,7 +13,7 @@
 
 # Purpose
 
-This document sets out detailed governance standards for the flood models used and maintained by the Forecasting and Warning (F&W) team. It covers Flood Modeller Pro hydraulic models, PDM rainfall-runoff models, Black Box elements, and the boundary conditions that connect them. It is a companion to the Data and Digital Asset Governance Framework, which sets out the broader roles, tier system, and version control principles that apply to all team assets.
+This document sets out detailed governance standards for the flood models used and maintained by the team. It covers Flood Modeller Pro hydraulic models, PDM rainfall-runoff models, Black Box elements, and the boundary conditions that connect them. It is a companion to the Data and Digital Asset Governance Framework, which sets out the broader roles, tier system, and version control principles that apply to all team assets.
 
 Two areas are given particular attention here. First, model condition: a structured way of assessing how fit for purpose a model is over time, accounting for factors beyond operational performance alone, including age, data currency, structural integrity, and known deficiencies. Second, model connections: how models are linked together in cascading systems, where the outputs of one model become the inputs to another, and what governance is required to keep those connections auditable and reliable.
 
@@ -25,7 +25,7 @@ This document is not a guide to modelling practice. It does not prescribe how to
 
 # 1. Scope
 
-This framework applies to all flood models used by the F&W team in operational forecasting, model development, or research activities, including:
+This framework applies to all flood models used by the team in operational forecasting, model development, or research activities, including:
 
 - Flood Modeller Pro (FMP) 1D and 2D hydraulic models
 
@@ -52,7 +52,7 @@ FMP models simulate the movement of water through river channels and floodplains
 
 FMP models require formal version control because they contain binary and configuration files that can change with each calibration update, boundary condition change, or software upgrade. A model that produces a formal output and a model that has been subsequently updated must both be retained, with the version used for each output clearly identified.
 
-All FMP model files must follow the folder structure and naming conventions in the parent framework (Section 6). The Custodian is responsible for keeping model files in the agreed location and not on local machines or unmanaged drives.
+All FMP model files must follow the folder structure and naming conventions set out in @sec-flood-folder-structure. The Custodian is responsible for keeping model files in the agreed location and not on local machines or unmanaged drives.
 
 ## 2.2 PDM Rainfall-Runoff Models
 
@@ -66,11 +66,11 @@ Every PDM parameter set must be stored in the agreed repository rather than on i
 
 Black Boxes are data-driven models that relate inputs directly to outputs without representing the physical processes in between. In the team's operational context this includes transfer functions that route gauged flows between sites and regression-based routing models trained on historical observed records.
 
-Black Box models carry a specific governance risk: because their internal workings are not as easily physically interpretable, it can be difficult to identify when a model has become unreliable. The model condition framework in Section 4 is particularly important for Black Box models, as performance degradation may not be apparent until a significant event occurs.
+Black Box models carry a specific governance risk: because their internal workings are not as easily physically interpretable, it can be difficult to identify when a model has become unreliable. The model condition framework in @sec-flood-condition is particularly important for Black Box models, as performance degradation may not be apparent until a significant event occurs.
 
-All Black Boxesused in operational forecasting are Tier 3 assets. They must have a named Custodian, a documented training dataset, and a formal condition assessment on the schedule defined in Section 4. 
+All Black Boxes used in operational forecasting are Tier 3 assets. They must have a named Custodian, a documented training dataset, and a formal condition assessment on the schedule defined in @sec-flood-condition.
 
-## 2.4 Boundary Conditions
+## 2.4 Boundary Conditions {#sec-flood-boundary-conditions}
 
 Boundary conditions are the forcing inputs that drive model runs: upstream flow inflows, tidal water levels at downstream boundaries, lateral inflows from ungauged catchments, reservoir release rules, and operational interventions such as gate settings. They are distinct assets from the models themselves and require their own version control and documentation.
 
@@ -101,13 +101,13 @@ The Steward is responsible for keeping the Model Register current. It must be up
 | Repository location | Link or path to model files |
 | Current version | Semantic version number of the live model |
 | Calibration record | Reference to the calibration record document |
-| Condition rating | Current condition score and date assessed (see Section 4) |
-| Connected models | IDs of models that provide inputs to or receive outputs from this model (see Section 5) |
+| Condition rating | Current condition score and date assessed (see @sec-flood-condition) |
+| Connected models | IDs of models that provide inputs to or receive outputs from this model (see @sec-flood-connections) |
 | Status | Active, Under Development, Suspended, or Deprecated |
 | Last reviewed | Date of last condition assessment or custodianship review |
 | Notes | Known issues, planned work, or active exceptions |
 
-# 4. Model Condition
+# 4. Model Condition {#sec-flood-condition}
 
 Model condition is an assessment of how fit for purpose a model is at a given point in time. It is distinct from model performance in a narrow operational sense. A model may still produce outputs within acceptable error bounds while being in poor condition: its input data may be out of date, its channel geometry may no longer reflect the physical system, its software version may be unsupported (assuming changes to FM module adaptor), or its calibration may have been carried out on data that does not represent current catchment behaviour.
 
@@ -129,13 +129,13 @@ Model condition is assessed across five factors. Each factor is scored on a thre
 
 | **Score** | **Rating** | **Required action** |
 | --- | --- | --- |
-| 9-10 | Good | Routine monitoring. Review on standard cycle (see Section 4.3). |
+| 9-10 | Good | Routine monitoring. Review on standard cycle (see @sec-flood-condition-cycle). |
 | 7-8 | Satisfactory | No immediate action required. Identify improvement actions in the next maintenance cycle. Flag any Poor-scoring individual factors for attention. |
 | 5-6 | Requires attention | A condition improvement plan must be agreed with the Steward within three months. The model may continue in operational use while the plan is active, with the Steward's agreement. Known deficiencies must be noted in all run records. |
 | 3-4 | Poor | Owner must be notified. A formal review is required within one month to decide whether the model continues in operational use, is suspended pending improvement, or is retired. Continued use requires Owner sign-off with documented rationale. |
 | 0-2 | Critical | Model is suspended from operational use immediately pending Owner review. Emergency improvement or replacement is required. Route D (emergency) from the parent framework applies if urgent operational cover is needed. |
 
-## 4.3 Review Schedule
+## 4.3 Review Schedule {#sec-flood-condition-cycle}
 
 Condition assessments are carried out on a rolling schedule. The schedule is set by the Steward and recorded in the Model Register.
 
@@ -149,15 +149,15 @@ A triggered review does not reset the standard cycle clock. A model that receive
 
 ## 4.4 Condition and Model Connections
 
-Where a model in poor condition provides inputs to downstream models, the condition risk propagates. If a PDM with a Poor calibration currency rating drives the upstream boundary of an FMP model, the FMP model's outputs carry the same uncertainty regardless of the FMP model's own condition score. The model connections register (Section 5) must be consulted during every condition assessment to identify whether a model's condition affects connected models, and this must be recorded in the condition assessment note.
+Where a model in poor condition provides inputs to downstream models, the condition risk propagates. If a PDM with a Poor calibration currency rating drives the upstream boundary of an FMP model, the FMP model's outputs carry the same uncertainty regardless of the FMP model's own condition score. The model connections register (@sec-flood-connections) must be consulted during every condition assessment to identify whether a model's condition affects connected models, and this must be recorded in the condition assessment note.
 
-# 5. Model Connections
+# 5. Model Connections {#sec-flood-connections}
 
 Flood forecasting systems are rarely a single model in isolation. In most catchments, the team operates cascading systems: PDM models produce catchment runoff that drives FMP hydraulic models; FMP models route flows downstream to become boundary conditions for further FMP models; tidal models set downstream boundaries for fluvial models; Black Boxes route flows between points or create behaviors that can’t be replicated in our hydraulic models.
 
 Understanding these connections is essential for three reasons. First, an error or condition problem in an upstream model propagates downstream and affects every connected model's outputs. Second, when a model is updated or recalibrated, the team needs to know which downstream models may be affected. Third, in an operational failure, knowing the connection structure allows the team to identify workarounds or manual overrides that maintain forecast coverage.
 
-## 5.1 Connection Types
+## 5.1 Connection Types {#sec-flood-connection-types}
 
 | **Connection type** | **Description** | **Example** |
 | --- | --- | --- |
@@ -175,7 +175,7 @@ Every operational connection between models must be recorded in the Connection R
 | Connection ID | Unique identifier: [UpstreamModelID]_TO_[DownstreamModelID] (e.g., SEVERN_PDM_v2.1_TO_SEVERN_FMP_v3.2) |
 | Upstream model | Model ID of the model providing the output |
 | Downstream model | Model ID of the model receiving the input |
-| Connection type | From the types defined in Section 5.1 |
+| Connection type | From the types defined in @sec-flood-connection-types |
 | Output variable | What the upstream model provides (e.g., routed flow at [gauge], water level at [node]) |
 | Input variable | How that output is used by the downstream model (e.g., upstream inflow boundary at node X) |
 | Transfer method | How the output reaches the downstream model: direct file transfer, API call, manual copy, Flode pipeline step |
@@ -204,7 +204,7 @@ Before any change to a model is deployed, the Custodian must consult the Connect
 
 For Tier 3 models, the impact assessment is a required step before a pull request is merged and before a new model version is deployed to the operational environment. It must be documented in the run record or change log for the upstream model being updated.
 
-# 6. Model Run Records
+# 6. Model Run Records {#sec-flood-folder-structure}
 
 For every model run that produces a formal output such as performance testing, the Custodian must complete a run record. This is the mechanism by which any output can be traced back to the exact model version, input data, and boundary conditions used to produce it.
 
@@ -216,7 +216,7 @@ For every model run that produces a formal output such as performance testing, t
 | Run date and time | When the run was initiated and completed |
 | Run by | Name of the Custodian who ran the model |
 | Input data | Gold or Silver dataset IDs and versions for all hydrometric inputs; PDM parameter set version if PDM-derived inflows used |
-| Boundary conditions | Description and version of all boundary condition datasets used (see Section 2.4) |
+| Boundary conditions | Description and version of all boundary condition datasets used (see @sec-flood-boundary-conditions) |
 | Connection overrides | Any manual override points activated; what value was used and why |
 | Software version | Flood Modeller Pro build number or equivalent |
 | Model condition at time of run | Current condition rating and date of last assessment |
@@ -254,7 +254,7 @@ Every calibrated model version must have a calibration record. This is distinct 
 
 ## 7.2 Calibration Performance Standards
 
-The Steward defines and maintains performance thresholds for each model type and each key site. These thresholds form part of the condition assessment (Section 4) and the calibration approval process. A calibration that does not meet thresholds at any key site must be reviewed by the Steward before the model version is approved for operational use.
+The Steward defines and maintains performance thresholds for each model type and each key site. These thresholds form part of the condition assessment (@sec-flood-condition) and the calibration approval process. A calibration that does not meet thresholds at any key site must be reviewed by the Steward before the model version is approved for operational use.
 
 Thresholds are stored in the Model Register alongside each model's entry and reviewed as part of the annual audit. Where a threshold is relaxed for a specific model or site, the Owner must approve the relaxation and the reason must be recorded.
 
@@ -323,7 +323,7 @@ This document is reviewed annually alongside the parent framework and companion 
 
 The Delegated Steward conducts an annual audit of all Tier 3 models covering: condition rating currency, calibration record completeness, run record completeness for all formal outputs, Connection Register accuracy, and system diagram currency. Findings are reported to the Owner alongside the wider governance audit.
 
-| Exceptions process, escalation paths, and compliance requirements: see Data and Digital Asset Governance Framework v2.0, Section 11. |
+| Exceptions process, escalation paths, and compliance requirements: see @sec-monitoring-reporting. |
 | --- |
 
 # Approved by

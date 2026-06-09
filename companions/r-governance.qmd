@@ -12,7 +12,7 @@
 
 # Purpose
 
-This document provides the detailed, R-specific governance standards for tools developed by the Forecasting and Warning Teams. It is a companion to the Data & Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, digital and data assets registers, and version control standards that apply to all team code regardless of language.
+This document provides the detailed, R-specific governance standards for tools developed by the team. It is a companion to the Data & Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, digital and data assets registers, and version control standards that apply to all team code regardless of language.
 
 This document covers what is specific to R: the in-house *Flode* package architecture, fastverse coding conventions, renv dependency management, R testing and CI tooling, and R repository structure. Please read this alongside the parent framework, not instead of it.
 
@@ -23,7 +23,7 @@ This document covers what is specific to R: the in-house *Flode* package archite
 
 ## 1.1 Background
 
-The Forecasting and Warning (F&W) Teams rely on a growing suite of R scripts, packages, and analytical tools to support both operational forecasting and associated research activities. As the team grows and the codebase matures, inconsistent development practices create risks including unreproducible results, undocumented tools, difficult onboarding, and vulnerabilities to key-person dependency.
+The team relies on a growing suite of R scripts, packages, and analytical tools to support both operational forecasting and associated research activities. As the team grows and the codebase matures, inconsistent development practices create risks including unreproducible results, undocumented tools, difficult onboarding, and vulnerabilities to key-person dependency.
 
 This governance proposal establishes a structured, practical framework to address these risks while remaining accessible to team members at all levels of R proficiency. This ranges from early-career modellers and analysts writing their first functions to senior technical advisors developing complex modelling packages.
 
@@ -31,7 +31,7 @@ This governance proposal establishes a structured, practical framework to addres
 
 This document applies to all R code produced by members of the team, including:
 
-- R scripts used in support of operational F&W workflows
+- R scripts used in support of operational forecasting workflows
 
 - Internal R packages and reusable function libraries
 
@@ -48,23 +48,23 @@ This document applies to all R code produced by members of the team, including:
 
 The following governance elements are defined in the Data & Digital Asset Governance Framework and apply to all R tools. They are not repeated here; refer to that document for the authoritative version:
 
-- Owner → Steward → Custodian roles and grade requirements (Section 3)
+- Owner → Steward → Custodian roles and grade requirements (@sec-governance-roles)
 
-- Tool tier classification: Tier 3 / 2 / 1 (Section 5)
+- Tool tier classification: Tier 3 / 2 / 1 (@sec-tier-system)
 
-- Custodianship requirements by tier (Section 7.2)
+- Custodianship requirements by tier (@sec-custodianship-by-tier)
 
-- Routes to tool development: A, B, C, D (Section 7.3)
+- Routes to tool development: A, B, C, D (@sec-routes-to-development)
 
-- Code review requirements by tier (Section 7.4)
+- Code review requirements by tier (@sec-code-review-requirements)
 
-- Version control principles: branching, commits, semantic versioning, reproducibility (Section 7.5)
+- Version control principles: branching, commits, semantic versioning, reproducibility (@sec-version-control)
 
-- Tool Register fields and maintenance (Section 7.6)
+- Tool Register fields and maintenance (@sec-tool-register)
 
-- Handover and succession (Section 7.7)
+- Handover and succession (@sec-handover-succession)
 
-- Governance, exceptions, and annual audit (Section 12)
+- Governance, exceptions, and annual audit (@sec-monitoring-reporting)
 
 This document covers everything that is specific to R.
 
@@ -94,9 +94,9 @@ This Document (R Tool Governs: Flode architecture, R coding Governance) standard
 
 # 2. R Tool Development Standards
 
-The governance tier system, routes to development, and review requirements are defined in the parent framework (Sections 7.1–7.4). This section covers the R-specific standards that apply within that governance structure.
+The governance tier system, routes to development, and review requirements are defined in the parent framework (@sec-code-tool-governance). This section covers the R-specific standards that apply within that governance structure.
 
-| Tool tiers, development routes, review requirements by tier, and version control principles: see Data & Digital Asset Governance Framework, Section 7. |
+| Tool tiers, development routes, review requirements by tier, and version control principles: see @sec-code-tool-governance. |
 | --- |
 
 ## 2.1 The Flode Package Ecosystem
@@ -164,7 +164,7 @@ All team R code follows a style guide tailored to the fastverse ecosystem. Where
 
 ### 2.2.2 Code Structure
 
-- Scripts must begin with a standardised header block (see Section 2.4)
+- Scripts must begin with a standardised header block (see @sec-r-header-block)
 
 - Functions should follow the single-responsibility principle: one function, one task
 
@@ -227,7 +227,7 @@ Where tools require stateful objects or extensible APIs, OOP is preferred. Flode
 | S3 | Lightweight method dispatch on existing data structures (e.g., print, summary methods for Flode classes) | Any new exported Flode class – use S7 instead |
 | S4 | Interoperability with existing S4 packages (e.g., terra, sp) only | All new development – S7 supersedes S4 |
 
-## 2.4 Mandatory Header Block
+## 2.4 Mandatory Header Block {#sec-r-header-block}
 
 Every script and function file must include the following header, completed in full:
 
@@ -256,7 +256,7 @@ Every script and function file must include the following header, completed in f
 
 # 3. Code Review - R-Specific Requirements
 
-Review requirements by tier (mandatory peer review, senior sign-off for Tier 3, annual audit) are set in the parent framework, Section 8.4. This section covers the R-specific review checklist and automated tooling.
+Review requirements by tier (mandatory peer review, senior sign-off for Tier 3, annual audit) are set in the parent framework, @sec-code-review-requirements. This section covers the R-specific review checklist and automated tooling.
 
 ## 3.1 R Review Checklist
 
@@ -320,9 +320,9 @@ All reviewers must work through this checklist. The completed checklist must be 
 
 **4. Version Control: R-Specific Implementation**
 
-Version control principles (branching strategy, commit standards, semantic versioning, and reproducibility requirements) are defined in the parent framework, Section 8.5. This section covers the R-specific implementation.
+Version control principles (branching strategy, commit standards, semantic versioning, and reproducibility requirements) are defined in the parent framework, @sec-version-control. This section covers the R-specific implementation.
 
-| Branching strategy, commit standards, semantic versioning: see Data & Digital Asset Governance Framework, Section 8.5. |
+| Branching strategy, commit standards, semantic versioning: see @sec-version-control. |
 | --- |
 
 ## 4.1 Repository Structure
@@ -349,7 +349,7 @@ All team R repositories must use renv to manage package dependencies. This ensur
 
 Custodianship roles, grade requirements, the Tool Register, and handover and succession requirements for R tools are defined in the parent framework. All requirements set out there apply in full.
 
-| Owner/Steward/Custodian roles and grades: Section 3. Tier-specific custodianship requirements: Section 7.2. Tool Register: Section 7.6. Handover and succession: Section 7.7. All references are to the Data & Digital Asset Governance Framework v2.0. |
+| Owner/Steward/Custodian roles and grades: @sec-governance-roles. Tier-specific custodianship requirements: @sec-custodianship-by-tier. Tool Register: @sec-tool-register. Handover and succession: @sec-handover-succession. All references are to the Data & Digital Asset Governance Framework v2.0. |
 | --- |
 
 For cross-language pipelines where an R tool feeds a Python component, custodianship must be assigned separately for each language component. The Owner may be the same person, but the Steward and Custodian assignments should reflect who is best placed to maintain each part.
@@ -388,9 +388,9 @@ The team holds a monthly R drop-in session for questions, code walkthroughs, and
 
 # 7. Governance, Exceptions, and Review
 
-The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, Section 12. The following applies specifically to R tools:
+The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, @sec-monitoring-reporting. The following applies specifically to R tools:
 
-| Exceptions process, compliance and audit, document review schedule: see Data & Digital Asset Governance Framework, Section 12. |
+| Exceptions process, compliance and audit, document review schedule: see @sec-monitoring-reporting. |
 | --- |
 
 Overall responsibility for this document sits with the R Lead. The R Lead conducts an annual audit of all Tier 3 R tools covering: header block completeness, test coverage, documentation currency, renv lockfile consistency, and compliance with the branching strategy. Findings are reported alongside the wider governance audit.

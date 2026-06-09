@@ -13,7 +13,7 @@
 
 # Purpose
 
-This document sets out the staff training framework for the Forecasting and Warning (F&W) team. It defines what training is required, who must complete it, and how completion is recorded. The framework is structured to ensure that every team member understands the governance obligations relevant to their role, without requiring everyone to cover everything.
+This document sets out the staff training framework for the team. It defines what training is required, who must complete it, and how completion is recorded. The framework is structured to ensure that every team member understands the governance obligations relevant to their role, without requiring everyone to cover everything.
 
 Training is organised into four layers: a core that all staff complete; a fundamentals band covering scientific and technical foundations; a cross-cutting section that applies to all modellers regardless of specialism; and specialist tracks for hydrological modelling, hydraulic modelling, R development, and Python and machine learning. A crossover module sits between the hydraulic and Python tracks for staff working with the Flood Modeller API in Python.
 
@@ -89,7 +89,7 @@ The framework has four layers. Each layer builds on the one before it.
 
 The diagram below shows the full structure. Arrows indicate the recommended completion order.
 
-# 2. Core (all staff)
+# 2. Core (all staff) {#sec-training-core}
 
 Every team member must complete the core section before starting any specialist track. It covers the governance principles, roles, and structures that underpin all team activity.
 
@@ -115,7 +115,7 @@ On completing the core section, a team member should be able to identify the Own
 
 # 3. Fundamentals
 
-These tracks are for graduates who bring scientific knowledge from their degree but are new to the F&W context. The aim is not to teach from scratch but to bridge between general scientific training and the specific methods, tools, and conventions used in operational flood forecasting. Each section below frames what to focus on and points to the best external resources for doing so.
+These tracks are for graduates who bring scientific knowledge from their degree but are new to the operational context. The aim is not to teach from scratch but to bridge between general scientific training and the specific methods, tools, and conventions used in operational flood forecasting. Each section below frames what to focus on and points to the best external resources for doing so.
 
 ## 3.1 Hydrology fundamentals
 
@@ -150,10 +150,10 @@ Recommended for: all staff working with hydrological models, hydrometric data, o
 | NRFA (National River Flow Archive): nrfa.ceh.ac.uk                                                                                                                                                   | Explore real UK flow records, catchment descriptors, and hydrograph shapes. Browsing gauges you will work with is one of the best ways to build intuition for catchment response.                         |
 | Bell, V.A. et al. (2007). Development of a high resolution grid-based river flow model for use with regional climate model output. Hydrology and Earth System Sciences. doi:10.5194/hess-11-532-2007 | Background on grid-based hydrological modelling in a UK operational context. Useful for understanding how the national modelling infrastructure relates to catchment-scale work.                          |
 
-| **F&W context note** The PDM (Probability Distributed Model) is the team's primary rainfall-runoff tool. Its parameter sets encode the catchment characteristics above. When you read about soil moisture storage capacity or drainage parameters in a PDM calibration record, the concepts above are what those parameters represent. The goal of reading this material is to be able to look at a parameter set and understand what it is saying about the catchment, not just treat it as a set of numbers to store. |
+| **Context note** The PDM (Probability Distributed Model) is the team's primary rainfall-runoff tool. Its parameter sets encode the catchment characteristics above. When you read about soil moisture storage capacity or drainage parameters in a PDM calibration record, the concepts above are what those parameters represent. The goal of reading this material is to be able to look at a parameter set and understand what it is saying about the catchment, not just treat it as a set of numbers to store. |
 |------------------------------------------------------------------------|
 
-## 3.2 Hydraulics fundamentals
+## 3.2 Hydraulics fundamentals {#sec-training-hydraulics}
 
 Recommended for: all FMP users. Also useful for Python developers working with FMP API outputs who need to interpret model results rather than just pass files between systems.
 
@@ -188,7 +188,7 @@ Recommended for: all FMP users. Also useful for Python developers working with F
 | Hunter, N.M. et al. (2007). Benchmarking 2D hydraulic models for urban flood simulations. Proceedings of the ICE - Water Management. doi:10.1680/wama.2007.160.1.13                                                   | A comparison of 2D model performance across test cases. Useful for understanding what 2D models do well and poorly, and what that means for interpreting results.                                                                                               |
 | Horritt, M.S. & Bates, P.D. (2002). Evaluation of 1D and 2D numerical models for predicting river flood inundation. Journal of Hydrology. doi:10.1016/S0022-1694(02)00121-X                                           | Classic comparison of 1D versus 2D performance for floodplain inundation.                                                                                                                                                                                       |
 
-| **F&W context note** FMP models in the operational system are driven by PDM outputs as upstream boundary conditions. This means an error in the PDM (wrong parameter set, stale calibration) propagates directly into the hydraulic model's results. When you are diagnosing a forecast that looks wrong, the first question is often whether the issue is in the hydraulic model or in the boundary conditions it received. Understanding both ends of the pipeline is what makes this team's work different from standalone hydraulic modelling applied in other parts of the business. |
+| **Context note** FMP models in the operational system are driven by PDM outputs as upstream boundary conditions. This means an error in the PDM (wrong parameter set, stale calibration) propagates directly into the hydraulic model's results. When you are diagnosing a forecast that looks wrong, the first question is often whether the issue is in the hydraulic model or in the boundary conditions it received. Understanding both ends of the pipeline is what makes this team's work different from standalone hydraulic modelling applied in other parts of the business. |
 |------------------------------------------------------------------------|
 
 ## 3.3 Data and coding fundamentals
@@ -224,10 +224,10 @@ Recommended for: all staff who will write, review, or run code. Provides the gro
 | Apache Arrow / Parquet overview: arrow.apache.org/docs/format/Columnar.html                                                           | A readable explanation of columnar storage and why it matters. Understanding this makes the Bronze store's Parquet structure and partitioning strategy make sense rather than feel arbitrary.               |
 | The Missing Semester of Your CS Education (MIT): missing.csail.mit.edu                                                                | Short video lectures on shell tools, Git, and editors. Particularly useful if command-line work feels unfamiliar. The Git lecture is one of the best short introductions available.                         |
 
-| **F&W context note** The team uses R and Python in different parts of the pipeline. R (via the reach.\* packages) handles data ingestion, quality control, ensemble processing, and visualisation. Python handles the Flood Modeller API, ML training pipelines, and the Databricks environment. The two connect via Parquet files: R writes to the Bronze/Silver/Gold store; Python reads from it. Understanding both languages at a conceptual level, even if you only write in one, makes it much easier to debug problems at the boundary between them. |
+| **Context note** The team uses R and Python in different parts of the pipeline. R (via the reach.\* packages) handles data ingestion, quality control, ensemble processing, and visualisation. Python handles the Flood Modeller API, ML training pipelines, and the Databricks environment. The two connect via Parquet files: R writes to the Bronze/Silver/Gold store; Python reads from it. Understanding both languages at a conceptual level, even if you only write in one, makes it much easier to debug problems at the boundary between them. |
 |------------------------------------------------------------------------|
 
-# 4. Cross-cutting: Model calibration and configuration
+# 4. Cross-cutting: Model calibration and configuration {#sec-training-crosscutting}
 
 This section is required for all staff who work with flood models in any capacity. It covers the shared governance requirements that apply regardless of whether a model is hydrological, hydraulic, or data-driven. It also covers black box models specifically, as these carry governance risks that require all modellers to understand their limitations.
 
@@ -368,7 +368,7 @@ FMP models are binary files. Unlike R or Python scripts, you cannot easily read 
 |------------------------------------|------------------------------------|
 | Flood Modeller Pro user manual: floodmodeller.com/support                                         | The primary reference. Before working on any model, read the sections covering the unit types you will encounter (ISIS River, ISIS Spill, ISIS Reservoir, 2D domain). The reference manual section on each unit explains what each parameter does. |
 | Flood Modeller Pro worked examples (included with software installation)                          | Work through the 1D steady-state and 1D unsteady examples before touching a live model. The unsteady examples are the most relevant to operational forecasting.                                                                                    |
-| Horritt, M.S. & Bates, P.D. (2002) -- see Section 3.2 resources                                   | Re-read with operational intent: when you are deciding options for a new model build, this paper is the reference for that decision.                                                                                                               |
+| Horritt, M.S. & Bates, P.D. (2002) -- see @sec-training-hydraulics resources                                   | Re-read with operational intent: when you are deciding options for a new model build, this paper is the reference for that decision.                                                                                                               |
 | Environment Agency (2010). Flood risk assessment: the requirements for FRMPs. Technical guidance. | Context for how flood models are used in a regulatory and operational setting in England. Useful background for understanding why model condition and documentation standards are not just bureaucracy.                                            |
 
 ### 1D, 2D, and linked configurations
@@ -541,11 +541,11 @@ The table below sets out the minimum training required for each role. Where a te
 
 | **Role**                           | **Minimum training required**                                                                                                                                                                                   |
 |------------------------------------|------------------------------------|
-| **All staff**                      | Core (Section 2)                                                                                                                                                                                                |
-| **Custodian (any asset)**          | Core + relevant fundamentals + cross-cutting (Section 4) + specialist track for the asset type                                                                                                                  |
+| **All staff**                      | Core (@sec-training-core)                                                                                                                                                                                                |
+| **Custodian (any asset)**          | Core + relevant fundamentals + cross-cutting (@sec-training-crosscutting) + specialist track for the asset type                                                                                                                  |
 | **Steward**                        | Core + relevant fundamentals + cross-cutting + specialist track for the assets overseen + awareness session on adjacent tracks where relevant                                                                   |
 | **Delegated Steward**              | As Steward for all assets within the delegated domain. Additionally: Tier 3 annual audit requirements, corrective action planning, and non-compliance escalation procedures as set out in the parent framework. |
-| **Owner**                          | Core + governance obligations from Section 4 only; no specialist track required                                                                                                                                 |
+| **Owner**                          | Core + governance obligations from @sec-training-crosscutting only; no specialist track required                                                                                                                                 |
 | **Tier 3 tool or model Custodian** | All of the above for their track, plus confirmation from a senior reviewer before being listed on the register                                                                                                  |
 | **FMP API developer**              | Core + hydraulics fundamentals + data and coding fundamentals + cross-cutting + hydraulic modelling track + crossover module                                                                                    |
 
