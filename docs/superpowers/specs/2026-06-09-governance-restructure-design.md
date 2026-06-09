@@ -8,12 +8,23 @@
 
 ## Organisational Context
 
-The **National Forecasting and Warning Service (NFWS)** is headed by a Deputy Director. The operational teams within scope of this framework are:
+The **F&W Service** (transitioning to the National Forecasting and Warning Service, NFWS) is headed by an F&W Deputy Director. The service has five G7-managed teams reporting to the DD:
 
-- **FFM** (Fluvial and Coastal Flood Modelling) and **LFS** (Local Forecasting Service) — share a single G7 Steward
-- **Warning team** — G7 Steward
+| Team | G7 Manager | Status | In scope |
+|---|---|---|---|
+| Flood Forecasting Centre (FFC) | Head of Centre (assigned) | Operational | No — out of scope |
+| Forecasting Team | Forecasting Manager | **Vacancy** | Yes |
+| Warning Team | Warning Manager (assigned) | Operational | Yes |
+| Service Management | Service Management Manager (assigned) | Operational | Peripheral — standards and guidance role |
+| F&W Transformation | Transformation Manager (assigned) | Operational | No |
 
-The **Flood Forecasting Centre (FFC)** has its own G7 Steward but is **out of scope** for this work.
+**Forecasting Team** covers: 3 Local Forecasting Teams, 1 Coastal Modelling Team, 2 Fluvial Modelling Teams, and a Senior Technical Advisor. Responsible for the operational local forecasting service and realtime modelling tools (data, strategy, performance, development). The G7 post is currently vacant.
+
+**Warning Team** covers: 3 Warning Hub Teams. Responsible for the operational warning service, impact information, result thresholds, and links to ALTs, LRF, and community groups.
+
+**FFC** (out of scope) covers: FFCDM and S/Hydromets staff. Responsible for the Flood Guidance Statement, national flood risk products, and Met Office/G2G management.
+
+The proposed **central data team** does not yet exist as a discrete unit. It is a new structure to be established, likely within or alongside the Forecasting Team remit, to hold shared data stewardship and run the capability programme across in-scope teams.
 
 ---
 
@@ -93,22 +104,25 @@ governance-<team>/
 ## Governance Hierarchy
 
 ```
-NFWS Deputy Director (Owner)
+F&W / NFWS Deputy Director (Owner)
 │
-├── Central Data Team (G7 Steward)
+├── Central Data Team (G7 Steward) [to be established]
 │     ├── Shared Asset Register (Gold-tier datasets used by multiple teams)
-│     ├── Capability Programme (training, standards, tooling)
-│     └── Embedded liaisons → one per operational team
+│     ├── Capability Programme (training, standards, AI tooling)
+│     └── Embedded liaisons → one per in-scope team
 │
-├── FFM + LFS (shared G7 Steward) ──────── governance-ffm-lfs
-├── Warning Team (G7 Steward) ───────────── governance-warnings
-└── [further teams] ─────────────────────── governance-<team>
-
-Out of scope:
-  Flood Forecasting Centre (FFC, G7 Steward) — not covered by this framework
+├── Forecasting Team (G7 Steward — currently vacant) ── governance-forecasting
+├── Warning Team (G7 Steward) ────────────────────────── governance-warnings
+│
+│   [Peripheral — standards and guidance role only]
+├── Service Management Team (G7 Steward)
+│
+│   [Out of scope]
+├── FFC (Head of Centre)
+└── F&W Transformation Team (G7 Manager)
 ```
 
-The NFWS Deputy Director is the Owner across all in-scope teams. The central data team G7 Steward reports to the DD and produces the quarterly governance summary covering shared dataset health and framework adoption across teams. Operational team Stewards (FFM/LFS shared G7, Warnings G7) report to the DD for their domain assets and coordinate with the central data team G7 on shared assets.
+The F&W/NFWS Deputy Director is the Owner across all in-scope teams. The central data team G7 Steward (once established) reports to the DD and produces the quarterly governance summary covering shared dataset health and framework adoption. Operational team Stewards report to the DD for their domain assets and coordinate with the central data team G7 on shared assets. The Forecasting Manager G7 post is currently vacant — governance arrangements for that team during the vacancy period must be addressed in the implementation plan.
 
 ---
 
@@ -200,5 +214,7 @@ No companion writing is required unless the team has a genuinely unique asset ty
 
 - Writing the detailed content of the Flood Warnings and Procedure Tools companions (scope only for now)
 - Populating the Shared Asset Register (operational work, not a document change)
-- Creating team repos other than the initial `governance-ffm-lfs` and `governance-warnings` migrations
+- Creating team repos other than the initial `governance-forecasting` and `governance-warnings` migrations
+- Resolving the Forecasting Manager G7 vacancy (operational matter, not a document change)
+- Formally establishing the central data team as an organisational unit (governance/HR matter)
 - Changes to the R or Python companion content beyond removing F&W-specific language
