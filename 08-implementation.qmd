@@ -12,6 +12,17 @@
 
 The framework defines what is required. This chapter describes how to get there. The gap between a framework being published and a team operating to it is where governance efforts most often fail. This chapter makes that path explicit: effective dates, a phased compliance timeline that matches obligations to available capacity, practical guidance on setting up each register, and an explanation of how the `fw-governance` MCP server reduces the manual burden once it is in place.
 
+Implementation runs across three phases from April 2026. Each phase has a defined scope: Phase 1 establishes the factual record, Phase 2 activates monitoring obligations, and Phase 3 brings the full framework into force. The diagram below shows the shape of that journey before the detail follows.
+
+```{mermaid}
+%%| fig-width: 6
+flowchart LR
+    P1["**Phase 1**\nRegistration\nApr–Jun 2026\n\n- Tier 3 assets registered\n- Roles confirmed\n- Connection Register populated"]
+    P2["**Phase 2**\nAssessment\nJul 2026–Mar 2027\n\n- Quarterly reporting begins\n- Tier 2 registration starts\n- Condition assessments"]
+    P3["**Phase 3**\nSteady State\nApr 2027+\n\n- Full framework in force\n- Annual Tier 3 audit\n- Tier 1/2 review cycles"]
+    P1 --> P2 --> P3
+```
+
 ## 1. Effective Date and Starting Point {#sec-effective-date}
 
 Framework v1.4 takes effect on 1 April 2026.
@@ -96,6 +107,18 @@ Mandatory fields:
 | `calibration_record` | Path to calibration documentation |
 | `status` | Active, Under Development, Deprecated |
 | `connected_model_ids` | IDs of all directly connected models (comma-separated) |
+
+The following example shows how a small connected model group might appear in the register. Names and scores are illustrative.
+
+| model_id | model_type | tier | owner | steward | custodians | current_version | condition_score | condition_rating | last_assessed_date | calibration_record | status | connected_model_ids |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| WYE_PDM_2.1.0 | PDM | 3 | A. Walsh, DD | S. Okafor, G7 | T. Marsh | 2.1.0 | 8 | Good | 2025-11-01 | /docs/calibration/wye_pdm_cal.md | Active | WYE_FMP1D_3.0.0 |
+| WYE_FMP1D_3.0.0 | FMP 1D | 3 | A. Walsh, DD | S. Okafor, G7 | T. Marsh, R. Patel | 3.0.0 | 6 | Satisfactory | 2025-10-15 | /docs/calibration/wye_fmp_cal.md | Active | WYE_PDM_2.1.0 |
+| SEVERN_BB_1.0.0 | Black Box | 1 | A. Walsh, DD | S. Okafor, G7 | J. Lee | 1.0.0 | — | — | — | — | Under Development | SEVERN_PDM_1.3.0 |
+| MEDWAY_FMP1D_4.1.0 | FMP 1D | 2 | B. Crane, DD | D. Nwosu, G7 | F. Kovacs | 4.1.0 | 5 | Requires Attention | 2025-08-20 | /docs/calibration/medway_fmp_cal.md | Active | MEDWAY_PDM_2.0.0 |
+| EDEN_BC_1.2.0 | Boundary Conditions | 3 | A. Walsh, DD | S. Okafor, G7 | T. Marsh | 1.2.0 | 9 | Good | 2025-12-01 | /docs/calibration/eden_bc_cal.md | Active | WYE_FMP1D_3.0.0 |
+
+Tier 1 models are not condition-assessed until they reach Active status. The condition score and rating fields are left blank during development.
 
 The MCP server `get_model_info` tool reads this file.
 

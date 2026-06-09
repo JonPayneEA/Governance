@@ -10,6 +10,23 @@
 | **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ Data Ownership Model (CDDO, 2024) |
 :::
 
+The four model types used by the team are distinct in how they are built, calibrated, and connected. The diagram below gives a landscape view of what they are and how they relate before the chapter covers each in detail.
+
+```{mermaid}
+%%| fig-width: 6
+%%| label: fig-model-overview
+%%| fig-cap: "Conceptual relationships between the four model types."
+flowchart LR
+    PDM["PDM\nRainfall-runoff"]
+    BC["Boundary Conditions\nTidal / inflow / structure"]
+    FMP["FMP 1D\nHydraulic routing"]
+    BB["Black Box\nData-driven routing"]
+
+    PDM -->|"Catchment runoff\n(upstream inflow)"| FMP
+    BC -->|"Downstream / lateral\nboundary"| FMP
+    BB -->|"Alternative inflow\nor reach routing"| FMP
+    BB -.->|"Standalone\nforecasting"| FMP
+```
 
 # Purpose
 
@@ -27,7 +44,7 @@ This document is not a guide to modelling practice. It does not prescribe how to
 
 This framework applies to all flood models used by the team in operational forecasting, model development, or research activities, including:
 
-- Flood Modeller Pro (FMP) 1D and 2D hydraulic models
+- Flood Modeller Pro (FMP) 1D hydraulic models
 
 - PDM (Probability Distributed Model) rainfall-runflow configurations and parameter sets
 
@@ -160,6 +177,28 @@ The Steward is responsible for keeping the Model Register current. It must be up
 | Status | Active, Under Development, Suspended, or Deprecated |
 | Last reviewed | Date of last condition assessment or custodianship review |
 | Notes | Known issues, planned work, or active exceptions |
+
+The Status field in the register reflects where a model sits in its lifecycle at any given time. The transitions between states are not automatic: each requires a deliberate decision, usually tied to a condition assessment, a formal review, or an operational change. The state diagram below shows which transitions are permitted and what typically triggers them.
+
+```{mermaid}
+%%| fig-width: 5.5
+%%| label: fig-model-lifecycle
+%%| fig-cap: "Model lifecycle states and permitted transitions."
+stateDiagram-v2
+    [*] --> UnderDevelopment : Model created
+
+    UnderDevelopment --> Active : Passes calibration,\ncondition Satisfactory+,\nOwner sign-off
+
+    Active --> Suspended : Condition score Poor or Critical;\nOwner review required;\nor operational need paused
+
+    Active --> Deprecated : Superseded by newer version\nor need no longer exists;\nOwner approval required
+
+    Suspended --> Active : Improvement plan complete;\ncondition restored;\nSteward sign-off
+
+    Suspended --> Deprecated : No path to recovery;\nOwner approval required
+
+    Deprecated --> [*]
+```
 
 # 4. Model Condition {#sec-flood-condition}
 

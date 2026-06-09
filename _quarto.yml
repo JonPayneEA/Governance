@@ -56,6 +56,9 @@ book:
       chapters:
         - companions/r-governance.qmd
         - companions/python-governance.qmd
+    - part: "Platform companions"
+      chapters:
+        - companions/dash-onboarding.qmd
     - part: "Data companions"
       chapters:
         - companions/hydrometric-data.qmd

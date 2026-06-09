@@ -10,6 +10,29 @@
 | **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ Data Ownership Model (CDDO, 2024) |
 :::
 
+This companion applies a three-tier medallion architecture to hydrometric data, progressing from raw supplier ingest through quality control to analysis-ready products:
+
+```{mermaid}
+%%| fig-width: 6
+flowchart LR
+    B["**Bronze**\nRaw ingestion\nImmutable"]
+    S["**Silver**\nQC and flagging\nWorking dataset"]
+    G["**Gold**\nAnalysis-ready\nFormal approval"]
+
+    B -->|"QC stages 1-4\nCustodian + Steward"| S
+    S -->|"Derivation + Owner approval"| G
+
+    subgraph roles["Roles at each tier"]
+        direction TB
+        r1["Bronze: Custodian ingests,\nSteward audits"]
+        r2["Silver: Custodian QCs,\nSteward approves"]
+        r3["Gold: Custodian derives,\nOwner approves"]
+    end
+
+    B -.-> r1
+    S -.-> r2
+    G -.-> r3
+```
 
 # 1. Purpose
 
@@ -58,6 +81,34 @@ Taken together, the two frameworks give the team three things it cannot get from
 Imported hydrometric data passes through three tiers of increasing quality and fitness for purpose. The tiers are named Bronze, Silver, and Gold - a medallion structure adapted from data engineering practice to suit hydrological data management.
 
 The key principle is that each tier is a distinct, preserved state. Data is never overwritten in place. Moving data to the next tier creates a new dataset; the previous tier is always retained. This means the team can always trace exactly what was received, what quality decisions were made, and what version of a dataset fed a particular model run.
+
+```{mermaid}
+%%| fig-width: 6.5
+flowchart LR
+    SUP(["Supplier\nraw data"])
+
+    subgraph BRZ["BRONZE: read-only from ingest"]
+        direction TB
+        b1["Store unmodified\nApply Bronze schema\nRecord provenance"]
+        b2["Custodian ingests\nSteward audits"]
+    end
+
+    subgraph SLV["SILVER: QC working dataset"]
+        direction TB
+        s1["Stage 1: Automated checks\nStage 2: Expert review\nStage 3: Gap & error decisions\nStage 4: Steward approval"]
+        s2["Custodian QCs\nSteward reviews and promotes"]
+    end
+
+    subgraph GLD["GOLD: formally approved products"]
+        direction TB
+        g1["Aggregate, merge, or approve\nat native resolution\nDerivation record required"]
+        g2["Custodian derives\nSteward reviews\nOwner approves"]
+    end
+
+    SUP -->|"Ingest"| BRZ
+    BRZ -->|"Bronze never modified after ingest\nNew Bronze ID for any correction"| SLV
+    SLV -->|"Silver flagged data\nused as source"| GLD
+```
 
 | **Tier** | **What it contains** | **Who uses it** |
 | --- | --- | --- |

@@ -10,6 +10,37 @@
 | **Review Date** | 31 March 2027 |
 :::
 
+This framework sits at the head of a suite of companion documents, each governing a specific asset domain:
+
+```{mermaid}
+%%{init: {"theme": "default", "flowchart": {"rankSpacing": 45, "nodeSpacing": 25}}}%%
+%%| fig-width: 5
+graph TD
+    PF["Parent Framework<br/>Data and Digital Asset Governance"]
+
+    HD["Hydrometric Data<br/>Bronze / Silver / Gold,<br/>QC flag system"]
+    FM["Flood Models<br/>FMP, PDM, Black Box,<br/>condition scoring"]
+    RC["R Code Governance<br/>Flode architecture,<br/>fastverse conventions"]
+    PC["Python Code Governance<br/>Flood Modeller API,<br/>ML tool requirements"]
+    TR["Training Framework<br/>Role-based tracks,<br/>sign-off requirements"]
+    IM["Implementation<br/>Phased adoption,<br/>register setup"]
+
+    PF --> HD
+    PF --> FM
+    PF --> RC
+    PF --> PC
+    PF --> TR
+    PF --> IM
+
+    style PF fill:#d6eaf8,stroke:#2980b9
+    style HD fill:#eaf4fb,stroke:#85c1e9
+    style FM fill:#eaf4fb,stroke:#85c1e9
+    style RC fill:#eaf4fb,stroke:#85c1e9
+    style PC fill:#eaf4fb,stroke:#85c1e9
+    style TR fill:#eaf4fb,stroke:#85c1e9
+    style IM fill:#eaf4fb,stroke:#85c1e9
+```
+
 The team has accumulated a substantial body of models, code tools, and datasets. Structural changes to the organisation, siloed working across teams, and staff churn have compounded over that time. Ownership has shifted without being formally transferred. Institutional knowledge has left with departing staff. Work has been duplicated because one team did not know another had already done it. The result is an asset base that no single person has a complete picture of, and where accountability is informal and assumed rather than defined.
 
 This framework is a deliberate reset. It establishes clear ownership for what the team already holds, and it builds structures resilient to the conditions that caused the problem: structures that survive reorganisation, that do not depend on any one individual, and that work across team boundaries rather than within them.
@@ -132,6 +163,37 @@ Custodians are responsible for:
 
 ### Role Summary {#sec-role-summary}
 
+```{mermaid}
+%%{init: {"theme": "default", "flowchart": {"rankSpacing": 50, "nodeSpacing": 20}}}%%
+%%| fig-width: 5.5
+graph TD
+    O["Owner<br/>Deputy Director<br/><i>Ultimate accountability</i>"]
+    S1["Steward<br/>Grade 7<br/><i>Operational governance</i>"]
+    S2["Steward<br/>Grade 7<br/><i>Operational governance</i>"]
+    DS["Delegated Steward<br/>typically G6<br/><i>Hands-on governance work</i>"]
+    C1["Custodian<br/>Any grade"]
+    C2["Custodian<br/>Any grade"]
+    C3["Custodian<br/>Any grade"]
+    C4["Custodian<br/>Any grade"]
+
+    O --> S1
+    O --> S2
+    S1 --> DS
+    S1 --> C1
+    S1 --> C2
+    S2 --> C3
+    DS --> C4
+
+    style O fill:#1a5276,color:#fff,stroke:#1a5276
+    style S1 fill:#1f618d,color:#fff,stroke:#1f618d
+    style S2 fill:#1f618d,color:#fff,stroke:#1f618d
+    style DS fill:#2e86c1,color:#fff,stroke:#2e86c1
+    style C1 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+    style C2 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+    style C3 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+    style C4 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+```
+
 | Role | Definition and Responsibilities |
 |---|---|
 | Owner | Senior individual with ultimate accountability for a data or asset domain. Sets strategic direction, approves major decisions, ensures compliance. Deputy Director grade required (see note above). May be delegated to another Deputy Director or equivalent. |
@@ -206,6 +268,24 @@ All team assets, whether data, models, code tools, warning configurations, or pr
 
 The same three tiers apply to every asset type. That uniformity is deliberate. It gives the team a shared language for risk, regardless of whether the asset in question is a hydrometric dataset, a hydraulic model, a Python script, a threshold configuration, or an operational procedure.
 
+```{mermaid}
+%%{init: {"theme": "default", "flowchart": {"rankSpacing": 50, "nodeSpacing": 20}}}%%
+%%| fig-width: 4
+graph TD
+    T3["<b>Tier 3: Operational</b><br/>Live service. Failure has<br/>direct operational consequences."]
+    T2["<b>Tier 2: Analytical</b><br/>Regularly used. Not in<br/>the critical forecasting path."]
+    T1["<b>Tier 1: Experimental</b><br/>Research or prototype stage.<br/>Not in production."]
+
+    T1 -->|"Promote: Owner sign-off required"| T2
+    T2 -->|"Promote: Owner sign-off required"| T3
+    T3 -->|"Demote: Owner sign-off required"| T2
+    T2 -->|"Demote: Owner sign-off required"| T1
+
+    style T3 fill:#fdebd0,stroke:#e59866
+    style T2 fill:#eafaf1,stroke:#82e0aa
+    style T1 fill:#eaf4fb,stroke:#85c1e9
+```
+
 | Tier | Description | Data | Models | Tools |
 |---|---|---|---|---|
 | **Tier 3:** Operational | Used in live forecasting. Failure has direct operational consequences. | Formally approved datasets feeding live model runs or supporting the service | FMP, PDM, Black Box and Boundary Conditions used in the operational forecast chain | Scripts and pipelines running in live forecasting or critical to supporting the service |
@@ -252,6 +332,32 @@ Register maintenance is not optional. The Steward is accountable for keeping all
 
 ### The Registers {#sec-registers-list}
 
+```{mermaid}
+%%{init: {"theme": "default", "flowchart": {"rankSpacing": 45, "nodeSpacing": 20}}}%%
+%%| fig-width: 4.5
+graph TD
+    DC["Data Catalogue<br/>Agreed definitions"]
+    MR["Model Register"]
+    CR["Connection Register"]
+    TR["Tool Register"]
+    HDR["Hydrometric Data Register"]
+    WCR["Warning Configuration Register"]
+
+    CR -->|"references model IDs"| MR
+    MR -->|"notifies on change"| CR
+    DC -->|"indexes"| MR
+    DC -->|"indexes"| TR
+    DC -->|"indexes"| HDR
+    DC -->|"indexes"| WCR
+
+    style DC fill:#d5f5e3,stroke:#27ae60
+    style MR fill:#d6eaf8,stroke:#2980b9
+    style CR fill:#d6eaf8,stroke:#2980b9
+    style TR fill:#d6eaf8,stroke:#2980b9
+    style HDR fill:#d6eaf8,stroke:#2980b9
+    style WCR fill:#d6eaf8,stroke:#2980b9
+```
+
 | Register | What it covers | Authoritative location |
 |---|---|---|
 | **Tool Register** | All R and Python code tools: tier, owner, steward, custodian, status | `registers/tool_register.xlsx` (auto-generated) |
@@ -278,6 +384,32 @@ The Steward includes register currency in the quarterly governance summary (@sec
 ### Cross-Asset Notification {#sec-cross-asset-notification}
 
 When a Gold-tier dataset is superseded or a Tier 3 model's output format changes, the Steward responsible for that asset must notify any Steward whose domain depends on it. The Connection Register is the reference: any registered dependency on the changed asset creates an obligation to notify. The notified Steward must confirm with their Custodians that any affected run records, model configurations, or tool outputs are still valid. This requirement applies regardless of whether the dependency crosses language or domain boundaries.
+
+```{mermaid}
+%%{init: {"theme": "default", "flowchart": {"rankSpacing": 45, "nodeSpacing": 25}}}%%
+%%| fig-width: 6.5
+graph TD
+    T["Trigger event<br/>Gold dataset superseded<br/>or Tier 3 output format change<br/>or catchment change event"]
+
+    CR["Check Connection Register<br/>for registered dependencies"]
+
+    T --> CR
+
+    CR --> N1["Notify Forecasting Steward<br/>if models or tools depend<br/>on changed asset"]
+    CR --> N2["Notify Warning Steward<br/>if threshold configs depend<br/>on changed asset"]
+    CR --> N3["Notify Service Management<br/>Steward if procedures or<br/>tools are affected"]
+
+    N1 --> C1["Forecasting Custodians confirm<br/>run records and model configs<br/>still valid"]
+    N2 --> C2["Warning Custodians confirm<br/>threshold configs<br/>still valid"]
+    N3 --> C3["Service Management Custodians<br/>confirm tools and procedures<br/>still valid"]
+
+    C1 --> L["Log outcome in<br/>Catchment History Log<br/>and relevant register"]
+    C2 --> L
+    C3 --> L
+
+    style T fill:#fdebd0,stroke:#e59866
+    style L fill:#d5f5e3,stroke:#27ae60
+```
 
 ## Asset Naming and File Standards {#sec-asset-naming}
 

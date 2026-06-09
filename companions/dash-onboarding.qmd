@@ -1,0 +1,353 @@
+# DASH Platform Onboarding {#sec-dash-onboarding}
+
+::: {.callout-note}
+## Document Metadata
+| Field | Detail |
+|---|---|
+| **Version** | 1.0 |
+| **Status** | Draft: For Team Review |
+| **Review Date** | 2027-03-31 |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ R Tool Governance v1.3 │ Python Tool Governance v1.3 |
+:::
+
+# Purpose
+
+DASH is a specific platform with specific constraints. This document covers what those are so a new team member can start work without learning them by mistake. It complements the R and Python governance companions, which cover code quality and documentation standards; this covers how to run, connect, and deploy on DASH.
+
+# 1. Platform Overview {#sec-dash-platform}
+
+## 1.1 What DASH Is
+
+DASH (Databricks AI and Simulation Hub) is an Azure Databricks environment running Unity Catalog and Delta Lake. It carries two workstreams:
+
+- **FGS pipeline** — ingest, process, and serve flood risk data so Senior Forecasters can issue Alerts and Warnings ahead of normal lead times. The upstream source is the Flood Forecasting Centre (FFC) API.
+- **AI flood forecasting** — develop and operationalise LSTM-based models (via NeuralHydrology) against PDM. Operational output is routed to IMFS via a Deltares FEWS adapter.
+
+Both workstreams share one platform, one schema, and one set of conventions.
+
+The production catalog and schema is `prd_dash_lab.flood_forecasting_unrestricted`.
+
+## 1.2 Compute Profiles
+
+DASH has two compute environments. Do not assume one when working in the other.
+
+| Profile | Used for | Runtime |
+|---------|----------|---------|
+| CPU | FGS pipeline ingest, data pipelines, dashboard, LSTM inference | DBR 16.x / Spark 4.1 |
+| GPU | NeuralHydrology training | GPU cluster, ML Runtime (PyTorch, MLflow included) |
+
+: {.striped}
+
+The CPU cluster is the default working environment. Switch to GPU only for training runs. Mosaic and Sedona are not available on DBR 16.x.
+
+## 1.3 Development and Deployment
+
+Local development happens in Posit Workbench using the VS Code interface. Deployment target is Posit Connect.
+
+Notebooks live at `/Workspace/Users/{your.ea.email}/FGS_Notebooks/jobs/`.
+
+## 1.4 What Is Not Available
+
+A few constraints are not obvious and will cost time if you hit them unexpectedly:
+
+- **Mosaic and Sedona** are not available on DBR 16.x. Spatial work uses GeoPandas and Shapely.
+- **ETL job creation is not available.** You can schedule notebooks; you cannot create ETL jobs. The minimum scheduling cadence is hourly. Sub-hourly pipelines are not possible.
+- **EA corporate proxy blocks external CDNs.** This affects cdnjs, unpkg, and jsdelivr. Frontend assets (Shiny, Folium) must be served locally or inline.
+
+---
+
+# 2. Environment Setup {#sec-dash-env-setup}
+
+## 2.1 Catalog and Schema
+
+Always read the catalog and schema from environment variables. Never hardcode `prd_dash_lab` or `flood_forecasting_unrestricted` in scripts or notebooks.
+
+The canonical environment variable names are:
+
+| Variable | Value |
+|---|---|
+| `DASH_CATALOG` | `prd_dash_lab` |
+| `DASH_SCHEMA` | `flood_forecasting_unrestricted` |
+
+: {.striped}
+
+## 2.2 Loading Environment Variables
+
+**Python** — use a `.env` file loaded via `python-dotenv`:
+
+```python
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+catalog = os.environ["DASH_CATALOG"]
+schema  = os.environ["DASH_SCHEMA"]
+```
+
+**R** — use a `.env` file loaded via `dotenv`:
+
+```r
+dotenv::load_dot_env()
+catalog <- Sys.getenv("DASH_CATALOG")
+schema  <- Sys.getenv("DASH_SCHEMA")
+```
+
+## 2.3 Databricks Connection
+
+Two common connection mistakes:
+
+- `DATABRICKS_HOST` must include the `https://` scheme. Without it, connection fails silently or with a confusing error.
+- `DATABRICKS_WAREHOUSE_ID` is the short hex string from the HTTP path in the Databricks SQL warehouse settings. No trailing slash, no `?o=` suffix.
+
+```
+# .env
+DATABRICKS_HOST=https://adb-XXXXXXXX.XX.azuredatabricks.net
+DATABRICKS_WAREHOUSE_ID=a1b2c3d4e5f60789
+```
+
+## 2.4 Unity Catalog Volumes
+
+Model artefacts — NeuralHydrology `run_dir`, weights, and config files — go to Unity Catalog Volumes, not DBFS. The canonical path pattern is:
+
+```
+/Volumes/prd_dash_lab/flood_forecasting_unrestricted/model_runs/{run_name}/
+```
+
+Use this path everywhere: training configs, inference scripts, and any tooling that references model artefacts. Do not write to DBFS and migrate later; write to Volumes from the start.
+
+---
+
+# 3. R on DASH {#sec-dash-r}
+
+## 3.1 Package Conventions
+
+Use `data.table` and the fastverse for all data manipulation. Do not use `dplyr` or the broader tidyverse in DASH work — this is consistent with the R governance companion and matters here because the fastverse integrates better with Spark output and keeps memory overhead low.
+
+Use `brickster` for Databricks queries. Do not use `sparklyr`.
+
+```r
+library(data.table)
+library(collapse)
+library(arrow)
+library(brickster)
+```
+
+## 3.2 Querying Databricks from R
+
+Use `brickster` with `dbGetQuery`. The `params =` argument is not supported; interpolate values with `sprintf()`.
+
+```r
+date_str <- "2026-01-15"
+query <- sprintf(
+  "SELECT measure_uri, date_time, value
+   FROM prd_dash_lab.flood_forecasting_unrestricted.ea_rt_readings_bronze
+   WHERE reading_date = '%s'",
+  date_str
+)
+result_dt <- setDT(dbGetQuery(con, query))
+```
+
+Wrap the result in `setDT()` immediately to get a `data.table` back.
+
+## 3.3 Shiny on DASH
+
+Use `bslib` with `bs_theme(version = 5)` to avoid conflicts with Shiny's Bootstrap 3 defaults:
+
+```r
+library(shiny)
+library(bslib)
+
+ui <- bslib::page_fluid(
+  theme = bslib::bs_theme(version = 5),
+  # ...
+)
+```
+
+The EA corporate proxy blocks external CDNs. All Shiny assets must be served locally or inline — do not reference cdnjs, unpkg, or jsdelivr in any Shiny app deployed via DASH. Deploy to Posit Connect.
+
+## 3.4 Geometry in R
+
+Use GeoJSON strings throughout. Do not use WKT or WKB.
+
+Convert geometry columns with `geojsonsf::geojson_sfc()`:
+
+```r
+library(geojsonsf)
+sfc <- geojsonsf::geojson_sfc(geometry_col)
+```
+
+For geometry cleaning, use `buffer(0)`. Do not use `make_valid` — there is a GEOS version incompatibility on this platform that makes it unreliable.
+
+## 3.5 Polygon Rendering
+
+The FGS dashboard colours polygons using a lookup against `RISK_COLOUR_HEX`. The `risk_colour` values from the table must match the keys in that lookup exactly, including capitalisation. A mismatch renders polygons without fill and produces no error or warning.
+
+Normalise the case of `risk_colour` before joining:
+
+```r
+RISK_COLOUR_HEX <- c(
+  "Very Low" = "#00703C",
+  "Low"      = "#FFDD00",
+  "Medium"   = "#F47738",
+  "High"     = "#D4351C"
+)
+# Normalise risk_colour to title case before the lookup
+fgs_dt[, risk_colour := tools::toTitleCase(tolower(risk_colour))]
+```
+
+---
+
+# 4. Python on DASH {#sec-dash-python}
+
+## 4.1 Spark Patterns
+
+When creating a Spark DataFrame from a pandas DataFrame, do not pass an explicit schema when columns contain mixed types. Create the DataFrame first, then cast:
+
+```python
+# Preferred: create then cast
+df = spark.createDataFrame(pandas_df)
+df = (df
+      .withColumn("value", col("value").cast("double"))
+      .withColumn("reading_date", col("reading_date").cast("date")))
+```
+
+For date-partitioned Delta writes, use `replaceWhere` to make the operation idempotent. Plain `overwrite` mode on a partitioned table will remove data outside the partition you intend to update:
+
+```python
+df.write.format("delta") \
+    .mode("overwrite") \
+    .option("replaceWhere", f"reading_date = '{date_str}'") \
+    .saveAsTable(
+        "prd_dash_lab.flood_forecasting_unrestricted.ea_rt_readings_bronze"
+    )
+```
+
+## 4.2 dbutils in .py Files
+
+In Databricks notebooks, `dbutils` is injected automatically. In `.py` files it is not. Instantiate it explicitly:
+
+```python
+from pyspark.dbutils import DBUtils
+dbutils = DBUtils(spark)
+```
+
+This is a silent failure if omitted — the import succeeds but `dbutils` is undefined at runtime.
+
+## 4.3 Module Reload in Notebooks
+
+When reimporting a custom module in a notebook, clear `sys.modules` first. Otherwise the old version persists in the session:
+
+```python
+import sys
+
+for key in list(sys.modules.keys()):
+    if key.startswith("your_module"):
+        del sys.modules[key]
+
+import your_module
+```
+
+## 4.4 Geometry in Python
+
+Use GeoJSON strings throughout. Do not use WKT or WKB.
+
+Convert with `shapely`:
+
+```python
+from shapely.geometry import shape
+import json
+
+geom = shape(json.loads(geojson_str))
+```
+
+For cleaning, use `buffer(0)`. Do not use `make_valid` — GEOS version incompatibility.
+
+In pandas DataFrames, missing geometry values are stored as `float('nan')`, not `None`. Check with:
+
+```python
+import math
+
+if isinstance(g, float) and math.isnan(g):
+    # missing geometry
+    continue
+```
+
+An `is None` check will pass over missing geometries silently.
+
+## 4.5 Large Data Visualisation
+
+Folium hits Databricks display limits when the GeoJSON payload is large. Above roughly 40 MB or 5,000 features, the display cell will fail or render nothing.
+
+Fall back to static matplotlib PNGs for large datasets:
+
+```python
+import matplotlib.pyplot as plt
+
+if len(gdf) > 5000:
+    fig, ax = plt.subplots(figsize=(12, 8))
+    gdf.plot(ax=ax, color="steelblue", alpha=0.5)
+    plt.tight_layout()
+    plt.savefig("output_map.png", dpi=150)
+    plt.show()
+else:
+    # Folium path
+    ...
+```
+
+---
+
+# 5. Data Conventions {#sec-dash-data}
+
+## 5.1 Medallion Architecture
+
+The schema uses functional table names rather than Bronze/Silver/Gold suffixes, but the medallion principles apply:
+
+| Table | Tier equivalent | Rule |
+|---|---|---|
+| `ea_rt_readings_bronze` | Bronze | Raw, immutable on ingest |
+| `ea_rt_measure_register` | Silver-equivalent | Derived from Bronze via `SELECT DISTINCT` |
+| `fgs_risk_polygons`, `flood_warnings_*`, `ea_administrative_areas` | Gold-equivalent | Stable operational tables; read by downstream consumers |
+
+: {.striped}
+
+Raw data is never modified after ingest. Transformations live in derived tables, not in-place edits to source data.
+
+## 5.2 Delta Lake Writes
+
+Use `replaceWhere` for all date-partitioned overwrites. See section 4.1 for the full pattern.
+
+Do not use plain `overwrite` mode on partitioned tables. It will overwrite the entire table, not just the partition you intended to update.
+
+## 5.3 Notebook Style
+
+- No `# COMMAND ----------` cell separators.
+- Use `display()` for table inspection in Databricks, not `print()`.
+- Write complete, runnable files. Not snippets or partial stubs.
+- Comments explain intent and design, not mechanics.
+
+---
+
+# 6. Anti-Patterns {#sec-dash-anti-patterns}
+
+The table below lists the most common traps for a new DASH team member. Each one has caused a real problem.
+
+| Anti-pattern | What to do instead |
+|---|---|
+| Writing NeuralHydrology `run_dir` to DBFS | Write to Unity Catalog Volumes: `/Volumes/prd_dash_lab/flood_forecasting_unrestricted/model_runs/{run_name}/` |
+| Hardcoding `prd_dash_lab` or `flood_forecasting_unrestricted` | Read from `DASH_CATALOG` and `DASH_SCHEMA` environment variables |
+| Designing a sub-hourly pipeline cadence | Hourly is the floor; ETL job creation is not available |
+| Passing an explicit schema to `createDataFrame` with mixed-type columns | Create the DataFrame without a schema, then cast columns |
+| Using `dbutils` in a `.py` file without instantiating it | `from pyspark.dbutils import DBUtils; dbutils = DBUtils(spark)` |
+| Reimporting a custom module in a notebook without clearing `sys.modules` | Clear the relevant keys from `sys.modules` before reimporting |
+| Trusting `/id/stations` with a `parameter` filter | It silently returns only rainfall stations; derive the gauge register from the archive CSV via `SELECT DISTINCT measure_uri` on the Bronze table |
+| `make_valid` for geometry cleaning | Use `buffer(0)` — GEOS version incompatibility on this platform |
+| `is None` to check missing geometry in a pandas DataFrame | Use `isinstance(g, float) and math.isnan(g)` |
+| `dplyr`/`tidyverse` for data manipulation in R | `data.table` and the fastverse throughout |
+| `sparklyr` for Databricks queries in R | Use `brickster` |
+| `params =` in `dbGetQuery()` via brickster | Interpolate with `sprintf()` |
+| Bootstrap 3 defaults in Shiny | `bslib::bs_theme(version = 5)` |
+| Referencing external CDNs (cdnjs, unpkg, jsdelivr) in Shiny | Serve all assets locally or inline |
+| Capitalisation mismatch between `risk_colour` values and `RISK_COLOUR_HEX` keys | Normalise `risk_colour` to title case before the lookup; mismatch renders polygons without fill and produces no error |
+| Assuming Mosaic or Sedona are available | They are not on DBR 16.x; use GeoPandas and Shapely |
+
+: {.striped}
