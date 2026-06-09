@@ -1,3 +1,47 @@
 # Flood Warning Asset Governance {#sec-flood-warnings}
 
-*Content to be written.*
+::: {.callout-note}
+| | |
+|---|---|
+| **Version** | 1.0 |
+| **Status** | Scope defined: awaiting content |
+| **Review Date** | 2027-03-31 |
+| **Parent Document** | Data and Digital Asset Governance Framework v3.0 |
+:::
+
+## Purpose and scope
+
+This companion governs the assets that sit between model outputs and public-facing warning decisions: warning threshold configurations, trigger criteria, issuance records, and the tools that automate or support warning decisions.
+
+**In scope:**
+
+- Tier classification for warning assets
+- Version control requirements for threshold configurations
+- Run record requirements for warning-linked model outputs
+- Audit trail obligations for warning decisions
+
+**Out of scope:**
+
+- The models that produce forecast inputs (see @sec-flood-model-governance)
+- Operational warning procedures (see @sec-procedure-tools)
+- Impact information and result threshold methodology (covered by the Warning Team's own operational documentation)
+
+## Authoring note
+
+The sections below are to be drafted by the Warning Team G7 Steward or a nominated subject matter expert. The completed draft should be reviewed by the CDT G7 Steward and approved by the Deputy Director before this companion moves to Draft status.
+
+## Warning asset classification {#sec-warning-asset-classification}
+
+*To be written.*
+
+## Threshold configuration version control {#sec-warning-threshold-vc}
+
+*To be written.*
+
+## Run record requirements {#sec-warning-run-records}
+
+*To be written.*
+
+## Audit trail obligations {#sec-warning-audit-trail}
+
+*To be written.*

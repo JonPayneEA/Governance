@@ -1,3 +1,42 @@
 # Procedure Tools Governance {#sec-procedure-tools}
 
-*Content to be written.*
+::: {.callout-note}
+| | |
+|---|---|
+| **Version** | 1.0 |
+| **Status** | Scope defined: awaiting content |
+| **Review Date** | 2027-03-31 |
+| **Parent Document** | Data and Digital Asset Governance Framework v3.0 |
+:::
+
+## Purpose and scope
+
+This companion governs operational procedure documentation and the tools that produce or display it: Standard Operating Procedures, decision trees, response playbooks, and associated tooling.
+
+**In scope:**
+
+- Document ownership under the Owner, Steward, and Custodian model
+- Version control requirements for procedure documents
+- Review cadences for procedure documentation
+- Dependencies between procedure tools and the Tier 3 code tools they rely on
+
+**Out of scope:**
+
+- Warning assets that procedures reference (see @sec-flood-warnings)
+- Code tool governance for tools that produce procedure documents (see @sec-r-governance and @sec-python-governance)
+
+## Authoring note
+
+The sections below are to be drafted by the relevant G7 Steward or a nominated subject matter expert. The completed draft should be reviewed by the CDT G7 Steward and approved by the Deputy Director before this companion moves to Draft status.
+
+## Procedure document classification {#sec-procedure-classification}
+
+*To be written.*
+
+## Version control and review cadence {#sec-procedure-vc}
+
+*To be written.*
+
+## Dependency management with Tier 3 tools {#sec-procedure-dependencies}
+
+*To be written.*
