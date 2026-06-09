@@ -18,7 +18,7 @@ It also sets the foundation for responsible adoption of new capabilities. The te
 
 ## Purpose {#sec-framework-purpose}
 
-This framework sets out how NFWS manages its data, code, and digital assets. It defines who is responsible for what, at every level, covering all assets from strategic accountability for major datasets down to day-to-day maintenance of individual code tools.
+This framework sets out how NFWS (National Forecasting and Warning Service) manages its data, code, and digital assets. It defines who is responsible for what, at every level, covering all assets from strategic accountability for major datasets down to day-to-day maintenance of individual code tools.
 
 The framework operates at two levels. This document covers governance principles, roles, and standards that apply to all assets regardless of type. Companion documents cover detailed code-level guidance for tools written in each language. Where those documents are silent, this framework takes precedence. This framework does not replace or supersede existing technical guidance, such as the RTMDG, it is a guide to how we manage assets not construct them.
 
@@ -155,12 +155,17 @@ The following accountabilities from the IAO guidance are explicitly held by the 
 
 The team's assets are grouped into four categories. Each has a designated Owner and Steward.
 
-| Category | Examples | Named Role Holders |
+| Category | Examples | Ownership assignment |
 |---|---|---|
-| Model files | Flood Modeller Pro projects, PDM parameter sets, boundary files | Refer to your team's `roles.qmd` for named role holders. |
-| Input data | Rainfall records, flow data, gridded raster, catchment shapefiles | Refer to your team's `roles.qmd` for named role holders. |
-| Model outputs | Flood extents, hydrographs, performance reports, ensemble outputs | Refer to your team's `roles.qmd` for named role holders. |
-| Code and tools | R and Python scripts, automation pipelines, shared modules | Refer to your team's `roles.qmd` for named role holders. |
+| Model files | Flood Modeller Pro projects, PDM parameter sets, boundary files | Roles are assigned in the team's own governance repository. See the team onboarding guide. |
+| Input data | Rainfall records, flow data, gridded raster, catchment shapefiles | Roles are assigned in the team's own governance repository. See the team onboarding guide. |
+| Model outputs | Flood extents, hydrographs, performance reports, ensemble outputs | Roles are assigned in the team's own governance repository. See the team onboarding guide. |
+| Code and tools | R and Python scripts, automation pipelines, shared modules | Roles are assigned in the team's own governance repository. See the team onboarding guide. |
+
+::: {.callout-note}
+## Role assignment
+Named Owners, Stewards, and Custodians for each asset category are recorded in each team's own governance repository, not in this document. See @sec-central-data-team for the proposed cross-team structure and the team onboarding process.
+:::
 
 ### Asset Register Metadata Requirements {#sec-metadata-requirements}
 
@@ -189,7 +194,7 @@ The same three tiers apply to every asset type. That uniformity is deliberate. I
 
 Promotion to Tier 3 requires Owner sign-off for all asset types. Demotion or deprecation requires Owner approval. Assets begin at Tier 1 and are promoted as their maturity and governance are confirmed. An asset must not be used in live forecasting until it has been formally promoted to Tier 3.
 
-### Data Tiers and the Medallion Architecture
+### Data Tiers and the Medallion Architecture {#sec-medallion-architecture}
 
 Hydrometric data arrives from many sources and rarely arrives clean. A gauge record from the Environment Agency's API and a manually submitted spreadsheet from a partner organisation are both raw data, but they carry different levels of trust, different provenance trails, and different likelihoods of containing errors. Treating them identically at ingestion, or leaving quality decisions implicit, creates problems that compound downstream.
 
@@ -199,11 +204,11 @@ The medallion and the operational tier system answer different questions. The ti
 
 The medallion architecture is not optional. Only Gold-tier data may be used as input to Tier 3 model runs or ML model training that may one day be promoted to operational use. See @sec-hydrometric-data for the full schema requirements and QC process.
 
-### Model Tiers
+### Model Tiers {#sec-model-tiers}
 
 Flood models, including FMP hydraulic models, PDM rainfall-runoff configurations, boundary conditions, and Black Box elements, are classified under the same three-tier system. A model's tier reflects its role in the operational forecast chain, not its technical sophistication. See @sec-flood-model-governance for full details.
 
-### Tool Tiers
+### Tool Tiers {#sec-tool-tiers}
 
 Code tools written in R or Python follow the same tier system. A tool's tier reflects the operational consequences of failure. Tier 3 tools require the most rigorous development, testing, and custodianship standards. See @sec-r-governance and @sec-python-governance for language-specific requirements.
 
@@ -211,13 +216,13 @@ Code tools written in R or Python follow the same tier system. A tool's tier ref
 
 The team maintains five registers and one data catalogue. Together they answer the question no single person should have to carry in their head: what does the team hold, who is responsible for it, what state is it in, and how does it connect to everything else.
 
-### Why Registers Are Required
+### Why Registers Are Required {#sec-registers-why}
 
 The problems this framework was built to address (informal ownership, lost institutional knowledge, duplicated work) all share a common cause: the team's assets were not systematically recorded. Registers are the remedy. They make ownership visible, make the asset base navigable, and create the audit trail needed for accountability.
 
 Register maintenance is not optional. The Steward is accountable for keeping all registers current. The Custodian is responsible for notifying the Steward whenever an asset changes in a way that requires a register update. An asset not recorded in the relevant register is treated as unmanaged: it may not be used in formal outputs or operational forecasting, it cannot be promoted to Tier 3, and accountability for it cannot be enforced.
 
-### The Registers
+### The Registers {#sec-registers-list}
 
 | Register | What it covers | Authoritative location |
 |---|---|---|
@@ -233,13 +238,13 @@ Each register is version-controlled. No register is edited by hand except under 
 
 Detailed field specifications, update procedures, and the initial setup sequence for each register are in the companion documents (@sec-flood-model-governance, @sec-hydrometric-data) and in the Implementation chapter (@sec-implementation). The Tool Register is defined in full at @sec-tool-register below.
 
-### Register Currency and Compliance
+### Register Currency and Compliance {#sec-register-currency}
 
 Every entry in any register must identify the asset's named Owner, Steward, and Custodian. The minimum metadata fields are defined at @sec-metadata-requirements.
 
 The Steward includes register currency in the quarterly governance summary (@sec-monitoring-reporting). Registers are reviewed as part of the annual Tier 3 audit. Assets with no register entry, or with stale entries where the named Custodian has left, are escalated to the Owner for resolution.
 
-### Cross-Asset Notification
+### Cross-Asset Notification {#sec-cross-asset-notification}
 
 When a Gold-tier dataset is superseded or a Tier 3 model's output format changes, the Steward responsible for that asset must notify any Steward whose domain depends on it. The Connection Register is the reference: any registered dependency on the changed asset creates an obligation to notify. The notified Steward must confirm with their Custodians that any affected run records, model configurations, or tool outputs are still valid. This requirement applies regardless of whether the dependency crosses language or domain boundaries.
 
@@ -473,7 +478,7 @@ Owner sign-off on the annual review is not a formality. Before signing, the Owne
 
 Where the Owner cannot confirm one or more of these, the Steward must provide a briefing before sign-off is given. This is not a barrier to adoption; it is the minimum engagement the role requires.
 
-## Quick Reference: Who to Go To
+## Quick Reference: Who to Go To {#sec-quick-reference}
 
 | Question or task | Go to |
 |---|---|
