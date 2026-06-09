@@ -57,10 +57,10 @@ The diagram below shows where the CDT sits relative to the existing NFWS structu
 ```{mermaid}
 graph TD
     DD["Deputy Director · Owner"]
-    CDT["CDT G7 Steward\n· Shared dataset stewardship\n· Companion document ownership\n· Framework maintenance"]
+    CDT["CDT G7 Steward"]
     SM["Service Management"]
-    FM["Forecasting Manager G7\n· FFM and LFS assets"]
-    WM["Warning Manager G7\n· Warning Hub assets"]
+    FM["Forecasting Manager G7"]
+    WM["Warning Manager G7"]
 
     DD --> CDT
     DD --> SM

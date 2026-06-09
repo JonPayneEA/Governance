@@ -67,15 +67,20 @@ The diagrams below show the structural difference between independent derivation
 
 ```{mermaid}
 graph LR
-    SRC["Source data\ngauges · partner orgs\nnational datasets"]
+    SRC["Source data"]
+    FFM["FFM<br/>(independent derivation)"]
+    LFS["LFS<br/>(independent derivation)"]
+    WH["Warning Hubs<br/>(independent derivation)"]
+    FFM_T3["FFM Tier 3 assets"]
+    LFS_T3["LFS Tier 3 assets"]
+    WH_T3["Warning Hub Tier 3 assets"]
 
-    SRC --> FFM["FFM\nBronze → Silver → Gold\n(independent derivation)"]
-    SRC --> LFS["LFS\nBronze → Silver → Gold\n(independent derivation)"]
-    SRC --> WH["Warning Hubs\nBronze → Silver → Gold\n(independent derivation)"]
-
-    FFM --> FFM_T3["FFM Tier 3 assets"]
-    LFS --> LFS_T3["LFS Tier 3 assets"]
-    WH --> WH_T3["Warning Hub Tier 3 assets"]
+    SRC --> FFM
+    SRC --> LFS
+    SRC --> WH
+    FFM --> FFM_T3
+    LFS --> LFS_T3
+    WH --> WH_T3
 
     style FFM fill:#fff0f0,stroke:#cc6666
     style LFS fill:#fff0f0,stroke:#cc6666
@@ -86,13 +91,16 @@ graph LR
 
 ```{mermaid}
 graph LR
-    SRC["Source data\ngauges · partner orgs\nnational datasets"]
+    SRC["Source data"]
+    CDT["CDT<br/>(single Gold derivation)"]
+    FFM_T3["FFM Tier 3 assets"]
+    LFS_T3["LFS Tier 3 assets"]
+    WH_T3["Warning Hub Tier 3 assets"]
 
-    SRC --> CDT["CDT\nBronze → Silver → Gold\n(single derivation)"]
-
-    CDT --> FFM_T3["FFM Tier 3 assets"]
-    CDT --> LFS_T3["LFS Tier 3 assets"]
-    CDT --> WH_T3["Warning Hub Tier 3 assets"]
+    SRC --> CDT
+    CDT --> FFM_T3
+    CDT --> LFS_T3
+    CDT --> WH_T3
 
     style CDT fill:#fffbea,stroke:#c8a000,stroke-width:2px
 ```

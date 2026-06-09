@@ -40,10 +40,10 @@ graph TD
     SM["Service Management"]
     FM["Forecasting Manager G7"]
     WM["Warning Manager G7"]
-    FFM["Fluvial & Coastal\nModelling"]
-    LFS["Local Forecasting\nService"]
+    FFM["Fluvial and Coastal Modelling"]
+    LFS["Local Forecasting Service"]
     WH["Warning Hub Teams"]
-    FFC["Flood Forecasting Centre\n— out of scope"]
+    FFC["Flood Forecasting Centre — out of scope"]
 
     DD --> SM
     DD --> FM
