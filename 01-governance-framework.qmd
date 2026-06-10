@@ -165,33 +165,42 @@ Custodians are responsible for:
 
 ```{mermaid}
 %%{init: {"theme": "default", "flowchart": {"rankSpacing": 50, "nodeSpacing": 20}}}%%
-%%| fig-width: 5.5
+%%| fig-width: 6
 graph TD
     O["Owner<br/>Deputy Director<br/><i>Ultimate accountability</i>"]
     S1["Steward<br/>Grade 7<br/><i>Operational governance</i>"]
     S2["Steward<br/>Grade 7<br/><i>Operational governance</i>"]
     DS["Delegated Steward<br/>typically G6<br/><i>Hands-on governance work</i>"]
+    STL1["Senior Team Leader<br/>typically G6<br/><i>Day-to-day delegation</i>"]
+    STL2["Senior Team Leader<br/>typically G6<br/><i>Day-to-day delegation</i>"]
     C1["Custodian<br/>Any grade"]
     C2["Custodian<br/>Any grade"]
     C3["Custodian<br/>Any grade"]
     C4["Custodian<br/>Any grade"]
+    C5["Custodian<br/>Any grade"]
 
     O --> S1
     O --> S2
     S1 --> DS
     S1 --> C1
-    S1 --> C2
-    S2 --> C3
-    DS --> C4
+    DS --> STL1
+    STL1 --> C2
+    STL1 --> C3
+    S2 --> STL2
+    STL2 --> C4
+    STL2 --> C5
 
     style O fill:#1a5276,color:#fff,stroke:#1a5276
     style S1 fill:#1f618d,color:#fff,stroke:#1f618d
     style S2 fill:#1f618d,color:#fff,stroke:#1f618d
     style DS fill:#2e86c1,color:#fff,stroke:#2e86c1
+    style STL1 fill:#2e86c1,color:#fff,stroke:#2e86c1
+    style STL2 fill:#2e86c1,color:#fff,stroke:#2e86c1
     style C1 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
     style C2 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
     style C3 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
     style C4 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+    style C5 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
 ```
 
 | Role | Definition and Responsibilities |
