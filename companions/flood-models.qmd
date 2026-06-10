@@ -181,23 +181,24 @@ The Steward is responsible for keeping the Model Register current. It must be up
 The Status field in the register reflects where a model sits in its lifecycle at any given time. The transitions between states are not automatic: each requires a deliberate decision, usually tied to a condition assessment, a formal review, or an operational change. The state diagram below shows which transitions are permitted and what typically triggers them.
 
 ```{mermaid}
+%%{init: {"theme": "default", "flowchart": {"rankSpacing": 55, "nodeSpacing": 20}}}%%
 %%| fig-width: 5.5
-%%| label: fig-model-lifecycle
-%%| fig-cap: "Model lifecycle states and permitted transitions."
-stateDiagram-v2
-    [*] --> UnderDevelopment : Model created
+graph TD
+    UD["Under Development"]
+    AC["Active"]
+    SU["Suspended"]
+    DE["Deprecated"]
 
-    UnderDevelopment --> Active : Calibration passed; condition Satisfactory+; Owner sign-off
+    UD -->|"Calibration passed;<br/>condition Satisfactory+;<br/>Owner sign-off"| AC
+    AC -->|"Poor or Critical condition;<br/>Owner review;<br/>or operational pause"| SU
+    AC -->|"Superseded or need gone;<br/>Owner approval"| DE
+    SU -->|"Improvement complete;<br/>condition restored;<br/>Steward sign-off"| AC
+    SU -->|"No recovery path;<br/>Owner approval"| DE
 
-    Active --> Suspended : Poor or Critical condition; Owner review; or operational pause
-
-    Active --> Deprecated : Superseded or need no longer exists; Owner approval
-
-    Suspended --> Active : Improvement complete; condition restored; Steward sign-off
-
-    Suspended --> Deprecated : No recovery path; Owner approval
-
-    Deprecated --> [*]
+    style UD fill:#d4e6f1,stroke:#2e86c1
+    style AC fill:#d5f5e3,stroke:#1e8449
+    style SU fill:#fef9e7,stroke:#d4ac0d,stroke-width:2px
+    style DE fill:#f2f3f4,stroke:#aab7b8,color:#666
 ```
 
 # 4. Model Condition {#sec-flood-condition}
