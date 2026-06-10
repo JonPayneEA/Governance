@@ -1,7 +1,7 @@
 # Python Tool Governance {#sec-python-governance}
 
 ::: {.callout-note}
-## Document Metadata
+### Document Metadata
 | Field | Detail |
 |---|---|
 | **Version** | 1.3 |
@@ -11,15 +11,15 @@
 :::
 
 
-# Purpose
+## Purpose
 
 This document provides the detailed, Python-specific governance standards for tools developed by the team. It is a companion to the Data & Digital Asset Governance Framework, which sets out the governance principles, roles, tier system, tool register, and version control standards that apply to all team code regardless of language.
 
 This document covers what is specific to Python: the Flood Modeller API integration approach, ML tool standards, polars coding conventions, poetry dependency management, Python testing and CI tooling, and Python repository structure. Read this alongside the parent framework, not instead of it.
 
-# 1. Introduction and Scope
+## 1. Introduction and Scope
 
-## 1.1 Background
+### 1.1 Background
 
 The team's analytical work primarily spans two languages. R, governed by the companion R Tool Governance document, handles the core hydrological data pipeline through the Flode package. Python sits alongside it for two specific and growing use cases: calling the Flood Modeller API to drive model runs using data that Flode has prepared and building and evaluating machine learning models for flood forecasting applications.
 
@@ -28,7 +28,7 @@ Without consistent development standards, Python tools risk the same problems th
 | Python is primarily used in DEFRAs DASH, a Databricks Lakehouse. Due to this environment, it may necessitate further development of SQL and Scala documentation. |
 | --- |
 
-## 1.2 Scope
+### 1.2 Scope
 
 This document applies to all Python code produced by members of the team, including:
 
@@ -47,7 +47,7 @@ This document applies to all Python code produced by members of the team, includ
 | **Out of Scope** Personal exploratory analyses not shared with other team members, one-off notebook experiments, and code produced solely for external publication (unless also used operationally) are out of scope. Governance of the Flode R package is in the R Tool Governance Proposal. |
 | --- |
 
-## 1.3 What Is Covered Here and What Is in the Parent Document
+### 1.3 What Is Covered Here and What Is in the Parent Document
 
 The following governance elements are defined in the Data & Digital Asset Governance Framework and apply to all Python tools. They are not repeated here, refer to that document for the authoritative version:
 
@@ -71,7 +71,7 @@ The following governance elements are defined in the Data & Digital Asset Govern
 
 This document covers everything that is specific to Python.
 
-## 1.4 Governance Principles
+### 1.4 Governance Principles
 
 - Reproducibility: All tools must produce consistent, auditable outputs.
 
@@ -81,25 +81,25 @@ This document covers everything that is specific to Python.
 
 - Continuous Improvement: The framework is a living document, reviewed annually.
 
-# 2. Python Tool Development Standards
+## 2. Python Tool Development Standards
 
 The governance tier system, routes to development, and review requirements are defined in the parent framework (@sec-code-tool-governance). This section covers the Python-specific standards that apply within that governance structure.
 
 | Tool tiers, development routes, review requirements by tier, and version control principles: see @sec-code-tool-governance. |
 | --- |
 
-## 2.1 Python Use Cases
+### 2.1 Python Use Cases
 
 Python tools in the team fall into two primary categories. Understanding which category a tool belongs to helps determine its appropriate dependencies, structure, and tier.
 
-### 2.1.1 Flood Modeller API Integration
+#### 2.1.1 Flood Modeller API Integration
 
 The Flood Modeller API is a Python interface for driving Flood Modeller Pro model runs programmatically. Tools in this category typically: read data prepared by Flode (from Parquet or other outputs), construct and submit model runs via the API, retrieve and post-process results, and pass outputs back to Flode-compatible formats for further analysis.
 
 | **Flode and Python** Flode (the team's R package) does not have a Python equivalent. Python tools consume Flode outputs rather than replicating its functions. The standard interface is Parquet files written by Flode and read in Python using pyarrow or polars. Do not replicate Flode data processing in Python – if data preparation logic needs to change, change it in Flode. |
 | --- |
 
-### 2.1.2 Machine Learning Tools
+#### 2.1.2 Machine Learning Tools
 
 ML tools cover the full model development lifecycle: data preparation, feature engineering, model training, validation, and inference. Key standards for ML tools are:
 
@@ -111,11 +111,11 @@ ML tools cover the full model development lifecycle: data preparation, feature e
 
 - Inference pipelines used operationally are Tier 3 regardless of how the model was trained
 
-## 2.2 Coding Style and Conventions
+### 2.2 Coding Style and Conventions
 
 All team Python code follows PEP 8, with the additions below.
 
-### 2.2.1 Naming Conventions
+#### 2.2.1 Naming Conventions
 
 - Functions and methods: snake_case verbs (e.g., run_model_scenario(), load_parquet_data())
 
@@ -129,11 +129,11 @@ All team Python code follows PEP 8, with the additions below.
 
 - File names: descriptive, date-prefixed for scripts (e.g., 2026-02_scenario_batch_run.py)
 
-### 2.2.2 Type Hints
+#### 2.2.2 Type Hints
 
 All function signatures in shared modules and Tier 3–2 scripts must include type hints. Type correctness is checked with mypy as part of CI (see @sec-python-ci).
 
-### 2.2.3 Package Dependencies and the polars Ecosystem
+#### 2.2.3 Package Dependencies and the polars Ecosystem
 
 The team's default data manipulation library is polars, not pandas. This mirrors the R framework's preference for the fastverse: the team processes large volumes of tabular data, and performance and memory efficiency matter.
 
@@ -164,7 +164,7 @@ pandas must not be used in Tier 3 operational tools or in shared modules. It may
 | Type checking | mypy |
 | Linting / formatting | ruff (handles both linting and formatting in one tool) |
 
-### 2.2.4 File Formats and Model Artefacts
+#### 2.2.4 File Formats and Model Artefacts
 
 | **Format** | **Use in Python Tools** |
 | --- | --- |
@@ -180,14 +180,14 @@ For full technical detail on each format, including partitioning conventions, ty
 
 All trained ML model artefacts saved to disk must be accompanied by a JSON metadata file containing: training date, Python and package versions, training dataset identifier, hyperparameters, and key evaluation metrics.
 
-## 2.3 Mandatory Header Block
+### 2.3 Mandatory Header Block
 
 Every script and module file must begin with the following header, completed in full:
 
 | **# ============================================================** # **Tool:** [Tool name] # **Description:** [One-sentence description of what this does] # **Use Case:** [Flood Modeller API / ML / Data Processing / Other] # **Author: **[Name, email] # **Created:** [YYYY-MM-DD] # **Modified:** [YYYY-MM-DD] - [initials]: [change summary] # **Tier:** [1 / 2 / 3] # **Inputs: **[Describe inputs and expected formats] # **Outputs:** [Describe outputs and formats] # **Dependencies:** [List non-standard packages; flag any non-polars choices] **# ============================================================** |
 | --- |
 
-## 2.4 Documentation Requirements
+### 2.4 Documentation Requirements
 
 | **Tier** | **Required Documentation** |
 | --- | --- |
@@ -195,15 +195,15 @@ Every script and module file must begin with the following header, completed in 
 | Tier 2 – Analytical | Mandatory header block; docstrings for key functions; a README.md |
 | Tier 1 – Experimental | Mandatory header block; inline comments sufficient; Jupyter notebooks must have a markdown cell at the top describing purpose and known limitations |
 
-# 3. Code Review - Python-Specific Requirements
+## 3. Code Review - Python-Specific Requirements
 
 Review requirements by tier are set in the parent framework, @sec-code-review-requirements. This section covers the Python-specific review checklist and automated tooling.
 
-## 3.1 Python Review Checklist
+### 3.1 Python Review Checklist
 
 All reviewers must work through this checklist. The completed checklist must be attached to the pull request before merging.
 
-### A. Correctness
+#### A. Correctness
 
 - Does the code do what it claims to do in its documentation?
 
@@ -211,7 +211,7 @@ All reviewers must work through this checklist. The completed checklist must be 
 
 - Are any assumptions about input data explicitly stated?
 
-### B. Code Quality
+#### B. Code Quality
 
 - Does the code follow team naming conventions, PEP 8, and type hint requirements?
 
@@ -225,7 +225,7 @@ All reviewers must work through this checklist. The completed checklist must be 
 
 - For ML tools: are training and inference clearly separated? Is a metadata JSON saved with every model artefact?
 
-### C. Testing
+#### C. Testing
 
 - Have pytest tests been written or updated (Tier 3 mandatory, Tier 2 recommended)?
 
@@ -235,7 +235,7 @@ All reviewers must work through this checklist. The completed checklist must be 
 
 - For ML tools: is the evaluation reproducible (fixed random seed, documented split)?
 
-### D. Dependencies and Reproducibility
+#### D. Dependencies and Reproducibility
 
 - Are all dependencies declared in pyproject.toml and the poetry.lock file committed?
 
@@ -243,7 +243,7 @@ All reviewers must work through this checklist. The completed checklist must be 
 
 - For Flood Modeller API tools: has the correct API version been tested and noted?
 
-## 3.2 Automated Quality Checks {#sec-python-ci}
+### 3.2 Automated Quality Checks {#sec-python-ci}
 
 | **Tool** | **Purpose** |
 | --- | --- |
@@ -253,7 +253,7 @@ All reviewers must work through this checklist. The completed checklist must be 
 | pytest-cov | Measures test coverage. Tier 3 tools must meet 70% line coverage. |
 | pip-audit / safety | Checks declared dependencies for known security vulnerabilities. Findings flagged to Delegated Steward. |
 
-## 3.3 Testing Standards
+### 3.3 Testing Standards
 
 - All Tier 3 functions must have unit tests covering expected outputs, edge cases, and known failure modes
 
@@ -265,19 +265,19 @@ All reviewers must work through this checklist. The completed checklist must be 
 
 - For ML tools: include a smoke test that loads a saved model artefact and runs inference on a minimal fixture dataset
 
-# 4. Version Control: Python-Specific Implementation
+## 4. Version Control: Python-Specific Implementation
 
 Version control principles are defined in the parent framework, @sec-version-control. This section covers the Python-specific implementation.
 
 | Branching strategy, commit standards, semantic versioning: see @sec-version-control. |
 | --- |
 
-## 4.1 Repository Structure
+### 4.1 Repository Structure
 
 | **python/** **flood-modeller-****api/ #**** Flood Modeller API integration tools** **operational/ #**** Tier 3 tools** **analytical/ #**** Tier 2 tools** **experimental/ #**** Tier 1 tools** **shared/ #**** Shared modules used across tools** **tests/ #**** pytest test suite** **docs/ #**** Documentation and runbooks** **pyproject.toml** **README.md** **ml/ #**** Machine learning tools** **pipelines/ #**** Training and inference scripts** **models/ #**** Saved model artefacts and metadata** **shared/ #**** Shared feature engineering and evaluation modules** **tests/** **pyproject.toml** **README.md** |
 | --- |
 
-## 4.2 Reproducibility with poetry
+### 4.2 Reproducibility with poetry
 
 All Python projects must use poetry for dependency management. This is the Python equivalent of renv: it pins exact package versions in a poetry.lock file.
 
@@ -294,7 +294,7 @@ All Python projects must use poetry for dependency management. This is the Pytho
 | **Guidance for Newer Python Users – poetry** If you get import errors when running a script, make sure you are inside the project's virtual environment. Run poetry shell to activate it, or prefix commands with poetry run. If you need to add a new package, use poetry add <package-name> rather than pip install – this keeps the lockfile up to date. Commit the updated poetry.lock file alongside your code changes. |
 | --- |
 
-# 5. Custodianship
+## 5. Custodianship
 
 Custodianship roles, grade requirements, the Tool Register, and handover and succession requirements for Python tools are defined in the parent framework. All requirements set out there apply in full.
 
@@ -303,9 +303,9 @@ Custodianship roles, grade requirements, the Tool Register, and handover and suc
 
 For cross-language pipelines where an R tool feeds a Python component, custodianship must be assigned separately for each language component. The Owner may be the same person, but the Steward and Custodian assignments should reflect who is best placed to maintain each part. See also the R companion document.
 
-# 6. Onboarding and Training
+## 6. Onboarding and Training
 
-## 6.1 Onboarding for New Team Members
+### 6.1 Onboarding for New Team Members
 
 All new team members must complete the following within their first four weeks:
 
@@ -321,7 +321,7 @@ All new team members must complete the following within their first four weeks:
 
 - Attend an introductory session with the Delegated Steward
 
-## 6.2 Ongoing Learning
+### 6.2 Ongoing Learning
 
 | **Resource** | **Relevant For** |
 | --- | --- |
@@ -337,13 +337,13 @@ All new team members must complete the following within their first four weeks:
 
 The team's monthly R drop-in session includes Python topics. A separate Python knowledge-sharing session can be arranged on request with the Delegated Steward.
 
-# 7. Governance, Exceptions, and Review
+## 7. Governance, Exceptions, and Review
 
 The exceptions process, compliance and audit requirements, and document review schedule are defined in the parent framework, @sec-monitoring-reporting. The following applies specifically to Python tools:
 
 Overall responsibility for this document sits with the Delegated Steward. The same Governance Working Group that oversees the R framework oversees this document. The Delegated Steward conducts an annual audit of all Tier 3 Python tools covering: header block completeness, type hint coverage, test coverage, documentation currency, poetry.lock consistency, and compliance with the branching strategy. Findings are reported to the team alongside the R framework audit.
 
-# Approved by
+## Approved by
 
 | **Role** | **Name / Signature / Date** |
 | --- | --- |

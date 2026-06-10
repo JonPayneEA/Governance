@@ -1,7 +1,7 @@
 # DASH Platform Onboarding {#sec-dash-onboarding}
 
 ::: {.callout-note}
-## Document Metadata
+### Document Metadata
 | Field | Detail |
 |---|---|
 | **Version** | 1.0 |
@@ -10,13 +10,13 @@
 | **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ R Tool Governance v1.3 │ Python Tool Governance v1.3 |
 :::
 
-# Purpose
+## Purpose
 
 DASH is a specific platform with specific constraints. This document covers what those are so a new team member can start work without learning them by mistake. It complements the R and Python governance companions, which cover code quality and documentation standards; this covers how to run, connect, and deploy on DASH.
 
-# 1. Platform Overview {#sec-dash-platform}
+## 1. Platform Overview {#sec-dash-platform}
 
-## 1.1 What DASH Is
+### 1.1 What DASH Is
 
 DASH (Databricks AI and Simulation Hub) is an Azure Databricks environment running Unity Catalog and Delta Lake. It carries two workstreams:
 
@@ -27,7 +27,7 @@ Both workstreams share one platform, one schema, and one set of conventions.
 
 The production catalog and schema is `prd_dash_lab.flood_forecasting_unrestricted`.
 
-## 1.2 Compute Profiles
+### 1.2 Compute Profiles
 
 DASH has two compute environments. Do not assume one when working in the other.
 
@@ -40,13 +40,13 @@ DASH has two compute environments. Do not assume one when working in the other.
 
 The CPU cluster is the default working environment. Switch to GPU only for training runs. Mosaic and Sedona are not available on DBR 16.x.
 
-## 1.3 Development and Deployment
+### 1.3 Development and Deployment
 
 Local development happens in Posit Workbench using the VS Code interface. Deployment target is Posit Connect.
 
 Notebooks live at `/Workspace/Users/{your.ea.email}/FGS_Notebooks/jobs/`.
 
-## 1.4 What Is Not Available
+### 1.4 What Is Not Available
 
 A few constraints are not obvious and will cost time if you hit them unexpectedly:
 
@@ -56,9 +56,9 @@ A few constraints are not obvious and will cost time if you hit them unexpectedl
 
 ---
 
-# 2. Environment Setup {#sec-dash-env-setup}
+## 2. Environment Setup {#sec-dash-env-setup}
 
-## 2.1 Catalog and Schema
+### 2.1 Catalog and Schema
 
 Always read the catalog and schema from environment variables. Never hardcode `prd_dash_lab` or `flood_forecasting_unrestricted` in scripts or notebooks.
 
@@ -71,7 +71,7 @@ The canonical environment variable names are:
 
 : {.striped}
 
-## 2.2 Loading Environment Variables
+### 2.2 Loading Environment Variables
 
 **Python** — use a `.env` file loaded via `python-dotenv`:
 
@@ -92,7 +92,7 @@ catalog <- Sys.getenv("DASH_CATALOG")
 schema  <- Sys.getenv("DASH_SCHEMA")
 ```
 
-## 2.3 Databricks Connection
+### 2.3 Databricks Connection
 
 Two common connection mistakes:
 
@@ -105,7 +105,7 @@ DATABRICKS_HOST=https://adb-XXXXXXXX.XX.azuredatabricks.net
 DATABRICKS_WAREHOUSE_ID=a1b2c3d4e5f60789
 ```
 
-## 2.4 Unity Catalog Volumes
+### 2.4 Unity Catalog Volumes
 
 Model artefacts — NeuralHydrology `run_dir`, weights, and config files — go to Unity Catalog Volumes, not DBFS. The canonical path pattern is:
 
@@ -117,9 +117,9 @@ Use this path everywhere: training configs, inference scripts, and any tooling t
 
 ---
 
-# 3. R on DASH {#sec-dash-r}
+## 3. R on DASH {#sec-dash-r}
 
-## 3.1 Package Conventions
+### 3.1 Package Conventions
 
 Use `data.table` and the fastverse for all data manipulation. Do not use `dplyr` or the broader tidyverse in DASH work — this is consistent with the R governance companion and matters here because the fastverse integrates better with Spark output and keeps memory overhead low.
 
@@ -132,7 +132,7 @@ library(arrow)
 library(brickster)
 ```
 
-## 3.2 Querying Databricks from R
+### 3.2 Querying Databricks from R
 
 Use `brickster` with `dbGetQuery`. The `params =` argument is not supported; interpolate values with `sprintf()`.
 
@@ -149,7 +149,7 @@ result_dt <- setDT(dbGetQuery(con, query))
 
 Wrap the result in `setDT()` immediately to get a `data.table` back.
 
-## 3.3 Shiny on DASH
+### 3.3 Shiny on DASH
 
 Use `bslib` with `bs_theme(version = 5)` to avoid conflicts with Shiny's Bootstrap 3 defaults:
 
@@ -165,7 +165,7 @@ ui <- bslib::page_fluid(
 
 The EA corporate proxy blocks external CDNs. All Shiny assets must be served locally or inline — do not reference cdnjs, unpkg, or jsdelivr in any Shiny app deployed via DASH. Deploy to Posit Connect.
 
-## 3.4 Geometry in R
+### 3.4 Geometry in R
 
 Use GeoJSON strings throughout. Do not use WKT or WKB.
 
@@ -178,7 +178,7 @@ sfc <- geojsonsf::geojson_sfc(geometry_col)
 
 For geometry cleaning, use `buffer(0)`. Do not use `make_valid` — there is a GEOS version incompatibility on this platform that makes it unreliable.
 
-## 3.5 Polygon Rendering
+### 3.5 Polygon Rendering
 
 The FGS dashboard colours polygons using a lookup against `RISK_COLOUR_HEX`. The `risk_colour` values from the table must match the keys in that lookup exactly, including capitalisation. A mismatch renders polygons without fill and produces no error or warning.
 
@@ -197,9 +197,9 @@ fgs_dt[, risk_colour := tools::toTitleCase(tolower(risk_colour))]
 
 ---
 
-# 4. Python on DASH {#sec-dash-python}
+## 4. Python on DASH {#sec-dash-python}
 
-## 4.1 Spark Patterns
+### 4.1 Spark Patterns
 
 When creating a Spark DataFrame from a pandas DataFrame, do not pass an explicit schema when columns contain mixed types. Create the DataFrame first, then cast:
 
@@ -222,7 +222,7 @@ df.write.format("delta") \
     )
 ```
 
-## 4.2 dbutils in .py Files
+### 4.2 dbutils in .py Files
 
 In Databricks notebooks, `dbutils` is injected automatically. In `.py` files it is not. Instantiate it explicitly:
 
@@ -233,7 +233,7 @@ dbutils = DBUtils(spark)
 
 This is a silent failure if omitted — the import succeeds but `dbutils` is undefined at runtime.
 
-## 4.3 Module Reload in Notebooks
+### 4.3 Module Reload in Notebooks
 
 When reimporting a custom module in a notebook, clear `sys.modules` first. Otherwise the old version persists in the session:
 
@@ -247,7 +247,7 @@ for key in list(sys.modules.keys()):
 import your_module
 ```
 
-## 4.4 Geometry in Python
+### 4.4 Geometry in Python
 
 Use GeoJSON strings throughout. Do not use WKT or WKB.
 
@@ -274,7 +274,7 @@ if isinstance(g, float) and math.isnan(g):
 
 An `is None` check will pass over missing geometries silently.
 
-## 4.5 Large Data Visualisation
+### 4.5 Large Data Visualisation
 
 Folium hits Databricks display limits when the GeoJSON payload is large. Above roughly 40 MB or 5,000 features, the display cell will fail or render nothing.
 
@@ -296,9 +296,9 @@ else:
 
 ---
 
-# 5. Data Conventions {#sec-dash-data}
+## 5. Data Conventions {#sec-dash-data}
 
-## 5.1 Medallion Architecture
+### 5.1 Medallion Architecture
 
 The schema uses functional table names rather than Bronze/Silver/Gold suffixes, but the medallion principles apply:
 
@@ -312,13 +312,13 @@ The schema uses functional table names rather than Bronze/Silver/Gold suffixes, 
 
 Raw data is never modified after ingest. Transformations live in derived tables, not in-place edits to source data.
 
-## 5.2 Delta Lake Writes
+### 5.2 Delta Lake Writes
 
 Use `replaceWhere` for all date-partitioned overwrites. See section 4.1 for the full pattern.
 
 Do not use plain `overwrite` mode on partitioned tables. It will overwrite the entire table, not just the partition you intended to update.
 
-## 5.3 Notebook Style
+### 5.3 Notebook Style
 
 - No `# COMMAND ----------` cell separators.
 - Use `display()` for table inspection in Databricks, not `print()`.
@@ -327,7 +327,7 @@ Do not use plain `overwrite` mode on partitioned tables. It will overwrite the e
 
 ---
 
-# 6. Anti-Patterns {#sec-dash-anti-patterns}
+## 6. Anti-Patterns {#sec-dash-anti-patterns}
 
 The table below lists the most common traps for a new DASH team member. Each one has caused a real problem.
 

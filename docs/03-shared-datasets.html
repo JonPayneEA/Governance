@@ -77,6 +77,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -400,7 +403,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Data companions</span></a>
+ <span class="menu-text">Platform companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -408,8 +411,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/hydrometric-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
+  <a href="./companions/dash-onboarding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DASH Platform Onboarding</span></span></a>
   </div>
 </li>
       </ul>
@@ -417,7 +420,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Model companions</span></a>
+ <span class="menu-text">Data companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -425,8 +428,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/flood-models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
+  <a href="./companions/hydrometric-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
   </div>
 </li>
       </ul>
@@ -434,7 +437,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Warning and procedure companions</span></a>
+ <span class="menu-text">Model companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -442,14 +445,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/flood-warnings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Flood Warning Asset Governance</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./companions/procedure-tools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></span></a>
+  <a href="./companions/flood-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
   </div>
 </li>
       </ul>
@@ -457,7 +454,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Training and implementation</span></a>
+ <span class="menu-text">Warning and procedure companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -465,14 +462,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/training-framework.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  <a href="./companions/flood-warnings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Flood Warning Asset Governance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Implementation</span></span></a>
+  <a href="./companions/procedure-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></span></a>
   </div>
 </li>
       </ul>
@@ -480,12 +477,41 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Training and implementation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./companions/training-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./companions/training-signoff-forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Training Sign-off Forms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a-glossary.html" class="sidebar-item-text sidebar-link">
@@ -538,8 +564,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-shared-dataset-definition" id="toc-sec-shared-dataset-definition" class="nav-link" data-scroll-target="#sec-shared-dataset-definition"><span class="header-section-number">4.2</span> What a shared dataset is</a></li>
   <li><a href="#sec-shared-asset-register" id="toc-sec-shared-asset-register" class="nav-link" data-scroll-target="#sec-shared-asset-register"><span class="header-section-number">4.3</span> The Shared Asset Register</a></li>
   <li><a href="#sec-shared-dataset-roles" id="toc-sec-shared-dataset-roles" class="nav-link" data-scroll-target="#sec-shared-dataset-roles"><span class="header-section-number">4.4</span> Roles for shared datasets</a></li>
-  <li><a href="#sec-shared-dataset-notification" id="toc-sec-shared-dataset-notification" class="nav-link" data-scroll-target="#sec-shared-dataset-notification"><span class="header-section-number">4.5</span> Notification requirements</a></li>
-  <li><a href="#sec-proposing-shared-dataset" id="toc-sec-proposing-shared-dataset" class="nav-link" data-scroll-target="#sec-proposing-shared-dataset"><span class="header-section-number">4.6</span> Proposing a new shared dataset</a></li>
+  <li><a href="#sec-shared-dataset-flow" id="toc-sec-shared-dataset-flow" class="nav-link" data-scroll-target="#sec-shared-dataset-flow"><span class="header-section-number">4.5</span> Data flow: current and proposed</a></li>
+  <li><a href="#sec-shared-dataset-notification" id="toc-sec-shared-dataset-notification" class="nav-link" data-scroll-target="#sec-shared-dataset-notification"><span class="header-section-number">4.6</span> Notification requirements</a></li>
+  <li><a href="#sec-proposing-shared-dataset" id="toc-sec-proposing-shared-dataset" class="nav-link" data-scroll-target="#sec-proposing-shared-dataset"><span class="header-section-number">4.7</span> Proposing a new shared dataset</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/03-shared-datasets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -714,13 +741,73 @@ Note
 </table>
 <p>Consuming teams must not derive their own version of a shared dataset. If a team believes the shared version is wrong or unsuitable, the correct route is to report the problem to the CDT Steward, not to derive a separate version. The CDT Steward is responsible for resolving the issue and updating the register.</p>
 </section>
-<section id="sec-shared-dataset-notification" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="sec-shared-dataset-notification"><span class="header-section-number">4.5</span> Notification requirements</h2>
+<section id="sec-shared-dataset-flow" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-shared-dataset-flow"><span class="header-section-number">4.5</span> Data flow: current and proposed</h2>
+<p>The diagrams below show the structural difference between independent derivation and shared stewardship.</p>
+<p><strong>Current state.</strong> Each team pulls from the same source but processes the data independently. Three separate Bronze-to-Gold pipelines produce three separate Gold-tier products. No single point of accountability exists across them.</p>
+<div class="cell" data-fig-width="6" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    SRC["Source data"]
+    FFM["FFM&lt;br/&gt;(independent derivation)"]
+    LFS["LFS&lt;br/&gt;(independent derivation)"]
+    WH["Warning Hubs&lt;br/&gt;(independent derivation)"]
+    FFM_T3["FFM Tier 3 assets"]
+    LFS_T3["LFS Tier 3 assets"]
+    WH_T3["Warning Hub Tier 3 assets"]
+
+    SRC --&gt; FFM
+    SRC --&gt; LFS
+    SRC --&gt; WH
+    FFM --&gt; FFM_T3
+    LFS --&gt; LFS_T3
+    WH --&gt; WH_T3
+
+    style FFM fill:#fff0f0,stroke:#cc6666
+    style LFS fill:#fff0f0,stroke:#cc6666
+    style WH fill:#fff0f0,stroke:#cc6666
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><strong>Proposed state.</strong> The CDT holds a single derivation pipeline. One Gold-tier product, one authoritative approval record, one point of accountability. Consuming teams use that product directly as Custodians.</p>
+<div class="cell" data-fig-width="6" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    SRC["Source data"]
+    CDT["CDT&lt;br/&gt;(single Gold derivation)"]
+    FFM_T3["FFM Tier 3 assets"]
+    LFS_T3["LFS Tier 3 assets"]
+    WH_T3["Warning Hub Tier 3 assets"]
+
+    SRC --&gt; CDT
+    CDT --&gt; FFM_T3
+    CDT --&gt; LFS_T3
+    CDT --&gt; WH_T3
+
+    style CDT fill:#fffbea,stroke:#c8a000,stroke-width:2px
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-shared-dataset-notification" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sec-shared-dataset-notification"><span class="header-section-number">4.6</span> Notification requirements</h2>
 <p>When a shared dataset is updated or superseded, the CDT Steward notifies all consuming team Stewards before the change takes effect. Notification is not a courtesy. It is a required step in the update process, and no change to a shared dataset is complete until all consuming Stewards have been informed.</p>
 <p>The notified Steward must confirm with their Custodians that any dependent model configurations or tool outputs remain valid after the update. This mirrors the cross-asset notification requirement at <a href="01-governance-framework.html#sec-cross-asset-notification" class="quarto-xref"><span>Section 2.6.4</span></a>, extended across team boundaries. Where a Gold-tier shared dataset feeds Tier 3 model runs, notification is mandatory, not discretionary. A Steward who receives notification and takes no action is in breach of their responsibilities under this framework.</p>
 </section>
-<section id="sec-proposing-shared-dataset" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="sec-proposing-shared-dataset"><span class="header-section-number">4.6</span> Proposing a new shared dataset</h2>
+<section id="sec-proposing-shared-dataset" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="sec-proposing-shared-dataset"><span class="header-section-number">4.7</span> Proposing a new shared dataset</h2>
 <p>Any team Steward may propose that a dataset be moved to shared status. The proposal goes to the CDT G7 Steward and must include: which teams currently use the dataset, the derivation method in use in each team, and why independent derivation presents a risk. A vague concern is not sufficient. The proposal should identify where the divergence is already occurring or where it is likely to occur as the dataset is used more widely.</p>
 <p>The CDT Steward assesses the proposal and, if agreed, takes on Steward responsibility and adds the entry to the register. Owner approval is required before the first Gold-tier record is created. A proposal is not a request for the CDT to do more work. It is a request for the CDT to coordinate derivation that is already being done separately, and to provide a single authoritative version in place of several independent ones.</p>
 

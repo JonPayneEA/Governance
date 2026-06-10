@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; Procedure Tools Governance – Data and Digital Asset Governance</title>
+<title>8&nbsp; DASH Platform Onboarding – Data and Digital Asset Governance</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../companions/training-framework.html" rel="next">
-<link href="../companions/flood-warnings.html" rel="prev">
+<link href="../companions/hydrometric-data.html" rel="next">
+<link href="../companions/python-governance.html" rel="prev">
 <link href="../figures/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -332,7 +367,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../companions/flood-warnings.html">Warning and procedure companions</a></li><li class="breadcrumb-item"><a href="../companions/procedure-tools.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../companions/dash-onboarding.html">Platform companions</a></li><li class="breadcrumb-item"><a href="../companions/dash-onboarding.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DASH Platform Onboarding</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -408,7 +443,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../companions/dash-onboarding.html" class="sidebar-item-text sidebar-link">
+  <a href="../companions/dash-onboarding.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DASH Platform Onboarding</span></span></a>
   </div>
 </li>
@@ -465,7 +500,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../companions/procedure-tools.html" class="sidebar-item-text sidebar-link active">
+  <a href="../companions/procedure-tools.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></span></a>
   </div>
 </li>
@@ -557,21 +592,54 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#purpose-and-scope" id="toc-purpose-and-scope" class="nav-link active" data-scroll-target="#purpose-and-scope"><span class="header-section-number">12.1</span> Purpose and scope</a></li>
-  <li><a href="#authoring-note" id="toc-authoring-note" class="nav-link" data-scroll-target="#authoring-note"><span class="header-section-number">12.2</span> Authoring note</a></li>
-  <li><a href="#sec-procedure-classification" id="toc-sec-procedure-classification" class="nav-link" data-scroll-target="#sec-procedure-classification"><span class="header-section-number">12.3</span> Procedure document classification</a></li>
-  <li><a href="#sec-procedure-vc" id="toc-sec-procedure-vc" class="nav-link" data-scroll-target="#sec-procedure-vc"><span class="header-section-number">12.4</span> Version control and review cadence</a></li>
-  <li><a href="#sec-procedure-dependencies" id="toc-sec-procedure-dependencies" class="nav-link" data-scroll-target="#sec-procedure-dependencies"><span class="header-section-number">12.5</span> Dependency management with Tier 3 tools</a></li>
+  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">9</span> Purpose</a></li>
+  <li><a href="#sec-dash-platform" id="toc-sec-dash-platform" class="nav-link" data-scroll-target="#sec-dash-platform"><span class="header-section-number">10</span> 1. Platform Overview</a>
+  <ul class="collapse">
+  <li><a href="#what-dash-is" id="toc-what-dash-is" class="nav-link" data-scroll-target="#what-dash-is"><span class="header-section-number">10.1</span> 1.1 What DASH Is</a></li>
+  <li><a href="#compute-profiles" id="toc-compute-profiles" class="nav-link" data-scroll-target="#compute-profiles"><span class="header-section-number">10.2</span> 1.2 Compute Profiles</a></li>
+  <li><a href="#development-and-deployment" id="toc-development-and-deployment" class="nav-link" data-scroll-target="#development-and-deployment"><span class="header-section-number">10.3</span> 1.3 Development and Deployment</a></li>
+  <li><a href="#what-is-not-available" id="toc-what-is-not-available" class="nav-link" data-scroll-target="#what-is-not-available"><span class="header-section-number">10.4</span> 1.4 What Is Not Available</a></li>
+  </ul></li>
+  <li><a href="#sec-dash-env-setup" id="toc-sec-dash-env-setup" class="nav-link" data-scroll-target="#sec-dash-env-setup"><span class="header-section-number">11</span> 2. Environment Setup</a>
+  <ul class="collapse">
+  <li><a href="#catalog-and-schema" id="toc-catalog-and-schema" class="nav-link" data-scroll-target="#catalog-and-schema"><span class="header-section-number">11.1</span> 2.1 Catalog and Schema</a></li>
+  <li><a href="#loading-environment-variables" id="toc-loading-environment-variables" class="nav-link" data-scroll-target="#loading-environment-variables"><span class="header-section-number">11.2</span> 2.2 Loading Environment Variables</a></li>
+  <li><a href="#databricks-connection" id="toc-databricks-connection" class="nav-link" data-scroll-target="#databricks-connection"><span class="header-section-number">11.3</span> 2.3 Databricks Connection</a></li>
+  <li><a href="#unity-catalog-volumes" id="toc-unity-catalog-volumes" class="nav-link" data-scroll-target="#unity-catalog-volumes"><span class="header-section-number">11.4</span> 2.4 Unity Catalog Volumes</a></li>
+  </ul></li>
+  <li><a href="#sec-dash-r" id="toc-sec-dash-r" class="nav-link" data-scroll-target="#sec-dash-r"><span class="header-section-number">12</span> 3. R on DASH</a>
+  <ul class="collapse">
+  <li><a href="#package-conventions" id="toc-package-conventions" class="nav-link" data-scroll-target="#package-conventions"><span class="header-section-number">12.1</span> 3.1 Package Conventions</a></li>
+  <li><a href="#querying-databricks-from-r" id="toc-querying-databricks-from-r" class="nav-link" data-scroll-target="#querying-databricks-from-r"><span class="header-section-number">12.2</span> 3.2 Querying Databricks from R</a></li>
+  <li><a href="#shiny-on-dash" id="toc-shiny-on-dash" class="nav-link" data-scroll-target="#shiny-on-dash"><span class="header-section-number">12.3</span> 3.3 Shiny on DASH</a></li>
+  <li><a href="#geometry-in-r" id="toc-geometry-in-r" class="nav-link" data-scroll-target="#geometry-in-r"><span class="header-section-number">12.4</span> 3.4 Geometry in R</a></li>
+  <li><a href="#polygon-rendering" id="toc-polygon-rendering" class="nav-link" data-scroll-target="#polygon-rendering"><span class="header-section-number">12.5</span> 3.5 Polygon Rendering</a></li>
+  </ul></li>
+  <li><a href="#sec-dash-python" id="toc-sec-dash-python" class="nav-link" data-scroll-target="#sec-dash-python"><span class="header-section-number">13</span> 4. Python on DASH</a>
+  <ul class="collapse">
+  <li><a href="#spark-patterns" id="toc-spark-patterns" class="nav-link" data-scroll-target="#spark-patterns"><span class="header-section-number">13.1</span> 4.1 Spark Patterns</a></li>
+  <li><a href="#dbutils-in-.py-files" id="toc-dbutils-in-.py-files" class="nav-link" data-scroll-target="#dbutils-in-.py-files"><span class="header-section-number">13.2</span> 4.2 dbutils in .py Files</a></li>
+  <li><a href="#module-reload-in-notebooks" id="toc-module-reload-in-notebooks" class="nav-link" data-scroll-target="#module-reload-in-notebooks"><span class="header-section-number">13.3</span> 4.3 Module Reload in Notebooks</a></li>
+  <li><a href="#geometry-in-python" id="toc-geometry-in-python" class="nav-link" data-scroll-target="#geometry-in-python"><span class="header-section-number">13.4</span> 4.4 Geometry in Python</a></li>
+  <li><a href="#large-data-visualisation" id="toc-large-data-visualisation" class="nav-link" data-scroll-target="#large-data-visualisation"><span class="header-section-number">13.5</span> 4.5 Large Data Visualisation</a></li>
+  </ul></li>
+  <li><a href="#sec-dash-data" id="toc-sec-dash-data" class="nav-link" data-scroll-target="#sec-dash-data"><span class="header-section-number">14</span> 5. Data Conventions</a>
+  <ul class="collapse">
+  <li><a href="#medallion-architecture" id="toc-medallion-architecture" class="nav-link" data-scroll-target="#medallion-architecture"><span class="header-section-number">14.1</span> 5.1 Medallion Architecture</a></li>
+  <li><a href="#delta-lake-writes" id="toc-delta-lake-writes" class="nav-link" data-scroll-target="#delta-lake-writes"><span class="header-section-number">14.2</span> 5.2 Delta Lake Writes</a></li>
+  <li><a href="#notebook-style" id="toc-notebook-style" class="nav-link" data-scroll-target="#notebook-style"><span class="header-section-number">14.3</span> 5.3 Notebook Style</a></li>
+  </ul></li>
+  <li><a href="#sec-dash-anti-patterns" id="toc-sec-dash-anti-patterns" class="nav-link" data-scroll-target="#sec-dash-anti-patterns"><span class="header-section-number">15</span> 6. Anti-Patterns</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/companions/procedure-tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/companions/dash-onboarding.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../companions/flood-warnings.html">Warning and procedure companions</a></li><li class="breadcrumb-item"><a href="../companions/procedure-tools.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../companions/dash-onboarding.html">Platform companions</a></li><li class="breadcrumb-item"><a href="../companions/dash-onboarding.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DASH Platform Onboarding</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-procedure-tools" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></span></h1>
+<h1 class="title"><span id="sec-dash-onboarding" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DASH Platform Onboarding</span></span></h1>
 </div>
 
 
@@ -594,7 +662,7 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Document Metadata
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -603,6 +671,12 @@ Note
 <col style="width: 50%">
 <col style="width: 50%">
 </colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td><strong>Version</strong></td>
@@ -610,7 +684,7 @@ Note
 </tr>
 <tr class="even">
 <td><strong>Status</strong></td>
-<td>Scope defined: awaiting content</td>
+<td>Draft: For Team Review</td>
 </tr>
 <tr class="odd">
 <td><strong>Review Date</strong></td>
@@ -618,43 +692,398 @@ Note
 </tr>
 <tr class="even">
 <td><strong>Parent Document</strong></td>
-<td>Data and Digital Asset Governance Framework v3.0</td>
+<td>Data &amp; Digital Asset Governance Framework v2.0 │ R Tool Governance v1.3 │ Python Tool Governance v1.3</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<section id="purpose-and-scope" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="purpose-and-scope"><span class="header-section-number">12.1</span> Purpose and scope</h2>
-<p>This companion governs operational procedure documentation and the tools that produce or display it: Standard Operating Procedures, decision trees, response playbooks, and associated tooling.</p>
-<p><strong>In scope:</strong></p>
+<section id="purpose" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Purpose</h1>
+<p>DASH is a specific platform with specific constraints. This document covers what those are so a new team member can start work without learning them by mistake. It complements the R and Python governance companions, which cover code quality and documentation standards; this covers how to run, connect, and deploy on DASH.</p>
+</section>
+<section id="sec-dash-platform" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 1. Platform Overview</h1>
+<section id="what-dash-is" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="what-dash-is"><span class="header-section-number">10.1</span> 1.1 What DASH Is</h2>
+<p>DASH (Databricks AI and Simulation Hub) is an Azure Databricks environment running Unity Catalog and Delta Lake. It carries two workstreams:</p>
 <ul>
-<li>Document ownership under the Owner, Steward, and Custodian model</li>
-<li>Version control requirements for procedure documents</li>
-<li>Review cadences for procedure documentation</li>
-<li>Dependencies between procedure tools and the Tier 3 code tools they rely on</li>
+<li><strong>FGS pipeline</strong> — ingest, process, and serve flood risk data so Senior Forecasters can issue Alerts and Warnings ahead of normal lead times. The upstream source is the Flood Forecasting Centre (FFC) API.</li>
+<li><strong>AI flood forecasting</strong> — develop and operationalise LSTM-based models (via NeuralHydrology) against PDM. Operational output is routed to IMFS via a Deltares FEWS adapter.</li>
 </ul>
-<p><strong>Out of scope:</strong></p>
+<p>Both workstreams share one platform, one schema, and one set of conventions.</p>
+<p>The production catalog and schema is <code>prd_dash_lab.flood_forecasting_unrestricted</code>.</p>
+</section>
+<section id="compute-profiles" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="compute-profiles"><span class="header-section-number">10.2</span> 1.2 Compute Profiles</h2>
+<p>DASH has two compute environments. Do not assume one when working in the other.</p>
+<table class="table-striped caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 35%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Profile</th>
+<th>Used for</th>
+<th>Runtime</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPU</td>
+<td>FGS pipeline ingest, data pipelines, dashboard, LSTM inference</td>
+<td>DBR 16.x / Spark 4.1</td>
+</tr>
+<tr class="even">
+<td>GPU</td>
+<td>NeuralHydrology training</td>
+<td>GPU cluster, ML Runtime (PyTorch, MLflow included)</td>
+</tr>
+</tbody>
+</table>
+<p>The CPU cluster is the default working environment. Switch to GPU only for training runs. Mosaic and Sedona are not available on DBR 16.x.</p>
+</section>
+<section id="development-and-deployment" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="development-and-deployment"><span class="header-section-number">10.3</span> 1.3 Development and Deployment</h2>
+<p>Local development happens in Posit Workbench using the VS Code interface. Deployment target is Posit Connect.</p>
+<p>Notebooks live at <code>/Workspace/Users/{your.ea.email}/FGS_Notebooks/jobs/</code>.</p>
+</section>
+<section id="what-is-not-available" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="what-is-not-available"><span class="header-section-number">10.4</span> 1.4 What Is Not Available</h2>
+<p>A few constraints are not obvious and will cost time if you hit them unexpectedly:</p>
 <ul>
-<li>Warning assets that procedures reference (see <a href="flood-warnings.html" class="quarto-xref"><span>Chapter 11</span></a>)</li>
-<li>Code tool governance for tools that produce procedure documents (see <a href="r-governance.html" class="quarto-xref"><span>Chapter 6</span></a> and <a href="python-governance.html" class="quarto-xref"><span>Chapter 7</span></a>)</li>
+<li><strong>Mosaic and Sedona</strong> are not available on DBR 16.x. Spatial work uses GeoPandas and Shapely.</li>
+<li><strong>ETL job creation is not available.</strong> You can schedule notebooks; you cannot create ETL jobs. The minimum scheduling cadence is hourly. Sub-hourly pipelines are not possible.</li>
+<li><strong>EA corporate proxy blocks external CDNs.</strong> This affects cdnjs, unpkg, and jsdelivr. Frontend assets (Shiny, Folium) must be served locally or inline.</li>
 </ul>
+<hr>
 </section>
-<section id="authoring-note" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="authoring-note"><span class="header-section-number">12.2</span> Authoring note</h2>
-<p>The sections below are to be drafted by the relevant G7 Steward or a nominated subject matter expert. The completed draft should be reviewed by the CDT G7 Steward and approved by the Deputy Director before this companion moves to Draft status.</p>
 </section>
-<section id="sec-procedure-classification" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="sec-procedure-classification"><span class="header-section-number">12.3</span> Procedure document classification</h2>
-<p><em>To be written.</em></p>
+<section id="sec-dash-env-setup" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 2. Environment Setup</h1>
+<section id="catalog-and-schema" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="catalog-and-schema"><span class="header-section-number">11.1</span> 2.1 Catalog and Schema</h2>
+<p>Always read the catalog and schema from environment variables. Never hardcode <code>prd_dash_lab</code> or <code>flood_forecasting_unrestricted</code> in scripts or notebooks.</p>
+<p>The canonical environment variable names are:</p>
+<table class="table-striped caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DASH_CATALOG</code></td>
+<td><code>prd_dash_lab</code></td>
+</tr>
+<tr class="even">
+<td><code>DASH_SCHEMA</code></td>
+<td><code>flood_forecasting_unrestricted</code></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="sec-procedure-vc" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="sec-procedure-vc"><span class="header-section-number">12.4</span> Version control and review cadence</h2>
-<p><em>To be written.</em></p>
+<section id="loading-environment-variables" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="loading-environment-variables"><span class="header-section-number">11.2</span> 2.2 Loading Environment Variables</h2>
+<p><strong>Python</strong> — use a <code>.env</code> file loaded via <code>python-dotenv</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>load_dotenv()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>catalog <span class="op">=</span> os.environ[<span class="st">"DASH_CATALOG"</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>schema  <span class="op">=</span> os.environ[<span class="st">"DASH_SCHEMA"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>R</strong> — use a <code>.env</code> file loaded via <code>dotenv</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dotenv<span class="sc">::</span><span class="fu">load_dot_env</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>catalog <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"DASH_CATALOG"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>schema  <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"DASH_SCHEMA"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="sec-procedure-dependencies" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="sec-procedure-dependencies"><span class="header-section-number">12.5</span> Dependency management with Tier 3 tools</h2>
-<p><em>To be written.</em></p>
+<section id="databricks-connection" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="databricks-connection"><span class="header-section-number">11.3</span> 2.3 Databricks Connection</h2>
+<p>Two common connection mistakes:</p>
+<ul>
+<li><code>DATABRICKS_HOST</code> must include the <code>https://</code> scheme. Without it, connection fails silently or with a confusing error.</li>
+<li><code>DATABRICKS_WAREHOUSE_ID</code> is the short hex string from the HTTP path in the Databricks SQL warehouse settings. No trailing slash, no <code>?o=</code> suffix.</li>
+</ul>
+<pre><code># .env
+DATABRICKS_HOST=https://adb-XXXXXXXX.XX.azuredatabricks.net
+DATABRICKS_WAREHOUSE_ID=a1b2c3d4e5f60789</code></pre>
+</section>
+<section id="unity-catalog-volumes" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="unity-catalog-volumes"><span class="header-section-number">11.4</span> 2.4 Unity Catalog Volumes</h2>
+<p>Model artefacts — NeuralHydrology <code>run_dir</code>, weights, and config files — go to Unity Catalog Volumes, not DBFS. The canonical path pattern is:</p>
+<pre><code>/Volumes/prd_dash_lab/flood_forecasting_unrestricted/model_runs/{run_name}/</code></pre>
+<p>Use this path everywhere: training configs, inference scripts, and any tooling that references model artefacts. Do not write to DBFS and migrate later; write to Volumes from the start.</p>
+<hr>
+</section>
+</section>
+<section id="sec-dash-r" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> 3. R on DASH</h1>
+<section id="package-conventions" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="package-conventions"><span class="header-section-number">12.1</span> 3.1 Package Conventions</h2>
+<p>Use <code>data.table</code> and the fastverse for all data manipulation. Do not use <code>dplyr</code> or the broader tidyverse in DASH work — this is consistent with the R governance companion and matters here because the fastverse integrates better with Spark output and keeps memory overhead low.</p>
+<p>Use <code>brickster</code> for Databricks queries. Do not use <code>sparklyr</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(collapse)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brickster)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="querying-databricks-from-r" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="querying-databricks-from-r"><span class="header-section-number">12.2</span> 3.2 Querying Databricks from R</h2>
+<p>Use <code>brickster</code> with <code>dbGetQuery</code>. The <code>params =</code> argument is not supported; interpolate values with <code>sprintf()</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>date_str <span class="ot">&lt;-</span> <span class="st">"2026-01-15"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SELECT measure_uri, date_time, value</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">   FROM prd_dash_lab.flood_forecasting_unrestricted.ea_rt_readings_bronze</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">   WHERE reading_date = '%s'"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  date_str</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>result_dt <span class="ot">&lt;-</span> <span class="fu">setDT</span>(<span class="fu">dbGetQuery</span>(con, query))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Wrap the result in <code>setDT()</code> immediately to get a <code>data.table</code> back.</p>
+</section>
+<section id="shiny-on-dash" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="shiny-on-dash"><span class="header-section-number">12.3</span> 3.3 Shiny on DASH</h2>
+<p>Use <code>bslib</code> with <code>bs_theme(version = 5)</code> to avoid conflicts with Shiny’s Bootstrap 3 defaults:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bslib)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fluid</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(<span class="at">version =</span> <span class="dv">5</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The EA corporate proxy blocks external CDNs. All Shiny assets must be served locally or inline — do not reference cdnjs, unpkg, or jsdelivr in any Shiny app deployed via DASH. Deploy to Posit Connect.</p>
+</section>
+<section id="geometry-in-r" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="geometry-in-r"><span class="header-section-number">12.4</span> 3.4 Geometry in R</h2>
+<p>Use GeoJSON strings throughout. Do not use WKT or WKB.</p>
+<p>Convert geometry columns with <code>geojsonsf::geojson_sfc()</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geojsonsf)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sfc <span class="ot">&lt;-</span> geojsonsf<span class="sc">::</span><span class="fu">geojson_sfc</span>(geometry_col)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For geometry cleaning, use <code>buffer(0)</code>. Do not use <code>make_valid</code> — there is a GEOS version incompatibility on this platform that makes it unreliable.</p>
+</section>
+<section id="polygon-rendering" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="polygon-rendering"><span class="header-section-number">12.5</span> 3.5 Polygon Rendering</h2>
+<p>The FGS dashboard colours polygons using a lookup against <code>RISK_COLOUR_HEX</code>. The <code>risk_colour</code> values from the table must match the keys in that lookup exactly, including capitalisation. A mismatch renders polygons without fill and produces no error or warning.</p>
+<p>Normalise the case of <code>risk_colour</code> before joining:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>RISK_COLOUR_HEX <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Very Low"</span> <span class="ot">=</span> <span class="st">"#00703C"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Low"</span>      <span class="ot">=</span> <span class="st">"#FFDD00"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Medium"</span>   <span class="ot">=</span> <span class="st">"#F47738"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"High"</span>     <span class="ot">=</span> <span class="st">"#D4351C"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalise risk_colour to title case before the lookup</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>fgs_dt[, risk_colour <span class="sc">:</span><span class="er">=</span> tools<span class="sc">::</span><span class="fu">toTitleCase</span>(<span class="fu">tolower</span>(risk_colour))]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="sec-dash-python" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> 4. Python on DASH</h1>
+<section id="spark-patterns" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="spark-patterns"><span class="header-section-number">13.1</span> 4.1 Spark Patterns</h2>
+<p>When creating a Spark DataFrame from a pandas DataFrame, do not pass an explicit schema when columns contain mixed types. Create the DataFrame first, then cast:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preferred: create then cast</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> spark.createDataFrame(pandas_df)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (df</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>      .withColumn(<span class="st">"value"</span>, col(<span class="st">"value"</span>).cast(<span class="st">"double"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      .withColumn(<span class="st">"reading_date"</span>, col(<span class="st">"reading_date"</span>).cast(<span class="st">"date"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For date-partitioned Delta writes, use <code>replaceWhere</code> to make the operation idempotent. Plain <code>overwrite</code> mode on a partitioned table will remove data outside the partition you intend to update:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.write.<span class="bu">format</span>(<span class="st">"delta"</span>) <span class="op">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    .mode(<span class="st">"overwrite"</span>) <span class="op">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    .option(<span class="st">"replaceWhere"</span>, <span class="ss">f"reading_date = '</span><span class="sc">{</span>date_str<span class="sc">}</span><span class="ss">'"</span>) <span class="op">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    .saveAsTable(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"prd_dash_lab.flood_forecasting_unrestricted.ea_rt_readings_bronze"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="dbutils-in-.py-files" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="dbutils-in-.py-files"><span class="header-section-number">13.2</span> 4.2 dbutils in .py Files</h2>
+<p>In Databricks notebooks, <code>dbutils</code> is injected automatically. In <code>.py</code> files it is not. Instantiate it explicitly:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.dbutils <span class="im">import</span> DBUtils</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dbutils <span class="op">=</span> DBUtils(spark)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is a silent failure if omitted — the import succeeds but <code>dbutils</code> is undefined at runtime.</p>
+</section>
+<section id="module-reload-in-notebooks" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="module-reload-in-notebooks"><span class="header-section-number">13.3</span> 4.3 Module Reload in Notebooks</h2>
+<p>When reimporting a custom module in a notebook, clear <code>sys.modules</code> first. Otherwise the old version persists in the session:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key <span class="kw">in</span> <span class="bu">list</span>(sys.modules.keys()):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> key.startswith(<span class="st">"your_module"</span>):</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> sys.modules[key]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> your_module</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="geometry-in-python" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="geometry-in-python"><span class="header-section-number">13.4</span> 4.4 Geometry in Python</h2>
+<p>Use GeoJSON strings throughout. Do not use WKT or WKB.</p>
+<p>Convert with <code>shapely</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.geometry <span class="im">import</span> shape</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>geom <span class="op">=</span> shape(json.loads(geojson_str))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For cleaning, use <code>buffer(0)</code>. Do not use <code>make_valid</code> — GEOS version incompatibility.</p>
+<p>In pandas DataFrames, missing geometry values are stored as <code>float('nan')</code>, not <code>None</code>. Check with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">isinstance</span>(g, <span class="bu">float</span>) <span class="kw">and</span> math.isnan(g):</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># missing geometry</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>An <code>is None</code> check will pass over missing geometries silently.</p>
+</section>
+<section id="large-data-visualisation" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="large-data-visualisation"><span class="header-section-number">13.5</span> 4.5 Large Data Visualisation</h2>
+<p>Folium hits Databricks display limits when the GeoJSON payload is large. Above roughly 40 MB or 5,000 features, the display cell will fail or render nothing.</p>
+<p>Fall back to static matplotlib PNGs for large datasets:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(gdf) <span class="op">&gt;</span> <span class="dv">5000</span>:</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    gdf.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"steelblue"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="st">"output_map.png"</span>, dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Folium path</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="sec-dash-data" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> 5. Data Conventions</h1>
+<section id="medallion-architecture" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="medallion-architecture"><span class="header-section-number">14.1</span> 5.1 Medallion Architecture</h2>
+<p>The schema uses functional table names rather than Bronze/Silver/Gold suffixes, but the medallion principles apply:</p>
+<table class="table-striped caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Table</th>
+<th>Tier equivalent</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ea_rt_readings_bronze</code></td>
+<td>Bronze</td>
+<td>Raw, immutable on ingest</td>
+</tr>
+<tr class="even">
+<td><code>ea_rt_measure_register</code></td>
+<td>Silver-equivalent</td>
+<td>Derived from Bronze via <code>SELECT DISTINCT</code></td>
+</tr>
+<tr class="odd">
+<td><code>fgs_risk_polygons</code>, <code>flood_warnings_*</code>, <code>ea_administrative_areas</code></td>
+<td>Gold-equivalent</td>
+<td>Stable operational tables; read by downstream consumers</td>
+</tr>
+</tbody>
+</table>
+<p>Raw data is never modified after ingest. Transformations live in derived tables, not in-place edits to source data.</p>
+</section>
+<section id="delta-lake-writes" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="delta-lake-writes"><span class="header-section-number">14.2</span> 5.2 Delta Lake Writes</h2>
+<p>Use <code>replaceWhere</code> for all date-partitioned overwrites. See section 4.1 for the full pattern.</p>
+<p>Do not use plain <code>overwrite</code> mode on partitioned tables. It will overwrite the entire table, not just the partition you intended to update.</p>
+</section>
+<section id="notebook-style" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="notebook-style"><span class="header-section-number">14.3</span> 5.3 Notebook Style</h2>
+<ul>
+<li>No <code># COMMAND ----------</code> cell separators.</li>
+<li>Use <code>display()</code> for table inspection in Databricks, not <code>print()</code>.</li>
+<li>Write complete, runnable files. Not snippets or partial stubs.</li>
+<li>Comments explain intent and design, not mechanics.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="sec-dash-anti-patterns" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> 6. Anti-Patterns</h1>
+<p>The table below lists the most common traps for a new DASH team member. Each one has caused a real problem.</p>
+<table class="table-striped caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Anti-pattern</th>
+<th>What to do instead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Writing NeuralHydrology <code>run_dir</code> to DBFS</td>
+<td>Write to Unity Catalog Volumes: <code>/Volumes/prd_dash_lab/flood_forecasting_unrestricted/model_runs/{run_name}/</code></td>
+</tr>
+<tr class="even">
+<td>Hardcoding <code>prd_dash_lab</code> or <code>flood_forecasting_unrestricted</code></td>
+<td>Read from <code>DASH_CATALOG</code> and <code>DASH_SCHEMA</code> environment variables</td>
+</tr>
+<tr class="odd">
+<td>Designing a sub-hourly pipeline cadence</td>
+<td>Hourly is the floor; ETL job creation is not available</td>
+</tr>
+<tr class="even">
+<td>Passing an explicit schema to <code>createDataFrame</code> with mixed-type columns</td>
+<td>Create the DataFrame without a schema, then cast columns</td>
+</tr>
+<tr class="odd">
+<td>Using <code>dbutils</code> in a <code>.py</code> file without instantiating it</td>
+<td><code>from pyspark.dbutils import DBUtils; dbutils = DBUtils(spark)</code></td>
+</tr>
+<tr class="even">
+<td>Reimporting a custom module in a notebook without clearing <code>sys.modules</code></td>
+<td>Clear the relevant keys from <code>sys.modules</code> before reimporting</td>
+</tr>
+<tr class="odd">
+<td>Trusting <code>/id/stations</code> with a <code>parameter</code> filter</td>
+<td>It silently returns only rainfall stations; derive the gauge register from the archive CSV via <code>SELECT DISTINCT measure_uri</code> on the Bronze table</td>
+</tr>
+<tr class="even">
+<td><code>make_valid</code> for geometry cleaning</td>
+<td>Use <code>buffer(0)</code> — GEOS version incompatibility on this platform</td>
+</tr>
+<tr class="odd">
+<td><code>is None</code> to check missing geometry in a pandas DataFrame</td>
+<td>Use <code>isinstance(g, float) and math.isnan(g)</code></td>
+</tr>
+<tr class="even">
+<td><code>dplyr</code>/<code>tidyverse</code> for data manipulation in R</td>
+<td><code>data.table</code> and the fastverse throughout</td>
+</tr>
+<tr class="odd">
+<td><code>sparklyr</code> for Databricks queries in R</td>
+<td>Use <code>brickster</code></td>
+</tr>
+<tr class="even">
+<td><code>params =</code> in <code>dbGetQuery()</code> via brickster</td>
+<td>Interpolate with <code>sprintf()</code></td>
+</tr>
+<tr class="odd">
+<td>Bootstrap 3 defaults in Shiny</td>
+<td><code>bslib::bs_theme(version = 5)</code></td>
+</tr>
+<tr class="even">
+<td>Referencing external CDNs (cdnjs, unpkg, jsdelivr) in Shiny</td>
+<td>Serve all assets locally or inline</td>
+</tr>
+<tr class="odd">
+<td>Capitalisation mismatch between <code>risk_colour</code> values and <code>RISK_COLOUR_HEX</code> keys</td>
+<td>Normalise <code>risk_colour</code> to title case before the lookup; mismatch renders polygons without fill and produces no error</td>
+</tr>
+<tr class="even">
+<td>Assuming Mosaic or Sedona are available</td>
+<td>They are not on DBR 16.x; use GeoPandas and Shapely</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
@@ -1075,13 +1504,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../companions/flood-warnings.html" class="pagination-link" aria-label="Flood Warning Asset Governance">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Flood Warning Asset Governance</span></span>
+      <a href="../companions/python-governance.html" class="pagination-link" aria-label="Python Tool Governance">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Python Tool Governance</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../companions/training-framework.html" class="pagination-link" aria-label="Staff Training Framework">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../companions/hydrometric-data.html" class="pagination-link" aria-label="Imported Hydrometric Data Framework">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1093,7 +1522,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/companions/procedure-tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/companions/dash-onboarding.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

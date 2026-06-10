@@ -77,6 +77,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -400,7 +403,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Data companions</span></a>
+ <span class="menu-text">Platform companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -408,8 +411,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/hydrometric-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
+  <a href="./companions/dash-onboarding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DASH Platform Onboarding</span></span></a>
   </div>
 </li>
       </ul>
@@ -417,7 +420,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Model companions</span></a>
+ <span class="menu-text">Data companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -425,8 +428,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/flood-models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
+  <a href="./companions/hydrometric-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
   </div>
 </li>
       </ul>
@@ -434,7 +437,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Warning and procedure companions</span></a>
+ <span class="menu-text">Model companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -442,14 +445,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/flood-warnings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Flood Warning Asset Governance</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./companions/procedure-tools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></span></a>
+  <a href="./companions/flood-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
   </div>
 </li>
       </ul>
@@ -457,7 +454,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Training and implementation</span></a>
+ <span class="menu-text">Warning and procedure companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -465,14 +462,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/training-framework.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  <a href="./companions/flood-warnings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Flood Warning Asset Governance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Implementation</span></span></a>
+  <a href="./companions/procedure-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></span></a>
   </div>
 </li>
       </ul>
@@ -480,12 +477,41 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Training and implementation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./companions/training-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./companions/training-signoff-forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Training Sign-off Forms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a-glossary.html" class="sidebar-item-text sidebar-link">
@@ -535,7 +561,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#sec-framework-purpose" id="toc-sec-framework-purpose" class="nav-link active" data-scroll-target="#sec-framework-purpose"><span class="header-section-number">2.1</span> Purpose</a></li>
-  <li><a href="#sec-framework-scope" id="toc-sec-framework-scope" class="nav-link" data-scroll-target="#sec-framework-scope"><span class="header-section-number">2.2</span> Scope</a></li>
+  <li><a href="#sec-framework-scope" id="toc-sec-framework-scope" class="nav-link" data-scroll-target="#sec-framework-scope"><span class="header-section-number">2.2</span> Scope</a>
+  <ul class="collapse">
+  <li><a href="#sec-scope-teams" id="toc-sec-scope-teams" class="nav-link" data-scroll-target="#sec-scope-teams"><span class="header-section-number">2.2.1</span> Teams in scope</a></li>
+  </ul></li>
   <li><a href="#sec-governance-roles" id="toc-sec-governance-roles" class="nav-link" data-scroll-target="#sec-governance-roles"><span class="header-section-number">2.3</span> Governance Roles</a>
   <ul class="collapse">
   <li><a href="#sec-owner-role" id="toc-sec-owner-role" class="nav-link" data-scroll-target="#sec-owner-role"><span class="header-section-number">2.3.1</span> Owner (Deputy Director)</a></li>
@@ -554,6 +583,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-medallion-architecture" id="toc-sec-medallion-architecture" class="nav-link" data-scroll-target="#sec-medallion-architecture"><span class="header-section-number">2.5.1</span> Data Tiers and the Medallion Architecture</a></li>
   <li><a href="#sec-model-tiers" id="toc-sec-model-tiers" class="nav-link" data-scroll-target="#sec-model-tiers"><span class="header-section-number">2.5.2</span> Model Tiers</a></li>
   <li><a href="#sec-tool-tiers" id="toc-sec-tool-tiers" class="nav-link" data-scroll-target="#sec-tool-tiers"><span class="header-section-number">2.5.3</span> Tool Tiers</a></li>
+  <li><a href="#sec-warning-config-tiers" id="toc-sec-warning-config-tiers" class="nav-link" data-scroll-target="#sec-warning-config-tiers"><span class="header-section-number">2.5.4</span> Warning Configuration Tiers</a></li>
+  <li><a href="#sec-procedure-tiers" id="toc-sec-procedure-tiers" class="nav-link" data-scroll-target="#sec-procedure-tiers"><span class="header-section-number">2.5.5</span> Procedure Tiers</a></li>
   </ul></li>
   <li><a href="#sec-asset-registers" id="toc-sec-asset-registers" class="nav-link" data-scroll-target="#sec-asset-registers"><span class="header-section-number">2.6</span> Asset Registers</a>
   <ul class="collapse">
@@ -562,30 +593,42 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-register-currency" id="toc-sec-register-currency" class="nav-link" data-scroll-target="#sec-register-currency"><span class="header-section-number">2.6.3</span> Register Currency and Compliance</a></li>
   <li><a href="#sec-cross-asset-notification" id="toc-sec-cross-asset-notification" class="nav-link" data-scroll-target="#sec-cross-asset-notification"><span class="header-section-number">2.6.4</span> Cross-Asset Notification</a></li>
   </ul></li>
-  <li><a href="#sec-flood-model-overview" id="toc-sec-flood-model-overview" class="nav-link" data-scroll-target="#sec-flood-model-overview"><span class="header-section-number">2.7</span> Flood Model Governance</a></li>
-  <li><a href="#sec-code-tool-governance" id="toc-sec-code-tool-governance" class="nav-link" data-scroll-target="#sec-code-tool-governance"><span class="header-section-number">2.8</span> Code and Tool Governance</a>
+  <li><a href="#sec-asset-naming" id="toc-sec-asset-naming" class="nav-link" data-scroll-target="#sec-asset-naming"><span class="header-section-number">2.7</span> Asset Naming and File Standards</a>
   <ul class="collapse">
-  <li><a href="#sec-tool-classification" id="toc-sec-tool-classification" class="nav-link" data-scroll-target="#sec-tool-classification"><span class="header-section-number">2.8.1</span> Tool Classification</a></li>
-  <li><a href="#sec-custodianship-by-tier" id="toc-sec-custodianship-by-tier" class="nav-link" data-scroll-target="#sec-custodianship-by-tier"><span class="header-section-number">2.8.2</span> Custodianship Requirements by Tier</a></li>
-  <li><a href="#sec-routes-to-development" id="toc-sec-routes-to-development" class="nav-link" data-scroll-target="#sec-routes-to-development"><span class="header-section-number">2.8.3</span> Routes to Tool Development</a></li>
-  <li><a href="#sec-code-review-requirements" id="toc-sec-code-review-requirements" class="nav-link" data-scroll-target="#sec-code-review-requirements"><span class="header-section-number">2.8.4</span> Code Review Requirements</a></li>
-  <li><a href="#sec-version-control" id="toc-sec-version-control" class="nav-link" data-scroll-target="#sec-version-control"><span class="header-section-number">2.8.5</span> Version Control Principles</a></li>
-  <li><a href="#sec-tool-register" id="toc-sec-tool-register" class="nav-link" data-scroll-target="#sec-tool-register"><span class="header-section-number">2.8.6</span> Tool Register</a></li>
-  <li><a href="#sec-handover-succession" id="toc-sec-handover-succession" class="nav-link" data-scroll-target="#sec-handover-succession"><span class="header-section-number">2.8.7</span> Handover and Succession</a></li>
+  <li><a href="#folder-structure" id="toc-folder-structure" class="nav-link" data-scroll-target="#folder-structure"><span class="header-section-number">2.7.1</span> Folder structure</a></li>
+  <li><a href="#file-naming" id="toc-file-naming" class="nav-link" data-scroll-target="#file-naming"><span class="header-section-number">2.7.2</span> File naming</a></li>
   </ul></li>
-  <li><a href="#sec-data-catalogue" id="toc-sec-data-catalogue" class="nav-link" data-scroll-target="#sec-data-catalogue"><span class="header-section-number">2.9</span> Data Catalogue and Centralised Definitions</a></li>
-  <li><a href="#sec-data-quality" id="toc-sec-data-quality" class="nav-link" data-scroll-target="#sec-data-quality"><span class="header-section-number">2.10</span> Data Quality</a></li>
-  <li><a href="#sec-access-sharing" id="toc-sec-access-sharing" class="nav-link" data-scroll-target="#sec-access-sharing"><span class="header-section-number">2.11</span> Access and Sharing</a></li>
-  <li><a href="#sec-data-incidents" id="toc-sec-data-incidents" class="nav-link" data-scroll-target="#sec-data-incidents"><span class="header-section-number">2.12</span> Data Incidents and Escalation</a></li>
-  <li><a href="#sec-monitoring-reporting" id="toc-sec-monitoring-reporting" class="nav-link" data-scroll-target="#sec-monitoring-reporting"><span class="header-section-number">2.13</span> Monitoring, Reporting, and Risk Management</a></li>
-  <li><a href="#sec-wider-value" id="toc-sec-wider-value" class="nav-link" data-scroll-target="#sec-wider-value"><span class="header-section-number">2.14</span> Wider Data Value</a></li>
-  <li><a href="#sec-ai-governance" id="toc-sec-ai-governance" class="nav-link" data-scroll-target="#sec-ai-governance"><span class="header-section-number">2.15</span> AI and Machine Learning Governance</a></li>
-  <li><a href="#sec-review-compliance" id="toc-sec-review-compliance" class="nav-link" data-scroll-target="#sec-review-compliance"><span class="header-section-number">2.16</span> Review and Compliance</a>
+  <li><a href="#sec-catchment-condition" id="toc-sec-catchment-condition" class="nav-link" data-scroll-target="#sec-catchment-condition"><span class="header-section-number">2.8</span> Catchment History and Condition</a>
   <ul class="collapse">
-  <li><a href="#sec-version-control-framework" id="toc-sec-version-control-framework" class="nav-link" data-scroll-target="#sec-version-control-framework"><span class="header-section-number">2.16.1</span> Framework Version Control</a></li>
-  <li><a href="#sec-owner-engagement" id="toc-sec-owner-engagement" class="nav-link" data-scroll-target="#sec-owner-engagement"><span class="header-section-number">2.16.2</span> Owner Annual Engagement Requirement</a></li>
+  <li><a href="#sec-catchment-events" id="toc-sec-catchment-events" class="nav-link" data-scroll-target="#sec-catchment-events"><span class="header-section-number">2.8.1</span> Catchment change events</a></li>
+  <li><a href="#sec-catchment-history-log" id="toc-sec-catchment-history-log" class="nav-link" data-scroll-target="#sec-catchment-history-log"><span class="header-section-number">2.8.2</span> Catchment History Log</a></li>
+  <li><a href="#sec-catchment-cross-notification" id="toc-sec-catchment-cross-notification" class="nav-link" data-scroll-target="#sec-catchment-cross-notification"><span class="header-section-number">2.8.3</span> Cross-team notification</a></li>
+  <li><a href="#sec-catchment-condition-framing" id="toc-sec-catchment-condition-framing" class="nav-link" data-scroll-target="#sec-catchment-condition-framing"><span class="header-section-number">2.8.4</span> Condition as a judgement</a></li>
   </ul></li>
-  <li><a href="#sec-quick-reference" id="toc-sec-quick-reference" class="nav-link" data-scroll-target="#sec-quick-reference"><span class="header-section-number">2.17</span> Quick Reference: Who to Go To</a></li>
+  <li><a href="#sec-flood-model-overview" id="toc-sec-flood-model-overview" class="nav-link" data-scroll-target="#sec-flood-model-overview"><span class="header-section-number">2.9</span> Flood Model Governance</a></li>
+  <li><a href="#sec-code-tool-governance" id="toc-sec-code-tool-governance" class="nav-link" data-scroll-target="#sec-code-tool-governance"><span class="header-section-number">2.10</span> Code and Tool Governance</a>
+  <ul class="collapse">
+  <li><a href="#sec-tool-classification" id="toc-sec-tool-classification" class="nav-link" data-scroll-target="#sec-tool-classification"><span class="header-section-number">2.10.1</span> Tool Classification</a></li>
+  <li><a href="#sec-custodianship-by-tier" id="toc-sec-custodianship-by-tier" class="nav-link" data-scroll-target="#sec-custodianship-by-tier"><span class="header-section-number">2.10.2</span> Custodianship Requirements by Tier</a></li>
+  <li><a href="#sec-routes-to-development" id="toc-sec-routes-to-development" class="nav-link" data-scroll-target="#sec-routes-to-development"><span class="header-section-number">2.10.3</span> Routes to Tool Development</a></li>
+  <li><a href="#sec-code-review-requirements" id="toc-sec-code-review-requirements" class="nav-link" data-scroll-target="#sec-code-review-requirements"><span class="header-section-number">2.10.4</span> Code Review Requirements</a></li>
+  <li><a href="#sec-version-control" id="toc-sec-version-control" class="nav-link" data-scroll-target="#sec-version-control"><span class="header-section-number">2.10.5</span> Version Control Principles</a></li>
+  <li><a href="#sec-tool-register" id="toc-sec-tool-register" class="nav-link" data-scroll-target="#sec-tool-register"><span class="header-section-number">2.10.6</span> Tool Register</a></li>
+  <li><a href="#sec-handover-succession" id="toc-sec-handover-succession" class="nav-link" data-scroll-target="#sec-handover-succession"><span class="header-section-number">2.10.7</span> Handover and Succession</a></li>
+  </ul></li>
+  <li><a href="#sec-data-catalogue" id="toc-sec-data-catalogue" class="nav-link" data-scroll-target="#sec-data-catalogue"><span class="header-section-number">2.11</span> Data Catalogue and Centralised Definitions</a></li>
+  <li><a href="#sec-data-quality" id="toc-sec-data-quality" class="nav-link" data-scroll-target="#sec-data-quality"><span class="header-section-number">2.12</span> Data Quality</a></li>
+  <li><a href="#sec-access-sharing" id="toc-sec-access-sharing" class="nav-link" data-scroll-target="#sec-access-sharing"><span class="header-section-number">2.13</span> Access and Sharing</a></li>
+  <li><a href="#sec-data-incidents" id="toc-sec-data-incidents" class="nav-link" data-scroll-target="#sec-data-incidents"><span class="header-section-number">2.14</span> Data Incidents and Escalation</a></li>
+  <li><a href="#sec-monitoring-reporting" id="toc-sec-monitoring-reporting" class="nav-link" data-scroll-target="#sec-monitoring-reporting"><span class="header-section-number">2.15</span> Monitoring, Reporting, and Risk Management</a></li>
+  <li><a href="#sec-wider-value" id="toc-sec-wider-value" class="nav-link" data-scroll-target="#sec-wider-value"><span class="header-section-number">2.16</span> Wider Data Value</a></li>
+  <li><a href="#sec-ai-governance" id="toc-sec-ai-governance" class="nav-link" data-scroll-target="#sec-ai-governance"><span class="header-section-number">2.17</span> AI and Machine Learning Governance</a></li>
+  <li><a href="#sec-review-compliance" id="toc-sec-review-compliance" class="nav-link" data-scroll-target="#sec-review-compliance"><span class="header-section-number">2.18</span> Review and Compliance</a>
+  <ul class="collapse">
+  <li><a href="#sec-version-control-framework" id="toc-sec-version-control-framework" class="nav-link" data-scroll-target="#sec-version-control-framework"><span class="header-section-number">2.18.1</span> Framework Version Control</a></li>
+  <li><a href="#sec-owner-engagement" id="toc-sec-owner-engagement" class="nav-link" data-scroll-target="#sec-owner-engagement"><span class="header-section-number">2.18.2</span> Owner Annual Engagement Requirement</a></li>
+  </ul></li>
+  <li><a href="#sec-quick-reference" id="toc-sec-quick-reference" class="nav-link" data-scroll-target="#sec-quick-reference"><span class="header-section-number">2.19</span> Quick Reference: Who to Go To</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/JonPayneEA/Governance/edit/main/01-governance-framework.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JonPayneEA/Governance/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -648,6 +691,44 @@ Note
 </table>
 </div>
 </div>
+<p>This framework sits at the head of a suite of companion documents, each governing a specific asset domain:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"theme": "default", "flowchart": {"rankSpacing": 45, "nodeSpacing": 25}}}%%
+%%| fig-width: 5
+graph TD
+    PF["Parent Framework&lt;br/&gt;Data and Digital Asset Governance"]
+
+    HD["Hydrometric Data&lt;br/&gt;Bronze / Silver / Gold,&lt;br/&gt;QC flag system"]
+    FM["Flood Models&lt;br/&gt;FMP, PDM, Black Box,&lt;br/&gt;condition scoring"]
+    RC["R Code Governance&lt;br/&gt;Flode architecture,&lt;br/&gt;fastverse conventions"]
+    PC["Python Code Governance&lt;br/&gt;Flood Modeller API,&lt;br/&gt;ML tool requirements"]
+    TR["Training Framework&lt;br/&gt;Role-based tracks,&lt;br/&gt;sign-off requirements"]
+    IM["Implementation&lt;br/&gt;Phased adoption,&lt;br/&gt;register setup"]
+
+    PF --&gt; HD
+    PF --&gt; FM
+    PF --&gt; RC
+    PF --&gt; PC
+    PF --&gt; TR
+    PF --&gt; IM
+
+    style PF fill:#d6eaf8,stroke:#2980b9
+    style HD fill:#eaf4fb,stroke:#85c1e9
+    style FM fill:#eaf4fb,stroke:#85c1e9
+    style RC fill:#eaf4fb,stroke:#85c1e9
+    style PC fill:#eaf4fb,stroke:#85c1e9
+    style TR fill:#eaf4fb,stroke:#85c1e9
+    style IM fill:#eaf4fb,stroke:#85c1e9
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <p>The team has accumulated a substantial body of models, code tools, and datasets. Structural changes to the organisation, siloed working across teams, and staff churn have compounded over that time. Ownership has shifted without being formally transferred. Institutional knowledge has left with departing staff. Work has been duplicated because one team did not know another had already done it. The result is an asset base that no single person has a complete picture of, and where accountability is informal and assumed rather than defined.</p>
 <p>This framework is a deliberate reset. It establishes clear ownership for what the team already holds, and it builds structures resilient to the conditions that caused the problem: structures that survive reorganisation, that do not depend on any one individual, and that work across team boundaries rather than within them.</p>
 <p>It also sets the foundation for responsible adoption of new capabilities. The team is actively investigating AI and machine learning tools. Before any of those can be used in operational settings, a credible governance baseline needs to exist. This framework is that baseline.</p>
@@ -660,20 +741,43 @@ Note
 </section>
 <section id="sec-framework-scope" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="sec-framework-scope"><span class="header-section-number">2.2</span> Scope</h2>
-<p>This framework applies to all data, code, and digital assets the team creates, maintains, or relies on, including:</p>
-<ul>
-<li>Flood Modeller Pro model files and projects</li>
-<li>PDM (Probability Distributed Model) configurations and parameter sets</li>
-<li>Model Boundary Conditions and Connections</li>
-<li>ARMA Parameters</li>
-<li>Black Box configurations</li>
-<li>Any configuration documentation and recommendations</li>
-<li>Quality assured input datasets (rainfall, flow, stage, catchment data, boundary conditions)</li>
-<li>Model outputs (flood extents, hydrographs, performance metrics)</li>
-<li>R and Python tools used to support, process, run, or analyse models</li>
-<li>Validation and verification records</li>
-<li>Documentation and supporting reports</li>
-</ul>
+<p>This framework applies to all digital assets produced or consumed by in-scope NFWS teams: datasets, models, code, configuration files, documentation, and derived outputs. Companion documents define asset-specific requirements within each domain. Where a companion document does not address a particular asset type, the principles and roles in this framework apply directly.</p>
+<section id="sec-scope-teams" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="sec-scope-teams"><span class="header-section-number">2.2.1</span> Teams in scope</h3>
+<p>The Forecasting teams (Fluvial and Coastal Modelling, and Local Forecasting Service) and the Warning Hub teams are in scope. The Flood Forecasting Centre operates under a separate governance arrangement as a joint Met Office and Environment Agency service and is out of scope.</p>
+<div class="cell" data-fig-width="6" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    DD["Deputy Director · NFWS Owner"]
+    SM["Service Management"]
+    FM["Forecasting Manager G7"]
+    WM["Warning Manager G7"]
+    FFM["Fluvial and Coastal Modelling"]
+    LFS["Local Forecasting Service"]
+    WH["Warning Hub Teams"]
+    FFC["Flood Forecasting Centre — out of scope"]
+
+    DD --&gt; SM
+    DD --&gt; FM
+    DD --&gt; WM
+    DD --- FFC
+
+    FM --&gt; FFM
+    FM --&gt; LFS
+    WM --&gt; WH
+
+    style FFC fill:#f0f0f0,stroke:#bbb,color:#999
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>A full list of companion documents and their scope boundaries is in the document suite table in the preface.</p>
+</section>
 </section>
 <section id="sec-governance-roles" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="sec-governance-roles"><span class="header-section-number">2.3</span> Governance Roles</h2>
@@ -706,7 +810,7 @@ Note
 <li>Ensuring their data assets comply with legal requirements for archival, disposal, and preservation</li>
 <li>Limiting access to data (particularly personal data or data of significance to national security) to those authorised to do so</li>
 <li>Ensuring security measures are in place to protect data in transit, received, or transferred to another organisation</li>
-<li>Considering where data assets may have value to wider government, society, and the economy, and the protection and exploitation approaches required to realise that value (see <a href="#sec-wider-value" class="quarto-xref"><span>Section 2.14</span></a>)</li>
+<li>Considering where data assets may have value to wider government, society, and the economy, and the protection and exploitation approaches required to realise that value (see <a href="#sec-wider-value" class="quarto-xref"><span>Section 2.16</span></a>)</li>
 </ul>
 </section>
 <section id="sec-steward-role" class="level3" data-number="2.3.2">
@@ -722,12 +826,12 @@ Note
 <li>Reporting data quality issues or risks to the Owner</li>
 <li>Handling data governance queries and checking with the Owner for tactical guidance where needed</li>
 <li>Reviewing and updating this framework and the companion documents as part of annual updates</li>
-<li>Maintaining a data catalogue or business glossary of centralised data definitions for all assets within their domain, ensuring definitions are managed and adopted consistently across the team (see <a href="#sec-data-catalogue" class="quarto-xref"><span>Section 2.9</span></a>)</li>
+<li>Maintaining a data catalogue or business glossary of centralised data definitions for all assets within their domain, ensuring definitions are managed and adopted consistently across the team (see <a href="#sec-data-catalogue" class="quarto-xref"><span>Section 2.11</span></a>)</li>
 <li>Understanding data lineage and flow: knowing how data moves through pipelines, what transformations are applied, and the upstream and downstream impacts of any change</li>
 <li>Managing the data lifecycle for assets within their domain, including archival, retention review, and coordinating disposal where retention periods have expired and Owner approval has been obtained</li>
 <li>Working cross-functionally with stewards in adjacent teams or domains, sharing good practice and supporting resolution of cross-cutting data issues</li>
 <li>Assisting with periodic data maturity assessments as required by the organisation</li>
-<li>Periodically considering whether team data assets have value to wider government, society, or the economy, and flagging opportunities to the Owner (see <a href="#sec-wider-value" class="quarto-xref"><span>Section 2.14</span></a>)</li>
+<li>Periodically considering whether team data assets have value to wider government, society, or the economy, and flagging opportunities to the Owner (see <a href="#sec-wider-value" class="quarto-xref"><span>Section 2.16</span></a>)</li>
 </ul>
 <p>Not all of these responsibilities carry equal weight at every tier. For Tier 1 assets, the core requirements are standards maintenance, register currency, and quality issue reporting. The fuller responsibilities (data lineage mapping, cross-functional liaison, maturity assessments, and wider value consideration) apply in proportion to asset criticality. All apply in full to Tier 3 assets.</p>
 </section>
@@ -761,6 +865,54 @@ Note
 </section>
 <section id="sec-role-summary" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="sec-role-summary"><span class="header-section-number">2.3.4</span> Role Summary</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"theme": "default", "flowchart": {"rankSpacing": 50, "nodeSpacing": 20}}}%%
+%%| fig-width: 6
+graph TD
+    O["Owner&lt;br/&gt;Deputy Director&lt;br/&gt;&lt;i&gt;Ultimate accountability&lt;/i&gt;"]
+    S1["Steward&lt;br/&gt;Grade 7&lt;br/&gt;&lt;i&gt;Operational governance&lt;/i&gt;"]
+    S2["Steward&lt;br/&gt;Grade 7&lt;br/&gt;&lt;i&gt;Operational governance&lt;/i&gt;"]
+    DS["Delegated Steward&lt;br/&gt;typically G6&lt;br/&gt;&lt;i&gt;Hands-on governance work&lt;/i&gt;"]
+    STL1["Senior Team Leader&lt;br/&gt;typically G6&lt;br/&gt;&lt;i&gt;Day-to-day delegation&lt;/i&gt;"]
+    STL2["Senior Team Leader&lt;br/&gt;typically G6&lt;br/&gt;&lt;i&gt;Day-to-day delegation&lt;/i&gt;"]
+    C1["Custodian&lt;br/&gt;Any grade"]
+    C2["Custodian&lt;br/&gt;Any grade"]
+    C3["Custodian&lt;br/&gt;Any grade"]
+    C4["Custodian&lt;br/&gt;Any grade"]
+    C5["Custodian&lt;br/&gt;Any grade"]
+
+    O --&gt; S1
+    O --&gt; S2
+    S1 --&gt; DS
+    DS --&gt; STL1
+    STL1 --&gt; C1
+    STL1 --&gt; C2
+    STL1 --&gt; C3
+    S2 --&gt; STL2
+    STL2 --&gt; C4
+    STL2 --&gt; C5
+
+    style O fill:#1a5276,color:#fff,stroke:#1a5276
+    style S1 fill:#1f618d,color:#fff,stroke:#1f618d
+    style S2 fill:#1f618d,color:#fff,stroke:#1f618d
+    style DS fill:#2e86c1,color:#fff,stroke:#2e86c1
+    style STL1 fill:#2e86c1,color:#fff,stroke:#2e86c1
+    style STL2 fill:#2e86c1,color:#fff,stroke:#2e86c1
+    style C1 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+    style C2 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+    style C3 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+    style C4 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+    style C5 fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -812,13 +964,13 @@ Note
 <li>Ensuring information is appropriately protected and marked</li>
 <li>Inputting into the departmental information asset register</li>
 <li>Ensuring compliance with the Data Protection Act 2018, the Data (Use and Access) Act 2025, UK GDPR, FOI and EIR regulations, and the Public Records Act</li>
-<li>Ensuring that any AI service has been assessed before it is allowed access to team information assets (see <a href="#sec-ai-governance" class="quarto-xref"><span>Section 2.15</span></a>)</li>
+<li>Ensuring that any AI service has been assessed before it is allowed access to team information assets (see <a href="#sec-ai-governance" class="quarto-xref"><span>Section 2.17</span></a>)</li>
 </ul>
 </section>
 </section>
 <section id="sec-asset-categories" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="sec-asset-categories"><span class="header-section-number">2.4</span> Asset Categories</h2>
-<p>The team’s assets are grouped into four categories. Each has a designated Owner and Steward.</p>
+<p>The team’s assets are grouped into six categories. Each has a designated Owner and Steward.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -853,6 +1005,16 @@ Note
 <td>R and Python scripts, automation pipelines, shared modules</td>
 <td>Roles are assigned in the team’s own governance repository. See the team onboarding guide.</td>
 </tr>
+<tr class="odd">
+<td>Warning configurations</td>
+<td>Threshold configurations, trigger criteria, issuance rules. Warning area definitions are nationally maintained reference data held in the Shared Asset Register (<a href="03-shared-datasets.html" class="quarto-xref"><span>Chapter 4</span></a>) rather than as team-created assets.</td>
+<td>Roles are assigned in the team’s own governance repository. See the team onboarding guide.</td>
+</tr>
+<tr class="even">
+<td>Procedures and operational documentation</td>
+<td>SOPs, decision trees, playbooks, escalation guides, operational briefing notes. Procedures used in live incidents carry Tier 3 operational consequences but follow a documentary review cycle rather than the technical tier system. See <a href="companions/procedure-tools.html" class="quarto-xref"><span>Chapter 12</span></a>.</td>
+<td>Roles are assigned in the team’s own governance repository. See the team onboarding guide.</td>
+</tr>
 </tbody>
 </table>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -883,8 +1045,34 @@ Note
 <section id="sec-tier-system" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="sec-tier-system"><span class="header-section-number">2.5</span> The Tier System</h2>
 <p>Not all assets carry the same risk. A script that broke at 2am during a live flood event is a different problem to one that broke during a research exercise the following week. The tier system exists to make that difference explicit, and to calibrate the governance overhead accordingly.</p>
-<p>All team assets, whether data, models, or code tools, are classified into one of three tiers based on their role in live operational forecasting. Tier 3 is operational: failure has direct consequences for the service. Tier 2 is analytical: regularly used, but not in the critical path. Tier 1 is experimental: research or prototype work, not in production. The tier determines the level of oversight required. It does not describe quality or maturity in isolation; a technically excellent piece of work begins at Tier 1 until its governance is confirmed.</p>
-<p>The same three tiers apply to every asset type. That uniformity is deliberate. It gives the team a shared language for risk, regardless of whether the asset in question is a hydrometric dataset, a hydraulic model, or a Python script.</p>
+<p>All team assets, whether data, models, code tools, warning configurations, or procedures, are classified into one of three tiers based on their role in live operational service. Tier 3 is operational: failure has direct consequences for the service. Tier 2 is analytical: regularly used, but not in the critical path. Tier 1 is experimental: research or prototype work, not in production. The tier determines the level of oversight required. It does not describe quality or maturity in isolation; a technically excellent piece of work begins at Tier 1 until its governance is confirmed.</p>
+<p>The same three tiers apply to every asset type. That uniformity is deliberate. It gives the team a shared language for risk, regardless of whether the asset in question is a hydrometric dataset, a hydraulic model, a Python script, a threshold configuration, or an operational procedure.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"theme": "default", "flowchart": {"rankSpacing": 50, "nodeSpacing": 20}}}%%
+%%| fig-width: 4
+graph TD
+    T3["&lt;b&gt;Tier 3: Operational&lt;/b&gt;&lt;br/&gt;Live service. Failure has&lt;br/&gt;direct operational consequences."]
+    T2["&lt;b&gt;Tier 2: Analytical&lt;/b&gt;&lt;br/&gt;Regularly used. Not in&lt;br/&gt;the critical forecasting path."]
+    T1["&lt;b&gt;Tier 1: Experimental&lt;/b&gt;&lt;br/&gt;Research or prototype stage.&lt;br/&gt;Not in production."]
+
+    T1 --&gt;|"Promote: Owner sign-off required"| T2
+    T2 --&gt;|"Promote: Owner sign-off required"| T3
+    T3 --&gt;|"Demote: Owner sign-off required"| T2
+    T2 --&gt;|"Demote: Owner sign-off required"| T1
+
+    style T3 fill:#fdebd0,stroke:#e59866
+    style T2 fill:#eafaf1,stroke:#82e0aa
+    style T1 fill:#eaf4fb,stroke:#85c1e9
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -932,20 +1120,28 @@ Note
 <p>Hydrometric data arrives from many sources and rarely arrives clean. A gauge record from the Environment Agency’s API and a manually submitted spreadsheet from a partner organisation are both raw data, but they carry different levels of trust, different provenance trails, and different likelihoods of containing errors. Treating them identically at ingestion, or leaving quality decisions implicit, creates problems that compound downstream.</p>
 <p>The medallion architecture addresses this by making quality stages explicit. Bronze is the unmodified record of what was received. Silver is the result of documented quality control. Gold is a formally approved product derived from Silver and cleared for a specific operational use. Each stage represents a distinct level of accountability. Moving data from one stage to the next requires deliberate action and a recorded decision. That is not bureaucracy; it is how the team knows what it is working with.</p>
 <p>The medallion and the operational tier system answer different questions. The tier system asks: how critical is this asset to the live service? The medallion asks: how far has this data been through quality assurance? For code tools and models these two dimensions tend to move together. For hydrometric data they are genuinely independent, and that independence matters. The same Silver dataset might supply a Tier 2 post-event analysis today and a Tier 3 operational model run next month. The data’s quality state has not changed; only its use has. Conflating the two frameworks would mean re-approving data every time its purpose changed.</p>
-<p>The medallion architecture is not optional. Only Gold-tier data may be used as input to Tier 3 model runs or ML model training that may one day be promoted to operational use. See <a href="companions/hydrometric-data.html" class="quarto-xref"><span>Chapter 8</span></a> for the full schema requirements and QC process.</p>
+<p>The medallion architecture is not optional. Only Gold-tier data may be used as input to Tier 3 model runs or ML model training that may one day be promoted to operational use. See <a href="companions/hydrometric-data.html" class="quarto-xref"><span>Chapter 9</span></a> for the full schema requirements and QC process.</p>
 </section>
 <section id="sec-model-tiers" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="sec-model-tiers"><span class="header-section-number">2.5.2</span> Model Tiers</h3>
-<p>Flood models, including FMP hydraulic models, PDM rainfall-runoff configurations, boundary conditions, and Black Box elements, are classified under the same three-tier system. A model’s tier reflects its role in the operational forecast chain, not its technical sophistication. See <a href="companions/flood-models.html" class="quarto-xref"><span>Chapter 9</span></a> for full details.</p>
+<p>Flood models, including FMP hydraulic models, PDM rainfall-runoff configurations, boundary conditions, and Black Box elements, are classified under the same three-tier system. A model’s tier reflects its role in the operational forecast chain, not its technical sophistication. See <a href="companions/flood-models.html" class="quarto-xref"><span>Chapter 10</span></a> for full details.</p>
 </section>
 <section id="sec-tool-tiers" class="level3" data-number="2.5.3">
 <h3 data-number="2.5.3" class="anchored" data-anchor-id="sec-tool-tiers"><span class="header-section-number">2.5.3</span> Tool Tiers</h3>
 <p>Code tools written in R or Python follow the same tier system. A tool’s tier reflects the operational consequences of failure. Tier 3 tools require the most rigorous development, testing, and custodianship standards. See <a href="companions/r-governance.html" class="quarto-xref"><span>Chapter 6</span></a> and <a href="companions/python-governance.html" class="quarto-xref"><span>Chapter 7</span></a> for language-specific requirements.</p>
 </section>
+<section id="sec-warning-config-tiers" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="sec-warning-config-tiers"><span class="header-section-number">2.5.4</span> Warning Configuration Tiers</h3>
+<p>Warning threshold configurations, trigger criteria, and issuance rules are classified under the same three-tier system. A configuration’s tier reflects its role in live warning operations. Tier 3 configurations are those actively used in live warning issuance: an incorrect threshold either triggers a warning that should not be issued, or fails to trigger one that should. Tier 2 covers configurations under review or used for post-event threshold analysis. Tier 1 covers proposed changes being assessed against historical data before any operational use. Owner sign-off is required before a configuration can be used in live issuance. See <a href="companions/flood-warnings.html" class="quarto-xref"><span>Chapter 11</span></a> for detailed standards and the Warning Configuration Register.</p>
+</section>
+<section id="sec-procedure-tiers" class="level3" data-number="2.5.5">
+<h3 data-number="2.5.5" class="anchored" data-anchor-id="sec-procedure-tiers"><span class="header-section-number">2.5.5</span> Procedure Tiers</h3>
+<p>Procedures follow the same three-tier system applied to documentary assets. The tier reflects the operational consequence of following an incorrect or outdated procedure, not its length or complexity. A procedure used during a live flood incident is Tier 3: if it is wrong, the wrong action is taken in real time. A procedure used for internal review, training, or audit is Tier 2. A draft procedure under development or consultation is Tier 1. Owner sign-off is required before a procedure is used in a live incident. See <a href="companions/procedure-tools.html" class="quarto-xref"><span>Chapter 12</span></a> for the documentary review cycle and sign-off requirements.</p>
+</section>
 </section>
 <section id="sec-asset-registers" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="sec-asset-registers"><span class="header-section-number">2.6</span> Asset Registers</h2>
-<p>The team maintains five registers and one data catalogue. Together they answer the question no single person should have to carry in their head: what does the team hold, who is responsible for it, what state is it in, and how does it connect to everything else.</p>
+<p>The team maintains six registers and one data catalogue. Together they answer the question no single person should have to carry in their head: what does the team hold, who is responsible for it, what state is it in, and how does it connect to everything else.</p>
 <section id="sec-registers-why" class="level3" data-number="2.6.1">
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="sec-registers-why"><span class="header-section-number">2.6.1</span> Why Registers Are Required</h3>
 <p>The problems this framework was built to address (informal ownership, lost institutional knowledge, duplicated work) all share a common cause: the team’s assets were not systematically recorded. Registers are the remedy. They make ownership visible, make the asset base navigable, and create the audit trail needed for accountability.</p>
@@ -953,6 +1149,40 @@ Note
 </section>
 <section id="sec-registers-list" class="level3" data-number="2.6.2">
 <h3 data-number="2.6.2" class="anchored" data-anchor-id="sec-registers-list"><span class="header-section-number">2.6.2</span> The Registers</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"theme": "default", "flowchart": {"rankSpacing": 45, "nodeSpacing": 20}}}%%
+%%| fig-width: 4.5
+graph TD
+    DC["Data Catalogue&lt;br/&gt;Agreed definitions"]
+    MR["Model Register"]
+    CR["Connection Register"]
+    TR["Tool Register"]
+    HDR["Hydrometric Data Register"]
+    WCR["Warning Configuration Register"]
+
+    CR --&gt;|"references model IDs"| MR
+    MR --&gt;|"notifies on change"| CR
+    DC --&gt;|"indexes"| MR
+    DC --&gt;|"indexes"| TR
+    DC --&gt;|"indexes"| HDR
+    DC --&gt;|"indexes"| WCR
+
+    style DC fill:#d5f5e3,stroke:#27ae60
+    style MR fill:#d6eaf8,stroke:#2980b9
+    style CR fill:#d6eaf8,stroke:#2980b9
+    style TR fill:#d6eaf8,stroke:#2980b9
+    style HDR fill:#d6eaf8,stroke:#2980b9
+    style WCR fill:#d6eaf8,stroke:#2980b9
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <table class="table-striped caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -988,37 +1218,207 @@ Note
 <td><code>registers/connection_register.xlsx</code></td>
 </tr>
 <tr class="odd">
+<td><strong>Warning Configuration Register</strong></td>
+<td>Warning threshold configurations and trigger criteria: version, approval record, associated gauge IDs, review date</td>
+<td><code>registers/warning_config_register.xlsx</code></td>
+</tr>
+<tr class="even">
 <td><strong>Data Catalogue</strong></td>
 <td>Agreed definitions for all data terms used across the team</td>
 <td><code>governance/data_catalogue.toml</code></td>
 </tr>
 </tbody>
 </table>
-<p>Each register is version-controlled. No register is edited by hand except under Steward approval. The Hydrometric Data Register is written programmatically via <code>reach.io</code>; the Tool Register is built by <code>scripts/build_tool_register.R</code>. The Model Register and Connection Register are maintained by the Steward, with updates submitted by Custodians after any significant change to an asset.</p>
-<p>Detailed field specifications, update procedures, and the initial setup sequence for each register are in the companion documents (<a href="companions/flood-models.html" class="quarto-xref"><span>Chapter 9</span></a>, <a href="companions/hydrometric-data.html" class="quarto-xref"><span>Chapter 8</span></a>) and in the Implementation chapter (<a href="08-implementation.html" class="quarto-xref"><span>Chapter 13</span></a>). The Tool Register is defined in full at <a href="#sec-tool-register" class="quarto-xref"><span>Section 2.8.6</span></a> below.</p>
+<p>Each register is version-controlled. No register is edited by hand except under Steward approval. The Hydrometric Data Register is written programmatically via <code>reach.io</code>; the Tool Register is built by <code>scripts/build_tool_register.R</code>. The Model Register, Connection Register, and Warning Configuration Register are maintained by the Steward, with updates submitted by Custodians after any significant change to an asset.</p>
+<p>Procedures are not tracked in a central register. Each team maintains a version-controlled Procedures Index in its own governance repository, listing every active procedure with its version, review date, named Owner, and sign-off record. The Steward includes procedure currency in the quarterly governance summary.</p>
+<p>Detailed field specifications, update procedures, and the initial setup sequence for each register are in the companion documents (<a href="companions/flood-models.html" class="quarto-xref"><span>Chapter 10</span></a>, <a href="companions/hydrometric-data.html" class="quarto-xref"><span>Chapter 9</span></a>) and in the Implementation chapter (<a href="08-implementation.html" class="quarto-xref"><span>Chapter 15</span></a>). The Tool Register is defined in full at <a href="#sec-tool-register" class="quarto-xref"><span>Section 2.10.6</span></a> below.</p>
 </section>
 <section id="sec-register-currency" class="level3" data-number="2.6.3">
 <h3 data-number="2.6.3" class="anchored" data-anchor-id="sec-register-currency"><span class="header-section-number">2.6.3</span> Register Currency and Compliance</h3>
 <p>Every entry in any register must identify the asset’s named Owner, Steward, and Custodian. The minimum metadata fields are defined at <a href="#sec-metadata-requirements" class="quarto-xref"><span>Section 2.4.1</span></a>.</p>
-<p>The Steward includes register currency in the quarterly governance summary (<a href="#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.13</span></a>). Registers are reviewed as part of the annual Tier 3 audit. Assets with no register entry, or with stale entries where the named Custodian has left, are escalated to the Owner for resolution.</p>
+<p>The Steward includes register currency in the quarterly governance summary (<a href="#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.15</span></a>). Registers are reviewed as part of the annual Tier 3 audit. Assets with no register entry, or with stale entries where the named Custodian has left, are escalated to the Owner for resolution.</p>
 </section>
 <section id="sec-cross-asset-notification" class="level3" data-number="2.6.4">
 <h3 data-number="2.6.4" class="anchored" data-anchor-id="sec-cross-asset-notification"><span class="header-section-number">2.6.4</span> Cross-Asset Notification</h3>
 <p>When a Gold-tier dataset is superseded or a Tier 3 model’s output format changes, the Steward responsible for that asset must notify any Steward whose domain depends on it. The Connection Register is the reference: any registered dependency on the changed asset creates an obligation to notify. The notified Steward must confirm with their Custodians that any affected run records, model configurations, or tool outputs are still valid. This requirement applies regardless of whether the dependency crosses language or domain boundaries.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"theme": "default", "flowchart": {"rankSpacing": 45, "nodeSpacing": 25}}}%%
+%%| fig-width: 6.5
+graph TD
+    T["Trigger event&lt;br/&gt;Gold dataset superseded&lt;br/&gt;or Tier 3 output format change&lt;br/&gt;or catchment change event"]
+
+    CR["Check Connection Register&lt;br/&gt;for registered dependencies"]
+
+    T --&gt; CR
+
+    CR --&gt; N1["Notify Forecasting Steward&lt;br/&gt;if models or tools depend&lt;br/&gt;on changed asset"]
+    CR --&gt; N2["Notify Warning Steward&lt;br/&gt;if threshold configs depend&lt;br/&gt;on changed asset"]
+    CR --&gt; N3["Notify Service Management&lt;br/&gt;Steward if procedures or&lt;br/&gt;tools are affected"]
+
+    N1 --&gt; C1["Forecasting Custodians confirm&lt;br/&gt;run records and model configs&lt;br/&gt;still valid"]
+    N2 --&gt; C2["Warning Custodians confirm&lt;br/&gt;threshold configs&lt;br/&gt;still valid"]
+    N3 --&gt; C3["Service Management Custodians&lt;br/&gt;confirm tools and procedures&lt;br/&gt;still valid"]
+
+    C1 --&gt; L["Log outcome in&lt;br/&gt;Catchment History Log&lt;br/&gt;and relevant register"]
+    C2 --&gt; L
+    C3 --&gt; L
+
+    style T fill:#fdebd0,stroke:#e59866
+    style L fill:#d5f5e3,stroke:#27ae60
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 </section>
-<section id="sec-flood-model-overview" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="sec-flood-model-overview"><span class="header-section-number">2.7</span> Flood Model Governance</h2>
+<section id="sec-asset-naming" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-asset-naming"><span class="header-section-number">2.7</span> Asset Naming and File Standards</h2>
+<p>Code tools managed in Git are versioned through commits, tags, and package metadata. Version numbers do not appear in file names. The rules for code are set out at <a href="#sec-version-control" class="quarto-xref"><span>Section 2.10.5</span></a>.</p>
+<p>Complex digital assets held outside Git — model files, warning configurations, procedures, and reference datasets — follow a file-based versioning convention. Version numbers are embedded in file names because the file store itself provides no equivalent of a commit history. The register records when each version was created; the date does not belong in the file name.</p>
+<section id="folder-structure" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="folder-structure"><span class="header-section-number">2.7.1</span> Folder structure</h3>
+<p>Every asset project must use the following layout. No ad-hoc structures. No files held solely on local machines or unmanaged drives.</p>
+<pre><code>[CatchmentID]_[Position]_[ProjectName]/
+├── inputs/    — raw or processed input data
+├── model/     — primary asset files
+├── outputs/   — results and exported data
+├── docs/      — notes, run records, calibration records, reports
+└── archive/   — superseded versions</code></pre>
+<p>The <code>archive/</code> directory is the non-Git equivalent of version history. Superseded versions are moved there, never deleted. An asset that produced a formal output must remain recoverable in the exact state it was in when that output was produced.</p>
+</section>
+<section id="file-naming" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="file-naming"><span class="header-section-number">2.7.2</span> File naming</h3>
+<pre><code>[CatchmentID]_[Position]_[AssetType]_v[MAJOR.MINOR.PATCH]</code></pre>
+<p>Examples:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Asset</th>
+<th>File name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FMP hydraulic model</td>
+<td><code>SEVERN_UPPER_FMP_v2.3.1</code></td>
+</tr>
+<tr class="even">
+<td>PDM parameter set</td>
+<td><code>SEVERN_UPPER_Gauged_PDM_v1.4.0</code></td>
+</tr>
+<tr class="odd">
+<td>Warning threshold configuration</td>
+<td><code>SEVERN_UPPER_ThresholdConfig_v1.0.2</code></td>
+</tr>
+<tr class="even">
+<td>Operational procedure</td>
+<td><code>SEVERN_UPPER_SevereWarningProcedure_v2.1.0</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rules:</strong> no spaces; underscores throughout; version numbers follow Semantic Versioning (MAJOR for changes that materially alter behaviour or outputs; MINOR for parameter or content updates; PATCH for corrections that do not change the substance of the asset).</p>
+<p>Companion documents may define asset-specific variants of this convention. Where a companion document specifies a different format, that format takes precedence for assets in its scope. Where no companion document addresses a specific asset type, this convention applies by default.</p>
+</section>
+</section>
+<section id="sec-catchment-condition" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="sec-catchment-condition"><span class="header-section-number">2.8</span> Catchment History and Condition</h2>
+<p>The tier system tells you how critical an asset is to the live service. The medallion architecture tells you how far a dataset has been through quality assurance. Neither tells you whether the asset still accurately represents the physical system it was built to describe.</p>
+<p>That is a separate question, and it is the more fundamental one. A model may carry a high condition score and still be wrong, because the catchment it represents has changed since it was calibrated. A warning threshold may have passed Gold-tier approval and still be inappropriate, because the flow-stage relationship it depends on has since shifted. A procedure may be formally signed off and still direct responders incorrectly, because the flood defence it references no longer operates as it did.</p>
+<p>Physical catchments change. They change suddenly through flood events. They change gradually through channel morphology, land use, and vegetation. They change deliberately through infrastructure works, gauge relocations, and rating curve revisions. Every significant change to a catchment is a potential invalidation event for every digital asset that represents it, across every team that holds one.</p>
+<section id="sec-catchment-events" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="sec-catchment-events"><span class="header-section-number">2.8.1</span> Catchment change events</h3>
+<p>A catchment change event is any physical or observational change that may affect the representativeness of existing digital assets for a given catchment. The following count:</p>
+<ul>
+<li>A significant flood event: one that produces flows exceeding the calibrated range of existing assets, or causes observable geomorphological change</li>
+<li>Construction or modification of flood defences, weirs, or control structures</li>
+<li>Channel modifications, major bank erosion, or in-channel works</li>
+<li>Relocation or replacement of a flow or stage gauge</li>
+<li>Revision of a rating curve used as input to operational models or warning thresholds</li>
+<li>Land use or vegetation change large enough to affect runoff response</li>
+</ul>
+<p>No single team has full sight of all these events across a catchment. That is why the cross-team notification mechanism at <a href="#sec-cross-asset-notification" class="quarto-xref"><span>Section 2.6.4</span></a> exists, and why the CDT’s cross-service mandate at <a href="02-central-data-team.html" class="quarto-xref"><span>Chapter 3</span></a> is structurally necessary.</p>
+</section>
+<section id="sec-catchment-history-log" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="sec-catchment-history-log"><span class="header-section-number">2.8.2</span> Catchment History Log</h3>
+<p>Each team maintains a Catchment History Log for the catchments in its domain. The log records catchment change events with a date, a description of the change, and an assessment of which digital assets are affected. The Steward holds the log in the team’s governance repository and reviews it as part of the quarterly governance summary (<a href="#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.15</span></a>).</p>
+<table class="table-striped caption-top table">
+<caption>Catchment History Log fields</caption>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Event date</td>
+<td>Date the event occurred or was identified</td>
+</tr>
+<tr class="even">
+<td>Catchment</td>
+<td>The catchment or catchments affected</td>
+</tr>
+<tr class="odd">
+<td>Event type</td>
+<td>Flood event, physical works, gauge change, rating curve revision, other</td>
+</tr>
+<tr class="even">
+<td>Description</td>
+<td>What happened and, where known, its physical extent or significance</td>
+</tr>
+<tr class="odd">
+<td>Assets affected</td>
+<td>Asset IDs (models, datasets, thresholds, procedures) that may no longer be representative</td>
+</tr>
+<tr class="even">
+<td>Review status</td>
+<td>Pending / Under review / Reviewed: no change required / Reviewed: update required</td>
+</tr>
+<tr class="odd">
+<td>Outcome</td>
+<td>What was done, or what is planned, for each affected asset</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-catchment-cross-notification" class="level3" data-number="2.8.3">
+<h3 data-number="2.8.3" class="anchored" data-anchor-id="sec-catchment-cross-notification"><span class="header-section-number">2.8.3</span> Cross-team notification</h3>
+<p>When a catchment change event affects assets held by more than one team, the Steward who identifies the event must notify all other Stewards whose assets relate to that catchment. Notification must be specific: it must name the event, the catchment, and the assets the notifying Steward believes are affected in the receiving team’s domain.</p>
+<p>The receiving Steward is responsible for assessing the impact on their own assets and recording the outcome in their own log. A Steward who receives notification and takes no action is in breach of their responsibilities under this framework.</p>
+<p>For catchments where both Forecasting and Warning teams hold operational assets, any flood event that triggers a model condition review under <a href="companions/flood-models.html#sec-flood-condition-cycle" class="quarto-xref"><span>Section 15.3</span></a> also counts as a catchment change event requiring notification to the Warning Steward.</p>
+</section>
+<section id="sec-catchment-condition-framing" class="level3" data-number="2.8.4">
+<h3 data-number="2.8.4" class="anchored" data-anchor-id="sec-catchment-condition-framing"><span class="header-section-number">2.8.4</span> Condition as a judgement</h3>
+<p>The per-asset condition frameworks in the companion documents provide scoring criteria and required actions. They make condition judgements systematic and auditable. They are not substitutes for the judgement itself.</p>
+<p>The flood model condition score at <a href="companions/flood-models.html" class="quarto-xref"><span>Chapter 15</span></a> answers: how fit for purpose is this model? The catchment condition concept answers the prior question: has the physical system changed in a way that requires all asset types to be reassessed, not just models? Both questions matter. The second is frequently not asked.</p>
+</section>
+</section>
+<section id="sec-flood-model-overview" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="sec-flood-model-overview"><span class="header-section-number">2.9</span> Flood Model Governance</h2>
 <p>FMP model files require formal version control because they contain binary and configuration files that change with every calibration update, boundary condition revision, or software upgrade. Both the current model and all superseded versions must be retained. A model that produced a formal output must remain recoverable in the exact state it was in when that output was produced. No FMP files may be held on local machines or unmanaged drives.</p>
 <p>PDM parameter sets, calibration records, and coupled model configurations follow the same governance principles. Parameter sets are particularly sensitive: a set calibrated on one period of data can produce materially different outputs from a set calibrated on a different period, even for the same catchment. Version control and calibration documentation are not optional.</p>
-<p>The detailed requirements for folder structure, naming conventions, version control, run records, condition assessment, and model connections are set out in the Flood Model Governance document (<a href="companions/flood-models.html" class="quarto-xref"><span>Chapter 9</span></a>). The requirements there are normative and must be followed by all Custodians working with operational models.</p>
+<p>The detailed requirements for folder structure, naming conventions, version control, run records, condition assessment, and model connections are set out in the Flood Model Governance document (<a href="companions/flood-models.html" class="quarto-xref"><span>Chapter 10</span></a>). The requirements there are normative and must be followed by all Custodians working with operational models.</p>
 </section>
-<section id="sec-code-tool-governance" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="sec-code-tool-governance"><span class="header-section-number">2.8</span> Code and Tool Governance</h2>
+<section id="sec-code-tool-governance" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="sec-code-tool-governance"><span class="header-section-number">2.10</span> Code and Tool Governance</h2>
 <p>The team currently develops and maintains code tools in R and Python. These tools are governed by the same Owner, Steward, and Custodian framework as all other assets, with additional requirements that reflect the specific risks of code: unreproducible results, undocumented behaviour, and key-person dependency.</p>
 <p>This section sets out the governance principles that apply to all code tools regardless of language. Detailed, language-specific standards are in <a href="companions/r-governance.html" class="quarto-xref"><span>Chapter 6</span></a> and <a href="companions/python-governance.html" class="quarto-xref"><span>Chapter 7</span></a>.</p>
-<section id="sec-tool-classification" class="level3" data-number="2.8.1">
-<h3 data-number="2.8.1" class="anchored" data-anchor-id="sec-tool-classification"><span class="header-section-number">2.8.1</span> Tool Classification</h3>
+<section id="sec-tool-classification" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="sec-tool-classification"><span class="header-section-number">2.10.1</span> Tool Classification</h3>
 <p>All code tools are classified into one of three tiers based on their operational role. Governance requirements increase with tier level.</p>
 <table class="caption-top table">
 <colgroup>
@@ -1052,8 +1452,8 @@ Note
 </tbody>
 </table>
 </section>
-<section id="sec-custodianship-by-tier" class="level3" data-number="2.8.2">
-<h3 data-number="2.8.2" class="anchored" data-anchor-id="sec-custodianship-by-tier"><span class="header-section-number">2.8.2</span> Custodianship Requirements by Tier</h3>
+<section id="sec-custodianship-by-tier" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="sec-custodianship-by-tier"><span class="header-section-number">2.10.2</span> Custodianship Requirements by Tier</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -1087,8 +1487,8 @@ Note
 </table>
 <p>When a team member leaves or changes role, custodianship must be formally reassigned before their departure.</p>
 </section>
-<section id="sec-routes-to-development" class="level3" data-number="2.8.3">
-<h3 data-number="2.8.3" class="anchored" data-anchor-id="sec-routes-to-development"><span class="header-section-number">2.8.3</span> Routes to Tool Development</h3>
+<section id="sec-routes-to-development" class="level3" data-number="2.10.3">
+<h3 data-number="2.10.3" class="anchored" data-anchor-id="sec-routes-to-development"><span class="header-section-number">2.10.3</span> Routes to Tool Development</h3>
 <p>There are four routes by which a new tool enters the team’s codebase. The route must be agreed at the point of initiation and recorded in the Tool Register.</p>
 <table class="caption-top table">
 <colgroup>
@@ -1129,8 +1529,8 @@ Note
 <p>For Route C, all external packages must be evaluated against six criteria before adoption in shared or production code: active maintenance, compatible licence, acceptable performance impact, manageable dependency footprint, genuine necessity, and sufficient community adoption.</p>
 <p>For Route D, no more than two emergency route deployments per twelve-month period for the same tool area is acceptable before triggering a review of the underlying operational code tools.</p>
 </section>
-<section id="sec-code-review-requirements" class="level3" data-number="2.8.4">
-<h3 data-number="2.8.4" class="anchored" data-anchor-id="sec-code-review-requirements"><span class="header-section-number">2.8.4</span> Code Review Requirements</h3>
+<section id="sec-code-review-requirements" class="level3" data-number="2.10.4">
+<h3 data-number="2.10.4" class="anchored" data-anchor-id="sec-code-review-requirements"><span class="header-section-number">2.10.4</span> Code Review Requirements</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1158,16 +1558,30 @@ Note
 </tbody>
 </table>
 </section>
-<section id="sec-version-control" class="level3" data-number="2.8.5">
-<h3 data-number="2.8.5" class="anchored" data-anchor-id="sec-version-control"><span class="header-section-number">2.8.5</span> Version Control Principles</h3>
+<section id="sec-version-control" class="level3" data-number="2.10.5">
+<h3 data-number="2.10.5" class="anchored" data-anchor-id="sec-version-control"><span class="header-section-number">2.10.5</span> Version Control Principles</h3>
 <p>All code tools used by more than one person must be managed in Git. No shared tool may exist solely on a local machine or shared drive.</p>
 <p><strong>Branching:</strong> the team follows a simplified Git Flow model: <code>main</code> (production-ready only, no direct commits), <code>develop</code> (integration branch), <code>feature/&lt;n&gt;</code> (individual work), <code>hotfix/&lt;n&gt;</code> (urgent fixes to Tier 3), <code>release/&lt;version&gt;</code> (versioned releases).</p>
 <p><strong>Commits:</strong> all commits must follow the Conventional Commits convention <code>&lt;type&gt;(&lt;scope&gt;): &lt;short description&gt;</code> with a body explaining why, not just what. Permitted types: <code>feat</code>, <code>fix</code>, <code>docs</code>, <code>refactor</code>, <code>test</code>, <code>chore</code>.</p>
-<p><strong>Versioning:</strong> all tools and packages follow Semantic Versioning (MAJOR.MINOR.PATCH). Releases are tagged in Git and accompanied by a <code>CHANGELOG.md</code> entry.</p>
+<p><strong>Versioning:</strong> all tools and packages follow Semantic Versioning (MAJOR.MINOR.PATCH). The version number is recorded in three places: the Git release tag (e.g.&nbsp;<code>v2.1.0</code>), the <code>CHANGELOG.md</code> entry, and the package metadata file (<code>DESCRIPTION</code> for R, <code>pyproject.toml</code> for Python). It is never appended to a file name. A file called <code>process_data.R</code> must not become <code>process_data_v2.1.0.R</code>. The commit history and release tags are the version record. Embedding versions in file names duplicates that record, creates ambiguity, and breaks as soon as files are moved or renamed.</p>
 <p><strong>Reproducibility:</strong> all dependencies must be pinned and committed alongside the code: <code>renv.lock</code> for R tools, <code>poetry.lock</code> for Python tools. Code must be runnable from a clean environment without undeclared dependencies.</p>
+<p><strong>Releases:</strong> a release is a named, tagged point in the commit history. To cut a release: merge the <code>release/&lt;version&gt;</code> branch to <code>main</code>, tag the commit (<code>git tag -a v2.1.0 -m "Release v2.1.0"</code>), push the tag (<code>git push origin v2.1.0</code>), and update <code>CHANGELOG.md</code> on <code>develop</code>. No files are renamed. The tag is the version marker.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>File naming versus Git versioning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These rules apply to <strong>code tools managed in Git</strong>. Model files (FMP, PDM, boundary conditions) are not code and are typically held on shared drives rather than in a Git repository. For those assets, version numbers in file names are the appropriate convention. See <a href="companions/flood-models.html#sec-flood-file-standards" class="quarto-xref"><span>Section 13.5</span></a> for model file naming rules.</p>
+</div>
+</div>
 </section>
-<section id="sec-tool-register" class="level3" data-number="2.8.6">
-<h3 data-number="2.8.6" class="anchored" data-anchor-id="sec-tool-register"><span class="header-section-number">2.8.6</span> Tool Register</h3>
+<section id="sec-tool-register" class="level3" data-number="2.10.6">
+<h3 data-number="2.10.6" class="anchored" data-anchor-id="sec-tool-register"><span class="header-section-number">2.10.6</span> Tool Register</h3>
 <p>Every code tool must be entered in the central Tool Register at the point it is shared with more than one team member. The register is a CSV file (<code>tool_register.csv</code>) held in this governance repository and generated by <code>scripts/build_tool_register.R</code>. It is not edited by hand.</p>
 <p>The script works in two passes. First, it queries the GitHub API for all repositories in the <code>JonPayneEA</code> organisation and extracts the fields GitHub holds natively: repository name, URL, primary language, and topics. Second, for each repository it reads a <code>governance.yml</code> file from the repository root, which supplies the governance fields GitHub cannot know. Values in <code>governance.yml</code> take precedence over inferred values; GitHub topics are used as a fallback for tier and status.</p>
 <p>A template <code>governance.yml</code> is provided in this repository at <code>governance-template.yml</code>. Every tool repository must include a populated copy in its root. Two GitHub topic conventions are required on every tool repository, and used as fallback when <code>governance.yml</code> is absent or incomplete:</p>
@@ -1232,14 +1646,14 @@ Note
 </table>
 <p>The register must be regenerated whenever a custodianship role changes, a tool changes tier, or a tool is deprecated. Run <code>Rscript scripts/build_tool_register.R</code> and commit the updated <code>tool_register.csv</code>.</p>
 </section>
-<section id="sec-handover-succession" class="level3" data-number="2.8.7">
-<h3 data-number="2.8.7" class="anchored" data-anchor-id="sec-handover-succession"><span class="header-section-number">2.8.7</span> Handover and Succession</h3>
+<section id="sec-handover-succession" class="level3" data-number="2.10.7">
+<h3 data-number="2.10.7" class="anchored" data-anchor-id="sec-handover-succession"><span class="header-section-number">2.10.7</span> Handover and Succession</h3>
 <p>When a Steward or Custodian changes, the outgoing person must produce a handover note before they leave. The note covers: the tool’s purpose and known quirks, current technical debt or open issues, the status of any open pull requests, and scheduled maintenance tasks. It is stored in the tool’s <code>docs/</code> directory.</p>
 <p>For Tier 3 tools, the incoming Steward must run the full test suite and confirm it passes before formally accepting the handover. The Delegated Steward must be notified of all Tier 3 custodianship changes.</p>
 </section>
 </section>
-<section id="sec-data-catalogue" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="sec-data-catalogue"><span class="header-section-number">2.9</span> Data Catalogue and Centralised Definitions</h2>
+<section id="sec-data-catalogue" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="sec-data-catalogue"><span class="header-section-number">2.11</span> Data Catalogue and Centralised Definitions</h2>
 <p>The Steward is responsible for maintaining a data catalogue or business glossary that records centralised definitions for the team’s key data entities, attributes, and terminology. This aligns with the CDDO Data Ownership Model requirement that agreed data definitions be maintained through Data Stewards.</p>
 <p>The data catalogue should cover at minimum:</p>
 <ul>
@@ -1250,8 +1664,8 @@ Note
 </ul>
 <p>The catalogue is maintained by the Steward and reviewed as part of the annual governance audit. It may take the form of a structured document, a spreadsheet, or a dedicated section within the team’s internal documentation site.</p>
 </section>
-<section id="sec-data-quality" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="sec-data-quality"><span class="header-section-number">2.10</span> Data Quality</h2>
+<section id="sec-data-quality" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="sec-data-quality"><span class="header-section-number">2.12</span> Data Quality</h2>
 <p>Data quality is everyone’s responsibility. The following minimum standards apply to all datasets.</p>
 <table class="caption-top table">
 <colgroup>
@@ -1300,8 +1714,8 @@ Note
 </tbody>
 </table>
 </section>
-<section id="sec-access-sharing" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="sec-access-sharing"><span class="header-section-number">2.11</span> Access and Sharing</h2>
+<section id="sec-access-sharing" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="sec-access-sharing"><span class="header-section-number">2.13</span> Access and Sharing</h2>
 <ul>
 <li>All team members have read access to current model files by default</li>
 <li>Write access to master model files requires Steward approval; approval is recorded in the access log with the name of the person, the date, and the scope of access granted</li>
@@ -1310,8 +1724,8 @@ Note
 <li>Access rights are reviewed by Stewards every six months</li>
 </ul>
 </section>
-<section id="sec-data-incidents" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="sec-data-incidents"><span class="header-section-number">2.12</span> Data Incidents and Escalation</h2>
+<section id="sec-data-incidents" class="level2" data-number="2.14">
+<h2 data-number="2.14" class="anchored" data-anchor-id="sec-data-incidents"><span class="header-section-number">2.14</span> Data Incidents and Escalation</h2>
 <p>A data incident is any event that affects the integrity, availability, or confidentiality of team assets including accidental deletion, use of wrong input data in a published output, tool failure in a live operational forecast environment, or unauthorised sharing.</p>
 <p>When an incident occurs:</p>
 <ul>
@@ -1321,8 +1735,8 @@ Note
 </ul>
 <p>For any Tier 3 asset failure or emergency deployment (Route D), a post-incident review must be completed within ten working days. The review covers: what happened, what the impact was or could have been, what was done to resolve it, and what change is needed to prevent recurrence. The Steward is responsible for completing the review and submitting it to the Owner.</p>
 </section>
-<section id="sec-monitoring-reporting" class="level2" data-number="2.13">
-<h2 data-number="2.13" class="anchored" data-anchor-id="sec-monitoring-reporting"><span class="header-section-number">2.13</span> Monitoring, Reporting, and Risk Management</h2>
+<section id="sec-monitoring-reporting" class="level2" data-number="2.15">
+<h2 data-number="2.15" class="anchored" data-anchor-id="sec-monitoring-reporting"><span class="header-section-number">2.15</span> Monitoring, Reporting, and Risk Management</h2>
 <p>The CDDO Data Ownership Model requires that ownership policies include monitoring and reporting arrangements as part of the organisation’s broader risk management practices. The following cadence applies:</p>
 <p><strong>Quarterly:</strong> The Steward produces a governance summary covering: data quality trends from the Hydrometric Data Framework quarterly summaries, open Data Quality Issue Log entries and their age, Tool Register and Model Register currency, any incidents or near-misses in the quarter, and supplier engagement outcomes. This summary is shared with the Owner and feeds into the team’s quarterly governance review.</p>
 <p><strong>Annually:</strong> The Delegated Steward conducts a full governance audit of all Tier 3 assets (code tools, models, and data). Findings are compiled into an annual governance report, which is presented to the Owner and submitted to the organisational risk management process. The report covers: compliance rates across all Tier 3 assets, condition rating trends for models, test coverage and documentation currency for tools, data quality trends, and any governance exceptions granted during the year.</p>
@@ -1330,22 +1744,22 @@ Note
 <p><strong>Non-compliance.</strong> Where the annual audit identifies assets that do not meet the requirements of this framework, the Delegated Steward produces a corrective action plan within one month of the audit report. The plan specifies the gap, the required action, the responsible Custodian or Steward, and a target date. Assets with outstanding corrective actions are flagged in the quarterly summary until resolved. Persistent or repeated non-compliance with Tier 3 requirements is escalated to the Owner and documented in the governance log. An asset that has failed to meet a corrective action target without documented justification must not be used in a new formal output until the gap is resolved.</p>
 <p>The Owner is responsible for ensuring that governance findings are communicated to the broader organisational governance and risk management structures as appropriate.</p>
 </section>
-<section id="sec-wider-value" class="level2" data-number="2.14">
-<h2 data-number="2.14" class="anchored" data-anchor-id="sec-wider-value"><span class="header-section-number">2.14</span> Wider Data Value</h2>
+<section id="sec-wider-value" class="level2" data-number="2.16">
+<h2 data-number="2.16" class="anchored" data-anchor-id="sec-wider-value"><span class="header-section-number">2.16</span> Wider Data Value</h2>
 <p>The CDDO Data Ownership Model requires organisations to consider where data assets may have value to wider government, society, and the economy. The Steward should periodically (at least annually, as part of the governance review) consider whether any of the team’s data assets, particularly Gold-tier hydrometric data, model validation datasets, or calibration benchmarks, could have value to other Defra teams, other government departments, academic researchers, or the public.</p>
 <p>Where an opportunity is identified, the Steward flags it to the Owner with a brief assessment of the data’s potential value, any licensing or access constraints, and any preparation work that would be needed. The Owner decides whether to pursue sharing, taking account of supplier licence terms, data sensitivity, and resource implications.</p>
 <p>This does not create an obligation to share all data. It creates an obligation to ask the question.</p>
 </section>
-<section id="sec-ai-governance" class="level2" data-number="2.15">
-<h2 data-number="2.15" class="anchored" data-anchor-id="sec-ai-governance"><span class="header-section-number">2.15</span> AI and Machine Learning Governance</h2>
+<section id="sec-ai-governance" class="level2" data-number="2.17">
+<h2 data-number="2.17" class="anchored" data-anchor-id="sec-ai-governance"><span class="header-section-number">2.17</span> AI and Machine Learning Governance</h2>
 <p>The team uses AI and ML tools in two ways: commercial or external services that may access team data, and internally developed ML models that feed operational forecasts. Both require governance. Neither is well-served by ad-hoc decisions.</p>
 <p><strong>Assessment before access.</strong> Before any AI or ML service is given access to team data, the Steward must assess three things: what data the service will access and at what tier, whether that data contains personal or sensitive information requiring a DPIA, and whether the service complies with government Secure by Design principles. The assessment is a short written record, approved by the Owner and stored alongside the relevant Tool Register entry or dataset provenance record. This applies equally to commercial tools (such as Microsoft Copilot or cloud inference APIs) and to internally developed inference pipelines.</p>
-<p><strong>ML models in operational use.</strong> Any ML model whose outputs feed Tier 3 forecasts is itself a Tier 3 asset. It must have a named Custodian, a training dataset recorded as a Gold product (see <a href="companions/hydrometric-data.html" class="quarto-xref"><span>Chapter 8</span></a>), version-controlled model artefacts with a JSON metadata file, and a formal condition assessment on the Tier 3 review schedule. The Python governance document (<a href="companions/python-governance.html" class="quarto-xref"><span>Chapter 7</span></a>) sets out the technical requirements for training and inference separation, metadata files, and ONNX archiving.</p>
+<p><strong>ML models in operational use.</strong> Any ML model whose outputs feed Tier 3 forecasts is itself a Tier 3 asset. It must have a named Custodian, a training dataset recorded as a Gold product (see <a href="companions/hydrometric-data.html" class="quarto-xref"><span>Chapter 9</span></a>), version-controlled model artefacts with a JSON metadata file, and a formal condition assessment on the Tier 3 review schedule. The Python governance document (<a href="companions/python-governance.html" class="quarto-xref"><span>Chapter 7</span></a>) sets out the technical requirements for training and inference separation, metadata files, and ONNX archiving.</p>
 <p><strong>Run record requirements.</strong> For any ML model used in an operational forecast, the run record must identify the model version, the training dataset version, and any known limitations. Where an ML model replaces a physically-based model, the replacement decision must be documented, comparative performance evidence provided, and the change approved by the Owner before deployment.</p>
 <p>The Steward monitors developments in AI legislation and government guidance that affect the team’s use of ML tools. This is reviewed as part of the annual governance audit.</p>
 </section>
-<section id="sec-review-compliance" class="level2" data-number="2.16">
-<h2 data-number="2.16" class="anchored" data-anchor-id="sec-review-compliance"><span class="header-section-number">2.16</span> Review and Compliance</h2>
+<section id="sec-review-compliance" class="level2" data-number="2.18">
+<h2 data-number="2.18" class="anchored" data-anchor-id="sec-review-compliance"><span class="header-section-number">2.18</span> Review and Compliance</h2>
 <p>This framework and the companion documents are reviewed annually by the Stewards (or subject matter experts), with Owner sign-off. The review considers:</p>
 <ul>
 <li>Whether the asset categories and roles are still fit for purpose</li>
@@ -1356,8 +1770,8 @@ Note
 </ul>
 <p>The Delegated Steward conducts an annual audit of all Tier 3 code tools, covering header block completeness, test coverage, documentation currency, dependency lockfile consistency, and branching strategy compliance.</p>
 <p>Stewards must carry out spot-check audits of Tier 2 model files and metadata records at least once per year, and of Tier 1 assets at least once every two years. Spot checks may be carried out at any time.</p>
-<section id="sec-version-control-framework" class="level3" data-number="2.16.1">
-<h3 data-number="2.16.1" class="anchored" data-anchor-id="sec-version-control-framework"><span class="header-section-number">2.16.1</span> Framework Version Control</h3>
+<section id="sec-version-control-framework" class="level3" data-number="2.18.1">
+<h3 data-number="2.18.1" class="anchored" data-anchor-id="sec-version-control-framework"><span class="header-section-number">2.18.1</span> Framework Version Control</h3>
 <p>Changes to this document and the companion documents fall into three categories.</p>
 <p><strong>Editorial corrections</strong> are typos, broken links, or formatting fixes that do not change meaning. The Delegated Steward may make and merge editorial corrections at any time without Owner sign-off. No version increment. No team notification required, though the change is visible in the git history.</p>
 <p><strong>Substantive changes</strong> are anything that changes a requirement, adds or removes a role, adds or removes a process step, or modifies a companion document in a way that affects practice. Substantive changes require Owner sign-off before they are merged. The minor version number increments (1.4 becomes 1.5). The Steward notifies the team by written summary within five working days of the merge, identifying which sections changed and why.</p>
@@ -1372,8 +1786,8 @@ Note
 </ol>
 <p>The version field in <code>_quarto.yml</code> is the master. All companion document metadata blocks reference it and must be kept in step.</p>
 </section>
-<section id="sec-owner-engagement" class="level3" data-number="2.16.2">
-<h3 data-number="2.16.2" class="anchored" data-anchor-id="sec-owner-engagement"><span class="header-section-number">2.16.2</span> Owner Annual Engagement Requirement</h3>
+<section id="sec-owner-engagement" class="level3" data-number="2.18.2">
+<h3 data-number="2.18.2" class="anchored" data-anchor-id="sec-owner-engagement"><span class="header-section-number">2.18.2</span> Owner Annual Engagement Requirement</h3>
 <p>Owner sign-off on the annual review is not a formality. Before signing, the Owner must be able to confirm each of the following:</p>
 <ul>
 <li>I can name the Tier 3 assets in my domain and identify their named Custodian.</li>
@@ -1385,8 +1799,8 @@ Note
 <p>Where the Owner cannot confirm one or more of these, the Steward must provide a briefing before sign-off is given. This is not a barrier to adoption; it is the minimum engagement the role requires.</p>
 </section>
 </section>
-<section id="sec-quick-reference" class="level2" data-number="2.17">
-<h2 data-number="2.17" class="anchored" data-anchor-id="sec-quick-reference"><span class="header-section-number">2.17</span> Quick Reference: Who to Go To</h2>
+<section id="sec-quick-reference" class="level2" data-number="2.19">
+<h2 data-number="2.19" class="anchored" data-anchor-id="sec-quick-reference"><span class="header-section-number">2.19</span> Quick Reference: Who to Go To</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">

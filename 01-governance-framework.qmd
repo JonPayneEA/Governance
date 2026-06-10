@@ -182,8 +182,8 @@ graph TD
     O --> S1
     O --> S2
     S1 --> DS
-    S1 --> C1
     DS --> STL1
+    STL1 --> C1
     STL1 --> C2
     STL1 --> C3
     S2 --> STL2

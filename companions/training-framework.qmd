@@ -1,7 +1,7 @@
 # Staff Training Framework {#sec-training-framework}
 
 ::: callout-note
-## Document Metadata
+### Document Metadata
 
 | Field               | Detail                                         |
 |---------------------|------------------------------------------------|
@@ -11,7 +11,7 @@
 | **Parent Document** | Data & Digital Asset Governance Framework v2.0 |
 :::
 
-# Purpose
+## Purpose
 
 This document sets out the staff training framework for the team. It defines what training is required, who must complete it, and how completion is recorded. The framework is structured to ensure that every team member understands the governance obligations relevant to their role, without requiring everyone to cover everything.
 
@@ -75,7 +75,7 @@ This framework does not replace the governance documents. It sets out how staff 
 <!--     SPEC --> SIGNOFF -->
 <!-- ``` -->
 
-# 1. Framework structure
+## 1. Framework structure
 
 The framework has four layers. Each layer builds on the one before it.
 
@@ -89,11 +89,11 @@ The framework has four layers. Each layer builds on the one before it.
 
 The diagram below shows the full structure. Arrows indicate the recommended completion order.
 
-# 2. Core (all staff) {#sec-training-core}
+## 2. Core (all staff) {#sec-training-core}
 
 Every team member must complete the core section before starting any specialist track. It covers the governance principles, roles, and structures that underpin all team activity.
 
-## 2.1 Topics covered
+### 2.1 Topics covered
 
 -   The Data and Digital Asset Governance Framework: purpose, scope, and where it sits alongside other organisational policies
 
@@ -109,21 +109,21 @@ Every team member must complete the core section before starting any specialist 
 
 -   The Tool Register and Model Register: what they are, why they exist, and what triggers an update
 
-## 2.2 Expected outcome
+### 2.2 Expected outcome
 
 On completing the core section, a team member should be able to identify the Owner, Steward, and Custodian for any asset they work with; understand what tier their work falls under; know where assets must be stored; and understand why the governance framework exists in terms of real operational consequences.
 
-# 3. Fundamentals
+## 3. Fundamentals
 
 These tracks are for graduates who bring scientific knowledge from their degree but are new to the operational context. The aim is not to teach from scratch but to bridge between general scientific training and the specific methods, tools, and conventions used in operational flood forecasting. Each section below frames what to focus on and points to the best external resources for doing so.
 
-## 3.1 Hydrology fundamentals
+### 3.1 Hydrology fundamentals
 
 Recommended for: all staff working with hydrological models, hydrometric data, or ML development. Also useful background for hydraulic modellers working closely with PDM-derived inflow boundaries.
 
 *The focus here is on applied catchment hydrology at the scale of UK river systems: how rainfall becomes runoff, how that runoff is routed through a catchment, how it is measured, and how model performance is assessed. University hydrology courses often cover global or theoretical perspectives; the resources below ground these concepts in the practical and computational methods used in UK operational forecasting.*
 
-### Key concepts to build
+#### Key concepts to build
 
 -   Catchment water balance and the main controls on runoff generation: soil moisture, antecedent conditions, infiltration, and the distinction between overland flow and subsurface pathways
 
@@ -139,7 +139,7 @@ Recommended for: all staff working with hydrological models, hydrometric data, o
 
 -   Catchment descriptors: BFI, area, mean elevation, soil type, land cover; where they come from (FEH, HOST classification) and how they are useful in a real time context
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                                                                                                                                         | **What to take from it**                                                                                                                                                                                  |
 |------------------------------------|------------------------------------|
@@ -153,13 +153,13 @@ Recommended for: all staff working with hydrological models, hydrometric data, o
 | **Context note** The PDM (Probability Distributed Model) is the team's primary rainfall-runoff tool. Its parameter sets encode the catchment characteristics above. When you read about soil moisture storage capacity or drainage parameters in a PDM calibration record, the concepts above are what those parameters represent. The goal of reading this material is to be able to look at a parameter set and understand what it is saying about the catchment, not just treat it as a set of numbers to store. |
 |------------------------------------------------------------------------|
 
-## 3.2 Hydraulics fundamentals {#sec-training-hydraulics}
+### 3.2 Hydraulics fundamentals {#sec-training-hydraulics}
 
 Recommended for: all FMP users. Also useful for Python developers working with FMP API outputs who need to interpret model results rather than just pass files between systems.
 
 *Most graduates have covered fluid mechanics to some degree. The focus here is specifically on open-channel flow and computational hydraulics: the assumptions underlying 1D and 2D solvers, how floodplains are represented, and where models break down. The operational context matters: understanding model limitations is as important as understanding what the model computes.*
 
-### Key concepts to build
+#### Key concepts to build
 
 -   Continuity and momentum: the Saint-Venant equations and what simplifications the 1D diffusion wave and kinematic wave approaches make, and when those simplifications are acceptable
 
@@ -177,7 +177,7 @@ Recommended for: all FMP users. Also useful for Python developers working with F
 
 -   Linked 1D-2D modelling: what the link does, how flow transfers between the 1D channel and the 2D floodplain domain, and what can go wrong at the interface
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                                                                                                                                                          | **What to take from it**                                                                                                                                                                                                                                        |
 |------------------------------------|------------------------------------|
@@ -191,13 +191,13 @@ Recommended for: all FMP users. Also useful for Python developers working with F
 | **Context note** FMP models in the operational system are driven by PDM outputs as upstream boundary conditions. This means an error in the PDM (wrong parameter set, stale calibration) propagates directly into the hydraulic model's results. When you are diagnosing a forecast that looks wrong, the first question is often whether the issue is in the hydraulic model or in the boundary conditions it received. Understanding both ends of the pipeline is what makes this team's work different from standalone hydraulic modelling applied in other parts of the business. |
 |------------------------------------------------------------------------|
 
-## 3.3 Data and coding fundamentals
+### 3.3 Data and coding fundamentals
 
 Recommended for: all staff who will write, review, or run code. Provides the grounding for both the R and Python specialist tracks.
 
 *Most science graduates have some programming experience but have rarely worked in a team codebase with version control, dependency management, and code review as standard practice. The resources here focus on those collaborative and reproducibility practices, not on learning to program from scratch.*
 
-### Key concepts to build
+#### Key concepts to build
 
 -   Git fundamentals: commits as snapshots, branches as parallel lines of work, pull requests as the review gateway; what a merge conflict is and how to resolve one
 
@@ -213,7 +213,7 @@ Recommended for: all staff who will write, review, or run code. Provides the gro
 
 -   Functions and modularity: why a 500-line script is harder to maintain than ten 50-line functions; what a pure function is; why side effects in functions are dangerous in a pipeline context
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                                                                          | **What to take from it**                                                                                                                                                                                    |
 |------------------------------------|------------------------------------|
@@ -227,11 +227,11 @@ Recommended for: all staff who will write, review, or run code. Provides the gro
 | **Context note** The team uses R and Python in different parts of the pipeline. R (via the reach.\* packages) handles data ingestion, quality control, ensemble processing, and visualisation. Python handles the Flood Modeller API, ML training pipelines, and the Databricks environment. The two connect via Parquet files: R writes to the Bronze/Silver/Gold store; Python reads from it. Understanding both languages at a conceptual level, even if you only write in one, makes it much easier to debug problems at the boundary between them. |
 |------------------------------------------------------------------------|
 
-# 4. Cross-cutting: Model calibration and configuration {#sec-training-crosscutting}
+## 4. Cross-cutting: Model calibration and configuration {#sec-training-crosscutting}
 
 This section is required for all staff who work with flood models in any capacity. It covers the shared governance requirements that apply regardless of whether a model is hydrological, hydraulic, or data-driven. It also covers black box models specifically, as these carry governance risks that require all modellers to understand their limitations.
 
-## 4.1 Model register and model IDs
+### 4.1 Model register and model IDs
 
 -   What the Model Register is and how it differs from the Tool Register
 
@@ -241,7 +241,7 @@ This section is required for all staff who work with flood models in any capacit
 
 -   What fields must be completed and who is responsible for keeping them current
 
-## 4.2 Model configuration
+### 4.2 Model configuration
 
 Model configuration covers the decisions made in setting up a model for a run: the input data used, the boundary conditions applied, and any overrides or adjustments made. These decisions must be documented so that any output can be reproduced and audited.
 
@@ -253,7 +253,7 @@ Model configuration covers the decisions made in setting up a model for a run: t
 
 -   Impact assessment for model changes: how to identify downstream models affected by a change before deploying it
 
-## 4.3 Model condition
+### 4.3 Model condition
 
 Model condition is a structured assessment of how fit for purpose a model is at a given point. It is distinct from whether a model is currently producing acceptable outputs -- a model can be performing within tolerance while being in poor condition.
 
@@ -265,7 +265,7 @@ Model condition is a structured assessment of how fit for purpose a model is at 
 
 -   How condition propagates: a poor-condition upstream model passes uncertainty to all downstream models, regardless of their own condition score
 
-## 4.4 Model connections and cascading systems
+### 4.4 Model connections and cascading systems
 
 -   What the Connection Register is and why it exists
 
@@ -277,7 +277,7 @@ Model condition is a structured assessment of how fit for purpose a model is at 
 
 -   Failure modes: what happens to downstream models when an upstream connection fails
 
-## 4.5 Black box models
+### 4.5 Black box models
 
 Black box models relate inputs directly to outputs without representing physical processes in between. This includes transfer function models and, in the team's development pipeline, LSTM neural network models. Because their internal workings are not physically interpretable, they carry specific governance risks.
 
@@ -293,15 +293,15 @@ Black box models relate inputs directly to outputs without representing physical
 
 -   Deprecation and handover: what must be recorded when a black box model is replaced by a newer ML model
 
-# 5. Specialist tracks
+## 5. Specialist tracks
 
 Staff complete the track or tracks that match their day-to-day work. Unlike the fundamentals, which build conceptual grounding, the specialist tracks are about operational competence: knowing the specific tools, conventions, and governance requirements used in this team's pipelines.
 
-## 5.1 Hydrological modelling
+### 5.1 Hydrological modelling
 
 For staff developing, maintaining, or running PDM configurations and working with hydrometric data. Complete the hydrology fundamentals section (3.1) before starting this track.
 
-### PDM models
+#### PDM models
 
 The PDM is a conceptual rainfall-runoff model that transforms rainfall and potential evapotranspiration inputs into catchment runoff. In the team's system, PDM outputs are the primary upstream inflow boundary for FMP hydraulic models. A poorly calibrated PDM directly degrades every downstream model that relies on its output.
 
@@ -315,7 +315,7 @@ The PDM is a conceptual rainfall-runoff model that transforms rainfall and poten
 
 -   How PDM outputs become FMP boundary conditions: the format, temporal resolution, and what happens when a PDM run produces negative flows or physically implausible values
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                                                         | **What to take from it**                                                                                                                                                                                                                           |
 |------------------------------------|------------------------------------|
@@ -323,7 +323,7 @@ The PDM is a conceptual rainfall-runoff model that transforms rainfall and poten
 | PDM user manual (internal): available from the Steward                                                               | Covers the software interface, input file formats, parameter definitions, and output structure. Essential reading before running a calibration. Pay particular attention to the section on parameter sensitivity.                                  |
 | Wagener, T. et al. (2004). Rainfall-Runoff Modelling in Hydrology. Wiley.                                            | A broader treatment of conceptual model calibration and uncertainty. Chapter 4 on parameter estimation and Chapter 6 on performance assessment directly support PDM calibration practice.                                                          |
 
-### Hydrometric data
+#### Hydrometric data
 
 The Bronze-to-Gold pipeline is the team's mechanism for moving raw gauge data into a form that is fit for model calibration and ML training. Understanding it from end to end is essential before using any data for a formal purpose.
 
@@ -337,7 +337,7 @@ The Bronze-to-Gold pipeline is the team's mechanism for moving raw gauge data in
 
 -   Q-FAIR compliance: what Findable, Accessible, Interoperable, and Reusable mean for a Gold dataset in this context; what the quality gate adds beyond FAIR
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                                 | **What to take from it**                                                                                                                                                                                                                  |
 |------------------------------------|------------------------------------|
@@ -346,11 +346,11 @@ The Bronze-to-Gold pipeline is the team's mechanism for moving raw gauge data in
 | Marsh, T. & Hannaford, J. (2008). UK Hydrometric Register. Centre for Ecology and Hydrology. | Background on the UK gauging network, instrumentation types, and known data quality issues by gauge type. Useful context for understanding why some gauges have persistent quality problems.                                              |
 | reach.io package documentation (internal): available in docs/reach.io/                       | The team's R package for reading from and writing to the Bronze/Silver/Gold store. Read the function reference for ingest_bronze(), promote_silver(), and approve_gold() before handling any data in the pipeline.                        |
 
-## 5.2 Hydraulic modelling
+### 5.2 Hydraulic modelling
 
 For staff developing, maintaining, or running FMP models. Complete the hydraulics fundamentals section (3.2) before starting this track.
 
-### FMP governance
+#### FMP governance
 
 FMP models are binary files. Unlike R or Python scripts, you cannot easily read a diff of what changed between two versions. This makes formal version control and run records the only reliable mechanism for tracing what model produced what output.
 
@@ -362,7 +362,7 @@ FMP models are binary files. Unlike R or Python scripts, you cannot easily read 
 
 -   Run records: completing every required field; the difference between a casual test run and a formal output; what triggers the obligation to complete a run record
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                                      | **What to take from it**                                                                                                                                                                                                                           |
 |------------------------------------|------------------------------------|
@@ -371,7 +371,7 @@ FMP models are binary files. Unlike R or Python scripts, you cannot easily read 
 | Horritt, M.S. & Bates, P.D. (2002) -- see @sec-training-hydraulics resources                                   | Re-read with operational intent: when you are deciding options for a new model build, this paper is the reference for that decision.                                                                                                               |
 | Environment Agency (2010). Flood risk assessment: the requirements for FRMPs. Technical guidance. | Context for how flood models are used in a regulatory and operational setting in England. Useful background for understanding why model condition and documentation standards are not just bureaucracy.                                            |
 
-### 1D, 2D, and linked configurations
+#### 1D, 2D, and linked configurations
 
 *Information on 2D and linked configurations have been included **due to their use in modelled rating curve development. Though for most day-to-day** forecast modelling tasks, 1D modelling will suffice.*
 
@@ -385,7 +385,7 @@ FMP models are binary files. Unlike R or Python scripts, you cannot easily read 
 
 -   Diagnosing instabilities: what negative flow, mass balance errors, and numerical blowup look like in FMP output; the common causes and how to address them without breaking the calibration
 
-### Crossover module: FMP API scripting
+#### Crossover module: FMP API scripting
 
 Required for any staff member running FMP models via Python scripts rather than the GUI, regardless of primary track. Complete this in conjunction with the Python governance track (5.4).
 
@@ -397,18 +397,18 @@ Required for any staff member running FMP models via Python scripts rather than 
 
 -   Testing FMP orchestration scripts: what to test (boundary condition setting, output reading, error handling) and what not to test (the FMP solver itself)
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                               | **What to take from it**                                                                                                                                                                                     |
 |------------------------------------|------------------------------------|
 | Flood Modeller Pro API documentation: floodmodeller.com/api                                | The primary reference for the Python API. Read the quickstart guide and the worked examples for running unsteady simulations. The API wraps the same solver as the GUI, so GUI knowledge transfers directly. |
 | Flood Modeller API GitHub repository: github.com/People-Places-Solutions/floodmodeller-api | The source code and issue tracker for the open-source API package. Useful for understanding what the API does under the hood and for reporting bugs.                                                         |
 
-## 5.3 R development
+### 5.3 R development
 
 For staff writing, maintaining, or reviewing R code. Complete the data and coding fundamentals section (3.3) before starting this track.
 
-### R governance
+#### R governance
 
 The R Tool Governance document sets the standards. This track is about being able to work within those standards in practice, not just knowing they exist.
 
@@ -420,7 +420,7 @@ The R Tool Governance document sets the standards. This track is about being abl
 
 -   The code review process: how to open a pull request; what the reviewer checks (correctness, test coverage, documentation, governance header, dependency changes); what blocks a merge
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                             | **What to take from it**                                                                                                                                                                                                                                     |
 |------------------------------------|------------------------------------|
@@ -431,7 +431,7 @@ The R Tool Governance document sets the standards. This track is about being abl
 | testthat documentation: testthat.r-lib.org               | Read the 'Testing basics' article before writing any tests. Understand the difference between expect_equal, expect_identical, and expect_error; how to structure test files; and how test_that() groups related expectations.                                |
 | Happy Git with R: happygitwithr.com (Bryan)              | If the Git workflow is new, work through chapters 1-20. The sections on branching and pull requests are directly relevant to the team's review process.                                                                                                      |
 
-### The flode (reach.\*) package suite
+#### The flode (reach.\*) package suite
 
 All reusable R code goes into the reach.\* packages -- these are consolidated into *flode*. Understanding the package structure before writing code prevents duplication and keeps the codebase coherent.
 
@@ -447,7 +447,7 @@ All reusable R code goes into the reach.\* packages -- these are consolidated in
 
 -   **reach.utils**: shared utilities used across packages; date/time handling; logging via cli; configuration helpers
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                        | **What to take from it**                                                                                                                                                   |
 |------------------------------------|------------------------------------|
@@ -456,7 +456,7 @@ All reusable R code goes into the reach.\* packages -- these are consolidated in
 | Arrow R package documentation: arrow.apache.org/docs/r                              | Read the 'Working with Arrow Datasets' article to understand how Arrow handles partitioned Parquet stores. This is what reach.io uses under the hood for the Bronze store. |
 | collapse package documentation: sebkrantz.github.io/collapse                        | Reference for the collapse package. Focus on the fmutate(), fgroup_by(), and fsummarise() functions, which replace dplyr equivalents in the fastverse workflow.            |
 
-### Tier 3 tool standards
+#### Tier 3 tool standards
 
 \*Currently no R tools are implemented in \*\*supporting live operational forecasting.\*
 
@@ -470,11 +470,11 @@ Any R tool in the operational forecast chain is Tier 3 from the moment it is pro
 
 -   Senior reviewer confirmation: before a team member is listed as Custodian on a Tier 3 tool, a senior reviewer must confirm in writing that they have demonstrated competence to maintain it
 
-## 5.4 Python and machine learning
+### 5.4 Python and machine learning
 
 For staff writing Python tools or working in the AI/ML development environment. Complete the data and coding fundamentals section (3.3) before starting this track. The hydrology fundamentals (3.1) are also recommended before working on the LSTM pipelines.
 
-### Python governance
+#### Python governance
 
 The Python Tool Governance document mirrors the R governance document in structure. The key operational differences are the dependency management tool (poetry rather than renv), the deployment environment (Databricks as well as local execution), and the strict training/inference separation requirement.
 
@@ -486,7 +486,7 @@ The Python Tool Governance document mirrors the R governance document in structu
 
 -   Code review: the same process as R; reviewers additionally check that training and inference are separated, that MLflow logging is complete, and that the Gold data requirement is met
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                                           | **What to take from it**                                                                                                                                                                                                   |
 |------------------------------------|------------------------------------|
@@ -496,7 +496,7 @@ The Python Tool Governance document mirrors the R governance document in structu
 | MLflow documentation: mlflow.org/docs/latest                                                           | Read the 'Tracking' and 'Models' sections. Understand how experiments, runs, parameters, metrics, and artefacts relate to each other. This is the logging infrastructure for all ML work in the team.                      |
 | Databricks documentation -- Unity Catalog: docs.databricks.com/en/data-governance/unity-catalog        | Read the overview and the section on catalogs, schemas, and tables. Unity Catalog is how data is governed inside Databricks; understanding its structure is necessary before reading from or writing to the DASH platform. |
 
-### The AI/ML test environment
+#### The AI/ML test environment
 
 ML development in the team happens in a staged environment on DEFRA's DASH Databricks platform. The stages exist to separate experimental work from anything that could affect operational outputs.
 
@@ -510,7 +510,7 @@ ML development in the team happens in a staged environment on DEFRA's DASH Datab
 
 -   MLflow logging requirements: every experiment run must log the model architecture, all hyperparameters, the training data ID and version, validation metrics (NSE, KGE on held-out events), and the ONNX model artefact
 
-### Recommended resources
+#### Recommended resources
 
 | **Resource**                                                                                                                                                                                                                 | **What to take from it**                                                                                                                                                                                                           |
 |------------------------------------|------------------------------------|
@@ -521,7 +521,7 @@ ML development in the team happens in a staged environment on DEFRA's DASH Datab
 | MLflow Python API reference: mlflow.org/docs/latest/python_api                                                                                                                                                               | Reference for mlflow.log_param(), mlflow.log_metric(), mlflow.log_artifact(), and mlflow.pytorch.log_model(). All four are required in every training run.                                                                         |
 | ONNX documentation: onnx.ai/onnx/intro                                                                                                                                                                                       | Background on the ONNX model format used for archiving Tier 3 models. Read the overview and the Python export guide. ONNX export is required before any model can be promoted to Tier 3.                                           |
 
-### LSTM pipelines
+#### LSTM pipelines
 
 The LSTM pipeline has three components: feature engineering, training, and inference. Each is a separate script. The governance requirement for separation means they must not share mutable state or call each other at runtime.
 
@@ -535,7 +535,7 @@ The LSTM pipeline has three components: feature engineering, training, and infer
 
 -   Model handover: when an LSTM replaces an existing black box model, the retiring model's Tool Register entry is set to Deprecated with a reference to the replacing model's MLflow run ID; the Connection Register is updated to reflect the new upstream model
 
-# 6. Role-based requirements
+## 6. Role-based requirements
 
 The table below sets out the minimum training required for each role. Where a team member holds multiple roles (for example, Custodian on an R tool and Custodian on a flood model), they must complete the requirements for each.
 
@@ -549,7 +549,7 @@ The table below sets out the minimum training required for each role. Where a te
 | **Tier 3 tool or model Custodian** | All of the above for their track, plus confirmation from a senior reviewer before being listed on the register                                                                                                  |
 | **FMP API developer**              | Core + hydraulics fundamentals + data and coding fundamentals + cross-cutting + hydraulic modelling track + crossover module                                                                                    |
 
-# 7. Recording completion
+## 7. Recording completion
 
 Training completion is recorded using the sign-off forms in Appendix A. A separate form exists for each track. The Steward is responsible for keeping completed forms and for confirming that custodians on Tier 3 assets have completed the required training before being listed on the register.
 
@@ -566,7 +566,7 @@ Training completion is recorded using the sign-off forms in Appendix A. A separa
 | **Annual review** Training completion is reviewed as part of the annual governance audit. The Steward checks that all named Custodians have current sign-offs for the assets they hold. Where gaps are found, they are treated as a governance risk and actioned before the next audit cycle. |
 |------------------------------------------------------------------------|
 
-# Approved by
+## Approved by
 
 | **Role**                         | **Name / Signature** | **Date** |
 |----------------------------------|----------------------|----------|
@@ -574,6 +574,6 @@ Training completion is recorded using the sign-off forms in Appendix A. A separa
 | Senior Modeller / Technical Lead |                      |          |
 | Team Representative              |                      |          |
 
-# Appendix A: Training sign-off forms
+## Appendix A: Training sign-off forms
 
 The sign-off forms for all ten training sections are in @sec-training-signoff-forms. Store completed forms in `docs/training/[StaffName]_[Track]_[Year].docx`.

@@ -1,7 +1,7 @@
 # Imported Hydrometric Data Framework {#sec-hydrometric-data}
 
 ::: {.callout-note}
-## Document Metadata
+### Document Metadata
 | Field | Detail |
 |---|---|
 | **Version** | 1.3 |
@@ -34,7 +34,7 @@ flowchart LR
     G -.-> r3
 ```
 
-# 1. Purpose
+## 1. Purpose
 
 The Flood Forecast Modelling (FFM) and Warning teams import hydrometric data - flow, stage, and rainfall records - from a range of internal systems (Hydrology Data Explorer and WISKI) as well as external suppliers including SEPA, NRW, Met Office, and other partner organisations. These data are the foundation of everything the team does: they drive model calibration, feed operational forecasts, validate modelling outputs, and inform flood risk decisions.
 
@@ -68,7 +68,7 @@ This framework covers all hydrometric data imported and used by the Flood Foreca
 | *Out of Scope: Model outputs, internally generated datasets (e.g., ensemble forecasts), and data produced by the team's own tools are governed by the Data **&** Digital Asset Governance Framework and are not covered here. Internally generated data does not pass through the Bronze to Silver to Gold pipelines.* |
 | --- |
 
-# 3. The Medallion Data Framework
+## 3. The Medallion Data Framework
 
 The parent framework (@sec-governance-framework) defines two distinct classification systems that apply to all team assets. The operational tier system (Tier 3, 2, 3) answers the question: how critical is this asset to the live forecasting service? The medallion architecture (Bronze, Silver, Gold) answers a different question: how far has this data progressed through the quality assurance process?
 
@@ -116,12 +116,12 @@ flowchart LR
 | Silver: Quality Controlled | Bronze data that has been checked, flagged, gap-assessed, and where appropriate corrected or gap-filled. All changes are recorded with reasons. Rating curves applied for flow. | Modelling custodians and data analysts. The primary source for model calibration and validation. |
 | Gold: Analysis-Ready | Derived products from Silver data: aggregated statistics, design event datasets, approved benchmark series, multi-site composite records, and ML training sets at native 15-minute resolution with static attributes attached. Formally approved for operational use. | Modelling custodians and data analysts. AI/ML training sets (at native resolution with static attributes attached), formal outputs, published datasets, design work. |
 
-# 4. Bronze Tier - Raw Ingested Data
+## 4. Bronze Tier - Raw Ingested Data
 
 | **BRONZE - Raw, immutable, fully provenance-labelled** Bronze data is the unmodified record of what was received from the supplier. Nothing is corrected, removed, or reformatted beyond what is strictly necessary to store it. Every Bronze dataset must be treated as read-only from the moment of ingestion. |
 | --- |
 
-## 4.1 Ingestion Requirements
+### 4.1 Ingestion Requirements
 
 When a new dataset is received, the Custodian must complete all of the following before the data is stored:
 
@@ -141,13 +141,13 @@ For API-sourced gauges registered in the Gauge Registry, `reach.io`'s `run_backf
 
 Bronze data must never be modified after ingestion. If a supplier sends a corrected version of a dataset, the corrected version is ingested as a new Bronze dataset with its own dataset ID and provenance record, referencing the original.
 
-## 4.2 Provenance Record {#sec-hydro-provenance}
+### 4.2 Provenance Record {#sec-hydro-provenance}
 
 Every Bronze dataset must have a complete provenance record in the Hydrometric Data Register (@sec-hydro-register). This is the single most important thing recorded at Bronze - without it, no downstream use of the data can be properly audited. See @sec-hydro-register-fields for the full field list.
 
 The key fields recorded at ingestion are: dataset ID, supplier, site identifier, data type, time period, temporal resolution, units, datum or rating reference, file format as received, date received, received by, method of receipt, any supplier quality flags and their meaning, known limitations stated by the supplier, file path, and any notes on unusual aspects of the delivery.
 
-## 4.3 Ownership at Bronze
+### 4.3 Ownership at Bronze
 
 The Custodian who ingests the data holds Bronze custodianship. They are responsible for completing the provenance record and storing the data correctly. The Steward is responsible for checking that provenance records are complete and that Bronze data is not being modified.
 
@@ -165,16 +165,16 @@ Bronze data is an archive, not a working dataset. It should not be:
 
 - Used to draw conclusions about data quality without a Silver QC record
 
-# 5. Silver Tier - Quality Controlled Data
+## 5. Silver Tier - Quality Controlled Data
 
 | **SILVER - Checked, flagged, corrected where appropriate, fully documented** Silver data is the result of applying a documented quality control process to Bronze data. Every change from Bronze to Silver is recorded - what was changed, why, who made the decision, and what evidence supported it. Silver is the primary working dataset for modellers and analysts. |
 | --- |
 
-## 5.1 The QC Process
+### 5.1 The QC Process
 
 Quality control must be completed by a Custodian and reviewed by the Steward before data is promoted from Bronze to Silver. The QC process covers four stages:
 
-### Stage 1: Automated Checks
+#### Stage 1: Automated Checks
 
 Run automated checks to identify obvious problems. These checks do not change any values - they produce a flag dataset stored alongside the data. Automated checks include:
 
@@ -190,7 +190,7 @@ Run automated checks to identify obvious problems. These checks do not change an
 
 - Consistency with supplier flags: values flagged as poor quality by the supplier
 
-### Stage 2: Visual and Expert Review
+#### Stage 2: Visual and Expert Review
 
 A Custodian with appropriate domain knowledge reviews the flagged data. For flow and level data this includes checking against nearby gauges, upstream/downstream consistency, and known events. The review produces:
 
@@ -200,7 +200,7 @@ A Custodian with appropriate domain knowledge reviews the flagged data. For flow
 
 - A rating curve assessment for flow data (see @sec-hydro-rating-curve)
 
-### Stage 3: Gap and Error Handling
+#### Stage 3: Gap and Error Handling
 
 For each gap or rejected value, the Custodian must make a documented decision:
 
@@ -213,7 +213,7 @@ For each gap or rejected value, the Custodian must make a documented decision:
 
 Gap-filling is only permitted where the method is documented and the filled values are clearly distinguishable from observed values. Over-enthusiastic gap-filling is a greater risk than gaps. When in doubt, flag and retain rather than fill.
 
-### Stage 4: Steward Review and Promotion
+#### Stage 4: Steward Review and Promotion
 
 Before data is promoted to Silver, the Steward or Delegated Steward must review:
 
@@ -227,7 +227,7 @@ Before data is promoted to Silver, the Steward or Delegated Steward must review:
 
 The Steward records their approval in the Hydrometric Data Register. Only after Steward approval is the dataset status set to Silver.
 
-## 5.2 Quality Flags {#sec-hydro-qc-flags}
+### 5.2 Quality Flags {#sec-hydro-qc-flags}
 
 Every value in a Silver dataset carries a quality flag. The team uses the following flag scheme, which is compatible with the Environment Agency's national flag convention:
 
@@ -242,7 +242,7 @@ Every value in a Silver dataset carries a quality flag. The team uses the follow
 
 Flags must be stored as a separate column or parallel file - never overwrite the value itself. A flag of 2 (Estimated) must always be accompanied by an estimation method field.
 
-## 5.3 Rating Curves and Flow Derivation {#sec-hydro-rating-curve}
+### 5.3 Rating Curves and Flow Derivation {#sec-hydro-rating-curve}
 
 For stage (water level) data where the team derives flow using a rating curve, the Silver record must include:
 
@@ -256,7 +256,7 @@ For stage (water level) data where the team derives flow using a rating curve, t
 
 Where the team uses supplier-derived flow directly (e.g., EA gauged flow), the supplier's rating version must be recorded in the provenance record rather than applied by the team.
 
-## 5.4 Silver Dataset Naming and Storage
+### 5.4 Silver Dataset Naming and Storage
 
 Each Silver dataset gets its own dataset ID, linking it explicitly to its Bronze source:
 
@@ -264,24 +264,24 @@ Format: [BronzeDatasetID]_SILVER_v[N] Example: EA_39001_Q_20260115_SILVER_v1
 
 When a Silver dataset is revised (e.g., following updated rating curve or additional QC), a new version is created. Previous Silver versions are retained. The QC record must note what changed and why.
 
-## 5.5 Silver QC Record
+### 5.5 Silver QC Record
 
 Each Silver dataset must have a complete QC record in the Hydrometric Data Register (@sec-hydro-register). See @sec-hydro-register-fields for the full field list.
 
 The key fields recorded at Silver promotion are: Silver dataset ID, Bronze source ID, Custodian who carried out QC, Steward who reviewed and approved, QC date, automated checks run and tool used, flag count summary by type, gap-filling method and extent if applied, rating curve version and valid range if applied, any remaining known issues, comparison datasets used during expert review, and file path.
 
-## 5.6 Ownership at Silver
+### 5.6 Ownership at Silver
 
 The Steward or Delegated Steward holds Silver ownership. They are accountable for the quality of Silver datasets and for ensuring QC records are complete and honest - including about limitations. The Custodian who carried out the QC is named in the record and is responsible for the decisions made during QC.
 
 Silver data is the primary working dataset. Modellers and analysts should use Silver data and record which Silver dataset ID (and version) fed their work. If a modeller identifies a quality issue in Silver data, they must raise it with the Steward rather than correcting it locally.
 
-# 6. Gold Tier - Analysis-Ready Products
+## 6. Gold Tier - Analysis-Ready Products
 
 | **GOLD - Formally approved, derived products ready for operational use** Gold datasets are derived from Silver data. They are aggregated, summarised, combined, or formally approved at their native resolution to produce a specific analysis-ready product for a named purpose. Gold datasets require Owner approval and are the only tier that should be used in formal outputs, operational forecasting, ML model training intended for promotion, or external publications. |
 | --- |
 
-## 6.1 What Qualifies as Gold
+### 6.1 What Qualifies as Gold
 
 A Gold dataset is a deliberate, named product created for a specific purpose. Examples include:
 
@@ -303,7 +303,7 @@ A Gold dataset is a deliberate, named product created for a specific purpose. Ex
 
 Gold is not simply 'better Silver'. It is a specific product with a defined purpose, a named user, and formal approval. Creating a Gold dataset is a decision, not an automatic step.
 
-## 6.2 Creating a Gold Dataset
+### 6.2 Creating a Gold Dataset
 
 A Gold dataset must be proposed, documented, and approved before it is used:
 
@@ -317,23 +317,23 @@ A Gold dataset must be proposed, documented, and approved before it is used:
 
 - Gold dataset is registered in the Hydrometric Data Register with status 'Approved'
 
-## 6.3 Gold Derivation Record {#sec-hydro-gold-derivation}
+### 6.3 Gold Derivation Record {#sec-hydro-gold-derivation}
 
 Each Gold dataset must have a complete derivation record in the Hydrometric Data Register (@sec-hydro-register). See @sec-hydro-register-fields for the full field list.
 
 The key fields recorded when a Gold dataset is created are: Gold dataset ID, purpose and who approved it, Silver source dataset IDs and versions, derivation method (aggregation, merging, event extraction, or native resolution for ML training sets), Silver quality gate summary (flag counts, gap extent, known issues), any exclusions and the reason, Custodian or analyst who produced it, Owner approval name and date, intended use and any restrictions on use, expiry or review date, and file path.
 
-## 6.4 Versioning and Supersession
+### 6.4 Versioning and Supersession
 
 When new Silver data becomes available, or when a quality issue is identified, a Gold dataset may need to be updated. A new version is created; the previous version is retained and its status changed to 'Superseded'. Any model or analysis that used the superseded version must be flagged for review.
 
 The Steward or Delegated Steward must be notified whenever a Gold dataset is superseded and must confirm whether dependent work needs to be revisited.
 
-## 6.5 Ownership at Gold
+### 6.5 Ownership at Gold
 
 Gold datasets are owned by the Owner and stewarded by the Steward. No one else can approve a new Gold dataset or change its status. This is the highest accountability level because Gold data directly informs business decisions, model calibration choices, and potentially regulatory outputs or KPIs.
 
-## 6.6 ML Training Sets as Gold Products {#sec-hydro-ml-gold}
+### 6.6 ML Training Sets as Gold Products {#sec-hydro-ml-gold}
 
 Unlike most Gold products, an ML training set does not aggregate or reduce the underlying Silver data. It stays at the native 15-minute resolution. What makes it a Gold product is that it represents a set of deliberate, documented decisions about which data to use and how, combined with Steward confirmation that the Silver quality is sufficient for model training.
 
@@ -356,7 +356,7 @@ The Gold derivation record for an ML training set should describe the gauge sele
 | *This training set Gold product type is distinct from other Gold types. It should not be used for flood frequency analysis or hydraulic model calibration, and those Gold products should not be used as ML training sets without a new Gold derivation record confirming suitability.* |
 | --- |
 
-# 7. Parquet Storage Schema
+## 7. Parquet Storage Schema
 
 All Bronze, Silver, and Gold datasets are stored as Parquet files. Parquet is the mandatory storage format for hydrometric time series data within the medallion architecture. It is used across the R tooling (via the arrow package) and the Python tooling (via polars or pyarrow), and it is the native format for the Databricks DASH environment.
 
@@ -367,7 +367,7 @@ Parquet stores data in a typed, columnar format that is efficient to read, write
 
 For the rationale behind the Parquet requirement, partitioning guidance, format comparisons (including Delta tables, NetCDF, GeoParquet, and the CSV and Excel restrictions), see @sec-file-format-reference. Parquet schema compliance for Bronze, Silver, and Gold datasets is checked automatically by the `fw-governance` MCP server `validate_parquet_schema` and `validate_bronze_ingestion` tools.
 
-## 7.1 Why Parquet for Hydrometric Time Series
+### 7.1 Why Parquet for Hydrometric Time Series
 
 | **Reason** | **Detail** |
 | --- | --- |
@@ -377,7 +377,7 @@ For the rationale behind the Parquet requirement, partitioning guidance, format 
 | Cross-tool compatibility | The same Parquet file can be read by R (arrow::read_parquet), Python (polars.read_parquet / pyarrow), and Databricks (spark.read.parquet) without conversion. |
 | Partition support | Large datasets can be partitioned by supplier, site, or year, so queries only scan the relevant subset of files. |
 
-## 7.2 Bronze Parquet Schema
+### 7.2 Bronze Parquet Schema
 
 Bronze Parquet is produced at ingestion. The Custodian converts the supplier's raw file into the team's standard Bronze schema. The original raw file is also retained unchanged. All dataset-level metadata (supplier, time period, units, licence, file format, etc.) is recorded in the register, not repeated in the Parquet.
 
@@ -403,7 +403,7 @@ Optional columns (include if provided by supplier):
 | ***Do not add any columns beyond those listed above to Bronze Parquet. Bronze is a faithful representation of what was received. Any derived or computed fields belong in Silver.*** |
 | --- |
 
-## 7.3 Silver Parquet Schema
+### 7.3 Silver Parquet Schema
 
 Silver Parquet is derived from Bronze. It retains all Bronze columns and adds QC columns. Values and timestamps from Bronze are never altered - corrections and estimates are recorded in new columns, not by overwriting the Bronze value.
 
@@ -422,7 +422,7 @@ Added columns (in addition to all Bronze columns):
 | *The value column is always the Bronze value. The qc_value column is what modellers and analysts should use. Keeping both means the QC decisions are always auditable.* |
 | --- |
 
-## 7.4 Gold Parquet Schema
+### 7.4 Gold Parquet Schema
 
 Gold Parquet is derived from Silver. The schema depends on the Gold product type. Two standard structures are defined below.
 
@@ -452,7 +452,7 @@ For Gold products that aggregate Silver time series into statistics or event sum
 | data_completeness_pct | float64 | Percentage of the period covered by Good or Estimated Silver data (flags 1 and 2). |
 | silver_source_ids | string | Pipe-separated list of Silver dataset IDs used (e.g., EA_39001_Q_20230101_SILVER_v1│EA_39001_Q_20240101_SILVER_v1). Keeps lineage readable in any tool. |
 
-### ML Training Set Gold
+#### ML Training Set Gold
 
 For Gold ML training sets (@sec-hydro-ml-gold), use the time series Gold schema with the following additional columns. Static catchment attributes are repeated on every row so a single Parquet file is self-contained for training without needing a join. Approval details are held in the register.
 
@@ -486,15 +486,15 @@ In Databricks, use Delta Lake tables rather than raw Parquet files for Bronze an
 | *The Parquet schemas defined in this section are the interface contract between the Hydrometric Data Framework and the AI/ML Test Environment. The ML training pipeline reads Gold Parquet using the column names and types defined in Sections 7.3 and 7.4. Any schema changes must be agreed between the Steward and the Delegated Steward before implementation.* |
 | --- |
 
-# 8. Data Quality Improvement
+## 8. Data Quality Improvement
 
 The medallion structure is not just a filing system; it is a mechanism for identifying and acting on data quality problems over time. Quality issues discovered at Silver or Gold should feed back into improved processes and, where possible, improved data from suppliers.
 
-## 8.1 Flagging Systemic Issues
+### 8.1 Flagging Systemic Issues
 
 When a Custodian or Steward identifies a recurring quality problem - a gauge that consistently produces flatline values during high flows, a supplier format that loses trailing zeros, a rating curve that is clearly outdated - this should be escalated as a systemic issue rather than handled case by case. Systemic issues are recorded in the Data Quality Issue Log and assigned to the Delegated Steward to manage.
 
-## 8.2 Supplier Engagement
+### 8.2 Supplier Engagement
 
 Where a Bronze dataset contains quality problems that originate with the supplier (instrument failures, incorrect datum, outdated rating), the Delegated Steward should:
 
@@ -508,7 +508,7 @@ Where a Bronze dataset contains quality problems that originate with the supplie
 
 The team should not routinely correct supplier errors at Silver without engaging the supplier first, unless the operational need is urgent and documented. Correcting supplier errors silently means the supplier never improves.
 
-## 8.3 Rating Curve Reviews
+### 8.3 Rating Curve Reviews
 
 Rating curves age. Channel geometry changes after flood events, vegetation and weed growth affects stage-discharge relationships seasonally, and structural changes at gauging stations invalidate previous curves. The Delegated Steward is responsible for:
 
@@ -520,7 +520,7 @@ Rating curves age. Channel geometry changes after flood events, vegetation and w
 
 - Triggering a Silver version update whenever a new rating curve is applied
 
-## 8.4 Data Quality Metrics and Reporting
+### 8.4 Data Quality Metrics and Reporting
 
 The Steward produces a quarterly data quality summary covering:
 
@@ -536,11 +536,11 @@ The Steward produces a quarterly data quality summary covering:
 
 The summary is shared with the Owner and reported at the team's quarterly governance review.
 
-# 9. Provenance and Traceability
+## 9. Provenance and Traceability
 
 Every formal output the team produces must be traceable back to the data that fed it. The Bronze to Silver to Gold chain provides that traceability, but only if it is used consistently.
 
-## 9.1 Dataset Lineage
+### 9.1 Dataset Lineage
 
 For any Gold dataset, it must be possible to answer:
 
@@ -554,7 +554,7 @@ For any Gold dataset, it must be possible to answer:
 
 The Hydrometric Data Register (@sec-hydro-register) maintains this lineage by linking Gold IDs to Silver IDs to Bronze IDs.
 
-## 9.2 Recording Data Use in Model Runs
+### 9.2 Recording Data Use in Model Runs
 
 When a model run uses hydrometric data, the run record must specify:
 
@@ -564,7 +564,7 @@ When a model run uses hydrometric data, the run record must specify:
 
 - Any flags excluded from the analysis and the exclusion rule applied
 
-## 9.3 Retrospective Traceability
+### 9.3 Retrospective Traceability
 
 - Bronze datasets are never deleted (see @sec-hydro-bronze-retention)
 
@@ -574,7 +574,7 @@ When a model run uses hydrometric data, the run record must specify:
 
 - The Hydrometric Data Register is backed up as part of the team's standard data backup process
 
-# 10. Hydrometric Data Register {#sec-hydro-register}
+## 10. Hydrometric Data Register {#sec-hydro-register}
 
 The Hydrometric Data Register is the single consolidated record for all Bronze, Silver, and Gold datasets. It is maintained by the `reach.io` R package as a CSV file held in the team's designated data store, version-controlled alongside the data. Register entries are written and updated programmatically via `reach.io`'s `write_provenance_record()` function; direct manual editing of the CSV is not permitted outside of Steward-approved corrections. In Databricks deployments, the same fields are held as a Delta table in the `fw_hydrometric` catalog. The Steward is responsible for keeping it current.
 
@@ -582,7 +582,7 @@ A separate **Gauge Registry** (Parquet format) is also maintained by `reach.io` 
 
 Rather than separate provenance, QC, and derivation records for each tier, the register uses a single table where each row is one dataset. The tier column identifies whether a row is Bronze, Silver, or Gold. Fields that only apply to certain tiers are left blank for others. This keeps everything queryable in one place and avoids the proliferation of separate files.
 
-## 10.1 Register Fields {#sec-hydro-register-fields}
+### 10.1 Register Fields {#sec-hydro-register-fields}
 
 | **Field** | **Tier** | **Description** |
 | --- | --- | --- |
@@ -630,7 +630,7 @@ Rather than separate provenance, QC, and derivation records for each tier, the r
 | *The register is the authoritative metadata store. Parquet files hold only the ID columns needed for joins (dataset_id, silver_dataset_id, gold_dataset_id) plus the time series data and QC columns. All other metadata lives in the register. This keeps files lean and metadata queryable without opening individual Parquet files.* |
 | --- |
 
-## 10.2 Data Quality Issue Log
+### 10.2 Data Quality Issue Log
 
 The Data Quality Issue Log is a separate CSV file held alongside the Hydrometric Data Register (or a second Delta table in Databricks deployments). It records known quality problems that require action beyond routine QC. Each entry includes:
 
@@ -648,7 +648,7 @@ The Data Quality Issue Log is a separate CSV file held alongside the Hydrometric
 
 The log is reviewed by the Steward monthly and included in the quarterly data quality summary.
 
-## 10.3 Register Maintenance
+### 10.3 Register Maintenance
 
 The register must be updated whenever:
 
@@ -664,9 +664,9 @@ The register must be updated whenever:
 
 The register is version-controlled. The Delegated Steward commits changes with a note describing what was updated. Previous versions are retained as part of the retrospective traceability requirement.
 
-# 11. Access, Sharing, and Retention
+## 11. Access, Sharing, and Retention
 
-## 11.1 Retention {#sec-hydro-bronze-retention}
+### 11.1 Retention {#sec-hydro-bronze-retention}
 
 Bronze data are retained indefinitely. It is the permanent record of what was received and cannot be recreated. It must never be deleted without Owner approval.
 
@@ -674,7 +674,7 @@ Silver data is retained for as long as the Bronze data it was derived from is re
 
 Gold data is retained for as long as any model, output, or decision that used it may need to be audited. In practice this is indefinitely for any Gold dataset that contributed to a formal flood risk output.
 
-## 11.2 Access {#sec-hydro-access}
+### 11.2 Access {#sec-hydro-access}
 
 - Bronze: Custodians and Stewards have read access. Write access at Bronze is limited to the ingestion Custodian at the point of ingestion - after that, Bronze is read-only
 
@@ -684,7 +684,7 @@ Gold data is retained for as long as any model, output, or decision that used it
 
 - External sharing of any tier requires Owner approval and must respect the supplier's data licence
 
-## 11.3 Data Licensing and Third-Party Constraints
+### 11.3 Data Licensing and Third-Party Constraints
 
 Most hydrometric data supplied by external organisations carries restrictions on redistribution. The provenance record must note the licence or access terms under which data was received. The Steward is responsible for:
 
@@ -694,7 +694,7 @@ Most hydrometric data supplied by external organisations carries restrictions on
 
 - Flagging any licence ambiguity to the Owner before sharing
 
-# 12. Roles and Responsibilities
+## 12. Roles and Responsibilities
 
 The roles below follow the Owner, Steward, and Custodian model defined in the Data Ownership Model (CDDO, 2023) and applied in the Data & Digital Asset Governance Framework v2.0. The specific responsibilities at each tier are summarised here. The Data Owner for hydrometric data assets fulfils the Information Asset Owner (IAO) function for those assets; see @sec-iao-relationship in the parent framework for the full role mapping.
 
@@ -706,7 +706,7 @@ The roles below follow the Owner, Steward, and Custodian model defined in the Da
 | Custodian (any grade) | Ingests data; completes provenance records; stores Bronze files correctly | Carries out QC stages 1-3; records all QC decisions; notifies Steward for review | Produces Gold derivation records under Steward guidance; flags supersession triggers |
 | Modeller / Analyst | Does not interact with Bronze directly | Uses Silver data; records Silver dataset IDs in run records; raises quality issues to Steward | Uses Gold data for formal outputs; records Gold dataset IDs; notifies Steward if Gold data appears incorrect |
 
-# 13. Governance and Review
+## 13. Governance and Review
 
 This framework is reviewed annually by the Steward and approved by the Owner. The review considers:
 
@@ -725,7 +725,7 @@ Exceptions to this framework - for example, using Bronze data directly in an urg
 | *This framework operates under the Owner, Steward, and Custodian model in the Data **&** Digital Asset Governance Framework v2.0. The exceptions process, escalation paths, and annual audit requirements in that document apply here.* |
 | --- |
 
-# Appendix A - Naming Conventions
+## Appendix A - Naming Conventions
 
 All dataset IDs use underscores, no spaces, no dots except as the file extension.
 
@@ -739,7 +739,7 @@ Supplier codes: EA = Environment Agency, NRFA = National River Flow Archive, MO 
 
 Data type codes: Q = flow, H = stage/water level, P = rainfall, SM = soil moisture, SWE = snow water equivalent.
 
-# Appendix B - Glossary
+## Appendix B - Glossary
 
 Framework-wide terms (Bronze, Silver, Gold, Parquet, Delta Lake, Quality flag, etc.) are defined in the main glossary at @sec-glossary. This appendix covers terms specific to the hydrometric data pipeline.
 
@@ -748,18 +748,18 @@ Framework-wide terms (Bronze, Silver, Gold, Parquet, Delta Lake, Quality flag, e
 | Gauge Registry | A Parquet file maintained by `reach.io` via `build_gauge_registry()`. Records source system assignment, active status, backfill completion, and notes for each gauge. Acts as the routing configuration for the ingestion pipeline. |
 | qc_value | The analysis-ready value column in Silver and Gold Parquet. Equal to the Bronze value for Good data; populated with the estimated value for gap-filled rows; null for Rejected and No data rows. |
 
-# Appendix C - Folder Structure
+## Appendix C - Folder Structure
 
 The following shows the recommended folder structure for hydrometric data storage, covering both the team file store and the Databricks DASH environment.
 
-## C.1 File Store
+### C.1 File Store
 
 Used outside Databricks for local and shared network storage. The raw supplier file (CSV, XML, JSON, etc.) is kept alongside the Parquet at Bronze as the immutable record of receipt.
 
 | **hydrometric/** **├****──**** bronze/** │ ├── EA/ │ │ ├── Q/ │ │ │ ├── 2023/ │ │ │ │ ├── EA_39001_Q_20230101.parquet │ │ │ │ ├── EA_39001_Q_20230101_raw.csv ← original supplier file │ │ │ │ └── EA_45001_Q_20230101.parquet │ │ │ └── 2024/ │ │ │ └── EA_39001_Q_20240101.parquet │ │ └── H/ │ │ └── 2024/ │ │ └── EA_39001_H_20240101.parquet │ ├── NRFA/ │ │ └── Q/ │ │ └── 2024/ │ │ └── NRFA_39001_Q_20240301.parquet │ └── MO/ │ └── P/ │ └── 2024/ │ └── MO_235096_P_20240101.parquet │ **├****──**** silver/** │ ├── Q/ │ │ └── 39001/ │ │ ├── EA_39001_Q_20230101_SILVER_v1.parquet │ │ └── EA_39001_Q_20230101_SILVER_v2.parquet ← revised; v1 kept │ ├── H/ │ │ └── 39001/ │ │ └── EA_39001_H_20240101_SILVER_v1.parquet │ └── P/ │ └── 235096/ │ └── MO_235096_P_20240101_SILVER_v1.parquet │ **├****──**** gold/** │ ├── Q/ │ │ ├── calibration/ │ │ │ └── 39001_Q_GOLD_CAL_v1.parquet │ │ └── FFA/ │ │ ├── 39001_Q_GOLD_FFA_v1.parquet ← superseded; kept │ │ └── 39001_Q_GOLD_FFA_v2.parquet ← current │ └── P/ │ └── catchment_average/ │ └── THAMES_P_GOLD_CAVG_v1.parquet │ └── register/ ├── hydrometric_data_register.xlsx └── data_quality_issue_log.xlsx |
 | --- |
 
-## C.2 Databricks DASH - Unity Catalog
+### C.2 Databricks DASH - Unity Catalog
 
 In Databricks, data is held as Delta Lake tables rather than flat files. The tier structure maps directly to Unity Catalog schemas, which enforces the access controls defined in @sec-hydro-access.
 
@@ -769,7 +769,7 @@ In Databricks, data is held as Delta Lake tables rather than flat files. The tie
 | *Superseded Silver and Gold files stay in place with their version number in the filename - nothing is deleted or renamed. All metadata (provenance, QC records, derivation records) is held in the Hydrometric Data Register, not in sidecar files alongside the Parquet. In Databricks, Delta Lake time-travel provides access to previous versions without separate files.* |
 | --- |
 
-# Approved by
+## Approved by
 
 | **Role** | **Name / Signature / Date** |
 | --- | --- |

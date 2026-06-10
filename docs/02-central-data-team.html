@@ -77,6 +77,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -400,7 +403,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Data companions</span></a>
+ <span class="menu-text">Platform companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -408,8 +411,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/hydrometric-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
+  <a href="./companions/dash-onboarding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DASH Platform Onboarding</span></span></a>
   </div>
 </li>
       </ul>
@@ -417,7 +420,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Model companions</span></a>
+ <span class="menu-text">Data companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -425,8 +428,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/flood-models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
+  <a href="./companions/hydrometric-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Imported Hydrometric Data Framework</span></span></a>
   </div>
 </li>
       </ul>
@@ -434,7 +437,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Warning and procedure companions</span></a>
+ <span class="menu-text">Model companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -442,14 +445,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/flood-warnings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Flood Warning Asset Governance</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./companions/procedure-tools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></span></a>
+  <a href="./companions/flood-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Flood Model Governance</span></span></a>
   </div>
 </li>
       </ul>
@@ -457,7 +454,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Training and implementation</span></a>
+ <span class="menu-text">Warning and procedure companions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -465,14 +462,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./companions/training-framework.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  <a href="./companions/flood-warnings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Flood Warning Asset Governance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Implementation</span></span></a>
+  <a href="./companions/procedure-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Procedure Tools Governance</span></span></a>
   </div>
 </li>
       </ul>
@@ -480,12 +477,41 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Training and implementation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./companions/training-framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Staff Training Framework</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./companions/training-signoff-forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Training Sign-off Forms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a-glossary.html" class="sidebar-item-text sidebar-link">
@@ -621,19 +647,55 @@ Note
 <section id="sec-cdt-capability" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="sec-cdt-capability"><span class="header-section-number">3.2.2</span> Capability programme</h3>
 <p>The CDT owns the companion documents: the R governance companion, the Python governance companion, and the domain companions for hydrometric data, flood models, flood warnings, and procedure tools. It publishes updates through the core release cycle defined in the parent framework. This is not a passive custodial role. The CDT actively maintains standards, responds to changes in tools and practice, and keeps the documents current.</p>
-<p>The CDT also holds the shared tooling: the packages and utilities that multiple teams use. Training for the framework is covered in the training companion (<a href="companions/training-framework.html" class="quarto-xref"><span>Chapter 12</span></a>). The CDT coordinates delivery of that training across in-scope teams, tracking completion against the role-based requirements set out there.</p>
+<p>The CDT also holds the shared tooling: the packages and utilities that multiple teams use. Training for the framework is covered in the training companion (<a href="companions/training-framework.html" class="quarto-xref"><span>Chapter 13</span></a>). The CDT coordinates delivery of that training across in-scope teams, tracking completion against the role-based requirements set out there.</p>
 </section>
 <section id="sec-cdt-embedding" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="sec-cdt-embedding"><span class="header-section-number">3.2.3</span> Embedding model</h3>
 <p>Each operational team has a named CDT liaison. The liaison role is Custodian grade and open to any member of the team. The liaison attends team governance reviews, coordinates shared dataset proposals between the team and the CDT, and supports onboarding when a team adopts the framework or when a new team comes into scope.</p>
 <p>This is a coordination role, not a supervisory one. The liaison does not direct the team’s technical work. They are the point of contact between the team and the CDT, and the person responsible for making sure shared dataset concerns reach the CDT Steward rather than being resolved unilaterally.</p>
+<p>The diagram below shows how these roles sit in relation to each other for a single operational team. The Forecasting Manager is used as the example; the pattern is the same for the Warning Manager.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"theme": "default", "flowchart": {"rankSpacing": 55, "nodeSpacing": 25}}}%%
+%%| fig-width: 6
+graph TD
+    DD["Deputy Director&lt;br/&gt;Owner"]
+    CDT["CDT G7 Steward&lt;br/&gt;&lt;i&gt;Shared asset stewardship&lt;/i&gt;"]
+    FM["Forecasting Manager G7&lt;br/&gt;&lt;i&gt;Domain asset stewardship&lt;/i&gt;"]
+    DS["Delegated Steward&lt;br/&gt;typically G6"]
+    LIA["CDT Liaison&lt;br/&gt;Custodian grade&lt;br/&gt;&lt;i&gt;Embedded in Forecasting team&lt;/i&gt;"]
+    CUS["Custodians&lt;br/&gt;Any grade"]
+
+    DD --&gt; CDT
+    DD --&gt; FM
+    FM --&gt; DS
+    DS --&gt; CUS
+    CDT &lt;--&gt;|"Shared dataset&lt;br/&gt;coordination"| FM
+    LIA --&gt;|"Escalates concerns&lt;br/&gt;to CDT"| CDT
+    DS --&gt; LIA
+
+    style DD fill:#1a5276,color:#fff,stroke:#1a5276
+    style CDT fill:#c8a000,color:#fff,stroke:#c8a000
+    style FM fill:#1f618d,color:#fff,stroke:#1f618d
+    style DS fill:#2e86c1,color:#fff,stroke:#2e86c1
+    style LIA fill:#fffbea,stroke:#c8a000,stroke-width:2px
+    style CUS fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="sec-cdt-structure" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="sec-cdt-structure"><span class="header-section-number">3.3</span> Proposed structure</h2>
 <p>The CDT is headed by a G7 Steward who reports directly to the Deputy Director. It does not sit within any operational team. It serves all in-scope teams. That structural independence is what gives it the cross-service mandate that no operational team can hold.</p>
 <p>Where workload demands it, the CDT G7 Steward may designate a Delegated Steward to carry out hands-on governance work: condition assessments, shared dataset audits, and annual Tier 3 findings for shared assets. The G7 Steward retains accountability for all decisions.</p>
-<p>The G7 Steward produces the quarterly governance summary defined at <a href="01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.13</span></a>. That summary covers shared dataset health across all in-scope teams and tracks framework adoption. It is the principal mechanism by which the Deputy Director, as Owner, maintains oversight of shared asset governance across the service.</p>
+<p>The G7 Steward produces the quarterly governance summary defined at <a href="01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.15</span></a>. That summary covers shared dataset health across all in-scope teams and tracks framework adoption. It is the principal mechanism by which the Deputy Director, as Owner, maintains oversight of shared asset governance across the service.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -670,10 +732,35 @@ Note
 </tr>
 </tbody>
 </table>
+<p>The diagram below shows where the CDT sits relative to the existing NFWS structure. The dashed node indicates the proposed addition.</p>
+<div class="cell" data-fig-width="6" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    DD["Deputy Director · Owner"]
+    CDT["CDT G7 Steward"]
+    SM["Service Management"]
+    FM["Forecasting Manager G7"]
+    WM["Warning Manager G7"]
+
+    DD --&gt; CDT
+    DD --&gt; SM
+    DD --&gt; FM
+    DD --&gt; WM
+
+    style CDT fill:#fffbea,stroke:#c8a000,stroke-width:2px,stroke-dasharray:5 5
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 <section id="sec-cdt-framework-support" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="sec-cdt-framework-support"><span class="header-section-number">3.4</span> How this framework supports the case</h2>
-<p>This framework is designed so that when the CDT is established, it steps into a defined role. The Shared Asset Register format is specified at <a href="03-shared-datasets.html" class="quarto-xref"><span>Chapter 4</span></a>. The quarterly reporting cadence is defined at <a href="01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.13</span></a>. The companion ownership model is described at <a href="#sec-cdt-capability" class="quarto-xref"><span>Section 3.2.2</span></a>. The CDT does not need to invent any of this.</p>
+<p>This framework is designed so that when the CDT is established, it steps into a defined role. The Shared Asset Register format is specified at <a href="03-shared-datasets.html" class="quarto-xref"><span>Chapter 4</span></a>. The quarterly reporting cadence is defined at <a href="01-governance-framework.html#sec-monitoring-reporting" class="quarto-xref"><span>Section 2.15</span></a>. The companion ownership model is described at <a href="#sec-cdt-capability" class="quarto-xref"><span>Section 3.2.2</span></a>. The CDT does not need to invent any of this.</p>
 <p>What it needs is resource. The next action is a decision by the Deputy Director to fund and establish the team. Everything else is already in place.</p>
 
 
