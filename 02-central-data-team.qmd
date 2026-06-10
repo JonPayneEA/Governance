@@ -37,6 +37,35 @@ Each operational team has a named CDT liaison. The liaison role is Custodian gra
 
 This is a coordination role, not a supervisory one. The liaison does not direct the team's technical work. They are the point of contact between the team and the CDT, and the person responsible for making sure shared dataset concerns reach the CDT Steward rather than being resolved unilaterally.
 
+The diagram below shows how these roles sit in relation to each other for a single operational team. The Forecasting Manager is used as the example; the pattern is the same for the Warning Manager.
+
+```{mermaid}
+%%{init: {"theme": "default", "flowchart": {"rankSpacing": 55, "nodeSpacing": 25}}}%%
+%%| fig-width: 6
+graph TD
+    DD["Deputy Director<br/>Owner"]
+    CDT["CDT G7 Steward<br/><i>Shared asset stewardship</i>"]
+    FM["Forecasting Manager G7<br/><i>Domain asset stewardship</i>"]
+    DS["Delegated Steward<br/>typically G6"]
+    LIA["CDT Liaison<br/>Custodian grade<br/><i>Embedded in Forecasting team</i>"]
+    CUS["Custodians<br/>Any grade"]
+
+    DD --> CDT
+    DD --> FM
+    FM --> DS
+    DS --> CUS
+    CDT <-->|"Shared dataset<br/>coordination"| FM
+    LIA -->|"Escalates concerns<br/>to CDT"| CDT
+    DS --> LIA
+
+    style DD fill:#1a5276,color:#fff,stroke:#1a5276
+    style CDT fill:#c8a000,color:#fff,stroke:#c8a000
+    style FM fill:#1f618d,color:#fff,stroke:#1f618d
+    style DS fill:#2e86c1,color:#fff,stroke:#2e86c1
+    style LIA fill:#fffbea,stroke:#c8a000,stroke-width:2px
+    style CUS fill:#7fb3d3,color:#fff,stroke:#7fb3d3
+```
+
 ## Proposed structure {#sec-cdt-structure}
 
 The CDT is headed by a G7 Steward who reports directly to the Deputy Director. It does not sit within any operational team. It serves all in-scope teams. That structural independence is what gives it the cross-service mandate that no operational team can hold.

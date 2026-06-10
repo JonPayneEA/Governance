@@ -17,15 +17,15 @@ The four model types used by the team are distinct in how they are built, calibr
 %%| label: fig-model-overview
 %%| fig-cap: "Conceptual relationships between the four model types."
 flowchart LR
-    PDM["PDM\nRainfall-runoff"]
-    BC["Boundary Conditions\nTidal / inflow / structure"]
-    FMP["FMP 1D\nHydraulic routing"]
-    BB["Black Box\nData-driven routing"]
+    PDM["PDM<br/>Rainfall-runoff"]
+    BC["Boundary Conditions<br/>Tidal / inflow / structure"]
+    FMP["FMP 1D<br/>Hydraulic routing"]
+    BB["Black Box<br/>Data-driven routing"]
 
-    PDM -->|"Catchment runoff\n(upstream inflow)"| FMP
-    BC -->|"Downstream / lateral\nboundary"| FMP
-    BB -->|"Alternative inflow\nor reach routing"| FMP
-    BB -.->|"Standalone\nforecasting"| FMP
+    PDM -->|"Catchment runoff<br/>(upstream inflow)"| FMP
+    BC -->|"Downstream / lateral<br/>boundary"| FMP
+    BB -->|"Alternative inflow<br/>or reach routing"| FMP
+    BB -.->|"Standalone<br/>forecasting"| FMP
 ```
 
 # Purpose
@@ -187,15 +187,15 @@ The Status field in the register reflects where a model sits in its lifecycle at
 stateDiagram-v2
     [*] --> UnderDevelopment : Model created
 
-    UnderDevelopment --> Active : Passes calibration,\ncondition Satisfactory+,\nOwner sign-off
+    UnderDevelopment --> Active : Calibration passed; condition Satisfactory+; Owner sign-off
 
-    Active --> Suspended : Condition score Poor or Critical;\nOwner review required;\nor operational need paused
+    Active --> Suspended : Poor or Critical condition; Owner review; or operational pause
 
-    Active --> Deprecated : Superseded by newer version\nor need no longer exists;\nOwner approval required
+    Active --> Deprecated : Superseded or need no longer exists; Owner approval
 
-    Suspended --> Active : Improvement plan complete;\ncondition restored;\nSteward sign-off
+    Suspended --> Active : Improvement complete; condition restored; Steward sign-off
 
-    Suspended --> Deprecated : No path to recovery;\nOwner approval required
+    Suspended --> Deprecated : No recovery path; Owner approval
 
     Deprecated --> [*]
 ```
