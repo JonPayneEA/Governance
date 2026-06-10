@@ -1,0 +1,185 @@
+# Training Sign-off Forms {#sec-training-signoff-forms}
+
+Each form covers one training section. The completing staff member dates the Completed column for each item. The verifying colleague (Steward or Delegated Steward) signs the Verified by column.
+
+Store completed forms in: `docs/training/[StaffName]_[Track]_[Year].docx`
+
+## A.1 Core
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **Core training item** | **Completed** | **Verified by** |
+|------------------------|---------------|-----------------|
+| **Governance framework** | | |
+| Read the Data & Digital Asset Governance Framework v2.0 | | |
+| Can describe the Owner, Steward, and Custodian roles and grade requirements | | |
+| Can explain the Tier 3 / Tier 2 / Tier 1 classification and give an example of each | | |
+| Understands the Tool Register and Model Register: purpose and update triggers | | |
+| **Data architecture** | | |
+| Can describe Bronze, Silver, and Gold tiers and what each represents | | |
+| Understands why only Gold data may be used in Tier 3 operational runs | | |
+| Can explain Q-FAIR and what each principle means in the team context | | |
+| **Version control** | | |
+| Understands what version control is and why it is required for reproducibility | | |
+| Knows where assets must be stored and that local-only storage is not permitted | | |
+
+## A.2 Hydrology fundamentals
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **Hydrology fundamentals item** | **Completed** | **Verified by** |
+|--------------------------------|---------------|-----------------|
+| **Concepts** | | |
+| Can describe the water cycle and catchment response to rainfall | | |
+| Can read and interpret a hydrograph | | |
+| Understands flow routing in a catchment and channel network | | |
+| **Data and metrics** | | |
+| Understands what hydrometric data is and what affects its quality | | |
+| Can explain NSE, KGE, and FAR and what good values look like | | |
+| Can name the main catchment descriptors used in model configuration and ML feature engineering | | |
+
+## A.3 Hydraulics fundamentals
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **Hydraulics fundamentals item** | **Completed** | **Verified by** |
+|----------------------------------|---------------|-----------------|
+| **Concepts** | | |
+| Can describe the difference between subcritical and supercritical flow | | |
+| Can explain when 1D and linked schemes are appropriate | | |
+| Understands how floodplain roughness affects model outputs | | |
+| **Outputs and uncertainty** | | |
+| Can interpret flow, level, and velocity model outputs | | |
+| Understands the main sources of uncertainty in hydraulic models | | |
+| Can describe what boundary conditions are and the main types | | |
+
+## A.4 Data and coding fundamentals
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **Data and coding fundamentals item** | **Completed** | **Verified by** |
+|---------------------------------------|---------------|-----------------|
+| **Data and tools** | | |
+| Can describe Parquet, JSON, and binary file formats and when each is used | | |
+| Understands what a commit, branch, and pull request are in Git | | |
+| Can explain what a code review is and what reviewers look for | | |
+| **Scripting and environments** | | |
+| Can explain what a function and a package dependency are | | |
+| Understands what renv and poetry do and why locked environments matter | | |
+| Completed at least two pull request reviews in the team repository | | |
+
+## A.5 Cross-cutting: model configuration and black box models
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **Cross-cutting training item** | **Completed** | **Verified by** |
+|---------------------------------|---------------|-----------------|
+| **Model register and configuration** | | |
+| Can construct a model ID following the [CatchmentID]_[ModelType]_[Version] convention | | |
+| Knows when a model must be entered in the register | | |
+| Can complete a run record covering all required fields | | |
+| Understands what boundary conditions are and what governance applies to each type | | |
+| Can describe what a calibration record must contain | | |
+| Understands the impact assessment requirement before deploying a model change | | |
+| **Model condition and connections** | | |
+| Can describe what condition assessment covers and how the 0-10 score maps to operational risk | | |
+| Understands review schedules and what triggers an unscheduled review | | |
+| Can explain how poor condition propagates through connected models | | |
+| Understands what the Connection Register records and when it must be updated | | |
+| Can describe what a system diagram must show | | |
+| Understands what manual override points are and what must be recorded when used | | |
+| **Black box models** | | |
+| Can explain why black box models carry specific governance risks compared to physically-based models | | |
+| Understands why all operational black box models are Tier 3 assets | | |
+| Knows what a training dataset record must contain | | |
+| Can describe what must be recorded when a black box model is replaced | | |
+
+## A.6 Hydrological modelling track
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **Hydrological modelling track item** | **Completed** | **Verified by** |
+|---------------------------------------|---------------|-----------------|
+| **PDM models** | | |
+| Understands PDM parameter set structure and why they are sensitive assets | | |
+| Knows the naming convention and storage requirements for parameter sets | | |
+| Can produce a complete calibration record | | |
+| Can explain how PDM outputs become FMP boundary conditions | | |
+| **Hydrometric data** | | |
+| Understands the Bronze ingestion pipeline: what it captures, partitioning, and immutability | | |
+| Can explain the Silver QC process and what supplier flags and quality codes mean | | |
+| Understands Gold approval requirements and who may approve Gold data | | |
+| Knows which data tier is required for each operational use case | | |
+
+## A.7 Hydraulic modelling track
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **Hydraulic modelling track item** | **Completed** | **Verified by** |
+|------------------------------------|---------------|-----------------|
+| **FMP governance** | | |
+| Knows the required folder structure and naming conventions | | |
+| Understands version control for binary model files and the 'both versions retained' requirement | | |
+| Can confirm model files are stored in the agreed repository location | | |
+| **1D and linked configurations** | | |
+| Can describe when each scheme type is appropriate and the trade-offs involved | | |
+| Understands GXY and DAT file formats and what they contain | | |
+| Can interpret standard model output variables | | |
+
+## A.8 Crossover module: FMP API scripting
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **Crossover module item** | **Completed** | **Verified by** |
+|---------------------------|---------------|-----------------|
+| **FMP API and tool governance** | | |
+| Understands what the Flood Modeller API exposes and how Python scripts interact with it | | |
+| Can list the Tier 3 tool obligations that apply to FMP orchestration scripts | | |
+| Knows how run records must be completed when a model is run via script | | |
+| Understands the distinction between the Model Register (the model) and the Tool Register (the script) | | |
+
+## A.9 R development track
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **R development track item** | **Completed** | **Verified by** |
+|------------------------------|---------------|-----------------|
+| **R governance** | | |
+| Has read the R Tool Governance document in full | | |
+| Can classify an R tool into Tier 3, 2, or 1 and list what each requires | | |
+| Understands the pull request and code review process | | |
+| Has set up renv and confirmed renv::restore() works on the main repository | | |
+| Understands the prohibition on dplyr/tidyverse in team tools and can identify the data.table equivalents | | |
+| **reach.* packages and data patterns** | | |
+| Can describe the six reach.* modules and what each is for | | |
+| Can perform common data.table operations: filtering, grouping, joins | | |
+| Can read and write Parquet files and understands Hive partitioning | | |
+| Understands the Bronze store structure and what the partitioning keys mean | | |
+| **Tier 3 standards (required for Tier 3 custodianship only)** | | |
+| Has written testthat tests meeting 70% line coverage | | |
+| Can produce a handover note covering all required fields | | |
+| Has reviewed and understands the disaster recovery runbook template | | |
+| Has received senior reviewer confirmation of Tier 3 competence | | |
+
+## A.10 Python and ML track
+
+Completed by: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Role: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+| **Python and ML track item** | **Completed** | **Verified by** |
+|------------------------------|---------------|-----------------|
+| **Python governance** | | |
+| Has read the Python Tool Governance document in full | | |
+| Has set up a poetry project and confirmed the lockfile is committed | | |
+| Understands the prohibition on pip install in managed projects | | |
+| Can classify a Python tool and describe what each tier requires | | |
+| Understands the training and inference separation requirement | | |
+| **AI/ML environment** | | |
+| Can describe what Unity Catalog and MLflow do in the DASH environment | | |
+| Knows what must be logged to MLflow for every experiment run | | |
+| Understands the staged build approach and which data tier applies at each stage | | |
+| Knows the Gold data requirement for Tier 3 inference pipelines | | |
+| **LSTM pipelines** | | |
+| Can describe what the feature engineering pipeline does and what its outputs represent | | |
+| Knows which catchment attributes are used and how they are attached to training data | | |
+| Understands what ONNX export is and why it is required | | |
+| Understands the model handover process when an LSTM replaces a black box model | | |

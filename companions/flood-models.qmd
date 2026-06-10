@@ -430,19 +430,12 @@ The Delegated Steward conducts an annual audit of all Tier 3 models covering: co
 
 # Appendix A - Glossary
 
+Framework-wide terms (FMP, PDM, Black Box model, Cascading system, Condition rating, Connection Register, Model Register, NSE/KGE/FAR, Manual override point) are defined in the main glossary at @sec-glossary. This appendix covers terms specific to flood model governance.
+
 | **Term** | **Definition** |
 | --- | --- |
-| FMP | Flood Modeller Pro - the team's primary hydraulic modelling software for 1D and 2D flood simulation |
-| PDM | Probability Distributed Model - a conceptual rainfall-runoff model that converts rainfall and evapotranspiration inputs into catchment runoff |
-| Black Box model | A data-driven model that relates inputs directly to outputs without representing physical processes; includes neural network and transfer function models |
 | Boundary condition | An input that defines the forcing conditions at the edge of a model domain: upstream inflows, downstream water levels, lateral inflows, or operational settings |
-| Cascading system | A modelling system where the outputs of one model become the inputs to one or more downstream models |
 | Model condition | An assessment of how fit for purpose a model is, based on data currency, structural integrity, calibration currency, software currency, and documentation completeness |
-| Condition rating | The numerical score (0-10) produced by a condition assessment, mapped to a descriptive rating from Critical to Good |
-| Connection Register | The version-controlled record of all active connections between models in the team's operational system |
-| Model Register | The version-controlled record of all flood models held or used by the team, including their tier, condition rating, and connection references |
 | Run record | The documented record of the inputs, versions, boundary conditions, and outputs for a specific model run |
 | Calibration record | The documented record of the data, events, methods, and performance metrics for a specific model calibration |
-| NSE / KGE / FAR | Common hydrological performance metrics: Nash-Sutcliffe Efficiency, Kling-Gupta Efficiency, False Alarm Ratio |
-| Manual override point | A defined point in a cascading system where an operator can substitute a model output with an observed or manually estimated value |
 | Triggered review | A condition assessment carried out in response to a specific event rather than on the standard review cycle |

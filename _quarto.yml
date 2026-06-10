@@ -72,6 +72,7 @@ book:
     - part: "Training and implementation"
       chapters:
         - companions/training-framework.qmd
+        - companions/training-signoff-forms.qmd
         - 08-implementation.qmd
   appendices:
     - a-glossary.qmd

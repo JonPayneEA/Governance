@@ -741,29 +741,12 @@ Data type codes: Q = flow, H = stage/water level, P = rainfall, SM = soil moistu
 
 # Appendix B - Glossary
 
+Framework-wide terms (Bronze, Silver, Gold, Parquet, Delta Lake, Quality flag, etc.) are defined in the main glossary at @sec-glossary. This appendix covers terms specific to the hydrometric data pipeline.
+
 | **Term** | **Definition** |
 | --- | --- |
-| Bronze | The first tier of the medallion framework. Raw, unmodified data exactly as received from the supplier. |
-| Silver | The second tier. Quality-controlled data with flags applied and QC decisions documented. |
-| Gold | The third tier. Formally approved analysis-ready products derived from Silver data. Includes aggregated statistics, calibration inputs, and ML training sets. |
-| Provenance | The documented origin and history of a dataset - where it came from, when, how it was received, and what has been done to it. |
-| Lineage | The chain of datasets linking a Gold product back through Silver to Bronze and to the supplier. |
-| Rating curve | The relationship between water level (stage) and flow (discharge) at a gauging station, used to derive flow from level measurements. |
-| Gap-filling | Estimating values for missing time periods in a dataset using a documented method. |
-| Quality flag | A code attached to each data value indicating its quality status (Good, Estimated, Suspect, Rejected, No data, Below detection). |
-| Flatline | A sequence of identical repeated values in a time series, typically indicating a sensor or telemetry malfunction. |
-| Medallion framework | A data architecture pattern organising data into tiers of increasing quality and fitness for purpose. Adapted here for hydrological data management. |
-| Hydrometric | Relating to the measurement of water - flows, levels, rainfall, and related variables. |
-| NRFA | National River Flow Archive - the UK's national repository of river flow data. |
-| Datum | The vertical reference level to which water level measurements are made. |
-| Parquet | A columnar file format used as the standard storage format for all hydrometric datasets in this framework. Supports typed columns, compression, and efficient partial reads. |
-| Delta Lake | A storage layer built on Parquet that adds transactions, schema enforcement, and time-travel to tables in Databricks. Used for Bronze and Silver stores in DASH. |
-| Hydrometric Data Register | A single consolidated CSV file maintained by `reach.io` (or a Delta table in Databricks) recording all Bronze, Silver, and Gold dataset metadata in one table. Entries are written programmatically via `write_provenance_record()`. Replaces separate provenance, QC, and derivation record files. |
 | Gauge Registry | A Parquet file maintained by `reach.io` via `build_gauge_registry()`. Records source system assignment, active status, backfill completion, and notes for each gauge. Acts as the routing configuration for the ingestion pipeline. |
 | qc_value | The analysis-ready value column in Silver and Gold Parquet. Equal to the Bronze value for Good data; populated with the estimated value for gap-filled rows; null for Rejected and No data rows. |
-| Static catchment attributes | Time-invariant descriptors of a catchment attached to an ML training set Gold product: area, BFI, elevation, soil type, and land cover. Repeated on every row in the Parquet file so the dataset is self-contained for model training. |
-| BFI | Base Flow Index. A measure of the proportion of river flow derived from groundwater or other slowly varying sources. Used as a static catchment attribute in ML training sets. |
-| ML training set Gold | A Gold product type holding Silver time series data at native 15-minute resolution with static catchment attributes attached. Distinct from aggregated Gold products and requires its own derivation record. |
 
 # Appendix C - Folder Structure
 
