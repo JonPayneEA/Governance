@@ -7,7 +7,7 @@
 | **Version** | 1.3 |
 | **Status** | Draft: For Team Review |
 | **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ Data Ownership Model (CDDO, 2024) |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0 | Data Ownership Model (CDDO, 2024) |
 :::
 
 This companion applies a three-tier medallion architecture to hydrometric data, progressing from raw supplier ingest through quality control to analysis-ready products:
@@ -450,7 +450,7 @@ For Gold products that aggregate Silver time series into statistics or event sum
 | period_end | date32 | End of the aggregation period |
 | [statistic columns] | float64 | e.g., annual_max_flow_m3s, peak_rainfall_mm, mean_daily_flow_m3s. Name columns with units as suffix. |
 | data_completeness_pct | float64 | Percentage of the period covered by Good or Estimated Silver data (flags 1 and 2). |
-| silver_source_ids | string | Pipe-separated list of Silver dataset IDs used (e.g., EA_39001_Q_20230101_SILVER_v1│EA_39001_Q_20240101_SILVER_v1). Keeps lineage readable in any tool. |
+| silver_source_ids | string | Pipe-separated list of Silver dataset IDs used (e.g., EA_39001_Q_20230101_SILVER_v1|EA_39001_Q_20240101_SILVER_v1). Keeps lineage readable in any tool. |
 
 #### ML Training Set Gold
 
@@ -756,14 +756,14 @@ The following shows the recommended folder structure for hydrometric data storag
 
 Used outside Databricks for local and shared network storage. The raw supplier file (CSV, XML, JSON, etc.) is kept alongside the Parquet at Bronze as the immutable record of receipt.
 
-| **hydrometric/** **├****──**** bronze/** │ ├── EA/ │ │ ├── Q/ │ │ │ ├── 2023/ │ │ │ │ ├── EA_39001_Q_20230101.parquet │ │ │ │ ├── EA_39001_Q_20230101_raw.csv ← original supplier file │ │ │ │ └── EA_45001_Q_20230101.parquet │ │ │ └── 2024/ │ │ │ └── EA_39001_Q_20240101.parquet │ │ └── H/ │ │ └── 2024/ │ │ └── EA_39001_H_20240101.parquet │ ├── NRFA/ │ │ └── Q/ │ │ └── 2024/ │ │ └── NRFA_39001_Q_20240301.parquet │ └── MO/ │ └── P/ │ └── 2024/ │ └── MO_235096_P_20240101.parquet │ **├****──**** silver/** │ ├── Q/ │ │ └── 39001/ │ │ ├── EA_39001_Q_20230101_SILVER_v1.parquet │ │ └── EA_39001_Q_20230101_SILVER_v2.parquet ← revised; v1 kept │ ├── H/ │ │ └── 39001/ │ │ └── EA_39001_H_20240101_SILVER_v1.parquet │ └── P/ │ └── 235096/ │ └── MO_235096_P_20240101_SILVER_v1.parquet │ **├****──**** gold/** │ ├── Q/ │ │ ├── calibration/ │ │ │ └── 39001_Q_GOLD_CAL_v1.parquet │ │ └── FFA/ │ │ ├── 39001_Q_GOLD_FFA_v1.parquet ← superseded; kept │ │ └── 39001_Q_GOLD_FFA_v2.parquet ← current │ └── P/ │ └── catchment_average/ │ └── THAMES_P_GOLD_CAVG_v1.parquet │ └── register/ ├── hydrometric_data_register.xlsx └── data_quality_issue_log.xlsx |
+| **hydrometric/** **├****──**** bronze/** | ├── EA/ | | ├── Q/ | | | ├── 2023/ | | | | ├── EA_39001_Q_20230101.parquet | | | | ├── EA_39001_Q_20230101_raw.csv ← original supplier file | | | | └── EA_45001_Q_20230101.parquet | | | └── 2024/ | | | └── EA_39001_Q_20240101.parquet | | └── H/ | | └── 2024/ | | └── EA_39001_H_20240101.parquet | ├── NRFA/ | | └── Q/ | | └── 2024/ | | └── NRFA_39001_Q_20240301.parquet | └── MO/ | └── P/ | └── 2024/ | └── MO_235096_P_20240101.parquet | **├****──**** silver/** | ├── Q/ | | └── 39001/ | | ├── EA_39001_Q_20230101_SILVER_v1.parquet | | └── EA_39001_Q_20230101_SILVER_v2.parquet ← revised; v1 kept | ├── H/ | | └── 39001/ | | └── EA_39001_H_20240101_SILVER_v1.parquet | └── P/ | └── 235096/ | └── MO_235096_P_20240101_SILVER_v1.parquet | **├****──**** gold/** | ├── Q/ | | ├── calibration/ | | | └── 39001_Q_GOLD_CAL_v1.parquet | | └── FFA/ | | ├── 39001_Q_GOLD_FFA_v1.parquet ← superseded; kept | | └── 39001_Q_GOLD_FFA_v2.parquet ← current | └── P/ | └── catchment_average/ | └── THAMES_P_GOLD_CAVG_v1.parquet | └── register/ ├── hydrometric_data_register.xlsx └── data_quality_issue_log.xlsx |
 | --- |
 
 ### C.2 Databricks DASH - Unity Catalog
 
 In Databricks, data is held as Delta Lake tables rather than flat files. The tier structure maps directly to Unity Catalog schemas, which enforces the access controls defined in @sec-hydro-access.
 
-| **unity_catalog/** **└── fw_hydrometric/ ← catalog** **├****──**** fw_bronze/ ****←**** schema; read-only except at ingest** │ ├── ea_flow ← Delta table, partitioned by site_id, year │ ├── ea_stage │ ├── mo_rainfall │ └── nrfa_flow **├****──**** fw_silver/ ****←**** schema; read by all, write by Custodians** │ ├── flow │ ├── stage │ └── rainfall **└── fw_gold/ ← schema; read by all, write requires Owner approval** ├── flow_calibration ├── flow_ffa └── rainfall_catchment_average |
+| **unity_catalog/** **└── fw_hydrometric/ ← catalog** **├****──**** fw_bronze/ ****←**** schema; read-only except at ingest** | ├── ea_flow ← Delta table, partitioned by site_id, year | ├── ea_stage | ├── mo_rainfall | └── nrfa_flow **├****──**** fw_silver/ ****←**** schema; read by all, write by Custodians** | ├── flow | ├── stage | └── rainfall **└── fw_gold/ ← schema; read by all, write requires Owner approval** ├── flow_calibration ├── flow_ffa └── rainfall_catchment_average |
 | --- |
 
 | *Superseded Silver and Gold files stay in place with their version number in the filename - nothing is deleted or renamed. All metadata (provenance, QC records, derivation records) is held in the Hydrometric Data Register, not in sidecar files alongside the Parquet. In Databricks, Delta Lake time-travel provides access to previous versions without separate files.* |

@@ -84,7 +84,7 @@ book:
 
 format:
   html:
-    theme: 
+    theme:
       light: [cosmo, water-theme.scss]
       dark: [darkly, water-theme-dark.scss]
     toc: true
@@ -92,3 +92,8 @@ format:
     toc-title: "Contents"
     number-sections: true
     css: styles.css
+  pdf:
+    pdf-engine: xelatex
+    toc: true
+    number-sections: true
+    colorlinks: true
