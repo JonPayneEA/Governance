@@ -7,7 +7,7 @@
 | **Version** | 1.0 |
 | **Status** | Draft: For Team Review |
 | **Review Date** | 2027-03-31 |
-| **Parent Document** | Data & Digital Asset Governance Framework v2.0 │ R Tool Governance v1.3 │ Python Tool Governance v1.3 |
+| **Parent Document** | Data & Digital Asset Governance Framework v2.0 | R Tool Governance v1.3 | Python Tool Governance v1.3 |
 :::
 
 ## Purpose
